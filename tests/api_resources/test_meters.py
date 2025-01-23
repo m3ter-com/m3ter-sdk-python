@@ -370,7 +370,7 @@ class TestMeters:
             ids=["string"],
             next_token="nextToken",
             page_size=1,
-            product_id=[{}],
+            product_id=["string"],
         )
         assert_matches_type(SyncCursor[Meter], meter, path=["response"])
 
@@ -761,7 +761,7 @@ class TestAsyncMeters:
             ids=["string"],
             next_token="nextToken",
             page_size=1,
-            product_id=[{}],
+            product_id=["string"],
         )
         assert_matches_type(AsyncCursor[Meter], meter, path=["response"])
 

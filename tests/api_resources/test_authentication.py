@@ -30,6 +30,7 @@ class TestAuthentication:
             grant_type="client_credentials",
             scope="scope",
         )
+        print(authentication)
         assert_matches_type(AuthenticationGetBearerTokenResponse, authentication, path=["response"])
 
     @parametrize
