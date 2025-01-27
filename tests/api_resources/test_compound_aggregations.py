@@ -27,7 +27,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -39,7 +39,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
             code="{1{}}_",
@@ -56,7 +56,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -72,7 +72,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         ) as response:
@@ -91,7 +91,7 @@ class TestCompoundAggregations:
                 org_id="",
                 calculation="x",
                 name="x",
-                quantity_per_unit=0,
+                quantity_per_unit=1,
                 rounding="UP",
                 unit="x",
             )
@@ -151,7 +151,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -164,7 +164,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
             code="{1{}}_",
@@ -182,7 +182,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -199,7 +199,7 @@ class TestCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         ) as response:
@@ -219,7 +219,7 @@ class TestCompoundAggregations:
                 org_id="",
                 calculation="x",
                 name="x",
-                quantity_per_unit=0,
+                quantity_per_unit=1,
                 rounding="UP",
                 unit="x",
             )
@@ -230,7 +230,7 @@ class TestCompoundAggregations:
                 org_id="orgId",
                 calculation="x",
                 name="x",
-                quantity_per_unit=0,
+                quantity_per_unit=1,
                 rounding="UP",
                 unit="x",
             )
@@ -295,7 +295,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -307,7 +307,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
             code="{1{}}_",
@@ -324,7 +324,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -340,7 +340,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         ) as response:
@@ -359,7 +359,7 @@ class TestAsyncCompoundAggregations:
                 org_id="",
                 calculation="x",
                 name="x",
-                quantity_per_unit=0,
+                quantity_per_unit=1,
                 rounding="UP",
                 unit="x",
             )
@@ -419,7 +419,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -432,7 +432,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
             code="{1{}}_",
@@ -450,7 +450,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         )
@@ -467,7 +467,7 @@ class TestAsyncCompoundAggregations:
             org_id="orgId",
             calculation="x",
             name="x",
-            quantity_per_unit=0,
+            quantity_per_unit=1,
             rounding="UP",
             unit="x",
         ) as response:
@@ -487,7 +487,7 @@ class TestAsyncCompoundAggregations:
                 org_id="",
                 calculation="x",
                 name="x",
-                quantity_per_unit=0,
+                quantity_per_unit=1,
                 rounding="UP",
                 unit="x",
             )
@@ -498,7 +498,7 @@ class TestAsyncCompoundAggregations:
                 org_id="orgId",
                 calculation="x",
                 name="x",
-                quantity_per_unit=0,
+                quantity_per_unit=1,
                 rounding="UP",
                 unit="x",
             )
