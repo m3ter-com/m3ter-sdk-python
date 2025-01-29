@@ -101,6 +101,13 @@ class DataField(TypedDict, total=False):
 
 
 class DerivedField(TypedDict, total=False):
+    calculation: Required[str]
+    """
+    The calculation used to transform the value of submitted `dataFields` in usage
+    data. Calculation can reference `dataFields`, `customFields`, or system
+    `Timestamp` fields. _(Example: datafieldms datafieldgb)_
+    """
+
     category: Required[Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]]
     """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
 
