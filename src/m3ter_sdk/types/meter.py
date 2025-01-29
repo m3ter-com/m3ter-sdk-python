@@ -35,6 +35,13 @@ class DataField(BaseModel):
 
 
 class DerivedField(BaseModel):
+    calculation: str
+    """
+    The calculation used to transform the value of submitted `dataFields` in usage
+    data. Calculation can reference `dataFields`, `customFields`, or system
+    `Timestamp` fields. _(Example: datafieldms datafieldgb)_
+    """
+
     category: Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]
     """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
 
