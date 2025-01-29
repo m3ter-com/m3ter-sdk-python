@@ -51,6 +51,10 @@ class CountersResource(SyncAPIResource):
         self,
         org_id: str,
         *,
+        name: str,
+        unit: str,
+        code: str | NotGiven = NOT_GIVEN,
+        product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -63,6 +67,17 @@ class CountersResource(SyncAPIResource):
         Create a new Counter.
 
         Args:
+          name: Descriptive name for the Counter.
+
+          unit: User defined label for units shown on Bill line items, and indicating to your
+              customers what they are being charged for.
+
+          code: Code for the Counter. A unique short code to identify the Counter.
+
+          product_id: UUID of the product the Counter belongs to. _(Optional)_ - if left blank, the
+              Counter is Global. A Global Counter can be used to price Plans or Plan Templates
+              belonging to any Product.
+
           version:
               The version number of the entity:
 
@@ -85,7 +100,16 @@ class CountersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
             f"/organizations/{org_id}/counters",
-            body=maybe_transform({"version": version}, counter_create_params.CounterCreateParams),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "unit": unit,
+                    "code": code,
+                    "product_id": product_id,
+                    "version": version,
+                },
+                counter_create_params.CounterCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -133,6 +157,10 @@ class CountersResource(SyncAPIResource):
         id: str,
         *,
         org_id: str,
+        name: str,
+        unit: str,
+        code: str | NotGiven = NOT_GIVEN,
+        product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -145,6 +173,17 @@ class CountersResource(SyncAPIResource):
         Update Counter for the given UUID.
 
         Args:
+          name: Descriptive name for the Counter.
+
+          unit: User defined label for units shown on Bill line items, and indicating to your
+              customers what they are being charged for.
+
+          code: Code for the Counter. A unique short code to identify the Counter.
+
+          product_id: UUID of the product the Counter belongs to. _(Optional)_ - if left blank, the
+              Counter is Global. A Global Counter can be used to price Plans or Plan Templates
+              belonging to any Product.
+
           version:
               The version number of the entity:
 
@@ -169,7 +208,16 @@ class CountersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
             f"/organizations/{org_id}/counters/{id}",
-            body=maybe_transform({"version": version}, counter_update_params.CounterUpdateParams),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "unit": unit,
+                    "code": code,
+                    "product_id": product_id,
+                    "version": version,
+                },
+                counter_update_params.CounterUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -265,6 +313,10 @@ class AsyncCountersResource(AsyncAPIResource):
         self,
         org_id: str,
         *,
+        name: str,
+        unit: str,
+        code: str | NotGiven = NOT_GIVEN,
+        product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -277,6 +329,17 @@ class AsyncCountersResource(AsyncAPIResource):
         Create a new Counter.
 
         Args:
+          name: Descriptive name for the Counter.
+
+          unit: User defined label for units shown on Bill line items, and indicating to your
+              customers what they are being charged for.
+
+          code: Code for the Counter. A unique short code to identify the Counter.
+
+          product_id: UUID of the product the Counter belongs to. _(Optional)_ - if left blank, the
+              Counter is Global. A Global Counter can be used to price Plans or Plan Templates
+              belonging to any Product.
+
           version:
               The version number of the entity:
 
@@ -299,7 +362,16 @@ class AsyncCountersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
             f"/organizations/{org_id}/counters",
-            body=await async_maybe_transform({"version": version}, counter_create_params.CounterCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "unit": unit,
+                    "code": code,
+                    "product_id": product_id,
+                    "version": version,
+                },
+                counter_create_params.CounterCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -347,6 +419,10 @@ class AsyncCountersResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str,
+        name: str,
+        unit: str,
+        code: str | NotGiven = NOT_GIVEN,
+        product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -359,6 +435,17 @@ class AsyncCountersResource(AsyncAPIResource):
         Update Counter for the given UUID.
 
         Args:
+          name: Descriptive name for the Counter.
+
+          unit: User defined label for units shown on Bill line items, and indicating to your
+              customers what they are being charged for.
+
+          code: Code for the Counter. A unique short code to identify the Counter.
+
+          product_id: UUID of the product the Counter belongs to. _(Optional)_ - if left blank, the
+              Counter is Global. A Global Counter can be used to price Plans or Plan Templates
+              belonging to any Product.
+
           version:
               The version number of the entity:
 
@@ -383,7 +470,16 @@ class AsyncCountersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
             f"/organizations/{org_id}/counters/{id}",
-            body=await async_maybe_transform({"version": version}, counter_update_params.CounterUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "unit": unit,
+                    "code": code,
+                    "product_id": product_id,
+                    "version": version,
+                },
+                counter_update_params.CounterUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
