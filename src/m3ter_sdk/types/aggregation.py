@@ -12,17 +12,8 @@ __all__ = ["Aggregation"]
 
 
 class Aggregation(BaseModel):
-    id: str
+    id: Optional[str] = None
     """The UUID of the entity."""
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
 
     aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]] = None
     """
@@ -41,11 +32,13 @@ class Aggregation(BaseModel):
     - **MAX**. Uses the maximum value. Can be applied to a **Measure**, **Income**,
       or **Cost** `targetField`.
 
-    - **COUNT**. Counts the number of values. Can be applied to a **Who**, **What**,
-      **Where**, **Measure**, **Income**, **Cost** or **Other** `targetField`.
+    - **COUNT**. Counts the number of values. Can be applied to a **Measure**,
+      **Income**, or **Cost** `targetField`.
 
     - **LATEST**. Uses the most recent value. Can be applied to a **Measure**,
-      **Income**, or **Cost** `targetField`.
+      **Income**, or **Cost** `targetField`. Note: Based on the timestamp (`ts`)
+      value of usage data measurement submissions. If using this method, please
+      ensure _distinct_ `ts` values are used for usage data measurment submissions.
 
     - **MEAN**. Uses the arithmetic mean of the values. Can be applied to a
       **Measure**, **Income**, or **Cost** `targetField`.
@@ -118,7 +111,7 @@ class Aggregation(BaseModel):
       KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
       to 98 \\** 0.25 = $2.45.
 
-    Enum: “UP” “DOWN” “NEAREST” “NONE”
+    Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
     """
 
     segmented_fields: Optional[List[str]] = FieldInfo(alias="segmentedFields", default=None)
@@ -155,4 +148,13 @@ class Aggregation(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

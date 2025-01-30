@@ -325,7 +325,7 @@ class MetersResource(SyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Iterable[object] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -334,20 +334,18 @@ class MetersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursor[Meter]:
         """
-        Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
-        short code.
+        Retrieve a list of Meter entities
 
         Args:
-          codes: List of Meter codes to retrieve. These are the unique short codes that identify
-              each Meter.
+          codes: list of codes to retrieve
 
-          ids: List of Meter IDs to retrieve.
+          ids: list of ids to retrieve
 
-          next_token: `nextToken` for multi-page retrievals.
+          next_token: nextToken for multi page retrievals
 
-          page_size: Number of Meters to retrieve per page.
+          page_size: Number of Meters to retrieve per page
 
-          product_id: The UUIDs of the Products to retrieve Meters for.
+          product_id: The UUIDs of the products to retrieve meters for
 
           extra_headers: Send extra headers
 
@@ -680,7 +678,7 @@ class AsyncMetersResource(AsyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Iterable[object] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -689,20 +687,18 @@ class AsyncMetersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Meter, AsyncCursor[Meter]]:
         """
-        Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
-        short code.
+        Retrieve a list of Meter entities
 
         Args:
-          codes: List of Meter codes to retrieve. These are the unique short codes that identify
-              each Meter.
+          codes: list of codes to retrieve
 
-          ids: List of Meter IDs to retrieve.
+          ids: list of ids to retrieve
 
-          next_token: `nextToken` for multi-page retrievals.
+          next_token: nextToken for multi page retrievals
 
-          page_size: Number of Meters to retrieve per page.
+          page_size: Number of Meters to retrieve per page
 
-          product_id: The UUIDs of the Products to retrieve Meters for.
+          product_id: The UUIDs of the products to retrieve meters for
 
           extra_headers: Send extra headers
 

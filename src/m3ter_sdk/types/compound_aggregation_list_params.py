@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import List
 from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -32,7 +32,7 @@ class CompoundAggregationListParams(TypedDict, total=False):
     page_size: Annotated[int, PropertyInfo(alias="pageSize")]
     """Specifies the maximum number of CompoundAggregations to retrieve per page."""
 
-    product_id: Annotated[Iterable[object], PropertyInfo(alias="productId")]
+    product_id: Annotated[List[str], PropertyInfo(alias="productId")]
     """
     An optional parameter to filter the CompoundAggregations based on specific
     Product unique identifiers (UUIDs).

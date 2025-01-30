@@ -91,11 +91,13 @@ class AggregationsResource(SyncAPIResource):
               - **MAX**. Uses the maximum value. Can be applied to a **Measure**, **Income**,
                 or **Cost** `targetField`.
 
-              - **COUNT**. Counts the number of values. Can be applied to a **Who**, **What**,
-                **Where**, **Measure**, **Income**, **Cost** or **Other** `targetField`.
+              - **COUNT**. Counts the number of values. Can be applied to a **Measure**,
+                **Income**, or **Cost** `targetField`.
 
               - **LATEST**. Uses the most recent value. Can be applied to a **Measure**,
-                **Income**, or **Cost** `targetField`.
+                **Income**, or **Cost** `targetField`. Note: Based on the timestamp (`ts`)
+                value of usage data measurement submissions. If using this method, please
+                ensure _distinct_ `ts` values are used for usage data measurment submissions.
 
               - **MEAN**. Uses the arithmetic mean of the values. Can be applied to a
                 **Measure**, **Income**, or **Cost** `targetField`.
@@ -132,7 +134,7 @@ class AggregationsResource(SyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           target_field: `Code` of the target `dataField` or `derivedField` on the Meter used as the
               basis for the Aggregation.
@@ -301,11 +303,13 @@ class AggregationsResource(SyncAPIResource):
               - **MAX**. Uses the maximum value. Can be applied to a **Measure**, **Income**,
                 or **Cost** `targetField`.
 
-              - **COUNT**. Counts the number of values. Can be applied to a **Who**, **What**,
-                **Where**, **Measure**, **Income**, **Cost** or **Other** `targetField`.
+              - **COUNT**. Counts the number of values. Can be applied to a **Measure**,
+                **Income**, or **Cost** `targetField`.
 
               - **LATEST**. Uses the most recent value. Can be applied to a **Measure**,
-                **Income**, or **Cost** `targetField`.
+                **Income**, or **Cost** `targetField`. Note: Based on the timestamp (`ts`)
+                value of usage data measurement submissions. If using this method, please
+                ensure _distinct_ `ts` values are used for usage data measurment submissions.
 
               - **MEAN**. Uses the arithmetic mean of the values. Can be applied to a
                 **Measure**, **Income**, or **Cost** `targetField`.
@@ -342,7 +346,7 @@ class AggregationsResource(SyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           target_field: `Code` of the target `dataField` or `derivedField` on the Meter used as the
               basis for the Aggregation.
@@ -436,7 +440,7 @@ class AggregationsResource(SyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Iterable[object] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -556,11 +560,13 @@ class AsyncAggregationsResource(AsyncAPIResource):
               - **MAX**. Uses the maximum value. Can be applied to a **Measure**, **Income**,
                 or **Cost** `targetField`.
 
-              - **COUNT**. Counts the number of values. Can be applied to a **Who**, **What**,
-                **Where**, **Measure**, **Income**, **Cost** or **Other** `targetField`.
+              - **COUNT**. Counts the number of values. Can be applied to a **Measure**,
+                **Income**, or **Cost** `targetField`.
 
               - **LATEST**. Uses the most recent value. Can be applied to a **Measure**,
-                **Income**, or **Cost** `targetField`.
+                **Income**, or **Cost** `targetField`. Note: Based on the timestamp (`ts`)
+                value of usage data measurement submissions. If using this method, please
+                ensure _distinct_ `ts` values are used for usage data measurment submissions.
 
               - **MEAN**. Uses the arithmetic mean of the values. Can be applied to a
                 **Measure**, **Income**, or **Cost** `targetField`.
@@ -597,7 +603,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           target_field: `Code` of the target `dataField` or `derivedField` on the Meter used as the
               basis for the Aggregation.
@@ -766,11 +772,13 @@ class AsyncAggregationsResource(AsyncAPIResource):
               - **MAX**. Uses the maximum value. Can be applied to a **Measure**, **Income**,
                 or **Cost** `targetField`.
 
-              - **COUNT**. Counts the number of values. Can be applied to a **Who**, **What**,
-                **Where**, **Measure**, **Income**, **Cost** or **Other** `targetField`.
+              - **COUNT**. Counts the number of values. Can be applied to a **Measure**,
+                **Income**, or **Cost** `targetField`.
 
               - **LATEST**. Uses the most recent value. Can be applied to a **Measure**,
-                **Income**, or **Cost** `targetField`.
+                **Income**, or **Cost** `targetField`. Note: Based on the timestamp (`ts`)
+                value of usage data measurement submissions. If using this method, please
+                ensure _distinct_ `ts` values are used for usage data measurment submissions.
 
               - **MEAN**. Uses the arithmetic mean of the values. Can be applied to a
                 **Measure**, **Income**, or **Cost** `targetField`.
@@ -807,7 +815,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           target_field: `Code` of the target `dataField` or `derivedField` on the Meter used as the
               basis for the Aggregation.
@@ -901,7 +909,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Iterable[object] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
