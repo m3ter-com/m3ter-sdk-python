@@ -32,6 +32,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -56,6 +57,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -84,6 +86,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -111,6 +114,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -141,6 +145,7 @@ class TestMeters:
                 ],
                 derived_fields=[
                     {
+                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
@@ -212,6 +217,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -237,6 +243,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -266,6 +273,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -294,6 +302,7 @@ class TestMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -325,6 +334,7 @@ class TestMeters:
                 ],
                 derived_fields=[
                     {
+                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
@@ -347,6 +357,7 @@ class TestMeters:
                 ],
                 derived_fields=[
                     {
+                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
@@ -370,7 +381,7 @@ class TestMeters:
             ids=["string"],
             next_token="nextToken",
             page_size=1,
-            product_id=[{}],
+            product_id=["string"],
         )
         assert_matches_type(SyncCursor[Meter], meter, path=["response"])
 
@@ -423,6 +434,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -447,6 +459,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -475,6 +488,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -502,6 +516,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -532,6 +547,7 @@ class TestAsyncMeters:
                 ],
                 derived_fields=[
                     {
+                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
@@ -603,6 +619,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -628,6 +645,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -657,6 +675,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -685,6 +704,7 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
+                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
@@ -716,6 +736,7 @@ class TestAsyncMeters:
                 ],
                 derived_fields=[
                     {
+                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
@@ -738,6 +759,7 @@ class TestAsyncMeters:
                 ],
                 derived_fields=[
                     {
+                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
@@ -761,7 +783,7 @@ class TestAsyncMeters:
             ids=["string"],
             next_token="nextToken",
             page_size=1,
-            product_id=[{}],
+            product_id=["string"],
         )
         assert_matches_type(AsyncCursor[Meter], meter, path=["response"])
 

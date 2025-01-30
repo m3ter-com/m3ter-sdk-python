@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-import base64
 import os
+import base64
 from typing import Any, Union, Mapping
 from typing_extensions import Self, override
 
 import httpx
 
 from . import _exceptions
-from ._models import FinalRequestOptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -26,6 +25,7 @@ from ._utils import (
     is_given,
     get_async_library,
 )
+from ._models import FinalRequestOptions
 from ._version import __version__
 from .resources import meters, counters, products, aggregations, authentication, compound_aggregations
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
@@ -170,17 +170,14 @@ class M3ter(SyncAPIClient):
 
     @override
     def _prepare_options(
-            self,
-            options: FinalRequestOptions,  # noqa: ARG002
+        self,
+        options: FinalRequestOptions,  # noqa: ARG002
     ) -> FinalRequestOptions:
         if not options.url.endswith("/oauth/token"):
             if not self.token:
-                auth: str = base64.b64encode(f'{self.api_key}:{self.api_secret}'.encode("utf8")).decode("utf8")
+                auth: str = base64.b64encode(f"{self.api_key}:{self.api_secret}".encode("utf8")).decode("utf8")
                 token: AuthenticationGetBearerTokenResponse = self.authentication.get_bearer_token(
-                    grant_type="client_credentials",
-                    extra_headers={
-                        "Authorization": f'Basic {auth}'
-                    }
+                    grant_type="client_credentials", extra_headers={"Authorization": f"Basic {auth}"}
                 )
                 self.token = token.access_token
         return options

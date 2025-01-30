@@ -31,8 +31,8 @@ import os
 from m3ter_sdk import M3ter
 
 client = M3ter(
-    apiKey=os.environ.get("M3TER_API_KEY"), # This is the default and can be omitted
-    apiSecret=os.environ.get("M3TER_API_SECRET"), # This is the default and can be omitted
+    apiKey=os.environ.get("M3TER_API_KEY"),  # This is the default and can be omitted
+    apiSecret=os.environ.get("M3TER_API_SECRET"),  # This is the default and can be omitted
 )
 
 page = client.products.list(

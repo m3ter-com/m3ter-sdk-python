@@ -35,6 +35,13 @@ class DataField(BaseModel):
 
 
 class DerivedField(BaseModel):
+    calculation: str
+    """
+    The calculation used to transform the value of submitted `dataFields` in usage
+    data. Calculation can reference `dataFields`, `customFields`, or system
+    `Timestamp` fields. _(Example: datafieldms datafieldgb)_
+    """
+
     category: Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]
     """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
 
@@ -58,17 +65,8 @@ class DerivedField(BaseModel):
 
 
 class Meter(BaseModel):
-    id: str
+    id: Optional[str] = None
     """The UUID of the entity."""
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
 
     code: Optional[str] = None
     """Code of the Meter - unique short code used to identify the Meter."""
@@ -124,4 +122,13 @@ class Meter(BaseModel):
     """UUID of the Product the Meter belongs to.
 
     _(Optional)_ - if blank, the Meter is global.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """
