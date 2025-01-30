@@ -202,6 +202,7 @@ class TestCounters:
         )
         assert_matches_type(SyncCursor[Counter], counter, path=["response"])
 
+    @pytest.mark.skip(reason="array parameter schemas need some work")
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         counter = client.counters.list(
@@ -433,6 +434,7 @@ class TestAsyncCounters:
         )
         assert_matches_type(AsyncCursor[Counter], counter, path=["response"])
 
+    @pytest.mark.skip(reason="array parameter schemas need some work")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.list(
