@@ -12,6 +12,25 @@ __all__ = ["CounterUpdateParams"]
 class CounterUpdateParams(TypedDict, total=False):
     org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
 
+    name: Required[str]
+    """Descriptive name for the Counter."""
+
+    unit: Required[str]
+    """
+    User defined label for units shown on Bill line items, and indicating to your
+    customers what they are being charged for.
+    """
+
+    code: str
+    """Code for the Counter. A unique short code to identify the Counter."""
+
+    product_id: Annotated[str, PropertyInfo(alias="productId")]
+    """UUID of the product the Counter belongs to.
+
+    _(Optional)_ - if left blank, the Counter is Global. A Global Counter can be
+    used to price Plans or Plan Templates belonging to any Product.
+    """
+
     version: int
     """The version number of the entity:
 
