@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable
+from typing import Dict, List
 from typing_extensions import Literal
 
 import httpx
@@ -119,7 +119,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
@@ -299,7 +299,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
@@ -378,7 +378,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Iterable[object] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -529,7 +529,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
@@ -709,7 +709,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                 KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
                 to 98 \\** 0.25 = $2.45.
 
-              Enum: “UP” “DOWN” “NEAREST” “NONE”
+              Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
 
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
@@ -788,7 +788,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Iterable[object] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

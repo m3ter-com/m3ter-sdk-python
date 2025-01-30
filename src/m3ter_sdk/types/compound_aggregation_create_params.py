@@ -57,7 +57,7 @@ class CompoundAggregationCreateParams(TypedDict, total=False):
       KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
       to 98 \\** 0.25 = $2.45.
 
-    Enum: “UP” “DOWN” “NEAREST” “NONE”
+    Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
     """
 
     unit: Required[str]
