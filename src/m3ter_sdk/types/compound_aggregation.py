@@ -12,17 +12,8 @@ __all__ = ["CompoundAggregation"]
 
 
 class CompoundAggregation(BaseModel):
-    id: str
+    id: Optional[str] = None
     """The UUID of the entity."""
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
 
     calculation: Optional[str] = None
     """This field is a string that represents the formula for the calculation.
@@ -101,7 +92,7 @@ class CompoundAggregation(BaseModel):
       KiBy/s in a billing period, the charge would be 48,900 / 500 = 97.8 rounded up
       to 98 \\** 0.25 = $2.45.
 
-    Enum: “UP” “DOWN” “NEAREST” “NONE”
+    Enum: ???UP??? ???DOWN??? ???NEAREST??? ???NONE???
     """
 
     segments: Optional[List[Dict[str, str]]] = None
@@ -119,4 +110,13 @@ class CompoundAggregation(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

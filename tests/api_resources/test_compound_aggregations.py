@@ -250,7 +250,7 @@ class TestCompoundAggregations:
             ids=["string"],
             next_token="nextToken",
             page_size=1,
-            product_id=[{}],
+            product_id=["string"],
         )
         assert_matches_type(SyncCursor[CompoundAggregation], compound_aggregation, path=["response"])
 
@@ -518,7 +518,7 @@ class TestAsyncCompoundAggregations:
             ids=["string"],
             next_token="nextToken",
             page_size=1,
-            product_id=[{}],
+            product_id=["string"],
         )
         assert_matches_type(AsyncCursor[CompoundAggregation], compound_aggregation, path=["response"])
 

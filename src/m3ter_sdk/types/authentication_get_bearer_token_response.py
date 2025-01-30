@@ -14,7 +14,7 @@ class AuthenticationGetBearerTokenResponse(BaseModel):
     expires_in: int
     """Token expiry time in seconds."""
 
-    scope: str
+    scope: Optional[str] = None
     """Not used."""
 
     token_type: Optional[str] = None
