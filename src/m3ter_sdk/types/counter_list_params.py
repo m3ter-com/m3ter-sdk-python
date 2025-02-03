@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -26,5 +26,5 @@ class CounterListParams(TypedDict, total=False):
     page_size: Annotated[int, PropertyInfo(alias="pageSize")]
     """Number of Counters to retrieve per page"""
 
-    product_id: Annotated[Optional[List[str]], PropertyInfo(alias="productId")]
+    product_id: Annotated[List[str], PropertyInfo(alias="productId")]
     """List of Products UUIDs to retrieve Counters for."""

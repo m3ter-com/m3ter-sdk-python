@@ -11,8 +11,17 @@ __all__ = ["Counter"]
 
 
 class Counter(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     code: Optional[str] = None
     """Code of the Counter. A unique short code to identify the Counter."""
@@ -43,13 +52,4 @@ class Counter(BaseModel):
     """
     Label for units shown on Bill line items, and indicating to customers what they
     are being charged for.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """
