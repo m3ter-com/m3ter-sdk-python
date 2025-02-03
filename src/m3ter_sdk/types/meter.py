@@ -65,8 +65,17 @@ class DerivedField(BaseModel):
 
 
 class Meter(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     code: Optional[str] = None
     """Code of the Meter - unique short code used to identify the Meter."""
@@ -122,13 +131,4 @@ class Meter(BaseModel):
     """UUID of the Product the Meter belongs to.
 
     _(Optional)_ - if blank, the Meter is global.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """

@@ -12,8 +12,17 @@ __all__ = ["CompoundAggregation"]
 
 
 class CompoundAggregation(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     calculation: Optional[str] = None
     """This field is a string that represents the formula for the calculation.
@@ -110,13 +119,4 @@ class CompoundAggregation(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """
