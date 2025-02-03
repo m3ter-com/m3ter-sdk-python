@@ -12,8 +12,17 @@ __all__ = ["Aggregation"]
 
 
 class Aggregation(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]] = None
     """
@@ -148,13 +157,4 @@ class Aggregation(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """

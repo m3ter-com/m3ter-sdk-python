@@ -11,8 +11,17 @@ __all__ = ["Product"]
 
 
 class Product(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     code: Optional[str] = None
     """A unique short code to identify the Product.
@@ -48,12 +57,3 @@ class Product(BaseModel):
 
     name: Optional[str] = None
     """Descriptive name for the Product providing context and information."""
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
