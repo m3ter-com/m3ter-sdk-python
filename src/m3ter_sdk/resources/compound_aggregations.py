@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Union
 from typing_extensions import Literal
 
 import httpx
@@ -63,7 +63,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -238,7 +238,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -473,7 +473,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -648,7 +648,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,

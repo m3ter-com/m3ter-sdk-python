@@ -33,7 +33,7 @@ class TestProducts:
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             version=0,
         )
         assert_matches_type(Product, product, path=["response"])
@@ -140,7 +140,7 @@ class TestProducts:
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             version=0,
         )
         assert_matches_type(Product, product, path=["response"])
@@ -260,7 +260,7 @@ class TestAsyncProducts:
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             version=0,
         )
         assert_matches_type(Product, product, path=["response"])
@@ -367,7 +367,7 @@ class TestAsyncProducts:
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             version=0,
         )
         assert_matches_type(Product, product, path=["response"])

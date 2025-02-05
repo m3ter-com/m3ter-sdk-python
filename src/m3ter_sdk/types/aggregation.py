@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -62,7 +62,7 @@ class Aggregation(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this aggregation."""
 
-    custom_fields: Optional[Dict[str, object]] = FieldInfo(alias="customFields", default=None)
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
 
     default_value: Optional[float] = FieldInfo(alias="defaultValue", default=None)
     """Aggregation value used when no usage data is available to be aggregated.
