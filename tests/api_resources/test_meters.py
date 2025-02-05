@@ -65,7 +65,7 @@ class TestMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -251,7 +251,7 @@ class TestMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -467,7 +467,7 @@ class TestAsyncMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -653,7 +653,7 @@ class TestAsyncMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,

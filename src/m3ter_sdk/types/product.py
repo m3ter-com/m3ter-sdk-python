@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 from datetime import datetime
 
 from pydantic import Field as FieldInfo
@@ -32,7 +32,7 @@ class Product(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) of the user who created this Product."""
 
-    custom_fields: Optional[Dict[str, object]] = FieldInfo(alias="customFields", default=None)
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
     """User defined fields enabling you to attach custom data.
 
     The value for a custom field can be either a string or a number.

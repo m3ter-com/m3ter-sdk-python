@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable
+from typing import Dict, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -42,7 +42,7 @@ class MeterUpdateParams(TypedDict, total=False):
     name: Required[str]
     """Descriptive name for the Meter."""
 
-    custom_fields: Annotated[Dict[str, object], PropertyInfo(alias="customFields")]
+    custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
     """User defined fields enabling you to attach custom data.
 
     The value for a custom field can be either a string or a number.
