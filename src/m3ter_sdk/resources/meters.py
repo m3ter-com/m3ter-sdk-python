@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable
+from typing import Dict, List, Union, Iterable
 
 import httpx
 
@@ -55,7 +55,7 @@ class MetersResource(SyncAPIResource):
         data_fields: Iterable[meter_create_params.DataField],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -219,7 +219,7 @@ class MetersResource(SyncAPIResource):
         data_fields: Iterable[meter_update_params.DataField],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -408,7 +408,7 @@ class AsyncMetersResource(AsyncAPIResource):
         data_fields: Iterable[meter_create_params.DataField],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -572,7 +572,7 @@ class AsyncMetersResource(AsyncAPIResource):
         data_fields: Iterable[meter_update_params.DataField],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,

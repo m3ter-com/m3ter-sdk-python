@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable
+from typing import Dict, List, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -100,7 +100,7 @@ class AggregationUpdateParams(TypedDict, total=False):
     code: str
     """Code of the new Aggregation. A unique short code to identify the Aggregation."""
 
-    custom_fields: Annotated[Dict[str, object], PropertyInfo(alias="customFields")]
+    custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
 
     default_value: Annotated[float, PropertyInfo(alias="defaultValue")]
     """Aggregation value used when no usage data is available to be aggregated.

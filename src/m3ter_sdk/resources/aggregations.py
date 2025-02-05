@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable
+from typing import Dict, List, Union, Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -60,7 +60,7 @@ class AggregationsResource(SyncAPIResource):
         target_field: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -267,7 +267,7 @@ class AggregationsResource(SyncAPIResource):
         target_field: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -529,7 +529,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         target_field: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -736,7 +736,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         target_field: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,

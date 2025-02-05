@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Union
 
 import httpx
 
@@ -53,7 +53,7 @@ class ProductsResource(SyncAPIResource):
         *,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -168,7 +168,7 @@ class ProductsResource(SyncAPIResource):
         org_id: str,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -331,7 +331,7 @@ class AsyncProductsResource(AsyncAPIResource):
         *,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -446,7 +446,7 @@ class AsyncProductsResource(AsyncAPIResource):
         org_id: str,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
