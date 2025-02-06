@@ -496,6 +496,42 @@ class AggregationsResource(SyncAPIResource):
             model=Aggregation,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        org_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Aggregation:
+        """
+        Delete the Aggregation with the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/organizations/{org_id}/aggregations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Aggregation,
+        )
+
 
 class AsyncAggregationsResource(AsyncAPIResource):
     @cached_property
@@ -965,6 +1001,42 @@ class AsyncAggregationsResource(AsyncAPIResource):
             model=Aggregation,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        org_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Aggregation:
+        """
+        Delete the Aggregation with the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/organizations/{org_id}/aggregations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Aggregation,
+        )
+
 
 class AggregationsResourceWithRawResponse:
     def __init__(self, aggregations: AggregationsResource) -> None:
@@ -981,6 +1053,9 @@ class AggregationsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             aggregations.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            aggregations.delete,
         )
 
 
@@ -1000,6 +1075,9 @@ class AsyncAggregationsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             aggregations.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            aggregations.delete,
+        )
 
 
 class AggregationsResourceWithStreamingResponse:
@@ -1018,6 +1096,9 @@ class AggregationsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             aggregations.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            aggregations.delete,
+        )
 
 
 class AsyncAggregationsResourceWithStreamingResponse:
@@ -1035,4 +1116,7 @@ class AsyncAggregationsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             aggregations.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            aggregations.delete,
         )
