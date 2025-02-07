@@ -80,7 +80,7 @@ class TestOrganizationConfig:
             timezone="UTC",
             week_epoch="2022-01-04",
             year_epoch="2022-01-01",
-            auto_approve_bills_grace_period=1,
+            auto_approve_bills_grace_period=2,
             auto_approve_bills_grace_period_unit="DAYS",
             auto_generate_statement_mode="NONE",
             bill_prefix="Bill-",
@@ -91,7 +91,7 @@ class TestOrganizationConfig:
                 {
                     "from": "EUR",
                     "to": "USD",
-                    "multiplier": 1,
+                    "multiplier": 1.12,
                 }
             ],
             default_statement_definition_id="defaultStatementDefinitionId",
@@ -224,7 +224,7 @@ class TestAsyncOrganizationConfig:
             timezone="UTC",
             week_epoch="2022-01-04",
             year_epoch="2022-01-01",
-            auto_approve_bills_grace_period=1,
+            auto_approve_bills_grace_period=2,
             auto_approve_bills_grace_period_unit="DAYS",
             auto_generate_statement_mode="NONE",
             bill_prefix="Bill-",
@@ -235,7 +235,7 @@ class TestAsyncOrganizationConfig:
                 {
                     "from": "EUR",
                     "to": "USD",
-                    "multiplier": 1,
+                    "multiplier": 1.12,
                 }
             ],
             default_statement_definition_id="defaultStatementDefinitionId",
