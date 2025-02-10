@@ -39,7 +39,7 @@ client = M3ter(
 page = client.products.list(
     org_id="ORG_ID",
 )
-print(page.page)
+print(page.data)
 ```
 
 While you can provide a `token` keyword argument,
@@ -67,7 +67,7 @@ async def main() -> None:
     page = await client.products.list(
         org_id="ORG_ID",
     )
-    print(page.page)
+    print(page.data)
 
 
 asyncio.run(main())
