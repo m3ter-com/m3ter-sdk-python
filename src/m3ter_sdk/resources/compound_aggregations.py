@@ -25,8 +25,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.aggregation import Aggregation
 from ..types.compound_aggregation import CompoundAggregation
 
@@ -385,7 +384,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CompoundAggregation]:
+    ) -> object:
         """
         Retrieve a list of all CompoundAggregations.
 
@@ -420,9 +419,8 @@ class CompoundAggregationsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/compoundaggregations",
-            page=SyncCursor[CompoundAggregation],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -439,7 +437,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                     compound_aggregation_list_params.CompoundAggregationListParams,
                 ),
             ),
-            model=CompoundAggregation,
+            cast_to=object,
         )
 
     def delete(
@@ -821,7 +819,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             cast_to=Aggregation,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -836,7 +834,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CompoundAggregation, AsyncCursor[CompoundAggregation]]:
+    ) -> object:
         """
         Retrieve a list of all CompoundAggregations.
 
@@ -871,15 +869,14 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/compoundaggregations",
-            page=AsyncCursor[CompoundAggregation],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "codes": codes,
                         "ids": ids,
@@ -890,7 +887,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                     compound_aggregation_list_params.CompoundAggregationListParams,
                 ),
             ),
-            model=CompoundAggregation,
+            cast_to=object,
         )
 
     async def delete(

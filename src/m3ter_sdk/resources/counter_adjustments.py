@@ -24,8 +24,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.counter_adjustment import CounterAdjustment
 
 __all__ = ["CounterAdjustmentsResource", "AsyncCounterAdjustmentsResource"]
@@ -279,7 +278,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CounterAdjustment]:
+    ) -> object:
         """
         Retrieve a list of CounterAdjustments created for Accounts in your Organization.
         You can filter the list returned by date, Account ID, or Counter ID.
@@ -317,9 +316,8 @@ class CounterAdjustmentsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/counteradjustments",
-            page=SyncCursor[CounterAdjustment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -340,7 +338,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
                     counter_adjustment_list_params.CounterAdjustmentListParams,
                 ),
             ),
-            model=CounterAdjustment,
+            cast_to=object,
         )
 
     def delete(
@@ -609,7 +607,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
             cast_to=CounterAdjustment,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -628,7 +626,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CounterAdjustment, AsyncCursor[CounterAdjustment]]:
+    ) -> object:
         """
         Retrieve a list of CounterAdjustments created for Accounts in your Organization.
         You can filter the list returned by date, Account ID, or Counter ID.
@@ -666,15 +664,14 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/counteradjustments",
-            page=AsyncCursor[CounterAdjustment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "counter_id": counter_id,
@@ -689,7 +686,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
                     counter_adjustment_list_params.CounterAdjustmentListParams,
                 ),
             ),
-            model=CounterAdjustment,
+            cast_to=object,
         )
 
     async def delete(

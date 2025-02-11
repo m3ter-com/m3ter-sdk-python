@@ -27,10 +27,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.commitment import Commitment
-from ..types.commitment_search_response import CommitmentSearchResponse
 
 __all__ = ["CommitmentsResource", "AsyncCommitmentsResource"]
 
@@ -612,7 +610,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Commitment]:
+    ) -> object:
         """
         Retrieve a list of Commitments.
 
@@ -654,9 +652,8 @@ class CommitmentsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/commitments",
-            page=SyncCursor[Commitment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -677,7 +674,7 @@ class CommitmentsResource(SyncAPIResource):
                     commitment_list_params.CommitmentListParams,
                 ),
             ),
-            model=Commitment,
+            cast_to=object,
         )
 
     def delete(
@@ -736,7 +733,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CommitmentSearchResponse:
+    ) -> object:
         """
         Search for commitment entities.
 
@@ -808,7 +805,7 @@ class CommitmentsResource(SyncAPIResource):
                     commitment_search_params.CommitmentSearchParams,
                 ),
             ),
-            cast_to=CommitmentSearchResponse,
+            cast_to=object,
         )
 
 
@@ -1370,7 +1367,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
             cast_to=Commitment,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -1389,7 +1386,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Commitment, AsyncCursor[Commitment]]:
+    ) -> object:
         """
         Retrieve a list of Commitments.
 
@@ -1431,15 +1428,14 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/commitments",
-            page=AsyncCursor[Commitment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "contract_id": contract_id,
@@ -1454,7 +1450,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
                     commitment_list_params.CommitmentListParams,
                 ),
             ),
-            model=Commitment,
+            cast_to=object,
         )
 
     async def delete(
@@ -1513,7 +1509,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CommitmentSearchResponse:
+    ) -> object:
         """
         Search for commitment entities.
 
@@ -1585,7 +1581,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
                     commitment_search_params.CommitmentSearchParams,
                 ),
             ),
-            cast_to=CommitmentSearchResponse,
+            cast_to=object,
         )
 
 

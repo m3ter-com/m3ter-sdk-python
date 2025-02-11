@@ -20,8 +20,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.product import Product
 
 __all__ = ["ProductsResource", "AsyncProductsResource"]
@@ -258,7 +257,7 @@ class ProductsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Product]:
+    ) -> object:
         """
         Retrieve a list of Products.
 
@@ -284,9 +283,8 @@ class ProductsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/products",
-            page=SyncCursor[Product],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -301,7 +299,7 @@ class ProductsResource(SyncAPIResource):
                     product_list_params.ProductListParams,
                 ),
             ),
-            model=Product,
+            cast_to=object,
         )
 
     def delete(
@@ -562,7 +560,7 @@ class AsyncProductsResource(AsyncAPIResource):
             cast_to=Product,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -575,7 +573,7 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Product, AsyncCursor[Product]]:
+    ) -> object:
         """
         Retrieve a list of Products.
 
@@ -601,15 +599,14 @@ class AsyncProductsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/products",
-            page=AsyncCursor[Product],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "ids": ids,
                         "next_token": next_token,
@@ -618,7 +615,7 @@ class AsyncProductsResource(AsyncAPIResource):
                     product_list_params.ProductListParams,
                 ),
             ),
-            model=Product,
+            cast_to=object,
         )
 
     async def delete(
