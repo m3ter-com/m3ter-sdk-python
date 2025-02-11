@@ -22,8 +22,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.account_plan import AccountPlan
 
 __all__ = ["AccountPlansResource", "AsyncAccountPlansResource"]
@@ -394,7 +393,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[AccountPlan]:
+    ) -> object:
         """
         Retrieve a list of AccountPlan and AccountPlanGroup entities for the specified
         Organization.
@@ -451,9 +450,8 @@ class AccountPlansResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/accountplans",
-            page=SyncCursor[AccountPlan],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -474,7 +472,7 @@ class AccountPlansResource(SyncAPIResource):
                     account_plan_list_params.AccountPlanListParams,
                 ),
             ),
-            model=AccountPlan,
+            cast_to=object,
         )
 
     def delete(
@@ -863,7 +861,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
             cast_to=AccountPlan,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -882,7 +880,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[AccountPlan, AsyncCursor[AccountPlan]]:
+    ) -> object:
         """
         Retrieve a list of AccountPlan and AccountPlanGroup entities for the specified
         Organization.
@@ -939,15 +937,14 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/accountplans",
-            page=AsyncCursor[AccountPlan],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account": account,
                         "contract": contract,
@@ -962,7 +959,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
                     account_plan_list_params.AccountPlanListParams,
                 ),
             ),
-            model=AccountPlan,
+            cast_to=object,
         )
 
     async def delete(

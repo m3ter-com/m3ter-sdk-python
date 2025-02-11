@@ -36,10 +36,9 @@ client = M3ter(
     api_secret="My API Secret",
 )
 
-page = client.products.list(
+product = client.products.list(
     org_id="ORG_ID",
 )
-print(page.data)
 ```
 
 While you can provide a `token` keyword argument,
@@ -64,10 +63,9 @@ client = AsyncM3ter(
 
 
 async def main() -> None:
-    page = await client.products.list(
+    product = await client.products.list(
         org_id="ORG_ID",
     )
-    print(page.data)
 
 
 asyncio.run(main())
@@ -83,83 +81,6 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
-
-## Pagination
-
-List methods in the M3ter API are paginated.
-
-This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
-
-```python
-from m3ter_sdk import M3ter
-
-client = M3ter(
-    api_key="My API Key",
-    api_secret="My API Secret",
-)
-
-all_products = []
-# Automatically fetches more pages as needed.
-for product in client.products.list(
-    org_id="ORG_ID",
-):
-    # Do something with product here
-    all_products.append(product)
-print(all_products)
-```
-
-Or, asynchronously:
-
-```python
-import asyncio
-from m3ter_sdk import AsyncM3ter
-
-client = AsyncM3ter(
-    api_key="My API Key",
-    api_secret="My API Secret",
-)
-
-
-async def main() -> None:
-    all_products = []
-    # Iterate through items across all pages, issuing requests as needed.
-    async for product in client.products.list(
-        org_id="ORG_ID",
-    ):
-        all_products.append(product)
-    print(all_products)
-
-
-asyncio.run(main())
-```
-
-Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
-
-```python
-first_page = await client.products.list(
-    org_id="ORG_ID",
-)
-if first_page.has_next_page():
-    print(f"will fetch next page using these details: {first_page.next_page_info()}")
-    next_page = await first_page.get_next_page()
-    print(f"number of items we just fetched: {len(next_page.data)}")
-
-# Remove `await` for non-async usage.
-```
-
-Or just work directly with the returned data:
-
-```python
-first_page = await client.products.list(
-    org_id="ORG_ID",
-)
-
-print(f"next page cursor: {first_page.next_token}")  # => "next page cursor: ..."
-for product in first_page.data:
-    print(product.id)
-
-# Remove `await` for non-async usage.
-```
 
 ## Handling errors
 
@@ -308,7 +229,7 @@ response = client.products.with_raw_response.list(
 print(response.headers.get('X-My-Header'))
 
 product = response.parse()  # get the object that `products.list()` would have returned
-print(product.id)
+print(product)
 ```
 
 These methods return an [`APIResponse`](https://github.com/m3ter-com/m3ter-sdk-python/tree/main/src/m3ter_sdk/_response.py) object.

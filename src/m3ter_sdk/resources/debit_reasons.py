@@ -20,8 +20,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.debit_reason import DebitReason
 
 __all__ = ["DebitReasonsResource", "AsyncDebitReasonsResource"]
@@ -236,7 +235,7 @@ class DebitReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[DebitReason]:
+    ) -> object:
         """Retrieve a list of the Debit Reason entities created for your Organization.
 
         You
@@ -268,9 +267,8 @@ class DebitReasonsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/picklists/debitreasons",
-            page=SyncCursor[DebitReason],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -287,7 +285,7 @@ class DebitReasonsResource(SyncAPIResource):
                     debit_reason_list_params.DebitReasonListParams,
                 ),
             ),
-            model=DebitReason,
+            cast_to=object,
         )
 
     def delete(
@@ -521,7 +519,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
             cast_to=DebitReason,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -536,7 +534,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[DebitReason, AsyncCursor[DebitReason]]:
+    ) -> object:
         """Retrieve a list of the Debit Reason entities created for your Organization.
 
         You
@@ -568,15 +566,14 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/picklists/debitreasons",
-            page=AsyncCursor[DebitReason],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "archived": archived,
                         "codes": codes,
@@ -587,7 +584,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
                     debit_reason_list_params.DebitReasonListParams,
                 ),
             ),
-            model=DebitReason,
+            cast_to=object,
         )
 
     async def delete(
