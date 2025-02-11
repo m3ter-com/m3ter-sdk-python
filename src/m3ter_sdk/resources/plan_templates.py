@@ -21,8 +21,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncCursor, AsyncCursor
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.plan_template import PlanTemplate
 
 __all__ = ["PlanTemplatesResource", "AsyncPlanTemplatesResource"]
@@ -469,7 +468,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[PlanTemplate]:
+    ) -> object:
         """
         Retrieve a list of PlanTemplates.
 
@@ -498,9 +497,8 @@ class PlanTemplatesResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return self._get(
             f"/organizations/{org_id}/plantemplates",
-            page=SyncCursor[PlanTemplate],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -516,7 +514,7 @@ class PlanTemplatesResource(SyncAPIResource):
                     plan_template_list_params.PlanTemplateListParams,
                 ),
             ),
-            model=PlanTemplate,
+            cast_to=object,
         )
 
     def delete(
@@ -986,7 +984,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
             cast_to=PlanTemplate,
         )
 
-    def list(
+    async def list(
         self,
         org_id: str,
         *,
@@ -1000,7 +998,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PlanTemplate, AsyncCursor[PlanTemplate]]:
+    ) -> object:
         """
         Retrieve a list of PlanTemplates.
 
@@ -1029,15 +1027,14 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get_api_list(
+        return await self._get(
             f"/organizations/{org_id}/plantemplates",
-            page=AsyncCursor[PlanTemplate],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "ids": ids,
                         "next_token": next_token,
@@ -1047,7 +1044,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
                     plan_template_list_params.PlanTemplateListParams,
                 ),
             ),
-            model=PlanTemplate,
+            cast_to=object,
         )
 
     async def delete(

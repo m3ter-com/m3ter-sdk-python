@@ -12,7 +12,6 @@ from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
     DebitReason,
 )
-from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -191,7 +190,7 @@ class TestDebitReasons:
         debit_reason = client.debit_reasons.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[DebitReason], debit_reason, path=["response"])
+        assert_matches_type(object, debit_reason, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -203,7 +202,7 @@ class TestDebitReasons:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[DebitReason], debit_reason, path=["response"])
+        assert_matches_type(object, debit_reason, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -214,7 +213,7 @@ class TestDebitReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         debit_reason = response.parse()
-        assert_matches_type(SyncCursor[DebitReason], debit_reason, path=["response"])
+        assert_matches_type(object, debit_reason, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -225,7 +224,7 @@ class TestDebitReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             debit_reason = response.parse()
-            assert_matches_type(SyncCursor[DebitReason], debit_reason, path=["response"])
+            assert_matches_type(object, debit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -459,7 +458,7 @@ class TestAsyncDebitReasons:
         debit_reason = await async_client.debit_reasons.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[DebitReason], debit_reason, path=["response"])
+        assert_matches_type(object, debit_reason, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -471,7 +470,7 @@ class TestAsyncDebitReasons:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[DebitReason], debit_reason, path=["response"])
+        assert_matches_type(object, debit_reason, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -482,7 +481,7 @@ class TestAsyncDebitReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         debit_reason = await response.parse()
-        assert_matches_type(AsyncCursor[DebitReason], debit_reason, path=["response"])
+        assert_matches_type(object, debit_reason, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -493,7 +492,7 @@ class TestAsyncDebitReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             debit_reason = await response.parse()
-            assert_matches_type(AsyncCursor[DebitReason], debit_reason, path=["response"])
+            assert_matches_type(object, debit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
