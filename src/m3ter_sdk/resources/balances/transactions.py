@@ -20,7 +20,8 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
+from ...pagination import SyncCursor, AsyncCursor
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.balances import transaction_list_params, transaction_create_params
 from ...types.balances.transaction import Transaction
 
@@ -160,7 +161,7 @@ class TransactionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Transaction]:
         """
         Retrieve all Transactions for a specific Balance.
 
@@ -186,8 +187,9 @@ class TransactionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/balances/{balance_id}/transactions",
+            page=SyncCursor[Transaction],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -202,7 +204,7 @@ class TransactionsResource(SyncAPIResource):
                     transaction_list_params.TransactionListParams,
                 ),
             ),
-            cast_to=object,
+            model=Transaction,
         )
 
 
@@ -325,7 +327,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
             cast_to=Transaction,
         )
 
-    async def list(
+    def list(
         self,
         balance_id: str,
         *,
@@ -339,7 +341,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Transaction, AsyncCursor[Transaction]]:
         """
         Retrieve all Transactions for a specific Balance.
 
@@ -365,14 +367,15 @@ class AsyncTransactionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/balances/{balance_id}/transactions",
+            page=AsyncCursor[Transaction],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "next_token": next_token,
                         "page_size": page_size,
@@ -381,7 +384,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
                     transaction_list_params.TransactionListParams,
                 ),
             ),
-            cast_to=object,
+            model=Transaction,
         )
 
 

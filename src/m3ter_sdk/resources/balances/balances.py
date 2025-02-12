@@ -22,6 +22,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ...pagination import SyncCursor, AsyncCursor
 from .transactions import (
     TransactionsResource,
     AsyncTransactionsResource,
@@ -30,7 +31,7 @@ from .transactions import (
     TransactionsResourceWithStreamingResponse,
     AsyncTransactionsResourceWithStreamingResponse,
 )
-from ..._base_client import make_request_options
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.balance import Balance
 
 __all__ = ["BalancesResource", "AsyncBalancesResource"]
@@ -430,7 +431,7 @@ class BalancesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Balance]:
         """
         Retrieve a list of all Balances for your Organization.
 
@@ -460,8 +461,9 @@ class BalancesResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/balances",
+            page=SyncCursor[Balance],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -478,7 +480,7 @@ class BalancesResource(SyncAPIResource):
                     balance_list_params.BalanceListParams,
                 ),
             ),
-            cast_to=object,
+            model=Balance,
         )
 
     def delete(
@@ -899,7 +901,7 @@ class AsyncBalancesResource(AsyncAPIResource):
             cast_to=Balance,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -914,7 +916,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Balance, AsyncCursor[Balance]]:
         """
         Retrieve a list of all Balances for your Organization.
 
@@ -944,14 +946,15 @@ class AsyncBalancesResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/balances",
+            page=AsyncCursor[Balance],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "end_date_end": end_date_end,
@@ -962,7 +965,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     balance_list_params.BalanceListParams,
                 ),
             ),
-            cast_to=object,
+            model=Balance,
         )
 
     async def delete(

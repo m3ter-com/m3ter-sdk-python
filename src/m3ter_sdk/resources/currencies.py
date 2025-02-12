@@ -21,7 +21,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.currency import Currency
 
 __all__ = ["CurrenciesResource", "AsyncCurrenciesResource"]
@@ -258,7 +259,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Currency]:
         """
         Retrieve a list of Currencies.
 
@@ -294,8 +295,9 @@ class CurrenciesResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/picklists/currency",
+            page=SyncCursor[Currency],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -312,7 +314,7 @@ class CurrenciesResource(SyncAPIResource):
                     currency_list_params.CurrencyListParams,
                 ),
             ),
-            cast_to=object,
+            model=Currency,
         )
 
     def delete(
@@ -571,7 +573,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
             cast_to=Currency,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -586,7 +588,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Currency, AsyncCursor[Currency]]:
         """
         Retrieve a list of Currencies.
 
@@ -622,14 +624,15 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/picklists/currency",
+            page=AsyncCursor[Currency],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "archived": archived,
                         "codes": codes,
@@ -640,7 +643,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
                     currency_list_params.CurrencyListParams,
                 ),
             ),
-            cast_to=object,
+            model=Currency,
         )
 
     async def delete(

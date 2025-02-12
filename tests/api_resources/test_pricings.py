@@ -11,6 +11,7 @@ from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import Pricing
 from m3ter_sdk._utils import parse_datetime
+from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -312,7 +313,7 @@ class TestPricings:
         pricing = client.pricings.list(
             org_id="orgId",
         )
-        assert_matches_type(object, pricing, path=["response"])
+        assert_matches_type(SyncCursor[Pricing], pricing, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -325,7 +326,7 @@ class TestPricings:
             plan_id="planId",
             plan_template_id="planTemplateId",
         )
-        assert_matches_type(object, pricing, path=["response"])
+        assert_matches_type(SyncCursor[Pricing], pricing, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -336,7 +337,7 @@ class TestPricings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pricing = response.parse()
-        assert_matches_type(object, pricing, path=["response"])
+        assert_matches_type(SyncCursor[Pricing], pricing, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -347,7 +348,7 @@ class TestPricings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pricing = response.parse()
-            assert_matches_type(object, pricing, path=["response"])
+            assert_matches_type(SyncCursor[Pricing], pricing, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -704,7 +705,7 @@ class TestAsyncPricings:
         pricing = await async_client.pricings.list(
             org_id="orgId",
         )
-        assert_matches_type(object, pricing, path=["response"])
+        assert_matches_type(AsyncCursor[Pricing], pricing, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -717,7 +718,7 @@ class TestAsyncPricings:
             plan_id="planId",
             plan_template_id="planTemplateId",
         )
-        assert_matches_type(object, pricing, path=["response"])
+        assert_matches_type(AsyncCursor[Pricing], pricing, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -728,7 +729,7 @@ class TestAsyncPricings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pricing = await response.parse()
-        assert_matches_type(object, pricing, path=["response"])
+        assert_matches_type(AsyncCursor[Pricing], pricing, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -739,7 +740,7 @@ class TestAsyncPricings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pricing = await response.parse()
-            assert_matches_type(object, pricing, path=["response"])
+            assert_matches_type(AsyncCursor[Pricing], pricing, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
