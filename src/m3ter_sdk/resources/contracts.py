@@ -21,7 +21,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.contract import Contract
 
 __all__ = ["ContractsResource", "AsyncContractsResource"]
@@ -301,7 +302,7 @@ class ContractsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Contract]:
         """Retrieves a list of Contracts by Organization ID.
 
         Supports pagination and
@@ -329,8 +330,9 @@ class ContractsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/contracts",
+            page=SyncCursor[Contract],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -347,7 +349,7 @@ class ContractsResource(SyncAPIResource):
                     contract_list_params.ContractListParams,
                 ),
             ),
-            cast_to=object,
+            model=Contract,
         )
 
     def delete(
@@ -651,7 +653,7 @@ class AsyncContractsResource(AsyncAPIResource):
             cast_to=Contract,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -666,7 +668,7 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Contract, AsyncCursor[Contract]]:
         """Retrieves a list of Contracts by Organization ID.
 
         Supports pagination and
@@ -694,14 +696,15 @@ class AsyncContractsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/contracts",
+            page=AsyncCursor[Contract],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "codes": codes,
@@ -712,7 +715,7 @@ class AsyncContractsResource(AsyncAPIResource):
                     contract_list_params.ContractListParams,
                 ),
             ),
-            cast_to=object,
+            model=Contract,
         )
 
     async def delete(

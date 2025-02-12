@@ -20,8 +20,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ..pagination import SyncCursor, AsyncCursor
 from ..types.meter import Meter
-from .._base_client import make_request_options
+from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["MetersResource", "AsyncMetersResource"]
 
@@ -331,7 +332,7 @@ class MetersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Meter]:
         """
         Retrieve a list of Meter entities
 
@@ -356,8 +357,9 @@ class MetersResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/meters",
+            page=SyncCursor[Meter],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -374,7 +376,7 @@ class MetersResource(SyncAPIResource):
                     meter_list_params.MeterListParams,
                 ),
             ),
-            cast_to=object,
+            model=Meter,
         )
 
     def delete(
@@ -704,7 +706,7 @@ class AsyncMetersResource(AsyncAPIResource):
             cast_to=Meter,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -719,7 +721,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Meter, AsyncCursor[Meter]]:
         """
         Retrieve a list of Meter entities
 
@@ -744,14 +746,15 @@ class AsyncMetersResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/meters",
+            page=AsyncCursor[Meter],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "codes": codes,
                         "ids": ids,
@@ -762,7 +765,7 @@ class AsyncMetersResource(AsyncAPIResource):
                     meter_list_params.MeterListParams,
                 ),
             ),
-            cast_to=object,
+            model=Meter,
         )
 
     async def delete(

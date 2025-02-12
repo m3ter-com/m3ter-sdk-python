@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.transaction_type import TransactionType
 
 __all__ = ["TransactionTypesResource", "AsyncTransactionTypesResource"]
@@ -241,7 +242,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[TransactionType]:
         """Retrieves a list of TransactionType entities for the specified Organization.
 
         The
@@ -274,8 +275,9 @@ class TransactionTypesResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/picklists/transactiontypes",
+            page=SyncCursor[TransactionType],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -292,7 +294,7 @@ class TransactionTypesResource(SyncAPIResource):
                     transaction_type_list_params.TransactionTypeListParams,
                 ),
             ),
-            cast_to=object,
+            model=TransactionType,
         )
 
     def delete(
@@ -528,7 +530,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
             cast_to=TransactionType,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -543,7 +545,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[TransactionType, AsyncCursor[TransactionType]]:
         """Retrieves a list of TransactionType entities for the specified Organization.
 
         The
@@ -576,14 +578,15 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/picklists/transactiontypes",
+            page=AsyncCursor[TransactionType],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "archived": archived,
                         "codes": codes,
@@ -594,7 +597,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
                     transaction_type_list_params.TransactionTypeListParams,
                 ),
             ),
-            cast_to=object,
+            model=TransactionType,
         )
 
     async def delete(

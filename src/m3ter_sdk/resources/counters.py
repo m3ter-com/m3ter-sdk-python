@@ -20,7 +20,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.counter import Counter
 
 __all__ = ["CountersResource", "AsyncCountersResource"]
@@ -238,7 +239,7 @@ class CountersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Counter]:
         """
         Retrieve a list of Counter entities that can be filtered by Product, Counter ID,
         or Codes.
@@ -265,8 +266,9 @@ class CountersResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/counters",
+            page=SyncCursor[Counter],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -283,7 +285,7 @@ class CountersResource(SyncAPIResource):
                     counter_list_params.CounterListParams,
                 ),
             ),
-            cast_to=object,
+            model=Counter,
         )
 
     def delete(
@@ -520,7 +522,7 @@ class AsyncCountersResource(AsyncAPIResource):
             cast_to=Counter,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -535,7 +537,7 @@ class AsyncCountersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Counter, AsyncCursor[Counter]]:
         """
         Retrieve a list of Counter entities that can be filtered by Product, Counter ID,
         or Codes.
@@ -562,14 +564,15 @@ class AsyncCountersResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/counters",
+            page=AsyncCursor[Counter],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "codes": codes,
                         "ids": ids,
@@ -580,7 +583,7 @@ class AsyncCountersResource(AsyncAPIResource):
                     counter_list_params.CounterListParams,
                 ),
             ),
-            cast_to=object,
+            model=Counter,
         )
 
     async def delete(

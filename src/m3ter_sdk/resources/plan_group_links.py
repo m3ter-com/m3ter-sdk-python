@@ -24,7 +24,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.plan_group_link import PlanGroupLink
 
 __all__ = ["PlanGroupLinksResource", "AsyncPlanGroupLinksResource"]
@@ -220,7 +221,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[PlanGroupLink]:
         """
         Retrieve a list of PlanGroupLink entities
 
@@ -245,8 +246,9 @@ class PlanGroupLinksResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/plangrouplinks",
+            page=SyncCursor[PlanGroupLink],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -263,7 +265,7 @@ class PlanGroupLinksResource(SyncAPIResource):
                     plan_group_link_list_params.PlanGroupLinkListParams,
                 ),
             ),
-            cast_to=object,
+            model=PlanGroupLink,
         )
 
     def delete(
@@ -478,7 +480,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
             cast_to=PlanGroupLink,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -493,7 +495,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[PlanGroupLink, AsyncCursor[PlanGroupLink]]:
         """
         Retrieve a list of PlanGroupLink entities
 
@@ -518,14 +520,15 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/plangrouplinks",
+            page=AsyncCursor[PlanGroupLink],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "ids": ids,
                         "next_token": next_token,
@@ -536,7 +539,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
                     plan_group_link_list_params.PlanGroupLinkListParams,
                 ),
             ),
-            cast_to=object,
+            model=PlanGroupLink,
         )
 
     async def delete(

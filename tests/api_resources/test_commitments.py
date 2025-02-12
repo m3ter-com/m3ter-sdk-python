@@ -11,8 +11,10 @@ from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
     Commitment,
+    CommitmentSearchResponse,
 )
 from m3ter_sdk._utils import parse_date, parse_datetime
+from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -281,7 +283,7 @@ class TestCommitments:
         commitment = client.commitments.list(
             org_id="orgId",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(SyncCursor[Commitment], commitment, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -297,7 +299,7 @@ class TestCommitments:
             page_size=1,
             product_id="productId",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(SyncCursor[Commitment], commitment, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -308,7 +310,7 @@ class TestCommitments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         commitment = response.parse()
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(SyncCursor[Commitment], commitment, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -319,7 +321,7 @@ class TestCommitments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             commitment = response.parse()
-            assert_matches_type(object, commitment, path=["response"])
+            assert_matches_type(SyncCursor[Commitment], commitment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -383,7 +385,7 @@ class TestCommitments:
         commitment = client.commitments.search(
             org_id="orgId",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
     @parametrize
     def test_method_search_with_all_params(self, client: M3ter) -> None:
@@ -396,7 +398,7 @@ class TestCommitments:
             sort_by="sortBy",
             sort_order="ASC",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
     @parametrize
     def test_raw_response_search(self, client: M3ter) -> None:
@@ -407,7 +409,7 @@ class TestCommitments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         commitment = response.parse()
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
     @parametrize
     def test_streaming_response_search(self, client: M3ter) -> None:
@@ -418,7 +420,7 @@ class TestCommitments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             commitment = response.parse()
-            assert_matches_type(object, commitment, path=["response"])
+            assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -694,7 +696,7 @@ class TestAsyncCommitments:
         commitment = await async_client.commitments.list(
             org_id="orgId",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(AsyncCursor[Commitment], commitment, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -710,7 +712,7 @@ class TestAsyncCommitments:
             page_size=1,
             product_id="productId",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(AsyncCursor[Commitment], commitment, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -721,7 +723,7 @@ class TestAsyncCommitments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         commitment = await response.parse()
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(AsyncCursor[Commitment], commitment, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -732,7 +734,7 @@ class TestAsyncCommitments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             commitment = await response.parse()
-            assert_matches_type(object, commitment, path=["response"])
+            assert_matches_type(AsyncCursor[Commitment], commitment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -796,7 +798,7 @@ class TestAsyncCommitments:
         commitment = await async_client.commitments.search(
             org_id="orgId",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
     @parametrize
     async def test_method_search_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -809,7 +811,7 @@ class TestAsyncCommitments:
             sort_by="sortBy",
             sort_order="ASC",
         )
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
     @parametrize
     async def test_raw_response_search(self, async_client: AsyncM3ter) -> None:
@@ -820,7 +822,7 @@ class TestAsyncCommitments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         commitment = await response.parse()
-        assert_matches_type(object, commitment, path=["response"])
+        assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
     @parametrize
     async def test_streaming_response_search(self, async_client: AsyncM3ter) -> None:
@@ -831,7 +833,7 @@ class TestAsyncCommitments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             commitment = await response.parse()
-            assert_matches_type(object, commitment, path=["response"])
+            assert_matches_type(CommitmentSearchResponse, commitment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

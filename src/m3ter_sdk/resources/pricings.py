@@ -22,7 +22,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.pricing import Pricing
 
 __all__ = ["PricingsResource", "AsyncPricingsResource"]
@@ -467,7 +468,7 @@ class PricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Pricing]:
         """
         Retrieve a list of Pricings filtered by date, Plan ID, PlanTemplate ID, or
         Pricing ID.
@@ -495,8 +496,9 @@ class PricingsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/pricings",
+            page=SyncCursor[Pricing],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -514,7 +516,7 @@ class PricingsResource(SyncAPIResource):
                     pricing_list_params.PricingListParams,
                 ),
             ),
-            cast_to=object,
+            model=Pricing,
         )
 
     def delete(
@@ -977,7 +979,7 @@ class AsyncPricingsResource(AsyncAPIResource):
             cast_to=Pricing,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -993,7 +995,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Pricing, AsyncCursor[Pricing]]:
         """
         Retrieve a list of Pricings filtered by date, Plan ID, PlanTemplate ID, or
         Pricing ID.
@@ -1021,14 +1023,15 @@ class AsyncPricingsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/pricings",
+            page=AsyncCursor[Pricing],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "date": date,
                         "ids": ids,
@@ -1040,7 +1043,7 @@ class AsyncPricingsResource(AsyncAPIResource):
                     pricing_list_params.PricingListParams,
                 ),
             ),
-            cast_to=object,
+            model=Pricing,
         )
 
     async def delete(
