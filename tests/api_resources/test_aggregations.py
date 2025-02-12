@@ -10,6 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import Aggregation
+from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -260,7 +261,7 @@ class TestAggregations:
         aggregation = client.aggregations.list(
             org_id="orgId",
         )
-        assert_matches_type(object, aggregation, path=["response"])
+        assert_matches_type(SyncCursor[Aggregation], aggregation, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -272,7 +273,7 @@ class TestAggregations:
             page_size=1,
             product_id=["string"],
         )
-        assert_matches_type(object, aggregation, path=["response"])
+        assert_matches_type(SyncCursor[Aggregation], aggregation, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -283,7 +284,7 @@ class TestAggregations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aggregation = response.parse()
-        assert_matches_type(object, aggregation, path=["response"])
+        assert_matches_type(SyncCursor[Aggregation], aggregation, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -294,7 +295,7 @@ class TestAggregations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aggregation = response.parse()
-            assert_matches_type(object, aggregation, path=["response"])
+            assert_matches_type(SyncCursor[Aggregation], aggregation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -600,7 +601,7 @@ class TestAsyncAggregations:
         aggregation = await async_client.aggregations.list(
             org_id="orgId",
         )
-        assert_matches_type(object, aggregation, path=["response"])
+        assert_matches_type(AsyncCursor[Aggregation], aggregation, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -612,7 +613,7 @@ class TestAsyncAggregations:
             page_size=1,
             product_id=["string"],
         )
-        assert_matches_type(object, aggregation, path=["response"])
+        assert_matches_type(AsyncCursor[Aggregation], aggregation, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -623,7 +624,7 @@ class TestAsyncAggregations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aggregation = await response.parse()
-        assert_matches_type(object, aggregation, path=["response"])
+        assert_matches_type(AsyncCursor[Aggregation], aggregation, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -634,7 +635,7 @@ class TestAsyncAggregations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aggregation = await response.parse()
-            assert_matches_type(object, aggregation, path=["response"])
+            assert_matches_type(AsyncCursor[Aggregation], aggregation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

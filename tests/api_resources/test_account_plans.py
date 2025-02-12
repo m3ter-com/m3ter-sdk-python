@@ -13,6 +13,7 @@ from m3ter_sdk.types import (
     AccountPlan,
 )
 from m3ter_sdk._utils import parse_date, parse_datetime
+from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -214,7 +215,7 @@ class TestAccountPlans:
         account_plan = client.account_plans.list(
             org_id="orgId",
         )
-        assert_matches_type(object, account_plan, path=["response"])
+        assert_matches_type(SyncCursor[AccountPlan], account_plan, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -230,7 +231,7 @@ class TestAccountPlans:
             plan="plan",
             product="product",
         )
-        assert_matches_type(object, account_plan, path=["response"])
+        assert_matches_type(SyncCursor[AccountPlan], account_plan, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -241,7 +242,7 @@ class TestAccountPlans:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_plan = response.parse()
-        assert_matches_type(object, account_plan, path=["response"])
+        assert_matches_type(SyncCursor[AccountPlan], account_plan, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -252,7 +253,7 @@ class TestAccountPlans:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_plan = response.parse()
-            assert_matches_type(object, account_plan, path=["response"])
+            assert_matches_type(SyncCursor[AccountPlan], account_plan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -509,7 +510,7 @@ class TestAsyncAccountPlans:
         account_plan = await async_client.account_plans.list(
             org_id="orgId",
         )
-        assert_matches_type(object, account_plan, path=["response"])
+        assert_matches_type(AsyncCursor[AccountPlan], account_plan, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -525,7 +526,7 @@ class TestAsyncAccountPlans:
             plan="plan",
             product="product",
         )
-        assert_matches_type(object, account_plan, path=["response"])
+        assert_matches_type(AsyncCursor[AccountPlan], account_plan, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -536,7 +537,7 @@ class TestAsyncAccountPlans:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_plan = await response.parse()
-        assert_matches_type(object, account_plan, path=["response"])
+        assert_matches_type(AsyncCursor[AccountPlan], account_plan, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -547,7 +548,7 @@ class TestAsyncAccountPlans:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_plan = await response.parse()
-            assert_matches_type(object, account_plan, path=["response"])
+            assert_matches_type(AsyncCursor[AccountPlan], account_plan, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

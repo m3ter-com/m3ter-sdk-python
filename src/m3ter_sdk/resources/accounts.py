@@ -28,8 +28,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.account import Account
+from ..types.account_search_response import AccountSearchResponse
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
@@ -469,7 +471,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[Account]:
         """
         Retrieve a list of Accounts that can be filtered by Account ID or Account Code.
 
@@ -493,8 +495,9 @@ class AccountsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/accounts",
+            page=SyncCursor[Account],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -510,7 +513,7 @@ class AccountsResource(SyncAPIResource):
                     account_list_params.AccountListParams,
                 ),
             ),
-            cast_to=object,
+            model=Account,
         )
 
     def delete(
@@ -615,7 +618,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AccountSearchResponse:
         """
         Search for account entities
 
@@ -667,7 +670,7 @@ class AccountsResource(SyncAPIResource):
                     account_search_params.AccountSearchParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=AccountSearchResponse,
         )
 
 
@@ -1092,7 +1095,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             cast_to=Account,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -1106,7 +1109,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[Account, AsyncCursor[Account]]:
         """
         Retrieve a list of Accounts that can be filtered by Account ID or Account Code.
 
@@ -1130,14 +1133,15 @@ class AsyncAccountsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/accounts",
+            page=AsyncCursor[Account],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "codes": codes,
                         "ids": ids,
@@ -1147,7 +1151,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     account_list_params.AccountListParams,
                 ),
             ),
-            cast_to=object,
+            model=Account,
         )
 
     async def delete(
@@ -1252,7 +1256,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AccountSearchResponse:
         """
         Search for account entities
 
@@ -1304,7 +1308,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     account_search_params.AccountSearchParams,
                 ),
             ),
-            cast_to=object,
+            cast_to=AccountSearchResponse,
         )
 
 

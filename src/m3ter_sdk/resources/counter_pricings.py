@@ -25,7 +25,8 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncCursor, AsyncCursor
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.counter_pricing import CounterPricing
 
 __all__ = ["CounterPricingsResource", "AsyncCounterPricingsResource"]
@@ -414,7 +415,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> SyncCursor[CounterPricing]:
         """
         Retrieve a list of CounterPricing entities filtered by date, Plan ID, Plan
         Template ID, or CounterPricing ID.
@@ -442,8 +443,9 @@ class CounterPricingsResource(SyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/counterpricings",
+            page=SyncCursor[CounterPricing],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -461,7 +463,7 @@ class CounterPricingsResource(SyncAPIResource):
                     counter_pricing_list_params.CounterPricingListParams,
                 ),
             ),
-            cast_to=object,
+            model=CounterPricing,
         )
 
     def delete(
@@ -868,7 +870,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
             cast_to=CounterPricing,
         )
 
-    async def list(
+    def list(
         self,
         org_id: str,
         *,
@@ -884,7 +886,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> object:
+    ) -> AsyncPaginator[CounterPricing, AsyncCursor[CounterPricing]]:
         """
         Retrieve a list of CounterPricing entities filtered by date, Plan ID, Plan
         Template ID, or CounterPricing ID.
@@ -912,14 +914,15 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         """
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/counterpricings",
+            page=AsyncCursor[CounterPricing],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "date": date,
                         "ids": ids,
@@ -931,7 +934,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
                     counter_pricing_list_params.CounterPricingListParams,
                 ),
             ),
-            cast_to=object,
+            model=CounterPricing,
         )
 
     async def delete(
