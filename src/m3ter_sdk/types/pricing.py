@@ -58,6 +58,8 @@ class Pricing(BaseModel):
       response.
     """
 
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)
     """UUID of the Aggregation used to create the Pricing.
 

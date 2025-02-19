@@ -42,8 +42,20 @@ class BalanceUpdateParams(TypedDict, total=False):
     code: str
     """Unique short code for the Balance."""
 
+    consumptions_accounting_product_id: Annotated[str, PropertyInfo(alias="consumptionsAccountingProductId")]
+    """
+    Optional Product ID this Balance Consumptions should be attributed to for
+    accounting purposes
+    """
+
     description: str
     """A description of the Balance."""
+
+    fees_accounting_product_id: Annotated[str, PropertyInfo(alias="feesAccountingProductId")]
+    """
+    Optional Product ID this Balance Fees should be attributed to for accounting
+    purposes
+    """
 
     line_item_types: Annotated[
         List[

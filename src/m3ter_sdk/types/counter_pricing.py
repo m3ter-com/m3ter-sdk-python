@@ -40,6 +40,8 @@ class CounterPricing(BaseModel):
       response.
     """
 
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
     code: Optional[str] = None
     """Unique short code for the Pricing."""
 

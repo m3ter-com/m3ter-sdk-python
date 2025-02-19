@@ -181,8 +181,13 @@ class OrganizationConfigUpdateParams(TypedDict, total=False):
     - `"PREPAYMENT"`. Only draw-down against Prepayment credit.
     - `"BALANCE"`. Only draw-down against Balance credit.
 
-    **NOTE:** You can override this Organization-level setting for credit
-    application order at the level of an individual Account.
+    **NOTES:**
+
+    - You can override this Organization-level setting for `creditApplicationOrder`
+      at the level of an individual Account.
+    - If the Account belongs to a Parent/Child Account hierarchy, then the
+      `creditApplicationOrder` settings are not available, and the draw-down order
+      defaults always to Prepayment then Balance order.
     """
 
     currency_conversions: Annotated[Iterable[CurrencyConversion], PropertyInfo(alias="currencyConversions")]

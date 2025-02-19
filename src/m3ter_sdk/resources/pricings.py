@@ -55,6 +55,7 @@ class PricingsResource(SyncAPIResource):
         *,
         pricing_bands: Iterable[pricing_create_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         compound_aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -90,6 +91,8 @@ class PricingsResource(SyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           aggregation_id: UUID of the Aggregation used to create the Pricing. Use this when creating a
               Pricing for a segmented aggregation.
@@ -206,6 +209,7 @@ class PricingsResource(SyncAPIResource):
                 {
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "aggregation_id": aggregation_id,
                     "code": code,
                     "compound_aggregation_id": compound_aggregation_id,
@@ -274,6 +278,7 @@ class PricingsResource(SyncAPIResource):
         org_id: str,
         pricing_bands: Iterable[pricing_update_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         compound_aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -309,6 +314,8 @@ class PricingsResource(SyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           aggregation_id: UUID of the Aggregation used to create the Pricing. Use this when creating a
               Pricing for a segmented aggregation.
@@ -427,6 +434,7 @@ class PricingsResource(SyncAPIResource):
                 {
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "aggregation_id": aggregation_id,
                     "code": code,
                     "compound_aggregation_id": compound_aggregation_id,
@@ -582,6 +590,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         *,
         pricing_bands: Iterable[pricing_create_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         compound_aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -617,6 +626,8 @@ class AsyncPricingsResource(AsyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           aggregation_id: UUID of the Aggregation used to create the Pricing. Use this when creating a
               Pricing for a segmented aggregation.
@@ -733,6 +744,7 @@ class AsyncPricingsResource(AsyncAPIResource):
                 {
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "aggregation_id": aggregation_id,
                     "code": code,
                     "compound_aggregation_id": compound_aggregation_id,
@@ -801,6 +813,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         org_id: str,
         pricing_bands: Iterable[pricing_update_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         compound_aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -836,6 +849,8 @@ class AsyncPricingsResource(AsyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           aggregation_id: UUID of the Aggregation used to create the Pricing. Use this when creating a
               Pricing for a segmented aggregation.
@@ -954,6 +969,7 @@ class AsyncPricingsResource(AsyncAPIResource):
                 {
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "aggregation_id": aggregation_id,
                     "code": code,
                     "compound_aggregation_id": compound_aggregation_id,

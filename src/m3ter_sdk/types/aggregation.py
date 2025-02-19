@@ -24,6 +24,8 @@ class Aggregation(BaseModel):
       response.
     """
 
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
     aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]] = None
     """
     Specifies the computation method applied to usage data collected in
@@ -63,6 +65,8 @@ class Aggregation(BaseModel):
     """The id of the user who created this aggregation."""
 
     custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
+
+    custom_sql: Optional[str] = FieldInfo(alias="customSql", default=None)
 
     default_value: Optional[float] = FieldInfo(alias="defaultValue", default=None)
     """Aggregation value used when no usage data is available to be aggregated.

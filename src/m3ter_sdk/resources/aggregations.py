@@ -59,8 +59,10 @@ class AggregationsResource(SyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -142,7 +144,12 @@ class AggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -203,8 +210,10 @@ class AggregationsResource(SyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -266,8 +275,10 @@ class AggregationsResource(SyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -354,7 +365,12 @@ class AggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -417,8 +433,10 @@ class AggregationsResource(SyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -564,8 +582,10 @@ class AsyncAggregationsResource(AsyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -647,7 +667,12 @@ class AsyncAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -708,8 +733,10 @@ class AsyncAggregationsResource(AsyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -771,8 +798,10 @@ class AsyncAggregationsResource(AsyncAPIResource):
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -859,7 +888,12 @@ class AsyncAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -922,8 +956,10 @@ class AsyncAggregationsResource(AsyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,

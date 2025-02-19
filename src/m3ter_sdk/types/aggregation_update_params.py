@@ -97,10 +97,18 @@ class AggregationUpdateParams(TypedDict, total=False):
     customers what they are being charged for.
     """
 
+    accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
+    """
+    Optional Product ID this Aggregation should be attributed to for accounting
+    purposes
+    """
+
     code: str
     """Code of the new Aggregation. A unique short code to identify the Aggregation."""
 
     custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
+
+    custom_sql: Annotated[str, PropertyInfo(alias="customSql")]
 
     default_value: Annotated[float, PropertyInfo(alias="defaultValue")]
     """Aggregation value used when no usage data is available to be aggregated.

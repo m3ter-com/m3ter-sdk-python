@@ -62,6 +62,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
@@ -124,6 +125,9 @@ class CompoundAggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -174,6 +178,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -237,6 +242,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
@@ -304,6 +310,9 @@ class CompoundAggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -356,6 +365,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -513,6 +523,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
@@ -575,6 +586,9 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -625,6 +639,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -688,6 +703,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
@@ -755,6 +771,9 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -807,6 +826,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,

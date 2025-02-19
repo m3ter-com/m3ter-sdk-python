@@ -104,6 +104,14 @@ from .aggregations import (
     AggregationsResourceWithStreamingResponse,
     AsyncAggregationsResourceWithStreamingResponse,
 )
+from .data_exports import (
+    DataExportsResource,
+    AsyncDataExportsResource,
+    DataExportsResourceWithRawResponse,
+    AsyncDataExportsResourceWithRawResponse,
+    DataExportsResourceWithStreamingResponse,
+    AsyncDataExportsResourceWithStreamingResponse,
+)
 from .account_plans import (
     AccountPlansResource,
     AsyncAccountPlansResource,
@@ -338,4 +346,10 @@ __all__ = [
     "AsyncTransactionTypesResourceWithRawResponse",
     "TransactionTypesResourceWithStreamingResponse",
     "AsyncTransactionTypesResourceWithStreamingResponse",
+    "DataExportsResource",
+    "AsyncDataExportsResource",
+    "DataExportsResourceWithRawResponse",
+    "AsyncDataExportsResourceWithRawResponse",
+    "DataExportsResourceWithStreamingResponse",
+    "AsyncDataExportsResourceWithStreamingResponse",
 ]

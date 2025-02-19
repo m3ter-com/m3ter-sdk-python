@@ -48,6 +48,7 @@ class TestPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
             code="JS!?Q0]r] ]$]",
             compound_aggregation_id="compoundAggregationId",
@@ -209,6 +210,7 @@ class TestPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
             code="JS!?Q0]r] ]$]",
             compound_aggregation_id="compoundAggregationId",
@@ -440,6 +442,7 @@ class TestAsyncPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
             code="JS!?Q0]r] ]$]",
             compound_aggregation_id="compoundAggregationId",
@@ -601,6 +604,7 @@ class TestAsyncPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
             code="JS!?Q0]r] ]$]",
             compound_aggregation_id="compoundAggregationId",

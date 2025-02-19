@@ -20,6 +20,11 @@ class PricingCreateParams(TypedDict, total=False):
     for the Plan of Plan Template._(Required)_
     """
 
+    accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
+    """
+    Optional Product ID this Pricing should be attributed to for accounting purposes
+    """
+
     aggregation_id: Annotated[str, PropertyInfo(alias="aggregationId")]
     """UUID of the Aggregation used to create the Pricing.
 

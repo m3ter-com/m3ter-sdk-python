@@ -63,6 +63,12 @@ class PlanCreateParams(TypedDict, total=False):
     _(Optional)_. Overrides PlanTemplate value.
     """
 
+    minimum_spend_accounting_product_id: Annotated[str, PropertyInfo(alias="minimumSpendAccountingProductId")]
+    """
+    Optional Product ID this plan's minimum spend should be attributed to for
+    accounting purposes
+    """
+
     minimum_spend_bill_in_advance: Annotated[bool, PropertyInfo(alias="minimumSpendBillInAdvance")]
     """When TRUE, minimum spend is billed at the start of each billing period.
 
@@ -90,6 +96,12 @@ class PlanCreateParams(TypedDict, total=False):
     """The standing charge applied to bills for end customers. This is prorated.
 
     _(Optional)_. Overrides PlanTemplate value.
+    """
+
+    standing_charge_accounting_product_id: Annotated[str, PropertyInfo(alias="standingChargeAccountingProductId")]
+    """
+    Optional Product ID this plan's standing charge should be attributed to for
+    accounting purposes
     """
 
     standing_charge_bill_in_advance: Annotated[bool, PropertyInfo(alias="standingChargeBillInAdvance")]
