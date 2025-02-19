@@ -16,6 +16,7 @@ from .plan_group import PlanGroup as PlanGroup
 from .aggregation import Aggregation as Aggregation
 from .bill_config import BillConfig as BillConfig
 from .account_plan import AccountPlan as AccountPlan
+from .adhoc_export import AdhocExport as AdhocExport
 from .debit_reason import DebitReason as DebitReason
 from .credit_reason import CreditReason as CreditReason
 from .plan_template import PlanTemplate as PlanTemplate
@@ -89,12 +90,15 @@ from .plan_group_link_update_params import PlanGroupLinkUpdateParams as PlanGrou
 from .counter_adjustment_list_params import CounterAdjustmentListParams as CounterAdjustmentListParams
 from .transaction_type_create_params import TransactionTypeCreateParams as TransactionTypeCreateParams
 from .transaction_type_update_params import TransactionTypeUpdateParams as TransactionTypeUpdateParams
+from .ad_hoc_usage_data_request_param import AdHocUsageDataRequestParam as AdHocUsageDataRequestParam
+from .data_export_create_adhoc_params import DataExportCreateAdhocParams as DataExportCreateAdhocParams
 from .compound_aggregation_list_params import CompoundAggregationListParams as CompoundAggregationListParams
 from .counter_adjustment_create_params import CounterAdjustmentCreateParams as CounterAdjustmentCreateParams
 from .counter_adjustment_update_params import CounterAdjustmentUpdateParams as CounterAdjustmentUpdateParams
 from .organization_config_update_params import OrganizationConfigUpdateParams as OrganizationConfigUpdateParams
 from .compound_aggregation_create_params import CompoundAggregationCreateParams as CompoundAggregationCreateParams
 from .compound_aggregation_update_params import CompoundAggregationUpdateParams as CompoundAggregationUpdateParams
+from .ad_hoc_operational_data_request_param import AdHocOperationalDataRequestParam as AdHocOperationalDataRequestParam
 from .authentication_get_bearer_token_params import (
     AuthenticationGetBearerTokenParams as AuthenticationGetBearerTokenParams,
 )

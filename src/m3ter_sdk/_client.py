@@ -38,6 +38,7 @@ from .resources import (
     commitments,
     plan_groups,
     aggregations,
+    data_exports,
     account_plans,
     debit_reasons,
     authentication,
@@ -87,6 +88,7 @@ class M3ter(SyncAPIClient):
     pricings: pricings.PricingsResource
     products: products.ProductsResource
     transaction_types: transaction_types.TransactionTypesResource
+    data_exports: data_exports.DataExportsResource
     with_raw_response: M3terWithRawResponse
     with_streaming_response: M3terWithStreamedResponse
 
@@ -187,6 +189,7 @@ class M3ter(SyncAPIClient):
         self.pricings = pricings.PricingsResource(self)
         self.products = products.ProductsResource(self)
         self.transaction_types = transaction_types.TransactionTypesResource(self)
+        self.data_exports = data_exports.DataExportsResource(self)
         self.with_raw_response = M3terWithRawResponse(self)
         self.with_streaming_response = M3terWithStreamedResponse(self)
 
@@ -337,6 +340,7 @@ class AsyncM3ter(AsyncAPIClient):
     pricings: pricings.AsyncPricingsResource
     products: products.AsyncProductsResource
     transaction_types: transaction_types.AsyncTransactionTypesResource
+    data_exports: data_exports.AsyncDataExportsResource
     with_raw_response: AsyncM3terWithRawResponse
     with_streaming_response: AsyncM3terWithStreamedResponse
 
@@ -437,6 +441,7 @@ class AsyncM3ter(AsyncAPIClient):
         self.pricings = pricings.AsyncPricingsResource(self)
         self.products = products.AsyncProductsResource(self)
         self.transaction_types = transaction_types.AsyncTransactionTypesResource(self)
+        self.data_exports = data_exports.AsyncDataExportsResource(self)
         self.with_raw_response = AsyncM3terWithRawResponse(self)
         self.with_streaming_response = AsyncM3terWithStreamedResponse(self)
 
@@ -594,6 +599,7 @@ class M3terWithRawResponse:
         self.pricings = pricings.PricingsResourceWithRawResponse(client.pricings)
         self.products = products.ProductsResourceWithRawResponse(client.products)
         self.transaction_types = transaction_types.TransactionTypesResourceWithRawResponse(client.transaction_types)
+        self.data_exports = data_exports.DataExportsResourceWithRawResponse(client.data_exports)
 
 
 class AsyncM3terWithRawResponse:
@@ -630,6 +636,7 @@ class AsyncM3terWithRawResponse:
         self.transaction_types = transaction_types.AsyncTransactionTypesResourceWithRawResponse(
             client.transaction_types
         )
+        self.data_exports = data_exports.AsyncDataExportsResourceWithRawResponse(client.data_exports)
 
 
 class M3terWithStreamedResponse:
@@ -666,6 +673,7 @@ class M3terWithStreamedResponse:
         self.transaction_types = transaction_types.TransactionTypesResourceWithStreamingResponse(
             client.transaction_types
         )
+        self.data_exports = data_exports.DataExportsResourceWithStreamingResponse(client.data_exports)
 
 
 class AsyncM3terWithStreamedResponse:
@@ -706,6 +714,7 @@ class AsyncM3terWithStreamedResponse:
         self.transaction_types = transaction_types.AsyncTransactionTypesResourceWithStreamingResponse(
             client.transaction_types
         )
+        self.data_exports = data_exports.AsyncDataExportsResourceWithStreamingResponse(client.data_exports)
 
 
 Client = M3ter

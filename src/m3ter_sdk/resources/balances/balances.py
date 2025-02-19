@@ -71,7 +71,9 @@ class BalancesResource(SyncAPIResource):
         start_date: Union[str, datetime],
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
+        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -117,7 +119,13 @@ class BalancesResource(SyncAPIResource):
 
           code: Unique short code for the Balance.
 
+          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
+              accounting purposes
+
           description: A description of the Balance.
+
+          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -200,7 +208,9 @@ class BalancesResource(SyncAPIResource):
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
+                    "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "description": description,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "name": name,
                     "overage_description": overage_description,
@@ -267,7 +277,9 @@ class BalancesResource(SyncAPIResource):
         start_date: Union[str, datetime],
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
+        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -313,7 +325,13 @@ class BalancesResource(SyncAPIResource):
 
           code: Unique short code for the Balance.
 
+          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
+              accounting purposes
+
           description: A description of the Balance.
+
+          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -398,7 +416,9 @@ class BalancesResource(SyncAPIResource):
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
+                    "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "description": description,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "name": name,
                     "overage_description": overage_description,
@@ -556,7 +576,9 @@ class AsyncBalancesResource(AsyncAPIResource):
         start_date: Union[str, datetime],
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
+        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -602,7 +624,13 @@ class AsyncBalancesResource(AsyncAPIResource):
 
           code: Unique short code for the Balance.
 
+          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
+              accounting purposes
+
           description: A description of the Balance.
+
+          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -685,7 +713,9 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
+                    "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "description": description,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "name": name,
                     "overage_description": overage_description,
@@ -752,7 +782,9 @@ class AsyncBalancesResource(AsyncAPIResource):
         start_date: Union[str, datetime],
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
+        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -798,7 +830,13 @@ class AsyncBalancesResource(AsyncAPIResource):
 
           code: Unique short code for the Balance.
 
+          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
+              accounting purposes
+
           description: A description of the Balance.
+
+          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -883,7 +921,9 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
+                    "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "description": description,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "name": name,
                     "overage_description": overage_description,

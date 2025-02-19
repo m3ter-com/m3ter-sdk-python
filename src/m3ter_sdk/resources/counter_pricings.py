@@ -59,6 +59,7 @@ class CounterPricingsResource(SyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[counter_pricing_create_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         cumulative: bool | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -91,6 +92,8 @@ class CounterPricingsResource(SyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           code: Unique short code for the Pricing.
 
@@ -186,6 +189,7 @@ class CounterPricingsResource(SyncAPIResource):
                     "counter_id": counter_id,
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "cumulative": cumulative,
                     "description": description,
@@ -250,6 +254,7 @@ class CounterPricingsResource(SyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[counter_pricing_update_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         cumulative: bool | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -282,6 +287,8 @@ class CounterPricingsResource(SyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           code: Unique short code for the Pricing.
 
@@ -379,6 +386,7 @@ class CounterPricingsResource(SyncAPIResource):
                     "counter_id": counter_id,
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "cumulative": cumulative,
                     "description": description,
@@ -530,6 +538,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[counter_pricing_create_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         cumulative: bool | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -562,6 +571,8 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           code: Unique short code for the Pricing.
 
@@ -657,6 +668,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
                     "counter_id": counter_id,
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "cumulative": cumulative,
                     "description": description,
@@ -721,6 +733,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[counter_pricing_update_params.PricingBand],
         start_date: Union[str, datetime],
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         cumulative: bool | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -753,6 +766,8 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
 
           start_date: The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
               for the Plan of Plan Template._(Required)_
+
+          accounting_product_id: Optional Product ID this Pricing should be attributed to for accounting purposes
 
           code: Unique short code for the Pricing.
 
@@ -850,6 +865,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
                     "counter_id": counter_id,
                     "pricing_bands": pricing_bands,
                     "start_date": start_date,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "cumulative": cumulative,
                     "description": description,

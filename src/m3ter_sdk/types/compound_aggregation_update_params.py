@@ -68,6 +68,12 @@ class CompoundAggregationUpdateParams(TypedDict, total=False):
     customers what they are being charged for.
     """
 
+    accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
+    """
+    Optional Product ID this Aggregation should be attributed to for accounting
+    purposes
+    """
+
     code: str
     """Code of the new Aggregation. A unique short code to identify the Aggregation."""
 

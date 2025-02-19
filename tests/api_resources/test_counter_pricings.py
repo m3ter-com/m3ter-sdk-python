@@ -52,6 +52,7 @@ class TestCounterPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             code="JS!?Q0]r] ]$]",
             cumulative=True,
             description="description",
@@ -205,6 +206,7 @@ class TestCounterPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             code="JS!?Q0]r] ]$]",
             cumulative=True,
             description="description",
@@ -429,6 +431,7 @@ class TestAsyncCounterPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             code="JS!?Q0]r] ]$]",
             cumulative=True,
             description="description",
@@ -582,6 +585,7 @@ class TestAsyncCounterPricings:
                 }
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             code="JS!?Q0]r] ]$]",
             cumulative=True,
             description="description",

@@ -72,8 +72,13 @@ class AccountCreateParams(TypedDict, total=False):
     - `"PREPAYMENT"`. Only draw-down against Prepayment credit.
     - `"BALANCE"`. Only draw-down against Balance credit.
 
-    **NOTE:** Any setting you define here overrides the setting for credit
-    application order at Organization level.
+    **NOTES:**
+
+    - Any setting you define here overrides the setting for credit application order
+      at Organization level.
+    - If the Account belongs to a Parent/Child Account hierarchy, then the
+      `creditApplicationOrder` settings are not available, and the draw-down order
+      defaults always to Prepayment then Balance order.
     """
 
     currency: str

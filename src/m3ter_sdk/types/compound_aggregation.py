@@ -24,6 +24,8 @@ class CompoundAggregation(BaseModel):
       response.
     """
 
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
     calculation: Optional[str] = None
     """This field is a string that represents the formula for the calculation.
 
