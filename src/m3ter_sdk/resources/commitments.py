@@ -76,7 +76,9 @@ class CommitmentsResource(SyncAPIResource):
         commitment_fee_description: str | NotGiven = NOT_GIVEN,
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
         fee_dates: Iterable[commitment_create_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -185,6 +187,9 @@ class CommitmentsResource(SyncAPIResource):
               If the Account Plan Contract and Commitment Contract do not match, then at
               billing the Commitment amount will not be drawn-down against.
 
+          drawdowns_accounting_product_id: Optional Product ID this Commitment consumptions should be attributed to for
+              accounting purposes
+
           fee_dates: Used for billing any outstanding Commitment fees _on a schedule_.
 
               Create an array to define a series of bill dates and amounts covering specified
@@ -202,6 +207,9 @@ class CommitmentsResource(SyncAPIResource):
               - You can set `servicePeriodStartDate` and `servicePeriodEndDate` to the _same
                 date_ without receiving an error, but _please be sure_ your Commitment billing
                 use case requires this.
+
+          fees_accounting_product_id: Optional Product ID this Commitment fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Commitment amount. Options are:
@@ -292,7 +300,9 @@ class CommitmentsResource(SyncAPIResource):
                     "commitment_fee_description": commitment_fee_description,
                     "commitment_usage_description": commitment_usage_description,
                     "contract_id": contract_id,
+                    "drawdowns_accounting_product_id": drawdowns_accounting_product_id,
                     "fee_dates": fee_dates,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
@@ -370,7 +380,9 @@ class CommitmentsResource(SyncAPIResource):
         commitment_fee_description: str | NotGiven = NOT_GIVEN,
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
         fee_dates: Iterable[commitment_update_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -468,6 +480,9 @@ class CommitmentsResource(SyncAPIResource):
               If the Account Plan Contract and Commitment Contract do not match, then at
               billing the Commitment amount will not be drawn-down against.
 
+          drawdowns_accounting_product_id: Optional Product ID this Commitment consumptions should be attributed to for
+              accounting purposes
+
           fee_dates: Used for billing any outstanding Commitment fees _on a schedule_.
 
               Create an array to define a series of bill dates and amounts covering specified
@@ -485,6 +500,9 @@ class CommitmentsResource(SyncAPIResource):
               - You can set `servicePeriodStartDate` and `servicePeriodEndDate` to the _same
                 date_ without receiving an error, but _please be sure_ your Commitment billing
                 use case requires this.
+
+          fees_accounting_product_id: Optional Product ID this Commitment fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Commitment amount. Options are:
@@ -577,7 +595,9 @@ class CommitmentsResource(SyncAPIResource):
                     "commitment_fee_description": commitment_fee_description,
                     "commitment_usage_description": commitment_usage_description,
                     "contract_id": contract_id,
+                    "drawdowns_accounting_product_id": drawdowns_accounting_product_id,
                     "fee_dates": fee_dates,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
@@ -853,7 +873,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         commitment_fee_description: str | NotGiven = NOT_GIVEN,
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
         fee_dates: Iterable[commitment_create_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -962,6 +984,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
               If the Account Plan Contract and Commitment Contract do not match, then at
               billing the Commitment amount will not be drawn-down against.
 
+          drawdowns_accounting_product_id: Optional Product ID this Commitment consumptions should be attributed to for
+              accounting purposes
+
           fee_dates: Used for billing any outstanding Commitment fees _on a schedule_.
 
               Create an array to define a series of bill dates and amounts covering specified
@@ -979,6 +1004,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
               - You can set `servicePeriodStartDate` and `servicePeriodEndDate` to the _same
                 date_ without receiving an error, but _please be sure_ your Commitment billing
                 use case requires this.
+
+          fees_accounting_product_id: Optional Product ID this Commitment fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Commitment amount. Options are:
@@ -1069,7 +1097,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
                     "commitment_fee_description": commitment_fee_description,
                     "commitment_usage_description": commitment_usage_description,
                     "contract_id": contract_id,
+                    "drawdowns_accounting_product_id": drawdowns_accounting_product_id,
                     "fee_dates": fee_dates,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
@@ -1147,7 +1177,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         commitment_fee_description: str | NotGiven = NOT_GIVEN,
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
         fee_dates: Iterable[commitment_update_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
@@ -1245,6 +1277,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
               If the Account Plan Contract and Commitment Contract do not match, then at
               billing the Commitment amount will not be drawn-down against.
 
+          drawdowns_accounting_product_id: Optional Product ID this Commitment consumptions should be attributed to for
+              accounting purposes
+
           fee_dates: Used for billing any outstanding Commitment fees _on a schedule_.
 
               Create an array to define a series of bill dates and amounts covering specified
@@ -1262,6 +1297,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
               - You can set `servicePeriodStartDate` and `servicePeriodEndDate` to the _same
                 date_ without receiving an error, but _please be sure_ your Commitment billing
                 use case requires this.
+
+          fees_accounting_product_id: Optional Product ID this Commitment fees should be attributed to for accounting
+              purposes
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Commitment amount. Options are:
@@ -1354,7 +1392,9 @@ class AsyncCommitmentsResource(AsyncAPIResource):
                     "commitment_fee_description": commitment_fee_description,
                     "commitment_usage_description": commitment_usage_description,
                     "contract_id": contract_id,
+                    "drawdowns_accounting_product_id": drawdowns_accounting_product_id,
                     "fee_dates": fee_dates,
+                    "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,

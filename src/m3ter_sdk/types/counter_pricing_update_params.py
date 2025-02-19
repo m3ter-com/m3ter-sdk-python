@@ -25,6 +25,11 @@ class CounterPricingUpdateParams(TypedDict, total=False):
     for the Plan of Plan Template._(Required)_
     """
 
+    accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
+    """
+    Optional Product ID this Pricing should be attributed to for accounting purposes
+    """
+
     code: str
     """Unique short code for the Pricing."""
 

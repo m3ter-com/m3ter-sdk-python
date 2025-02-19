@@ -58,10 +58,12 @@ class PlansResource(SyncAPIResource):
         bespoke: bool | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         minimum_spend: float | NotGiven = NOT_GIVEN,
+        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
         ordinal: int | NotGiven = NOT_GIVEN,
         standing_charge: float | NotGiven = NOT_GIVEN,
+        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
         standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         standing_charge_description: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -113,6 +115,9 @@ class PlansResource(SyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
+          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
+              accounting purposes
+
           minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
 
               When FALSE, minimum spend is billed at the end of each billing period.
@@ -133,6 +138,9 @@ class PlansResource(SyncAPIResource):
           standing_charge: The standing charge applied to bills for end customers. This is prorated.
 
               _(Optional)_. Overrides PlanTemplate value.
+
+          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
+              accounting purposes
 
           standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
 
@@ -174,10 +182,12 @@ class PlansResource(SyncAPIResource):
                     "bespoke": bespoke,
                     "custom_fields": custom_fields,
                     "minimum_spend": minimum_spend,
+                    "minimum_spend_accounting_product_id": minimum_spend_accounting_product_id,
                     "minimum_spend_bill_in_advance": minimum_spend_bill_in_advance,
                     "minimum_spend_description": minimum_spend_description,
                     "ordinal": ordinal,
                     "standing_charge": standing_charge,
+                    "standing_charge_accounting_product_id": standing_charge_accounting_product_id,
                     "standing_charge_bill_in_advance": standing_charge_bill_in_advance,
                     "standing_charge_description": standing_charge_description,
                     "version": version,
@@ -238,10 +248,12 @@ class PlansResource(SyncAPIResource):
         bespoke: bool | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         minimum_spend: float | NotGiven = NOT_GIVEN,
+        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
         ordinal: int | NotGiven = NOT_GIVEN,
         standing_charge: float | NotGiven = NOT_GIVEN,
+        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
         standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         standing_charge_description: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -297,6 +309,9 @@ class PlansResource(SyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
+          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
+              accounting purposes
+
           minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
 
               When FALSE, minimum spend is billed at the end of each billing period.
@@ -317,6 +332,9 @@ class PlansResource(SyncAPIResource):
           standing_charge: The standing charge applied to bills for end customers. This is prorated.
 
               _(Optional)_. Overrides PlanTemplate value.
+
+          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
+              accounting purposes
 
           standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
 
@@ -360,10 +378,12 @@ class PlansResource(SyncAPIResource):
                     "bespoke": bespoke,
                     "custom_fields": custom_fields,
                     "minimum_spend": minimum_spend,
+                    "minimum_spend_accounting_product_id": minimum_spend_accounting_product_id,
                     "minimum_spend_bill_in_advance": minimum_spend_bill_in_advance,
                     "minimum_spend_description": minimum_spend_description,
                     "ordinal": ordinal,
                     "standing_charge": standing_charge,
+                    "standing_charge_accounting_product_id": standing_charge_accounting_product_id,
                     "standing_charge_bill_in_advance": standing_charge_bill_in_advance,
                     "standing_charge_description": standing_charge_description,
                     "version": version,
@@ -506,10 +526,12 @@ class AsyncPlansResource(AsyncAPIResource):
         bespoke: bool | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         minimum_spend: float | NotGiven = NOT_GIVEN,
+        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
         ordinal: int | NotGiven = NOT_GIVEN,
         standing_charge: float | NotGiven = NOT_GIVEN,
+        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
         standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         standing_charge_description: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -561,6 +583,9 @@ class AsyncPlansResource(AsyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
+          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
+              accounting purposes
+
           minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
 
               When FALSE, minimum spend is billed at the end of each billing period.
@@ -581,6 +606,9 @@ class AsyncPlansResource(AsyncAPIResource):
           standing_charge: The standing charge applied to bills for end customers. This is prorated.
 
               _(Optional)_. Overrides PlanTemplate value.
+
+          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
+              accounting purposes
 
           standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
 
@@ -622,10 +650,12 @@ class AsyncPlansResource(AsyncAPIResource):
                     "bespoke": bespoke,
                     "custom_fields": custom_fields,
                     "minimum_spend": minimum_spend,
+                    "minimum_spend_accounting_product_id": minimum_spend_accounting_product_id,
                     "minimum_spend_bill_in_advance": minimum_spend_bill_in_advance,
                     "minimum_spend_description": minimum_spend_description,
                     "ordinal": ordinal,
                     "standing_charge": standing_charge,
+                    "standing_charge_accounting_product_id": standing_charge_accounting_product_id,
                     "standing_charge_bill_in_advance": standing_charge_bill_in_advance,
                     "standing_charge_description": standing_charge_description,
                     "version": version,
@@ -686,10 +716,12 @@ class AsyncPlansResource(AsyncAPIResource):
         bespoke: bool | NotGiven = NOT_GIVEN,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         minimum_spend: float | NotGiven = NOT_GIVEN,
+        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
         ordinal: int | NotGiven = NOT_GIVEN,
         standing_charge: float | NotGiven = NOT_GIVEN,
+        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
         standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         standing_charge_description: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -745,6 +777,9 @@ class AsyncPlansResource(AsyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
+          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
+              accounting purposes
+
           minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
 
               When FALSE, minimum spend is billed at the end of each billing period.
@@ -765,6 +800,9 @@ class AsyncPlansResource(AsyncAPIResource):
           standing_charge: The standing charge applied to bills for end customers. This is prorated.
 
               _(Optional)_. Overrides PlanTemplate value.
+
+          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
+              accounting purposes
 
           standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
 
@@ -808,10 +846,12 @@ class AsyncPlansResource(AsyncAPIResource):
                     "bespoke": bespoke,
                     "custom_fields": custom_fields,
                     "minimum_spend": minimum_spend,
+                    "minimum_spend_accounting_product_id": minimum_spend_accounting_product_id,
                     "minimum_spend_bill_in_advance": minimum_spend_bill_in_advance,
                     "minimum_spend_description": minimum_spend_description,
                     "ordinal": ordinal,
                     "standing_charge": standing_charge,
+                    "standing_charge_accounting_product_id": standing_charge_accounting_product_id,
                     "standing_charge_bill_in_advance": standing_charge_bill_in_advance,
                     "standing_charge_description": standing_charge_description,
                     "version": version,

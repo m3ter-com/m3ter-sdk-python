@@ -42,6 +42,8 @@ class Balance(BaseModel):
     code: Optional[str] = None
     """A unique short code assigned to the Balance."""
 
+    consumptions_accounting_product_id: Optional[str] = FieldInfo(alias="consumptionsAccountingProductId", default=None)
+
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) for the user who created the Balance."""
 
@@ -62,6 +64,8 @@ class Balance(BaseModel):
     The date _(in ISO 8601 format)_ after which the Balance will no longer be
     active.
     """
+
+    fees_accounting_product_id: Optional[str] = FieldInfo(alias="feesAccountingProductId", default=None)
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The unique identifier (UUID) for the user who last modified the Balance."""

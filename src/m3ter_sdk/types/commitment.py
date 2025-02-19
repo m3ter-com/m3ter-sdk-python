@@ -132,6 +132,8 @@ class Commitment(BaseModel):
     currency: Optional[str] = None
     """The currency used for the Commitment. For example, 'USD'."""
 
+    drawdowns_accounting_product_id: Optional[str] = FieldInfo(alias="drawdownsAccountingProductId", default=None)
+
     dt_created: Optional[datetime.datetime] = FieldInfo(alias="dtCreated", default=None)
     """The date and time _(in ISO-8601 format)_ when the Commitment was created."""
 
@@ -152,6 +154,8 @@ class Commitment(BaseModel):
     - `servicePeriodStartDate` and `servicePeriodEndDate` - defines the service
       period the bill covers _(in ISO-8601 format)_.
     """
+
+    fees_accounting_product_id: Optional[str] = FieldInfo(alias="feesAccountingProductId", default=None)
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The unique identifier (UUID) of the user who last modified this Commitment."""

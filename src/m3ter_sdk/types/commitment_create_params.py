@@ -123,6 +123,12 @@ class CommitmentCreateParams(TypedDict, total=False):
     billing the Commitment amount will not be drawn-down against.
     """
 
+    drawdowns_accounting_product_id: Annotated[str, PropertyInfo(alias="drawdownsAccountingProductId")]
+    """
+    Optional Product ID this Commitment consumptions should be attributed to for
+    accounting purposes
+    """
+
     fee_dates: Annotated[Iterable[FeeDate], PropertyInfo(alias="feeDates")]
     """Used for billing any outstanding Commitment fees _on a schedule_.
 
@@ -141,6 +147,12 @@ class CommitmentCreateParams(TypedDict, total=False):
     - You can set `servicePeriodStartDate` and `servicePeriodEndDate` to the _same
       date_ without receiving an error, but _please be sure_ your Commitment billing
       use case requires this.
+    """
+
+    fees_accounting_product_id: Annotated[str, PropertyInfo(alias="feesAccountingProductId")]
+    """
+    Optional Product ID this Commitment fees should be attributed to for accounting
+    purposes
     """
 
     line_item_types: Annotated[

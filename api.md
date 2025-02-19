@@ -387,3 +387,15 @@ Methods:
 - <code title="put /organizations/{orgId}/picklists/transactiontypes/{id}">client.transaction_types.<a href="./src/m3ter_sdk/resources/transaction_types.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/transaction_type_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/transaction_type.py">TransactionType</a></code>
 - <code title="get /organizations/{orgId}/picklists/transactiontypes">client.transaction_types.<a href="./src/m3ter_sdk/resources/transaction_types.py">list</a>(org_id, \*\*<a href="src/m3ter_sdk/types/transaction_type_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/transaction_type.py">SyncCursor[TransactionType]</a></code>
 - <code title="delete /organizations/{orgId}/picklists/transactiontypes/{id}">client.transaction_types.<a href="./src/m3ter_sdk/resources/transaction_types.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/transaction_type.py">TransactionType</a></code>
+
+# DataExports
+
+Types:
+
+```python
+from m3ter_sdk.types import AdhocExport, AdHocOperationalDataRequest, AdHocUsageDataRequest
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/dataexports/adhoc">client.data_exports.<a href="./src/m3ter_sdk/resources/data_exports.py">create_adhoc</a>(org_id, \*\*<a href="src/m3ter_sdk/types/data_export_create_adhoc_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/adhoc_export.py">AdhocExport</a></code>
