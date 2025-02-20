@@ -11,6 +11,8 @@ __all__ = ["CompoundAggregationListParams"]
 
 
 class CompoundAggregationListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     codes: List[str]
     """
     An optional parameter to retrieve specific CompoundAggregations based on their

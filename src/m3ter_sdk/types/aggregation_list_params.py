@@ -11,6 +11,8 @@ __all__ = ["AggregationListParams"]
 
 
 class AggregationListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     codes: List[str]
     """List of Aggregation codes to retrieve.
 

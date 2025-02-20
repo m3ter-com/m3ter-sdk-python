@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["TransactionTypeCreateParams"]
 
 
 class TransactionTypeCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     name: Required[str]
     """The name of the entity."""
 

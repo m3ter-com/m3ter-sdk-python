@@ -10,6 +10,8 @@ __all__ = ["CurrencyCreateParams"]
 
 
 class CurrencyCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     name: Required[str]
     """The name of the entity."""
 

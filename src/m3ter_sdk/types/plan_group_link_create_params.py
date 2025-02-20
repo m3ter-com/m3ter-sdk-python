@@ -10,6 +10,8 @@ __all__ = ["PlanGroupLinkCreateParams"]
 
 
 class PlanGroupLinkCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     plan_group_id: Required[Annotated[str, PropertyInfo(alias="planGroupId")]]
 
     plan_id: Required[Annotated[str, PropertyInfo(alias="planId")]]

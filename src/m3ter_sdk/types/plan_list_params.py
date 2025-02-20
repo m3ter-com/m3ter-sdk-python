@@ -11,6 +11,8 @@ __all__ = ["PlanListParams"]
 
 
 class PlanListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Annotated[List[str], PropertyInfo(alias="accountId")]
     """List of Account IDs the Plan belongs to."""
 

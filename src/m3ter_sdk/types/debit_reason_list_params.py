@@ -11,6 +11,8 @@ __all__ = ["DebitReasonListParams"]
 
 
 class DebitReasonListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     archived: bool
     """Filter using the boolean archived flag.
 

@@ -10,7 +10,7 @@ __all__ = ["CurrencyUpdateParams"]
 
 
 class CurrencyUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     name: Required[str]
     """The name of the entity."""

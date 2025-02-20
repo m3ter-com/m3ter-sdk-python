@@ -12,7 +12,7 @@ __all__ = ["AccountUpdateParams", "Address"]
 
 
 class AccountUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     code: Required[str]
     """Code of the Account. This is a unique short code used for the Account."""

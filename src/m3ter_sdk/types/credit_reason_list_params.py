@@ -11,6 +11,8 @@ __all__ = ["CreditReasonListParams"]
 
 
 class CreditReasonListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     archived: bool
     """TRUE / FALSE archived flag to filter the list.
 

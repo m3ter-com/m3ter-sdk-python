@@ -11,6 +11,8 @@ __all__ = ["CounterPricingListParams"]
 
 
 class CounterPricingListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     date: str
     """Date on which to retrieve active CounterPricings."""
 

@@ -49,8 +49,8 @@ class BillConfigResource(SyncAPIResource):
 
     def retrieve(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -70,6 +70,8 @@ class BillConfigResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get(
@@ -82,8 +84,8 @@ class BillConfigResource(SyncAPIResource):
 
     def update(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         bill_lock_date: Union[str, date] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -121,6 +123,8 @@ class BillConfigResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._put(
@@ -161,8 +165,8 @@ class AsyncBillConfigResource(AsyncAPIResource):
 
     async def retrieve(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -182,6 +186,8 @@ class AsyncBillConfigResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._get(
@@ -194,8 +200,8 @@ class AsyncBillConfigResource(AsyncAPIResource):
 
     async def update(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         bill_lock_date: Union[str, date] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -233,6 +239,8 @@ class AsyncBillConfigResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._put(
