@@ -11,6 +11,8 @@ __all__ = ["CurrencyListParams"]
 
 
 class CurrencyListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     archived: bool
     """Filter by archived flag.
 

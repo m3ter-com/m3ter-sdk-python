@@ -51,8 +51,8 @@ class AccountPlansResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -163,6 +163,8 @@ class AccountPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -193,7 +195,7 @@ class AccountPlansResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -214,6 +216,8 @@ class AccountPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -230,7 +234,7 @@ class AccountPlansResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -347,6 +351,8 @@ class AccountPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -377,8 +383,8 @@ class AccountPlansResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         account: str | NotGiven = NOT_GIVEN,
         contract: Optional[str] | NotGiven = NOT_GIVEN,
         date: str | NotGiven = NOT_GIVEN,
@@ -449,6 +455,8 @@ class AccountPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -481,7 +489,7 @@ class AccountPlansResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -504,6 +512,8 @@ class AccountPlansResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -539,8 +549,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -651,6 +661,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -681,7 +693,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -702,6 +714,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -718,7 +732,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -835,6 +849,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -865,8 +881,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         account: str | NotGiven = NOT_GIVEN,
         contract: Optional[str] | NotGiven = NOT_GIVEN,
         date: str | NotGiven = NOT_GIVEN,
@@ -937,6 +953,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -969,7 +987,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -992,6 +1010,8 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:

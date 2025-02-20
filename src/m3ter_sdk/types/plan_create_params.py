@@ -11,6 +11,8 @@ __all__ = ["PlanCreateParams"]
 
 
 class PlanCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     code: Required[str]
     """Unique short code reference for the Plan."""
 

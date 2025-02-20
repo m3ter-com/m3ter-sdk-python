@@ -11,6 +11,8 @@ __all__ = ["MeterListParams"]
 
 
 class MeterListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     codes: List[str]
     """list of codes to retrieve"""
 

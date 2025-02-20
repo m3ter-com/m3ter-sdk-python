@@ -10,6 +10,8 @@ __all__ = ["CommitmentSearchParams"]
 
 
 class CommitmentSearchParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     from_document: Annotated[int, PropertyInfo(alias="fromDocument")]
     """fromDocument for multi page retrievals"""
 

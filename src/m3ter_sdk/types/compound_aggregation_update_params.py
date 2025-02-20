@@ -11,7 +11,7 @@ __all__ = ["CompoundAggregationUpdateParams"]
 
 
 class CompoundAggregationUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     calculation: Required[str]
     """String that represents the formula for the calculation.

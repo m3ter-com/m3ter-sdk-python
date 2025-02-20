@@ -12,6 +12,8 @@ __all__ = ["AccountCreateParams", "Address"]
 
 
 class AccountCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     code: Required[str]
     """Code of the Account. This is a unique short code used for the Account."""
 

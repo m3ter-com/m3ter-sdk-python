@@ -53,8 +53,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         plan_group_id: str,
         plan_id: str,
         version: int | NotGiven = NOT_GIVEN,
@@ -91,6 +91,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -113,7 +115,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -133,6 +135,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -149,7 +153,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         plan_group_id: str,
         plan_id: str,
         version: int | NotGiven = NOT_GIVEN,
@@ -186,6 +190,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -208,8 +214,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
@@ -244,6 +250,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -272,7 +280,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -292,6 +300,8 @@ class PlanGroupLinksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -327,8 +337,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         plan_group_id: str,
         plan_id: str,
         version: int | NotGiven = NOT_GIVEN,
@@ -365,6 +375,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -387,7 +399,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -407,6 +419,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -423,7 +437,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         plan_group_id: str,
         plan_id: str,
         version: int | NotGiven = NOT_GIVEN,
@@ -460,6 +474,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -482,8 +498,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
@@ -518,6 +534,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -546,7 +564,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -566,6 +584,8 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:

@@ -12,7 +12,7 @@ __all__ = ["AccountPlanUpdateParams"]
 
 
 class AccountPlanUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
     """The unique identifier (UUID) for the Account."""

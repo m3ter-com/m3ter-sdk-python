@@ -11,6 +11,8 @@ __all__ = ["CommitmentListParams"]
 
 
 class CommitmentListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
     """The unique identifier (UUID) for the Account.
 

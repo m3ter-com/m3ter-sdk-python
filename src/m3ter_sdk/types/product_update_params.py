@@ -11,7 +11,7 @@ __all__ = ["ProductUpdateParams"]
 
 
 class ProductUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     code: Required[str]
     """A unique short code to identify the Product.

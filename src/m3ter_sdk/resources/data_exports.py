@@ -51,8 +51,8 @@ class DataExportsResource(SyncAPIResource):
     @overload
     def create_adhoc(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         operational_data_types: List[
             Literal[
                 "BILLS",
@@ -171,8 +171,8 @@ class DataExportsResource(SyncAPIResource):
     @overload
     def create_adhoc(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         aggregation_frequency: Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"],
         source_type: Literal["USAGE", "OPERATIONAL"],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
@@ -344,8 +344,8 @@ class DataExportsResource(SyncAPIResource):
     @required_args(["operational_data_types", "source_type"], ["aggregation_frequency", "source_type"])
     def create_adhoc(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         operational_data_types: List[
             Literal[
                 "BILLS",
@@ -393,6 +393,8 @@ class DataExportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AdhocExport:
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -440,8 +442,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
     @overload
     async def create_adhoc(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         operational_data_types: List[
             Literal[
                 "BILLS",
@@ -560,8 +562,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
     @overload
     async def create_adhoc(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         aggregation_frequency: Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"],
         source_type: Literal["USAGE", "OPERATIONAL"],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
@@ -733,8 +735,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
     @required_args(["operational_data_types", "source_type"], ["aggregation_frequency", "source_type"])
     async def create_adhoc(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         operational_data_types: List[
             Literal[
                 "BILLS",
@@ -782,6 +784,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AdhocExport:
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(

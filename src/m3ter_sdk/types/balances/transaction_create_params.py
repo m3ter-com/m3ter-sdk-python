@@ -12,7 +12,7 @@ __all__ = ["TransactionCreateParams"]
 
 
 class TransactionCreateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     amount: Required[float]
     """The financial value of the transaction."""

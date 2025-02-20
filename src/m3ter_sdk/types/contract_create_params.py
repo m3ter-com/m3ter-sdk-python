@@ -12,6 +12,8 @@ __all__ = ["ContractCreateParams"]
 
 
 class ContractCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
     """The unique identifier (UUID) of the Account associated with this Contract."""
 

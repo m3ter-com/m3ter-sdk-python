@@ -11,6 +11,8 @@ __all__ = ["AccountPlanListParams"]
 
 
 class AccountPlanListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account: str
     """
     The unique identifier (UUID) for the Account whose AccountPlans and

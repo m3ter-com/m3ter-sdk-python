@@ -52,7 +52,7 @@ class TransactionsResource(SyncAPIResource):
         self,
         balance_id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         amount: float,
         applied_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         currency_paid: str | NotGiven = NOT_GIVEN,
@@ -122,6 +122,8 @@ class TransactionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not balance_id:
@@ -151,7 +153,7 @@ class TransactionsResource(SyncAPIResource):
         self,
         balance_id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -183,6 +185,8 @@ class TransactionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not balance_id:
@@ -232,7 +236,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         self,
         balance_id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         amount: float,
         applied_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         currency_paid: str | NotGiven = NOT_GIVEN,
@@ -302,6 +306,8 @@ class AsyncTransactionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not balance_id:
@@ -331,7 +337,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         self,
         balance_id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
@@ -363,6 +369,8 @@ class AsyncTransactionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not balance_id:

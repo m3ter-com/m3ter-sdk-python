@@ -12,6 +12,8 @@ __all__ = ["BillConfigUpdateParams"]
 
 
 class BillConfigUpdateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     bill_lock_date: Annotated[Union[str, date], PropertyInfo(alias="billLockDate", format="iso8601")]
     """The global lock date when all Bills will be locked _(in ISO 8601 format)_.
 

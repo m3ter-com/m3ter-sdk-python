@@ -11,6 +11,8 @@ __all__ = ["MeterCreateParams", "DataField", "DerivedField"]
 
 
 class MeterCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     code: Required[str]
     """Code of the Meter - unique short code used to identify the Meter.
 

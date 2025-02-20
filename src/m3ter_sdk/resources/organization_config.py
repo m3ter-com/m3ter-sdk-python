@@ -49,8 +49,8 @@ class OrganizationConfigResource(SyncAPIResource):
 
     def retrieve(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -70,6 +70,8 @@ class OrganizationConfigResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get(
@@ -82,8 +84,8 @@ class OrganizationConfigResource(SyncAPIResource):
 
     def update(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         currency: str,
         day_epoch: str,
         days_before_bill_due: int,
@@ -334,6 +336,8 @@ class OrganizationConfigResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._put(
@@ -395,8 +399,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
 
     async def retrieve(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -416,6 +420,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._get(
@@ -428,8 +434,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
 
     async def update(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         currency: str,
         day_epoch: str,
         days_before_bill_due: int,
@@ -680,6 +686,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._put(
