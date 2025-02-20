@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import base64
 from typing import Any, Union, Mapping
 from typing_extensions import Self, override
 
@@ -24,6 +25,7 @@ from ._utils import (
     is_given,
     get_async_library,
 )
+from ._models import FinalRequestOptions
 from ._version import __version__
 from .resources import (
     plans,
@@ -61,6 +63,8 @@ from ._base_client import (
 from .resources.balances import balances
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "M3ter", "AsyncM3ter", "Client", "AsyncClient"]
+
+from .types import AuthenticationGetBearerTokenResponse
 
 
 class M3ter(SyncAPIClient):
@@ -221,6 +225,8 @@ class M3ter(SyncAPIClient):
 
     @override
     def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+        if custom_headers.get("Authorization"):
+            return
         if self.token and headers.get("Authorization"):
             return
         if isinstance(custom_headers.get("Authorization"), Omit):
@@ -229,6 +235,20 @@ class M3ter(SyncAPIClient):
         raise TypeError(
             '"Could not resolve authentication method. Expected the token to be set. Or for the `Authorization` headers to be explicitly omitted"'
         )
+
+    @override
+    def _prepare_options(
+        self,
+        options: FinalRequestOptions,  # noqa: ARG002
+    ) -> FinalRequestOptions:
+        if not options.url.endswith("/oauth/token"):
+            if not self.token:
+                auth: str = base64.b64encode(f"{self.api_key}:{self.api_secret}".encode("utf8")).decode("utf8")
+                token: AuthenticationGetBearerTokenResponse = self.authentication.get_bearer_token(
+                    grant_type="client_credentials", extra_headers={"Authorization": f"Basic {auth}"}
+                )
+                self.token = token.access_token
+        return options
 
     def copy(
         self,
