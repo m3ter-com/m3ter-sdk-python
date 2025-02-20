@@ -11,6 +11,8 @@ __all__ = ["ContractListParams"]
 
 
 class ContractListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Annotated[Optional[str], PropertyInfo(alias="accountId")]
 
     codes: List[str]

@@ -11,6 +11,8 @@ __all__ = ["DataExportCreateAdhocParams", "AdHocOperationalDataRequest", "AdHocU
 
 
 class AdHocOperationalDataRequest(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     operational_data_types: Required[
         Annotated[
             List[
@@ -55,6 +57,8 @@ class AdHocOperationalDataRequest(TypedDict, total=False):
 
 
 class AdHocUsageDataRequest(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     aggregation_frequency: Required[
         Annotated[Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"], PropertyInfo(alias="aggregationFrequency")]
     ]

@@ -11,6 +11,8 @@ __all__ = ["AggregationCreateParams"]
 
 
 class AggregationCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     aggregation: Required[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]]
     """
     Specifies the computation method applied to usage data collected in

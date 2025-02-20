@@ -10,7 +10,7 @@ __all__ = ["PlanGroupLinkUpdateParams"]
 
 
 class PlanGroupLinkUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     plan_group_id: Required[Annotated[str, PropertyInfo(alias="planGroupId")]]
 

@@ -11,7 +11,7 @@ __all__ = ["PlanGroupUpdateParams"]
 
 
 class PlanGroupUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     currency: Required[str]
     """Currency code for the PlanGroup (For example, USD)."""

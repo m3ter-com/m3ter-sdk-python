@@ -11,6 +11,8 @@ __all__ = ["PlanGroupListParams"]
 
 
 class PlanGroupListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Annotated[List[str], PropertyInfo(alias="accountId")]
     """Optional filter. The list of Account IDs to which the PlanGroups belong."""
 

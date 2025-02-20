@@ -11,6 +11,8 @@ __all__ = ["TransactionTypeListParams"]
 
 
 class TransactionTypeListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     archived: bool
     """
     Filter with this Boolean flag whether to include TransactionTypes that are

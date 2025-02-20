@@ -10,6 +10,8 @@ __all__ = ["CounterAdjustmentCreateParams"]
 
 
 class CounterAdjustmentCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
     """The Account ID the CounterAdjustment is created for."""
 

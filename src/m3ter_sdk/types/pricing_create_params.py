@@ -12,6 +12,8 @@ __all__ = ["PricingCreateParams", "PricingBand", "OveragePricingBand"]
 
 
 class PricingCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     pricing_bands: Required[Annotated[Iterable[PricingBand], PropertyInfo(alias="pricingBands")]]
 
     start_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startDate", format="iso8601")]]

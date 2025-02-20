@@ -11,6 +11,8 @@ __all__ = ["OrganizationConfigUpdateParams", "CurrencyConversion"]
 
 
 class OrganizationConfigUpdateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     currency: Required[str]
     """The currency code for the Organization. For example: USD, GBP, or EUR:
 

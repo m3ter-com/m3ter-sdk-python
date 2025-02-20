@@ -11,6 +11,8 @@ __all__ = ["PlanTemplateCreateParams"]
 
 
 class PlanTemplateCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     bill_frequency: Required[
         Annotated[
             Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC", "MIXED"], PropertyInfo(alias="billFrequency")

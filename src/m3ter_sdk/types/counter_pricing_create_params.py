@@ -12,6 +12,8 @@ __all__ = ["CounterPricingCreateParams", "PricingBand"]
 
 
 class CounterPricingCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     counter_id: Required[Annotated[str, PropertyInfo(alias="counterId")]]
     """UUID of the Counter used to create the pricing."""
 

@@ -11,6 +11,8 @@ __all__ = ["PlanGroupLinkListParams"]
 
 
 class PlanGroupLinkListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     ids: List[str]
     """list of IDs to retrieve"""
 

@@ -11,6 +11,8 @@ __all__ = ["CounterListParams"]
 
 
 class CounterListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     codes: List[str]
     """List of Counter codes to retrieve.
 

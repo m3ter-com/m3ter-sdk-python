@@ -100,6 +100,7 @@ class M3ter(SyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
+    org_id: str
 
     def __init__(
         self,
@@ -107,6 +108,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
+        org_id: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -152,6 +154,8 @@ class M3ter(SyncAPIClient):
         if token is None:
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
+
+        self.org_id = org_id
 
         if base_url is None:
             base_url = os.environ.get("M3TER_BASE_URL")
@@ -252,6 +256,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
+        org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -288,6 +293,7 @@ class M3ter(SyncAPIClient):
             api_key=api_key or self.api_key,
             api_secret=api_secret or self.api_secret,
             token=token or self.token,
+            org_id=org_id or self.org_id,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -300,6 +306,15 @@ class M3ter(SyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def _get_org_id_path_param(self) -> str:
+        from_client = self.org_id
+        if from_client is not None:
+            return from_client
+
+        raise ValueError(
+            "Missing org_id argument; Please provide it at the client level, e.g. M3ter(org_id='abcd') or per method."
+        )
 
     @override
     def _make_status_error(
@@ -368,6 +383,7 @@ class AsyncM3ter(AsyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
+    org_id: str
 
     def __init__(
         self,
@@ -375,6 +391,7 @@ class AsyncM3ter(AsyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
+        org_id: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -420,6 +437,8 @@ class AsyncM3ter(AsyncAPIClient):
         if token is None:
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
+
+        self.org_id = org_id
 
         if base_url is None:
             base_url = os.environ.get("M3TER_BASE_URL")
@@ -504,6 +523,7 @@ class AsyncM3ter(AsyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
+        org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -540,6 +560,7 @@ class AsyncM3ter(AsyncAPIClient):
             api_key=api_key or self.api_key,
             api_secret=api_secret or self.api_secret,
             token=token or self.token,
+            org_id=org_id or self.org_id,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -552,6 +573,15 @@ class AsyncM3ter(AsyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def _get_org_id_path_param(self) -> str:
+        from_client = self.org_id
+        if from_client is not None:
+            return from_client
+
+        raise ValueError(
+            "Missing org_id argument; Please provide it at the client level, e.g. AsyncM3ter(org_id='abcd') or per method."
+        )
 
     @override
     def _make_status_error(

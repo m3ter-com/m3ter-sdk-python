@@ -11,6 +11,8 @@ __all__ = ["AccountListParams"]
 
 
 class AccountListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     codes: List[str]
     """List of Account Codes to retrieve.
 

@@ -11,6 +11,8 @@ __all__ = ["PlanTemplateListParams"]
 
 
 class PlanTemplateListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     ids: List[str]
     """List of specific PlanTemplate UUIDs to retrieve."""
 

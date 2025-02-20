@@ -11,6 +11,8 @@ __all__ = ["CounterAdjustmentListParams"]
 
 
 class CounterAdjustmentListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
     """List CounterAdjustment items for the Account UUID."""
 
