@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Optional
-from datetime import date
+from datetime import date, datetime
 from typing_extensions import Literal
 
 import httpx
@@ -14,6 +14,7 @@ from ..types import (
     account_search_params,
     account_update_params,
     account_list_children_params,
+    account_end_date_billing_entities_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -32,6 +33,7 @@ from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.account import Account
 from ..types.account_search_response import AccountSearchResponse
+from ..types.account_end_date_billing_entities_response import AccountEndDateBillingEntitiesResponse
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
@@ -572,6 +574,72 @@ class AccountsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=Account,
+        )
+
+    def end_date_billing_entities(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        billing_entities: List[Literal["CONTRACT", "ACCOUNTPLAN", "PREPAYMENT", "PRICINGS", "COUNTER_PRICINGS"]],
+        end_date: Union[str, datetime],
+        apply_to_children: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AccountEndDateBillingEntitiesResponse:
+        """
+        Apply the specified end-date to billing entities associated with an Account.
+
+        **NOTE:**
+
+        - When you successfully end-date billing entities, the version number of each
+          entity is incremented.
+
+        Args:
+          billing_entities: Defines which billing entities associated with the Account will have the
+              specified end-date applied. For example, if you want the specified end-date to
+              be applied to all Prepayments/Commitments created for the Account use
+              `"PREPAYMENT"`.
+
+          end_date: The end date and time applied to the specified billing entities _(in ISO 8601
+              format)_.
+
+          apply_to_children: A Boolean TRUE/FALSE flag. For Parent Accounts, set to TRUE if you want the
+              specified end-date to be applied to any billing entities associated with Child
+              Accounts. _(Optional)_
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._put(
+            f"/organizations/{org_id}/accounts/{id}/enddatebillingentities",
+            body=maybe_transform(
+                {
+                    "billing_entities": billing_entities,
+                    "end_date": end_date,
+                    "apply_to_children": apply_to_children,
+                },
+                account_end_date_billing_entities_params.AccountEndDateBillingEntitiesParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AccountEndDateBillingEntitiesResponse,
         )
 
     def list_children(
@@ -1236,6 +1304,72 @@ class AsyncAccountsResource(AsyncAPIResource):
             cast_to=Account,
         )
 
+    async def end_date_billing_entities(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        billing_entities: List[Literal["CONTRACT", "ACCOUNTPLAN", "PREPAYMENT", "PRICINGS", "COUNTER_PRICINGS"]],
+        end_date: Union[str, datetime],
+        apply_to_children: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AccountEndDateBillingEntitiesResponse:
+        """
+        Apply the specified end-date to billing entities associated with an Account.
+
+        **NOTE:**
+
+        - When you successfully end-date billing entities, the version number of each
+          entity is incremented.
+
+        Args:
+          billing_entities: Defines which billing entities associated with the Account will have the
+              specified end-date applied. For example, if you want the specified end-date to
+              be applied to all Prepayments/Commitments created for the Account use
+              `"PREPAYMENT"`.
+
+          end_date: The end date and time applied to the specified billing entities _(in ISO 8601
+              format)_.
+
+          apply_to_children: A Boolean TRUE/FALSE flag. For Parent Accounts, set to TRUE if you want the
+              specified end-date to be applied to any billing entities associated with Child
+              Accounts. _(Optional)_
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._put(
+            f"/organizations/{org_id}/accounts/{id}/enddatebillingentities",
+            body=await async_maybe_transform(
+                {
+                    "billing_entities": billing_entities,
+                    "end_date": end_date,
+                    "apply_to_children": apply_to_children,
+                },
+                account_end_date_billing_entities_params.AccountEndDateBillingEntitiesParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AccountEndDateBillingEntitiesResponse,
+        )
+
     async def list_children(
         self,
         id: str,
@@ -1379,6 +1513,9 @@ class AccountsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             accounts.delete,
         )
+        self.end_date_billing_entities = to_raw_response_wrapper(
+            accounts.end_date_billing_entities,
+        )
         self.list_children = to_raw_response_wrapper(
             accounts.list_children,
         )
@@ -1405,6 +1542,9 @@ class AsyncAccountsResourceWithRawResponse:
         )
         self.delete = async_to_raw_response_wrapper(
             accounts.delete,
+        )
+        self.end_date_billing_entities = async_to_raw_response_wrapper(
+            accounts.end_date_billing_entities,
         )
         self.list_children = async_to_raw_response_wrapper(
             accounts.list_children,
@@ -1433,6 +1573,9 @@ class AccountsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             accounts.delete,
         )
+        self.end_date_billing_entities = to_streamed_response_wrapper(
+            accounts.end_date_billing_entities,
+        )
         self.list_children = to_streamed_response_wrapper(
             accounts.list_children,
         )
@@ -1459,6 +1602,9 @@ class AsyncAccountsResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             accounts.delete,
+        )
+        self.end_date_billing_entities = async_to_streamed_response_wrapper(
+            accounts.end_date_billing_entities,
         )
         self.list_children = async_to_streamed_response_wrapper(
             accounts.list_children,

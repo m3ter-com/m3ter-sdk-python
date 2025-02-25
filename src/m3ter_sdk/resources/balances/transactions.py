@@ -24,6 +24,7 @@ from ...pagination import SyncCursor, AsyncCursor
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.balances import transaction_list_params, transaction_create_params
 from ...types.balances.transaction import Transaction
+from ...types.balances.transaction_summary_response import TransactionSummaryResponse
 
 __all__ = ["TransactionsResource", "AsyncTransactionsResource"]
 
@@ -211,6 +212,44 @@ class TransactionsResource(SyncAPIResource):
             model=Transaction,
         )
 
+    def summary(
+        self,
+        balance_id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TransactionSummaryResponse:
+        """
+        Retrieves the Balance Transactions Summary for a given Balance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not balance_id:
+            raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
+        return self._get(
+            f"/organizations/{org_id}/balances/{balance_id}/transactions/summary",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TransactionSummaryResponse,
+        )
+
 
 class AsyncTransactionsResource(AsyncAPIResource):
     @cached_property
@@ -395,6 +434,44 @@ class AsyncTransactionsResource(AsyncAPIResource):
             model=Transaction,
         )
 
+    async def summary(
+        self,
+        balance_id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TransactionSummaryResponse:
+        """
+        Retrieves the Balance Transactions Summary for a given Balance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not balance_id:
+            raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
+        return await self._get(
+            f"/organizations/{org_id}/balances/{balance_id}/transactions/summary",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TransactionSummaryResponse,
+        )
+
 
 class TransactionsResourceWithRawResponse:
     def __init__(self, transactions: TransactionsResource) -> None:
@@ -405,6 +482,9 @@ class TransactionsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             transactions.list,
+        )
+        self.summary = to_raw_response_wrapper(
+            transactions.summary,
         )
 
 
@@ -418,6 +498,9 @@ class AsyncTransactionsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             transactions.list,
         )
+        self.summary = async_to_raw_response_wrapper(
+            transactions.summary,
+        )
 
 
 class TransactionsResourceWithStreamingResponse:
@@ -430,6 +513,9 @@ class TransactionsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             transactions.list,
         )
+        self.summary = to_streamed_response_wrapper(
+            transactions.summary,
+        )
 
 
 class AsyncTransactionsResourceWithStreamingResponse:
@@ -441,4 +527,7 @@ class AsyncTransactionsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             transactions.list,
+        )
+        self.summary = async_to_streamed_response_wrapper(
+            transactions.summary,
         )
