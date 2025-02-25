@@ -9,8 +9,11 @@ import pytest
 
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
-from m3ter_sdk.types import Contract
-from m3ter_sdk._utils import parse_date
+from m3ter_sdk.types import (
+    Contract,
+    ContractEndDateBillingEntitiesResponse,
+)
+from m3ter_sdk._utils import parse_date, parse_datetime
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -320,6 +323,75 @@ class TestContracts:
                 org_id="orgId",
             )
 
+    @parametrize
+    def test_method_end_date_billing_entities(self, client: M3ter) -> None:
+        contract = client.contracts.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+    @parametrize
+    def test_method_end_date_billing_entities_with_all_params(self, client: M3ter) -> None:
+        contract = client.contracts.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            apply_to_children=True,
+        )
+        assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+    @parametrize
+    def test_raw_response_end_date_billing_entities(self, client: M3ter) -> None:
+        response = client.contracts.with_raw_response.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contract = response.parse()
+        assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+    @parametrize
+    def test_streaming_response_end_date_billing_entities(self, client: M3ter) -> None:
+        with client.contracts.with_streaming_response.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contract = response.parse()
+            assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_end_date_billing_entities(self, client: M3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
+            client.contracts.with_raw_response.end_date_billing_entities(
+                id="id",
+                org_id="",
+                billing_entities=["CONTRACT"],
+                end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.contracts.with_raw_response.end_date_billing_entities(
+                id="",
+                org_id="orgId",
+                billing_entities=["CONTRACT"],
+                end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            )
+
 
 class TestAsyncContracts:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -623,4 +695,73 @@ class TestAsyncContracts:
             await async_client.contracts.with_raw_response.delete(
                 id="",
                 org_id="orgId",
+            )
+
+    @parametrize
+    async def test_method_end_date_billing_entities(self, async_client: AsyncM3ter) -> None:
+        contract = await async_client.contracts.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+    @parametrize
+    async def test_method_end_date_billing_entities_with_all_params(self, async_client: AsyncM3ter) -> None:
+        contract = await async_client.contracts.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            apply_to_children=True,
+        )
+        assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+    @parametrize
+    async def test_raw_response_end_date_billing_entities(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.contracts.with_raw_response.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contract = await response.parse()
+        assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_end_date_billing_entities(self, async_client: AsyncM3ter) -> None:
+        async with async_client.contracts.with_streaming_response.end_date_billing_entities(
+            id="id",
+            org_id="orgId",
+            billing_entities=["CONTRACT"],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contract = await response.parse()
+            assert_matches_type(ContractEndDateBillingEntitiesResponse, contract, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_end_date_billing_entities(self, async_client: AsyncM3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
+            await async_client.contracts.with_raw_response.end_date_billing_entities(
+                id="id",
+                org_id="",
+                billing_entities=["CONTRACT"],
+                end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.contracts.with_raw_response.end_date_billing_entities(
+                id="",
+                org_id="orgId",
+                billing_entities=["CONTRACT"],
+                end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             )

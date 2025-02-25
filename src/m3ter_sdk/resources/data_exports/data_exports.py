@@ -7,28 +7,64 @@ from typing_extensions import Literal, overload
 
 import httpx
 
-from ..types import data_export_create_adhoc_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
+from .jobs import (
+    JobsResource,
+    AsyncJobsResource,
+    JobsResourceWithRawResponse,
+    AsyncJobsResourceWithRawResponse,
+    JobsResourceWithStreamingResponse,
+    AsyncJobsResourceWithStreamingResponse,
+)
+from ...types import data_export_create_adhoc_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import (
     required_args,
     maybe_transform,
     async_maybe_transform,
 )
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ..._compat import cached_property
+from .schedules import (
+    SchedulesResource,
+    AsyncSchedulesResource,
+    SchedulesResourceWithRawResponse,
+    AsyncSchedulesResourceWithRawResponse,
+    SchedulesResourceWithStreamingResponse,
+    AsyncSchedulesResourceWithStreamingResponse,
+)
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.adhoc_export import AdhocExport
+from .destinations import (
+    DestinationsResource,
+    AsyncDestinationsResource,
+    DestinationsResourceWithRawResponse,
+    AsyncDestinationsResourceWithRawResponse,
+    DestinationsResourceWithStreamingResponse,
+    AsyncDestinationsResourceWithStreamingResponse,
+)
+from ..._base_client import make_request_options
+from ...types.adhoc_export import AdhocExport
 
 __all__ = ["DataExportsResource", "AsyncDataExportsResource"]
 
 
 class DataExportsResource(SyncAPIResource):
+    @cached_property
+    def destinations(self) -> DestinationsResource:
+        return DestinationsResource(self._client)
+
+    @cached_property
+    def jobs(self) -> JobsResource:
+        return JobsResource(self._client)
+
+    @cached_property
+    def schedules(self) -> SchedulesResource:
+        return SchedulesResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> DataExportsResourceWithRawResponse:
         """
@@ -420,6 +456,18 @@ class DataExportsResource(SyncAPIResource):
 
 
 class AsyncDataExportsResource(AsyncAPIResource):
+    @cached_property
+    def destinations(self) -> AsyncDestinationsResource:
+        return AsyncDestinationsResource(self._client)
+
+    @cached_property
+    def jobs(self) -> AsyncJobsResource:
+        return AsyncJobsResource(self._client)
+
+    @cached_property
+    def schedules(self) -> AsyncSchedulesResource:
+        return AsyncSchedulesResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncDataExportsResourceWithRawResponse:
         """
@@ -818,6 +866,18 @@ class DataExportsResourceWithRawResponse:
             data_exports.create_adhoc,
         )
 
+    @cached_property
+    def destinations(self) -> DestinationsResourceWithRawResponse:
+        return DestinationsResourceWithRawResponse(self._data_exports.destinations)
+
+    @cached_property
+    def jobs(self) -> JobsResourceWithRawResponse:
+        return JobsResourceWithRawResponse(self._data_exports.jobs)
+
+    @cached_property
+    def schedules(self) -> SchedulesResourceWithRawResponse:
+        return SchedulesResourceWithRawResponse(self._data_exports.schedules)
+
 
 class AsyncDataExportsResourceWithRawResponse:
     def __init__(self, data_exports: AsyncDataExportsResource) -> None:
@@ -826,6 +886,18 @@ class AsyncDataExportsResourceWithRawResponse:
         self.create_adhoc = async_to_raw_response_wrapper(
             data_exports.create_adhoc,
         )
+
+    @cached_property
+    def destinations(self) -> AsyncDestinationsResourceWithRawResponse:
+        return AsyncDestinationsResourceWithRawResponse(self._data_exports.destinations)
+
+    @cached_property
+    def jobs(self) -> AsyncJobsResourceWithRawResponse:
+        return AsyncJobsResourceWithRawResponse(self._data_exports.jobs)
+
+    @cached_property
+    def schedules(self) -> AsyncSchedulesResourceWithRawResponse:
+        return AsyncSchedulesResourceWithRawResponse(self._data_exports.schedules)
 
 
 class DataExportsResourceWithStreamingResponse:
@@ -836,6 +908,18 @@ class DataExportsResourceWithStreamingResponse:
             data_exports.create_adhoc,
         )
 
+    @cached_property
+    def destinations(self) -> DestinationsResourceWithStreamingResponse:
+        return DestinationsResourceWithStreamingResponse(self._data_exports.destinations)
+
+    @cached_property
+    def jobs(self) -> JobsResourceWithStreamingResponse:
+        return JobsResourceWithStreamingResponse(self._data_exports.jobs)
+
+    @cached_property
+    def schedules(self) -> SchedulesResourceWithStreamingResponse:
+        return SchedulesResourceWithStreamingResponse(self._data_exports.schedules)
+
 
 class AsyncDataExportsResourceWithStreamingResponse:
     def __init__(self, data_exports: AsyncDataExportsResource) -> None:
@@ -844,3 +928,15 @@ class AsyncDataExportsResourceWithStreamingResponse:
         self.create_adhoc = async_to_streamed_response_wrapper(
             data_exports.create_adhoc,
         )
+
+    @cached_property
+    def destinations(self) -> AsyncDestinationsResourceWithStreamingResponse:
+        return AsyncDestinationsResourceWithStreamingResponse(self._data_exports.destinations)
+
+    @cached_property
+    def jobs(self) -> AsyncJobsResourceWithStreamingResponse:
+        return AsyncJobsResourceWithStreamingResponse(self._data_exports.jobs)
+
+    @cached_property
+    def schedules(self) -> AsyncSchedulesResourceWithStreamingResponse:
+        return AsyncSchedulesResourceWithStreamingResponse(self._data_exports.schedules)
