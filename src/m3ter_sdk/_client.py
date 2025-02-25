@@ -29,29 +29,38 @@ from ._models import FinalRequestOptions
 from ._version import __version__
 from .resources import (
     plans,
+    events,
     meters,
     accounts,
     counters,
     pricings,
     products,
+    webhooks,
+    bill_jobs,
     contracts,
     currencies,
     bill_config,
     commitments,
     plan_groups,
     aggregations,
-    data_exports,
     account_plans,
+    custom_fields,
     debit_reasons,
     authentication,
     credit_reasons,
     plan_templates,
+    resource_groups,
     counter_pricings,
     plan_group_links,
+    external_mappings,
     transaction_types,
     counter_adjustments,
     organization_config,
+    permission_policies,
     compound_aggregations,
+    integration_configurations,
+    notification_configurations,
+    scheduled_event_configurations,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import M3terError, APIStatusError
@@ -60,7 +69,11 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.bills import bills
+from .resources.usage import usage
+from .resources.users import users
 from .resources.balances import balances
+from .resources.data_exports import data_exports
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "M3ter", "AsyncM3ter", "Client", "AsyncClient"]
 
@@ -73,8 +86,10 @@ class M3ter(SyncAPIClient):
     account_plans: account_plans.AccountPlansResource
     aggregations: aggregations.AggregationsResource
     balances: balances.BalancesResource
+    bills: bills.BillsResource
     bill_config: bill_config.BillConfigResource
     commitments: commitments.CommitmentsResource
+    bill_jobs: bill_jobs.BillJobsResource
     compound_aggregations: compound_aggregations.CompoundAggregationsResource
     contracts: contracts.ContractsResource
     counters: counters.CountersResource
@@ -82,17 +97,28 @@ class M3ter(SyncAPIClient):
     counter_pricings: counter_pricings.CounterPricingsResource
     credit_reasons: credit_reasons.CreditReasonsResource
     currencies: currencies.CurrenciesResource
+    custom_fields: custom_fields.CustomFieldsResource
+    data_exports: data_exports.DataExportsResource
     debit_reasons: debit_reasons.DebitReasonsResource
+    events: events.EventsResource
+    external_mappings: external_mappings.ExternalMappingsResource
+    integration_configurations: integration_configurations.IntegrationConfigurationsResource
     meters: meters.MetersResource
+    notification_configurations: notification_configurations.NotificationConfigurationsResource
     organization_config: organization_config.OrganizationConfigResource
+    permission_policies: permission_policies.PermissionPoliciesResource
     plans: plans.PlansResource
     plan_groups: plan_groups.PlanGroupsResource
     plan_group_links: plan_group_links.PlanGroupLinksResource
     plan_templates: plan_templates.PlanTemplatesResource
     pricings: pricings.PricingsResource
     products: products.ProductsResource
+    resource_groups: resource_groups.ResourceGroupsResource
+    scheduled_event_configurations: scheduled_event_configurations.ScheduledEventConfigurationsResource
     transaction_types: transaction_types.TransactionTypesResource
-    data_exports: data_exports.DataExportsResource
+    usage: usage.UsageResource
+    users: users.UsersResource
+    webhooks: webhooks.WebhooksResource
     with_raw_response: M3terWithRawResponse
     with_streaming_response: M3terWithStreamedResponse
 
@@ -178,8 +204,10 @@ class M3ter(SyncAPIClient):
         self.account_plans = account_plans.AccountPlansResource(self)
         self.aggregations = aggregations.AggregationsResource(self)
         self.balances = balances.BalancesResource(self)
+        self.bills = bills.BillsResource(self)
         self.bill_config = bill_config.BillConfigResource(self)
         self.commitments = commitments.CommitmentsResource(self)
+        self.bill_jobs = bill_jobs.BillJobsResource(self)
         self.compound_aggregations = compound_aggregations.CompoundAggregationsResource(self)
         self.contracts = contracts.ContractsResource(self)
         self.counters = counters.CountersResource(self)
@@ -187,17 +215,28 @@ class M3ter(SyncAPIClient):
         self.counter_pricings = counter_pricings.CounterPricingsResource(self)
         self.credit_reasons = credit_reasons.CreditReasonsResource(self)
         self.currencies = currencies.CurrenciesResource(self)
+        self.custom_fields = custom_fields.CustomFieldsResource(self)
+        self.data_exports = data_exports.DataExportsResource(self)
         self.debit_reasons = debit_reasons.DebitReasonsResource(self)
+        self.events = events.EventsResource(self)
+        self.external_mappings = external_mappings.ExternalMappingsResource(self)
+        self.integration_configurations = integration_configurations.IntegrationConfigurationsResource(self)
         self.meters = meters.MetersResource(self)
+        self.notification_configurations = notification_configurations.NotificationConfigurationsResource(self)
         self.organization_config = organization_config.OrganizationConfigResource(self)
+        self.permission_policies = permission_policies.PermissionPoliciesResource(self)
         self.plans = plans.PlansResource(self)
         self.plan_groups = plan_groups.PlanGroupsResource(self)
         self.plan_group_links = plan_group_links.PlanGroupLinksResource(self)
         self.plan_templates = plan_templates.PlanTemplatesResource(self)
         self.pricings = pricings.PricingsResource(self)
         self.products = products.ProductsResource(self)
+        self.resource_groups = resource_groups.ResourceGroupsResource(self)
+        self.scheduled_event_configurations = scheduled_event_configurations.ScheduledEventConfigurationsResource(self)
         self.transaction_types = transaction_types.TransactionTypesResource(self)
-        self.data_exports = data_exports.DataExportsResource(self)
+        self.usage = usage.UsageResource(self)
+        self.users = users.UsersResource(self)
+        self.webhooks = webhooks.WebhooksResource(self)
         self.with_raw_response = M3terWithRawResponse(self)
         self.with_streaming_response = M3terWithStreamedResponse(self)
 
@@ -356,8 +395,10 @@ class AsyncM3ter(AsyncAPIClient):
     account_plans: account_plans.AsyncAccountPlansResource
     aggregations: aggregations.AsyncAggregationsResource
     balances: balances.AsyncBalancesResource
+    bills: bills.AsyncBillsResource
     bill_config: bill_config.AsyncBillConfigResource
     commitments: commitments.AsyncCommitmentsResource
+    bill_jobs: bill_jobs.AsyncBillJobsResource
     compound_aggregations: compound_aggregations.AsyncCompoundAggregationsResource
     contracts: contracts.AsyncContractsResource
     counters: counters.AsyncCountersResource
@@ -365,17 +406,28 @@ class AsyncM3ter(AsyncAPIClient):
     counter_pricings: counter_pricings.AsyncCounterPricingsResource
     credit_reasons: credit_reasons.AsyncCreditReasonsResource
     currencies: currencies.AsyncCurrenciesResource
+    custom_fields: custom_fields.AsyncCustomFieldsResource
+    data_exports: data_exports.AsyncDataExportsResource
     debit_reasons: debit_reasons.AsyncDebitReasonsResource
+    events: events.AsyncEventsResource
+    external_mappings: external_mappings.AsyncExternalMappingsResource
+    integration_configurations: integration_configurations.AsyncIntegrationConfigurationsResource
     meters: meters.AsyncMetersResource
+    notification_configurations: notification_configurations.AsyncNotificationConfigurationsResource
     organization_config: organization_config.AsyncOrganizationConfigResource
+    permission_policies: permission_policies.AsyncPermissionPoliciesResource
     plans: plans.AsyncPlansResource
     plan_groups: plan_groups.AsyncPlanGroupsResource
     plan_group_links: plan_group_links.AsyncPlanGroupLinksResource
     plan_templates: plan_templates.AsyncPlanTemplatesResource
     pricings: pricings.AsyncPricingsResource
     products: products.AsyncProductsResource
+    resource_groups: resource_groups.AsyncResourceGroupsResource
+    scheduled_event_configurations: scheduled_event_configurations.AsyncScheduledEventConfigurationsResource
     transaction_types: transaction_types.AsyncTransactionTypesResource
-    data_exports: data_exports.AsyncDataExportsResource
+    usage: usage.AsyncUsageResource
+    users: users.AsyncUsersResource
+    webhooks: webhooks.AsyncWebhooksResource
     with_raw_response: AsyncM3terWithRawResponse
     with_streaming_response: AsyncM3terWithStreamedResponse
 
@@ -461,8 +513,10 @@ class AsyncM3ter(AsyncAPIClient):
         self.account_plans = account_plans.AsyncAccountPlansResource(self)
         self.aggregations = aggregations.AsyncAggregationsResource(self)
         self.balances = balances.AsyncBalancesResource(self)
+        self.bills = bills.AsyncBillsResource(self)
         self.bill_config = bill_config.AsyncBillConfigResource(self)
         self.commitments = commitments.AsyncCommitmentsResource(self)
+        self.bill_jobs = bill_jobs.AsyncBillJobsResource(self)
         self.compound_aggregations = compound_aggregations.AsyncCompoundAggregationsResource(self)
         self.contracts = contracts.AsyncContractsResource(self)
         self.counters = counters.AsyncCountersResource(self)
@@ -470,17 +524,30 @@ class AsyncM3ter(AsyncAPIClient):
         self.counter_pricings = counter_pricings.AsyncCounterPricingsResource(self)
         self.credit_reasons = credit_reasons.AsyncCreditReasonsResource(self)
         self.currencies = currencies.AsyncCurrenciesResource(self)
+        self.custom_fields = custom_fields.AsyncCustomFieldsResource(self)
+        self.data_exports = data_exports.AsyncDataExportsResource(self)
         self.debit_reasons = debit_reasons.AsyncDebitReasonsResource(self)
+        self.events = events.AsyncEventsResource(self)
+        self.external_mappings = external_mappings.AsyncExternalMappingsResource(self)
+        self.integration_configurations = integration_configurations.AsyncIntegrationConfigurationsResource(self)
         self.meters = meters.AsyncMetersResource(self)
+        self.notification_configurations = notification_configurations.AsyncNotificationConfigurationsResource(self)
         self.organization_config = organization_config.AsyncOrganizationConfigResource(self)
+        self.permission_policies = permission_policies.AsyncPermissionPoliciesResource(self)
         self.plans = plans.AsyncPlansResource(self)
         self.plan_groups = plan_groups.AsyncPlanGroupsResource(self)
         self.plan_group_links = plan_group_links.AsyncPlanGroupLinksResource(self)
         self.plan_templates = plan_templates.AsyncPlanTemplatesResource(self)
         self.pricings = pricings.AsyncPricingsResource(self)
         self.products = products.AsyncProductsResource(self)
+        self.resource_groups = resource_groups.AsyncResourceGroupsResource(self)
+        self.scheduled_event_configurations = scheduled_event_configurations.AsyncScheduledEventConfigurationsResource(
+            self
+        )
         self.transaction_types = transaction_types.AsyncTransactionTypesResource(self)
-        self.data_exports = data_exports.AsyncDataExportsResource(self)
+        self.usage = usage.AsyncUsageResource(self)
+        self.users = users.AsyncUsersResource(self)
+        self.webhooks = webhooks.AsyncWebhooksResource(self)
         self.with_raw_response = AsyncM3terWithRawResponse(self)
         self.with_streaming_response = AsyncM3terWithStreamedResponse(self)
 
@@ -624,8 +691,10 @@ class M3terWithRawResponse:
         self.account_plans = account_plans.AccountPlansResourceWithRawResponse(client.account_plans)
         self.aggregations = aggregations.AggregationsResourceWithRawResponse(client.aggregations)
         self.balances = balances.BalancesResourceWithRawResponse(client.balances)
+        self.bills = bills.BillsResourceWithRawResponse(client.bills)
         self.bill_config = bill_config.BillConfigResourceWithRawResponse(client.bill_config)
         self.commitments = commitments.CommitmentsResourceWithRawResponse(client.commitments)
+        self.bill_jobs = bill_jobs.BillJobsResourceWithRawResponse(client.bill_jobs)
         self.compound_aggregations = compound_aggregations.CompoundAggregationsResourceWithRawResponse(
             client.compound_aggregations
         )
@@ -637,10 +706,25 @@ class M3terWithRawResponse:
         self.counter_pricings = counter_pricings.CounterPricingsResourceWithRawResponse(client.counter_pricings)
         self.credit_reasons = credit_reasons.CreditReasonsResourceWithRawResponse(client.credit_reasons)
         self.currencies = currencies.CurrenciesResourceWithRawResponse(client.currencies)
+        self.custom_fields = custom_fields.CustomFieldsResourceWithRawResponse(client.custom_fields)
+        self.data_exports = data_exports.DataExportsResourceWithRawResponse(client.data_exports)
         self.debit_reasons = debit_reasons.DebitReasonsResourceWithRawResponse(client.debit_reasons)
+        self.events = events.EventsResourceWithRawResponse(client.events)
+        self.external_mappings = external_mappings.ExternalMappingsResourceWithRawResponse(client.external_mappings)
+        self.integration_configurations = integration_configurations.IntegrationConfigurationsResourceWithRawResponse(
+            client.integration_configurations
+        )
         self.meters = meters.MetersResourceWithRawResponse(client.meters)
+        self.notification_configurations = (
+            notification_configurations.NotificationConfigurationsResourceWithRawResponse(
+                client.notification_configurations
+            )
+        )
         self.organization_config = organization_config.OrganizationConfigResourceWithRawResponse(
             client.organization_config
+        )
+        self.permission_policies = permission_policies.PermissionPoliciesResourceWithRawResponse(
+            client.permission_policies
         )
         self.plans = plans.PlansResourceWithRawResponse(client.plans)
         self.plan_groups = plan_groups.PlanGroupsResourceWithRawResponse(client.plan_groups)
@@ -648,8 +732,16 @@ class M3terWithRawResponse:
         self.plan_templates = plan_templates.PlanTemplatesResourceWithRawResponse(client.plan_templates)
         self.pricings = pricings.PricingsResourceWithRawResponse(client.pricings)
         self.products = products.ProductsResourceWithRawResponse(client.products)
+        self.resource_groups = resource_groups.ResourceGroupsResourceWithRawResponse(client.resource_groups)
+        self.scheduled_event_configurations = (
+            scheduled_event_configurations.ScheduledEventConfigurationsResourceWithRawResponse(
+                client.scheduled_event_configurations
+            )
+        )
         self.transaction_types = transaction_types.TransactionTypesResourceWithRawResponse(client.transaction_types)
-        self.data_exports = data_exports.DataExportsResourceWithRawResponse(client.data_exports)
+        self.usage = usage.UsageResourceWithRawResponse(client.usage)
+        self.users = users.UsersResourceWithRawResponse(client.users)
+        self.webhooks = webhooks.WebhooksResourceWithRawResponse(client.webhooks)
 
 
 class AsyncM3terWithRawResponse:
@@ -659,8 +751,10 @@ class AsyncM3terWithRawResponse:
         self.account_plans = account_plans.AsyncAccountPlansResourceWithRawResponse(client.account_plans)
         self.aggregations = aggregations.AsyncAggregationsResourceWithRawResponse(client.aggregations)
         self.balances = balances.AsyncBalancesResourceWithRawResponse(client.balances)
+        self.bills = bills.AsyncBillsResourceWithRawResponse(client.bills)
         self.bill_config = bill_config.AsyncBillConfigResourceWithRawResponse(client.bill_config)
         self.commitments = commitments.AsyncCommitmentsResourceWithRawResponse(client.commitments)
+        self.bill_jobs = bill_jobs.AsyncBillJobsResourceWithRawResponse(client.bill_jobs)
         self.compound_aggregations = compound_aggregations.AsyncCompoundAggregationsResourceWithRawResponse(
             client.compound_aggregations
         )
@@ -672,10 +766,29 @@ class AsyncM3terWithRawResponse:
         self.counter_pricings = counter_pricings.AsyncCounterPricingsResourceWithRawResponse(client.counter_pricings)
         self.credit_reasons = credit_reasons.AsyncCreditReasonsResourceWithRawResponse(client.credit_reasons)
         self.currencies = currencies.AsyncCurrenciesResourceWithRawResponse(client.currencies)
+        self.custom_fields = custom_fields.AsyncCustomFieldsResourceWithRawResponse(client.custom_fields)
+        self.data_exports = data_exports.AsyncDataExportsResourceWithRawResponse(client.data_exports)
         self.debit_reasons = debit_reasons.AsyncDebitReasonsResourceWithRawResponse(client.debit_reasons)
+        self.events = events.AsyncEventsResourceWithRawResponse(client.events)
+        self.external_mappings = external_mappings.AsyncExternalMappingsResourceWithRawResponse(
+            client.external_mappings
+        )
+        self.integration_configurations = (
+            integration_configurations.AsyncIntegrationConfigurationsResourceWithRawResponse(
+                client.integration_configurations
+            )
+        )
         self.meters = meters.AsyncMetersResourceWithRawResponse(client.meters)
+        self.notification_configurations = (
+            notification_configurations.AsyncNotificationConfigurationsResourceWithRawResponse(
+                client.notification_configurations
+            )
+        )
         self.organization_config = organization_config.AsyncOrganizationConfigResourceWithRawResponse(
             client.organization_config
+        )
+        self.permission_policies = permission_policies.AsyncPermissionPoliciesResourceWithRawResponse(
+            client.permission_policies
         )
         self.plans = plans.AsyncPlansResourceWithRawResponse(client.plans)
         self.plan_groups = plan_groups.AsyncPlanGroupsResourceWithRawResponse(client.plan_groups)
@@ -683,10 +796,18 @@ class AsyncM3terWithRawResponse:
         self.plan_templates = plan_templates.AsyncPlanTemplatesResourceWithRawResponse(client.plan_templates)
         self.pricings = pricings.AsyncPricingsResourceWithRawResponse(client.pricings)
         self.products = products.AsyncProductsResourceWithRawResponse(client.products)
+        self.resource_groups = resource_groups.AsyncResourceGroupsResourceWithRawResponse(client.resource_groups)
+        self.scheduled_event_configurations = (
+            scheduled_event_configurations.AsyncScheduledEventConfigurationsResourceWithRawResponse(
+                client.scheduled_event_configurations
+            )
+        )
         self.transaction_types = transaction_types.AsyncTransactionTypesResourceWithRawResponse(
             client.transaction_types
         )
-        self.data_exports = data_exports.AsyncDataExportsResourceWithRawResponse(client.data_exports)
+        self.usage = usage.AsyncUsageResourceWithRawResponse(client.usage)
+        self.users = users.AsyncUsersResourceWithRawResponse(client.users)
+        self.webhooks = webhooks.AsyncWebhooksResourceWithRawResponse(client.webhooks)
 
 
 class M3terWithStreamedResponse:
@@ -696,8 +817,10 @@ class M3terWithStreamedResponse:
         self.account_plans = account_plans.AccountPlansResourceWithStreamingResponse(client.account_plans)
         self.aggregations = aggregations.AggregationsResourceWithStreamingResponse(client.aggregations)
         self.balances = balances.BalancesResourceWithStreamingResponse(client.balances)
+        self.bills = bills.BillsResourceWithStreamingResponse(client.bills)
         self.bill_config = bill_config.BillConfigResourceWithStreamingResponse(client.bill_config)
         self.commitments = commitments.CommitmentsResourceWithStreamingResponse(client.commitments)
+        self.bill_jobs = bill_jobs.BillJobsResourceWithStreamingResponse(client.bill_jobs)
         self.compound_aggregations = compound_aggregations.CompoundAggregationsResourceWithStreamingResponse(
             client.compound_aggregations
         )
@@ -709,10 +832,29 @@ class M3terWithStreamedResponse:
         self.counter_pricings = counter_pricings.CounterPricingsResourceWithStreamingResponse(client.counter_pricings)
         self.credit_reasons = credit_reasons.CreditReasonsResourceWithStreamingResponse(client.credit_reasons)
         self.currencies = currencies.CurrenciesResourceWithStreamingResponse(client.currencies)
+        self.custom_fields = custom_fields.CustomFieldsResourceWithStreamingResponse(client.custom_fields)
+        self.data_exports = data_exports.DataExportsResourceWithStreamingResponse(client.data_exports)
         self.debit_reasons = debit_reasons.DebitReasonsResourceWithStreamingResponse(client.debit_reasons)
+        self.events = events.EventsResourceWithStreamingResponse(client.events)
+        self.external_mappings = external_mappings.ExternalMappingsResourceWithStreamingResponse(
+            client.external_mappings
+        )
+        self.integration_configurations = (
+            integration_configurations.IntegrationConfigurationsResourceWithStreamingResponse(
+                client.integration_configurations
+            )
+        )
         self.meters = meters.MetersResourceWithStreamingResponse(client.meters)
+        self.notification_configurations = (
+            notification_configurations.NotificationConfigurationsResourceWithStreamingResponse(
+                client.notification_configurations
+            )
+        )
         self.organization_config = organization_config.OrganizationConfigResourceWithStreamingResponse(
             client.organization_config
+        )
+        self.permission_policies = permission_policies.PermissionPoliciesResourceWithStreamingResponse(
+            client.permission_policies
         )
         self.plans = plans.PlansResourceWithStreamingResponse(client.plans)
         self.plan_groups = plan_groups.PlanGroupsResourceWithStreamingResponse(client.plan_groups)
@@ -720,10 +862,18 @@ class M3terWithStreamedResponse:
         self.plan_templates = plan_templates.PlanTemplatesResourceWithStreamingResponse(client.plan_templates)
         self.pricings = pricings.PricingsResourceWithStreamingResponse(client.pricings)
         self.products = products.ProductsResourceWithStreamingResponse(client.products)
+        self.resource_groups = resource_groups.ResourceGroupsResourceWithStreamingResponse(client.resource_groups)
+        self.scheduled_event_configurations = (
+            scheduled_event_configurations.ScheduledEventConfigurationsResourceWithStreamingResponse(
+                client.scheduled_event_configurations
+            )
+        )
         self.transaction_types = transaction_types.TransactionTypesResourceWithStreamingResponse(
             client.transaction_types
         )
-        self.data_exports = data_exports.DataExportsResourceWithStreamingResponse(client.data_exports)
+        self.usage = usage.UsageResourceWithStreamingResponse(client.usage)
+        self.users = users.UsersResourceWithStreamingResponse(client.users)
+        self.webhooks = webhooks.WebhooksResourceWithStreamingResponse(client.webhooks)
 
 
 class AsyncM3terWithStreamedResponse:
@@ -733,8 +883,10 @@ class AsyncM3terWithStreamedResponse:
         self.account_plans = account_plans.AsyncAccountPlansResourceWithStreamingResponse(client.account_plans)
         self.aggregations = aggregations.AsyncAggregationsResourceWithStreamingResponse(client.aggregations)
         self.balances = balances.AsyncBalancesResourceWithStreamingResponse(client.balances)
+        self.bills = bills.AsyncBillsResourceWithStreamingResponse(client.bills)
         self.bill_config = bill_config.AsyncBillConfigResourceWithStreamingResponse(client.bill_config)
         self.commitments = commitments.AsyncCommitmentsResourceWithStreamingResponse(client.commitments)
+        self.bill_jobs = bill_jobs.AsyncBillJobsResourceWithStreamingResponse(client.bill_jobs)
         self.compound_aggregations = compound_aggregations.AsyncCompoundAggregationsResourceWithStreamingResponse(
             client.compound_aggregations
         )
@@ -748,10 +900,29 @@ class AsyncM3terWithStreamedResponse:
         )
         self.credit_reasons = credit_reasons.AsyncCreditReasonsResourceWithStreamingResponse(client.credit_reasons)
         self.currencies = currencies.AsyncCurrenciesResourceWithStreamingResponse(client.currencies)
+        self.custom_fields = custom_fields.AsyncCustomFieldsResourceWithStreamingResponse(client.custom_fields)
+        self.data_exports = data_exports.AsyncDataExportsResourceWithStreamingResponse(client.data_exports)
         self.debit_reasons = debit_reasons.AsyncDebitReasonsResourceWithStreamingResponse(client.debit_reasons)
+        self.events = events.AsyncEventsResourceWithStreamingResponse(client.events)
+        self.external_mappings = external_mappings.AsyncExternalMappingsResourceWithStreamingResponse(
+            client.external_mappings
+        )
+        self.integration_configurations = (
+            integration_configurations.AsyncIntegrationConfigurationsResourceWithStreamingResponse(
+                client.integration_configurations
+            )
+        )
         self.meters = meters.AsyncMetersResourceWithStreamingResponse(client.meters)
+        self.notification_configurations = (
+            notification_configurations.AsyncNotificationConfigurationsResourceWithStreamingResponse(
+                client.notification_configurations
+            )
+        )
         self.organization_config = organization_config.AsyncOrganizationConfigResourceWithStreamingResponse(
             client.organization_config
+        )
+        self.permission_policies = permission_policies.AsyncPermissionPoliciesResourceWithStreamingResponse(
+            client.permission_policies
         )
         self.plans = plans.AsyncPlansResourceWithStreamingResponse(client.plans)
         self.plan_groups = plan_groups.AsyncPlanGroupsResourceWithStreamingResponse(client.plan_groups)
@@ -761,10 +932,18 @@ class AsyncM3terWithStreamedResponse:
         self.plan_templates = plan_templates.AsyncPlanTemplatesResourceWithStreamingResponse(client.plan_templates)
         self.pricings = pricings.AsyncPricingsResourceWithStreamingResponse(client.pricings)
         self.products = products.AsyncProductsResourceWithStreamingResponse(client.products)
+        self.resource_groups = resource_groups.AsyncResourceGroupsResourceWithStreamingResponse(client.resource_groups)
+        self.scheduled_event_configurations = (
+            scheduled_event_configurations.AsyncScheduledEventConfigurationsResourceWithStreamingResponse(
+                client.scheduled_event_configurations
+            )
+        )
         self.transaction_types = transaction_types.AsyncTransactionTypesResourceWithStreamingResponse(
             client.transaction_types
         )
-        self.data_exports = data_exports.AsyncDataExportsResourceWithStreamingResponse(client.data_exports)
+        self.usage = usage.AsyncUsageResourceWithStreamingResponse(client.usage)
+        self.users = users.AsyncUsersResourceWithStreamingResponse(client.users)
+        self.webhooks = webhooks.AsyncWebhooksResourceWithStreamingResponse(client.webhooks)
 
 
 Client = M3ter
