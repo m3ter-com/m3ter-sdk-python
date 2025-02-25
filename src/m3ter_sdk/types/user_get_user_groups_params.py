@@ -6,10 +6,10 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["UserListUserGroupsParams"]
+__all__ = ["UserGetUserGroupsParams"]
 
 
-class UserListUserGroupsParams(TypedDict, total=False):
+class UserGetUserGroupsParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

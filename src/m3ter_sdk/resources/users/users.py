@@ -10,8 +10,8 @@ import httpx
 from ...types import (
     user_list_params,
     user_update_params,
-    user_list_permissions_params,
-    user_list_user_groups_params,
+    user_get_permissions_params,
+    user_get_user_groups_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
@@ -242,7 +242,7 @@ class UsersResource(SyncAPIResource):
             model=User,
         )
 
-    def list_permissions(
+    def get_permissions(
         self,
         id: str,
         *,
@@ -294,13 +294,13 @@ class UsersResource(SyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    user_list_permissions_params.UserListPermissionsParams,
+                    user_get_permissions_params.UserGetPermissionsParams,
                 ),
             ),
             cast_to=PermissionPolicy,
         )
 
-    def list_user_groups(
+    def get_user_groups(
         self,
         id: str,
         *,
@@ -373,7 +373,7 @@ class UsersResource(SyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    user_list_user_groups_params.UserListUserGroupsParams,
+                    user_get_user_groups_params.UserGetUserGroupsParams,
                 ),
             ),
             cast_to=ResourceGroup,
@@ -652,7 +652,7 @@ class AsyncUsersResource(AsyncAPIResource):
             model=User,
         )
 
-    async def list_permissions(
+    async def get_permissions(
         self,
         id: str,
         *,
@@ -704,13 +704,13 @@ class AsyncUsersResource(AsyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    user_list_permissions_params.UserListPermissionsParams,
+                    user_get_permissions_params.UserGetPermissionsParams,
                 ),
             ),
             cast_to=PermissionPolicy,
         )
 
-    async def list_user_groups(
+    async def get_user_groups(
         self,
         id: str,
         *,
@@ -783,7 +783,7 @@ class AsyncUsersResource(AsyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    user_list_user_groups_params.UserListUserGroupsParams,
+                    user_get_user_groups_params.UserGetUserGroupsParams,
                 ),
             ),
             cast_to=ResourceGroup,
@@ -877,11 +877,11 @@ class UsersResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             users.list,
         )
-        self.list_permissions = to_raw_response_wrapper(
-            users.list_permissions,
+        self.get_permissions = to_raw_response_wrapper(
+            users.get_permissions,
         )
-        self.list_user_groups = to_raw_response_wrapper(
-            users.list_user_groups,
+        self.get_user_groups = to_raw_response_wrapper(
+            users.get_user_groups,
         )
         self.me = to_raw_response_wrapper(
             users.me,
@@ -908,11 +908,11 @@ class AsyncUsersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             users.list,
         )
-        self.list_permissions = async_to_raw_response_wrapper(
-            users.list_permissions,
+        self.get_permissions = async_to_raw_response_wrapper(
+            users.get_permissions,
         )
-        self.list_user_groups = async_to_raw_response_wrapper(
-            users.list_user_groups,
+        self.get_user_groups = async_to_raw_response_wrapper(
+            users.get_user_groups,
         )
         self.me = async_to_raw_response_wrapper(
             users.me,
@@ -939,11 +939,11 @@ class UsersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             users.list,
         )
-        self.list_permissions = to_streamed_response_wrapper(
-            users.list_permissions,
+        self.get_permissions = to_streamed_response_wrapper(
+            users.get_permissions,
         )
-        self.list_user_groups = to_streamed_response_wrapper(
-            users.list_user_groups,
+        self.get_user_groups = to_streamed_response_wrapper(
+            users.get_user_groups,
         )
         self.me = to_streamed_response_wrapper(
             users.me,
@@ -970,11 +970,11 @@ class AsyncUsersResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             users.list,
         )
-        self.list_permissions = async_to_streamed_response_wrapper(
-            users.list_permissions,
+        self.get_permissions = async_to_streamed_response_wrapper(
+            users.get_permissions,
         )
-        self.list_user_groups = async_to_streamed_response_wrapper(
-            users.list_user_groups,
+        self.get_user_groups = async_to_streamed_response_wrapper(
+            users.get_user_groups,
         )
         self.me = async_to_streamed_response_wrapper(
             users.me,

@@ -31,8 +31,8 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.resource_group import ResourceGroup
+from ..types.permission_policy import PermissionPolicy
 from ..types.resource_group_list_contents_response import ResourceGroupListContentsResponse
-from ..types.resource_group_list_permissions_response import ResourceGroupListPermissionsResponse
 
 __all__ = ["ResourceGroupsResource", "AsyncResourceGroupsResource"]
 
@@ -385,7 +385,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroupListContentsResponse:
+    ) -> SyncCursor[ResourceGroupListContentsResponse]:
         """
         Retrieve a list of items for a ResourceGroup
 
@@ -410,8 +410,9 @@ class ResourceGroupsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
-        return self._post(
+        return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/contents",
+            page=SyncCursor[ResourceGroupListContentsResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -425,7 +426,8 @@ class ResourceGroupsResource(SyncAPIResource):
                     resource_group_list_contents_params.ResourceGroupListContentsParams,
                 ),
             ),
-            cast_to=ResourceGroupListContentsResponse,
+            model=ResourceGroupListContentsResponse,
+            method="post",
         )
 
     def list_permissions(
@@ -442,7 +444,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroupListPermissionsResponse:
+    ) -> SyncCursor[PermissionPolicy]:
         """
         Retrieve a list of permission policies for a ResourceGroup
 
@@ -467,8 +469,9 @@ class ResourceGroupsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
+            page=SyncCursor[PermissionPolicy],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -482,7 +485,7 @@ class ResourceGroupsResource(SyncAPIResource):
                     resource_group_list_permissions_params.ResourceGroupListPermissionsParams,
                 ),
             ),
-            cast_to=ResourceGroupListPermissionsResponse,
+            model=PermissionPolicy,
         )
 
     def remove_resource(
@@ -892,7 +895,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             cast_to=ResourceGroup,
         )
 
-    async def list_contents(
+    def list_contents(
         self,
         resource_group_id: str,
         *,
@@ -906,7 +909,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroupListContentsResponse:
+    ) -> AsyncPaginator[ResourceGroupListContentsResponse, AsyncCursor[ResourceGroupListContentsResponse]]:
         """
         Retrieve a list of items for a ResourceGroup
 
@@ -931,14 +934,15 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
-        return await self._post(
+        return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/contents",
+            page=AsyncCursor[ResourceGroupListContentsResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "next_token": next_token,
                         "page_size": page_size,
@@ -946,10 +950,11 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
                     resource_group_list_contents_params.ResourceGroupListContentsParams,
                 ),
             ),
-            cast_to=ResourceGroupListContentsResponse,
+            model=ResourceGroupListContentsResponse,
+            method="post",
         )
 
-    async def list_permissions(
+    def list_permissions(
         self,
         resource_group_id: str,
         *,
@@ -963,7 +968,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroupListPermissionsResponse:
+    ) -> AsyncPaginator[PermissionPolicy, AsyncCursor[PermissionPolicy]]:
         """
         Retrieve a list of permission policies for a ResourceGroup
 
@@ -988,14 +993,15 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
+            page=AsyncCursor[PermissionPolicy],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "next_token": next_token,
                         "page_size": page_size,
@@ -1003,7 +1009,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
                     resource_group_list_permissions_params.ResourceGroupListPermissionsParams,
                 ),
             ),
-            cast_to=ResourceGroupListPermissionsResponse,
+            model=PermissionPolicy,
         )
 
     async def remove_resource(

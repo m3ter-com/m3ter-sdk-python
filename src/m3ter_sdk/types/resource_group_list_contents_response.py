@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ResourceGroupListContentsResponse", "Data"]
+__all__ = ["ResourceGroupListContentsResponse"]
 
 
-class Data(BaseModel):
+class ResourceGroupListContentsResponse(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this item for the resource group."""
 
@@ -28,9 +28,3 @@ class Data(BaseModel):
     """The UUID of the item."""
 
     target_type: Optional[Literal["ITEM", "GROUP"]] = FieldInfo(alias="targetType", default=None)
-
-
-class ResourceGroupListContentsResponse(BaseModel):
-    data: Optional[List[Data]] = None
-
-    next_token: Optional[str] = FieldInfo(alias="nextToken", default=None)

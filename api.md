@@ -26,7 +26,7 @@ Methods:
 - <code title="get /organizations/{orgId}/accounts">client.accounts.<a href="./src/m3ter_sdk/resources/accounts.py">list</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/account_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/account.py">SyncCursor[Account]</a></code>
 - <code title="delete /organizations/{orgId}/accounts/{id}">client.accounts.<a href="./src/m3ter_sdk/resources/accounts.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/account.py">Account</a></code>
 - <code title="put /organizations/{orgId}/accounts/{id}/enddatebillingentities">client.accounts.<a href="./src/m3ter_sdk/resources/accounts.py">end_date_billing_entities</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/account_end_date_billing_entities_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/account_end_date_billing_entities_response.py">AccountEndDateBillingEntitiesResponse</a></code>
-- <code title="get /organizations/{orgId}/accounts/{id}/children">client.accounts.<a href="./src/m3ter_sdk/resources/accounts.py">list_children</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/account_list_children_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/account.py">Account</a></code>
+- <code title="get /organizations/{orgId}/accounts/{id}/children">client.accounts.<a href="./src/m3ter_sdk/resources/accounts.py">get_children</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/account_get_children_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/account.py">Account</a></code>
 - <code title="get /organizations/{orgId}/accounts/search">client.accounts.<a href="./src/m3ter_sdk/resources/accounts.py">search</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/account_search_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/account_search_response.py">AccountSearchResponse</a></code>
 
 # AccountPlans
@@ -435,11 +435,7 @@ Methods:
 Types:
 
 ```python
-from m3ter_sdk.types import (
-    ExternalMapping,
-    ExternalMappingListByExternalEntityResponse,
-    ExternalMappingListByM3terEntityResponse,
-)
+from m3ter_sdk.types import ExternalMapping
 ```
 
 Methods:
@@ -449,8 +445,8 @@ Methods:
 - <code title="put /organizations/{orgId}/externalmappings/{id}">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/external_mapping_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/external_mapping.py">ExternalMapping</a></code>
 - <code title="get /organizations/{orgId}/externalmappings">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">list</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/external_mapping_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/external_mapping.py">SyncCursor[ExternalMapping]</a></code>
 - <code title="delete /organizations/{orgId}/externalmappings/{id}">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/external_mapping.py">ExternalMapping</a></code>
-- <code title="get /organizations/{orgId}/externalmappings/externalid/{system}/{externalTable}/{externalId}">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">list_by_external_entity</a>(external_id, \*, org_id, system, external_table, \*\*<a href="src/m3ter_sdk/types/external_mapping_list_by_external_entity_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/external_mapping_list_by_external_entity_response.py">ExternalMappingListByExternalEntityResponse</a></code>
-- <code title="get /organizations/{orgId}/externalmappings/external/{entity}/{m3terId}">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">list_by_m3ter_entity</a>(m3ter_id, \*, org_id, entity, \*\*<a href="src/m3ter_sdk/types/external_mapping_list_by_m3ter_entity_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/external_mapping_list_by_m3ter_entity_response.py">ExternalMappingListByM3terEntityResponse</a></code>
+- <code title="get /organizations/{orgId}/externalmappings/externalid/{system}/{externalTable}/{externalId}">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">list_by_external_entity</a>(external_id, \*, org_id, system, external_table, \*\*<a href="src/m3ter_sdk/types/external_mapping_list_by_external_entity_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/external_mapping.py">SyncCursor[ExternalMapping]</a></code>
+- <code title="get /organizations/{orgId}/externalmappings/external/{entity}/{m3terId}">client.external_mappings.<a href="./src/m3ter_sdk/resources/external_mappings.py">list_by_m3ter_entity</a>(m3ter_id, \*, org_id, entity, \*\*<a href="src/m3ter_sdk/types/external_mapping_list_by_m3ter_entity_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/external_mapping.py">SyncCursor[ExternalMapping]</a></code>
 
 # IntegrationConfigurations
 
@@ -657,11 +653,7 @@ Methods:
 Types:
 
 ```python
-from m3ter_sdk.types import (
-    ResourceGroup,
-    ResourceGroupListContentsResponse,
-    ResourceGroupListPermissionsResponse,
-)
+from m3ter_sdk.types import ResourceGroup, ResourceGroupListContentsResponse
 ```
 
 Methods:
@@ -672,8 +664,8 @@ Methods:
 - <code title="get /organizations/{orgId}/resourcegroups/{type}">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">list</a>(type, \*, org_id, \*\*<a href="src/m3ter_sdk/types/resource_group_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group.py">SyncCursor[ResourceGroup]</a></code>
 - <code title="delete /organizations/{orgId}/resourcegroups/{type}/{id}">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">delete</a>(id, \*, org_id, type) -> <a href="./src/m3ter_sdk/types/resource_group.py">ResourceGroup</a></code>
 - <code title="post /organizations/{orgId}/resourcegroups/{type}/{resourceGroupId}/addresource">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">add_resource</a>(resource_group_id, \*, org_id, type, \*\*<a href="src/m3ter_sdk/types/resource_group_add_resource_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group.py">ResourceGroup</a></code>
-- <code title="post /organizations/{orgId}/resourcegroups/{type}/{resourceGroupId}/contents">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">list_contents</a>(resource_group_id, \*, org_id, type, \*\*<a href="src/m3ter_sdk/types/resource_group_list_contents_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group_list_contents_response.py">ResourceGroupListContentsResponse</a></code>
-- <code title="get /organizations/{orgId}/resourcegroups/{type}/{resourceGroupId}/permissions">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">list_permissions</a>(resource_group_id, \*, org_id, type, \*\*<a href="src/m3ter_sdk/types/resource_group_list_permissions_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group_list_permissions_response.py">ResourceGroupListPermissionsResponse</a></code>
+- <code title="post /organizations/{orgId}/resourcegroups/{type}/{resourceGroupId}/contents">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">list_contents</a>(resource_group_id, \*, org_id, type, \*\*<a href="src/m3ter_sdk/types/resource_group_list_contents_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group_list_contents_response.py">SyncCursor[ResourceGroupListContentsResponse]</a></code>
+- <code title="get /organizations/{orgId}/resourcegroups/{type}/{resourceGroupId}/permissions">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">list_permissions</a>(resource_group_id, \*, org_id, type, \*\*<a href="src/m3ter_sdk/types/resource_group_list_permissions_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/permission_policy.py">SyncCursor[PermissionPolicy]</a></code>
 - <code title="post /organizations/{orgId}/resourcegroups/{type}/{resourceGroupId}/removeresource">client.resource_groups.<a href="./src/m3ter_sdk/resources/resource_groups.py">remove_resource</a>(resource_group_id, \*, org_id, type, \*\*<a href="src/m3ter_sdk/types/resource_group_remove_resource_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group.py">ResourceGroup</a></code>
 
 # ScheduledEventConfigurations
@@ -761,8 +753,8 @@ Methods:
 - <code title="get /organizations/{orgId}/users/{id}">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/user.py">User</a></code>
 - <code title="put /organizations/{orgId}/users/{id}">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/user_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/user.py">User</a></code>
 - <code title="get /organizations/{orgId}/users">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">list</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/user_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/user.py">SyncCursor[User]</a></code>
-- <code title="get /organizations/{orgId}/users/{id}/permissions">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">list_permissions</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/user_list_permissions_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/permission_policy.py">PermissionPolicy</a></code>
-- <code title="get /organizations/{orgId}/users/{id}/usergroups">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">list_user_groups</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/user_list_user_groups_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group.py">ResourceGroup</a></code>
+- <code title="get /organizations/{orgId}/users/{id}/permissions">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">get_permissions</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/user_get_permissions_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/permission_policy.py">PermissionPolicy</a></code>
+- <code title="get /organizations/{orgId}/users/{id}/usergroups">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">get_user_groups</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/user_get_user_groups_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/resource_group.py">ResourceGroup</a></code>
 - <code title="get /organizations/{orgId}/users/me">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">me</a>(\*, org_id) -> <a href="./src/m3ter_sdk/types/user_me_response.py">UserMeResponse</a></code>
 - <code title="put /organizations/{orgId}/users/{id}/password/resend">client.users.<a href="./src/m3ter_sdk/resources/users/users.py">resend_password</a>(id, \*, org_id) -> None</code>
 
