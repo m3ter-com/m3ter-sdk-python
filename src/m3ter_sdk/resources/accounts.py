@@ -13,7 +13,7 @@ from ..types import (
     account_create_params,
     account_search_params,
     account_update_params,
-    account_list_children_params,
+    account_get_children_params,
     account_end_date_billing_entities_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -642,7 +642,7 @@ class AccountsResource(SyncAPIResource):
             cast_to=AccountEndDateBillingEntitiesResponse,
         )
 
-    def list_children(
+    def get_children(
         self,
         id: str,
         *,
@@ -686,7 +686,7 @@ class AccountsResource(SyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    account_list_children_params.AccountListChildrenParams,
+                    account_get_children_params.AccountGetChildrenParams,
                 ),
             ),
             cast_to=Account,
@@ -1370,7 +1370,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             cast_to=AccountEndDateBillingEntitiesResponse,
         )
 
-    async def list_children(
+    async def get_children(
         self,
         id: str,
         *,
@@ -1414,7 +1414,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    account_list_children_params.AccountListChildrenParams,
+                    account_get_children_params.AccountGetChildrenParams,
                 ),
             ),
             cast_to=Account,
@@ -1516,8 +1516,8 @@ class AccountsResourceWithRawResponse:
         self.end_date_billing_entities = to_raw_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.list_children = to_raw_response_wrapper(
-            accounts.list_children,
+        self.get_children = to_raw_response_wrapper(
+            accounts.get_children,
         )
         self.search = to_raw_response_wrapper(
             accounts.search,
@@ -1546,8 +1546,8 @@ class AsyncAccountsResourceWithRawResponse:
         self.end_date_billing_entities = async_to_raw_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.list_children = async_to_raw_response_wrapper(
-            accounts.list_children,
+        self.get_children = async_to_raw_response_wrapper(
+            accounts.get_children,
         )
         self.search = async_to_raw_response_wrapper(
             accounts.search,
@@ -1576,8 +1576,8 @@ class AccountsResourceWithStreamingResponse:
         self.end_date_billing_entities = to_streamed_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.list_children = to_streamed_response_wrapper(
-            accounts.list_children,
+        self.get_children = to_streamed_response_wrapper(
+            accounts.get_children,
         )
         self.search = to_streamed_response_wrapper(
             accounts.search,
@@ -1606,8 +1606,8 @@ class AsyncAccountsResourceWithStreamingResponse:
         self.end_date_billing_entities = async_to_streamed_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.list_children = async_to_streamed_response_wrapper(
-            accounts.list_children,
+        self.get_children = async_to_streamed_response_wrapper(
+            accounts.get_children,
         )
         self.search = async_to_streamed_response_wrapper(
             accounts.search,
