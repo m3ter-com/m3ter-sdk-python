@@ -186,16 +186,16 @@ class TestUsers:
             )
 
     @parametrize
-    def test_method_list_permissions(self, client: M3ter) -> None:
-        user = client.users.list_permissions(
+    def test_method_get_permissions(self, client: M3ter) -> None:
+        user = client.users.get_permissions(
             id="id",
             org_id="orgId",
         )
         assert_matches_type(PermissionPolicy, user, path=["response"])
 
     @parametrize
-    def test_method_list_permissions_with_all_params(self, client: M3ter) -> None:
-        user = client.users.list_permissions(
+    def test_method_get_permissions_with_all_params(self, client: M3ter) -> None:
+        user = client.users.get_permissions(
             id="id",
             org_id="orgId",
             next_token="nextToken",
@@ -204,8 +204,8 @@ class TestUsers:
         assert_matches_type(PermissionPolicy, user, path=["response"])
 
     @parametrize
-    def test_raw_response_list_permissions(self, client: M3ter) -> None:
-        response = client.users.with_raw_response.list_permissions(
+    def test_raw_response_get_permissions(self, client: M3ter) -> None:
+        response = client.users.with_raw_response.get_permissions(
             id="id",
             org_id="orgId",
         )
@@ -216,8 +216,8 @@ class TestUsers:
         assert_matches_type(PermissionPolicy, user, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_permissions(self, client: M3ter) -> None:
-        with client.users.with_streaming_response.list_permissions(
+    def test_streaming_response_get_permissions(self, client: M3ter) -> None:
+        with client.users.with_streaming_response.get_permissions(
             id="id",
             org_id="orgId",
         ) as response:
@@ -230,30 +230,30 @@ class TestUsers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_permissions(self, client: M3ter) -> None:
+    def test_path_params_get_permissions(self, client: M3ter) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.users.with_raw_response.list_permissions(
+            client.users.with_raw_response.get_permissions(
                 id="id",
                 org_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.with_raw_response.list_permissions(
+            client.users.with_raw_response.get_permissions(
                 id="",
                 org_id="orgId",
             )
 
     @parametrize
-    def test_method_list_user_groups(self, client: M3ter) -> None:
-        user = client.users.list_user_groups(
+    def test_method_get_user_groups(self, client: M3ter) -> None:
+        user = client.users.get_user_groups(
             id="id",
             org_id="orgId",
         )
         assert_matches_type(ResourceGroup, user, path=["response"])
 
     @parametrize
-    def test_method_list_user_groups_with_all_params(self, client: M3ter) -> None:
-        user = client.users.list_user_groups(
+    def test_method_get_user_groups_with_all_params(self, client: M3ter) -> None:
+        user = client.users.get_user_groups(
             id="id",
             org_id="orgId",
             next_token="nextToken",
@@ -262,8 +262,8 @@ class TestUsers:
         assert_matches_type(ResourceGroup, user, path=["response"])
 
     @parametrize
-    def test_raw_response_list_user_groups(self, client: M3ter) -> None:
-        response = client.users.with_raw_response.list_user_groups(
+    def test_raw_response_get_user_groups(self, client: M3ter) -> None:
+        response = client.users.with_raw_response.get_user_groups(
             id="id",
             org_id="orgId",
         )
@@ -274,8 +274,8 @@ class TestUsers:
         assert_matches_type(ResourceGroup, user, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_user_groups(self, client: M3ter) -> None:
-        with client.users.with_streaming_response.list_user_groups(
+    def test_streaming_response_get_user_groups(self, client: M3ter) -> None:
+        with client.users.with_streaming_response.get_user_groups(
             id="id",
             org_id="orgId",
         ) as response:
@@ -288,15 +288,15 @@ class TestUsers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list_user_groups(self, client: M3ter) -> None:
+    def test_path_params_get_user_groups(self, client: M3ter) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.users.with_raw_response.list_user_groups(
+            client.users.with_raw_response.get_user_groups(
                 id="id",
                 org_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.with_raw_response.list_user_groups(
+            client.users.with_raw_response.get_user_groups(
                 id="",
                 org_id="orgId",
             )
@@ -553,16 +553,16 @@ class TestAsyncUsers:
             )
 
     @parametrize
-    async def test_method_list_permissions(self, async_client: AsyncM3ter) -> None:
-        user = await async_client.users.list_permissions(
+    async def test_method_get_permissions(self, async_client: AsyncM3ter) -> None:
+        user = await async_client.users.get_permissions(
             id="id",
             org_id="orgId",
         )
         assert_matches_type(PermissionPolicy, user, path=["response"])
 
     @parametrize
-    async def test_method_list_permissions_with_all_params(self, async_client: AsyncM3ter) -> None:
-        user = await async_client.users.list_permissions(
+    async def test_method_get_permissions_with_all_params(self, async_client: AsyncM3ter) -> None:
+        user = await async_client.users.get_permissions(
             id="id",
             org_id="orgId",
             next_token="nextToken",
@@ -571,8 +571,8 @@ class TestAsyncUsers:
         assert_matches_type(PermissionPolicy, user, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_permissions(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.users.with_raw_response.list_permissions(
+    async def test_raw_response_get_permissions(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.users.with_raw_response.get_permissions(
             id="id",
             org_id="orgId",
         )
@@ -583,8 +583,8 @@ class TestAsyncUsers:
         assert_matches_type(PermissionPolicy, user, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_permissions(self, async_client: AsyncM3ter) -> None:
-        async with async_client.users.with_streaming_response.list_permissions(
+    async def test_streaming_response_get_permissions(self, async_client: AsyncM3ter) -> None:
+        async with async_client.users.with_streaming_response.get_permissions(
             id="id",
             org_id="orgId",
         ) as response:
@@ -597,30 +597,30 @@ class TestAsyncUsers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_permissions(self, async_client: AsyncM3ter) -> None:
+    async def test_path_params_get_permissions(self, async_client: AsyncM3ter) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.users.with_raw_response.list_permissions(
+            await async_client.users.with_raw_response.get_permissions(
                 id="id",
                 org_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.with_raw_response.list_permissions(
+            await async_client.users.with_raw_response.get_permissions(
                 id="",
                 org_id="orgId",
             )
 
     @parametrize
-    async def test_method_list_user_groups(self, async_client: AsyncM3ter) -> None:
-        user = await async_client.users.list_user_groups(
+    async def test_method_get_user_groups(self, async_client: AsyncM3ter) -> None:
+        user = await async_client.users.get_user_groups(
             id="id",
             org_id="orgId",
         )
         assert_matches_type(ResourceGroup, user, path=["response"])
 
     @parametrize
-    async def test_method_list_user_groups_with_all_params(self, async_client: AsyncM3ter) -> None:
-        user = await async_client.users.list_user_groups(
+    async def test_method_get_user_groups_with_all_params(self, async_client: AsyncM3ter) -> None:
+        user = await async_client.users.get_user_groups(
             id="id",
             org_id="orgId",
             next_token="nextToken",
@@ -629,8 +629,8 @@ class TestAsyncUsers:
         assert_matches_type(ResourceGroup, user, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_user_groups(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.users.with_raw_response.list_user_groups(
+    async def test_raw_response_get_user_groups(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.users.with_raw_response.get_user_groups(
             id="id",
             org_id="orgId",
         )
@@ -641,8 +641,8 @@ class TestAsyncUsers:
         assert_matches_type(ResourceGroup, user, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_user_groups(self, async_client: AsyncM3ter) -> None:
-        async with async_client.users.with_streaming_response.list_user_groups(
+    async def test_streaming_response_get_user_groups(self, async_client: AsyncM3ter) -> None:
+        async with async_client.users.with_streaming_response.get_user_groups(
             id="id",
             org_id="orgId",
         ) as response:
@@ -655,15 +655,15 @@ class TestAsyncUsers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list_user_groups(self, async_client: AsyncM3ter) -> None:
+    async def test_path_params_get_user_groups(self, async_client: AsyncM3ter) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.users.with_raw_response.list_user_groups(
+            await async_client.users.with_raw_response.get_user_groups(
                 id="id",
                 org_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.with_raw_response.list_user_groups(
+            await async_client.users.with_raw_response.get_user_groups(
                 id="",
                 org_id="orgId",
             )

@@ -11,8 +11,6 @@ from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
     ExternalMapping,
-    ExternalMappingListByM3terEntityResponse,
-    ExternalMappingListByExternalEntityResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
@@ -336,7 +334,7 @@ class TestExternalMappings:
             system="system",
             external_table="externalTable",
         )
-        assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     def test_method_list_by_external_entity_with_all_params(self, client: M3ter) -> None:
@@ -348,7 +346,7 @@ class TestExternalMappings:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     def test_raw_response_list_by_external_entity(self, client: M3ter) -> None:
@@ -362,7 +360,7 @@ class TestExternalMappings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_mapping = response.parse()
-        assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     def test_streaming_response_list_by_external_entity(self, client: M3ter) -> None:
@@ -376,7 +374,7 @@ class TestExternalMappings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_mapping = response.parse()
-            assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+            assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -421,7 +419,7 @@ class TestExternalMappings:
             org_id="orgId",
             entity="entity",
         )
-        assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     def test_method_list_by_m3ter_entity_with_all_params(self, client: M3ter) -> None:
@@ -432,7 +430,7 @@ class TestExternalMappings:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     def test_raw_response_list_by_m3ter_entity(self, client: M3ter) -> None:
@@ -445,7 +443,7 @@ class TestExternalMappings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_mapping = response.parse()
-        assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     def test_streaming_response_list_by_m3ter_entity(self, client: M3ter) -> None:
@@ -458,7 +456,7 @@ class TestExternalMappings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_mapping = response.parse()
-            assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+            assert_matches_type(SyncCursor[ExternalMapping], external_mapping, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -803,7 +801,7 @@ class TestAsyncExternalMappings:
             system="system",
             external_table="externalTable",
         )
-        assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     async def test_method_list_by_external_entity_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -815,7 +813,7 @@ class TestAsyncExternalMappings:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     async def test_raw_response_list_by_external_entity(self, async_client: AsyncM3ter) -> None:
@@ -829,7 +827,7 @@ class TestAsyncExternalMappings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_mapping = await response.parse()
-        assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     async def test_streaming_response_list_by_external_entity(self, async_client: AsyncM3ter) -> None:
@@ -843,7 +841,7 @@ class TestAsyncExternalMappings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_mapping = await response.parse()
-            assert_matches_type(ExternalMappingListByExternalEntityResponse, external_mapping, path=["response"])
+            assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -888,7 +886,7 @@ class TestAsyncExternalMappings:
             org_id="orgId",
             entity="entity",
         )
-        assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     async def test_method_list_by_m3ter_entity_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -899,7 +897,7 @@ class TestAsyncExternalMappings:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     async def test_raw_response_list_by_m3ter_entity(self, async_client: AsyncM3ter) -> None:
@@ -912,7 +910,7 @@ class TestAsyncExternalMappings:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_mapping = await response.parse()
-        assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+        assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
     @parametrize
     async def test_streaming_response_list_by_m3ter_entity(self, async_client: AsyncM3ter) -> None:
@@ -925,7 +923,7 @@ class TestAsyncExternalMappings:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             external_mapping = await response.parse()
-            assert_matches_type(ExternalMappingListByM3terEntityResponse, external_mapping, path=["response"])
+            assert_matches_type(AsyncCursor[ExternalMapping], external_mapping, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
