@@ -150,7 +150,7 @@ class M3ter(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous m3ter client instance.
+        """Construct a new synchronous M3ter client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `M3TER_API_KEY`
@@ -443,7 +443,7 @@ class AsyncM3ter(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async m3ter client instance.
+        """Construct a new async AsyncM3ter client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `M3TER_API_KEY`
