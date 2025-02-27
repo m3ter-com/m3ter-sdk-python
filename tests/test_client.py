@@ -463,7 +463,7 @@ class TestM3ter:
         )
         with client as c2:
             with pytest.raises(ValueError, match="Missing org_id argument;"):
-                c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainlessapi.com", name="x")
+                c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
 
         client = M3ter(
             base_url=base_url,
@@ -474,7 +474,7 @@ class TestM3ter:
             _strict_response_validation=True,
         )
         with client as c2:
-            c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainlessapi.com", name="x")
+            c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -1399,7 +1399,7 @@ class TestAsyncM3ter:
         )
         async with client as c2:
             with pytest.raises(ValueError, match="Missing org_id argument;"):
-                await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainlessapi.com", name="x")
+                await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
 
         client = AsyncM3ter(
             base_url=base_url,
@@ -1410,7 +1410,7 @@ class TestAsyncM3ter:
             _strict_response_validation=True,
         )
         async with client as c2:
-            await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainlessapi.com", name="x")
+            await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
