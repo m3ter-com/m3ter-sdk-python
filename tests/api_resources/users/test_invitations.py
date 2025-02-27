@@ -23,7 +23,7 @@ class TestInvitations:
     def test_method_create(self, client: M3ter) -> None:
         invitation = client.users.invitations.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
         )
@@ -33,7 +33,7 @@ class TestInvitations:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         invitation = client.users.invitations.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
             contact_number="contactNumber",
@@ -49,7 +49,7 @@ class TestInvitations:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.users.invitations.with_raw_response.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
         )
@@ -63,7 +63,7 @@ class TestInvitations:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.users.invitations.with_streaming_response.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
         ) as response:
@@ -80,7 +80,7 @@ class TestInvitations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
             client.users.invitations.with_raw_response.create(
                 org_id="",
-                email="dev@stainlessapi.com",
+                email="dev@stainless.com",
                 first_name="x",
                 last_name="x",
             )
@@ -188,7 +188,7 @@ class TestAsyncInvitations:
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         invitation = await async_client.users.invitations.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
         )
@@ -198,7 +198,7 @@ class TestAsyncInvitations:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         invitation = await async_client.users.invitations.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
             contact_number="contactNumber",
@@ -214,7 +214,7 @@ class TestAsyncInvitations:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.users.invitations.with_raw_response.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
         )
@@ -228,7 +228,7 @@ class TestAsyncInvitations:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.users.invitations.with_streaming_response.create(
             org_id="orgId",
-            email="dev@stainlessapi.com",
+            email="dev@stainless.com",
             first_name="x",
             last_name="x",
         ) as response:
@@ -245,7 +245,7 @@ class TestAsyncInvitations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
             await async_client.users.invitations.with_raw_response.create(
                 org_id="",
-                email="dev@stainlessapi.com",
+                email="dev@stainless.com",
                 first_name="x",
                 last_name="x",
             )

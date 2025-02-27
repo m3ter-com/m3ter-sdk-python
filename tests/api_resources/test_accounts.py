@@ -28,7 +28,7 @@ class TestAccounts:
         account = client.accounts.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -38,7 +38,7 @@ class TestAccounts:
         account = client.accounts.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
             address={
                 "address_line1": "addressLine1",
@@ -69,7 +69,7 @@ class TestAccounts:
         response = client.accounts.with_raw_response.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
 
@@ -83,7 +83,7 @@ class TestAccounts:
         with client.accounts.with_streaming_response.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -100,7 +100,7 @@ class TestAccounts:
             client.accounts.with_raw_response.create(
                 org_id="",
                 code="JS!?Q0]r] ]$]",
-                email_address="dev@stainlessapi.com",
+                email_address="dev@stainless.com",
                 name="x",
             )
 
@@ -158,7 +158,7 @@ class TestAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -169,7 +169,7 @@ class TestAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
             address={
                 "address_line1": "addressLine1",
@@ -201,7 +201,7 @@ class TestAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
 
@@ -216,7 +216,7 @@ class TestAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -234,7 +234,7 @@ class TestAccounts:
                 id="id",
                 org_id="",
                 code="JS!?Q0]r] ]$]",
-                email_address="dev@stainlessapi.com",
+                email_address="dev@stainless.com",
                 name="x",
             )
 
@@ -243,7 +243,7 @@ class TestAccounts:
                 id="",
                 org_id="orgId",
                 code="JS!?Q0]r] ]$]",
-                email_address="dev@stainlessapi.com",
+                email_address="dev@stainless.com",
                 name="x",
             )
 
@@ -531,7 +531,7 @@ class TestAsyncAccounts:
         account = await async_client.accounts.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -541,7 +541,7 @@ class TestAsyncAccounts:
         account = await async_client.accounts.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
             address={
                 "address_line1": "addressLine1",
@@ -572,7 +572,7 @@ class TestAsyncAccounts:
         response = await async_client.accounts.with_raw_response.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
 
@@ -586,7 +586,7 @@ class TestAsyncAccounts:
         async with async_client.accounts.with_streaming_response.create(
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -603,7 +603,7 @@ class TestAsyncAccounts:
             await async_client.accounts.with_raw_response.create(
                 org_id="",
                 code="JS!?Q0]r] ]$]",
-                email_address="dev@stainlessapi.com",
+                email_address="dev@stainless.com",
                 name="x",
             )
 
@@ -661,7 +661,7 @@ class TestAsyncAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -672,7 +672,7 @@ class TestAsyncAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
             address={
                 "address_line1": "addressLine1",
@@ -704,7 +704,7 @@ class TestAsyncAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         )
 
@@ -719,7 +719,7 @@ class TestAsyncAccounts:
             id="id",
             org_id="orgId",
             code="JS!?Q0]r] ]$]",
-            email_address="dev@stainlessapi.com",
+            email_address="dev@stainless.com",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -737,7 +737,7 @@ class TestAsyncAccounts:
                 id="id",
                 org_id="",
                 code="JS!?Q0]r] ]$]",
-                email_address="dev@stainlessapi.com",
+                email_address="dev@stainless.com",
                 name="x",
             )
 
@@ -746,7 +746,7 @@ class TestAsyncAccounts:
                 id="",
                 org_id="orgId",
                 code="JS!?Q0]r] ]$]",
-                email_address="dev@stainlessapi.com",
+                email_address="dev@stainless.com",
                 name="x",
             )
 
