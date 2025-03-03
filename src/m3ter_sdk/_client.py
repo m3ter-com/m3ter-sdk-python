@@ -134,7 +134,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
-        org_id: str,
+        org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -160,6 +160,7 @@ class M3ter(SyncAPIClient):
         - `api_key` from `M3TER_API_KEY`
         - `api_secret` from `M3TER_API_SECRET`
         - `token` from `M3TER_API_TOKEN`
+        - `org_id` from `M3TER_ORG_ID`
         """
         if api_key is None:
             api_key = os.environ.get("M3TER_API_KEY")
@@ -181,6 +182,12 @@ class M3ter(SyncAPIClient):
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
 
+        if org_id is None:
+            org_id = os.environ.get("M3TER_ORG_ID")
+        if org_id is None:
+            raise M3terError(
+                "The org_id client option must be set either by passing org_id to the client or by setting the M3TER_ORG_ID environment variable"
+            )
         self.org_id = org_id
 
         if base_url is None:
@@ -347,13 +354,7 @@ class M3ter(SyncAPIClient):
     with_options = copy
 
     def _get_org_id_path_param(self) -> str:
-        from_client = self.org_id
-        if from_client is not None:
-            return from_client
-
-        raise ValueError(
-            "Missing org_id argument; Please provide it at the client level, e.g. M3ter(org_id='abcd') or per method."
-        )
+        return self.org_id
 
     @override
     def _make_status_error(
@@ -443,7 +444,7 @@ class AsyncM3ter(AsyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
-        org_id: str,
+        org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -469,6 +470,7 @@ class AsyncM3ter(AsyncAPIClient):
         - `api_key` from `M3TER_API_KEY`
         - `api_secret` from `M3TER_API_SECRET`
         - `token` from `M3TER_API_TOKEN`
+        - `org_id` from `M3TER_ORG_ID`
         """
         if api_key is None:
             api_key = os.environ.get("M3TER_API_KEY")
@@ -490,6 +492,12 @@ class AsyncM3ter(AsyncAPIClient):
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
 
+        if org_id is None:
+            org_id = os.environ.get("M3TER_ORG_ID")
+        if org_id is None:
+            raise M3terError(
+                "The org_id client option must be set either by passing org_id to the client or by setting the M3TER_ORG_ID environment variable"
+            )
         self.org_id = org_id
 
         if base_url is None:
@@ -642,13 +650,7 @@ class AsyncM3ter(AsyncAPIClient):
     with_options = copy
 
     def _get_org_id_path_param(self) -> str:
-        from_client = self.org_id
-        if from_client is not None:
-            return from_client
-
-        raise ValueError(
-            "Missing org_id argument; Please provide it at the client level, e.g. AsyncM3ter(org_id='abcd') or per method."
-        )
+        return self.org_id
 
     @override
     def _make_status_error(
