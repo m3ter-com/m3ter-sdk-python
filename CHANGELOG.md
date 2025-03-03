@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-03-03)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **api:** add missing endpoints ([#35](https://github.com/m3ter-com/m3ter-sdk-python/issues/35)) ([1e960bf](https://github.com/m3ter-com/m3ter-sdk-python/commit/1e960bfa22cd90105ec4780512ac8287ffaa1b2f))
+* **api:** add more endpoints ([#20](https://github.com/m3ter-com/m3ter-sdk-python/issues/20)) ([6445bde](https://github.com/m3ter-com/m3ter-sdk-python/commit/6445bdece1e396aee1a1499bc230dea3e2dd5497))
+* **api:** add orgId path param to client settings ([#29](https://github.com/m3ter-com/m3ter-sdk-python/issues/29)) ([e7e5fcc](https://github.com/m3ter-com/m3ter-sdk-python/commit/e7e5fcc56f08db259d71a970037f705c9413b89d))
+* **api:** Config update ([#14](https://github.com/m3ter-com/m3ter-sdk-python/issues/14)) ([4dfe290](https://github.com/m3ter-com/m3ter-sdk-python/commit/4dfe2903738e94b2be2f723c93675c9ac373fe57))
+* **api:** create ad hoc data export endpoint ([#27](https://github.com/m3ter-com/m3ter-sdk-python/issues/27)) ([687d13f](https://github.com/m3ter-com/m3ter-sdk-python/commit/687d13fe3db079cce72cc54b9e6fb2744ecfff33))
+* **api:** snake case method names ([#36](https://github.com/m3ter-com/m3ter-sdk-python/issues/36)) ([e6174e3](https://github.com/m3ter-com/m3ter-sdk-python/commit/e6174e3c31a1059ed6aa3d32b20e9ed535bf777a))
+* **api:** Spec Update + Various Fixes ([#39](https://github.com/m3ter-com/m3ter-sdk-python/issues/39)) ([907becd](https://github.com/m3ter-com/m3ter-sdk-python/commit/907becd0bb31e1106a85775dde3ba48f106ef960))
+* **api:** Update custom field type information ([#18](https://github.com/m3ter-com/m3ter-sdk-python/issues/18)) ([d0184e8](https://github.com/m3ter-com/m3ter-sdk-python/commit/d0184e89d3f8bb9a5a61cce4c37ce445d8625770))
+* **api:** update open api spec ([#34](https://github.com/m3ter-com/m3ter-sdk-python/issues/34)) ([2b9e9db](https://github.com/m3ter-com/m3ter-sdk-python/commit/2b9e9db3f44ec446e46462a64d95e1cf12fd3c89))
+* **client:** allow passing `NotGiven` for body ([#31](https://github.com/m3ter-com/m3ter-sdk-python/issues/31)) ([49db89f](https://github.com/m3ter-com/m3ter-sdk-python/commit/49db89f0436deb424fbbae40449dad8090db897a))
+* **client:** send `X-Stainless-Read-Timeout` header ([#19](https://github.com/m3ter-com/m3ter-sdk-python/issues/19)) ([be43c57](https://github.com/m3ter-com/m3ter-sdk-python/commit/be43c578d57a15ce8dba423ee9709ecf6d13fa25))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([49db89f](https://github.com/m3ter-com/m3ter-sdk-python/commit/49db89f0436deb424fbbae40449dad8090db897a))
+
+
+### Chores
+
+* **docs:** update client docstring ([#38](https://github.com/m3ter-com/m3ter-sdk-python/issues/38)) ([756d62b](https://github.com/m3ter-com/m3ter-sdk-python/commit/756d62bfbc234d813f830c35ae361286bf575e3b))
+* **internal:** bummp ruff dependency ([#17](https://github.com/m3ter-com/m3ter-sdk-python/issues/17)) ([7d6c4b4](https://github.com/m3ter-com/m3ter-sdk-python/commit/7d6c4b468996a4f10225a2f24d3be4ac775555fa))
+* **internal:** change default timeout to an int ([#16](https://github.com/m3ter-com/m3ter-sdk-python/issues/16)) ([f564f15](https://github.com/m3ter-com/m3ter-sdk-python/commit/f564f15a54458fa30f853b764fcd858f6f0dac99))
+* **internal:** codegen related update ([#25](https://github.com/m3ter-com/m3ter-sdk-python/issues/25)) ([a9a56e8](https://github.com/m3ter-com/m3ter-sdk-python/commit/a9a56e8ce7e4c7d94152f44d5d667adc5db6d811))
+* **internal:** codegen related update ([#26](https://github.com/m3ter-com/m3ter-sdk-python/issues/26)) ([402683e](https://github.com/m3ter-com/m3ter-sdk-python/commit/402683e171fa5de2449fba12a77a684a800e5a11))
+* **internal:** codegen related update ([#28](https://github.com/m3ter-com/m3ter-sdk-python/issues/28)) ([29aef5f](https://github.com/m3ter-com/m3ter-sdk-python/commit/29aef5f14bfc356eb7814f4143e802ac5d109012))
+* **internal:** fix devcontainers setup ([#32](https://github.com/m3ter-com/m3ter-sdk-python/issues/32)) ([4661fb8](https://github.com/m3ter-com/m3ter-sdk-python/commit/4661fb8375371ba45b44263a8e04adbfb0d9d1bf))
+* **internal:** fix type traversing dictionary params ([#21](https://github.com/m3ter-com/m3ter-sdk-python/issues/21)) ([6d2212e](https://github.com/m3ter-com/m3ter-sdk-python/commit/6d2212e3be2131a52c3605481e1e2e053c00cf81))
+* **internal:** minor type handling changes ([#22](https://github.com/m3ter-com/m3ter-sdk-python/issues/22)) ([a189c96](https://github.com/m3ter-com/m3ter-sdk-python/commit/a189c96fd80acdfdf7ea4ee0f11aabf821ec8e8d))
+* **internal:** properly set __pydantic_private__ ([#33](https://github.com/m3ter-com/m3ter-sdk-python/issues/33)) ([4406825](https://github.com/m3ter-com/m3ter-sdk-python/commit/4406825ce820d297c3c26315d4df65568f49ef36))
+* minor change to tests ([#23](https://github.com/m3ter-com/m3ter-sdk-python/issues/23)) ([46be5a4](https://github.com/m3ter-com/m3ter-sdk-python/commit/46be5a435cb560a17491cc9b45ed0724e45833a5))
+* **tests:** skip problematic tests ([#9](https://github.com/m3ter-com/m3ter-sdk-python/issues/9)) ([9590855](https://github.com/m3ter-com/m3ter-sdk-python/commit/9590855c47d25e42172eedd3ce1aafe320416cc3))
+
+
+### Documentation
+
+* **readme:** update example snippets ([#24](https://github.com/m3ter-com/m3ter-sdk-python/issues/24)) ([62e35aa](https://github.com/m3ter-com/m3ter-sdk-python/commit/62e35aac8ca8bcf0fc9f1056b84a2905d3837945))
+* update URLs from stainlessapi.com to stainless.com ([#37](https://github.com/m3ter-com/m3ter-sdk-python/issues/37)) ([c17dae2](https://github.com/m3ter-com/m3ter-sdk-python/commit/c17dae275b3824cdd294afbb031ca49dafedce3e))
+
 ## 0.1.0-alpha.1 (2025-01-30)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
