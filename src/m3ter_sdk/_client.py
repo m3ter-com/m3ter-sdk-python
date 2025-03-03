@@ -122,7 +122,7 @@ class M3ter(SyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
-    org_id: str | None
+    org_id: str
 
     def __init__(
         self,
@@ -180,6 +180,10 @@ class M3ter(SyncAPIClient):
 
         if org_id is None:
             org_id = os.environ.get("M3TER_ORG_ID")
+        if org_id is None:
+            raise M3terError(
+                "The org_id client option must be set either by passing org_id to the client or by setting the M3TER_ORG_ID environment variable"
+            )
         self.org_id = org_id
 
         if base_url is None:
@@ -418,7 +422,7 @@ class AsyncM3ter(AsyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
-    org_id: str | None
+    org_id: str
 
     def __init__(
         self,
@@ -476,6 +480,10 @@ class AsyncM3ter(AsyncAPIClient):
 
         if org_id is None:
             org_id = os.environ.get("M3TER_ORG_ID")
+        if org_id is None:
+            raise M3terError(
+                "The org_id client option must be set either by passing org_id to the client or by setting the M3TER_ORG_ID environment variable"
+            )
         self.org_id = org_id
 
         if base_url is None:

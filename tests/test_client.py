@@ -38,6 +38,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
 api_secret = "My API Secret"
 token = "My Token"
+org_id = "My Org ID"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -52,7 +53,12 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
 
 class TestM3ter:
     client = M3ter(
-        base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+        base_url=base_url,
+        api_key=api_key,
+        api_secret=api_secret,
+        token=token,
+        org_id=org_id,
+        _strict_response_validation=True,
     )
 
     @pytest.mark.respx(base_url=base_url)
@@ -91,6 +97,10 @@ class TestM3ter:
         assert copied.token == "another My Token"
         assert self.client.token == "My Token"
 
+        copied = self.client.copy(org_id="another My Org ID")
+        assert copied.org_id == "another My Org ID"
+        assert self.client.org_id == "My Org ID"
+
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
         copied = self.client.copy(max_retries=7)
@@ -113,6 +123,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -152,6 +163,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_query={"foo": "bar"},
         )
@@ -282,6 +294,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             timeout=httpx.Timeout(0),
         )
@@ -298,6 +311,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -313,6 +327,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -328,6 +343,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -344,6 +360,7 @@ class TestM3ter:
                     api_key=api_key,
                     api_secret=api_secret,
                     token=token,
+                    org_id=org_id,
                     _strict_response_validation=True,
                     http_client=cast(Any, http_client),
                 )
@@ -354,6 +371,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -366,6 +384,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -378,14 +397,24 @@ class TestM3ter:
 
     def test_validate_headers(self) -> None:
         client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {token}"
 
         with update_env(**{"M3TER_API_TOKEN": Omit()}):
             client2 = M3ter(
-                base_url=base_url, api_key=api_key, api_secret=api_secret, token=None, _strict_response_validation=True
+                base_url=base_url,
+                api_key=api_key,
+                api_secret=api_secret,
+                token=None,
+                org_id=org_id,
+                _strict_response_validation=True,
             )
 
         with pytest.raises(
@@ -405,6 +434,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -424,7 +454,12 @@ class TestM3ter:
 
     def test_org_id_client_params(self) -> None:
         client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         with client as c2:
             with pytest.raises(ValueError, match="Missing org_id argument;"):
@@ -435,8 +470,8 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
-            _strict_response_validation=True,
             org_id="My Org ID",
+            _strict_response_validation=True,
         )
         with client as c2:
             c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
@@ -630,6 +665,7 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -640,7 +676,9 @@ class TestM3ter:
 
     def test_base_url_env(self) -> None:
         with update_env(M3TER_BASE_URL="http://localhost:5000/from/env"):
-            client = M3ter(api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True)
+            client = M3ter(
+                api_key=api_key, api_secret=api_secret, token=token, org_id=org_id, _strict_response_validation=True
+            )
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -651,6 +689,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
             ),
             M3ter(
@@ -658,6 +697,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -682,6 +722,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
             ),
             M3ter(
@@ -689,6 +730,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -713,6 +755,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
             ),
             M3ter(
@@ -720,6 +763,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -738,7 +782,12 @@ class TestM3ter:
 
     def test_copied_client_does_not_close_http(self) -> None:
         client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         assert not client.is_closed()
 
@@ -751,7 +800,12 @@ class TestM3ter:
 
     def test_client_context_manager(self) -> None:
         client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         with client as c2:
             assert c2 is client
@@ -778,6 +832,7 @@ class TestM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 max_retries=cast(Any, None),
             )
@@ -790,14 +845,24 @@ class TestM3ter:
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
         strict_client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
         client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=False
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=False,
         )
 
         response = client.get("/foo", cast_to=Model)
@@ -827,7 +892,12 @@ class TestM3ter:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
         client = M3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
 
         headers = httpx.Headers({"retry-after": retry_after})
@@ -917,7 +987,12 @@ class TestM3ter:
 
 class TestAsyncM3ter:
     client = AsyncM3ter(
-        base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+        base_url=base_url,
+        api_key=api_key,
+        api_secret=api_secret,
+        token=token,
+        org_id=org_id,
+        _strict_response_validation=True,
     )
 
     @pytest.mark.respx(base_url=base_url)
@@ -958,6 +1033,10 @@ class TestAsyncM3ter:
         assert copied.token == "another My Token"
         assert self.client.token == "My Token"
 
+        copied = self.client.copy(org_id="another My Org ID")
+        assert copied.org_id == "another My Org ID"
+        assert self.client.org_id == "My Org ID"
+
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
         copied = self.client.copy(max_retries=7)
@@ -980,6 +1059,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -1019,6 +1099,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_query={"foo": "bar"},
         )
@@ -1149,6 +1230,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             timeout=httpx.Timeout(0),
         )
@@ -1165,6 +1247,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1180,6 +1263,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1195,6 +1279,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=http_client,
             )
@@ -1211,6 +1296,7 @@ class TestAsyncM3ter:
                     api_key=api_key,
                     api_secret=api_secret,
                     token=token,
+                    org_id=org_id,
                     _strict_response_validation=True,
                     http_client=cast(Any, http_client),
                 )
@@ -1221,6 +1307,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -1233,6 +1320,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -1245,14 +1333,24 @@ class TestAsyncM3ter:
 
     def test_validate_headers(self) -> None:
         client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {token}"
 
         with update_env(**{"M3TER_API_TOKEN": Omit()}):
             client2 = AsyncM3ter(
-                base_url=base_url, api_key=api_key, api_secret=api_secret, token=None, _strict_response_validation=True
+                base_url=base_url,
+                api_key=api_key,
+                api_secret=api_secret,
+                token=None,
+                org_id=org_id,
+                _strict_response_validation=True,
             )
 
         with pytest.raises(
@@ -1272,6 +1370,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -1291,7 +1390,12 @@ class TestAsyncM3ter:
 
     async def test_org_id_client_params(self) -> None:
         client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         async with client as c2:
             with pytest.raises(ValueError, match="Missing org_id argument;"):
@@ -1302,8 +1406,8 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
-            _strict_response_validation=True,
             org_id="My Org ID",
+            _strict_response_validation=True,
         )
         async with client as c2:
             await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
@@ -1497,6 +1601,7 @@ class TestAsyncM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
+            org_id=org_id,
             _strict_response_validation=True,
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1507,7 +1612,9 @@ class TestAsyncM3ter:
 
     def test_base_url_env(self) -> None:
         with update_env(M3TER_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncM3ter(api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True)
+            client = AsyncM3ter(
+                api_key=api_key, api_secret=api_secret, token=token, org_id=org_id, _strict_response_validation=True
+            )
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -1518,6 +1625,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
             ),
             AsyncM3ter(
@@ -1525,6 +1633,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1549,6 +1658,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
             ),
             AsyncM3ter(
@@ -1556,6 +1666,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1580,6 +1691,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
             ),
             AsyncM3ter(
@@ -1587,6 +1699,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1605,7 +1718,12 @@ class TestAsyncM3ter:
 
     async def test_copied_client_does_not_close_http(self) -> None:
         client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         assert not client.is_closed()
 
@@ -1619,7 +1737,12 @@ class TestAsyncM3ter:
 
     async def test_client_context_manager(self) -> None:
         client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
         async with client as c2:
             assert c2 is client
@@ -1647,6 +1770,7 @@ class TestAsyncM3ter:
                 api_key=api_key,
                 api_secret=api_secret,
                 token=token,
+                org_id=org_id,
                 _strict_response_validation=True,
                 max_retries=cast(Any, None),
             )
@@ -1660,14 +1784,24 @@ class TestAsyncM3ter:
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
         strict_client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
         client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=False
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=False,
         )
 
         response = await client.get("/foo", cast_to=Model)
@@ -1698,7 +1832,12 @@ class TestAsyncM3ter:
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
         client = AsyncM3ter(
-            base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=True
+            base_url=base_url,
+            api_key=api_key,
+            api_secret=api_secret,
+            token=token,
+            org_id=org_id,
+            _strict_response_validation=True,
         )
 
         headers = httpx.Headers({"retry-after": retry_after})
