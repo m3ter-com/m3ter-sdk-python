@@ -34,7 +34,6 @@ client = M3ter(
     token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 page = client.products.list(
@@ -61,7 +60,6 @@ client = AsyncM3ter(
     token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 
@@ -98,7 +96,6 @@ from m3ter_sdk import M3ter
 client = M3ter(
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 all_products = []
@@ -120,7 +117,6 @@ from m3ter_sdk import AsyncM3ter
 client = AsyncM3ter(
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 
@@ -181,7 +177,6 @@ from m3ter_sdk import M3ter
 client = M3ter(
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 try:
@@ -229,7 +224,6 @@ client = M3ter(
     max_retries=0,
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 # Or, configure per-request:
@@ -252,7 +246,6 @@ client = M3ter(
     timeout=20.0,
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 # More granular control:
@@ -260,7 +253,6 @@ client = M3ter(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 
 # Override per-request:
@@ -309,7 +301,6 @@ from m3ter_sdk import M3ter
 client = M3ter(
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 response = client.products.with_raw_response.list(
     org_id="ORG_ID",
@@ -397,7 +388,6 @@ client = M3ter(
     ),
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 )
 ```
 
@@ -417,7 +407,6 @@ from m3ter_sdk import M3ter
 with M3ter(
     api_key="My API Key",
     api_secret="My API Secret",
-    org_id="My Org ID",
 ) as client:
   # make requests here
   ...
