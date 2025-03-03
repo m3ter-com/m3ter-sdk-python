@@ -34,7 +34,7 @@ class TestTransactionTypes:
             org_id="orgId",
             name="x",
             archived=True,
-            code="{1{}}_",
+            code="code",
             version=0,
         )
         assert_matches_type(TransactionType, transaction_type, path=["response"])
@@ -137,7 +137,7 @@ class TestTransactionTypes:
             org_id="orgId",
             name="x",
             archived=True,
-            code="{1{}}_",
+            code="code",
             version=0,
         )
         assert_matches_type(TransactionType, transaction_type, path=["response"])
@@ -302,7 +302,7 @@ class TestAsyncTransactionTypes:
             org_id="orgId",
             name="x",
             archived=True,
-            code="{1{}}_",
+            code="code",
             version=0,
         )
         assert_matches_type(TransactionType, transaction_type, path=["response"])
@@ -405,7 +405,7 @@ class TestAsyncTransactionTypes:
             org_id="orgId",
             name="x",
             archived=True,
-            code="{1{}}_",
+            code="code",
             version=0,
         )
         assert_matches_type(TransactionType, transaction_type, path=["response"])

@@ -5,86 +5,33 @@ from typing import Optional
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .shared.set_string import SetString
 
-__all__ = [
-    "AccountEndDateBillingEntitiesResponse",
-    "FailedEntities",
-    "FailedEntitiesAccountplan",
-    "FailedEntitiesContract",
-    "FailedEntitiesCounterPricings",
-    "FailedEntitiesPrepayment",
-    "FailedEntitiesPricings",
-    "UpdatedEntities",
-    "UpdatedEntitiesAccountplan",
-    "UpdatedEntitiesContract",
-    "UpdatedEntitiesCounterPricings",
-    "UpdatedEntitiesPrepayment",
-    "UpdatedEntitiesPricings",
-]
-
-
-class FailedEntitiesAccountplan(BaseModel):
-    empty: Optional[bool] = None
-
-
-class FailedEntitiesContract(BaseModel):
-    empty: Optional[bool] = None
-
-
-class FailedEntitiesCounterPricings(BaseModel):
-    empty: Optional[bool] = None
-
-
-class FailedEntitiesPrepayment(BaseModel):
-    empty: Optional[bool] = None
-
-
-class FailedEntitiesPricings(BaseModel):
-    empty: Optional[bool] = None
+__all__ = ["AccountEndDateBillingEntitiesResponse", "FailedEntities", "UpdatedEntities"]
 
 
 class FailedEntities(BaseModel):
-    accountplan: Optional[FailedEntitiesAccountplan] = FieldInfo(alias="ACCOUNTPLAN", default=None)
+    accountplan: Optional[SetString] = FieldInfo(alias="ACCOUNTPLAN", default=None)
 
-    contract: Optional[FailedEntitiesContract] = FieldInfo(alias="CONTRACT", default=None)
+    contract: Optional[SetString] = FieldInfo(alias="CONTRACT", default=None)
 
-    counter_pricings: Optional[FailedEntitiesCounterPricings] = FieldInfo(alias="COUNTER_PRICINGS", default=None)
+    counter_pricings: Optional[SetString] = FieldInfo(alias="COUNTER_PRICINGS", default=None)
 
-    prepayment: Optional[FailedEntitiesPrepayment] = FieldInfo(alias="PREPAYMENT", default=None)
+    prepayment: Optional[SetString] = FieldInfo(alias="PREPAYMENT", default=None)
 
-    pricings: Optional[FailedEntitiesPricings] = FieldInfo(alias="PRICINGS", default=None)
-
-
-class UpdatedEntitiesAccountplan(BaseModel):
-    empty: Optional[bool] = None
-
-
-class UpdatedEntitiesContract(BaseModel):
-    empty: Optional[bool] = None
-
-
-class UpdatedEntitiesCounterPricings(BaseModel):
-    empty: Optional[bool] = None
-
-
-class UpdatedEntitiesPrepayment(BaseModel):
-    empty: Optional[bool] = None
-
-
-class UpdatedEntitiesPricings(BaseModel):
-    empty: Optional[bool] = None
+    pricings: Optional[SetString] = FieldInfo(alias="PRICINGS", default=None)
 
 
 class UpdatedEntities(BaseModel):
-    accountplan: Optional[UpdatedEntitiesAccountplan] = FieldInfo(alias="ACCOUNTPLAN", default=None)
+    accountplan: Optional[SetString] = FieldInfo(alias="ACCOUNTPLAN", default=None)
 
-    contract: Optional[UpdatedEntitiesContract] = FieldInfo(alias="CONTRACT", default=None)
+    contract: Optional[SetString] = FieldInfo(alias="CONTRACT", default=None)
 
-    counter_pricings: Optional[UpdatedEntitiesCounterPricings] = FieldInfo(alias="COUNTER_PRICINGS", default=None)
+    counter_pricings: Optional[SetString] = FieldInfo(alias="COUNTER_PRICINGS", default=None)
 
-    prepayment: Optional[UpdatedEntitiesPrepayment] = FieldInfo(alias="PREPAYMENT", default=None)
+    prepayment: Optional[SetString] = FieldInfo(alias="PREPAYMENT", default=None)
 
-    pricings: Optional[UpdatedEntitiesPricings] = FieldInfo(alias="PRICINGS", default=None)
+    pricings: Optional[SetString] = FieldInfo(alias="PRICINGS", default=None)
 
 
 class AccountEndDateBillingEntitiesResponse(BaseModel):

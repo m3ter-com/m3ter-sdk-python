@@ -776,11 +776,13 @@ class CommitmentsResource(SyncAPIResource):
         paginated for easier management.
 
         Args:
-          from_document: fromDocument for multi page retrievals
+          from_document: `fromDocument` for multi page retrievals.
 
-          operator: Search Operator to be used while querying search
+          operator: Search Operator to be used while querying search.
 
-          page_size: Number of Commitments to retrieve per page
+          page_size: Number of Commitments to retrieve per page.
+
+              **NOTE:** If not defined, default is 10.
 
           search_query:
               Query for data using special syntax:
@@ -807,7 +809,7 @@ class CommitmentsResource(SyncAPIResource):
           sort_by: Name of the parameter on which sorting is performed. Use any field available on
               the Commitment entity to sort by, such as `accountId`, `endDate`, and so on.
 
-          sort_order: Sorting order
+          sort_order: Sorting order.
 
           extra_headers: Send extra headers
 
@@ -1585,11 +1587,13 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         paginated for easier management.
 
         Args:
-          from_document: fromDocument for multi page retrievals
+          from_document: `fromDocument` for multi page retrievals.
 
-          operator: Search Operator to be used while querying search
+          operator: Search Operator to be used while querying search.
 
-          page_size: Number of Commitments to retrieve per page
+          page_size: Number of Commitments to retrieve per page.
+
+              **NOTE:** If not defined, default is 10.
 
           search_query:
               Query for data using special syntax:
@@ -1616,7 +1620,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
           sort_by: Name of the parameter on which sorting is performed. Use any field available on
               the Commitment entity to sort by, such as `accountId`, `endDate`, and so on.
 
-          sort_order: Sorting order
+          sort_order: Sorting order.
 
           extra_headers: Send extra headers
 

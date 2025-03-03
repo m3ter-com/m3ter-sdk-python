@@ -40,6 +40,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.resource_group import ResourceGroup
 from ...types.user_me_response import UserMeResponse
 from ...types.permission_policy import PermissionPolicy
+from ...types.permission_statement_param import PermissionStatementParam
 
 __all__ = ["UsersResource", "AsyncUsersResource"]
 
@@ -115,7 +116,7 @@ class UsersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         dt_end_access: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        permission_policy: Iterable[user_update_params.PermissionPolicy] | NotGiven = NOT_GIVEN,
+        permission_policy: Iterable[PermissionStatementParam] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -525,7 +526,7 @@ class AsyncUsersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         dt_end_access: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        permission_policy: Iterable[user_update_params.PermissionPolicy] | NotGiven = NOT_GIVEN,
+        permission_policy: Iterable[PermissionStatementParam] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

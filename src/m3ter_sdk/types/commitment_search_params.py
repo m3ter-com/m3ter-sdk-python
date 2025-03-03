@@ -13,13 +13,16 @@ class CommitmentSearchParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     from_document: Annotated[int, PropertyInfo(alias="fromDocument")]
-    """fromDocument for multi page retrievals"""
+    """`fromDocument` for multi page retrievals."""
 
     operator: Literal["AND", "OR"]
-    """Search Operator to be used while querying search"""
+    """Search Operator to be used while querying search."""
 
     page_size: Annotated[int, PropertyInfo(alias="pageSize")]
-    """Number of Commitments to retrieve per page"""
+    """Number of Commitments to retrieve per page.
+
+    **NOTE:** If not defined, default is 10.
+    """
 
     search_query: Annotated[str, PropertyInfo(alias="searchQuery")]
     """Query for data using special syntax:
@@ -52,4 +55,4 @@ class CommitmentSearchParams(TypedDict, total=False):
     """
 
     sort_order: Annotated[Literal["ASC", "DESC"], PropertyInfo(alias="sortOrder")]
-    """Sorting order"""
+    """Sorting order."""

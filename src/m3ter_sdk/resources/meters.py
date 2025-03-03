@@ -340,18 +340,20 @@ class MetersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursor[Meter]:
         """
-        Retrieve a list of Meter entities
+        Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
+        short code.
 
         Args:
-          codes: list of codes to retrieve
+          codes: List of Meter codes to retrieve. These are the unique short codes that identify
+              each Meter.
 
-          ids: list of ids to retrieve
+          ids: List of Meter IDs to retrieve.
 
-          next_token: nextToken for multi page retrievals
+          next_token: `nextToken` for multi page retrievals.
 
-          page_size: Number of Meters to retrieve per page
+          page_size: Number of Meters to retrieve per page.
 
-          product_id: The UUIDs of the products to retrieve meters for
+          product_id: The UUIDs of the Products to retrieve Meters for.
 
           extra_headers: Send extra headers
 
@@ -739,18 +741,20 @@ class AsyncMetersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Meter, AsyncCursor[Meter]]:
         """
-        Retrieve a list of Meter entities
+        Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
+        short code.
 
         Args:
-          codes: list of codes to retrieve
+          codes: List of Meter codes to retrieve. These are the unique short codes that identify
+              each Meter.
 
-          ids: list of ids to retrieve
+          ids: List of Meter IDs to retrieve.
 
-          next_token: nextToken for multi page retrievals
+          next_token: `nextToken` for multi page retrievals.
 
-          page_size: Number of Meters to retrieve per page
+          page_size: Number of Meters to retrieve per page.
 
-          product_id: The UUIDs of the products to retrieve meters for
+          product_id: The UUIDs of the Products to retrieve Meters for.
 
           extra_headers: Send extra headers
 

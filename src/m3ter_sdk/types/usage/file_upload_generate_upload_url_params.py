@@ -29,4 +29,6 @@ class FileUploadGenerateUploadURLParams(TypedDict, total=False):
 
     For example: `"contentLength": 485`, where 485 is the size in bytes of the file
     to upload.
+
+    **NOTE:** Required.
     """
