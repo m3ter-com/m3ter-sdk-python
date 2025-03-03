@@ -31,6 +31,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
 api_secret = "My API Secret"
 token = "My Token"
+org_id = "My Org ID"
 
 
 @pytest.fixture(scope="session")
@@ -40,7 +41,12 @@ def client(request: FixtureRequest) -> Iterator[M3ter]:
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
     with M3ter(
-        base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=strict
+        base_url=base_url,
+        api_key=api_key,
+        api_secret=api_secret,
+        token=token,
+        org_id=org_id,
+        _strict_response_validation=strict,
     ) as client:
         yield client
 
@@ -52,6 +58,11 @@ async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncM3ter]:
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
     async with AsyncM3ter(
-        base_url=base_url, api_key=api_key, api_secret=api_secret, token=token, _strict_response_validation=strict
+        base_url=base_url,
+        api_key=api_key,
+        api_secret=api_secret,
+        token=token,
+        org_id=org_id,
+        _strict_response_validation=strict,
     ) as client:
         yield client
