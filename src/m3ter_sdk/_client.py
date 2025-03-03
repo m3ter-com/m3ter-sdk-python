@@ -122,7 +122,7 @@ class M3ter(SyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
-    org_id: str
+    org_id: str | None
 
     def __init__(
         self,
@@ -130,7 +130,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
-        org_id: str,
+        org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -156,6 +156,7 @@ class M3ter(SyncAPIClient):
         - `api_key` from `M3TER_API_KEY`
         - `api_secret` from `M3TER_API_SECRET`
         - `token` from `M3TER_API_TOKEN`
+        - `org_id` from `M3TER_ORG_ID`
         """
         if api_key is None:
             api_key = os.environ.get("M3TER_API_KEY")
@@ -177,6 +178,8 @@ class M3ter(SyncAPIClient):
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
 
+        if org_id is None:
+            org_id = os.environ.get("M3TER_ORG_ID")
         self.org_id = org_id
 
         if base_url is None:
@@ -415,7 +418,7 @@ class AsyncM3ter(AsyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
-    org_id: str
+    org_id: str | None
 
     def __init__(
         self,
@@ -423,7 +426,7 @@ class AsyncM3ter(AsyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
-        org_id: str,
+        org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -449,6 +452,7 @@ class AsyncM3ter(AsyncAPIClient):
         - `api_key` from `M3TER_API_KEY`
         - `api_secret` from `M3TER_API_SECRET`
         - `token` from `M3TER_API_TOKEN`
+        - `org_id` from `M3TER_ORG_ID`
         """
         if api_key is None:
             api_key = os.environ.get("M3TER_API_KEY")
@@ -470,6 +474,8 @@ class AsyncM3ter(AsyncAPIClient):
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
 
+        if org_id is None:
+            org_id = os.environ.get("M3TER_ORG_ID")
         self.org_id = org_id
 
         if base_url is None:
