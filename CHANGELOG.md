@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-03-03)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* **internal:** remove unused http client options forwarding ([#46](https://github.com/m3ter-com/m3ter-sdk-python/issues/46)) ([7510f49](https://github.com/m3ter-com/m3ter-sdk-python/commit/7510f49c5d57c0e3b3f938ddcddbc4aee42fb942))
+
 ## 0.1.0-alpha.3 (2025-03-03)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
