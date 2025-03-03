@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-03-03)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Bug Fixes
+
+* remove invalid tests ([#44](https://github.com/m3ter-com/m3ter-sdk-python/issues/44)) ([cca6f33](https://github.com/m3ter-com/m3ter-sdk-python/commit/cca6f3385418f095033acc7f000f78c970c84e92))
+
+
+### Chores
+
+* org ID at the client level is required ([#43](https://github.com/m3ter-com/m3ter-sdk-python/issues/43)) ([d0606c5](https://github.com/m3ter-com/m3ter-sdk-python/commit/d0606c51b4179129e6bb38f2db4f0c3f0296aeb6))
+* org ID client arg is optional ([#41](https://github.com/m3ter-com/m3ter-sdk-python/issues/41)) ([67a4aa8](https://github.com/m3ter-com/m3ter-sdk-python/commit/67a4aa88455030135638e3fe7a0db089b0eccc45))
+
 ## 0.1.0-alpha.2 (2025-03-03)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
