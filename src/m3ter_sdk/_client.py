@@ -354,13 +354,7 @@ class M3ter(SyncAPIClient):
     with_options = copy
 
     def _get_org_id_path_param(self) -> str:
-        from_client = self.org_id
-        if from_client is not None:
-            return from_client
-
-        raise ValueError(
-            "Missing org_id argument; Please provide it at the client level, e.g. M3ter(org_id='abcd') or per method."
-        )
+        return self.org_id
 
     @override
     def _make_status_error(
@@ -656,13 +650,7 @@ class AsyncM3ter(AsyncAPIClient):
     with_options = copy
 
     def _get_org_id_path_param(self) -> str:
-        from_client = self.org_id
-        if from_client is not None:
-            return from_client
-
-        raise ValueError(
-            "Missing org_id argument; Please provide it at the client level, e.g. AsyncM3ter(org_id='abcd') or per method."
-        )
+        return self.org_id
 
     @override
     def _make_status_error(
