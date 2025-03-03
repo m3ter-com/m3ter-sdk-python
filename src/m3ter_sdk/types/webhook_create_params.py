@@ -5,15 +5,16 @@ from __future__ import annotations
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .m3ter_signed_credentials_req_param import M3terSignedCredentialsReqParam
 
-__all__ = ["WebhookCreateParams", "Credentials"]
+__all__ = ["WebhookCreateParams"]
 
 
 class WebhookCreateParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    credentials: Required[Credentials]
-    """The credentials required for the webhook."""
+    credentials: Required[M3terSignedCredentialsReqParam]
+    """This schema defines the credentials required for m3ter request signing."""
 
     description: Required[str]
 
@@ -36,7 +37,3 @@ class WebhookCreateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
-
-
-class Credentials:
-    pass

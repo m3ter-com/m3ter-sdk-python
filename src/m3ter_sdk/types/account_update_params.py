@@ -7,8 +7,9 @@ from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .address_param import AddressParam
 
-__all__ = ["AccountUpdateParams", "Address"]
+__all__ = ["AccountUpdateParams"]
 
 
 class AccountUpdateParams(TypedDict, total=False):
@@ -23,7 +24,7 @@ class AccountUpdateParams(TypedDict, total=False):
     name: Required[str]
     """Name of the Account."""
 
-    address: Address
+    address: AddressParam
     """Contact address."""
 
     auto_generate_statement_mode: Annotated[
@@ -159,21 +160,3 @@ class AccountUpdateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
-
-
-class Address(TypedDict, total=False):
-    address_line1: Annotated[str, PropertyInfo(alias="addressLine1")]
-
-    address_line2: Annotated[str, PropertyInfo(alias="addressLine2")]
-
-    address_line3: Annotated[str, PropertyInfo(alias="addressLine3")]
-
-    address_line4: Annotated[str, PropertyInfo(alias="addressLine4")]
-
-    country: str
-
-    locality: str
-
-    post_code: Annotated[str, PropertyInfo(alias="postCode")]
-
-    region: str

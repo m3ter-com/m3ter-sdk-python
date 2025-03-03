@@ -32,6 +32,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.account import Account
+from ..types.address_param import AddressParam
 from ..types.account_search_response import AccountSearchResponse
 from ..types.account_end_date_billing_entities_response import AccountEndDateBillingEntitiesResponse
 
@@ -65,7 +66,7 @@ class AccountsResource(SyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: account_create_params.Address | NotGiven = NOT_GIVEN,
+        address: AddressParam | NotGiven = NOT_GIVEN,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
         config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -290,7 +291,7 @@ class AccountsResource(SyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: account_update_params.Address | NotGiven = NOT_GIVEN,
+        address: AddressParam | NotGiven = NOT_GIVEN,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
         config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -710,26 +711,47 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AccountSearchResponse:
         """
-        Search for account entities
+        Search for Account entities.
+
+        This endpoint executes a search query for Accounts based on the user specified
+        search criteria. The search query is customizable, allowing for complex nested
+        conditions and sorting. The returned list of Accounts can be paginated for
+        easier management.
 
         Args:
-          from_document: fromDocument for multi page retrievals
+          from_document: `fromDocument` for multi page retrievals.
 
-          operator: Search Operator to be used while querying search
+          operator: Search Operator to be used while querying search.
 
-          page_size: Number of Accounts to retrieve per page
+          page_size: Number of Accounts to retrieve per page.
 
-          search_query: Query for data using special syntax. Query parameters should be delimited using
-              $ Allowed comparators are > (greater than), >= (grater or equal than), :
-              (equal), < (less than), <= (less than or equal), ~ (contains). Allowed
-              parameters: name, code, currency, purchaseOrderNumber, parentAccountId, codes,
-              id, createdBy, dtCreated, lastModifiedBy, ids.Query example:
-              searchQuery=name~test$currency:USD. This query is translated into: find accounts
-              that name contains 'test' AND currency is USD.
+              **NOTE:** If not defined, default is 10.
 
-          sort_by: Name of the parameter on which sorting is performed
+          search_query:
+              Query for data using special syntax:
 
-          sort_order: Sorting order
+              - Query parameters should be delimited using the $ (dollar sign).
+              - Allowed comparators are:
+                - (greater than) >
+                - (greater than or equal to) >=
+                - (equal to) :
+                - (less than) <
+                - (less than or equal to) <=
+                - (match phrase/prefix) ~
+              - Allowed parameters are: name, code, currency, purchaseOrderNumber,
+                parentAccountId, codes, id, createdBy, dtCreated, lastModifiedBy, ids.
+              - Query example:
+                - searchQuery=name~Premium On$currency:USD.
+                - This query is translated into: find accounts whose name contains the
+                  phrase/prefix 'Premium On' AND the account currency is USD.
+
+              **Note:** Using the ~ match phrase/prefix comparator. For best results, we
+              recommend treating this as a "starts with" comparator for your search query.
+
+          sort_by: Name of the parameter on which sorting is performed. Use any field available on
+              the Account entity to sort by, such as `name`, `code`, and so on.
+
+          sort_order: Sorting order.
 
           extra_headers: Send extra headers
 
@@ -793,7 +815,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: account_create_params.Address | NotGiven = NOT_GIVEN,
+        address: AddressParam | NotGiven = NOT_GIVEN,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
         config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -1018,7 +1040,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: account_update_params.Address | NotGiven = NOT_GIVEN,
+        address: AddressParam | NotGiven = NOT_GIVEN,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
         bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
         config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -1438,26 +1460,47 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AccountSearchResponse:
         """
-        Search for account entities
+        Search for Account entities.
+
+        This endpoint executes a search query for Accounts based on the user specified
+        search criteria. The search query is customizable, allowing for complex nested
+        conditions and sorting. The returned list of Accounts can be paginated for
+        easier management.
 
         Args:
-          from_document: fromDocument for multi page retrievals
+          from_document: `fromDocument` for multi page retrievals.
 
-          operator: Search Operator to be used while querying search
+          operator: Search Operator to be used while querying search.
 
-          page_size: Number of Accounts to retrieve per page
+          page_size: Number of Accounts to retrieve per page.
 
-          search_query: Query for data using special syntax. Query parameters should be delimited using
-              $ Allowed comparators are > (greater than), >= (grater or equal than), :
-              (equal), < (less than), <= (less than or equal), ~ (contains). Allowed
-              parameters: name, code, currency, purchaseOrderNumber, parentAccountId, codes,
-              id, createdBy, dtCreated, lastModifiedBy, ids.Query example:
-              searchQuery=name~test$currency:USD. This query is translated into: find accounts
-              that name contains 'test' AND currency is USD.
+              **NOTE:** If not defined, default is 10.
 
-          sort_by: Name of the parameter on which sorting is performed
+          search_query:
+              Query for data using special syntax:
 
-          sort_order: Sorting order
+              - Query parameters should be delimited using the $ (dollar sign).
+              - Allowed comparators are:
+                - (greater than) >
+                - (greater than or equal to) >=
+                - (equal to) :
+                - (less than) <
+                - (less than or equal to) <=
+                - (match phrase/prefix) ~
+              - Allowed parameters are: name, code, currency, purchaseOrderNumber,
+                parentAccountId, codes, id, createdBy, dtCreated, lastModifiedBy, ids.
+              - Query example:
+                - searchQuery=name~Premium On$currency:USD.
+                - This query is translated into: find accounts whose name contains the
+                  phrase/prefix 'Premium On' AND the account currency is USD.
+
+              **Note:** Using the ~ match phrase/prefix comparator. For best results, we
+              recommend treating this as a "starts with" comparator for your search query.
+
+          sort_by: Name of the parameter on which sorting is performed. Use any field available on
+              the Account entity to sort by, such as `name`, `code`, and so on.
+
+          sort_order: Sorting order.
 
           extra_headers: Send extra headers
 

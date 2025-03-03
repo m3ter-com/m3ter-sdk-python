@@ -25,6 +25,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.bill_job import BillJob
+from ..types.shared_params.currency_conversion import CurrencyConversion
 
 __all__ = ["BillJobsResource", "AsyncBillJobsResource"]
 
@@ -57,7 +58,7 @@ class BillJobsResource(SyncAPIResource):
         bill_date: Union[str, date] | NotGiven = NOT_GIVEN,
         bill_frequency_interval: int | NotGiven = NOT_GIVEN,
         billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[bill_job_create_params.CurrencyConversion] | NotGiven = NOT_GIVEN,
+        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
         day_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_invoice_date: Union[str, date] | NotGiven = NOT_GIVEN,
@@ -495,7 +496,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         bill_date: Union[str, date] | NotGiven = NOT_GIVEN,
         bill_frequency_interval: int | NotGiven = NOT_GIVEN,
         billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[bill_job_create_params.CurrencyConversion] | NotGiven = NOT_GIVEN,
+        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
         day_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
         due_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_invoice_date: Union[str, date] | NotGiven = NOT_GIVEN,

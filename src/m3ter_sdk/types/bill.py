@@ -7,19 +7,9 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .shared.currency_conversion import CurrencyConversion
 
-__all__ = ["Bill", "CurrencyConversion", "LineItem", "LineItemUsagePerPricingBand"]
-
-
-class CurrencyConversion(BaseModel):
-    from_: str = FieldInfo(alias="from")
-    """Currency to convert from. For example: GBP."""
-
-    to: str
-    """Currency to convert to. For example: USD."""
-
-    multiplier: Optional[float] = None
-    """Conversion rate between currencies."""
+__all__ = ["Bill", "LineItem", "LineItemUsagePerPricingBand"]
 
 
 class LineItemUsagePerPricingBand(BaseModel):
@@ -119,6 +109,8 @@ class LineItem(BaseModel):
     """The Aggregation ID used for the line item."""
 
     balance_id: Optional[str] = FieldInfo(alias="balanceId", default=None)
+
+    charge_id: Optional[str] = FieldInfo(alias="chargeId", default=None)
 
     child_account_code: Optional[str] = FieldInfo(alias="childAccountCode", default=None)
     """

@@ -6,14 +6,19 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .m3ter_signed_credentials_resp import M3terSignedCredentialsResp
 
-__all__ = ["Webhook"]
+__all__ = ["M3terSignedCredentialsResp"]
 
 
-class Webhook(BaseModel):
+class M3terSignedCredentialsResp(BaseModel):
     id: str
     """The UUID of the entity."""
+
+    destination: str
+    """the system the integration is for"""
+
+    type: str
+    """the type of credentials"""
 
     version: int
     """The version number:
@@ -24,17 +29,18 @@ class Webhook(BaseModel):
       response.
     """
 
-    active: Optional[bool] = None
+    api_key: Optional[str] = FieldInfo(alias="apiKey", default=None)
+    """The API key provided by m3ter.
 
-    code: Optional[str] = None
+    This key is part of the credential set required for signing requests and
+    authenticating with m3ter services.
+    """
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created this item."""
 
-    credentials: Optional[M3terSignedCredentialsResp] = None
-    """Response representing a set of credentials used for signing m3ter requests."""
-
-    description: Optional[str] = None
+    destination_id: Optional[str] = FieldInfo(alias="destinationId", default=None)
+    """the destinationId the integration is for"""
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """The DateTime when this item was created _(in ISO-8601 format)_."""
@@ -46,6 +52,11 @@ class Webhook(BaseModel):
     """The ID of the user who last modified this item."""
 
     name: Optional[str] = None
+    """the name of the credentials"""
 
-    url: Optional[str] = None
-    """The URL to which webhook requests are sent."""
+    secret: Optional[str] = None
+    """The secret associated with the API key.
+
+    This secret is used in conjunction with the API key to generate a signature for
+    secure authentication.
+    """

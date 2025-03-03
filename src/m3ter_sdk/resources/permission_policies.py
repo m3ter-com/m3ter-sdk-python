@@ -34,6 +34,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.permission_policy import PermissionPolicy
+from ..types.permission_statement_param import PermissionStatementParam
 from ..types.permission_policy_add_to_user_response import PermissionPolicyAddToUserResponse
 from ..types.permission_policy_remove_from_user_response import PermissionPolicyRemoveFromUserResponse
 from ..types.permission_policy_add_to_user_group_response import PermissionPolicyAddToUserGroupResponse
@@ -71,7 +72,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[permission_policy_create_params.PermissionPolicy],
+        permission_policy: Iterable[PermissionStatementParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -195,7 +196,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[permission_policy_update_params.PermissionPolicy],
+        permission_policy: Iterable[PermissionStatementParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -854,7 +855,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[permission_policy_create_params.PermissionPolicy],
+        permission_policy: Iterable[PermissionStatementParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -978,7 +979,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[permission_policy_update_params.PermissionPolicy],
+        permission_policy: Iterable[PermissionStatementParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

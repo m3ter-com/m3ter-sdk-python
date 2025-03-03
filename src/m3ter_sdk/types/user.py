@@ -2,65 +2,13 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .permission_statement import PermissionStatement
 
-__all__ = ["User", "PermissionPolicy"]
-
-
-class PermissionPolicy(BaseModel):
-    action: List[
-        Literal[
-            "ALL",
-            "CONFIG_CREATE",
-            "CONFIG_RETRIEVE",
-            "CONFIG_UPDATE",
-            "CONFIG_DELETE",
-            "CONFIG_EXPORT",
-            "ANALYTICS_QUERY",
-            "MEASUREMENTS_UPLOAD",
-            "MEASUREMENTS_FILEUPLOAD",
-            "MEASUREMENTS_RETRIEVE",
-            "MEASUREMENTS_EXPORT",
-            "FORECAST_RETRIEVE",
-            "HEALTHSCORES_RETRIEVE",
-            "ANOMALIES_RETRIEVE",
-            "EXPORTS_DOWNLOAD",
-        ]
-    ]
-    """
-    The actions available to users who are assigned the Permission Policy - what
-    they can do or cannot do with respect to the specified resource.
-
-    **NOTE:** Use lower case and a colon-separated format, for example, if you want
-    to confer full CRUD, use:
-
-    ```
-    "config:create",
-    "config:delete",
-    "config:retrieve",
-    "config:update"
-    ```
-    """
-
-    effect: Literal["ALLOW", "DENY"]
-    """
-    Specifies whether or not the user is allowed to perform the action on the
-    resource.
-
-    **NOTE:** Use lower case, for example: `"allow"`. If you use upper case, you'll
-    receive an error.
-    """
-
-    resource: List[str]
-    """
-    See
-    [Statements - Available Resources](https://www.m3ter.com/docs/guides/managing-organization-and-users/creating-and-managing-permissions#statements---available-resources)
-    for a listing of available resources for Permission Policy statements.
-    """
+__all__ = ["User"]
 
 
 class User(BaseModel):
@@ -116,7 +64,7 @@ class User(BaseModel):
     organizations: Optional[List[str]] = None
     """An array listing the Organizations where this user has access."""
 
-    permission_policy: Optional[List[PermissionPolicy]] = FieldInfo(alias="permissionPolicy", default=None)
+    permission_policy: Optional[List[PermissionStatement]] = FieldInfo(alias="permissionPolicy", default=None)
     """An array of permission statements for the user.
 
     Each permission statement defines a specific permission for the user.

@@ -6,6 +6,7 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .permission_statement import PermissionStatement
 
 __all__ = ["PermissionPolicy"]
 
@@ -40,7 +41,7 @@ class PermissionPolicy(BaseModel):
     name: Optional[str] = None
     """The name of the Permission Policy."""
 
-    permission_policy: Optional[List[PermissionPolicy]] = FieldInfo(alias="permissionPolicy", default=None)
+    permission_policy: Optional[List[PermissionStatement]] = FieldInfo(alias="permissionPolicy", default=None)
     """Array containing the Permission Policies information."""
 
     version: Optional[int] = None
