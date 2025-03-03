@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -12,10 +12,21 @@ __all__ = ["Aggregation"]
 
 
 class Aggregation(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
 
-    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]] = None
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
+
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
+    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]] = None
     """
     Specifies the computation method applied to usage data collected in
     `targetField`. Aggregation unit value depends on the **Category** configured for
@@ -53,7 +64,9 @@ class Aggregation(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this aggregation."""
 
-    custom_fields: Optional[Dict[str, object]] = FieldInfo(alias="customFields", default=None)
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
+
+    custom_sql: Optional[str] = FieldInfo(alias="customSql", default=None)
 
     default_value: Optional[float] = FieldInfo(alias="defaultValue", default=None)
     """Aggregation value used when no usage data is available to be aggregated.
@@ -148,13 +161,4 @@ class Aggregation(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """

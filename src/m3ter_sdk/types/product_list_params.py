@@ -11,6 +11,8 @@ __all__ = ["ProductListParams"]
 
 
 class ProductListParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     ids: List[str]
     """List of specific Product UUIDs to retrieve."""
 

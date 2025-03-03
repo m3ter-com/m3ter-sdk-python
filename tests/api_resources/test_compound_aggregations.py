@@ -42,8 +42,9 @@ class TestCompoundAggregations:
             quantity_per_unit=1,
             rounding="UP",
             unit="x",
-            code="x",
-            custom_fields={"foo": "bar"},
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            code="example_code",
+            custom_fields={"foo": "string"},
             evaluate_null_aggregations=True,
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -167,8 +168,9 @@ class TestCompoundAggregations:
             quantity_per_unit=1,
             rounding="UP",
             unit="x",
-            code="x",
-            custom_fields={"foo": "bar"},
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            code="example_code",
+            custom_fields={"foo": "string"},
             evaluate_null_aggregations=True,
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -285,6 +287,54 @@ class TestCompoundAggregations:
                 org_id="",
             )
 
+    @parametrize
+    def test_method_delete(self, client: M3ter) -> None:
+        compound_aggregation = client.compound_aggregations.delete(
+            id="id",
+            org_id="orgId",
+        )
+        assert_matches_type(CompoundAggregation, compound_aggregation, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: M3ter) -> None:
+        response = client.compound_aggregations.with_raw_response.delete(
+            id="id",
+            org_id="orgId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        compound_aggregation = response.parse()
+        assert_matches_type(CompoundAggregation, compound_aggregation, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: M3ter) -> None:
+        with client.compound_aggregations.with_streaming_response.delete(
+            id="id",
+            org_id="orgId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            compound_aggregation = response.parse()
+            assert_matches_type(CompoundAggregation, compound_aggregation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: M3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
+            client.compound_aggregations.with_raw_response.delete(
+                id="id",
+                org_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.compound_aggregations.with_raw_response.delete(
+                id="",
+                org_id="orgId",
+            )
+
 
 class TestAsyncCompoundAggregations:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -310,8 +360,9 @@ class TestAsyncCompoundAggregations:
             quantity_per_unit=1,
             rounding="UP",
             unit="x",
-            code="x",
-            custom_fields={"foo": "bar"},
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            code="example_code",
+            custom_fields={"foo": "string"},
             evaluate_null_aggregations=True,
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -435,8 +486,9 @@ class TestAsyncCompoundAggregations:
             quantity_per_unit=1,
             rounding="UP",
             unit="x",
-            code="x",
-            custom_fields={"foo": "bar"},
+            accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            code="example_code",
+            custom_fields={"foo": "string"},
             evaluate_null_aggregations=True,
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -551,4 +603,52 @@ class TestAsyncCompoundAggregations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
             await async_client.compound_aggregations.with_raw_response.list(
                 org_id="",
+            )
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncM3ter) -> None:
+        compound_aggregation = await async_client.compound_aggregations.delete(
+            id="id",
+            org_id="orgId",
+        )
+        assert_matches_type(CompoundAggregation, compound_aggregation, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.compound_aggregations.with_raw_response.delete(
+            id="id",
+            org_id="orgId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        compound_aggregation = await response.parse()
+        assert_matches_type(CompoundAggregation, compound_aggregation, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
+        async with async_client.compound_aggregations.with_streaming_response.delete(
+            id="id",
+            org_id="orgId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            compound_aggregation = await response.parse()
+            assert_matches_type(CompoundAggregation, compound_aggregation, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
+            await async_client.compound_aggregations.with_raw_response.delete(
+                id="id",
+                org_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.compound_aggregations.with_raw_response.delete(
+                id="",
+                org_id="orgId",
             )

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -65,8 +65,17 @@ class DerivedField(BaseModel):
 
 
 class Meter(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     code: Optional[str] = None
     """Code of the Meter - unique short code used to identify the Meter."""
@@ -74,7 +83,7 @@ class Meter(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this meter."""
 
-    custom_fields: Optional[Dict[str, object]] = FieldInfo(alias="customFields", default=None)
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
     """User defined fields enabling you to attach custom data.
 
     The value for a custom field can be either a string or a number.
@@ -122,13 +131,4 @@ class Meter(BaseModel):
     """UUID of the Product the Meter belongs to.
 
     _(Optional)_ - if blank, the Meter is global.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """

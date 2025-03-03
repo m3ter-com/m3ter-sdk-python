@@ -10,6 +10,8 @@ __all__ = ["CounterCreateParams"]
 
 
 class CounterCreateParams(TypedDict, total=False):
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
+
     name: Required[str]
     """Descriptive name for the Counter."""
 

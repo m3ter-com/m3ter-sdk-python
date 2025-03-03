@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -11,7 +11,7 @@ __all__ = ["ProductUpdateParams"]
 
 
 class ProductUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     code: Required[str]
     """A unique short code to identify the Product.
@@ -22,7 +22,7 @@ class ProductUpdateParams(TypedDict, total=False):
     name: Required[str]
     """Descriptive name for the Product providing context and information."""
 
-    custom_fields: Annotated[Dict[str, object], PropertyInfo(alias="customFields")]
+    custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
     """User defined fields enabling you to attach custom data.
 
     The value for a custom field can be either a string or a number.

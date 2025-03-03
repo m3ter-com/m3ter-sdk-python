@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -12,8 +12,19 @@ __all__ = ["CompoundAggregation"]
 
 
 class CompoundAggregation(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
+
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
 
     calculation: Optional[str] = None
     """This field is a string that represents the formula for the calculation.
@@ -28,7 +39,7 @@ class CompoundAggregation(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) of the user who created this CompoundAggregation."""
 
-    custom_fields: Optional[Dict[str, object]] = FieldInfo(alias="customFields", default=None)
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """
@@ -110,13 +121,4 @@ class CompoundAggregation(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
-    """
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
     """

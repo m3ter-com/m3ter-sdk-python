@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -11,7 +11,7 @@ __all__ = ["CompoundAggregationUpdateParams"]
 
 
 class CompoundAggregationUpdateParams(TypedDict, total=False):
-    org_id: Required[Annotated[str, PropertyInfo(alias="orgId")]]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     calculation: Required[str]
     """String that represents the formula for the calculation.
@@ -68,10 +68,16 @@ class CompoundAggregationUpdateParams(TypedDict, total=False):
     customers what they are being charged for.
     """
 
+    accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
+    """
+    Optional Product ID this Aggregation should be attributed to for accounting
+    purposes
+    """
+
     code: str
     """Code of the new Aggregation. A unique short code to identify the Aggregation."""
 
-    custom_fields: Annotated[Dict[str, object], PropertyInfo(alias="customFields")]
+    custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
 
     evaluate_null_aggregations: Annotated[bool, PropertyInfo(alias="evaluateNullAggregations")]
     """Boolean True / False flag:

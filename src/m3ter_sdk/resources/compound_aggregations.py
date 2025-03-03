@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Union
 from typing_extensions import Literal
 
 import httpx
@@ -55,15 +55,16 @@ class CompoundAggregationsResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         calculation: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -124,6 +125,9 @@ class CompoundAggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -163,6 +167,8 @@ class CompoundAggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -174,6 +180,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -192,7 +199,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -215,6 +222,8 @@ class CompoundAggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -231,14 +240,15 @@ class CompoundAggregationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         calculation: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -304,6 +314,9 @@ class CompoundAggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -343,6 +356,8 @@ class CompoundAggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -356,6 +371,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -372,8 +388,8 @@ class CompoundAggregationsResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -418,6 +434,8 @@ class CompoundAggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -440,6 +458,49 @@ class CompoundAggregationsResource(SyncAPIResource):
                 ),
             ),
             model=CompoundAggregation,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompoundAggregation:
+        """
+        Delete a CompoundAggregation with the given UUID.
+
+        This endpoint enables deletion of a specific CompoundAggregation associated with
+        a specific Organization. Useful when you need to remove an existing
+        CompoundAggregation that is no longer required, such as when changing pricing or
+        planning models.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/organizations/{org_id}/compoundaggregations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompoundAggregation,
         )
 
 
@@ -465,15 +526,16 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         calculation: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -534,6 +596,9 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -573,6 +638,8 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -584,6 +651,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -602,7 +670,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -625,6 +693,8 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -641,14 +711,15 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         calculation: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -714,6 +785,9 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
           evaluate_null_aggregations:
@@ -753,6 +827,8 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -766,6 +842,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                     "quantity_per_unit": quantity_per_unit,
                     "rounding": rounding,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "evaluate_null_aggregations": evaluate_null_aggregations,
@@ -782,8 +859,8 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -828,6 +905,8 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -852,6 +931,49 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             model=CompoundAggregation,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CompoundAggregation:
+        """
+        Delete a CompoundAggregation with the given UUID.
+
+        This endpoint enables deletion of a specific CompoundAggregation associated with
+        a specific Organization. Useful when you need to remove an existing
+        CompoundAggregation that is no longer required, such as when changing pricing or
+        planning models.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/organizations/{org_id}/compoundaggregations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CompoundAggregation,
+        )
+
 
 class CompoundAggregationsResourceWithRawResponse:
     def __init__(self, compound_aggregations: CompoundAggregationsResource) -> None:
@@ -868,6 +990,9 @@ class CompoundAggregationsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             compound_aggregations.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            compound_aggregations.delete,
         )
 
 
@@ -887,6 +1012,9 @@ class AsyncCompoundAggregationsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             compound_aggregations.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            compound_aggregations.delete,
+        )
 
 
 class CompoundAggregationsResourceWithStreamingResponse:
@@ -905,6 +1033,9 @@ class CompoundAggregationsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             compound_aggregations.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            compound_aggregations.delete,
+        )
 
 
 class AsyncCompoundAggregationsResourceWithStreamingResponse:
@@ -922,4 +1053,7 @@ class AsyncCompoundAggregationsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             compound_aggregations.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            compound_aggregations.delete,
         )

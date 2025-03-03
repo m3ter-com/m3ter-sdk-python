@@ -65,7 +65,7 @@ class TestMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -251,7 +251,7 @@ class TestMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -416,6 +416,54 @@ class TestMeters:
                 org_id="",
             )
 
+    @parametrize
+    def test_method_delete(self, client: M3ter) -> None:
+        meter = client.meters.delete(
+            id="id",
+            org_id="orgId",
+        )
+        assert_matches_type(Meter, meter, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: M3ter) -> None:
+        response = client.meters.with_raw_response.delete(
+            id="id",
+            org_id="orgId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        meter = response.parse()
+        assert_matches_type(Meter, meter, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: M3ter) -> None:
+        with client.meters.with_streaming_response.delete(
+            id="id",
+            org_id="orgId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            meter = response.parse()
+            assert_matches_type(Meter, meter, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: M3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
+            client.meters.with_raw_response.delete(
+                id="id",
+                org_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.meters.with_raw_response.delete(
+                id="",
+                org_id="orgId",
+            )
+
 
 class TestAsyncMeters:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -467,7 +515,7 @@ class TestAsyncMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -653,7 +701,7 @@ class TestAsyncMeters:
                 }
             ],
             name="x",
-            custom_fields={"foo": "bar"},
+            custom_fields={"foo": "string"},
             group_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
@@ -816,4 +864,52 @@ class TestAsyncMeters:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
             await async_client.meters.with_raw_response.list(
                 org_id="",
+            )
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncM3ter) -> None:
+        meter = await async_client.meters.delete(
+            id="id",
+            org_id="orgId",
+        )
+        assert_matches_type(Meter, meter, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.meters.with_raw_response.delete(
+            id="id",
+            org_id="orgId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        meter = await response.parse()
+        assert_matches_type(Meter, meter, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
+        async with async_client.meters.with_streaming_response.delete(
+            id="id",
+            org_id="orgId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            meter = await response.parse()
+            assert_matches_type(Meter, meter, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
+            await async_client.meters.with_raw_response.delete(
+                id="id",
+                org_id="",
+            )
+
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.meters.with_raw_response.delete(
+                id="",
+                org_id="orgId",
             )

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 
 import httpx
 
@@ -49,8 +49,8 @@ class CountersResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         name: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
@@ -96,6 +96,8 @@ class CountersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -120,7 +122,7 @@ class CountersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,6 +142,8 @@ class CountersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -156,7 +160,7 @@ class CountersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         name: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
@@ -202,6 +206,8 @@ class CountersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -226,13 +232,13 @@ class CountersResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -264,6 +270,8 @@ class CountersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -286,6 +294,44 @@ class CountersResource(SyncAPIResource):
                 ),
             ),
             model=Counter,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Counter:
+        """
+        Delete a Counter for the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/organizations/{org_id}/counters/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Counter,
         )
 
 
@@ -311,8 +357,8 @@ class AsyncCountersResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         name: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
@@ -358,6 +404,8 @@ class AsyncCountersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -382,7 +430,7 @@ class AsyncCountersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -402,6 +450,8 @@ class AsyncCountersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -418,7 +468,7 @@ class AsyncCountersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         name: str,
         unit: str,
         code: str | NotGiven = NOT_GIVEN,
@@ -464,6 +514,8 @@ class AsyncCountersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -488,13 +540,13 @@ class AsyncCountersResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        product_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        product_id: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -526,6 +578,8 @@ class AsyncCountersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -550,6 +604,44 @@ class AsyncCountersResource(AsyncAPIResource):
             model=Counter,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Counter:
+        """
+        Delete a Counter for the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/organizations/{org_id}/counters/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Counter,
+        )
+
 
 class CountersResourceWithRawResponse:
     def __init__(self, counters: CountersResource) -> None:
@@ -566,6 +658,9 @@ class CountersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             counters.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            counters.delete,
         )
 
 
@@ -585,6 +680,9 @@ class AsyncCountersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             counters.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            counters.delete,
+        )
 
 
 class CountersResourceWithStreamingResponse:
@@ -603,6 +701,9 @@ class CountersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             counters.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            counters.delete,
+        )
 
 
 class AsyncCountersResourceWithStreamingResponse:
@@ -620,4 +721,7 @@ class AsyncCountersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             counters.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            counters.delete,
         )

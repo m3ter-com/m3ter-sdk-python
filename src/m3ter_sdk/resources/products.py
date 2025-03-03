@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Union
 
 import httpx
 
@@ -49,11 +49,11 @@ class ProductsResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -103,6 +103,8 @@ class ProductsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -126,7 +128,7 @@ class ProductsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -149,6 +151,8 @@ class ProductsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -165,10 +169,10 @@ class ProductsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -224,6 +228,8 @@ class ProductsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -247,8 +253,8 @@ class ProductsResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
@@ -282,6 +288,8 @@ class ProductsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -302,6 +310,47 @@ class ProductsResource(SyncAPIResource):
                 ),
             ),
             model=Product,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Product:
+        """
+        Delete a Product with the given UUID.
+
+        This endpoint deletes a specific Product within a specified Organization, using
+        the Product UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/organizations/{org_id}/products/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Product,
         )
 
 
@@ -327,11 +376,11 @@ class AsyncProductsResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -381,6 +430,8 @@ class AsyncProductsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -404,7 +455,7 @@ class AsyncProductsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -427,6 +478,8 @@ class AsyncProductsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -443,10 +496,10 @@ class AsyncProductsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         code: str,
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -502,6 +555,8 @@ class AsyncProductsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -525,8 +580,8 @@ class AsyncProductsResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
@@ -560,6 +615,8 @@ class AsyncProductsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -582,6 +639,47 @@ class AsyncProductsResource(AsyncAPIResource):
             model=Product,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Product:
+        """
+        Delete a Product with the given UUID.
+
+        This endpoint deletes a specific Product within a specified Organization, using
+        the Product UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/organizations/{org_id}/products/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Product,
+        )
+
 
 class ProductsResourceWithRawResponse:
     def __init__(self, products: ProductsResource) -> None:
@@ -598,6 +696,9 @@ class ProductsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             products.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            products.delete,
         )
 
 
@@ -617,6 +718,9 @@ class AsyncProductsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             products.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            products.delete,
+        )
 
 
 class ProductsResourceWithStreamingResponse:
@@ -635,6 +739,9 @@ class ProductsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             products.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            products.delete,
+        )
 
 
 class AsyncProductsResourceWithStreamingResponse:
@@ -652,4 +759,7 @@ class AsyncProductsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             products.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            products.delete,
         )

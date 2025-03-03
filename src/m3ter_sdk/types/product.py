@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 from datetime import datetime
 
 from pydantic import Field as FieldInfo
@@ -11,8 +11,17 @@ __all__ = ["Product"]
 
 
 class Product(BaseModel):
-    id: Optional[str] = None
+    id: str
     """The UUID of the entity."""
+
+    version: int
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
     code: Optional[str] = None
     """A unique short code to identify the Product.
@@ -23,7 +32,7 @@ class Product(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) of the user who created this Product."""
 
-    custom_fields: Optional[Dict[str, object]] = FieldInfo(alias="customFields", default=None)
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
     """User defined fields enabling you to attach custom data.
 
     The value for a custom field can be either a string or a number.
@@ -48,12 +57,3 @@ class Product(BaseModel):
 
     name: Optional[str] = None
     """Descriptive name for the Product providing context and information."""
-
-    version: Optional[int] = None
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """

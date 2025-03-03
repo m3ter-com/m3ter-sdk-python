@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable
+from typing import Dict, List, Union, Iterable
 
 import httpx
 
@@ -49,13 +49,13 @@ class MetersResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         code: str,
         data_fields: Iterable[meter_create_params.DataField],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -151,6 +151,8 @@ class MetersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -178,7 +180,7 @@ class MetersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -198,6 +200,8 @@ class MetersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -214,12 +218,12 @@ class MetersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         code: str,
         data_fields: Iterable[meter_update_params.DataField],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -292,6 +296,8 @@ class MetersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -319,8 +325,8 @@ class MetersResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -334,18 +340,20 @@ class MetersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursor[Meter]:
         """
-        Retrieve a list of Meter entities
+        Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
+        short code.
 
         Args:
-          codes: list of codes to retrieve
+          codes: List of Meter codes to retrieve. These are the unique short codes that identify
+              each Meter.
 
-          ids: list of ids to retrieve
+          ids: List of Meter IDs to retrieve.
 
-          next_token: nextToken for multi page retrievals
+          next_token: `nextToken` for multi page retrievals.
 
-          page_size: Number of Meters to retrieve per page
+          page_size: Number of Meters to retrieve per page.
 
-          product_id: The UUIDs of the products to retrieve meters for
+          product_id: The UUIDs of the Products to retrieve Meters for.
 
           extra_headers: Send extra headers
 
@@ -355,6 +363,8 @@ class MetersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -377,6 +387,44 @@ class MetersResource(SyncAPIResource):
                 ),
             ),
             model=Meter,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Meter:
+        """
+        Delete the Meter with the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/organizations/{org_id}/meters/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Meter,
         )
 
 
@@ -402,13 +450,13 @@ class AsyncMetersResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         code: str,
         data_fields: Iterable[meter_create_params.DataField],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -504,6 +552,8 @@ class AsyncMetersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -531,7 +581,7 @@ class AsyncMetersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -551,6 +601,8 @@ class AsyncMetersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -567,12 +619,12 @@ class AsyncMetersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         code: str,
         data_fields: Iterable[meter_update_params.DataField],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -645,6 +697,8 @@ class AsyncMetersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -672,8 +726,8 @@ class AsyncMetersResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -687,18 +741,20 @@ class AsyncMetersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[Meter, AsyncCursor[Meter]]:
         """
-        Retrieve a list of Meter entities
+        Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
+        short code.
 
         Args:
-          codes: list of codes to retrieve
+          codes: List of Meter codes to retrieve. These are the unique short codes that identify
+              each Meter.
 
-          ids: list of ids to retrieve
+          ids: List of Meter IDs to retrieve.
 
-          next_token: nextToken for multi page retrievals
+          next_token: `nextToken` for multi page retrievals.
 
-          page_size: Number of Meters to retrieve per page
+          page_size: Number of Meters to retrieve per page.
 
-          product_id: The UUIDs of the products to retrieve meters for
+          product_id: The UUIDs of the Products to retrieve Meters for.
 
           extra_headers: Send extra headers
 
@@ -708,6 +764,8 @@ class AsyncMetersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -732,6 +790,44 @@ class AsyncMetersResource(AsyncAPIResource):
             model=Meter,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Meter:
+        """
+        Delete the Meter with the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/organizations/{org_id}/meters/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Meter,
+        )
+
 
 class MetersResourceWithRawResponse:
     def __init__(self, meters: MetersResource) -> None:
@@ -748,6 +844,9 @@ class MetersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             meters.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            meters.delete,
         )
 
 
@@ -767,6 +866,9 @@ class AsyncMetersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             meters.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            meters.delete,
+        )
 
 
 class MetersResourceWithStreamingResponse:
@@ -785,6 +887,9 @@ class MetersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             meters.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            meters.delete,
+        )
 
 
 class AsyncMetersResourceWithStreamingResponse:
@@ -802,4 +907,7 @@ class AsyncMetersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             meters.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            meters.delete,
         )

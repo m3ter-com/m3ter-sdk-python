@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable
+from typing import Dict, List, Union, Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -50,17 +50,19 @@ class AggregationsResource(SyncAPIResource):
 
     def create(
         self,
-        org_id: str,
         *,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        org_id: str | None = None,
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -142,7 +144,12 @@ class AggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -190,6 +197,8 @@ class AggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
@@ -203,8 +212,10 @@ class AggregationsResource(SyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -222,7 +233,7 @@ class AggregationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -242,6 +253,8 @@ class AggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -258,16 +271,18 @@ class AggregationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        org_id: str | None = None,
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -354,7 +369,12 @@ class AggregationsResource(SyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -402,6 +422,8 @@ class AggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -417,8 +439,10 @@ class AggregationsResource(SyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -434,8 +458,8 @@ class AggregationsResource(SyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -472,6 +496,8 @@ class AggregationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -494,6 +520,44 @@ class AggregationsResource(SyncAPIResource):
                 ),
             ),
             model=Aggregation,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Aggregation:
+        """
+        Delete the Aggregation with the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/organizations/{org_id}/aggregations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Aggregation,
         )
 
 
@@ -519,17 +583,19 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
     async def create(
         self,
-        org_id: str,
         *,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        org_id: str | None = None,
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -611,7 +677,12 @@ class AsyncAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -659,6 +730,8 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
@@ -672,8 +745,10 @@ class AsyncAggregationsResource(AsyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -691,7 +766,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
+        org_id: str | None = None,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -711,6 +786,8 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -727,16 +804,18 @@ class AsyncAggregationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        org_id: str,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        org_id: str | None = None,
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         target_field: str,
         unit: str,
+        accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        custom_sql: str | NotGiven = NOT_GIVEN,
         default_value: float | NotGiven = NOT_GIVEN,
         segmented_fields: List[str] | NotGiven = NOT_GIVEN,
         segments: Iterable[Dict[str, str]] | NotGiven = NOT_GIVEN,
@@ -823,7 +902,12 @@ class AsyncAggregationsResource(AsyncAPIResource):
           unit: User defined label for units shown for Bill line items, indicating to your
               customers what they are being charged for.
 
+          accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
+              purposes
+
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
+
+          custom_sql
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -871,6 +955,8 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
@@ -886,8 +972,10 @@ class AsyncAggregationsResource(AsyncAPIResource):
                     "rounding": rounding,
                     "target_field": target_field,
                     "unit": unit,
+                    "accounting_product_id": accounting_product_id,
                     "code": code,
                     "custom_fields": custom_fields,
+                    "custom_sql": custom_sql,
                     "default_value": default_value,
                     "segmented_fields": segmented_fields,
                     "segments": segments,
@@ -903,8 +991,8 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
     def list(
         self,
-        org_id: str,
         *,
+        org_id: str | None = None,
         codes: List[str] | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -941,6 +1029,8 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
@@ -965,6 +1055,44 @@ class AsyncAggregationsResource(AsyncAPIResource):
             model=Aggregation,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Aggregation:
+        """
+        Delete the Aggregation with the given UUID.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/organizations/{org_id}/aggregations/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Aggregation,
+        )
+
 
 class AggregationsResourceWithRawResponse:
     def __init__(self, aggregations: AggregationsResource) -> None:
@@ -981,6 +1109,9 @@ class AggregationsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             aggregations.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            aggregations.delete,
         )
 
 
@@ -1000,6 +1131,9 @@ class AsyncAggregationsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             aggregations.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            aggregations.delete,
+        )
 
 
 class AggregationsResourceWithStreamingResponse:
@@ -1018,6 +1152,9 @@ class AggregationsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             aggregations.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            aggregations.delete,
+        )
 
 
 class AsyncAggregationsResourceWithStreamingResponse:
@@ -1035,4 +1172,7 @@ class AsyncAggregationsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             aggregations.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            aggregations.delete,
         )
