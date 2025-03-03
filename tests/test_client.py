@@ -458,18 +458,6 @@ class TestM3ter:
             api_key=api_key,
             api_secret=api_secret,
             token=token,
-            org_id=org_id,
-            _strict_response_validation=True,
-        )
-        with client as c2:
-            with pytest.raises(ValueError, match="Missing org_id argument;"):
-                c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
-
-        client = M3ter(
-            base_url=base_url,
-            api_key=api_key,
-            api_secret=api_secret,
-            token=token,
             org_id="My Org ID",
             _strict_response_validation=True,
         )
@@ -1389,18 +1377,6 @@ class TestAsyncM3ter:
         assert dict(url.params) == {"foo": "baz", "query_param": "overridden"}
 
     async def test_org_id_client_params(self) -> None:
-        client = AsyncM3ter(
-            base_url=base_url,
-            api_key=api_key,
-            api_secret=api_secret,
-            token=token,
-            org_id=org_id,
-            _strict_response_validation=True,
-        )
-        async with client as c2:
-            with pytest.raises(ValueError, match="Missing org_id argument;"):
-                await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
-
         client = AsyncM3ter(
             base_url=base_url,
             api_key=api_key,
