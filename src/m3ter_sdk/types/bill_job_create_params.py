@@ -4,11 +4,12 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import date
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .shared_params.currency_conversion import CurrencyConversion
 
-__all__ = ["BillJobCreateParams", "CurrencyConversion"]
+__all__ = ["BillJobCreateParams"]
 
 
 class BillJobCreateParams(TypedDict, total=False):
@@ -145,20 +146,3 @@ class BillJobCreateParams(TypedDict, total=False):
     The starting date _(epoch)_ for Yearly billing frequency _(in ISO 8601 format)_,
     determining the first Bill date for yearly Bills.
     """
-
-
-_CurrencyConversionReservedKeywords = TypedDict(
-    "_CurrencyConversionReservedKeywords",
-    {
-        "from": str,
-    },
-    total=False,
-)
-
-
-class CurrencyConversion(_CurrencyConversionReservedKeywords, total=False):
-    to: Required[str]
-    """Currency to convert to. For example: USD."""
-
-    multiplier: float
-    """Conversion rate between currencies."""

@@ -23,6 +23,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.organization_config import OrganizationConfig
+from ..types.shared_params.currency_conversion import CurrencyConversion
 
 __all__ = ["OrganizationConfigResource", "AsyncOrganizationConfigResource"]
 
@@ -100,7 +101,7 @@ class OrganizationConfigResource(SyncAPIResource):
         commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         consolidate_bills: bool | NotGiven = NOT_GIVEN,
         credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[organization_config_update_params.CurrencyConversion] | NotGiven = NOT_GIVEN,
+        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
         default_statement_definition_id: str | NotGiven = NOT_GIVEN,
         external_invoice_date: str | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
@@ -450,7 +451,7 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
         commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         consolidate_bills: bool | NotGiven = NOT_GIVEN,
         credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[organization_config_update_params.CurrencyConversion] | NotGiven = NOT_GIVEN,
+        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
         default_statement_definition_id: str | NotGiven = NOT_GIVEN,
         external_invoice_date: str | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,

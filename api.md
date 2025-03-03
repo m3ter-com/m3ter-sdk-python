@@ -1,3 +1,9 @@
+# Shared Types
+
+```python
+from m3ter_sdk.types import CurrencyConversion, PricingBand, SetString
+```
+
 # Authentication
 
 Types:
@@ -15,7 +21,12 @@ Methods:
 Types:
 
 ```python
-from m3ter_sdk.types import Account, AccountEndDateBillingEntitiesResponse, AccountSearchResponse
+from m3ter_sdk.types import (
+    Account,
+    Address,
+    AccountEndDateBillingEntitiesResponse,
+    AccountSearchResponse,
+)
 ```
 
 Methods:
@@ -525,6 +536,7 @@ Types:
 ```python
 from m3ter_sdk.types import (
     PermissionPolicy,
+    PermissionStatement,
     PermissionPolicyAddToServiceUserResponse,
     PermissionPolicyAddToSupportUserResponse,
     PermissionPolicyAddToUserResponse,
@@ -778,6 +790,8 @@ Types:
 
 ```python
 from m3ter_sdk.types import (
+    M3terSignedCredentialsReq,
+    M3terSignedCredentialsResp,
     Webhook,
     WebhookCreateResponse,
     WebhookUpdateResponse,

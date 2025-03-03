@@ -125,6 +125,8 @@ class LineItem(BaseModel):
     modified.
     """
 
+    group: Optional[Dict[str, str]] = None
+
     json_usage_generated: Optional[bool] = FieldInfo(alias="jsonUsageGenerated", default=None)
     """
     Boolean flag indicating whether the Bill line item has associated statement

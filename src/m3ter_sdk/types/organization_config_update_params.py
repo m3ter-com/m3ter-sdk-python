@@ -6,8 +6,9 @@ from typing import List, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .shared_params.currency_conversion import CurrencyConversion
 
-__all__ = ["OrganizationConfigUpdateParams", "CurrencyConversion"]
+__all__ = ["OrganizationConfigUpdateParams"]
 
 
 class OrganizationConfigUpdateParams(TypedDict, total=False):
@@ -283,20 +284,3 @@ class OrganizationConfigUpdateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
-
-
-_CurrencyConversionReservedKeywords = TypedDict(
-    "_CurrencyConversionReservedKeywords",
-    {
-        "from": str,
-    },
-    total=False,
-)
-
-
-class CurrencyConversion(_CurrencyConversionReservedKeywords, total=False):
-    to: Required[str]
-    """Currency to convert to. For example: USD."""
-
-    multiplier: float
-    """Conversion rate between currencies."""

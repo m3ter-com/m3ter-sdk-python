@@ -7,7 +7,9 @@ from .plan import Plan as Plan
 from .user import User as User
 from .event import Event as Event
 from .meter import Meter as Meter
+from .shared import SetString as SetString, PricingBand as PricingBand, CurrencyConversion as CurrencyConversion
 from .account import Account as Account
+from .address import Address as Address
 from .balance import Balance as Balance
 from .counter import Counter as Counter
 from .pricing import Pricing as Pricing
@@ -23,6 +25,7 @@ from .bill_config import BillConfig as BillConfig
 from .account_plan import AccountPlan as AccountPlan
 from .adhoc_export import AdhocExport as AdhocExport
 from .debit_reason import DebitReason as DebitReason
+from .address_param import AddressParam as AddressParam
 from .credit_reason import CreditReason as CreditReason
 from .custom_fields import CustomFields as CustomFields
 from .plan_template import PlanTemplate as PlanTemplate
@@ -60,6 +63,7 @@ from .bill_search_response import BillSearchResponse as BillSearchResponse
 from .compound_aggregation import CompoundAggregation as CompoundAggregation
 from .contract_list_params import ContractListParams as ContractListParams
 from .currency_list_params import CurrencyListParams as CurrencyListParams
+from .permission_statement import PermissionStatement as PermissionStatement
 from .usage_query_response import UsageQueryResponse as UsageQueryResponse
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_search_params import AccountSearchParams as AccountSearchParams
@@ -112,6 +116,7 @@ from .custom_field_update_params import CustomFieldUpdateParams as CustomFieldUp
 from .debit_reason_create_params import DebitReasonCreateParams as DebitReasonCreateParams
 from .debit_reason_update_params import DebitReasonUpdateParams as DebitReasonUpdateParams
 from .notification_configuration import NotificationConfiguration as NotificationConfiguration
+from .permission_statement_param import PermissionStatementParam as PermissionStatementParam
 from .resource_group_list_params import ResourceGroupListParams as ResourceGroupListParams
 from .account_get_children_params import AccountGetChildrenParams as AccountGetChildrenParams
 from .bill_job_recalculate_params import BillJobRecalculateParams as BillJobRecalculateParams
@@ -125,12 +130,14 @@ from .user_get_permissions_params import UserGetPermissionsParams as UserGetPerm
 from .user_get_user_groups_params import UserGetUserGroupsParams as UserGetUserGroupsParams
 from .webhook_set_active_response import WebhookSetActiveResponse as WebhookSetActiveResponse
 from .external_mapping_list_params import ExternalMappingListParams as ExternalMappingListParams
+from .m3ter_signed_credentials_req import M3terSignedCredentialsReq as M3terSignedCredentialsReq
 from .resource_group_create_params import ResourceGroupCreateParams as ResourceGroupCreateParams
 from .resource_group_update_params import ResourceGroupUpdateParams as ResourceGroupUpdateParams
 from .submit_measurements_response import SubmitMeasurementsResponse as SubmitMeasurementsResponse
 from .transaction_type_list_params import TransactionTypeListParams as TransactionTypeListParams
 from .counter_pricing_create_params import CounterPricingCreateParams as CounterPricingCreateParams
 from .counter_pricing_update_params import CounterPricingUpdateParams as CounterPricingUpdateParams
+from .m3ter_signed_credentials_resp import M3terSignedCredentialsResp as M3terSignedCredentialsResp
 from .permission_policy_list_params import PermissionPolicyListParams as PermissionPolicyListParams
 from .plan_group_link_create_params import PlanGroupLinkCreateParams as PlanGroupLinkCreateParams
 from .plan_group_link_update_params import PlanGroupLinkUpdateParams as PlanGroupLinkUpdateParams
@@ -150,6 +157,7 @@ from .counter_adjustment_update_params import CounterAdjustmentUpdateParams as C
 from .organization_config_update_params import OrganizationConfigUpdateParams as OrganizationConfigUpdateParams
 from .compound_aggregation_create_params import CompoundAggregationCreateParams as CompoundAggregationCreateParams
 from .compound_aggregation_update_params import CompoundAggregationUpdateParams as CompoundAggregationUpdateParams
+from .m3ter_signed_credentials_req_param import M3terSignedCredentialsReqParam as M3terSignedCredentialsReqParam
 from .resource_group_add_resource_params import ResourceGroupAddResourceParams as ResourceGroupAddResourceParams
 from .resource_group_list_contents_params import ResourceGroupListContentsParams as ResourceGroupListContentsParams
 from .permission_policy_add_to_user_params import PermissionPolicyAddToUserParams as PermissionPolicyAddToUserParams

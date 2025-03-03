@@ -31,6 +31,7 @@ from ..types.webhook import Webhook
 from ..types.webhook_create_response import WebhookCreateResponse
 from ..types.webhook_update_response import WebhookUpdateResponse
 from ..types.webhook_set_active_response import WebhookSetActiveResponse
+from ..types.m3ter_signed_credentials_req_param import M3terSignedCredentialsReqParam
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
 
@@ -59,7 +60,7 @@ class WebhooksResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        credentials: webhook_create_params.Credentials,
+        credentials: M3terSignedCredentialsReqParam,
         description: str,
         name: str,
         url: str,
@@ -79,7 +80,7 @@ class WebhooksResource(SyncAPIResource):
         where webhook payloads will be sent.
 
         Args:
-          credentials: The credentials required for the webhook.
+          credentials: This schema defines the credentials required for m3ter request signing.
 
           description
 
@@ -176,7 +177,7 @@ class WebhooksResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        credentials: webhook_update_params.Credentials,
+        credentials: M3terSignedCredentialsReqParam,
         description: str,
         name: str,
         url: str,
@@ -194,7 +195,7 @@ class WebhooksResource(SyncAPIResource):
         Update a destination to be used for a webhook.
 
         Args:
-          credentials: The credentials required for the webhook.
+          credentials: This schema defines the credentials required for m3ter request signing.
 
           description
 
@@ -416,7 +417,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        credentials: webhook_create_params.Credentials,
+        credentials: M3terSignedCredentialsReqParam,
         description: str,
         name: str,
         url: str,
@@ -436,7 +437,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         where webhook payloads will be sent.
 
         Args:
-          credentials: The credentials required for the webhook.
+          credentials: This schema defines the credentials required for m3ter request signing.
 
           description
 
@@ -533,7 +534,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        credentials: webhook_update_params.Credentials,
+        credentials: M3terSignedCredentialsReqParam,
         description: str,
         name: str,
         url: str,
@@ -551,7 +552,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         Update a destination to be used for a webhook.
 
         Args:
-          credentials: The credentials required for the webhook.
+          credentials: This schema defines the credentials required for m3ter request signing.
 
           description
 

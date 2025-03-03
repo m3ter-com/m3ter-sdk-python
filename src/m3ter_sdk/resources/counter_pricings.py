@@ -28,6 +28,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.counter_pricing import CounterPricing
+from ..types.shared_params.pricing_band import PricingBand
 
 __all__ = ["CounterPricingsResource", "AsyncCounterPricingsResource"]
 
@@ -57,7 +58,7 @@ class CounterPricingsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         counter_id: str,
-        pricing_bands: Iterable[counter_pricing_create_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
@@ -256,7 +257,7 @@ class CounterPricingsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         counter_id: str,
-        pricing_bands: Iterable[counter_pricing_update_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
@@ -546,7 +547,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         counter_id: str,
-        pricing_bands: Iterable[counter_pricing_create_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
@@ -745,7 +746,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         counter_id: str,
-        pricing_bands: Iterable[counter_pricing_update_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,

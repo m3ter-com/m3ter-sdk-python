@@ -25,6 +25,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.pricing import Pricing
+from ..types.shared_params.pricing_band import PricingBand
 
 __all__ = ["PricingsResource", "AsyncPricingsResource"]
 
@@ -53,7 +54,7 @@ class PricingsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        pricing_bands: Iterable[pricing_create_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -65,7 +66,7 @@ class PricingsResource(SyncAPIResource):
         minimum_spend: float | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[pricing_create_params.OveragePricingBand] | NotGiven = NOT_GIVEN,
+        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
         plan_id: str | NotGiven = NOT_GIVEN,
         plan_template_id: str | NotGiven = NOT_GIVEN,
         segment: Dict[str, str] | NotGiven = NOT_GIVEN,
@@ -280,7 +281,7 @@ class PricingsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        pricing_bands: Iterable[pricing_update_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -292,7 +293,7 @@ class PricingsResource(SyncAPIResource):
         minimum_spend: float | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[pricing_update_params.OveragePricingBand] | NotGiven = NOT_GIVEN,
+        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
         plan_id: str | NotGiven = NOT_GIVEN,
         plan_template_id: str | NotGiven = NOT_GIVEN,
         segment: Dict[str, str] | NotGiven = NOT_GIVEN,
@@ -598,7 +599,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        pricing_bands: Iterable[pricing_create_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -610,7 +611,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         minimum_spend: float | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[pricing_create_params.OveragePricingBand] | NotGiven = NOT_GIVEN,
+        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
         plan_id: str | NotGiven = NOT_GIVEN,
         plan_template_id: str | NotGiven = NOT_GIVEN,
         segment: Dict[str, str] | NotGiven = NOT_GIVEN,
@@ -825,7 +826,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        pricing_bands: Iterable[pricing_update_params.PricingBand],
+        pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
         accounting_product_id: str | NotGiven = NOT_GIVEN,
         aggregation_id: str | NotGiven = NOT_GIVEN,
@@ -837,7 +838,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         minimum_spend: float | NotGiven = NOT_GIVEN,
         minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
         minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[pricing_update_params.OveragePricingBand] | NotGiven = NOT_GIVEN,
+        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
         plan_id: str | NotGiven = NOT_GIVEN,
         plan_template_id: str | NotGiven = NOT_GIVEN,
         segment: Dict[str, str] | NotGiven = NOT_GIVEN,

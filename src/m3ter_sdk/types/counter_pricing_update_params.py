@@ -7,8 +7,9 @@ from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .shared_params.pricing_band import PricingBand
 
-__all__ = ["CounterPricingUpdateParams", "PricingBand"]
+__all__ = ["CounterPricingUpdateParams"]
 
 
 class CounterPricingUpdateParams(TypedDict, total=False):
@@ -125,20 +126,3 @@ class CounterPricingUpdateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
-
-
-class PricingBand(TypedDict, total=False):
-    fixed_price: Required[Annotated[float, PropertyInfo(alias="fixedPrice")]]
-    """Fixed price charged for the Pricing band."""
-
-    lower_limit: Required[Annotated[float, PropertyInfo(alias="lowerLimit")]]
-    """Lower limit for the Pricing band."""
-
-    unit_price: Required[Annotated[float, PropertyInfo(alias="unitPrice")]]
-    """Unit price charged for the Pricing band."""
-
-    id: str
-    """The ID for the Pricing band."""
-
-    credit_type_id: Annotated[str, PropertyInfo(alias="creditTypeId")]
-    """**OBSOLETE - this is deprecated and no longer used.**"""

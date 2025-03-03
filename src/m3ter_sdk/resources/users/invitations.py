@@ -69,7 +69,9 @@ class InvitationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Invitation:
         """
-        Invite User to Organization
+        Invite a new user to your Organization.
+
+        This sends an email to someone inviting them to join your m3ter Organization.
 
         Args:
           email
@@ -261,7 +263,9 @@ class AsyncInvitationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Invitation:
         """
-        Invite User to Organization
+        Invite a new user to your Organization.
+
+        This sends an email to someone inviting them to join your m3ter Organization.
 
         Args:
           email

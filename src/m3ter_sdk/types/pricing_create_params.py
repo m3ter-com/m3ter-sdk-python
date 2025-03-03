@@ -7,8 +7,9 @@ from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .shared_params.pricing_band import PricingBand
 
-__all__ = ["PricingCreateParams", "PricingBand", "OveragePricingBand"]
+__all__ = ["PricingCreateParams"]
 
 
 class PricingCreateParams(TypedDict, total=False):
@@ -89,7 +90,7 @@ class PricingCreateParams(TypedDict, total=False):
     minimum_spend_description: Annotated[str, PropertyInfo(alias="minimumSpendDescription")]
     """Minimum spend description _(displayed on the bill line item)_."""
 
-    overage_pricing_bands: Annotated[Iterable[OveragePricingBand], PropertyInfo(alias="overagePricingBands")]
+    overage_pricing_bands: Annotated[Iterable[PricingBand], PropertyInfo(alias="overagePricingBands")]
     """
     Specify Prepayment/Balance overage pricing in pricing bands for the case of a
     **Tiered** pricing structure.
@@ -158,37 +159,3 @@ class PricingCreateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
-
-
-class PricingBand(TypedDict, total=False):
-    fixed_price: Required[Annotated[float, PropertyInfo(alias="fixedPrice")]]
-    """Fixed price charged for the Pricing band."""
-
-    lower_limit: Required[Annotated[float, PropertyInfo(alias="lowerLimit")]]
-    """Lower limit for the Pricing band."""
-
-    unit_price: Required[Annotated[float, PropertyInfo(alias="unitPrice")]]
-    """Unit price charged for the Pricing band."""
-
-    id: str
-    """The ID for the Pricing band."""
-
-    credit_type_id: Annotated[str, PropertyInfo(alias="creditTypeId")]
-    """**OBSOLETE - this is deprecated and no longer used.**"""
-
-
-class OveragePricingBand(TypedDict, total=False):
-    fixed_price: Required[Annotated[float, PropertyInfo(alias="fixedPrice")]]
-    """Fixed price charged for the Pricing band."""
-
-    lower_limit: Required[Annotated[float, PropertyInfo(alias="lowerLimit")]]
-    """Lower limit for the Pricing band."""
-
-    unit_price: Required[Annotated[float, PropertyInfo(alias="unitPrice")]]
-    """Unit price charged for the Pricing band."""
-
-    id: str
-    """The ID for the Pricing band."""
-
-    credit_type_id: Annotated[str, PropertyInfo(alias="creditTypeId")]
-    """**OBSOLETE - this is deprecated and no longer used.**"""

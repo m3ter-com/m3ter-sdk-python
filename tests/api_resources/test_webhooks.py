@@ -28,7 +28,7 @@ class TestWebhooks:
         webhook = client.webhooks.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -43,7 +43,7 @@ class TestWebhooks:
         webhook = client.webhooks.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
@@ -63,7 +63,7 @@ class TestWebhooks:
         response = client.webhooks.with_raw_response.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -82,7 +82,7 @@ class TestWebhooks:
         with client.webhooks.with_streaming_response.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -104,7 +104,7 @@ class TestWebhooks:
             client.webhooks.with_raw_response.create(
                 org_id="",
                 credentials={
-                    "apiKey": "x",
+                    "api_key": "x",
                     "secret": "x",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
@@ -167,7 +167,7 @@ class TestWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -183,7 +183,7 @@ class TestWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
@@ -204,7 +204,7 @@ class TestWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -224,7 +224,7 @@ class TestWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -247,7 +247,7 @@ class TestWebhooks:
                 id="id",
                 org_id="",
                 credentials={
-                    "apiKey": "x",
+                    "api_key": "x",
                     "secret": "x",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
@@ -261,7 +261,7 @@ class TestWebhooks:
                 id="",
                 org_id="orgId",
                 credentials={
-                    "apiKey": "x",
+                    "api_key": "x",
                     "secret": "x",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
@@ -432,7 +432,7 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -447,7 +447,7 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
@@ -467,7 +467,7 @@ class TestAsyncWebhooks:
         response = await async_client.webhooks.with_raw_response.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -486,7 +486,7 @@ class TestAsyncWebhooks:
         async with async_client.webhooks.with_streaming_response.create(
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -508,7 +508,7 @@ class TestAsyncWebhooks:
             await async_client.webhooks.with_raw_response.create(
                 org_id="",
                 credentials={
-                    "apiKey": "x",
+                    "api_key": "x",
                     "secret": "x",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
@@ -571,7 +571,7 @@ class TestAsyncWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -587,7 +587,7 @@ class TestAsyncWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
@@ -608,7 +608,7 @@ class TestAsyncWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -628,7 +628,7 @@ class TestAsyncWebhooks:
             id="id",
             org_id="orgId",
             credentials={
-                "apiKey": "x",
+                "api_key": "x",
                 "secret": "x",
                 "type": "M3TER_SIGNED_REQUEST",
             },
@@ -651,7 +651,7 @@ class TestAsyncWebhooks:
                 id="id",
                 org_id="",
                 credentials={
-                    "apiKey": "x",
+                    "api_key": "x",
                     "secret": "x",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
@@ -665,7 +665,7 @@ class TestAsyncWebhooks:
                 id="",
                 org_id="orgId",
                 credentials={
-                    "apiKey": "x",
+                    "api_key": "x",
                     "secret": "x",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
