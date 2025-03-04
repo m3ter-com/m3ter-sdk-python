@@ -23,7 +23,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.aggregation import Aggregation
+from ..types.aggregation_response import AggregationResponse
 
 __all__ = ["AggregationsResource", "AsyncAggregationsResource"]
 
@@ -73,7 +73,7 @@ class AggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Create a new Aggregation.
 
@@ -226,7 +226,7 @@ class AggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def retrieve(
@@ -240,7 +240,7 @@ class AggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Retrieve the Aggregation with the given UUID.
 
@@ -264,7 +264,7 @@ class AggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def update(
@@ -293,7 +293,7 @@ class AggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Update the Aggregation with the given UUID.
 
@@ -453,7 +453,7 @@ class AggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def list(
@@ -471,7 +471,7 @@ class AggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Aggregation]:
+    ) -> SyncCursor[AggregationResponse]:
         """
         Retrieve a list of Aggregations that can be filtered by Product, Aggregation ID,
         or Code.
@@ -502,7 +502,7 @@ class AggregationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/aggregations",
-            page=SyncCursor[Aggregation],
+            page=SyncCursor[AggregationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -519,7 +519,7 @@ class AggregationsResource(SyncAPIResource):
                     aggregation_list_params.AggregationListParams,
                 ),
             ),
-            model=Aggregation,
+            model=AggregationResponse,
         )
 
     def delete(
@@ -533,7 +533,7 @@ class AggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Delete the Aggregation with the given UUID.
 
@@ -557,7 +557,7 @@ class AggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
 
@@ -606,7 +606,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Create a new Aggregation.
 
@@ -759,7 +759,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     async def retrieve(
@@ -773,7 +773,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Retrieve the Aggregation with the given UUID.
 
@@ -797,7 +797,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     async def update(
@@ -826,7 +826,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Update the Aggregation with the given UUID.
 
@@ -986,7 +986,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def list(
@@ -1004,7 +1004,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Aggregation, AsyncCursor[Aggregation]]:
+    ) -> AsyncPaginator[AggregationResponse, AsyncCursor[AggregationResponse]]:
         """
         Retrieve a list of Aggregations that can be filtered by Product, Aggregation ID,
         or Code.
@@ -1035,7 +1035,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/aggregations",
-            page=AsyncCursor[Aggregation],
+            page=AsyncCursor[AggregationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1052,7 +1052,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
                     aggregation_list_params.AggregationListParams,
                 ),
             ),
-            model=Aggregation,
+            model=AggregationResponse,
         )
 
     async def delete(
@@ -1066,7 +1066,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Delete the Aggregation with the given UUID.
 
@@ -1090,7 +1090,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
 

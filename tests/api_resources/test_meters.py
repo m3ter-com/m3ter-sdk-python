@@ -32,10 +32,10 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -57,11 +57,11 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
                     "unit": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -86,10 +86,10 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -114,10 +114,10 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -145,10 +145,10 @@ class TestMeters:
                 ],
                 derived_fields=[
                     {
-                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
+                        "calculation": "x",
                     }
                 ],
                 name="x",
@@ -217,10 +217,10 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -243,11 +243,11 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
                     "unit": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -273,10 +273,10 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -302,10 +302,10 @@ class TestMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -334,10 +334,10 @@ class TestMeters:
                 ],
                 derived_fields=[
                     {
-                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
+                        "calculation": "x",
                     }
                 ],
                 name="x",
@@ -357,10 +357,10 @@ class TestMeters:
                 ],
                 derived_fields=[
                     {
-                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
+                        "calculation": "x",
                     }
                 ],
                 name="x",
@@ -482,10 +482,10 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -507,11 +507,11 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
                     "unit": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -536,10 +536,10 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -564,10 +564,10 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -595,10 +595,10 @@ class TestAsyncMeters:
                 ],
                 derived_fields=[
                     {
-                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
+                        "calculation": "x",
                     }
                 ],
                 name="x",
@@ -667,10 +667,10 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -693,11 +693,11 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
                     "unit": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -723,10 +723,10 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -752,10 +752,10 @@ class TestAsyncMeters:
             ],
             derived_fields=[
                 {
-                    "calculation": "x",
                     "category": "WHO",
                     "code": "{1{}}_",
                     "name": "x",
+                    "calculation": "x",
                 }
             ],
             name="x",
@@ -784,10 +784,10 @@ class TestAsyncMeters:
                 ],
                 derived_fields=[
                     {
-                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
+                        "calculation": "x",
                     }
                 ],
                 name="x",
@@ -807,10 +807,10 @@ class TestAsyncMeters:
                 ],
                 derived_fields=[
                     {
-                        "calculation": "x",
                         "category": "WHO",
                         "code": "{1{}}_",
                         "name": "x",
+                        "calculation": "x",
                     }
                 ],
                 name="x",

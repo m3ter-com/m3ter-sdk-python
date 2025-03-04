@@ -2,65 +2,21 @@
 
 from typing import Dict, List, Union, Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .data_field import DataField
 
-__all__ = ["Meter", "DataField", "DerivedField"]
-
-
-class DataField(BaseModel):
-    category: Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]
-    """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
-
-    code: str
-    """Short code to identify the field
-
-    **NOTE:** Code has a maximum length of 80 characters and can only contain
-    letters, numbers, underscore, and the dollar character, and must not start with
-    a number.
-    """
-
-    name: str
-    """Descriptive name of the field."""
-
-    unit: Optional[str] = None
-    """The units to measure the data with.
-
-    Should conform to _Unified Code for Units of Measure_ (UCUM). Required only for
-    numeric field categories.
-    """
+__all__ = ["Meter", "DerivedField"]
 
 
-class DerivedField(BaseModel):
+class DerivedField(DataField):
     calculation: str
     """
     The calculation used to transform the value of submitted `dataFields` in usage
     data. Calculation can reference `dataFields`, `customFields`, or system
     `Timestamp` fields. _(Example: datafieldms datafieldgb)_
-    """
-
-    category: Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]
-    """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
-
-    code: str
-    """Short code to identify the field
-
-    **NOTE:** Code has a maximum length of 80 characters and can only contain
-    letters, numbers, underscore, and the dollar character, and must not start with
-    a number.
-    """
-
-    name: str
-    """Descriptive name of the field."""
-
-    unit: Optional[str] = None
-    """The units to measure the data with.
-
-    Should conform to _Unified Code for Units of Measure_ (UCUM). Required only for
-    numeric field categories.
     """
 
 
