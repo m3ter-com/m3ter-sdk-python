@@ -3,9 +3,9 @@
 from typing import Union
 from typing_extensions import TypeAlias
 
-from .usage_data_export_schedule import UsageDataExportSchedule
-from .operational_data_export_schedule import OperationalDataExportSchedule
+from .usage_data_export_schedule_response import UsageDataExportScheduleResponse
+from .operational_data_export_schedule_response import OperationalDataExportScheduleResponse
 
 __all__ = ["ScheduleRetrieveResponse"]
 
-ScheduleRetrieveResponse: TypeAlias = Union[OperationalDataExportSchedule, UsageDataExportSchedule]
+ScheduleRetrieveResponse: TypeAlias = Union[OperationalDataExportScheduleResponse, UsageDataExportScheduleResponse]

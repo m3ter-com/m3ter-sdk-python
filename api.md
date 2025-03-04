@@ -392,8 +392,10 @@ Types:
 
 ```python
 from m3ter_sdk.types.data_exports import (
-    OperationalDataExportSchedule,
-    UsageDataExportSchedule,
+    OperationalDataExportScheduleRequest,
+    OperationalDataExportScheduleResponse,
+    UsageDataExportScheduleRequest,
+    UsageDataExportScheduleResponse,
     ScheduleCreateResponse,
     ScheduleRetrieveResponse,
     ScheduleUpdateResponse,
