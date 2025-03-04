@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 from datetime import datetime
 
 from pydantic import Field as FieldInfo
@@ -23,16 +23,16 @@ class CustomFields(BaseModel):
       response.
     """
 
-    account: Optional[Dict[str, object]] = None
+    account: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to Account entities."""
 
-    account_plan: Optional[Dict[str, object]] = FieldInfo(alias="accountPlan", default=None)
+    account_plan: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="accountPlan", default=None)
     """CustomFields added to accountPlan entities."""
 
-    aggregation: Optional[Dict[str, object]] = None
+    aggregation: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to simple Aggregation entities."""
 
-    compound_aggregation: Optional[Dict[str, object]] = FieldInfo(alias="compoundAggregation", default=None)
+    compound_aggregation: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="compoundAggregation", default=None)
     """CustomFields added to Compound Aggregation entities."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
@@ -50,17 +50,17 @@ class CustomFields(BaseModel):
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The id of the user who last modified this custom field."""
 
-    meter: Optional[Dict[str, object]] = None
+    meter: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to Meter entities."""
 
-    organization: Optional[Dict[str, object]] = None
+    organization: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to the Organization."""
 
-    plan: Optional[Dict[str, object]] = None
+    plan: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to Plan entities."""
 
-    plan_template: Optional[Dict[str, object]] = FieldInfo(alias="planTemplate", default=None)
+    plan_template: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="planTemplate", default=None)
     """CustomFields added to planTemplate entities."""
 
-    product: Optional[Dict[str, object]] = None
+    product: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to Product entities."""

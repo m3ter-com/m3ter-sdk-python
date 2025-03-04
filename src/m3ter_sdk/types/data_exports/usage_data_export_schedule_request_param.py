@@ -1,49 +1,19 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from __future__ import annotations
 
-from pydantic import Field as FieldInfo
+from typing import List
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
-from ..._models import BaseModel
+from ..._utils import PropertyInfo
 
-__all__ = ["UsageDataExportSchedule"]
+__all__ = ["UsageDataExportScheduleRequestParam"]
 
 
-class UsageDataExportSchedule(BaseModel):
-    id: str
-    """The id of the schedule"""
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
-    account_ids: Optional[List[str]] = FieldInfo(alias="accountIds", default=None)
-    """List of account IDs for which the usage data will be exported."""
-
-    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"]] = None
-    """
-    Specifies the aggregation method applied to usage data collected in the numeric
-    Data Fields of Meters included for the Data Export Schedule - that is, Data
-    Fields of type **MEASURE**, **INCOME**, or **COST**:
-
-    - **SUM**. Adds the values.
-    - **MIN**. Uses the minimum value.
-    - **MAX**. Uses the maximum value.
-    - **COUNT**. Counts the number of values.
-    - **LATEST**. Uses the most recent value. Note: Based on the timestamp `ts`
-      value of usage data measurement submissions. If using this method, please
-      ensure _distinct_ `ts` values are used for usage data measurement submissions.
-    """
-
-    aggregation_frequency: Optional[Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"]] = FieldInfo(
-        alias="aggregationFrequency", default=None
-    )
+class UsageDataExportScheduleRequestParam(TypedDict, total=False):
+    aggregation_frequency: Required[
+        Annotated[Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"], PropertyInfo(alias="aggregationFrequency")]
+    ]
     """
     Specifies the time period for the aggregation of usage data included each time
     the Data Export Schedule runs:
@@ -69,21 +39,23 @@ class UsageDataExportSchedule(BaseModel):
     not define an `aggregation` method, then you'll receive and error.
     """
 
-    meter_ids: Optional[List[str]] = FieldInfo(alias="meterIds", default=None)
-    """List of meter IDs for which the usage data will be exported."""
+    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
 
-    time_period: Optional[
-        Literal[
-            "TODAY",
-            "YESTERDAY",
-            "WEEK_TO_DATE",
-            "CURRENT_MONTH",
-            "LAST_30_DAYS",
-            "LAST_35_DAYS",
-            "PREVIOUS_WEEK",
-            "PREVIOUS_MONTH",
+    time_period: Required[
+        Annotated[
+            Literal[
+                "TODAY",
+                "YESTERDAY",
+                "WEEK_TO_DATE",
+                "CURRENT_MONTH",
+                "LAST_30_DAYS",
+                "LAST_35_DAYS",
+                "PREVIOUS_WEEK",
+                "PREVIOUS_MONTH",
+            ],
+            PropertyInfo(alias="timePeriod"),
         ]
-    ] = FieldInfo(alias="timePeriod", default=None)
+    ]
     """
     Define a time period to control the range of usage data you want the data export
     to contain when it runs:
@@ -107,4 +79,36 @@ class UsageDataExportSchedule(BaseModel):
     For more details and examples, see the
     [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
     section in our main User Documentation.
+    """
+
+    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
+    """List of account IDs for which the usage data will be exported."""
+
+    aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"]
+    """
+    Specifies the aggregation method applied to usage data collected in the numeric
+    Data Fields of Meters included for the Data Export Schedule - that is, Data
+    Fields of type **MEASURE**, **INCOME**, or **COST**:
+
+    - **SUM**. Adds the values.
+    - **MIN**. Uses the minimum value.
+    - **MAX**. Uses the maximum value.
+    - **COUNT**. Counts the number of values.
+    - **LATEST**. Uses the most recent value. Note: Based on the timestamp `ts`
+      value of usage data measurement submissions. If using this method, please
+      ensure _distinct_ `ts` values are used for usage data measurement submissions.
+    """
+
+    meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
+    """List of meter IDs for which the usage data will be exported."""
+
+    version: int
+    """The version number of the entity:
+
+    - **Create entity:** Not valid for initial insertion of new entity - _do not use
+      for Create_. On initial Create, version is set at 1 and listed in the
+      response.
+    - **Update Entity:** On Update, version is required and must match the existing
+      version because a check is performed to ensure sequential versioning is
+      preserved. Version is incremented by 1 and listed in the response.
     """

@@ -7,10 +7,10 @@ from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["ScheduleUpdateParams", "OperationalDataExportConfigurationRequest", "UsageDataExportConfigurationRequest"]
+__all__ = ["ScheduleUpdateParams", "OperationalDataExportScheduleRequest", "UsageDataExportScheduleRequest"]
 
 
-class OperationalDataExportConfigurationRequest(TypedDict, total=False):
+class OperationalDataExportScheduleRequest(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     operational_data_types: Required[
@@ -56,7 +56,7 @@ class OperationalDataExportConfigurationRequest(TypedDict, total=False):
     """
 
 
-class UsageDataExportConfigurationRequest(TypedDict, total=False):
+class UsageDataExportScheduleRequest(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     aggregation_frequency: Required[
@@ -162,4 +162,4 @@ class UsageDataExportConfigurationRequest(TypedDict, total=False):
     """
 
 
-ScheduleUpdateParams: TypeAlias = Union[OperationalDataExportConfigurationRequest, UsageDataExportConfigurationRequest]
+ScheduleUpdateParams: TypeAlias = Union[OperationalDataExportScheduleRequest, UsageDataExportScheduleRequest]
