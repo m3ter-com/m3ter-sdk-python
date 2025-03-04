@@ -61,16 +61,16 @@ Methods:
 Types:
 
 ```python
-from m3ter_sdk.types import Aggregation
+from m3ter_sdk.types import AggregationResponse
 ```
 
 Methods:
 
-- <code title="post /organizations/{orgId}/aggregations">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">create</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/aggregation_create_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation.py">Aggregation</a></code>
-- <code title="get /organizations/{orgId}/aggregations/{id}">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/aggregation.py">Aggregation</a></code>
-- <code title="put /organizations/{orgId}/aggregations/{id}">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/aggregation_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation.py">Aggregation</a></code>
-- <code title="get /organizations/{orgId}/aggregations">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">list</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/aggregation_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation.py">SyncCursor[Aggregation]</a></code>
-- <code title="delete /organizations/{orgId}/aggregations/{id}">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/aggregation.py">Aggregation</a></code>
+- <code title="post /organizations/{orgId}/aggregations">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">create</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/aggregation_create_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">AggregationResponse</a></code>
+- <code title="get /organizations/{orgId}/aggregations/{id}">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">AggregationResponse</a></code>
+- <code title="put /organizations/{orgId}/aggregations/{id}">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/aggregation_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">AggregationResponse</a></code>
+- <code title="get /organizations/{orgId}/aggregations">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">list</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/aggregation_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">SyncCursor[AggregationResponse]</a></code>
+- <code title="delete /organizations/{orgId}/aggregations/{id}">client.aggregations.<a href="./src/m3ter_sdk/resources/aggregations.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">AggregationResponse</a></code>
 
 # Balances
 
@@ -184,7 +184,7 @@ Methods:
 Types:
 
 ```python
-from m3ter_sdk.types import Commitment, CommitmentSearchResponse
+from m3ter_sdk.types import Commitment, CommitmentFee, CommitmentSearchResponse
 ```
 
 Methods:
@@ -222,9 +222,9 @@ from m3ter_sdk.types import CompoundAggregation
 
 Methods:
 
-- <code title="post /organizations/{orgId}/compoundaggregations">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">create</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/compound_aggregation_create_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation.py">Aggregation</a></code>
+- <code title="post /organizations/{orgId}/compoundaggregations">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">create</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/compound_aggregation_create_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">AggregationResponse</a></code>
 - <code title="get /organizations/{orgId}/compoundaggregations/{id}">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/compound_aggregation.py">CompoundAggregation</a></code>
-- <code title="put /organizations/{orgId}/compoundaggregations/{id}">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/compound_aggregation_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation.py">Aggregation</a></code>
+- <code title="put /organizations/{orgId}/compoundaggregations/{id}">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter_sdk/types/compound_aggregation_update_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/aggregation_response.py">AggregationResponse</a></code>
 - <code title="get /organizations/{orgId}/compoundaggregations">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">list</a>(\*, org_id, \*\*<a href="src/m3ter_sdk/types/compound_aggregation_list_params.py">params</a>) -> <a href="./src/m3ter_sdk/types/compound_aggregation.py">SyncCursor[CompoundAggregation]</a></code>
 - <code title="delete /organizations/{orgId}/compoundaggregations/{id}">client.compound_aggregations.<a href="./src/m3ter_sdk/resources/compound_aggregations.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter_sdk/types/compound_aggregation.py">CompoundAggregation</a></code>
 
@@ -491,7 +491,7 @@ Methods:
 Types:
 
 ```python
-from m3ter_sdk.types import Meter
+from m3ter_sdk.types import DataField, Meter
 ```
 
 Methods:
@@ -539,6 +539,7 @@ Types:
 from m3ter_sdk.types import (
     PermissionPolicy,
     PermissionStatement,
+    PrincipalPermissionRequest,
     PermissionPolicyAddToServiceUserResponse,
     PermissionPolicyAddToSupportUserResponse,
     PermissionPolicyAddToUserResponse,

@@ -30,6 +30,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.commitment import Commitment
+from ..types.commitment_fee_param import CommitmentFeeParam
 from ..types.commitment_search_response import CommitmentSearchResponse
 
 __all__ = ["CommitmentsResource", "AsyncCommitmentsResource"]
@@ -77,7 +78,7 @@ class CommitmentsResource(SyncAPIResource):
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
         drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[commitment_create_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
@@ -385,7 +386,7 @@ class CommitmentsResource(SyncAPIResource):
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
         drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[commitment_update_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
@@ -888,7 +889,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
         drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[commitment_create_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
@@ -1196,7 +1197,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         commitment_usage_description: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
         drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[commitment_update_params.FeeDate] | NotGiven = NOT_GIVEN,
+        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[

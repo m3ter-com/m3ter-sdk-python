@@ -19,8 +19,8 @@ from .bill_job import BillJob as BillJob
 from .contract import Contract as Contract
 from .currency import Currency as Currency
 from .commitment import Commitment as Commitment
+from .data_field import DataField as DataField
 from .plan_group import PlanGroup as PlanGroup
-from .aggregation import Aggregation as Aggregation
 from .bill_config import BillConfig as BillConfig
 from .account_plan import AccountPlan as AccountPlan
 from .adhoc_export import AdhocExport as AdhocExport
@@ -29,10 +29,12 @@ from .address_param import AddressParam as AddressParam
 from .credit_reason import CreditReason as CreditReason
 from .custom_fields import CustomFields as CustomFields
 from .plan_template import PlanTemplate as PlanTemplate
+from .commitment_fee import CommitmentFee as CommitmentFee
 from .resource_group import ResourceGroup as ResourceGroup
 from .counter_pricing import CounterPricing as CounterPricing
 from .plan_group_link import PlanGroupLink as PlanGroupLink
 from .bill_list_params import BillListParams as BillListParams
+from .data_field_param import DataFieldParam as DataFieldParam
 from .external_mapping import ExternalMapping as ExternalMapping
 from .plan_list_params import PlanListParams as PlanListParams
 from .transaction_type import TransactionType as TransactionType
@@ -58,8 +60,10 @@ from .pricing_list_params import PricingListParams as PricingListParams
 from .product_list_params import ProductListParams as ProductListParams
 from .usage_submit_params import UsageSubmitParams as UsageSubmitParams
 from .webhook_list_params import WebhookListParams as WebhookListParams
+from .aggregation_response import AggregationResponse as AggregationResponse
 from .bill_job_list_params import BillJobListParams as BillJobListParams
 from .bill_search_response import BillSearchResponse as BillSearchResponse
+from .commitment_fee_param import CommitmentFeeParam as CommitmentFeeParam
 from .compound_aggregation import CompoundAggregation as CompoundAggregation
 from .contract_list_params import ContractListParams as ContractListParams
 from .currency_list_params import CurrencyListParams as CurrencyListParams

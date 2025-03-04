@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-03-04)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** manual updates ([#52](https://github.com/m3ter-com/m3ter-sdk-python/issues/52)) ([3f2384f](https://github.com/m3ter-com/m3ter-sdk-python/commit/3f2384f288196411a3f4f32b6befa24f69a93e73))
+
 ## 0.1.0-alpha.5 (2025-03-04)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
