@@ -23,6 +23,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from ..types.meter import Meter
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.data_field_param import DataFieldParam
 
 __all__ = ["MetersResource", "AsyncMetersResource"]
 
@@ -52,7 +53,7 @@ class MetersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[meter_create_params.DataField],
+        data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -220,7 +221,7 @@ class MetersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[meter_update_params.DataField],
+        data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -453,7 +454,7 @@ class AsyncMetersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[meter_create_params.DataField],
+        data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -621,7 +622,7 @@ class AsyncMetersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[meter_update_params.DataField],
+        data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,

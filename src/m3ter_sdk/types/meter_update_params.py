@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 from typing import Dict, Union, Iterable
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .data_field_param import DataFieldParam
 
-__all__ = ["MeterUpdateParams", "DataField", "DerivedField"]
+__all__ = ["MeterUpdateParams", "DerivedField"]
 
 
 class MeterUpdateParams(TypedDict, total=False):
@@ -21,7 +22,7 @@ class MeterUpdateParams(TypedDict, total=False):
     whitespace.
     """
 
-    data_fields: Required[Annotated[Iterable[DataField], PropertyInfo(alias="dataFields")]]
+    data_fields: Required[Annotated[Iterable[DataFieldParam], PropertyInfo(alias="dataFields")]]
     """
     Used to submit categorized raw usage data values for ingest into the platform -
     either numeric quantitative values or non-numeric data values. At least one
@@ -77,54 +78,10 @@ class MeterUpdateParams(TypedDict, total=False):
     """
 
 
-class DataField(TypedDict, total=False):
-    category: Required[Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]]
-    """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
-
-    code: Required[str]
-    """Short code to identify the field
-
-    **NOTE:** Code has a maximum length of 80 characters and can only contain
-    letters, numbers, underscore, and the dollar character, and must not start with
-    a number.
-    """
-
-    name: Required[str]
-    """Descriptive name of the field."""
-
-    unit: str
-    """The units to measure the data with.
-
-    Should conform to _Unified Code for Units of Measure_ (UCUM). Required only for
-    numeric field categories.
-    """
-
-
-class DerivedField(TypedDict, total=False):
+class DerivedField(DataFieldParam):
     calculation: Required[str]
     """
     The calculation used to transform the value of submitted `dataFields` in usage
     data. Calculation can reference `dataFields`, `customFields`, or system
     `Timestamp` fields. _(Example: datafieldms datafieldgb)_
-    """
-
-    category: Required[Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]]
-    """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
-
-    code: Required[str]
-    """Short code to identify the field
-
-    **NOTE:** Code has a maximum length of 80 characters and can only contain
-    letters, numbers, underscore, and the dollar character, and must not start with
-    a number.
-    """
-
-    name: Required[str]
-    """Descriptive name of the field."""
-
-    unit: str
-    """The units to measure the data with.
-
-    Should conform to _Unified Code for Units of Measure_ (UCUM). Required only for
-    numeric field categories.
     """

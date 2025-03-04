@@ -1,24 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import datetime
 from typing import List, Optional
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
+from .commitment_fee import CommitmentFee
 
-__all__ = ["Commitment", "FeeDate"]
-
-
-class FeeDate(BaseModel):
-    amount: float
-
-    date: datetime.date
-
-    service_period_end_date: datetime.datetime = FieldInfo(alias="servicePeriodEndDate")
-
-    service_period_start_date: datetime.datetime = FieldInfo(alias="servicePeriodStartDate")
+__all__ = ["Commitment"]
 
 
 class Commitment(BaseModel):
@@ -61,7 +52,7 @@ class Commitment(BaseModel):
     amount_spent: Optional[float] = FieldInfo(alias="amountSpent", default=None)
     """The total amount of the Commitment that the customer has spent so far."""
 
-    bill_epoch: Optional[datetime.date] = FieldInfo(alias="billEpoch", default=None)
+    bill_epoch: Optional[date] = FieldInfo(alias="billEpoch", default=None)
     """
     The starting date _(in ISO-8601 date format)_ from which the billing cycles are
     calculated.
@@ -134,16 +125,16 @@ class Commitment(BaseModel):
 
     drawdowns_accounting_product_id: Optional[str] = FieldInfo(alias="drawdownsAccountingProductId", default=None)
 
-    dt_created: Optional[datetime.datetime] = FieldInfo(alias="dtCreated", default=None)
+    dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """The date and time _(in ISO-8601 format)_ when the Commitment was created."""
 
-    dt_last_modified: Optional[datetime.datetime] = FieldInfo(alias="dtLastModified", default=None)
+    dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
     """The date and time _(in ISO-8601 format)_ when the Commitment was last modified."""
 
-    end_date: Optional[datetime.date] = FieldInfo(alias="endDate", default=None)
+    end_date: Optional[date] = FieldInfo(alias="endDate", default=None)
     """The end date of the Commitment period in ISO-8601 format."""
 
-    fee_dates: Optional[List[FeeDate]] = FieldInfo(alias="feeDates", default=None)
+    fee_dates: Optional[List[CommitmentFee]] = FieldInfo(alias="feeDates", default=None)
     """Used for billing any outstanding Commitment fees _on a schedule_.
 
     An array defining a series of bill dates and amounts covering specified service
@@ -209,5 +200,5 @@ class Commitment(BaseModel):
     - **FALSE** - billed together.
     """
 
-    start_date: Optional[datetime.date] = FieldInfo(alias="startDate", default=None)
+    start_date: Optional[date] = FieldInfo(alias="startDate", default=None)
     """The start date of the Commitment period in ISO-8601 format."""

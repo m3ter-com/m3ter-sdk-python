@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-import datetime
 from typing import List, Union, Iterable
+from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .commitment_fee_param import CommitmentFeeParam
 
-__all__ = ["CommitmentUpdateParams", "FeeDate"]
+__all__ = ["CommitmentUpdateParams"]
 
 
 class CommitmentUpdateParams(TypedDict, total=False):
@@ -26,7 +27,7 @@ class CommitmentUpdateParams(TypedDict, total=False):
     currency: Required[str]
     """The currency used for the Commitment. For example: USD."""
 
-    end_date: Required[Annotated[Union[str, datetime.date], PropertyInfo(alias="endDate", format="iso8601")]]
+    end_date: Required[Annotated[Union[str, date], PropertyInfo(alias="endDate", format="iso8601")]]
     """The end date of the Commitment period in ISO-8601 format.
 
     **Note:** End date is exclusive - if you set an end date of June 1st 2022, then
@@ -35,7 +36,7 @@ class CommitmentUpdateParams(TypedDict, total=False):
     midnight on June 1st
     """
 
-    start_date: Required[Annotated[Union[str, datetime.date], PropertyInfo(alias="startDate", format="iso8601")]]
+    start_date: Required[Annotated[Union[str, date], PropertyInfo(alias="startDate", format="iso8601")]]
     """The start date of the Commitment period in ISO-8601 format."""
 
     accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
@@ -53,7 +54,7 @@ class CommitmentUpdateParams(TypedDict, total=False):
     Commitment service period.
     """
 
-    bill_epoch: Annotated[Union[str, datetime.date], PropertyInfo(alias="billEpoch", format="iso8601")]
+    bill_epoch: Annotated[Union[str, date], PropertyInfo(alias="billEpoch", format="iso8601")]
     """
     The starting date _(in ISO-8601 date format)_ from which the billing cycles are
     calculated.
@@ -131,7 +132,7 @@ class CommitmentUpdateParams(TypedDict, total=False):
     accounting purposes
     """
 
-    fee_dates: Annotated[Iterable[FeeDate], PropertyInfo(alias="feeDates")]
+    fee_dates: Annotated[Iterable[CommitmentFeeParam], PropertyInfo(alias="feeDates")]
     """Used for billing any outstanding Commitment fees _on a schedule_.
 
     Create an array to define a series of bill dates and amounts covering specified
@@ -235,17 +236,3 @@ class CommitmentUpdateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
-
-
-class FeeDate(TypedDict, total=False):
-    amount: Required[float]
-
-    date: Required[Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]]
-
-    service_period_end_date: Required[
-        Annotated[Union[str, datetime.datetime], PropertyInfo(alias="servicePeriodEndDate", format="iso8601")]
-    ]
-
-    service_period_start_date: Required[
-        Annotated[Union[str, datetime.datetime], PropertyInfo(alias="servicePeriodStartDate", format="iso8601")]
-    ]
