@@ -27,7 +27,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.aggregation import Aggregation
+from ..types.aggregation_response import AggregationResponse
 from ..types.compound_aggregation import CompoundAggregation
 
 __all__ = ["CompoundAggregationsResource", "AsyncCompoundAggregationsResource"]
@@ -74,7 +74,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Create a new CompoundAggregation.
 
@@ -192,7 +192,7 @@ class CompoundAggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def retrieve(
@@ -258,7 +258,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Update the CompoundAggregation with the given UUID.
 
@@ -383,7 +383,7 @@ class CompoundAggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def list(
@@ -545,7 +545,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Create a new CompoundAggregation.
 
@@ -663,7 +663,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     async def retrieve(
@@ -729,7 +729,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Aggregation:
+    ) -> AggregationResponse:
         """
         Update the CompoundAggregation with the given UUID.
 
@@ -854,7 +854,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Aggregation,
+            cast_to=AggregationResponse,
         )
 
     def list(

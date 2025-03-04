@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["Aggregation"]
+__all__ = ["AggregationResponse"]
 
 
-class Aggregation(BaseModel):
+class AggregationResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
