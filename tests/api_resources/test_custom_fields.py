@@ -66,15 +66,15 @@ class TestCustomFields:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         custom_field = client.custom_fields.update(
             org_id="orgId",
-            account={"foo": "bar"},
-            account_plan={"foo": "bar"},
-            aggregation={"foo": "bar"},
-            compound_aggregation={"foo": "bar"},
-            meter={"foo": "bar"},
-            organization={"foo": "bar"},
-            plan={"foo": "bar"},
-            plan_template={"foo": "bar"},
-            product={"foo": "bar"},
+            account={"foo": "string"},
+            account_plan={"foo": "string"},
+            aggregation={"foo": "string"},
+            compound_aggregation={"foo": "string"},
+            meter={"foo": "string"},
+            organization={"foo": "string"},
+            plan={"foo": "string"},
+            plan_template={"foo": "string"},
+            product={"foo": "string"},
             version=0,
         )
         assert_matches_type(CustomFields, custom_field, path=["response"])
@@ -163,15 +163,15 @@ class TestAsyncCustomFields:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         custom_field = await async_client.custom_fields.update(
             org_id="orgId",
-            account={"foo": "bar"},
-            account_plan={"foo": "bar"},
-            aggregation={"foo": "bar"},
-            compound_aggregation={"foo": "bar"},
-            meter={"foo": "bar"},
-            organization={"foo": "bar"},
-            plan={"foo": "bar"},
-            plan_template={"foo": "bar"},
-            product={"foo": "bar"},
+            account={"foo": "string"},
+            account_plan={"foo": "string"},
+            aggregation={"foo": "string"},
+            compound_aggregation={"foo": "string"},
+            meter={"foo": "string"},
+            organization={"foo": "string"},
+            plan={"foo": "string"},
+            plan_template={"foo": "string"},
+            product={"foo": "string"},
             version=0,
         )
         assert_matches_type(CustomFields, custom_field, path=["response"])

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -13,31 +13,31 @@ __all__ = ["CustomFieldUpdateParams"]
 class CustomFieldUpdateParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    account: Dict[str, object]
+    account: Dict[str, Union[str, float]]
     """Updates to Account entity CustomFields."""
 
-    account_plan: Annotated[Dict[str, object], PropertyInfo(alias="accountPlan")]
+    account_plan: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="accountPlan")]
     """Updates to accountPlan entity CustomFields."""
 
-    aggregation: Dict[str, object]
+    aggregation: Dict[str, Union[str, float]]
     """Updates to simple Aggregation entity CustomFields."""
 
-    compound_aggregation: Annotated[Dict[str, object], PropertyInfo(alias="compoundAggregation")]
+    compound_aggregation: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="compoundAggregation")]
     """Updates to Compound Aggregation entity CustomFields."""
 
-    meter: Dict[str, object]
+    meter: Dict[str, Union[str, float]]
     """Updates to Meter entity CustomFields."""
 
-    organization: Dict[str, object]
+    organization: Dict[str, Union[str, float]]
     """Updates to Organization CustomFields."""
 
-    plan: Dict[str, object]
+    plan: Dict[str, Union[str, float]]
     """Updates to Plan entity CustomFields."""
 
-    plan_template: Annotated[Dict[str, object], PropertyInfo(alias="planTemplate")]
+    plan_template: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="planTemplate")]
     """Updates to planTemplate entity CustomFields."""
 
-    product: Dict[str, object]
+    product: Dict[str, Union[str, float]]
     """Updates to Product entity CustomFields."""
 
     version: int
