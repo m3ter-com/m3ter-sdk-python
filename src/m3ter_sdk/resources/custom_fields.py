@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 
 import httpx
 
@@ -86,15 +86,15 @@ class CustomFieldsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account: Dict[str, object] | NotGiven = NOT_GIVEN,
-        account_plan: Dict[str, object] | NotGiven = NOT_GIVEN,
-        aggregation: Dict[str, object] | NotGiven = NOT_GIVEN,
-        compound_aggregation: Dict[str, object] | NotGiven = NOT_GIVEN,
-        meter: Dict[str, object] | NotGiven = NOT_GIVEN,
-        organization: Dict[str, object] | NotGiven = NOT_GIVEN,
-        plan: Dict[str, object] | NotGiven = NOT_GIVEN,
-        plan_template: Dict[str, object] | NotGiven = NOT_GIVEN,
-        product: Dict[str, object] | NotGiven = NOT_GIVEN,
+        account: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        account_plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        compound_aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        meter: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        organization: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        plan_template: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        product: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -231,15 +231,15 @@ class AsyncCustomFieldsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account: Dict[str, object] | NotGiven = NOT_GIVEN,
-        account_plan: Dict[str, object] | NotGiven = NOT_GIVEN,
-        aggregation: Dict[str, object] | NotGiven = NOT_GIVEN,
-        compound_aggregation: Dict[str, object] | NotGiven = NOT_GIVEN,
-        meter: Dict[str, object] | NotGiven = NOT_GIVEN,
-        organization: Dict[str, object] | NotGiven = NOT_GIVEN,
-        plan: Dict[str, object] | NotGiven = NOT_GIVEN,
-        plan_template: Dict[str, object] | NotGiven = NOT_GIVEN,
-        product: Dict[str, object] | NotGiven = NOT_GIVEN,
+        account: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        account_plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        compound_aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        meter: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        organization: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        plan_template: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        product: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -16,10 +16,18 @@ from .schedule_update_response import ScheduleUpdateResponse as ScheduleUpdateRe
 from .destination_create_params import DestinationCreateParams as DestinationCreateParams
 from .destination_update_params import DestinationUpdateParams as DestinationUpdateParams
 from .schedule_retrieve_response import ScheduleRetrieveResponse as ScheduleRetrieveResponse
-from .usage_data_export_schedule import UsageDataExportSchedule as UsageDataExportSchedule
 from .destination_create_response import DestinationCreateResponse as DestinationCreateResponse
 from .destination_delete_response import DestinationDeleteResponse as DestinationDeleteResponse
 from .destination_update_response import DestinationUpdateResponse as DestinationUpdateResponse
 from .destination_retrieve_response import DestinationRetrieveResponse as DestinationRetrieveResponse
 from .job_get_download_url_response import JobGetDownloadURLResponse as JobGetDownloadURLResponse
-from .operational_data_export_schedule import OperationalDataExportSchedule as OperationalDataExportSchedule
+from .usage_data_export_schedule_response import UsageDataExportScheduleResponse as UsageDataExportScheduleResponse
+from .usage_data_export_schedule_request_param import (
+    UsageDataExportScheduleRequestParam as UsageDataExportScheduleRequestParam,
+)
+from .operational_data_export_schedule_response import (
+    OperationalDataExportScheduleResponse as OperationalDataExportScheduleResponse,
+)
+from .operational_data_export_schedule_request_param import (
+    OperationalDataExportScheduleRequestParam as OperationalDataExportScheduleRequestParam,
+)
