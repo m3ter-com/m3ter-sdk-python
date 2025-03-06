@@ -23,7 +23,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.plan_template import PlanTemplate
+from ..types.plan_template_response import PlanTemplateResponse
 
 __all__ = ["PlanTemplatesResource", "AsyncPlanTemplatesResource"]
 
@@ -75,7 +75,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Create a new PlanTemplate.
 
@@ -227,7 +227,7 @@ class PlanTemplatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
     def retrieve(
@@ -241,7 +241,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Retrieve a specific PlanTemplate.
 
@@ -268,7 +268,7 @@ class PlanTemplatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
     def update(
@@ -299,7 +299,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Update a specific PlanTemplate.
 
@@ -458,7 +458,7 @@ class PlanTemplatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
     def list(
@@ -475,7 +475,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[PlanTemplate]:
+    ) -> SyncCursor[PlanTemplateResponse]:
         """
         Retrieve a list of PlanTemplates.
 
@@ -508,7 +508,7 @@ class PlanTemplatesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plantemplates",
-            page=SyncCursor[PlanTemplate],
+            page=SyncCursor[PlanTemplateResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -524,7 +524,7 @@ class PlanTemplatesResource(SyncAPIResource):
                     plan_template_list_params.PlanTemplateListParams,
                 ),
             ),
-            model=PlanTemplate,
+            model=PlanTemplateResponse,
         )
 
     def delete(
@@ -538,7 +538,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Delete a specific PlanTemplate.
 
@@ -565,7 +565,7 @@ class PlanTemplatesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
 
@@ -616,7 +616,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Create a new PlanTemplate.
 
@@ -768,7 +768,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
     async def retrieve(
@@ -782,7 +782,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Retrieve a specific PlanTemplate.
 
@@ -809,7 +809,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
     async def update(
@@ -840,7 +840,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Update a specific PlanTemplate.
 
@@ -999,7 +999,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
     def list(
@@ -1016,7 +1016,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PlanTemplate, AsyncCursor[PlanTemplate]]:
+    ) -> AsyncPaginator[PlanTemplateResponse, AsyncCursor[PlanTemplateResponse]]:
         """
         Retrieve a list of PlanTemplates.
 
@@ -1049,7 +1049,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plantemplates",
-            page=AsyncCursor[PlanTemplate],
+            page=AsyncCursor[PlanTemplateResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1065,7 +1065,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
                     plan_template_list_params.PlanTemplateListParams,
                 ),
             ),
-            model=PlanTemplate,
+            model=PlanTemplateResponse,
         )
 
     async def delete(
@@ -1079,7 +1079,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanTemplate:
+    ) -> PlanTemplateResponse:
         """
         Delete a specific PlanTemplate.
 
@@ -1106,7 +1106,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanTemplate,
+            cast_to=PlanTemplateResponse,
         )
 
 

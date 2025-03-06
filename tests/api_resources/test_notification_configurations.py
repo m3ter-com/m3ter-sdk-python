@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    NotificationConfiguration,
+    NotificationConfigurationResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
@@ -29,7 +29,7 @@ class TestNotificationConfigurations:
             event_name="x",
             name="x",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -44,7 +44,7 @@ class TestNotificationConfigurations:
             calculation="calculation",
             version=0,
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -59,7 +59,7 @@ class TestNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -74,7 +74,7 @@ class TestNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -95,7 +95,7 @@ class TestNotificationConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -107,7 +107,7 @@ class TestNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -119,7 +119,7 @@ class TestNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -147,7 +147,7 @@ class TestNotificationConfigurations:
             event_name="x",
             name="x",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -163,7 +163,7 @@ class TestNotificationConfigurations:
             calculation="calculation",
             version=0,
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -179,7 +179,7 @@ class TestNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -195,7 +195,7 @@ class TestNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -226,7 +226,9 @@ class TestNotificationConfigurations:
         notification_configuration = client.notification_configurations.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+        assert_matches_type(
+            SyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+        )
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -238,7 +240,9 @@ class TestNotificationConfigurations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+        assert_matches_type(
+            SyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+        )
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -249,7 +253,9 @@ class TestNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = response.parse()
-        assert_matches_type(SyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+        assert_matches_type(
+            SyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+        )
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -260,7 +266,9 @@ class TestNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = response.parse()
-            assert_matches_type(SyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+            assert_matches_type(
+                SyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -277,7 +285,7 @@ class TestNotificationConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -289,7 +297,7 @@ class TestNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -301,7 +309,7 @@ class TestNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -332,7 +340,7 @@ class TestAsyncNotificationConfigurations:
             event_name="x",
             name="x",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -347,7 +355,7 @@ class TestAsyncNotificationConfigurations:
             calculation="calculation",
             version=0,
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -362,7 +370,7 @@ class TestAsyncNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = await response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -377,7 +385,7 @@ class TestAsyncNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = await response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -398,7 +406,7 @@ class TestAsyncNotificationConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -410,7 +418,7 @@ class TestAsyncNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = await response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -422,7 +430,7 @@ class TestAsyncNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = await response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -450,7 +458,7 @@ class TestAsyncNotificationConfigurations:
             event_name="x",
             name="x",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -466,7 +474,7 @@ class TestAsyncNotificationConfigurations:
             calculation="calculation",
             version=0,
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -482,7 +490,7 @@ class TestAsyncNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = await response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -498,7 +506,7 @@ class TestAsyncNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = await response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -529,7 +537,9 @@ class TestAsyncNotificationConfigurations:
         notification_configuration = await async_client.notification_configurations.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+        assert_matches_type(
+            AsyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+        )
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -541,7 +551,9 @@ class TestAsyncNotificationConfigurations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+        assert_matches_type(
+            AsyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+        )
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -552,7 +564,9 @@ class TestAsyncNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = await response.parse()
-        assert_matches_type(AsyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+        assert_matches_type(
+            AsyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+        )
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -563,7 +577,9 @@ class TestAsyncNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = await response.parse()
-            assert_matches_type(AsyncCursor[NotificationConfiguration], notification_configuration, path=["response"])
+            assert_matches_type(
+                AsyncCursor[NotificationConfigurationResponse], notification_configuration, path=["response"]
+            )
 
         assert cast(Any, response.is_closed) is True
 
@@ -580,7 +596,7 @@ class TestAsyncNotificationConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -592,7 +608,7 @@ class TestAsyncNotificationConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         notification_configuration = await response.parse()
-        assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+        assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -604,7 +620,7 @@ class TestAsyncNotificationConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             notification_configuration = await response.parse()
-            assert_matches_type(NotificationConfiguration, notification_configuration, path=["response"])
+            assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

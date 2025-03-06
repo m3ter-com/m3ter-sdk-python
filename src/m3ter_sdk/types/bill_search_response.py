@@ -4,14 +4,14 @@ from typing import List, Optional
 
 from pydantic import Field as FieldInfo
 
-from .bill import Bill
 from .._models import BaseModel
+from .bill_response import BillResponse
 
 __all__ = ["BillSearchResponse"]
 
 
 class BillSearchResponse(BaseModel):
-    data: Optional[List[Bill]] = None
+    data: Optional[List[BillResponse]] = None
     """An array containing the list of requested Bills."""
 
     next_token: Optional[str] = FieldInfo(alias="nextToken", default=None)

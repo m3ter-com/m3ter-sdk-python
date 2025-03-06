@@ -47,7 +47,7 @@ from .destinations import (
     AsyncDestinationsResourceWithStreamingResponse,
 )
 from ..._base_client import make_request_options
-from ...types.adhoc_export import AdhocExport
+from ...types.ad_hoc_response import AdHocResponse
 
 __all__ = ["DataExportsResource", "AsyncDataExportsResource"]
 
@@ -119,7 +119,7 @@ class DataExportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AdhocExport:
+    ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
         Each ad-hoc Export can be configured for
@@ -232,7 +232,7 @@ class DataExportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AdhocExport:
+    ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
         Each ad-hoc Export can be configured for
@@ -428,7 +428,7 @@ class DataExportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AdhocExport:
+    ) -> AdHocResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
         if not org_id:
@@ -451,7 +451,7 @@ class DataExportsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AdhocExport,
+            cast_to=AdHocResponse,
         )
 
 
@@ -522,7 +522,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AdhocExport:
+    ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
         Each ad-hoc Export can be configured for
@@ -635,7 +635,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AdhocExport:
+    ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
         Each ad-hoc Export can be configured for
@@ -831,7 +831,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AdhocExport:
+    ) -> AdHocResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
         if not org_id:
@@ -854,7 +854,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AdhocExport,
+            cast_to=AdHocResponse,
         )
 
 

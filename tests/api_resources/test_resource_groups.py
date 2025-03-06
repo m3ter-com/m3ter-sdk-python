@@ -10,8 +10,8 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    ResourceGroup,
-    PermissionPolicy,
+    ResourceGroupResponse,
+    PermissionPolicyResponse,
     ResourceGroupListContentsResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
@@ -29,7 +29,7 @@ class TestResourceGroups:
             org_id="orgId",
             name="x",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -39,7 +39,7 @@ class TestResourceGroups:
             name="x",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -52,7 +52,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -65,7 +65,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -92,7 +92,7 @@ class TestResourceGroups:
             org_id="orgId",
             type="type",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -105,7 +105,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -118,7 +118,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -153,7 +153,7 @@ class TestResourceGroups:
             type="type",
             name="x",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -164,7 +164,7 @@ class TestResourceGroups:
             name="x",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -178,7 +178,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -192,7 +192,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -228,7 +228,7 @@ class TestResourceGroups:
             type="type",
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[ResourceGroup], resource_group, path=["response"])
+        assert_matches_type(SyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -238,7 +238,7 @@ class TestResourceGroups:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[ResourceGroup], resource_group, path=["response"])
+        assert_matches_type(SyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -250,7 +250,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(SyncCursor[ResourceGroup], resource_group, path=["response"])
+        assert_matches_type(SyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -262,7 +262,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(SyncCursor[ResourceGroup], resource_group, path=["response"])
+            assert_matches_type(SyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -287,7 +287,7 @@ class TestResourceGroups:
             org_id="orgId",
             type="type",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -300,7 +300,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -313,7 +313,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -349,7 +349,7 @@ class TestResourceGroups:
             target_id="06f6b50c-a868-4ca6-XXXX-448e507d5248",
             target_type="ITEM",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_method_add_resource_with_all_params(self, client: M3ter) -> None:
@@ -361,7 +361,7 @@ class TestResourceGroups:
             target_type="ITEM",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_add_resource(self, client: M3ter) -> None:
@@ -376,7 +376,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_add_resource(self, client: M3ter) -> None:
@@ -391,7 +391,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -502,7 +502,7 @@ class TestResourceGroups:
             org_id="orgId",
             type="type",
         )
-        assert_matches_type(SyncCursor[PermissionPolicy], resource_group, path=["response"])
+        assert_matches_type(SyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
     @parametrize
     def test_method_list_permissions_with_all_params(self, client: M3ter) -> None:
@@ -513,7 +513,7 @@ class TestResourceGroups:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[PermissionPolicy], resource_group, path=["response"])
+        assert_matches_type(SyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_list_permissions(self, client: M3ter) -> None:
@@ -526,7 +526,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(SyncCursor[PermissionPolicy], resource_group, path=["response"])
+        assert_matches_type(SyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_list_permissions(self, client: M3ter) -> None:
@@ -539,7 +539,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(SyncCursor[PermissionPolicy], resource_group, path=["response"])
+            assert_matches_type(SyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -575,7 +575,7 @@ class TestResourceGroups:
             target_id="06f6b50c-a868-4ca6-XXXX-448e507d5248",
             target_type="ITEM",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_method_remove_resource_with_all_params(self, client: M3ter) -> None:
@@ -587,7 +587,7 @@ class TestResourceGroups:
             target_type="ITEM",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_raw_response_remove_resource(self, client: M3ter) -> None:
@@ -602,7 +602,7 @@ class TestResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     def test_streaming_response_remove_resource(self, client: M3ter) -> None:
@@ -617,7 +617,7 @@ class TestResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -661,7 +661,7 @@ class TestAsyncResourceGroups:
             org_id="orgId",
             name="x",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -671,7 +671,7 @@ class TestAsyncResourceGroups:
             name="x",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -684,7 +684,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -697,7 +697,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -724,7 +724,7 @@ class TestAsyncResourceGroups:
             org_id="orgId",
             type="type",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -737,7 +737,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -750,7 +750,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -785,7 +785,7 @@ class TestAsyncResourceGroups:
             type="type",
             name="x",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -796,7 +796,7 @@ class TestAsyncResourceGroups:
             name="x",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -810,7 +810,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -824,7 +824,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -860,7 +860,7 @@ class TestAsyncResourceGroups:
             type="type",
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[ResourceGroup], resource_group, path=["response"])
+        assert_matches_type(AsyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -870,7 +870,7 @@ class TestAsyncResourceGroups:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[ResourceGroup], resource_group, path=["response"])
+        assert_matches_type(AsyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -882,7 +882,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(AsyncCursor[ResourceGroup], resource_group, path=["response"])
+        assert_matches_type(AsyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -894,7 +894,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(AsyncCursor[ResourceGroup], resource_group, path=["response"])
+            assert_matches_type(AsyncCursor[ResourceGroupResponse], resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -919,7 +919,7 @@ class TestAsyncResourceGroups:
             org_id="orgId",
             type="type",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -932,7 +932,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -945,7 +945,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -981,7 +981,7 @@ class TestAsyncResourceGroups:
             target_id="06f6b50c-a868-4ca6-XXXX-448e507d5248",
             target_type="ITEM",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_method_add_resource_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -993,7 +993,7 @@ class TestAsyncResourceGroups:
             target_type="ITEM",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_add_resource(self, async_client: AsyncM3ter) -> None:
@@ -1008,7 +1008,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_add_resource(self, async_client: AsyncM3ter) -> None:
@@ -1023,7 +1023,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1134,7 +1134,7 @@ class TestAsyncResourceGroups:
             org_id="orgId",
             type="type",
         )
-        assert_matches_type(AsyncCursor[PermissionPolicy], resource_group, path=["response"])
+        assert_matches_type(AsyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
     @parametrize
     async def test_method_list_permissions_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -1145,7 +1145,7 @@ class TestAsyncResourceGroups:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[PermissionPolicy], resource_group, path=["response"])
+        assert_matches_type(AsyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_list_permissions(self, async_client: AsyncM3ter) -> None:
@@ -1158,7 +1158,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(AsyncCursor[PermissionPolicy], resource_group, path=["response"])
+        assert_matches_type(AsyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_list_permissions(self, async_client: AsyncM3ter) -> None:
@@ -1171,7 +1171,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(AsyncCursor[PermissionPolicy], resource_group, path=["response"])
+            assert_matches_type(AsyncCursor[PermissionPolicyResponse], resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1207,7 +1207,7 @@ class TestAsyncResourceGroups:
             target_id="06f6b50c-a868-4ca6-XXXX-448e507d5248",
             target_type="ITEM",
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_method_remove_resource_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -1219,7 +1219,7 @@ class TestAsyncResourceGroups:
             target_type="ITEM",
             version=0,
         )
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_raw_response_remove_resource(self, async_client: AsyncM3ter) -> None:
@@ -1234,7 +1234,7 @@ class TestAsyncResourceGroups:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         resource_group = await response.parse()
-        assert_matches_type(ResourceGroup, resource_group, path=["response"])
+        assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
     @parametrize
     async def test_streaming_response_remove_resource(self, async_client: AsyncM3ter) -> None:
@@ -1249,7 +1249,7 @@ class TestAsyncResourceGroups:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             resource_group = await response.parse()
-            assert_matches_type(ResourceGroup, resource_group, path=["response"])
+            assert_matches_type(ResourceGroupResponse, resource_group, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

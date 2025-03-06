@@ -27,7 +27,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.counter_pricing import CounterPricing
+from ..types.counter_pricing_response import CounterPricingResponse
 from ..types.shared_params.pricing_band import PricingBand
 
 __all__ = ["CounterPricingsResource", "AsyncCounterPricingsResource"]
@@ -78,7 +78,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Create a new CounterPricing.
 
@@ -210,7 +210,7 @@ class CounterPricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
     def retrieve(
@@ -224,7 +224,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Retrieve a CounterPricing for the given UUID.
 
@@ -248,7 +248,7 @@ class CounterPricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
     def update(
@@ -277,7 +277,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Update CounterPricing for the given UUID.
 
@@ -411,7 +411,7 @@ class CounterPricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
     def list(
@@ -430,7 +430,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CounterPricing]:
+    ) -> SyncCursor[CounterPricingResponse]:
         """
         Retrieve a list of CounterPricing entities filtered by date, Plan ID, Plan
         Template ID, or CounterPricing ID.
@@ -462,7 +462,7 @@ class CounterPricingsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/counterpricings",
-            page=SyncCursor[CounterPricing],
+            page=SyncCursor[CounterPricingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -480,7 +480,7 @@ class CounterPricingsResource(SyncAPIResource):
                     counter_pricing_list_params.CounterPricingListParams,
                 ),
             ),
-            model=CounterPricing,
+            model=CounterPricingResponse,
         )
 
     def delete(
@@ -494,7 +494,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Delete a CounterPricing for the given UUID.
 
@@ -518,7 +518,7 @@ class CounterPricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
 
@@ -567,7 +567,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Create a new CounterPricing.
 
@@ -699,7 +699,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
     async def retrieve(
@@ -713,7 +713,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Retrieve a CounterPricing for the given UUID.
 
@@ -737,7 +737,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
     async def update(
@@ -766,7 +766,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Update CounterPricing for the given UUID.
 
@@ -900,7 +900,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
     def list(
@@ -919,7 +919,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CounterPricing, AsyncCursor[CounterPricing]]:
+    ) -> AsyncPaginator[CounterPricingResponse, AsyncCursor[CounterPricingResponse]]:
         """
         Retrieve a list of CounterPricing entities filtered by date, Plan ID, Plan
         Template ID, or CounterPricing ID.
@@ -951,7 +951,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/counterpricings",
-            page=AsyncCursor[CounterPricing],
+            page=AsyncCursor[CounterPricingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -969,7 +969,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
                     counter_pricing_list_params.CounterPricingListParams,
                 ),
             ),
-            model=CounterPricing,
+            model=CounterPricingResponse,
         )
 
     async def delete(
@@ -983,7 +983,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterPricing:
+    ) -> CounterPricingResponse:
         """
         Delete a CounterPricing for the given UUID.
 
@@ -1007,7 +1007,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterPricing,
+            cast_to=CounterPricingResponse,
         )
 
 

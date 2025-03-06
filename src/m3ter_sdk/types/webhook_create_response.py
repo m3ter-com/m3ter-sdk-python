@@ -3,13 +3,13 @@
 from typing import Optional
 
 from .._models import BaseModel
-from .m3ter_signed_credentials_req import M3terSignedCredentialsReq
+from .m3ter_signed_credentials_request import M3terSignedCredentialsRequest
 
 __all__ = ["WebhookCreateResponse"]
 
 
 class WebhookCreateResponse(BaseModel):
-    credentials: M3terSignedCredentialsReq
+    credentials: M3terSignedCredentialsRequest
     """This schema defines the credentials required for m3ter request signing."""
 
     description: str

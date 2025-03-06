@@ -29,7 +29,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.commitment import Commitment
+from ..types.commitment_response import CommitmentResponse
 from ..types.commitment_fee_param import CommitmentFeeParam
 from ..types.commitment_search_response import CommitmentSearchResponse
 
@@ -97,7 +97,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """Create a new Commitment.
 
         Creates a new Commitment for an Organization.
@@ -318,7 +318,7 @@ class CommitmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     def retrieve(
@@ -332,7 +332,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """
         Retrieve a specific Commitment.
 
@@ -360,7 +360,7 @@ class CommitmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     def update(
@@ -405,7 +405,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """
         Modify a specific Commitment.
 
@@ -617,7 +617,7 @@ class CommitmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     def list(
@@ -639,7 +639,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Commitment]:
+    ) -> SyncCursor[CommitmentResponse]:
         """
         Retrieve a list of Commitments.
 
@@ -685,7 +685,7 @@ class CommitmentsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/commitments",
-            page=SyncCursor[Commitment],
+            page=SyncCursor[CommitmentResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -706,7 +706,7 @@ class CommitmentsResource(SyncAPIResource):
                     commitment_list_params.CommitmentListParams,
                 ),
             ),
-            model=Commitment,
+            model=CommitmentResponse,
         )
 
     def delete(
@@ -720,7 +720,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """Remove a specific Commitment.
 
         Deletes the Commitment with the given UUID.
@@ -748,7 +748,7 @@ class CommitmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     def search(
@@ -908,7 +908,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """Create a new Commitment.
 
         Creates a new Commitment for an Organization.
@@ -1129,7 +1129,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     async def retrieve(
@@ -1143,7 +1143,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """
         Retrieve a specific Commitment.
 
@@ -1171,7 +1171,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     async def update(
@@ -1216,7 +1216,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """
         Modify a specific Commitment.
 
@@ -1428,7 +1428,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     def list(
@@ -1450,7 +1450,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Commitment, AsyncCursor[Commitment]]:
+    ) -> AsyncPaginator[CommitmentResponse, AsyncCursor[CommitmentResponse]]:
         """
         Retrieve a list of Commitments.
 
@@ -1496,7 +1496,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/commitments",
-            page=AsyncCursor[Commitment],
+            page=AsyncCursor[CommitmentResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1517,7 +1517,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
                     commitment_list_params.CommitmentListParams,
                 ),
             ),
-            model=Commitment,
+            model=CommitmentResponse,
         )
 
     async def delete(
@@ -1531,7 +1531,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Commitment:
+    ) -> CommitmentResponse:
         """Remove a specific Commitment.
 
         Deletes the Commitment with the given UUID.
@@ -1559,7 +1559,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Commitment,
+            cast_to=CommitmentResponse,
         )
 
     async def search(

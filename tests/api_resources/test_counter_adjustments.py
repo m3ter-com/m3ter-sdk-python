@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    CounterAdjustment,
+    CounterAdjustmentResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
@@ -29,7 +29,7 @@ class TestCounterAdjustments:
             date="2022-01-04",
             value=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -42,7 +42,7 @@ class TestCounterAdjustments:
             purchase_order_number="purchaseOrderNumber",
             version=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -57,7 +57,7 @@ class TestCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -72,7 +72,7 @@ class TestCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -93,7 +93,7 @@ class TestCounterAdjustments:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -105,7 +105,7 @@ class TestCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -117,7 +117,7 @@ class TestCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -145,7 +145,7 @@ class TestCounterAdjustments:
             date="2022-01-04",
             value=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -159,7 +159,7 @@ class TestCounterAdjustments:
             purchase_order_number="purchaseOrderNumber",
             version=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -175,7 +175,7 @@ class TestCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -191,7 +191,7 @@ class TestCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -222,7 +222,7 @@ class TestCounterAdjustments:
         counter_adjustment = client.counter_adjustments.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+        assert_matches_type(SyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -238,7 +238,7 @@ class TestCounterAdjustments:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+        assert_matches_type(SyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -249,7 +249,7 @@ class TestCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = response.parse()
-        assert_matches_type(SyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+        assert_matches_type(SyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -260,7 +260,7 @@ class TestCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = response.parse()
-            assert_matches_type(SyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+            assert_matches_type(SyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -277,7 +277,7 @@ class TestCounterAdjustments:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -289,7 +289,7 @@ class TestCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -301,7 +301,7 @@ class TestCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -332,7 +332,7 @@ class TestAsyncCounterAdjustments:
             date="2022-01-04",
             value=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -345,7 +345,7 @@ class TestAsyncCounterAdjustments:
             purchase_order_number="purchaseOrderNumber",
             version=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -360,7 +360,7 @@ class TestAsyncCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = await response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -375,7 +375,7 @@ class TestAsyncCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = await response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -396,7 +396,7 @@ class TestAsyncCounterAdjustments:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -408,7 +408,7 @@ class TestAsyncCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = await response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -420,7 +420,7 @@ class TestAsyncCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = await response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -448,7 +448,7 @@ class TestAsyncCounterAdjustments:
             date="2022-01-04",
             value=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -462,7 +462,7 @@ class TestAsyncCounterAdjustments:
             purchase_order_number="purchaseOrderNumber",
             version=0,
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -478,7 +478,7 @@ class TestAsyncCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = await response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -494,7 +494,7 @@ class TestAsyncCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = await response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -525,7 +525,7 @@ class TestAsyncCounterAdjustments:
         counter_adjustment = await async_client.counter_adjustments.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+        assert_matches_type(AsyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -541,7 +541,7 @@ class TestAsyncCounterAdjustments:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+        assert_matches_type(AsyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -552,7 +552,7 @@ class TestAsyncCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = await response.parse()
-        assert_matches_type(AsyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+        assert_matches_type(AsyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -563,7 +563,7 @@ class TestAsyncCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = await response.parse()
-            assert_matches_type(AsyncCursor[CounterAdjustment], counter_adjustment, path=["response"])
+            assert_matches_type(AsyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -580,7 +580,7 @@ class TestAsyncCounterAdjustments:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -592,7 +592,7 @@ class TestAsyncCounterAdjustments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         counter_adjustment = await response.parse()
-        assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+        assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -604,7 +604,7 @@ class TestAsyncCounterAdjustments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             counter_adjustment = await response.parse()
-            assert_matches_type(CounterAdjustment, counter_adjustment, path=["response"])
+            assert_matches_type(CounterAdjustmentResponse, counter_adjustment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

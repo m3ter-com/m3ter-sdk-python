@@ -11,11 +11,11 @@ from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 from m3ter_sdk.types.data_exports import (
-    DataExportDestination,
     DestinationCreateResponse,
     DestinationDeleteResponse,
     DestinationUpdateResponse,
     DestinationRetrieveResponse,
+    DataExportDestinationResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -228,7 +228,7 @@ class TestDestinations:
         destination = client.data_exports.destinations.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[DataExportDestination], destination, path=["response"])
+        assert_matches_type(SyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -238,7 +238,7 @@ class TestDestinations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[DataExportDestination], destination, path=["response"])
+        assert_matches_type(SyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -249,7 +249,7 @@ class TestDestinations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         destination = response.parse()
-        assert_matches_type(SyncCursor[DataExportDestination], destination, path=["response"])
+        assert_matches_type(SyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -260,7 +260,7 @@ class TestDestinations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             destination = response.parse()
-            assert_matches_type(SyncCursor[DataExportDestination], destination, path=["response"])
+            assert_matches_type(SyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -527,7 +527,7 @@ class TestAsyncDestinations:
         destination = await async_client.data_exports.destinations.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[DataExportDestination], destination, path=["response"])
+        assert_matches_type(AsyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -537,7 +537,7 @@ class TestAsyncDestinations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[DataExportDestination], destination, path=["response"])
+        assert_matches_type(AsyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -548,7 +548,7 @@ class TestAsyncDestinations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         destination = await response.parse()
-        assert_matches_type(AsyncCursor[DataExportDestination], destination, path=["response"])
+        assert_matches_type(AsyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -559,7 +559,7 @@ class TestAsyncDestinations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             destination = await response.parse()
-            assert_matches_type(AsyncCursor[DataExportDestination], destination, path=["response"])
+            assert_matches_type(AsyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

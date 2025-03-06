@@ -29,7 +29,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.contract import Contract
+from ..types.contract_response import ContractResponse
 from ..types.contract_end_date_billing_entities_response import ContractEndDateBillingEntitiesResponse
 
 __all__ = ["ContractsResource", "AsyncContractsResource"]
@@ -74,7 +74,7 @@ class ContractsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """Create a new Contract.
 
         Creates a new Contract for the specified Account.
@@ -151,7 +151,7 @@ class ContractsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     def retrieve(
@@ -165,7 +165,7 @@ class ContractsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """Retrieves the Contract with the given UUID.
 
         Used to obtain the details of a
@@ -191,7 +191,7 @@ class ContractsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     def update(
@@ -214,7 +214,7 @@ class ContractsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """
         Update the Contract with the given UUID.
 
@@ -297,7 +297,7 @@ class ContractsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     def list(
@@ -315,7 +315,7 @@ class ContractsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Contract]:
+    ) -> SyncCursor[ContractResponse]:
         """Retrieves a list of Contracts by Organization ID.
 
         Supports pagination and
@@ -347,7 +347,7 @@ class ContractsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/contracts",
-            page=SyncCursor[Contract],
+            page=SyncCursor[ContractResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -364,7 +364,7 @@ class ContractsResource(SyncAPIResource):
                     contract_list_params.ContractListParams,
                 ),
             ),
-            model=Contract,
+            model=ContractResponse,
         )
 
     def delete(
@@ -378,7 +378,7 @@ class ContractsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """Deletes the Contract with the specified UUID.
 
         Used to remove an existing
@@ -407,7 +407,7 @@ class ContractsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     def end_date_billing_entities(
@@ -523,7 +523,7 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """Create a new Contract.
 
         Creates a new Contract for the specified Account.
@@ -600,7 +600,7 @@ class AsyncContractsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     async def retrieve(
@@ -614,7 +614,7 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """Retrieves the Contract with the given UUID.
 
         Used to obtain the details of a
@@ -640,7 +640,7 @@ class AsyncContractsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     async def update(
@@ -663,7 +663,7 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """
         Update the Contract with the given UUID.
 
@@ -746,7 +746,7 @@ class AsyncContractsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     def list(
@@ -764,7 +764,7 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Contract, AsyncCursor[Contract]]:
+    ) -> AsyncPaginator[ContractResponse, AsyncCursor[ContractResponse]]:
         """Retrieves a list of Contracts by Organization ID.
 
         Supports pagination and
@@ -796,7 +796,7 @@ class AsyncContractsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/contracts",
-            page=AsyncCursor[Contract],
+            page=AsyncCursor[ContractResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -813,7 +813,7 @@ class AsyncContractsResource(AsyncAPIResource):
                     contract_list_params.ContractListParams,
                 ),
             ),
-            model=Contract,
+            model=ContractResponse,
         )
 
     async def delete(
@@ -827,7 +827,7 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Contract:
+    ) -> ContractResponse:
         """Deletes the Contract with the specified UUID.
 
         Used to remove an existing
@@ -856,7 +856,7 @@ class AsyncContractsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Contract,
+            cast_to=ContractResponse,
         )
 
     async def end_date_billing_entities(

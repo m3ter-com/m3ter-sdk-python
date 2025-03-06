@@ -11,7 +11,7 @@ from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk._utils import parse_datetime
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
-from m3ter_sdk.types.users import Invitation
+from m3ter_sdk.types.users import InvitationResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -27,7 +27,7 @@ class TestInvitations:
             first_name="x",
             last_name="x",
         )
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -43,7 +43,7 @@ class TestInvitations:
             permission_policy_ids=["string"],
             version=0,
         )
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -57,7 +57,7 @@ class TestInvitations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invitation = response.parse()
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -71,7 +71,7 @@ class TestInvitations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             invitation = response.parse()
-            assert_matches_type(Invitation, invitation, path=["response"])
+            assert_matches_type(InvitationResponse, invitation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -91,7 +91,7 @@ class TestInvitations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -103,7 +103,7 @@ class TestInvitations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invitation = response.parse()
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -115,7 +115,7 @@ class TestInvitations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             invitation = response.parse()
-            assert_matches_type(Invitation, invitation, path=["response"])
+            assert_matches_type(InvitationResponse, invitation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -138,7 +138,7 @@ class TestInvitations:
         invitation = client.users.invitations.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[Invitation], invitation, path=["response"])
+        assert_matches_type(SyncCursor[InvitationResponse], invitation, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -147,7 +147,7 @@ class TestInvitations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[Invitation], invitation, path=["response"])
+        assert_matches_type(SyncCursor[InvitationResponse], invitation, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -158,7 +158,7 @@ class TestInvitations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invitation = response.parse()
-        assert_matches_type(SyncCursor[Invitation], invitation, path=["response"])
+        assert_matches_type(SyncCursor[InvitationResponse], invitation, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -169,7 +169,7 @@ class TestInvitations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             invitation = response.parse()
-            assert_matches_type(SyncCursor[Invitation], invitation, path=["response"])
+            assert_matches_type(SyncCursor[InvitationResponse], invitation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -192,7 +192,7 @@ class TestAsyncInvitations:
             first_name="x",
             last_name="x",
         )
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -208,7 +208,7 @@ class TestAsyncInvitations:
             permission_policy_ids=["string"],
             version=0,
         )
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -222,7 +222,7 @@ class TestAsyncInvitations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invitation = await response.parse()
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -236,7 +236,7 @@ class TestAsyncInvitations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             invitation = await response.parse()
-            assert_matches_type(Invitation, invitation, path=["response"])
+            assert_matches_type(InvitationResponse, invitation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -256,7 +256,7 @@ class TestAsyncInvitations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -268,7 +268,7 @@ class TestAsyncInvitations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invitation = await response.parse()
-        assert_matches_type(Invitation, invitation, path=["response"])
+        assert_matches_type(InvitationResponse, invitation, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -280,7 +280,7 @@ class TestAsyncInvitations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             invitation = await response.parse()
-            assert_matches_type(Invitation, invitation, path=["response"])
+            assert_matches_type(InvitationResponse, invitation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -303,7 +303,7 @@ class TestAsyncInvitations:
         invitation = await async_client.users.invitations.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[Invitation], invitation, path=["response"])
+        assert_matches_type(AsyncCursor[InvitationResponse], invitation, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -312,7 +312,7 @@ class TestAsyncInvitations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[Invitation], invitation, path=["response"])
+        assert_matches_type(AsyncCursor[InvitationResponse], invitation, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -323,7 +323,7 @@ class TestAsyncInvitations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         invitation = await response.parse()
-        assert_matches_type(AsyncCursor[Invitation], invitation, path=["response"])
+        assert_matches_type(AsyncCursor[InvitationResponse], invitation, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -334,7 +334,7 @@ class TestAsyncInvitations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             invitation = await response.parse()
-            assert_matches_type(AsyncCursor[Invitation], invitation, path=["response"])
+            assert_matches_type(AsyncCursor[InvitationResponse], invitation, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
