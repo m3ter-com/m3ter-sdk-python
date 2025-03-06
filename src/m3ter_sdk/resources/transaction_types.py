@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.transaction_type import TransactionType
+from ..types.transaction_type_response import TransactionTypeResponse
 
 __all__ = ["TransactionTypesResource", "AsyncTransactionTypesResource"]
 
@@ -65,7 +65,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """Create a new TransactionType for the specified Organization.
 
         Details of the new
@@ -118,7 +118,7 @@ class TransactionTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
     def retrieve(
@@ -132,7 +132,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """
         Retrieves the TransactionType with the given UUID from the specified
         Organization.
@@ -157,7 +157,7 @@ class TransactionTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
     def update(
@@ -175,7 +175,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """
         Updates the TransactionType with the specified UUID for the specified
         Organization. Update details for the TransactionType should be included in the
@@ -230,7 +230,7 @@ class TransactionTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
     def list(
@@ -248,7 +248,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[TransactionType]:
+    ) -> SyncCursor[TransactionTypeResponse]:
         """Retrieves a list of TransactionType entities for the specified Organization.
 
         The
@@ -285,7 +285,7 @@ class TransactionTypesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/transactiontypes",
-            page=SyncCursor[TransactionType],
+            page=SyncCursor[TransactionTypeResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -302,7 +302,7 @@ class TransactionTypesResource(SyncAPIResource):
                     transaction_type_list_params.TransactionTypeListParams,
                 ),
             ),
-            model=TransactionType,
+            model=TransactionTypeResponse,
         )
 
     def delete(
@@ -316,7 +316,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """
         Deletes the TransactionType with the given UUID from the specified Organization.
 
@@ -340,7 +340,7 @@ class TransactionTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
 
@@ -378,7 +378,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """Create a new TransactionType for the specified Organization.
 
         Details of the new
@@ -431,7 +431,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
     async def retrieve(
@@ -445,7 +445,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """
         Retrieves the TransactionType with the given UUID from the specified
         Organization.
@@ -470,7 +470,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
     async def update(
@@ -488,7 +488,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """
         Updates the TransactionType with the specified UUID for the specified
         Organization. Update details for the TransactionType should be included in the
@@ -543,7 +543,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
     def list(
@@ -561,7 +561,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[TransactionType, AsyncCursor[TransactionType]]:
+    ) -> AsyncPaginator[TransactionTypeResponse, AsyncCursor[TransactionTypeResponse]]:
         """Retrieves a list of TransactionType entities for the specified Organization.
 
         The
@@ -598,7 +598,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/transactiontypes",
-            page=AsyncCursor[TransactionType],
+            page=AsyncCursor[TransactionTypeResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -615,7 +615,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
                     transaction_type_list_params.TransactionTypeListParams,
                 ),
             ),
-            model=TransactionType,
+            model=TransactionTypeResponse,
         )
 
     async def delete(
@@ -629,7 +629,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TransactionType:
+    ) -> TransactionTypeResponse:
         """
         Deletes the TransactionType with the given UUID from the specified Organization.
 
@@ -653,7 +653,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=TransactionType,
+            cast_to=TransactionTypeResponse,
         )
 
 

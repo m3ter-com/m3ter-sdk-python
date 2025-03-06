@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from .line_item import LineItem as LineItem
-from .debit_line_item import DebitLineItem as DebitLineItem
-from .credit_line_item import CreditLineItem as CreditLineItem
+from .line_item_response import LineItemResponse as LineItemResponse
 from .line_item_list_params import LineItemListParams as LineItemListParams
+from .debit_line_item_response import DebitLineItemResponse as DebitLineItemResponse
+from .credit_line_item_response import CreditLineItemResponse as CreditLineItemResponse
 from .debit_line_item_list_params import DebitLineItemListParams as DebitLineItemListParams
 from .credit_line_item_list_params import CreditLineItemListParams as CreditLineItemListParams
 from .debit_line_item_create_params import DebitLineItemCreateParams as DebitLineItemCreateParams

@@ -22,7 +22,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.debit_reason import DebitReason
+from ..types.debit_reason_response import DebitReasonResponse
 
 __all__ = ["DebitReasonsResource", "AsyncDebitReasonsResource"]
 
@@ -61,7 +61,7 @@ class DebitReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """Create a new Debit Reason for your Organization.
 
         When you've created a Debit
@@ -115,7 +115,7 @@ class DebitReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
     def retrieve(
@@ -129,7 +129,7 @@ class DebitReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """
         Retrieve the Debit Reason with the given UUID.
 
@@ -153,7 +153,7 @@ class DebitReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
     def update(
@@ -171,7 +171,7 @@ class DebitReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """
         Update the Debit Reason with the given UUID.
 
@@ -224,7 +224,7 @@ class DebitReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
     def list(
@@ -242,7 +242,7 @@ class DebitReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[DebitReason]:
+    ) -> SyncCursor[DebitReasonResponse]:
         """Retrieve a list of the Debit Reason entities created for your Organization.
 
         You
@@ -278,7 +278,7 @@ class DebitReasonsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/debitreasons",
-            page=SyncCursor[DebitReason],
+            page=SyncCursor[DebitReasonResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -295,7 +295,7 @@ class DebitReasonsResource(SyncAPIResource):
                     debit_reason_list_params.DebitReasonListParams,
                 ),
             ),
-            model=DebitReason,
+            model=DebitReasonResponse,
         )
 
     def delete(
@@ -309,7 +309,7 @@ class DebitReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """
         Delete the Debit Reason with the given UUID.
 
@@ -333,7 +333,7 @@ class DebitReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
 
@@ -371,7 +371,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """Create a new Debit Reason for your Organization.
 
         When you've created a Debit
@@ -425,7 +425,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
     async def retrieve(
@@ -439,7 +439,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """
         Retrieve the Debit Reason with the given UUID.
 
@@ -463,7 +463,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
     async def update(
@@ -481,7 +481,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """
         Update the Debit Reason with the given UUID.
 
@@ -534,7 +534,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
     def list(
@@ -552,7 +552,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[DebitReason, AsyncCursor[DebitReason]]:
+    ) -> AsyncPaginator[DebitReasonResponse, AsyncCursor[DebitReasonResponse]]:
         """Retrieve a list of the Debit Reason entities created for your Organization.
 
         You
@@ -588,7 +588,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/debitreasons",
-            page=AsyncCursor[DebitReason],
+            page=AsyncCursor[DebitReasonResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -605,7 +605,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
                     debit_reason_list_params.DebitReasonListParams,
                 ),
             ),
-            model=DebitReason,
+            model=DebitReasonResponse,
         )
 
     async def delete(
@@ -619,7 +619,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitReason:
+    ) -> DebitReasonResponse:
         """
         Delete the Debit Reason with the given UUID.
 
@@ -643,7 +643,7 @@ class AsyncDebitReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitReason,
+            cast_to=DebitReasonResponse,
         )
 
 

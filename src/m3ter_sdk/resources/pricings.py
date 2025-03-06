@@ -24,7 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.pricing import Pricing
+from ..types.pricing_response import PricingResponse
 from ..types.shared_params.pricing_band import PricingBand
 
 __all__ = ["PricingsResource", "AsyncPricingsResource"]
@@ -79,7 +79,7 @@ class PricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Create a new Pricing.
 
@@ -235,7 +235,7 @@ class PricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
     def retrieve(
@@ -249,7 +249,7 @@ class PricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Retrieve the Pricing with the given UUID.
 
@@ -273,7 +273,7 @@ class PricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
     def update(
@@ -306,7 +306,7 @@ class PricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Update Pricing for the given UUID.
 
@@ -464,7 +464,7 @@ class PricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
     def list(
@@ -483,7 +483,7 @@ class PricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Pricing]:
+    ) -> SyncCursor[PricingResponse]:
         """
         Retrieve a list of Pricings filtered by date, Plan ID, PlanTemplate ID, or
         Pricing ID.
@@ -515,7 +515,7 @@ class PricingsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/pricings",
-            page=SyncCursor[Pricing],
+            page=SyncCursor[PricingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -533,7 +533,7 @@ class PricingsResource(SyncAPIResource):
                     pricing_list_params.PricingListParams,
                 ),
             ),
-            model=Pricing,
+            model=PricingResponse,
         )
 
     def delete(
@@ -547,7 +547,7 @@ class PricingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Delete the Pricing with the given UUID.
 
@@ -571,7 +571,7 @@ class PricingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
 
@@ -624,7 +624,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Create a new Pricing.
 
@@ -780,7 +780,7 @@ class AsyncPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
     async def retrieve(
@@ -794,7 +794,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Retrieve the Pricing with the given UUID.
 
@@ -818,7 +818,7 @@ class AsyncPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
     async def update(
@@ -851,7 +851,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Update Pricing for the given UUID.
 
@@ -1009,7 +1009,7 @@ class AsyncPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
     def list(
@@ -1028,7 +1028,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Pricing, AsyncCursor[Pricing]]:
+    ) -> AsyncPaginator[PricingResponse, AsyncCursor[PricingResponse]]:
         """
         Retrieve a list of Pricings filtered by date, Plan ID, PlanTemplate ID, or
         Pricing ID.
@@ -1060,7 +1060,7 @@ class AsyncPricingsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/pricings",
-            page=AsyncCursor[Pricing],
+            page=AsyncCursor[PricingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1078,7 +1078,7 @@ class AsyncPricingsResource(AsyncAPIResource):
                     pricing_list_params.PricingListParams,
                 ),
             ),
-            model=Pricing,
+            model=PricingResponse,
         )
 
     async def delete(
@@ -1092,7 +1092,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Pricing:
+    ) -> PricingResponse:
         """
         Delete the Pricing with the given UUID.
 
@@ -1116,7 +1116,7 @@ class AsyncPricingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Pricing,
+            cast_to=PricingResponse,
         )
 
 

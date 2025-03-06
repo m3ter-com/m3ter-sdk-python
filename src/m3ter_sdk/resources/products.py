@@ -22,7 +22,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.product import Product
+from ..types.product_response import ProductResponse
 
 __all__ = ["ProductsResource", "AsyncProductsResource"]
 
@@ -61,7 +61,7 @@ class ProductsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Create a new Product.
 
@@ -121,7 +121,7 @@ class ProductsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
     def retrieve(
@@ -135,7 +135,7 @@ class ProductsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Retrieve a Product with the given UUID.
 
@@ -162,7 +162,7 @@ class ProductsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
     def update(
@@ -180,7 +180,7 @@ class ProductsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Update a Product with the given UUID.
 
@@ -248,7 +248,7 @@ class ProductsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
     def list(
@@ -264,7 +264,7 @@ class ProductsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Product]:
+    ) -> SyncCursor[ProductResponse]:
         """
         Retrieve a list of Products.
 
@@ -294,7 +294,7 @@ class ProductsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/products",
-            page=SyncCursor[Product],
+            page=SyncCursor[ProductResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -309,7 +309,7 @@ class ProductsResource(SyncAPIResource):
                     product_list_params.ProductListParams,
                 ),
             ),
-            model=Product,
+            model=ProductResponse,
         )
 
     def delete(
@@ -323,7 +323,7 @@ class ProductsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Delete a Product with the given UUID.
 
@@ -350,7 +350,7 @@ class ProductsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
 
@@ -388,7 +388,7 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Create a new Product.
 
@@ -448,7 +448,7 @@ class AsyncProductsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
     async def retrieve(
@@ -462,7 +462,7 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Retrieve a Product with the given UUID.
 
@@ -489,7 +489,7 @@ class AsyncProductsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
     async def update(
@@ -507,7 +507,7 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Update a Product with the given UUID.
 
@@ -575,7 +575,7 @@ class AsyncProductsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
     def list(
@@ -591,7 +591,7 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Product, AsyncCursor[Product]]:
+    ) -> AsyncPaginator[ProductResponse, AsyncCursor[ProductResponse]]:
         """
         Retrieve a list of Products.
 
@@ -621,7 +621,7 @@ class AsyncProductsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/products",
-            page=AsyncCursor[Product],
+            page=AsyncCursor[ProductResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -636,7 +636,7 @@ class AsyncProductsResource(AsyncAPIResource):
                     product_list_params.ProductListParams,
                 ),
             ),
-            model=Product,
+            model=ProductResponse,
         )
 
     async def delete(
@@ -650,7 +650,7 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Product:
+    ) -> ProductResponse:
         """
         Delete a Product with the given UUID.
 
@@ -677,7 +677,7 @@ class AsyncProductsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Product,
+            cast_to=ProductResponse,
         )
 
 

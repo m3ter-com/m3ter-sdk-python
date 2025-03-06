@@ -7,7 +7,7 @@ from datetime import datetime
 from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .permission_statement_param import PermissionStatementParam
+from .permission_statement_response_param import PermissionStatementResponseParam
 
 __all__ = ["UserUpdateParams"]
 
@@ -21,7 +21,7 @@ class UserUpdateParams(TypedDict, total=False):
     Use this to set or update the expiration of the user's access.
     """
 
-    permission_policy: Annotated[Iterable[PermissionStatementParam], PropertyInfo(alias="permissionPolicy")]
+    permission_policy: Annotated[Iterable[PermissionStatementResponseParam], PropertyInfo(alias="permissionPolicy")]
     """An array of permission statements for the user.
 
     Each permission statement defines a specific permission for the user.

@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
-from m3ter_sdk.types.data_exports import DataExportJob, JobGetDownloadURLResponse
+from m3ter_sdk.types.data_exports import DataExportJobResponse, JobGetDownloadURLResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -24,7 +24,7 @@ class TestJobs:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(DataExportJob, job, path=["response"])
+        assert_matches_type(DataExportJobResponse, job, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -36,7 +36,7 @@ class TestJobs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         job = response.parse()
-        assert_matches_type(DataExportJob, job, path=["response"])
+        assert_matches_type(DataExportJobResponse, job, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -48,7 +48,7 @@ class TestJobs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             job = response.parse()
-            assert_matches_type(DataExportJob, job, path=["response"])
+            assert_matches_type(DataExportJobResponse, job, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -71,7 +71,7 @@ class TestJobs:
         job = client.data_exports.jobs.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[DataExportJob], job, path=["response"])
+        assert_matches_type(SyncCursor[DataExportJobResponse], job, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -85,7 +85,7 @@ class TestJobs:
             schedule_id="scheduleId",
             status="PENDING",
         )
-        assert_matches_type(SyncCursor[DataExportJob], job, path=["response"])
+        assert_matches_type(SyncCursor[DataExportJobResponse], job, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -96,7 +96,7 @@ class TestJobs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         job = response.parse()
-        assert_matches_type(SyncCursor[DataExportJob], job, path=["response"])
+        assert_matches_type(SyncCursor[DataExportJobResponse], job, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -107,7 +107,7 @@ class TestJobs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             job = response.parse()
-            assert_matches_type(SyncCursor[DataExportJob], job, path=["response"])
+            assert_matches_type(SyncCursor[DataExportJobResponse], job, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -176,7 +176,7 @@ class TestAsyncJobs:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(DataExportJob, job, path=["response"])
+        assert_matches_type(DataExportJobResponse, job, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -188,7 +188,7 @@ class TestAsyncJobs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         job = await response.parse()
-        assert_matches_type(DataExportJob, job, path=["response"])
+        assert_matches_type(DataExportJobResponse, job, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -200,7 +200,7 @@ class TestAsyncJobs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             job = await response.parse()
-            assert_matches_type(DataExportJob, job, path=["response"])
+            assert_matches_type(DataExportJobResponse, job, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -223,7 +223,7 @@ class TestAsyncJobs:
         job = await async_client.data_exports.jobs.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[DataExportJob], job, path=["response"])
+        assert_matches_type(AsyncCursor[DataExportJobResponse], job, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -237,7 +237,7 @@ class TestAsyncJobs:
             schedule_id="scheduleId",
             status="PENDING",
         )
-        assert_matches_type(AsyncCursor[DataExportJob], job, path=["response"])
+        assert_matches_type(AsyncCursor[DataExportJobResponse], job, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -248,7 +248,7 @@ class TestAsyncJobs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         job = await response.parse()
-        assert_matches_type(AsyncCursor[DataExportJob], job, path=["response"])
+        assert_matches_type(AsyncCursor[DataExportJobResponse], job, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -259,7 +259,7 @@ class TestAsyncJobs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             job = await response.parse()
-            assert_matches_type(AsyncCursor[DataExportJob], job, path=["response"])
+            assert_matches_type(AsyncCursor[DataExportJobResponse], job, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

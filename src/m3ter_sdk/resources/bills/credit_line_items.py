@@ -24,7 +24,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ...types.bills import credit_line_item_list_params, credit_line_item_create_params, credit_line_item_update_params
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.bills.credit_line_item import CreditLineItem
+from ...types.bills.credit_line_item_response import CreditLineItemResponse
 
 __all__ = ["CreditLineItemsResource", "AsyncCreditLineItemsResource"]
 
@@ -91,7 +91,7 @@ class CreditLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Create a new Credit line item for the given Bill.
 
@@ -166,7 +166,7 @@ class CreditLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
     def retrieve(
@@ -181,7 +181,7 @@ class CreditLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Retrieve the Credit line item with the given UUID.
 
@@ -207,7 +207,7 @@ class CreditLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
     def update(
@@ -253,7 +253,7 @@ class CreditLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Update the Credit line item with the given UUID.
 
@@ -326,7 +326,7 @@ class CreditLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
     def list(
@@ -342,7 +342,7 @@ class CreditLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CreditLineItem]:
+    ) -> SyncCursor[CreditLineItemResponse]:
         """
         List the Credit line items for the given Bill.
 
@@ -367,7 +367,7 @@ class CreditLineItemsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills/{bill_id}/creditlineitems",
-            page=SyncCursor[CreditLineItem],
+            page=SyncCursor[CreditLineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -381,7 +381,7 @@ class CreditLineItemsResource(SyncAPIResource):
                     credit_line_item_list_params.CreditLineItemListParams,
                 ),
             ),
-            model=CreditLineItem,
+            model=CreditLineItemResponse,
         )
 
     def delete(
@@ -396,7 +396,7 @@ class CreditLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Delete the Credit line item with the given UUID.
 
@@ -422,7 +422,7 @@ class CreditLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
 
@@ -488,7 +488,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Create a new Credit line item for the given Bill.
 
@@ -563,7 +563,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
     async def retrieve(
@@ -578,7 +578,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Retrieve the Credit line item with the given UUID.
 
@@ -604,7 +604,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
     async def update(
@@ -650,7 +650,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Update the Credit line item with the given UUID.
 
@@ -723,7 +723,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
     def list(
@@ -739,7 +739,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditLineItem, AsyncCursor[CreditLineItem]]:
+    ) -> AsyncPaginator[CreditLineItemResponse, AsyncCursor[CreditLineItemResponse]]:
         """
         List the Credit line items for the given Bill.
 
@@ -764,7 +764,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills/{bill_id}/creditlineitems",
-            page=AsyncCursor[CreditLineItem],
+            page=AsyncCursor[CreditLineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -778,7 +778,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
                     credit_line_item_list_params.CreditLineItemListParams,
                 ),
             ),
-            model=CreditLineItem,
+            model=CreditLineItemResponse,
         )
 
     async def delete(
@@ -793,7 +793,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditLineItem:
+    ) -> CreditLineItemResponse:
         """
         Delete the Credit line item with the given UUID.
 
@@ -819,7 +819,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditLineItem,
+            cast_to=CreditLineItemResponse,
         )
 
 

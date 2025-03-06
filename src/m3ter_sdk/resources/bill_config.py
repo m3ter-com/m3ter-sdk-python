@@ -22,7 +22,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.bill_config import BillConfig
+from ..types.bill_config_response import BillConfigResponse
 
 __all__ = ["BillConfigResource", "AsyncBillConfigResource"]
 
@@ -57,7 +57,7 @@ class BillConfigResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillConfig:
+    ) -> BillConfigResponse:
         """
         Retrieve the Organization-wide BillConfig.
 
@@ -79,7 +79,7 @@ class BillConfigResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillConfig,
+            cast_to=BillConfigResponse,
         )
 
     def update(
@@ -94,7 +94,7 @@ class BillConfigResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillConfig:
+    ) -> BillConfigResponse:
         """
         Update the Organization-wide BillConfig.
 
@@ -139,7 +139,7 @@ class BillConfigResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillConfig,
+            cast_to=BillConfigResponse,
         )
 
 
@@ -173,7 +173,7 @@ class AsyncBillConfigResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillConfig:
+    ) -> BillConfigResponse:
         """
         Retrieve the Organization-wide BillConfig.
 
@@ -195,7 +195,7 @@ class AsyncBillConfigResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillConfig,
+            cast_to=BillConfigResponse,
         )
 
     async def update(
@@ -210,7 +210,7 @@ class AsyncBillConfigResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillConfig:
+    ) -> BillConfigResponse:
         """
         Update the Organization-wide BillConfig.
 
@@ -255,7 +255,7 @@ class AsyncBillConfigResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillConfig,
+            cast_to=BillConfigResponse,
         )
 
 

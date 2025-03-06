@@ -6,7 +6,7 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .m3ter_signed_credentials_resp import M3terSignedCredentialsResp
+from .m3ter_signed_credentials_response import M3terSignedCredentialsResponse
 
 __all__ = ["Webhook"]
 
@@ -31,7 +31,7 @@ class Webhook(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created this item."""
 
-    credentials: Optional[M3terSignedCredentialsResp] = None
+    credentials: Optional[M3terSignedCredentialsResponse] = None
     """Response representing a set of credentials used for signing m3ter requests."""
 
     description: Optional[str] = None

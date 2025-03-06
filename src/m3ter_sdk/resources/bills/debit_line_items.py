@@ -24,7 +24,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ...types.bills import debit_line_item_list_params, debit_line_item_create_params, debit_line_item_update_params
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.bills.debit_line_item import DebitLineItem
+from ...types.bills.debit_line_item_response import DebitLineItemResponse
 
 __all__ = ["DebitLineItemsResource", "AsyncDebitLineItemsResource"]
 
@@ -91,7 +91,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Create a new Debit line item for the given bill.
 
@@ -165,7 +165,7 @@ class DebitLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
     def retrieve(
@@ -180,7 +180,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Retrieve the Debit line item with the given UUID.
 
@@ -206,7 +206,7 @@ class DebitLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
     def update(
@@ -252,7 +252,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Update the Debit line item with the given UUID.
 
@@ -325,7 +325,7 @@ class DebitLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
     def list(
@@ -341,7 +341,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[DebitLineItem]:
+    ) -> SyncCursor[DebitLineItemResponse]:
         """
         List the Debit line items for the given bill.
 
@@ -366,7 +366,7 @@ class DebitLineItemsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills/{bill_id}/debitlineitems",
-            page=SyncCursor[DebitLineItem],
+            page=SyncCursor[DebitLineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -380,7 +380,7 @@ class DebitLineItemsResource(SyncAPIResource):
                     debit_line_item_list_params.DebitLineItemListParams,
                 ),
             ),
-            model=DebitLineItem,
+            model=DebitLineItemResponse,
         )
 
     def delete(
@@ -395,7 +395,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Delete the Debit line item with the given UUID.
 
@@ -421,7 +421,7 @@ class DebitLineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
 
@@ -487,7 +487,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Create a new Debit line item for the given bill.
 
@@ -561,7 +561,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
     async def retrieve(
@@ -576,7 +576,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Retrieve the Debit line item with the given UUID.
 
@@ -602,7 +602,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
     async def update(
@@ -648,7 +648,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Update the Debit line item with the given UUID.
 
@@ -721,7 +721,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
     def list(
@@ -737,7 +737,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[DebitLineItem, AsyncCursor[DebitLineItem]]:
+    ) -> AsyncPaginator[DebitLineItemResponse, AsyncCursor[DebitLineItemResponse]]:
         """
         List the Debit line items for the given bill.
 
@@ -762,7 +762,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills/{bill_id}/debitlineitems",
-            page=AsyncCursor[DebitLineItem],
+            page=AsyncCursor[DebitLineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -776,7 +776,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
                     debit_line_item_list_params.DebitLineItemListParams,
                 ),
             ),
-            model=DebitLineItem,
+            model=DebitLineItemResponse,
         )
 
     async def delete(
@@ -791,7 +791,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DebitLineItem:
+    ) -> DebitLineItemResponse:
         """
         Delete the Debit line item with the given UUID.
 
@@ -817,7 +817,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DebitLineItem,
+            cast_to=DebitLineItemResponse,
         )
 
 

@@ -23,7 +23,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.currency import Currency
+from ..types.currency_response import CurrencyResponse
 
 __all__ = ["CurrenciesResource", "AsyncCurrenciesResource"]
 
@@ -65,7 +65,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """
         Creates a new Currency for the specified Organization.
 
@@ -124,7 +124,7 @@ class CurrenciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
     def retrieve(
@@ -138,7 +138,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """Retrieve the specified Currency with the given UUID.
 
         Used to obtain the details
@@ -164,7 +164,7 @@ class CurrenciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
     def update(
@@ -185,7 +185,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """
         Update a Currency with the given UUID.
 
@@ -247,7 +247,7 @@ class CurrenciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
     def list(
@@ -265,7 +265,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Currency]:
+    ) -> SyncCursor[CurrencyResponse]:
         """
         Retrieve a list of Currencies.
 
@@ -305,7 +305,7 @@ class CurrenciesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/currency",
-            page=SyncCursor[Currency],
+            page=SyncCursor[CurrencyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -322,7 +322,7 @@ class CurrenciesResource(SyncAPIResource):
                     currency_list_params.CurrencyListParams,
                 ),
             ),
-            model=Currency,
+            model=CurrencyResponse,
         )
 
     def delete(
@@ -336,7 +336,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """
         Delete the Currency with the given UUID.
 
@@ -363,7 +363,7 @@ class CurrenciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
 
@@ -404,7 +404,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """
         Creates a new Currency for the specified Organization.
 
@@ -463,7 +463,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
     async def retrieve(
@@ -477,7 +477,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """Retrieve the specified Currency with the given UUID.
 
         Used to obtain the details
@@ -503,7 +503,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
     async def update(
@@ -524,7 +524,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """
         Update a Currency with the given UUID.
 
@@ -586,7 +586,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
     def list(
@@ -604,7 +604,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Currency, AsyncCursor[Currency]]:
+    ) -> AsyncPaginator[CurrencyResponse, AsyncCursor[CurrencyResponse]]:
         """
         Retrieve a list of Currencies.
 
@@ -644,7 +644,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/currency",
-            page=AsyncCursor[Currency],
+            page=AsyncCursor[CurrencyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -661,7 +661,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
                     currency_list_params.CurrencyListParams,
                 ),
             ),
-            model=Currency,
+            model=CurrencyResponse,
         )
 
     async def delete(
@@ -675,7 +675,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Currency:
+    ) -> CurrencyResponse:
         """
         Delete the Currency with the given UUID.
 
@@ -702,7 +702,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Currency,
+            cast_to=CurrencyResponse,
         )
 
 

@@ -19,7 +19,7 @@ from ...._response import (
 from ....pagination import SyncCursor, AsyncCursor
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.usage.file_uploads import job_list_params
-from ....types.usage.file_uploads.file_upload_job import FileUploadJob
+from ....types.usage.file_uploads.file_upload_job_response import FileUploadJobResponse
 from ....types.usage.file_uploads.job_get_original_download_url_response import JobGetOriginalDownloadURLResponse
 
 __all__ = ["JobsResource", "AsyncJobsResource"]
@@ -56,7 +56,7 @@ class JobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FileUploadJob:
+    ) -> FileUploadJobResponse:
         """
         Get the file upload job response using the UUID of the file upload job.
 
@@ -82,7 +82,7 @@ class JobsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=FileUploadJob,
+            cast_to=FileUploadJobResponse,
         )
 
     def list(
@@ -100,7 +100,7 @@ class JobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[FileUploadJob]:
+    ) -> SyncCursor[FileUploadJobResponse]:
         """Lists the File Upload jobs.
 
         Part of the File Upload service for measurements
@@ -139,7 +139,7 @@ class JobsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/fileuploads/measurements/jobs",
-            page=SyncCursor[FileUploadJob],
+            page=SyncCursor[FileUploadJobResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -156,7 +156,7 @@ class JobsResource(SyncAPIResource):
                     job_list_params.JobListParams,
                 ),
             ),
-            model=FileUploadJob,
+            model=FileUploadJobResponse,
         )
 
     def get_original_download_url(
@@ -236,7 +236,7 @@ class AsyncJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FileUploadJob:
+    ) -> FileUploadJobResponse:
         """
         Get the file upload job response using the UUID of the file upload job.
 
@@ -262,7 +262,7 @@ class AsyncJobsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=FileUploadJob,
+            cast_to=FileUploadJobResponse,
         )
 
     def list(
@@ -280,7 +280,7 @@ class AsyncJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[FileUploadJob, AsyncCursor[FileUploadJob]]:
+    ) -> AsyncPaginator[FileUploadJobResponse, AsyncCursor[FileUploadJobResponse]]:
         """Lists the File Upload jobs.
 
         Part of the File Upload service for measurements
@@ -319,7 +319,7 @@ class AsyncJobsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/fileuploads/measurements/jobs",
-            page=AsyncCursor[FileUploadJob],
+            page=AsyncCursor[FileUploadJobResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -336,7 +336,7 @@ class AsyncJobsResource(AsyncAPIResource):
                     job_list_params.JobListParams,
                 ),
             ),
-            model=FileUploadJob,
+            model=FileUploadJobResponse,
         )
 
     async def get_original_download_url(

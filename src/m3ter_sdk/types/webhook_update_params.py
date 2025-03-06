@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .m3ter_signed_credentials_req_param import M3terSignedCredentialsReqParam
+from .m3ter_signed_credentials_request_param import M3terSignedCredentialsRequestParam
 
 __all__ = ["WebhookUpdateParams"]
 
@@ -13,7 +13,7 @@ __all__ = ["WebhookUpdateParams"]
 class WebhookUpdateParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    credentials: Required[M3terSignedCredentialsReqParam]
+    credentials: Required[M3terSignedCredentialsRequestParam]
     """This schema defines the credentials required for m3ter request signing."""
 
     description: Required[str]

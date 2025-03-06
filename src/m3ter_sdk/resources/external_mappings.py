@@ -28,7 +28,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.external_mapping import ExternalMapping
+from ..types.external_mapping_response import ExternalMappingResponse
 
 __all__ = ["ExternalMappingsResource", "AsyncExternalMappingsResource"]
 
@@ -70,7 +70,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Creates a new External Mapping.
 
@@ -132,7 +132,7 @@ class ExternalMappingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     def retrieve(
@@ -146,7 +146,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Retrieve an External Mapping with the given UUID.
 
@@ -173,7 +173,7 @@ class ExternalMappingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     def update(
@@ -194,7 +194,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Updates an External Mapping with the given UUID.
 
@@ -258,7 +258,7 @@ class ExternalMappingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     def list(
@@ -276,7 +276,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[ExternalMapping]:
+    ) -> SyncCursor[ExternalMappingResponse]:
         """
         Retrieve a list of all External Mapping entities.
 
@@ -315,7 +315,7 @@ class ExternalMappingsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/externalmappings",
-            page=SyncCursor[ExternalMapping],
+            page=SyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -332,7 +332,7 @@ class ExternalMappingsResource(SyncAPIResource):
                     external_mapping_list_params.ExternalMappingListParams,
                 ),
             ),
-            model=ExternalMapping,
+            model=ExternalMappingResponse,
         )
 
     def delete(
@@ -346,7 +346,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Delete an External Mapping with the given UUID.
 
@@ -370,7 +370,7 @@ class ExternalMappingsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     def list_by_external_entity(
@@ -388,7 +388,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[ExternalMapping]:
+    ) -> SyncCursor[ExternalMappingResponse]:
         """
         Retrieve a list of External Mapping entities for a specified external system
         entity.
@@ -423,7 +423,7 @@ class ExternalMappingsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/externalmappings/externalid/{system}/{external_table}/{external_id}",
-            page=SyncCursor[ExternalMapping],
+            page=SyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -437,7 +437,7 @@ class ExternalMappingsResource(SyncAPIResource):
                     external_mapping_list_by_external_entity_params.ExternalMappingListByExternalEntityParams,
                 ),
             ),
-            model=ExternalMapping,
+            model=ExternalMappingResponse,
         )
 
     def list_by_m3ter_entity(
@@ -454,7 +454,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[ExternalMapping]:
+    ) -> SyncCursor[ExternalMappingResponse]:
         """
         Retrieve a list of External Mapping entities for a specified m3ter entity.
 
@@ -485,7 +485,7 @@ class ExternalMappingsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `m3ter_id` but received {m3ter_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/externalmappings/external/{entity}/{m3ter_id}",
-            page=SyncCursor[ExternalMapping],
+            page=SyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -499,7 +499,7 @@ class ExternalMappingsResource(SyncAPIResource):
                     external_mapping_list_by_m3ter_entity_params.ExternalMappingListByM3terEntityParams,
                 ),
             ),
-            model=ExternalMapping,
+            model=ExternalMappingResponse,
         )
 
 
@@ -540,7 +540,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Creates a new External Mapping.
 
@@ -602,7 +602,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     async def retrieve(
@@ -616,7 +616,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Retrieve an External Mapping with the given UUID.
 
@@ -643,7 +643,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     async def update(
@@ -664,7 +664,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Updates an External Mapping with the given UUID.
 
@@ -728,7 +728,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     def list(
@@ -746,7 +746,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ExternalMapping, AsyncCursor[ExternalMapping]]:
+    ) -> AsyncPaginator[ExternalMappingResponse, AsyncCursor[ExternalMappingResponse]]:
         """
         Retrieve a list of all External Mapping entities.
 
@@ -785,7 +785,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/externalmappings",
-            page=AsyncCursor[ExternalMapping],
+            page=AsyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -802,7 +802,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
                     external_mapping_list_params.ExternalMappingListParams,
                 ),
             ),
-            model=ExternalMapping,
+            model=ExternalMappingResponse,
         )
 
     async def delete(
@@ -816,7 +816,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ExternalMapping:
+    ) -> ExternalMappingResponse:
         """
         Delete an External Mapping with the given UUID.
 
@@ -840,7 +840,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ExternalMapping,
+            cast_to=ExternalMappingResponse,
         )
 
     def list_by_external_entity(
@@ -858,7 +858,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ExternalMapping, AsyncCursor[ExternalMapping]]:
+    ) -> AsyncPaginator[ExternalMappingResponse, AsyncCursor[ExternalMappingResponse]]:
         """
         Retrieve a list of External Mapping entities for a specified external system
         entity.
@@ -893,7 +893,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/externalmappings/externalid/{system}/{external_table}/{external_id}",
-            page=AsyncCursor[ExternalMapping],
+            page=AsyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -907,7 +907,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
                     external_mapping_list_by_external_entity_params.ExternalMappingListByExternalEntityParams,
                 ),
             ),
-            model=ExternalMapping,
+            model=ExternalMappingResponse,
         )
 
     def list_by_m3ter_entity(
@@ -924,7 +924,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ExternalMapping, AsyncCursor[ExternalMapping]]:
+    ) -> AsyncPaginator[ExternalMappingResponse, AsyncCursor[ExternalMappingResponse]]:
         """
         Retrieve a list of External Mapping entities for a specified m3ter entity.
 
@@ -955,7 +955,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `m3ter_id` but received {m3ter_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/externalmappings/external/{entity}/{m3ter_id}",
-            page=AsyncCursor[ExternalMapping],
+            page=AsyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -969,7 +969,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
                     external_mapping_list_by_m3ter_entity_params.ExternalMappingListByM3terEntityParams,
                 ),
             ),
-            model=ExternalMapping,
+            model=ExternalMappingResponse,
         )
 
 

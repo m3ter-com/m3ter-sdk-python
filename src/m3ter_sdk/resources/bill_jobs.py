@@ -24,7 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.bill_job import BillJob
+from ..types.bill_job_response import BillJobResponse
 from ..types.shared_params.currency_conversion import CurrencyConversion
 
 __all__ = ["BillJobsResource", "AsyncBillJobsResource"]
@@ -75,7 +75,7 @@ class BillJobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Create a new BillJob to handle asynchronous bill calculations for a specific
         Organization.
@@ -234,7 +234,7 @@ class BillJobsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
     def retrieve(
@@ -248,7 +248,7 @@ class BillJobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Retrieve a Bill Job for the given UUID.
 
@@ -272,7 +272,7 @@ class BillJobsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
     def list(
@@ -289,7 +289,7 @@ class BillJobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[BillJob]:
+    ) -> SyncCursor[BillJobResponse]:
         """
         Retrieve a list of BillJobs.
 
@@ -335,7 +335,7 @@ class BillJobsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/billjobs",
-            page=SyncCursor[BillJob],
+            page=SyncCursor[BillJobResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -351,7 +351,7 @@ class BillJobsResource(SyncAPIResource):
                     bill_job_list_params.BillJobListParams,
                 ),
             ),
-            model=BillJob,
+            model=BillJobResponse,
         )
 
     def cancel(
@@ -365,7 +365,7 @@ class BillJobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Cancel an ongoing BillJob for the given Organization and BillJob UUID.
 
@@ -393,7 +393,7 @@ class BillJobsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
     def recalculate(
@@ -408,7 +408,7 @@ class BillJobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Create a new BillJob specifically to recalculate existing bills for a given
         Organization.
@@ -464,7 +464,7 @@ class BillJobsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
 
@@ -513,7 +513,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Create a new BillJob to handle asynchronous bill calculations for a specific
         Organization.
@@ -672,7 +672,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
     async def retrieve(
@@ -686,7 +686,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Retrieve a Bill Job for the given UUID.
 
@@ -710,7 +710,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
     def list(
@@ -727,7 +727,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[BillJob, AsyncCursor[BillJob]]:
+    ) -> AsyncPaginator[BillJobResponse, AsyncCursor[BillJobResponse]]:
         """
         Retrieve a list of BillJobs.
 
@@ -773,7 +773,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/billjobs",
-            page=AsyncCursor[BillJob],
+            page=AsyncCursor[BillJobResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -789,7 +789,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
                     bill_job_list_params.BillJobListParams,
                 ),
             ),
-            model=BillJob,
+            model=BillJobResponse,
         )
 
     async def cancel(
@@ -803,7 +803,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Cancel an ongoing BillJob for the given Organization and BillJob UUID.
 
@@ -831,7 +831,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
     async def recalculate(
@@ -846,7 +846,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BillJob:
+    ) -> BillJobResponse:
         """
         Create a new BillJob specifically to recalculate existing bills for a given
         Organization.
@@ -902,7 +902,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=BillJob,
+            cast_to=BillJobResponse,
         )
 
 

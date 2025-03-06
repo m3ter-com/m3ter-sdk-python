@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    Bill,
+    BillResponse,
     BillSearchResponse,
     BillApproveResponse,
 )
@@ -28,7 +28,7 @@ class TestBills:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -40,7 +40,7 @@ class TestBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -52,7 +52,7 @@ class TestBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -75,7 +75,7 @@ class TestBills:
         bill = client.bills.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[Bill], bill, path=["response"])
+        assert_matches_type(SyncCursor[BillResponse], bill, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -96,7 +96,7 @@ class TestBills:
             page_size=1,
             status="PENDING",
         )
-        assert_matches_type(SyncCursor[Bill], bill, path=["response"])
+        assert_matches_type(SyncCursor[BillResponse], bill, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -107,7 +107,7 @@ class TestBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = response.parse()
-        assert_matches_type(SyncCursor[Bill], bill, path=["response"])
+        assert_matches_type(SyncCursor[BillResponse], bill, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -118,7 +118,7 @@ class TestBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = response.parse()
-            assert_matches_type(SyncCursor[Bill], bill, path=["response"])
+            assert_matches_type(SyncCursor[BillResponse], bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -135,7 +135,7 @@ class TestBills:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -147,7 +147,7 @@ class TestBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -159,7 +159,7 @@ class TestBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -236,7 +236,7 @@ class TestBills:
             account_id="accountId",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_raw_response_latest_by_account(self, client: M3ter) -> None:
@@ -248,7 +248,7 @@ class TestBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_streaming_response_latest_by_account(self, client: M3ter) -> None:
@@ -260,7 +260,7 @@ class TestBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -284,7 +284,7 @@ class TestBills:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_raw_response_lock(self, client: M3ter) -> None:
@@ -296,7 +296,7 @@ class TestBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_streaming_response_lock(self, client: M3ter) -> None:
@@ -308,7 +308,7 @@ class TestBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -384,7 +384,7 @@ class TestBills:
             org_id="orgId",
             status="PENDING",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_raw_response_update_status(self, client: M3ter) -> None:
@@ -397,7 +397,7 @@ class TestBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     def test_streaming_response_update_status(self, client: M3ter) -> None:
@@ -410,7 +410,7 @@ class TestBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -440,7 +440,7 @@ class TestAsyncBills:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -452,7 +452,7 @@ class TestAsyncBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = await response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -464,7 +464,7 @@ class TestAsyncBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = await response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -487,7 +487,7 @@ class TestAsyncBills:
         bill = await async_client.bills.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[Bill], bill, path=["response"])
+        assert_matches_type(AsyncCursor[BillResponse], bill, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -508,7 +508,7 @@ class TestAsyncBills:
             page_size=1,
             status="PENDING",
         )
-        assert_matches_type(AsyncCursor[Bill], bill, path=["response"])
+        assert_matches_type(AsyncCursor[BillResponse], bill, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -519,7 +519,7 @@ class TestAsyncBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = await response.parse()
-        assert_matches_type(AsyncCursor[Bill], bill, path=["response"])
+        assert_matches_type(AsyncCursor[BillResponse], bill, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -530,7 +530,7 @@ class TestAsyncBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = await response.parse()
-            assert_matches_type(AsyncCursor[Bill], bill, path=["response"])
+            assert_matches_type(AsyncCursor[BillResponse], bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -547,7 +547,7 @@ class TestAsyncBills:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -559,7 +559,7 @@ class TestAsyncBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = await response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -571,7 +571,7 @@ class TestAsyncBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = await response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -648,7 +648,7 @@ class TestAsyncBills:
             account_id="accountId",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_raw_response_latest_by_account(self, async_client: AsyncM3ter) -> None:
@@ -660,7 +660,7 @@ class TestAsyncBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = await response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_streaming_response_latest_by_account(self, async_client: AsyncM3ter) -> None:
@@ -672,7 +672,7 @@ class TestAsyncBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = await response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -696,7 +696,7 @@ class TestAsyncBills:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_raw_response_lock(self, async_client: AsyncM3ter) -> None:
@@ -708,7 +708,7 @@ class TestAsyncBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = await response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_streaming_response_lock(self, async_client: AsyncM3ter) -> None:
@@ -720,7 +720,7 @@ class TestAsyncBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = await response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -796,7 +796,7 @@ class TestAsyncBills:
             org_id="orgId",
             status="PENDING",
         )
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_raw_response_update_status(self, async_client: AsyncM3ter) -> None:
@@ -809,7 +809,7 @@ class TestAsyncBills:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bill = await response.parse()
-        assert_matches_type(Bill, bill, path=["response"])
+        assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
     async def test_streaming_response_update_status(self, async_client: AsyncM3ter) -> None:
@@ -822,7 +822,7 @@ class TestAsyncBills:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bill = await response.parse()
-            assert_matches_type(Bill, bill, path=["response"])
+            assert_matches_type(BillResponse, bill, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
