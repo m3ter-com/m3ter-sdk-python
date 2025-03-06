@@ -22,7 +22,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.plan_group import PlanGroup
+from ..types.plan_group_response import PlanGroupResponse
 
 __all__ = ["PlanGroupsResource", "AsyncPlanGroupsResource"]
 
@@ -71,7 +71,7 @@ class PlanGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """Create a new PlanGroup.
 
         This endpoint creates a new PlanGroup within the
@@ -172,7 +172,7 @@ class PlanGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
     def retrieve(
@@ -186,7 +186,7 @@ class PlanGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """
         Retrieve a specific PlanGroup with the given UUID.
 
@@ -213,7 +213,7 @@ class PlanGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
     def update(
@@ -241,7 +241,7 @@ class PlanGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """
         Update the PlanGroup with the given UUID.
 
@@ -351,7 +351,7 @@ class PlanGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
     def list(
@@ -368,7 +368,7 @@ class PlanGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[PlanGroup]:
+    ) -> SyncCursor[PlanGroupResponse]:
         """
         Retrieve a list of PlanGroups.
 
@@ -400,7 +400,7 @@ class PlanGroupsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plangroups",
-            page=SyncCursor[PlanGroup],
+            page=SyncCursor[PlanGroupResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -416,7 +416,7 @@ class PlanGroupsResource(SyncAPIResource):
                     plan_group_list_params.PlanGroupListParams,
                 ),
             ),
-            model=PlanGroup,
+            model=PlanGroupResponse,
         )
 
     def delete(
@@ -430,7 +430,7 @@ class PlanGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """
         Delete a PlanGroup with the given UUID.
 
@@ -458,7 +458,7 @@ class PlanGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
 
@@ -506,7 +506,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """Create a new PlanGroup.
 
         This endpoint creates a new PlanGroup within the
@@ -607,7 +607,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
     async def retrieve(
@@ -621,7 +621,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """
         Retrieve a specific PlanGroup with the given UUID.
 
@@ -648,7 +648,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
     async def update(
@@ -676,7 +676,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """
         Update the PlanGroup with the given UUID.
 
@@ -786,7 +786,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
     def list(
@@ -803,7 +803,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PlanGroup, AsyncCursor[PlanGroup]]:
+    ) -> AsyncPaginator[PlanGroupResponse, AsyncCursor[PlanGroupResponse]]:
         """
         Retrieve a list of PlanGroups.
 
@@ -835,7 +835,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plangroups",
-            page=AsyncCursor[PlanGroup],
+            page=AsyncCursor[PlanGroupResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -851,7 +851,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
                     plan_group_list_params.PlanGroupListParams,
                 ),
             ),
-            model=PlanGroup,
+            model=PlanGroupResponse,
         )
 
     async def delete(
@@ -865,7 +865,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroup:
+    ) -> PlanGroupResponse:
         """
         Delete a PlanGroup with the given UUID.
 
@@ -893,7 +893,7 @@ class AsyncPlanGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroup,
+            cast_to=PlanGroupResponse,
         )
 
 

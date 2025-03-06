@@ -27,7 +27,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.integration_configuration import IntegrationConfiguration
+from ..types.integration_configuration_response import IntegrationConfigurationResponse
 from ..types.integration_configuration_list_response import IntegrationConfigurationListResponse
 from ..types.integration_configuration_create_response import IntegrationConfigurationCreateResponse
 from ..types.integration_configuration_delete_response import IntegrationConfigurationDeleteResponse
@@ -157,7 +157,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IntegrationConfiguration:
+    ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the given UUID.
 
@@ -185,7 +185,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegrationConfiguration,
+            cast_to=IntegrationConfigurationResponse,
         )
 
     def update(
@@ -433,7 +433,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IntegrationConfiguration:
+    ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the entity
 
@@ -466,7 +466,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
                     integration_configuration_get_by_entity_params.IntegrationConfigurationGetByEntityParams,
                 ),
             ),
-            cast_to=IntegrationConfiguration,
+            cast_to=IntegrationConfigurationResponse,
         )
 
 
@@ -590,7 +590,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IntegrationConfiguration:
+    ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the given UUID.
 
@@ -618,7 +618,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IntegrationConfiguration,
+            cast_to=IntegrationConfigurationResponse,
         )
 
     async def update(
@@ -866,7 +866,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IntegrationConfiguration:
+    ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the entity
 
@@ -899,7 +899,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
                     integration_configuration_get_by_entity_params.IntegrationConfigurationGetByEntityParams,
                 ),
             ),
-            cast_to=IntegrationConfiguration,
+            cast_to=IntegrationConfigurationResponse,
         )
 
 

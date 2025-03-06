@@ -31,8 +31,8 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.account import Account
 from ..types.address_param import AddressParam
+from ..types.account_response import AccountResponse
 from ..types.account_search_response import AccountSearchResponse
 from ..types.account_end_date_billing_entities_response import AccountEndDateBillingEntitiesResponse
 
@@ -84,7 +84,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """Create a new Account within the Organization.
 
         Args:
@@ -242,7 +242,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     def retrieve(
@@ -256,7 +256,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """
         Retrieve the Account with the given Account UUID.
 
@@ -280,7 +280,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     def update(
@@ -309,7 +309,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """
         Update the Account with the given Account UUID.
 
@@ -473,7 +473,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     def list(
@@ -490,7 +490,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Account]:
+    ) -> SyncCursor[AccountResponse]:
         """
         Retrieve a list of Accounts that can be filtered by Account ID or Account Code.
 
@@ -518,7 +518,7 @@ class AccountsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/accounts",
-            page=SyncCursor[Account],
+            page=SyncCursor[AccountResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -534,7 +534,7 @@ class AccountsResource(SyncAPIResource):
                     account_list_params.AccountListParams,
                 ),
             ),
-            model=Account,
+            model=AccountResponse,
         )
 
     def delete(
@@ -548,7 +548,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """Delete the Account with the given UUID.
 
         This may fail if there are any
@@ -574,7 +574,7 @@ class AccountsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     def end_date_billing_entities(
@@ -656,7 +656,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """
         Retrieve a list of Accounts that are children of the specified Account.
 
@@ -690,7 +690,7 @@ class AccountsResource(SyncAPIResource):
                     account_get_children_params.AccountGetChildrenParams,
                 ),
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     def search(
@@ -833,7 +833,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """Create a new Account within the Organization.
 
         Args:
@@ -991,7 +991,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     async def retrieve(
@@ -1005,7 +1005,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """
         Retrieve the Account with the given Account UUID.
 
@@ -1029,7 +1029,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     async def update(
@@ -1058,7 +1058,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """
         Update the Account with the given Account UUID.
 
@@ -1222,7 +1222,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     def list(
@@ -1239,7 +1239,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Account, AsyncCursor[Account]]:
+    ) -> AsyncPaginator[AccountResponse, AsyncCursor[AccountResponse]]:
         """
         Retrieve a list of Accounts that can be filtered by Account ID or Account Code.
 
@@ -1267,7 +1267,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/accounts",
-            page=AsyncCursor[Account],
+            page=AsyncCursor[AccountResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1283,7 +1283,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     account_list_params.AccountListParams,
                 ),
             ),
-            model=Account,
+            model=AccountResponse,
         )
 
     async def delete(
@@ -1297,7 +1297,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """Delete the Account with the given UUID.
 
         This may fail if there are any
@@ -1323,7 +1323,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     async def end_date_billing_entities(
@@ -1405,7 +1405,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Account:
+    ) -> AccountResponse:
         """
         Retrieve a list of Accounts that are children of the specified Account.
 
@@ -1439,7 +1439,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     account_get_children_params.AccountGetChildrenParams,
                 ),
             ),
-            cast_to=Account,
+            cast_to=AccountResponse,
         )
 
     async def search(

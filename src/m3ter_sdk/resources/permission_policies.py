@@ -33,8 +33,8 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.permission_policy import PermissionPolicy
-from ..types.permission_statement_param import PermissionStatementParam
+from ..types.permission_policy_response import PermissionPolicyResponse
+from ..types.permission_statement_response_param import PermissionStatementResponseParam
 from ..types.permission_policy_add_to_user_response import PermissionPolicyAddToUserResponse
 from ..types.permission_policy_remove_from_user_response import PermissionPolicyRemoveFromUserResponse
 from ..types.permission_policy_add_to_user_group_response import PermissionPolicyAddToUserGroupResponse
@@ -72,7 +72,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[PermissionStatementParam],
+        permission_policy: Iterable[PermissionStatementResponseParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -80,7 +80,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Create a new Permission Policy
 
@@ -149,7 +149,7 @@ class PermissionPoliciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     def retrieve(
@@ -163,7 +163,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Retrieve the permission policy for the UUID
 
@@ -187,7 +187,7 @@ class PermissionPoliciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     def update(
@@ -196,7 +196,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[PermissionStatementParam],
+        permission_policy: Iterable[PermissionStatementResponseParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -204,7 +204,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Update a Permission Policy for the UUID
 
@@ -275,7 +275,7 @@ class PermissionPoliciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     def list(
@@ -290,7 +290,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[PermissionPolicy]:
+    ) -> SyncCursor[PermissionPolicyResponse]:
         """
         Retrieve a list of PermissionPolicy entities
 
@@ -313,7 +313,7 @@ class PermissionPoliciesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/permissionpolicies",
-            page=SyncCursor[PermissionPolicy],
+            page=SyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -327,7 +327,7 @@ class PermissionPoliciesResource(SyncAPIResource):
                     permission_policy_list_params.PermissionPolicyListParams,
                 ),
             ),
-            model=PermissionPolicy,
+            model=PermissionPolicyResponse,
         )
 
     def delete(
@@ -341,7 +341,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Delete the PermissionPolicy for the UUID
 
@@ -365,7 +365,7 @@ class PermissionPoliciesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     def add_to_service_user(
@@ -855,7 +855,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[PermissionStatementParam],
+        permission_policy: Iterable[PermissionStatementResponseParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -863,7 +863,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Create a new Permission Policy
 
@@ -932,7 +932,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     async def retrieve(
@@ -946,7 +946,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Retrieve the permission policy for the UUID
 
@@ -970,7 +970,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     async def update(
@@ -979,7 +979,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        permission_policy: Iterable[PermissionStatementParam],
+        permission_policy: Iterable[PermissionStatementResponseParam],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -987,7 +987,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Update a Permission Policy for the UUID
 
@@ -1058,7 +1058,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     def list(
@@ -1073,7 +1073,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PermissionPolicy, AsyncCursor[PermissionPolicy]]:
+    ) -> AsyncPaginator[PermissionPolicyResponse, AsyncCursor[PermissionPolicyResponse]]:
         """
         Retrieve a list of PermissionPolicy entities
 
@@ -1096,7 +1096,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/permissionpolicies",
-            page=AsyncCursor[PermissionPolicy],
+            page=AsyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1110,7 +1110,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                     permission_policy_list_params.PermissionPolicyListParams,
                 ),
             ),
-            model=PermissionPolicy,
+            model=PermissionPolicyResponse,
         )
 
     async def delete(
@@ -1124,7 +1124,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Delete the PermissionPolicy for the UUID
 
@@ -1148,7 +1148,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     async def add_to_service_user(

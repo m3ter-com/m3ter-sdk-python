@@ -6,7 +6,7 @@ from typing import Dict, Union, Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .data_field_param import DataFieldParam
+from .data_field_response_param import DataFieldResponseParam
 
 __all__ = ["MeterCreateParams", "DerivedField"]
 
@@ -22,7 +22,7 @@ class MeterCreateParams(TypedDict, total=False):
     whitespace.
     """
 
-    data_fields: Required[Annotated[Iterable[DataFieldParam], PropertyInfo(alias="dataFields")]]
+    data_fields: Required[Annotated[Iterable[DataFieldResponseParam], PropertyInfo(alias="dataFields")]]
     """
     Used to submit categorized raw usage data values for ingest into the platform -
     either numeric quantitative values or non-numeric data values. At least one
@@ -78,7 +78,7 @@ class MeterCreateParams(TypedDict, total=False):
     """
 
 
-class DerivedField(DataFieldParam):
+class DerivedField(DataFieldResponseParam):
     calculation: Required[str]
     """
     The calculation used to transform the value of submitted `dataFields` in usage

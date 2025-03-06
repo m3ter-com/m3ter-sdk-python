@@ -5,12 +5,12 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from .data_export_destination import DataExportDestination
+from .data_export_destination_response import DataExportDestinationResponse
 
 __all__ = ["DestinationRetrieveResponse"]
 
 
-class DestinationRetrieveResponse(DataExportDestination):
+class DestinationRetrieveResponse(DataExportDestinationResponse):
     id: str  # type: ignore
     """The UUID of the entity."""
 

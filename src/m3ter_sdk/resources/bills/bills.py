@@ -30,7 +30,6 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...pagination import SyncCursor, AsyncCursor
-from ...types.bill import Bill
 from ..._base_client import AsyncPaginator, make_request_options
 from .debit_line_items import (
     DebitLineItemsResource,
@@ -48,6 +47,7 @@ from .credit_line_items import (
     CreditLineItemsResourceWithStreamingResponse,
     AsyncCreditLineItemsResourceWithStreamingResponse,
 )
+from ...types.bill_response import BillResponse
 from ...types.bill_search_response import BillSearchResponse
 from ...types.bill_approve_response import BillApproveResponse
 
@@ -97,7 +97,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Retrieve the Bill with the given UUID.
 
@@ -124,7 +124,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     def list(
@@ -151,7 +151,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Bill]:
+    ) -> SyncCursor[BillResponse]:
         """
         Retrieve a list of Bills.
 
@@ -206,7 +206,7 @@ class BillsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills",
-            page=SyncCursor[Bill],
+            page=SyncCursor[BillResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -232,7 +232,7 @@ class BillsResource(SyncAPIResource):
                     bill_list_params.BillListParams,
                 ),
             ),
-            model=Bill,
+            model=BillResponse,
         )
 
     def delete(
@@ -246,7 +246,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Delete the Bill with the given UUID.
 
@@ -276,7 +276,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     def approve(
@@ -367,7 +367,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Retrieve the latest Bill for the given Account.
 
@@ -395,7 +395,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     def lock(
@@ -409,7 +409,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """Lock the specific Bill identified by the given UUID.
 
         Once a Bill is locked, no
@@ -440,7 +440,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     def search(
@@ -549,7 +549,7 @@ class BillsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Updates the status of a specified Bill with the given Bill ID.
 
@@ -580,7 +580,7 @@ class BillsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
 
@@ -627,7 +627,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Retrieve the Bill with the given UUID.
 
@@ -654,7 +654,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     def list(
@@ -681,7 +681,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Bill, AsyncCursor[Bill]]:
+    ) -> AsyncPaginator[BillResponse, AsyncCursor[BillResponse]]:
         """
         Retrieve a list of Bills.
 
@@ -736,7 +736,7 @@ class AsyncBillsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills",
-            page=AsyncCursor[Bill],
+            page=AsyncCursor[BillResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -762,7 +762,7 @@ class AsyncBillsResource(AsyncAPIResource):
                     bill_list_params.BillListParams,
                 ),
             ),
-            model=Bill,
+            model=BillResponse,
         )
 
     async def delete(
@@ -776,7 +776,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Delete the Bill with the given UUID.
 
@@ -806,7 +806,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     async def approve(
@@ -897,7 +897,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Retrieve the latest Bill for the given Account.
 
@@ -925,7 +925,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     async def lock(
@@ -939,7 +939,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """Lock the specific Bill identified by the given UUID.
 
         Once a Bill is locked, no
@@ -970,7 +970,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
     async def search(
@@ -1079,7 +1079,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Bill:
+    ) -> BillResponse:
         """
         Updates the status of a specified Bill with the given Bill ID.
 
@@ -1110,7 +1110,7 @@ class AsyncBillsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Bill,
+            cast_to=BillResponse,
         )
 
 

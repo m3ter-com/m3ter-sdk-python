@@ -35,12 +35,12 @@ from .invitations import (
     AsyncInvitationsResourceWithStreamingResponse,
 )
 from ...pagination import SyncCursor, AsyncCursor
-from ...types.user import User
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.resource_group import ResourceGroup
+from ...types.user_response import UserResponse
 from ...types.user_me_response import UserMeResponse
-from ...types.permission_policy import PermissionPolicy
-from ...types.permission_statement_param import PermissionStatementParam
+from ...types.resource_group_response import ResourceGroupResponse
+from ...types.permission_policy_response import PermissionPolicyResponse
+from ...types.permission_statement_response_param import PermissionStatementResponseParam
 
 __all__ = ["UsersResource", "AsyncUsersResource"]
 
@@ -80,7 +80,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> User:
+    ) -> UserResponse:
         """
         Retrieve the OrgUser with the given UUID.
 
@@ -107,7 +107,7 @@ class UsersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=User,
+            cast_to=UserResponse,
         )
 
     def update(
@@ -116,7 +116,7 @@ class UsersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         dt_end_access: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        permission_policy: Iterable[PermissionStatementParam] | NotGiven = NOT_GIVEN,
+        permission_policy: Iterable[PermissionStatementResponseParam] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -124,7 +124,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> User:
+    ) -> UserResponse:
         """
         Update the OrgUser with the given UUID.
 
@@ -179,7 +179,7 @@ class UsersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=User,
+            cast_to=UserResponse,
         )
 
     def list(
@@ -195,7 +195,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[User]:
+    ) -> SyncCursor[UserResponse]:
         """
         Retrieve a list of OrgUsers.
 
@@ -225,7 +225,7 @@ class UsersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/users",
-            page=SyncCursor[User],
+            page=SyncCursor[UserResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -240,7 +240,7 @@ class UsersResource(SyncAPIResource):
                     user_list_params.UserListParams,
                 ),
             ),
-            model=User,
+            model=UserResponse,
         )
 
     def get_permissions(
@@ -256,7 +256,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Retrieve the permissions for the OrgUser with the given UUID.
 
@@ -298,7 +298,7 @@ class UsersResource(SyncAPIResource):
                     user_get_permissions_params.UserGetPermissionsParams,
                 ),
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     def get_user_groups(
@@ -314,7 +314,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Retrieve a list of User Groups for an OrgUser.
 
@@ -377,7 +377,7 @@ class UsersResource(SyncAPIResource):
                     user_get_user_groups_params.UserGetUserGroupsParams,
                 ),
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def me(
@@ -490,7 +490,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> User:
+    ) -> UserResponse:
         """
         Retrieve the OrgUser with the given UUID.
 
@@ -517,7 +517,7 @@ class AsyncUsersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=User,
+            cast_to=UserResponse,
         )
 
     async def update(
@@ -526,7 +526,7 @@ class AsyncUsersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         dt_end_access: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        permission_policy: Iterable[PermissionStatementParam] | NotGiven = NOT_GIVEN,
+        permission_policy: Iterable[PermissionStatementResponseParam] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -534,7 +534,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> User:
+    ) -> UserResponse:
         """
         Update the OrgUser with the given UUID.
 
@@ -589,7 +589,7 @@ class AsyncUsersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=User,
+            cast_to=UserResponse,
         )
 
     def list(
@@ -605,7 +605,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[User, AsyncCursor[User]]:
+    ) -> AsyncPaginator[UserResponse, AsyncCursor[UserResponse]]:
         """
         Retrieve a list of OrgUsers.
 
@@ -635,7 +635,7 @@ class AsyncUsersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/users",
-            page=AsyncCursor[User],
+            page=AsyncCursor[UserResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -650,7 +650,7 @@ class AsyncUsersResource(AsyncAPIResource):
                     user_list_params.UserListParams,
                 ),
             ),
-            model=User,
+            model=UserResponse,
         )
 
     async def get_permissions(
@@ -666,7 +666,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PermissionPolicy:
+    ) -> PermissionPolicyResponse:
         """
         Retrieve the permissions for the OrgUser with the given UUID.
 
@@ -708,7 +708,7 @@ class AsyncUsersResource(AsyncAPIResource):
                     user_get_permissions_params.UserGetPermissionsParams,
                 ),
             ),
-            cast_to=PermissionPolicy,
+            cast_to=PermissionPolicyResponse,
         )
 
     async def get_user_groups(
@@ -724,7 +724,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Retrieve a list of User Groups for an OrgUser.
 
@@ -787,7 +787,7 @@ class AsyncUsersResource(AsyncAPIResource):
                     user_get_user_groups_params.UserGetUserGroupsParams,
                 ),
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     async def me(

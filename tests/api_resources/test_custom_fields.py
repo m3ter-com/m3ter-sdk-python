@@ -9,7 +9,7 @@ import pytest
 
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
-from m3ter_sdk.types import CustomFields
+from m3ter_sdk.types import CustomFieldsResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +22,7 @@ class TestCustomFields:
         custom_field = client.custom_fields.retrieve(
             org_id="orgId",
         )
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -33,7 +33,7 @@ class TestCustomFields:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         custom_field = response.parse()
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -44,7 +44,7 @@ class TestCustomFields:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             custom_field = response.parse()
-            assert_matches_type(CustomFields, custom_field, path=["response"])
+            assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -60,7 +60,7 @@ class TestCustomFields:
         custom_field = client.custom_fields.update(
             org_id="orgId",
         )
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -77,7 +77,7 @@ class TestCustomFields:
             product={"foo": "string"},
             version=0,
         )
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -88,7 +88,7 @@ class TestCustomFields:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         custom_field = response.parse()
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -99,7 +99,7 @@ class TestCustomFields:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             custom_field = response.parse()
-            assert_matches_type(CustomFields, custom_field, path=["response"])
+            assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -119,7 +119,7 @@ class TestAsyncCustomFields:
         custom_field = await async_client.custom_fields.retrieve(
             org_id="orgId",
         )
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -130,7 +130,7 @@ class TestAsyncCustomFields:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         custom_field = await response.parse()
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -141,7 +141,7 @@ class TestAsyncCustomFields:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             custom_field = await response.parse()
-            assert_matches_type(CustomFields, custom_field, path=["response"])
+            assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -157,7 +157,7 @@ class TestAsyncCustomFields:
         custom_field = await async_client.custom_fields.update(
             org_id="orgId",
         )
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -174,7 +174,7 @@ class TestAsyncCustomFields:
             product={"foo": "string"},
             version=0,
         )
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -185,7 +185,7 @@ class TestAsyncCustomFields:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         custom_field = await response.parse()
-        assert_matches_type(CustomFields, custom_field, path=["response"])
+        assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -196,7 +196,7 @@ class TestAsyncCustomFields:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             custom_field = await response.parse()
-            assert_matches_type(CustomFields, custom_field, path=["response"])
+            assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -6,7 +6,7 @@ from typing import Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .permission_statement_param import PermissionStatementParam
+from .permission_statement_response_param import PermissionStatementResponseParam
 
 __all__ = ["PermissionPolicyCreateParams"]
 
@@ -16,7 +16,9 @@ class PermissionPolicyCreateParams(TypedDict, total=False):
 
     name: Required[str]
 
-    permission_policy: Required[Annotated[Iterable[PermissionStatementParam], PropertyInfo(alias="permissionPolicy")]]
+    permission_policy: Required[
+        Annotated[Iterable[PermissionStatementResponseParam], PropertyInfo(alias="permissionPolicy")]
+    ]
 
     version: int
     """The version number of the entity:

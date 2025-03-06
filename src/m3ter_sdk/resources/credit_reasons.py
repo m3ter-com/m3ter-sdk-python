@@ -22,7 +22,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.credit_reason import CreditReason
+from ..types.credit_reason_response import CreditReasonResponse
 
 __all__ = ["CreditReasonsResource", "AsyncCreditReasonsResource"]
 
@@ -61,7 +61,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """Create a new Credit Reason for your Organization.
 
         When you've created a Credit
@@ -115,7 +115,7 @@ class CreditReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
     def retrieve(
@@ -129,7 +129,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """
         Retrieve the Credit Reason with the given UUID.
 
@@ -153,7 +153,7 @@ class CreditReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
     def update(
@@ -171,7 +171,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """
         Update the Credit Reason with the given UUID.
 
@@ -224,7 +224,7 @@ class CreditReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
     def list(
@@ -242,7 +242,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CreditReason]:
+    ) -> SyncCursor[CreditReasonResponse]:
         """Retrieve a list of the Credit Reason entities created for your Organization.
 
         You
@@ -278,7 +278,7 @@ class CreditReasonsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/creditreasons",
-            page=SyncCursor[CreditReason],
+            page=SyncCursor[CreditReasonResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -295,7 +295,7 @@ class CreditReasonsResource(SyncAPIResource):
                     credit_reason_list_params.CreditReasonListParams,
                 ),
             ),
-            model=CreditReason,
+            model=CreditReasonResponse,
         )
 
     def delete(
@@ -309,7 +309,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """
         Delete the Credit Reason with the given UUID.
 
@@ -333,7 +333,7 @@ class CreditReasonsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
 
@@ -371,7 +371,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """Create a new Credit Reason for your Organization.
 
         When you've created a Credit
@@ -425,7 +425,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
     async def retrieve(
@@ -439,7 +439,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """
         Retrieve the Credit Reason with the given UUID.
 
@@ -463,7 +463,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
     async def update(
@@ -481,7 +481,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """
         Update the Credit Reason with the given UUID.
 
@@ -534,7 +534,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
     def list(
@@ -552,7 +552,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CreditReason, AsyncCursor[CreditReason]]:
+    ) -> AsyncPaginator[CreditReasonResponse, AsyncCursor[CreditReasonResponse]]:
         """Retrieve a list of the Credit Reason entities created for your Organization.
 
         You
@@ -588,7 +588,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/picklists/creditreasons",
-            page=AsyncCursor[CreditReason],
+            page=AsyncCursor[CreditReasonResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -605,7 +605,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
                     credit_reason_list_params.CreditReasonListParams,
                 ),
             ),
-            model=CreditReason,
+            model=CreditReasonResponse,
         )
 
     async def delete(
@@ -619,7 +619,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CreditReason:
+    ) -> CreditReasonResponse:
         """
         Delete the Credit Reason with the given UUID.
 
@@ -643,7 +643,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CreditReason,
+            cast_to=CreditReasonResponse,
         )
 
 

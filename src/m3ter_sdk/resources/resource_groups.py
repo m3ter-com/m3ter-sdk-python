@@ -30,8 +30,8 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.resource_group import ResourceGroup
-from ..types.permission_policy import PermissionPolicy
+from ..types.resource_group_response import ResourceGroupResponse
+from ..types.permission_policy_response import PermissionPolicyResponse
 from ..types.resource_group_list_contents_response import ResourceGroupListContentsResponse
 
 __all__ = ["ResourceGroupsResource", "AsyncResourceGroupsResource"]
@@ -70,7 +70,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Create a ResourceGroup for the UUID
 
@@ -105,7 +105,7 @@ class ResourceGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def retrieve(
@@ -120,7 +120,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Retrieve the ResourceGroup for the UUID
 
@@ -146,7 +146,7 @@ class ResourceGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def update(
@@ -163,7 +163,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Update the ResourceGroup for the UUID
 
@@ -200,7 +200,7 @@ class ResourceGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def list(
@@ -216,7 +216,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[ResourceGroup]:
+    ) -> SyncCursor[ResourceGroupResponse]:
         """
         Retrieve a list of ResourceGroup entities
 
@@ -241,7 +241,7 @@ class ResourceGroupsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}",
-            page=SyncCursor[ResourceGroup],
+            page=SyncCursor[ResourceGroupResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -255,7 +255,7 @@ class ResourceGroupsResource(SyncAPIResource):
                     resource_group_list_params.ResourceGroupListParams,
                 ),
             ),
-            model=ResourceGroup,
+            model=ResourceGroupResponse,
         )
 
     def delete(
@@ -270,7 +270,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Delete a ResourceGroup for the UUID
 
@@ -296,7 +296,7 @@ class ResourceGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def add_resource(
@@ -314,7 +314,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Add an item to a ResourceGroup.
 
@@ -368,7 +368,7 @@ class ResourceGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def list_contents(
@@ -444,7 +444,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[PermissionPolicy]:
+    ) -> SyncCursor[PermissionPolicyResponse]:
         """
         Retrieve a list of permission policies for a ResourceGroup
 
@@ -471,7 +471,7 @@ class ResourceGroupsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
-            page=SyncCursor[PermissionPolicy],
+            page=SyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -485,7 +485,7 @@ class ResourceGroupsResource(SyncAPIResource):
                     resource_group_list_permissions_params.ResourceGroupListPermissionsParams,
                 ),
             ),
-            model=PermissionPolicy,
+            model=PermissionPolicyResponse,
         )
 
     def remove_resource(
@@ -503,7 +503,7 @@ class ResourceGroupsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Remove an item from a ResourceGroup.
 
@@ -557,7 +557,7 @@ class ResourceGroupsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
 
@@ -594,7 +594,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Create a ResourceGroup for the UUID
 
@@ -629,7 +629,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     async def retrieve(
@@ -644,7 +644,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Retrieve the ResourceGroup for the UUID
 
@@ -670,7 +670,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     async def update(
@@ -687,7 +687,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Update the ResourceGroup for the UUID
 
@@ -724,7 +724,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def list(
@@ -740,7 +740,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ResourceGroup, AsyncCursor[ResourceGroup]]:
+    ) -> AsyncPaginator[ResourceGroupResponse, AsyncCursor[ResourceGroupResponse]]:
         """
         Retrieve a list of ResourceGroup entities
 
@@ -765,7 +765,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}",
-            page=AsyncCursor[ResourceGroup],
+            page=AsyncCursor[ResourceGroupResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -779,7 +779,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
                     resource_group_list_params.ResourceGroupListParams,
                 ),
             ),
-            model=ResourceGroup,
+            model=ResourceGroupResponse,
         )
 
     async def delete(
@@ -794,7 +794,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Delete a ResourceGroup for the UUID
 
@@ -820,7 +820,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     async def add_resource(
@@ -838,7 +838,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Add an item to a ResourceGroup.
 
@@ -892,7 +892,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
     def list_contents(
@@ -968,7 +968,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PermissionPolicy, AsyncCursor[PermissionPolicy]]:
+    ) -> AsyncPaginator[PermissionPolicyResponse, AsyncCursor[PermissionPolicyResponse]]:
         """
         Retrieve a list of permission policies for a ResourceGroup
 
@@ -995,7 +995,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
-            page=AsyncCursor[PermissionPolicy],
+            page=AsyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1009,7 +1009,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
                     resource_group_list_permissions_params.ResourceGroupListPermissionsParams,
                 ),
             ),
-            model=PermissionPolicy,
+            model=PermissionPolicyResponse,
         )
 
     async def remove_resource(
@@ -1027,7 +1027,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ResourceGroup:
+    ) -> ResourceGroupResponse:
         """
         Remove an item from a ResourceGroup.
 
@@ -1081,7 +1081,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ResourceGroup,
+            cast_to=ResourceGroupResponse,
         )
 
 

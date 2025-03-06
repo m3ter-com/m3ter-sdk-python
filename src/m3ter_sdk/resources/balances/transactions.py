@@ -23,7 +23,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.balances import transaction_list_params, transaction_create_params
-from ...types.balances.transaction import Transaction
+from ...types.balances.transaction_response import TransactionResponse
 from ...types.balances.transaction_summary_response import TransactionSummaryResponse
 
 __all__ = ["TransactionsResource", "AsyncTransactionsResource"]
@@ -68,7 +68,7 @@ class TransactionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Transaction:
+    ) -> TransactionResponse:
         """Add a Transaction to a Balance.
 
         This endpoint allows you to create a new
@@ -147,7 +147,7 @@ class TransactionsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Transaction,
+            cast_to=TransactionResponse,
         )
 
     def list(
@@ -164,7 +164,7 @@ class TransactionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Transaction]:
+    ) -> SyncCursor[TransactionResponse]:
         """
         Retrieve all Transactions for a specific Balance.
 
@@ -194,7 +194,7 @@ class TransactionsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/balances/{balance_id}/transactions",
-            page=SyncCursor[Transaction],
+            page=SyncCursor[TransactionResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -209,7 +209,7 @@ class TransactionsResource(SyncAPIResource):
                     transaction_list_params.TransactionListParams,
                 ),
             ),
-            model=Transaction,
+            model=TransactionResponse,
         )
 
     def summary(
@@ -290,7 +290,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Transaction:
+    ) -> TransactionResponse:
         """Add a Transaction to a Balance.
 
         This endpoint allows you to create a new
@@ -369,7 +369,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Transaction,
+            cast_to=TransactionResponse,
         )
 
     def list(
@@ -386,7 +386,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Transaction, AsyncCursor[Transaction]]:
+    ) -> AsyncPaginator[TransactionResponse, AsyncCursor[TransactionResponse]]:
         """
         Retrieve all Transactions for a specific Balance.
 
@@ -416,7 +416,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/balances/{balance_id}/transactions",
-            page=AsyncCursor[Transaction],
+            page=AsyncCursor[TransactionResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -431,7 +431,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
                     transaction_list_params.TransactionListParams,
                 ),
             ),
-            model=Transaction,
+            model=TransactionResponse,
         )
 
     async def summary(

@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    PlanGroupLink,
+    PlanGroupLinkResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
@@ -27,7 +27,7 @@ class TestPlanGroupLinks:
             plan_group_id="x",
             plan_id="x",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -37,7 +37,7 @@ class TestPlanGroupLinks:
             plan_id="x",
             version=0,
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -50,7 +50,7 @@ class TestPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -63,7 +63,7 @@ class TestPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -82,7 +82,7 @@ class TestPlanGroupLinks:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -94,7 +94,7 @@ class TestPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -106,7 +106,7 @@ class TestPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -132,7 +132,7 @@ class TestPlanGroupLinks:
             plan_group_id="x",
             plan_id="x",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -143,7 +143,7 @@ class TestPlanGroupLinks:
             plan_id="x",
             version=0,
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -157,7 +157,7 @@ class TestPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -171,7 +171,7 @@ class TestPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -198,7 +198,7 @@ class TestPlanGroupLinks:
         plan_group_link = client.plan_group_links.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+        assert_matches_type(SyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -210,7 +210,7 @@ class TestPlanGroupLinks:
             plan="plan",
             plan_group="planGroup",
         )
-        assert_matches_type(SyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+        assert_matches_type(SyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -221,7 +221,7 @@ class TestPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = response.parse()
-        assert_matches_type(SyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+        assert_matches_type(SyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -232,7 +232,7 @@ class TestPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = response.parse()
-            assert_matches_type(SyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+            assert_matches_type(SyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -249,7 +249,7 @@ class TestPlanGroupLinks:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -261,7 +261,7 @@ class TestPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -273,7 +273,7 @@ class TestPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -302,7 +302,7 @@ class TestAsyncPlanGroupLinks:
             plan_group_id="x",
             plan_id="x",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -312,7 +312,7 @@ class TestAsyncPlanGroupLinks:
             plan_id="x",
             version=0,
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -325,7 +325,7 @@ class TestAsyncPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = await response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -338,7 +338,7 @@ class TestAsyncPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = await response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -357,7 +357,7 @@ class TestAsyncPlanGroupLinks:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -369,7 +369,7 @@ class TestAsyncPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = await response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -381,7 +381,7 @@ class TestAsyncPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = await response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -407,7 +407,7 @@ class TestAsyncPlanGroupLinks:
             plan_group_id="x",
             plan_id="x",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -418,7 +418,7 @@ class TestAsyncPlanGroupLinks:
             plan_id="x",
             version=0,
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -432,7 +432,7 @@ class TestAsyncPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = await response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -446,7 +446,7 @@ class TestAsyncPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = await response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -473,7 +473,7 @@ class TestAsyncPlanGroupLinks:
         plan_group_link = await async_client.plan_group_links.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+        assert_matches_type(AsyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -485,7 +485,7 @@ class TestAsyncPlanGroupLinks:
             plan="plan",
             plan_group="planGroup",
         )
-        assert_matches_type(AsyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+        assert_matches_type(AsyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -496,7 +496,7 @@ class TestAsyncPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = await response.parse()
-        assert_matches_type(AsyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+        assert_matches_type(AsyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -507,7 +507,7 @@ class TestAsyncPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = await response.parse()
-            assert_matches_type(AsyncCursor[PlanGroupLink], plan_group_link, path=["response"])
+            assert_matches_type(AsyncCursor[PlanGroupLinkResponse], plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -524,7 +524,7 @@ class TestAsyncPlanGroupLinks:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -536,7 +536,7 @@ class TestAsyncPlanGroupLinks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         plan_group_link = await response.parse()
-        assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+        assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -548,7 +548,7 @@ class TestAsyncPlanGroupLinks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             plan_group_link = await response.parse()
-            assert_matches_type(PlanGroupLink, plan_group_link, path=["response"])
+            assert_matches_type(PlanGroupLinkResponse, plan_group_link, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

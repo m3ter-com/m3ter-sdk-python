@@ -21,8 +21,8 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from ..pagination import SyncCursor, AsyncCursor
-from ..types.plan import Plan
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.plan_response import PlanResponse
 
 __all__ = ["PlansResource", "AsyncPlansResource"]
 
@@ -73,7 +73,7 @@ class PlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Create a new Plan.
 
@@ -199,7 +199,7 @@ class PlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
     def retrieve(
@@ -213,7 +213,7 @@ class PlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Retrieve the Plan with the given UUID.
 
@@ -237,7 +237,7 @@ class PlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
     def update(
@@ -267,7 +267,7 @@ class PlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Update the Plan with the given UUID.
 
@@ -399,7 +399,7 @@ class PlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
     def list(
@@ -417,7 +417,7 @@ class PlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Plan]:
+    ) -> SyncCursor[PlanResponse]:
         """
         Retrieve a list of Plans that can be filtered by Product, Account, or Plan ID.
 
@@ -446,7 +446,7 @@ class PlansResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plans",
-            page=SyncCursor[Plan],
+            page=SyncCursor[PlanResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -463,7 +463,7 @@ class PlansResource(SyncAPIResource):
                     plan_list_params.PlanListParams,
                 ),
             ),
-            model=Plan,
+            model=PlanResponse,
         )
 
     def delete(
@@ -477,7 +477,7 @@ class PlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Delete the Plan with the given UUID.
 
@@ -501,7 +501,7 @@ class PlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
 
@@ -551,7 +551,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Create a new Plan.
 
@@ -677,7 +677,7 @@ class AsyncPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
     async def retrieve(
@@ -691,7 +691,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Retrieve the Plan with the given UUID.
 
@@ -715,7 +715,7 @@ class AsyncPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
     async def update(
@@ -745,7 +745,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Update the Plan with the given UUID.
 
@@ -877,7 +877,7 @@ class AsyncPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
     def list(
@@ -895,7 +895,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Plan, AsyncCursor[Plan]]:
+    ) -> AsyncPaginator[PlanResponse, AsyncCursor[PlanResponse]]:
         """
         Retrieve a list of Plans that can be filtered by Product, Account, or Plan ID.
 
@@ -924,7 +924,7 @@ class AsyncPlansResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plans",
-            page=AsyncCursor[Plan],
+            page=AsyncCursor[PlanResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -941,7 +941,7 @@ class AsyncPlansResource(AsyncAPIResource):
                     plan_list_params.PlanListParams,
                 ),
             ),
-            model=Plan,
+            model=PlanResponse,
         )
 
     async def delete(
@@ -955,7 +955,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Plan:
+    ) -> PlanResponse:
         """
         Delete the Plan with the given UUID.
 
@@ -979,7 +979,7 @@ class AsyncPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Plan,
+            cast_to=PlanResponse,
         )
 
 

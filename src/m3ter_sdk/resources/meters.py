@@ -21,9 +21,9 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from ..pagination import SyncCursor, AsyncCursor
-from ..types.meter import Meter
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.data_field_param import DataFieldParam
+from ..types.meter_response import MeterResponse
+from ..types.data_field_response_param import DataFieldResponseParam
 
 __all__ = ["MetersResource", "AsyncMetersResource"]
 
@@ -53,7 +53,7 @@ class MetersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldParam],
+        data_fields: Iterable[DataFieldResponseParam],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -66,7 +66,7 @@ class MetersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Create a new Meter.
 
@@ -174,7 +174,7 @@ class MetersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
     def retrieve(
@@ -188,7 +188,7 @@ class MetersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Retrieve the Meter with the given UUID.
 
@@ -212,7 +212,7 @@ class MetersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
     def update(
@@ -221,7 +221,7 @@ class MetersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldParam],
+        data_fields: Iterable[DataFieldResponseParam],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -234,7 +234,7 @@ class MetersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Update the Meter with the given UUID.
 
@@ -321,7 +321,7 @@ class MetersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
     def list(
@@ -339,7 +339,7 @@ class MetersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Meter]:
+    ) -> SyncCursor[MeterResponse]:
         """
         Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
         short code.
@@ -370,7 +370,7 @@ class MetersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/meters",
-            page=SyncCursor[Meter],
+            page=SyncCursor[MeterResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -387,7 +387,7 @@ class MetersResource(SyncAPIResource):
                     meter_list_params.MeterListParams,
                 ),
             ),
-            model=Meter,
+            model=MeterResponse,
         )
 
     def delete(
@@ -401,7 +401,7 @@ class MetersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Delete the Meter with the given UUID.
 
@@ -425,7 +425,7 @@ class MetersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
 
@@ -454,7 +454,7 @@ class AsyncMetersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldParam],
+        data_fields: Iterable[DataFieldResponseParam],
         derived_fields: Iterable[meter_create_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -467,7 +467,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Create a new Meter.
 
@@ -575,7 +575,7 @@ class AsyncMetersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
     async def retrieve(
@@ -589,7 +589,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Retrieve the Meter with the given UUID.
 
@@ -613,7 +613,7 @@ class AsyncMetersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
     async def update(
@@ -622,7 +622,7 @@ class AsyncMetersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldParam],
+        data_fields: Iterable[DataFieldResponseParam],
         derived_fields: Iterable[meter_update_params.DerivedField],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -635,7 +635,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Update the Meter with the given UUID.
 
@@ -722,7 +722,7 @@ class AsyncMetersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
     def list(
@@ -740,7 +740,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Meter, AsyncCursor[Meter]]:
+    ) -> AsyncPaginator[MeterResponse, AsyncCursor[MeterResponse]]:
         """
         Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
         short code.
@@ -771,7 +771,7 @@ class AsyncMetersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/meters",
-            page=AsyncCursor[Meter],
+            page=AsyncCursor[MeterResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -788,7 +788,7 @@ class AsyncMetersResource(AsyncAPIResource):
                     meter_list_params.MeterListParams,
                 ),
             ),
-            model=Meter,
+            model=MeterResponse,
         )
 
     async def delete(
@@ -802,7 +802,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Meter:
+    ) -> MeterResponse:
         """
         Delete the Meter with the given UUID.
 
@@ -826,7 +826,7 @@ class AsyncMetersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Meter,
+            cast_to=MeterResponse,
         )
 
 
