@@ -151,6 +151,38 @@ for product in first_page.data:
 # Remove `await` for non-async usage.
 ```
 
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from m3ter_sdk import M3ter
+
+client = M3ter(
+    api_key="My API Key",
+    api_secret="My API Secret",
+    org_id="My Org ID",
+)
+
+account_response = client.accounts.create(
+    org_id="orgId",
+    code="JS!?Q0]r] ]$]",
+    email_address="dev@stainless.com",
+    name="x",
+    address={
+        "address_line1": "addressLine1",
+        "address_line2": "addressLine2",
+        "address_line3": "addressLine3",
+        "address_line4": "addressLine4",
+        "country": "country",
+        "locality": "locality",
+        "post_code": "postCode",
+        "region": "region",
+    },
+)
+print(account_response.address)
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `m3ter_sdk.APIConnectionError` is raised.
