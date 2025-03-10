@@ -23,11 +23,11 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.data_exports import destination_list_params, destination_create_params, destination_update_params
-from ...types.data_exports.data_export_destination import DataExportDestination
 from ...types.data_exports.destination_create_response import DestinationCreateResponse
 from ...types.data_exports.destination_delete_response import DestinationDeleteResponse
 from ...types.data_exports.destination_update_response import DestinationUpdateResponse
 from ...types.data_exports.destination_retrieve_response import DestinationRetrieveResponse
+from ...types.data_exports.data_export_destination_response import DataExportDestinationResponse
 
 __all__ = ["DestinationsResource", "AsyncDestinationsResource"]
 
@@ -327,7 +327,7 @@ class DestinationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[DataExportDestination]:
+    ) -> SyncCursor[DataExportDestinationResponse]:
         """Retrieve a list of Export Destination entities.
 
         You can filter the list of
@@ -354,7 +354,7 @@ class DestinationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/dataexports/destinations",
-            page=SyncCursor[DataExportDestination],
+            page=SyncCursor[DataExportDestinationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -369,7 +369,7 @@ class DestinationsResource(SyncAPIResource):
                     destination_list_params.DestinationListParams,
                 ),
             ),
-            model=DataExportDestination,
+            model=DataExportDestinationResponse,
         )
 
     def delete(
@@ -710,7 +710,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[DataExportDestination, AsyncCursor[DataExportDestination]]:
+    ) -> AsyncPaginator[DataExportDestinationResponse, AsyncCursor[DataExportDestinationResponse]]:
         """Retrieve a list of Export Destination entities.
 
         You can filter the list of
@@ -737,7 +737,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/dataexports/destinations",
-            page=AsyncCursor[DataExportDestination],
+            page=AsyncCursor[DataExportDestinationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -752,7 +752,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
                     destination_list_params.DestinationListParams,
                 ),
             ),
-            model=DataExportDestination,
+            model=DataExportDestinationResponse,
         )
 
     async def delete(

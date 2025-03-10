@@ -31,7 +31,7 @@ from ..types.webhook import Webhook
 from ..types.webhook_create_response import WebhookCreateResponse
 from ..types.webhook_update_response import WebhookUpdateResponse
 from ..types.webhook_set_active_response import WebhookSetActiveResponse
-from ..types.m3ter_signed_credentials_req_param import M3terSignedCredentialsReqParam
+from ..types.m3ter_signed_credentials_request_param import M3terSignedCredentialsRequestParam
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
 
@@ -60,7 +60,7 @@ class WebhooksResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        credentials: M3terSignedCredentialsReqParam,
+        credentials: M3terSignedCredentialsRequestParam,
         description: str,
         name: str,
         url: str,
@@ -177,7 +177,7 @@ class WebhooksResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        credentials: M3terSignedCredentialsReqParam,
+        credentials: M3terSignedCredentialsRequestParam,
         description: str,
         name: str,
         url: str,
@@ -417,7 +417,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        credentials: M3terSignedCredentialsReqParam,
+        credentials: M3terSignedCredentialsRequestParam,
         description: str,
         name: str,
         url: str,
@@ -534,7 +534,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        credentials: M3terSignedCredentialsReqParam,
+        credentials: M3terSignedCredentialsRequestParam,
         description: str,
         name: str,
         url: str,

@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.counter_adjustment import CounterAdjustment
+from ..types.counter_adjustment_response import CounterAdjustmentResponse
 
 __all__ = ["CounterAdjustmentsResource", "AsyncCounterAdjustmentsResource"]
 
@@ -67,7 +67,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Create a new CounterAdjustment for an Account using a Counter.
 
@@ -140,7 +140,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
     def retrieve(
@@ -154,7 +154,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Retrieve a CounterAdjustment for the given UUID.
 
@@ -178,7 +178,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
     def update(
@@ -198,7 +198,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Update a CounterAdjustment for an Account.
 
@@ -263,7 +263,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
     def list(
@@ -285,7 +285,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CounterAdjustment]:
+    ) -> SyncCursor[CounterAdjustmentResponse]:
         """
         Retrieve a list of CounterAdjustments created for Accounts in your Organization.
         You can filter the list returned by date, Account ID, or Counter ID.
@@ -327,7 +327,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/counteradjustments",
-            page=SyncCursor[CounterAdjustment],
+            page=SyncCursor[CounterAdjustmentResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -348,7 +348,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
                     counter_adjustment_list_params.CounterAdjustmentListParams,
                 ),
             ),
-            model=CounterAdjustment,
+            model=CounterAdjustmentResponse,
         )
 
     def delete(
@@ -362,7 +362,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Delete a CounterAdjustment for the given UUID.
 
@@ -386,7 +386,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
 
@@ -426,7 +426,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Create a new CounterAdjustment for an Account using a Counter.
 
@@ -499,7 +499,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
     async def retrieve(
@@ -513,7 +513,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Retrieve a CounterAdjustment for the given UUID.
 
@@ -537,7 +537,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
     async def update(
@@ -557,7 +557,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Update a CounterAdjustment for an Account.
 
@@ -622,7 +622,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
     def list(
@@ -644,7 +644,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CounterAdjustment, AsyncCursor[CounterAdjustment]]:
+    ) -> AsyncPaginator[CounterAdjustmentResponse, AsyncCursor[CounterAdjustmentResponse]]:
         """
         Retrieve a list of CounterAdjustments created for Accounts in your Organization.
         You can filter the list returned by date, Account ID, or Counter ID.
@@ -686,7 +686,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/counteradjustments",
-            page=AsyncCursor[CounterAdjustment],
+            page=AsyncCursor[CounterAdjustmentResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -707,7 +707,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
                     counter_adjustment_list_params.CounterAdjustmentListParams,
                 ),
             ),
-            model=CounterAdjustment,
+            model=CounterAdjustmentResponse,
         )
 
     async def delete(
@@ -721,7 +721,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CounterAdjustment:
+    ) -> CounterAdjustmentResponse:
         """
         Delete a CounterAdjustment for the given UUID.
 
@@ -745,7 +745,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CounterAdjustment,
+            cast_to=CounterAdjustmentResponse,
         )
 
 

@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    CreditReason,
+    CreditReasonResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
@@ -26,7 +26,7 @@ class TestCreditReasons:
             org_id="orgId",
             name="x",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -37,7 +37,7 @@ class TestCreditReasons:
             code="code",
             version=0,
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -49,7 +49,7 @@ class TestCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -61,7 +61,7 @@ class TestCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -79,7 +79,7 @@ class TestCreditReasons:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -91,7 +91,7 @@ class TestCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -103,7 +103,7 @@ class TestCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -128,7 +128,7 @@ class TestCreditReasons:
             org_id="orgId",
             name="x",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -140,7 +140,7 @@ class TestCreditReasons:
             code="code",
             version=0,
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -153,7 +153,7 @@ class TestCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -166,7 +166,7 @@ class TestCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -191,7 +191,7 @@ class TestCreditReasons:
         credit_reason = client.credit_reasons.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[CreditReason], credit_reason, path=["response"])
+        assert_matches_type(SyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -203,7 +203,7 @@ class TestCreditReasons:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[CreditReason], credit_reason, path=["response"])
+        assert_matches_type(SyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -214,7 +214,7 @@ class TestCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = response.parse()
-        assert_matches_type(SyncCursor[CreditReason], credit_reason, path=["response"])
+        assert_matches_type(SyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -225,7 +225,7 @@ class TestCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = response.parse()
-            assert_matches_type(SyncCursor[CreditReason], credit_reason, path=["response"])
+            assert_matches_type(SyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -242,7 +242,7 @@ class TestCreditReasons:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -254,7 +254,7 @@ class TestCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -266,7 +266,7 @@ class TestCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -294,7 +294,7 @@ class TestAsyncCreditReasons:
             org_id="orgId",
             name="x",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -305,7 +305,7 @@ class TestAsyncCreditReasons:
             code="code",
             version=0,
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -317,7 +317,7 @@ class TestAsyncCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = await response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -329,7 +329,7 @@ class TestAsyncCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = await response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -347,7 +347,7 @@ class TestAsyncCreditReasons:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -359,7 +359,7 @@ class TestAsyncCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = await response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -371,7 +371,7 @@ class TestAsyncCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = await response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -396,7 +396,7 @@ class TestAsyncCreditReasons:
             org_id="orgId",
             name="x",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -408,7 +408,7 @@ class TestAsyncCreditReasons:
             code="code",
             version=0,
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -421,7 +421,7 @@ class TestAsyncCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = await response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -434,7 +434,7 @@ class TestAsyncCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = await response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -459,7 +459,7 @@ class TestAsyncCreditReasons:
         credit_reason = await async_client.credit_reasons.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[CreditReason], credit_reason, path=["response"])
+        assert_matches_type(AsyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -471,7 +471,7 @@ class TestAsyncCreditReasons:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[CreditReason], credit_reason, path=["response"])
+        assert_matches_type(AsyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -482,7 +482,7 @@ class TestAsyncCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = await response.parse()
-        assert_matches_type(AsyncCursor[CreditReason], credit_reason, path=["response"])
+        assert_matches_type(AsyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -493,7 +493,7 @@ class TestAsyncCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = await response.parse()
-            assert_matches_type(AsyncCursor[CreditReason], credit_reason, path=["response"])
+            assert_matches_type(AsyncCursor[CreditReasonResponse], credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -510,7 +510,7 @@ class TestAsyncCreditReasons:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -522,7 +522,7 @@ class TestAsyncCreditReasons:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         credit_reason = await response.parse()
-        assert_matches_type(CreditReason, credit_reason, path=["response"])
+        assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -534,7 +534,7 @@ class TestAsyncCreditReasons:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             credit_reason = await response.parse()
-            assert_matches_type(CreditReason, credit_reason, path=["response"])
+            assert_matches_type(CreditReasonResponse, credit_reason, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

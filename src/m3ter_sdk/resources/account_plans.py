@@ -24,7 +24,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.account_plan import AccountPlan
+from ..types.account_plan_response import AccountPlanResponse
 
 __all__ = ["AccountPlansResource", "AsyncAccountPlansResource"]
 
@@ -70,7 +70,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Create a new AccountPlan or AccountPlanGroup.
 
@@ -188,7 +188,7 @@ class AccountPlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
     def retrieve(
@@ -202,7 +202,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Retrieve the AccountPlan or AccountPlanGroup details corresponding to the given
         UUID.
@@ -227,7 +227,7 @@ class AccountPlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
     def update(
@@ -252,7 +252,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Update the AccountPlan or AccountPlanGroup with the given UUID.
 
@@ -378,7 +378,7 @@ class AccountPlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
     def list(
@@ -400,7 +400,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[AccountPlan]:
+    ) -> SyncCursor[AccountPlanResponse]:
         """
         Retrieve a list of AccountPlan and AccountPlanGroup entities for the specified
         Organization.
@@ -461,7 +461,7 @@ class AccountPlansResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/accountplans",
-            page=SyncCursor[AccountPlan],
+            page=SyncCursor[AccountPlanResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -482,7 +482,7 @@ class AccountPlansResource(SyncAPIResource):
                     account_plan_list_params.AccountPlanListParams,
                 ),
             ),
-            model=AccountPlan,
+            model=AccountPlanResponse,
         )
 
     def delete(
@@ -496,7 +496,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Delete the AccountPlan or AccountPlanGroup with the given UUID.
 
@@ -523,7 +523,7 @@ class AccountPlansResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
 
@@ -568,7 +568,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Create a new AccountPlan or AccountPlanGroup.
 
@@ -686,7 +686,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
     async def retrieve(
@@ -700,7 +700,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Retrieve the AccountPlan or AccountPlanGroup details corresponding to the given
         UUID.
@@ -725,7 +725,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
     async def update(
@@ -750,7 +750,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Update the AccountPlan or AccountPlanGroup with the given UUID.
 
@@ -876,7 +876,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
     def list(
@@ -898,7 +898,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[AccountPlan, AsyncCursor[AccountPlan]]:
+    ) -> AsyncPaginator[AccountPlanResponse, AsyncCursor[AccountPlanResponse]]:
         """
         Retrieve a list of AccountPlan and AccountPlanGroup entities for the specified
         Organization.
@@ -959,7 +959,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/accountplans",
-            page=AsyncCursor[AccountPlan],
+            page=AsyncCursor[AccountPlanResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -980,7 +980,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
                     account_plan_list_params.AccountPlanListParams,
                 ),
             ),
-            model=AccountPlan,
+            model=AccountPlanResponse,
         )
 
     async def delete(
@@ -994,7 +994,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AccountPlan:
+    ) -> AccountPlanResponse:
         """
         Delete the AccountPlan or AccountPlanGroup with the given UUID.
 
@@ -1021,7 +1021,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AccountPlan,
+            cast_to=AccountPlanResponse,
         )
 
 

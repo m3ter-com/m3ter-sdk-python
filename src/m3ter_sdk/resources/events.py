@@ -21,8 +21,8 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from ..pagination import SyncCursor, AsyncCursor
-from ..types.event import Event
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.event_response import EventResponse
 from ..types.event_get_types_response import EventGetTypesResponse
 from ..types.event_get_fields_response import EventGetFieldsResponse
 
@@ -60,7 +60,7 @@ class EventsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Event:
+    ) -> EventResponse:
         """
         Retrieve a specific Event.
 
@@ -88,7 +88,7 @@ class EventsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Event,
+            cast_to=EventResponse,
         )
 
     def list(
@@ -111,7 +111,7 @@ class EventsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Event]:
+    ) -> SyncCursor[EventResponse]:
         """
         List all Events.
 
@@ -174,7 +174,7 @@ class EventsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/events",
-            page=SyncCursor[Event],
+            page=SyncCursor[EventResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -196,7 +196,7 @@ class EventsResource(SyncAPIResource):
                     event_list_params.EventListParams,
                 ),
             ),
-            model=Event,
+            model=EventResponse,
         )
 
     def get_fields(
@@ -337,7 +337,7 @@ class AsyncEventsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Event:
+    ) -> EventResponse:
         """
         Retrieve a specific Event.
 
@@ -365,7 +365,7 @@ class AsyncEventsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Event,
+            cast_to=EventResponse,
         )
 
     def list(
@@ -388,7 +388,7 @@ class AsyncEventsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Event, AsyncCursor[Event]]:
+    ) -> AsyncPaginator[EventResponse, AsyncCursor[EventResponse]]:
         """
         List all Events.
 
@@ -451,7 +451,7 @@ class AsyncEventsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/events",
-            page=AsyncCursor[Event],
+            page=AsyncCursor[EventResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -473,7 +473,7 @@ class AsyncEventsResource(AsyncAPIResource):
                     event_list_params.EventListParams,
                 ),
             ),
-            model=Event,
+            model=EventResponse,
         )
 
     async def get_fields(

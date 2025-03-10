@@ -17,7 +17,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ...types.bills import line_item_list_params
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.bills.line_item import LineItem
+from ...types.bills.line_item_response import LineItemResponse
 
 __all__ = ["LineItemsResource", "AsyncLineItemsResource"]
 
@@ -54,7 +54,7 @@ class LineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LineItem:
+    ) -> LineItemResponse:
         """
         Retrieves a specific line item within a Bill.
 
@@ -83,7 +83,7 @@ class LineItemsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LineItem,
+            cast_to=LineItemResponse,
         )
 
     def list(
@@ -99,7 +99,7 @@ class LineItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[LineItem]:
+    ) -> SyncCursor[LineItemResponse]:
         """
         Lists all the line items for a specific Bill.
 
@@ -130,7 +130,7 @@ class LineItemsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills/{bill_id}/lineitems",
-            page=SyncCursor[LineItem],
+            page=SyncCursor[LineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -144,7 +144,7 @@ class LineItemsResource(SyncAPIResource):
                     line_item_list_params.LineItemListParams,
                 ),
             ),
-            model=LineItem,
+            model=LineItemResponse,
         )
 
 
@@ -180,7 +180,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LineItem:
+    ) -> LineItemResponse:
         """
         Retrieves a specific line item within a Bill.
 
@@ -209,7 +209,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LineItem,
+            cast_to=LineItemResponse,
         )
 
     def list(
@@ -225,7 +225,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[LineItem, AsyncCursor[LineItem]]:
+    ) -> AsyncPaginator[LineItemResponse, AsyncCursor[LineItemResponse]]:
         """
         Lists all the line items for a specific Bill.
 
@@ -256,7 +256,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/bills/{bill_id}/lineitems",
-            page=AsyncCursor[LineItem],
+            page=AsyncCursor[LineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -270,7 +270,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
                     line_item_list_params.LineItemListParams,
                 ),
             ),
-            model=LineItem,
+            model=LineItemResponse,
         )
 
 

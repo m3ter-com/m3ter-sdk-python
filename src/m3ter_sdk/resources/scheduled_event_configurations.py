@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.scheduled_event_configuration import ScheduledEventConfiguration
+from ..types.scheduled_event_configuration_response import ScheduledEventConfigurationResponse
 
 __all__ = ["ScheduledEventConfigurationsResource", "AsyncScheduledEventConfigurationsResource"]
 
@@ -66,7 +66,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Create a new ScheduledEventConfiguration.
 
@@ -126,7 +126,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
     def retrieve(
@@ -140,7 +140,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Retrieve a ScheduledEventConfiguration for the given UUID.
 
@@ -164,7 +164,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
     def update(
@@ -183,7 +183,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Update a ScheduledEventConfiguration for the given UUID.
 
@@ -245,7 +245,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
     def list(
@@ -261,7 +261,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[ScheduledEventConfiguration]:
+    ) -> SyncCursor[ScheduledEventConfigurationResponse]:
         """
         Retrieve a list of ScheduledEventConfiguration entities
 
@@ -286,7 +286,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/scheduledevents/configurations",
-            page=SyncCursor[ScheduledEventConfiguration],
+            page=SyncCursor[ScheduledEventConfigurationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -301,7 +301,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
                     scheduled_event_configuration_list_params.ScheduledEventConfigurationListParams,
                 ),
             ),
-            model=ScheduledEventConfiguration,
+            model=ScheduledEventConfigurationResponse,
         )
 
     def delete(
@@ -315,7 +315,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Delete the ScheduledEventConfiguration for the given UUID.
 
@@ -339,7 +339,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
 
@@ -378,7 +378,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Create a new ScheduledEventConfiguration.
 
@@ -438,7 +438,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
     async def retrieve(
@@ -452,7 +452,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Retrieve a ScheduledEventConfiguration for the given UUID.
 
@@ -476,7 +476,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
     async def update(
@@ -495,7 +495,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Update a ScheduledEventConfiguration for the given UUID.
 
@@ -557,7 +557,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
     def list(
@@ -573,7 +573,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[ScheduledEventConfiguration, AsyncCursor[ScheduledEventConfiguration]]:
+    ) -> AsyncPaginator[ScheduledEventConfigurationResponse, AsyncCursor[ScheduledEventConfigurationResponse]]:
         """
         Retrieve a list of ScheduledEventConfiguration entities
 
@@ -598,7 +598,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/scheduledevents/configurations",
-            page=AsyncCursor[ScheduledEventConfiguration],
+            page=AsyncCursor[ScheduledEventConfigurationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -613,7 +613,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
                     scheduled_event_configuration_list_params.ScheduledEventConfigurationListParams,
                 ),
             ),
-            model=ScheduledEventConfiguration,
+            model=ScheduledEventConfigurationResponse,
         )
 
     async def delete(
@@ -627,7 +627,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ScheduledEventConfiguration:
+    ) -> ScheduledEventConfigurationResponse:
         """
         Delete the ScheduledEventConfiguration for the given UUID.
 
@@ -651,7 +651,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=ScheduledEventConfiguration,
+            cast_to=ScheduledEventConfigurationResponse,
         )
 
 

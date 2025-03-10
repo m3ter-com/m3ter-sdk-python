@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.plan_group_link import PlanGroupLink
+from ..types.plan_group_link_response import PlanGroupLinkResponse
 
 __all__ = ["PlanGroupLinksResource", "AsyncPlanGroupLinksResource"]
 
@@ -64,7 +64,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Create a new PlanGroupLink.
 
@@ -108,7 +108,7 @@ class PlanGroupLinksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
     def retrieve(
@@ -122,7 +122,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Retrieve a PlanGroupLink for the given UUID.
 
@@ -146,7 +146,7 @@ class PlanGroupLinksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
     def update(
@@ -163,7 +163,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Update PlanGroupLink for the given UUID.
 
@@ -209,7 +209,7 @@ class PlanGroupLinksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
     def list(
@@ -227,7 +227,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[PlanGroupLink]:
+    ) -> SyncCursor[PlanGroupLinkResponse]:
         """
         Retrieve a list of PlanGroupLink entities
 
@@ -256,7 +256,7 @@ class PlanGroupLinksResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plangrouplinks",
-            page=SyncCursor[PlanGroupLink],
+            page=SyncCursor[PlanGroupLinkResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -273,7 +273,7 @@ class PlanGroupLinksResource(SyncAPIResource):
                     plan_group_link_list_params.PlanGroupLinkListParams,
                 ),
             ),
-            model=PlanGroupLink,
+            model=PlanGroupLinkResponse,
         )
 
     def delete(
@@ -287,7 +287,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Delete a PlanGroupLink for the given UUID.
 
@@ -311,7 +311,7 @@ class PlanGroupLinksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
 
@@ -348,7 +348,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Create a new PlanGroupLink.
 
@@ -392,7 +392,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
     async def retrieve(
@@ -406,7 +406,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Retrieve a PlanGroupLink for the given UUID.
 
@@ -430,7 +430,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
     async def update(
@@ -447,7 +447,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Update PlanGroupLink for the given UUID.
 
@@ -493,7 +493,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
     def list(
@@ -511,7 +511,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[PlanGroupLink, AsyncCursor[PlanGroupLink]]:
+    ) -> AsyncPaginator[PlanGroupLinkResponse, AsyncCursor[PlanGroupLinkResponse]]:
         """
         Retrieve a list of PlanGroupLink entities
 
@@ -540,7 +540,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/plangrouplinks",
-            page=AsyncCursor[PlanGroupLink],
+            page=AsyncCursor[PlanGroupLinkResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -557,7 +557,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
                     plan_group_link_list_params.PlanGroupLinkListParams,
                 ),
             ),
-            model=PlanGroupLink,
+            model=PlanGroupLinkResponse,
         )
 
     async def delete(
@@ -571,7 +571,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PlanGroupLink:
+    ) -> PlanGroupLinkResponse:
         """
         Delete a PlanGroupLink for the given UUID.
 
@@ -595,7 +595,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PlanGroupLink,
+            cast_to=PlanGroupLinkResponse,
         )
 
 

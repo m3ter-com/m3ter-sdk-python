@@ -23,7 +23,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ...types.users import invitation_list_params, invitation_create_params
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.users.invitation import Invitation
+from ...types.users.invitation_response import InvitationResponse
 
 __all__ = ["InvitationsResource", "AsyncInvitationsResource"]
 
@@ -67,7 +67,7 @@ class InvitationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Invitation:
+    ) -> InvitationResponse:
         """
         Invite a new user to your Organization.
 
@@ -128,7 +128,7 @@ class InvitationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Invitation,
+            cast_to=InvitationResponse,
         )
 
     def retrieve(
@@ -142,7 +142,7 @@ class InvitationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Invitation:
+    ) -> InvitationResponse:
         """
         Retrieve the specified invitation with the given UUID.
 
@@ -166,7 +166,7 @@ class InvitationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Invitation,
+            cast_to=InvitationResponse,
         )
 
     def list(
@@ -181,7 +181,7 @@ class InvitationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Invitation]:
+    ) -> SyncCursor[InvitationResponse]:
         """
         Retrieve a list of all invitations in the Organization.
 
@@ -204,7 +204,7 @@ class InvitationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/invitations",
-            page=SyncCursor[Invitation],
+            page=SyncCursor[InvitationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -218,7 +218,7 @@ class InvitationsResource(SyncAPIResource):
                     invitation_list_params.InvitationListParams,
                 ),
             ),
-            model=Invitation,
+            model=InvitationResponse,
         )
 
 
@@ -261,7 +261,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Invitation:
+    ) -> InvitationResponse:
         """
         Invite a new user to your Organization.
 
@@ -322,7 +322,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Invitation,
+            cast_to=InvitationResponse,
         )
 
     async def retrieve(
@@ -336,7 +336,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Invitation:
+    ) -> InvitationResponse:
         """
         Retrieve the specified invitation with the given UUID.
 
@@ -360,7 +360,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Invitation,
+            cast_to=InvitationResponse,
         )
 
     def list(
@@ -375,7 +375,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Invitation, AsyncCursor[Invitation]]:
+    ) -> AsyncPaginator[InvitationResponse, AsyncCursor[InvitationResponse]]:
         """
         Retrieve a list of all invitations in the Organization.
 
@@ -398,7 +398,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/invitations",
-            page=AsyncCursor[Invitation],
+            page=AsyncCursor[InvitationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -412,7 +412,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
                     invitation_list_params.InvitationListParams,
                 ),
             ),
-            model=Invitation,
+            model=InvitationResponse,
         )
 
 

@@ -28,7 +28,7 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.aggregation_response import AggregationResponse
-from ..types.compound_aggregation import CompoundAggregation
+from ..types.compound_aggregation_response import CompoundAggregationResponse
 
 __all__ = ["CompoundAggregationsResource", "AsyncCompoundAggregationsResource"]
 
@@ -206,7 +206,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompoundAggregation:
+    ) -> CompoundAggregationResponse:
         """
         Retrieve a CompoundAggregation using the given UUID.
 
@@ -233,7 +233,7 @@ class CompoundAggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompoundAggregation,
+            cast_to=CompoundAggregationResponse,
         )
 
     def update(
@@ -401,7 +401,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[CompoundAggregation]:
+    ) -> SyncCursor[CompoundAggregationResponse]:
         """
         Retrieve a list of all CompoundAggregations.
 
@@ -440,7 +440,7 @@ class CompoundAggregationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/compoundaggregations",
-            page=SyncCursor[CompoundAggregation],
+            page=SyncCursor[CompoundAggregationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -457,7 +457,7 @@ class CompoundAggregationsResource(SyncAPIResource):
                     compound_aggregation_list_params.CompoundAggregationListParams,
                 ),
             ),
-            model=CompoundAggregation,
+            model=CompoundAggregationResponse,
         )
 
     def delete(
@@ -471,7 +471,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompoundAggregation:
+    ) -> CompoundAggregationResponse:
         """
         Delete a CompoundAggregation with the given UUID.
 
@@ -500,7 +500,7 @@ class CompoundAggregationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompoundAggregation,
+            cast_to=CompoundAggregationResponse,
         )
 
 
@@ -677,7 +677,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompoundAggregation:
+    ) -> CompoundAggregationResponse:
         """
         Retrieve a CompoundAggregation using the given UUID.
 
@@ -704,7 +704,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompoundAggregation,
+            cast_to=CompoundAggregationResponse,
         )
 
     async def update(
@@ -872,7 +872,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CompoundAggregation, AsyncCursor[CompoundAggregation]]:
+    ) -> AsyncPaginator[CompoundAggregationResponse, AsyncCursor[CompoundAggregationResponse]]:
         """
         Retrieve a list of all CompoundAggregations.
 
@@ -911,7 +911,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/compoundaggregations",
-            page=AsyncCursor[CompoundAggregation],
+            page=AsyncCursor[CompoundAggregationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -928,7 +928,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
                     compound_aggregation_list_params.CompoundAggregationListParams,
                 ),
             ),
-            model=CompoundAggregation,
+            model=CompoundAggregationResponse,
         )
 
     async def delete(
@@ -942,7 +942,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CompoundAggregation:
+    ) -> CompoundAggregationResponse:
         """
         Delete a CompoundAggregation with the given UUID.
 
@@ -971,7 +971,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CompoundAggregation,
+            cast_to=CompoundAggregationResponse,
         )
 
 

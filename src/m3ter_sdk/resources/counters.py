@@ -22,7 +22,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.counter import Counter
+from ..types.counter_response import CounterResponse
 
 __all__ = ["CountersResource", "AsyncCountersResource"]
 
@@ -62,7 +62,7 @@ class CountersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Create a new Counter.
 
@@ -115,7 +115,7 @@ class CountersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
     def retrieve(
@@ -129,7 +129,7 @@ class CountersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Retrieve a Counter for the given UUID.
 
@@ -153,7 +153,7 @@ class CountersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
     def update(
@@ -172,7 +172,7 @@ class CountersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Update Counter for the given UUID.
 
@@ -227,7 +227,7 @@ class CountersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
     def list(
@@ -245,7 +245,7 @@ class CountersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[Counter]:
+    ) -> SyncCursor[CounterResponse]:
         """
         Retrieve a list of Counter entities that can be filtered by Product, Counter ID,
         or Codes.
@@ -276,7 +276,7 @@ class CountersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/counters",
-            page=SyncCursor[Counter],
+            page=SyncCursor[CounterResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -293,7 +293,7 @@ class CountersResource(SyncAPIResource):
                     counter_list_params.CounterListParams,
                 ),
             ),
-            model=Counter,
+            model=CounterResponse,
         )
 
     def delete(
@@ -307,7 +307,7 @@ class CountersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Delete a Counter for the given UUID.
 
@@ -331,7 +331,7 @@ class CountersResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
 
@@ -370,7 +370,7 @@ class AsyncCountersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Create a new Counter.
 
@@ -423,7 +423,7 @@ class AsyncCountersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
     async def retrieve(
@@ -437,7 +437,7 @@ class AsyncCountersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Retrieve a Counter for the given UUID.
 
@@ -461,7 +461,7 @@ class AsyncCountersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
     async def update(
@@ -480,7 +480,7 @@ class AsyncCountersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Update Counter for the given UUID.
 
@@ -535,7 +535,7 @@ class AsyncCountersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
     def list(
@@ -553,7 +553,7 @@ class AsyncCountersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Counter, AsyncCursor[Counter]]:
+    ) -> AsyncPaginator[CounterResponse, AsyncCursor[CounterResponse]]:
         """
         Retrieve a list of Counter entities that can be filtered by Product, Counter ID,
         or Codes.
@@ -584,7 +584,7 @@ class AsyncCountersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/counters",
-            page=AsyncCursor[Counter],
+            page=AsyncCursor[CounterResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -601,7 +601,7 @@ class AsyncCountersResource(AsyncAPIResource):
                     counter_list_params.CounterListParams,
                 ),
             ),
-            model=Counter,
+            model=CounterResponse,
         )
 
     async def delete(
@@ -615,7 +615,7 @@ class AsyncCountersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> Counter:
+    ) -> CounterResponse:
         """
         Delete a Counter for the given UUID.
 
@@ -639,7 +639,7 @@ class AsyncCountersResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Counter,
+            cast_to=CounterResponse,
         )
 
 

@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    Event,
+    EventResponse,
     EventGetTypesResponse,
     EventGetFieldsResponse,
 )
@@ -28,7 +28,7 @@ class TestEvents:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Event, event, path=["response"])
+        assert_matches_type(EventResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -40,7 +40,7 @@ class TestEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
-        assert_matches_type(Event, event, path=["response"])
+        assert_matches_type(EventResponse, event, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -52,7 +52,7 @@ class TestEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
-            assert_matches_type(Event, event, path=["response"])
+            assert_matches_type(EventResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -75,7 +75,7 @@ class TestEvents:
         event = client.events.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[Event], event, path=["response"])
+        assert_matches_type(SyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -92,7 +92,7 @@ class TestEvents:
             page_size=1,
             resource_id="resourceId",
         )
-        assert_matches_type(SyncCursor[Event], event, path=["response"])
+        assert_matches_type(SyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -103,7 +103,7 @@ class TestEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
-        assert_matches_type(SyncCursor[Event], event, path=["response"])
+        assert_matches_type(SyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -114,7 +114,7 @@ class TestEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
-            assert_matches_type(SyncCursor[Event], event, path=["response"])
+            assert_matches_type(SyncCursor[EventResponse], event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -219,7 +219,7 @@ class TestAsyncEvents:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Event, event, path=["response"])
+        assert_matches_type(EventResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -231,7 +231,7 @@ class TestAsyncEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
-        assert_matches_type(Event, event, path=["response"])
+        assert_matches_type(EventResponse, event, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -243,7 +243,7 @@ class TestAsyncEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
-            assert_matches_type(Event, event, path=["response"])
+            assert_matches_type(EventResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -266,7 +266,7 @@ class TestAsyncEvents:
         event = await async_client.events.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[Event], event, path=["response"])
+        assert_matches_type(AsyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -283,7 +283,7 @@ class TestAsyncEvents:
             page_size=1,
             resource_id="resourceId",
         )
-        assert_matches_type(AsyncCursor[Event], event, path=["response"])
+        assert_matches_type(AsyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -294,7 +294,7 @@ class TestAsyncEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
-        assert_matches_type(AsyncCursor[Event], event, path=["response"])
+        assert_matches_type(AsyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -305,7 +305,7 @@ class TestAsyncEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
-            assert_matches_type(AsyncCursor[Event], event, path=["response"])
+            assert_matches_type(AsyncCursor[EventResponse], event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

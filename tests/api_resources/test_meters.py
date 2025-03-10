@@ -9,7 +9,7 @@ import pytest
 
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
-from m3ter_sdk.types import Meter
+from m3ter_sdk.types import MeterResponse
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -40,7 +40,7 @@ class TestMeters:
             ],
             name="x",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -70,7 +70,7 @@ class TestMeters:
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -98,7 +98,7 @@ class TestMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -126,7 +126,7 @@ class TestMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -160,7 +160,7 @@ class TestMeters:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -172,7 +172,7 @@ class TestMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -184,7 +184,7 @@ class TestMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -225,7 +225,7 @@ class TestMeters:
             ],
             name="x",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -256,7 +256,7 @@ class TestMeters:
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -285,7 +285,7 @@ class TestMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -314,7 +314,7 @@ class TestMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -371,7 +371,7 @@ class TestMeters:
         meter = client.meters.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[Meter], meter, path=["response"])
+        assert_matches_type(SyncCursor[MeterResponse], meter, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -383,7 +383,7 @@ class TestMeters:
             page_size=1,
             product_id=["string"],
         )
-        assert_matches_type(SyncCursor[Meter], meter, path=["response"])
+        assert_matches_type(SyncCursor[MeterResponse], meter, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -394,7 +394,7 @@ class TestMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = response.parse()
-        assert_matches_type(SyncCursor[Meter], meter, path=["response"])
+        assert_matches_type(SyncCursor[MeterResponse], meter, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -405,7 +405,7 @@ class TestMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = response.parse()
-            assert_matches_type(SyncCursor[Meter], meter, path=["response"])
+            assert_matches_type(SyncCursor[MeterResponse], meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -422,7 +422,7 @@ class TestMeters:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -434,7 +434,7 @@ class TestMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -446,7 +446,7 @@ class TestMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -490,7 +490,7 @@ class TestAsyncMeters:
             ],
             name="x",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -520,7 +520,7 @@ class TestAsyncMeters:
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -548,7 +548,7 @@ class TestAsyncMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = await response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -576,7 +576,7 @@ class TestAsyncMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = await response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -610,7 +610,7 @@ class TestAsyncMeters:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -622,7 +622,7 @@ class TestAsyncMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = await response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -634,7 +634,7 @@ class TestAsyncMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = await response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -675,7 +675,7 @@ class TestAsyncMeters:
             ],
             name="x",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -706,7 +706,7 @@ class TestAsyncMeters:
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -735,7 +735,7 @@ class TestAsyncMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = await response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -764,7 +764,7 @@ class TestAsyncMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = await response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -821,7 +821,7 @@ class TestAsyncMeters:
         meter = await async_client.meters.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[Meter], meter, path=["response"])
+        assert_matches_type(AsyncCursor[MeterResponse], meter, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -833,7 +833,7 @@ class TestAsyncMeters:
             page_size=1,
             product_id=["string"],
         )
-        assert_matches_type(AsyncCursor[Meter], meter, path=["response"])
+        assert_matches_type(AsyncCursor[MeterResponse], meter, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -844,7 +844,7 @@ class TestAsyncMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = await response.parse()
-        assert_matches_type(AsyncCursor[Meter], meter, path=["response"])
+        assert_matches_type(AsyncCursor[MeterResponse], meter, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -855,7 +855,7 @@ class TestAsyncMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = await response.parse()
-            assert_matches_type(AsyncCursor[Meter], meter, path=["response"])
+            assert_matches_type(AsyncCursor[MeterResponse], meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -872,7 +872,7 @@ class TestAsyncMeters:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -884,7 +884,7 @@ class TestAsyncMeters:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         meter = await response.parse()
-        assert_matches_type(Meter, meter, path=["response"])
+        assert_matches_type(MeterResponse, meter, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -896,7 +896,7 @@ class TestAsyncMeters:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             meter = await response.parse()
-            assert_matches_type(Meter, meter, path=["response"])
+            assert_matches_type(MeterResponse, meter, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-03-09)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** make response model names explicit ([#55](https://github.com/m3ter-com/m3ter-sdk-python/issues/55)) ([183386e](https://github.com/m3ter-com/m3ter-sdk-python/commit/183386e6aedb8cb368868f16d8c3bb48e3baf4a9))
+
+
+### Documentation
+
+* revise readme docs about nested params ([#57](https://github.com/m3ter-com/m3ter-sdk-python/issues/57)) ([9671ceb](https://github.com/m3ter-com/m3ter-sdk-python/commit/9671cebe0d99b4728ca626ca6ea1b40961010aa4))
+
 ## 0.1.0-alpha.6 (2025-03-04)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)

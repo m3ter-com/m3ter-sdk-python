@@ -26,7 +26,7 @@ from .._response import (
 )
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.notification_configuration import NotificationConfiguration
+from ..types.notification_configuration_response import NotificationConfigurationResponse
 
 __all__ = ["NotificationConfigurationsResource", "AsyncNotificationConfigurationsResource"]
 
@@ -69,7 +69,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """
         Create a new Notification for an Event.
 
@@ -159,7 +159,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
     def retrieve(
@@ -173,7 +173,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """Retrieve the details of a specific Notification using its UUID.
 
         Includes the
@@ -201,7 +201,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
     def update(
@@ -223,7 +223,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """
         Update a Notification with the given UUID.
 
@@ -315,7 +315,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
     def list(
@@ -333,7 +333,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[NotificationConfiguration]:
+    ) -> SyncCursor[NotificationConfigurationResponse]:
         """
         Retrieve a list of Event Notifications for the specified Organization.
 
@@ -372,7 +372,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/notifications/configurations",
-            page=SyncCursor[NotificationConfiguration],
+            page=SyncCursor[NotificationConfigurationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -389,7 +389,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
                     notification_configuration_list_params.NotificationConfigurationListParams,
                 ),
             ),
-            model=NotificationConfiguration,
+            model=NotificationConfigurationResponse,
         )
 
     def delete(
@@ -403,7 +403,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """
         Delete the Notification with the given UUID.
 
@@ -430,7 +430,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
 
@@ -472,7 +472,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """
         Create a new Notification for an Event.
 
@@ -562,7 +562,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
     async def retrieve(
@@ -576,7 +576,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """Retrieve the details of a specific Notification using its UUID.
 
         Includes the
@@ -604,7 +604,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
     async def update(
@@ -626,7 +626,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """
         Update a Notification with the given UUID.
 
@@ -718,7 +718,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
     def list(
@@ -736,7 +736,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[NotificationConfiguration, AsyncCursor[NotificationConfiguration]]:
+    ) -> AsyncPaginator[NotificationConfigurationResponse, AsyncCursor[NotificationConfigurationResponse]]:
         """
         Retrieve a list of Event Notifications for the specified Organization.
 
@@ -775,7 +775,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/notifications/configurations",
-            page=AsyncCursor[NotificationConfiguration],
+            page=AsyncCursor[NotificationConfigurationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -792,7 +792,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
                     notification_configuration_list_params.NotificationConfigurationListParams,
                 ),
             ),
-            model=NotificationConfiguration,
+            model=NotificationConfigurationResponse,
         )
 
     async def delete(
@@ -806,7 +806,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NotificationConfiguration:
+    ) -> NotificationConfigurationResponse:
         """
         Delete the Notification with the given UUID.
 
@@ -833,7 +833,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=NotificationConfiguration,
+            cast_to=NotificationConfigurationResponse,
         )
 
 

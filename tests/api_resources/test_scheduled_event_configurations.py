@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    ScheduledEventConfiguration,
+    ScheduledEventConfigurationResponse,
 )
 from m3ter_sdk.pagination import SyncCursor, AsyncCursor
 
@@ -29,7 +29,7 @@ class TestScheduledEventConfigurations:
             name="scheduled.bill.enddateEvent",
             offset=5,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -41,7 +41,7 @@ class TestScheduledEventConfigurations:
             offset=5,
             version=0,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -56,7 +56,7 @@ class TestScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -71,7 +71,7 @@ class TestScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -92,7 +92,7 @@ class TestScheduledEventConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -104,7 +104,7 @@ class TestScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -116,7 +116,7 @@ class TestScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -144,7 +144,7 @@ class TestScheduledEventConfigurations:
             name="scheduled.bill.enddateEvent",
             offset=5,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -157,7 +157,7 @@ class TestScheduledEventConfigurations:
             offset=5,
             version=0,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -173,7 +173,7 @@ class TestScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -189,7 +189,7 @@ class TestScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -220,7 +220,9 @@ class TestScheduledEventConfigurations:
         scheduled_event_configuration = client.scheduled_event_configurations.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"])
+        assert_matches_type(
+            SyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
+        )
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -230,7 +232,9 @@ class TestScheduledEventConfigurations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"])
+        assert_matches_type(
+            SyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
+        )
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -241,7 +245,9 @@ class TestScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = response.parse()
-        assert_matches_type(SyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"])
+        assert_matches_type(
+            SyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
+        )
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -253,7 +259,7 @@ class TestScheduledEventConfigurations:
 
             scheduled_event_configuration = response.parse()
             assert_matches_type(
-                SyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"]
+                SyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
             )
 
         assert cast(Any, response.is_closed) is True
@@ -271,7 +277,7 @@ class TestScheduledEventConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -283,7 +289,7 @@ class TestScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -295,7 +301,7 @@ class TestScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -326,7 +332,7 @@ class TestAsyncScheduledEventConfigurations:
             name="scheduled.bill.enddateEvent",
             offset=5,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -338,7 +344,7 @@ class TestAsyncScheduledEventConfigurations:
             offset=5,
             version=0,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -353,7 +359,7 @@ class TestAsyncScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = await response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -368,7 +374,7 @@ class TestAsyncScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = await response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -389,7 +395,7 @@ class TestAsyncScheduledEventConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -401,7 +407,7 @@ class TestAsyncScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = await response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -413,7 +419,7 @@ class TestAsyncScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = await response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -441,7 +447,7 @@ class TestAsyncScheduledEventConfigurations:
             name="scheduled.bill.enddateEvent",
             offset=5,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -454,7 +460,7 @@ class TestAsyncScheduledEventConfigurations:
             offset=5,
             version=0,
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -470,7 +476,7 @@ class TestAsyncScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = await response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -486,7 +492,7 @@ class TestAsyncScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = await response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -517,7 +523,9 @@ class TestAsyncScheduledEventConfigurations:
         scheduled_event_configuration = await async_client.scheduled_event_configurations.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"])
+        assert_matches_type(
+            AsyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
+        )
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -527,7 +535,9 @@ class TestAsyncScheduledEventConfigurations:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"])
+        assert_matches_type(
+            AsyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
+        )
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -538,7 +548,9 @@ class TestAsyncScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = await response.parse()
-        assert_matches_type(AsyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"])
+        assert_matches_type(
+            AsyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
+        )
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -550,7 +562,7 @@ class TestAsyncScheduledEventConfigurations:
 
             scheduled_event_configuration = await response.parse()
             assert_matches_type(
-                AsyncCursor[ScheduledEventConfiguration], scheduled_event_configuration, path=["response"]
+                AsyncCursor[ScheduledEventConfigurationResponse], scheduled_event_configuration, path=["response"]
             )
 
         assert cast(Any, response.is_closed) is True
@@ -568,7 +580,7 @@ class TestAsyncScheduledEventConfigurations:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -580,7 +592,7 @@ class TestAsyncScheduledEventConfigurations:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         scheduled_event_configuration = await response.parse()
-        assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+        assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -592,7 +604,7 @@ class TestAsyncScheduledEventConfigurations:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             scheduled_event_configuration = await response.parse()
-            assert_matches_type(ScheduledEventConfiguration, scheduled_event_configuration, path=["response"])
+            assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

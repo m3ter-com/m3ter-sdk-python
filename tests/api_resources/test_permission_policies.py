@@ -10,7 +10,7 @@ import pytest
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
 from m3ter_sdk.types import (
-    PermissionPolicy,
+    PermissionPolicyResponse,
     PermissionPolicyAddToUserResponse,
     PermissionPolicyAddToUserGroupResponse,
     PermissionPolicyRemoveFromUserResponse,
@@ -41,7 +41,7 @@ class TestPermissionPolicies:
                 }
             ],
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -57,7 +57,7 @@ class TestPermissionPolicies:
             ],
             version=0,
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -76,7 +76,7 @@ class TestPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -95,7 +95,7 @@ class TestPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -120,7 +120,7 @@ class TestPermissionPolicies:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
@@ -132,7 +132,7 @@ class TestPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
@@ -144,7 +144,7 @@ class TestPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -176,7 +176,7 @@ class TestPermissionPolicies:
                 }
             ],
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -193,7 +193,7 @@ class TestPermissionPolicies:
             ],
             version=0,
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -213,7 +213,7 @@ class TestPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -233,7 +233,7 @@ class TestPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -272,7 +272,7 @@ class TestPermissionPolicies:
         permission_policy = client.permission_policies.list(
             org_id="orgId",
         )
-        assert_matches_type(SyncCursor[PermissionPolicy], permission_policy, path=["response"])
+        assert_matches_type(SyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
@@ -281,7 +281,7 @@ class TestPermissionPolicies:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(SyncCursor[PermissionPolicy], permission_policy, path=["response"])
+        assert_matches_type(SyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
@@ -292,7 +292,7 @@ class TestPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = response.parse()
-        assert_matches_type(SyncCursor[PermissionPolicy], permission_policy, path=["response"])
+        assert_matches_type(SyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
@@ -303,7 +303,7 @@ class TestPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = response.parse()
-            assert_matches_type(SyncCursor[PermissionPolicy], permission_policy, path=["response"])
+            assert_matches_type(SyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -320,7 +320,7 @@ class TestPermissionPolicies:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: M3ter) -> None:
@@ -332,7 +332,7 @@ class TestPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: M3ter) -> None:
@@ -344,7 +344,7 @@ class TestPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -862,7 +862,7 @@ class TestAsyncPermissionPolicies:
                 }
             ],
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -878,7 +878,7 @@ class TestAsyncPermissionPolicies:
             ],
             version=0,
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -897,7 +897,7 @@ class TestAsyncPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = await response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -916,7 +916,7 @@ class TestAsyncPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = await response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -941,7 +941,7 @@ class TestAsyncPermissionPolicies:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -953,7 +953,7 @@ class TestAsyncPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = await response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -965,7 +965,7 @@ class TestAsyncPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = await response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -997,7 +997,7 @@ class TestAsyncPermissionPolicies:
                 }
             ],
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -1014,7 +1014,7 @@ class TestAsyncPermissionPolicies:
             ],
             version=0,
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -1034,7 +1034,7 @@ class TestAsyncPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = await response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -1054,7 +1054,7 @@ class TestAsyncPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = await response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1093,7 +1093,7 @@ class TestAsyncPermissionPolicies:
         permission_policy = await async_client.permission_policies.list(
             org_id="orgId",
         )
-        assert_matches_type(AsyncCursor[PermissionPolicy], permission_policy, path=["response"])
+        assert_matches_type(AsyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -1102,7 +1102,7 @@ class TestAsyncPermissionPolicies:
             next_token="nextToken",
             page_size=1,
         )
-        assert_matches_type(AsyncCursor[PermissionPolicy], permission_policy, path=["response"])
+        assert_matches_type(AsyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
@@ -1113,7 +1113,7 @@ class TestAsyncPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = await response.parse()
-        assert_matches_type(AsyncCursor[PermissionPolicy], permission_policy, path=["response"])
+        assert_matches_type(AsyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
@@ -1124,7 +1124,7 @@ class TestAsyncPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = await response.parse()
-            assert_matches_type(AsyncCursor[PermissionPolicy], permission_policy, path=["response"])
+            assert_matches_type(AsyncCursor[PermissionPolicyResponse], permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1141,7 +1141,7 @@ class TestAsyncPermissionPolicies:
             id="id",
             org_id="orgId",
         )
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -1153,7 +1153,7 @@ class TestAsyncPermissionPolicies:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         permission_policy = await response.parse()
-        assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+        assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
@@ -1165,7 +1165,7 @@ class TestAsyncPermissionPolicies:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             permission_policy = await response.parse()
-            assert_matches_type(PermissionPolicy, permission_policy, path=["response"])
+            assert_matches_type(PermissionPolicyResponse, permission_policy, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

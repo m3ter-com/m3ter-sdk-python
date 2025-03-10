@@ -20,7 +20,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.data_exports import job_list_params
-from ...types.data_exports.data_export_job import DataExportJob
+from ...types.data_exports.data_export_job_response import DataExportJobResponse
 from ...types.data_exports.job_get_download_url_response import JobGetDownloadURLResponse
 
 __all__ = ["JobsResource", "AsyncJobsResource"]
@@ -57,7 +57,7 @@ class JobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DataExportJob:
+    ) -> DataExportJobResponse:
         """
         Retrieve an Export Job for the given UUID.
 
@@ -87,7 +87,7 @@ class JobsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DataExportJob,
+            cast_to=DataExportJobResponse,
         )
 
     def list(
@@ -107,7 +107,7 @@ class JobsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncCursor[DataExportJob]:
+    ) -> SyncCursor[DataExportJobResponse]:
         """
         Retrieve a list of Export Job entities.
 
@@ -144,7 +144,7 @@ class JobsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/dataexports/jobs",
-            page=SyncCursor[DataExportJob],
+            page=SyncCursor[DataExportJobResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -163,7 +163,7 @@ class JobsResource(SyncAPIResource):
                     job_list_params.JobListParams,
                 ),
             ),
-            model=DataExportJob,
+            model=DataExportJobResponse,
         )
 
     def get_download_url(
@@ -252,7 +252,7 @@ class AsyncJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DataExportJob:
+    ) -> DataExportJobResponse:
         """
         Retrieve an Export Job for the given UUID.
 
@@ -282,7 +282,7 @@ class AsyncJobsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=DataExportJob,
+            cast_to=DataExportJobResponse,
         )
 
     def list(
@@ -302,7 +302,7 @@ class AsyncJobsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[DataExportJob, AsyncCursor[DataExportJob]]:
+    ) -> AsyncPaginator[DataExportJobResponse, AsyncCursor[DataExportJobResponse]]:
         """
         Retrieve a list of Export Job entities.
 
@@ -339,7 +339,7 @@ class AsyncJobsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
             f"/organizations/{org_id}/dataexports/jobs",
-            page=AsyncCursor[DataExportJob],
+            page=AsyncCursor[DataExportJobResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -358,7 +358,7 @@ class AsyncJobsResource(AsyncAPIResource):
                     job_list_params.JobListParams,
                 ),
             ),
-            model=DataExportJob,
+            model=DataExportJobResponse,
         )
 
     async def get_download_url(

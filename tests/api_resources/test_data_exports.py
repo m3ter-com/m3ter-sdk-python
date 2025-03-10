@@ -9,7 +9,7 @@ import pytest
 
 from m3ter_sdk import M3ter, AsyncM3ter
 from tests.utils import assert_matches_type
-from m3ter_sdk.types import AdhocExport
+from m3ter_sdk.types import AdHocResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -24,7 +24,7 @@ class TestDataExports:
             operational_data_types=["BILLS"],
             source_type="USAGE",
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_1(self, client: M3ter) -> None:
@@ -34,7 +34,7 @@ class TestDataExports:
             source_type="USAGE",
             version=0,
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_raw_response_create_adhoc_overload_1(self, client: M3ter) -> None:
@@ -47,7 +47,7 @@ class TestDataExports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         data_export = response.parse()
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_streaming_response_create_adhoc_overload_1(self, client: M3ter) -> None:
@@ -60,7 +60,7 @@ class TestDataExports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             data_export = response.parse()
-            assert_matches_type(AdhocExport, data_export, path=["response"])
+            assert_matches_type(AdHocResponse, data_export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -80,7 +80,7 @@ class TestDataExports:
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_2(self, client: M3ter) -> None:
@@ -94,7 +94,7 @@ class TestDataExports:
             time_period="TODAY",
             version=0,
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_raw_response_create_adhoc_overload_2(self, client: M3ter) -> None:
@@ -107,7 +107,7 @@ class TestDataExports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         data_export = response.parse()
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_streaming_response_create_adhoc_overload_2(self, client: M3ter) -> None:
@@ -120,7 +120,7 @@ class TestDataExports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             data_export = response.parse()
-            assert_matches_type(AdhocExport, data_export, path=["response"])
+            assert_matches_type(AdHocResponse, data_export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -144,7 +144,7 @@ class TestAsyncDataExports:
             operational_data_types=["BILLS"],
             source_type="USAGE",
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
@@ -154,7 +154,7 @@ class TestAsyncDataExports:
             source_type="USAGE",
             version=0,
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_raw_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
@@ -167,7 +167,7 @@ class TestAsyncDataExports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         data_export = await response.parse()
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
@@ -180,7 +180,7 @@ class TestAsyncDataExports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             data_export = await response.parse()
-            assert_matches_type(AdhocExport, data_export, path=["response"])
+            assert_matches_type(AdHocResponse, data_export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -200,7 +200,7 @@ class TestAsyncDataExports:
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
@@ -214,7 +214,7 @@ class TestAsyncDataExports:
             time_period="TODAY",
             version=0,
         )
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_raw_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
@@ -227,7 +227,7 @@ class TestAsyncDataExports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         data_export = await response.parse()
-        assert_matches_type(AdhocExport, data_export, path=["response"])
+        assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
@@ -240,7 +240,7 @@ class TestAsyncDataExports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             data_export = await response.parse()
-            assert_matches_type(AdhocExport, data_export, path=["response"])
+            assert_matches_type(AdHocResponse, data_export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
