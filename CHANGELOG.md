@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-03-11)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
 ## 0.1.0-alpha.7 (2025-03-09)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
