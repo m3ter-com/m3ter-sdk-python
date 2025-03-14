@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-03-14)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Chores
+
+* **internal:** bump rye to 0.44.0 ([#64](https://github.com/m3ter-com/m3ter-sdk-python/issues/64)) ([38a19e3](https://github.com/m3ter-com/m3ter-sdk-python/commit/38a19e325a0717a7990c87bf32d8d3ac8aba7372))
+* **internal:** remove extra empty newlines ([#62](https://github.com/m3ter-com/m3ter-sdk-python/issues/62)) ([5a8dea0](https://github.com/m3ter-com/m3ter-sdk-python/commit/5a8dea0d8d6622239f4a4f2844f1852e3cb5b7b0))
+
 ## 0.1.0-alpha.8 (2025-03-11)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)

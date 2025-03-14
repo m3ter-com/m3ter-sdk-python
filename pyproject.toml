@@ -1,6 +1,6 @@
 [project]
 name = "m3ter_sdk"
-version = "0.1.0-alpha.8"
+version = "0.1.0-alpha.9"
 description = "The official Python library for the m3ter API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -36,7 +36,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/m3ter-com/m3ter-sdk-python"
 Repository = "https://github.com/m3ter-com/m3ter-sdk-python"
-
 
 
 [tool.rye]
@@ -151,7 +150,6 @@ reportImplicitOverride = true
 
 reportImportCycles = false
 reportPrivateUsage = false
-
 
 [tool.ruff]
 line-length = 120
