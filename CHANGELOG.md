@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-03-17)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#68](https://github.com/m3ter-com/m3ter-sdk-python/issues/68)) ([78e0a39](https://github.com/m3ter-com/m3ter-sdk-python/commit/78e0a3959e83e38320f3aaa8c65e8400e37fa215))
+* **types:** handle more discriminated union shapes ([#67](https://github.com/m3ter-com/m3ter-sdk-python/issues/67)) ([434c416](https://github.com/m3ter-com/m3ter-sdk-python/commit/434c416439f40c277b410f85d02d107578120b47))
+
+
+### Chores
+
+* **internal:** version bump ([#65](https://github.com/m3ter-com/m3ter-sdk-python/issues/65)) ([a3e7a93](https://github.com/m3ter-com/m3ter-sdk-python/commit/a3e7a93f97d70482e9063d81ea4595a36122e49c))
+
 ## 0.1.0-alpha.9 (2025-03-14)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
