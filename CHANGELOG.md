@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-03-27)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Bug Fixes
+
+* **ci:** remove publishing patch ([#70](https://github.com/m3ter-com/m3ter-sdk-python/issues/70)) ([6fbbae5](https://github.com/m3ter-com/m3ter-sdk-python/commit/6fbbae5666b4ad473268e2e3a35b864093147ce6))
+* **types:** add missing total=False ([#73](https://github.com/m3ter-com/m3ter-sdk-python/issues/73)) ([95c6736](https://github.com/m3ter-com/m3ter-sdk-python/commit/95c6736f6dd00e58c91948451395c72ce6d61aed))
+
+
+### Chores
+
+* fix typos ([#72](https://github.com/m3ter-com/m3ter-sdk-python/issues/72)) ([ef318ff](https://github.com/m3ter-com/m3ter-sdk-python/commit/ef318ffbd99ae2020a8ef36587be2b3efc02c2ea))
+
 ## 0.1.0-alpha.10 (2025-03-17)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
