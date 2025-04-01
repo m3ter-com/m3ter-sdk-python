@@ -78,7 +78,7 @@ class MeterCreateParams(TypedDict, total=False):
     """
 
 
-class DerivedField(DataFieldResponseParam):
+class DerivedField(DataFieldResponseParam, total=False):
     calculation: Required[str]
     """
     The calculation used to transform the value of submitted `dataFields` in usage
