@@ -1917,7 +1917,7 @@ class TestAsyncM3ter:
         import threading
 
         from m3ter_sdk._utils import asyncify
-        from m3ter_sdk._base_client import get_platform 
+        from m3ter_sdk._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
