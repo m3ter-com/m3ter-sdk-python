@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/m3ter_sdk/_version.py"
+    "src/m3ter/_version.py"
   ]
 }

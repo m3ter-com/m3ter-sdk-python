@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from m3ter_sdk._types import FileTypes
-from m3ter_sdk._utils import extract_files
+from m3ter._types import FileTypes
+from m3ter._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:
