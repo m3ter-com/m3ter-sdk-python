@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from m3ter_sdk._utils import LazyProxy
+from m3ter._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):

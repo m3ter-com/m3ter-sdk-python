@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from m3ter_sdk import M3ter, AsyncM3ter
-from m3ter_sdk._streaming import Stream, AsyncStream, ServerSentEvent
+from m3ter import M3ter, AsyncM3ter
+from m3ter._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio

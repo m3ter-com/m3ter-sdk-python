@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from m3ter_sdk import M3ter, BaseModel, AsyncM3ter
-from m3ter_sdk._response import (
+from m3ter import M3ter, BaseModel, AsyncM3ter
+from m3ter._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from m3ter_sdk._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from m3ter_sdk._streaming import Stream
-from m3ter_sdk._base_client import FinalRequestOptions
+from m3ter._streaming import Stream
+from m3ter._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]): ...
@@ -37,7 +37,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'm3ter_sdk._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'm3ter._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -68,7 +68,7 @@ def test_response_parse_mismatched_basemodel(client: M3ter) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from m3ter_sdk import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from m3ter import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -86,7 +86,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncM3te
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from m3ter_sdk import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from m3ter import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
