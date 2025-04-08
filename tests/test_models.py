@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from m3ter_sdk._utils import PropertyInfo
-from m3ter_sdk._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from m3ter_sdk._models import BaseModel, construct_type
+from m3ter._utils import PropertyInfo
+from m3ter._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from m3ter._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):

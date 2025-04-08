@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from m3ter_sdk._qs import Querystring, stringify
+from m3ter._qs import Querystring, stringify
 
 
 def test_empty() -> None:

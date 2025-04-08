@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from m3ter_sdk._types import Base64FileInput
-from m3ter_sdk._utils import (
+from m3ter._types import Base64FileInput
+from m3ter._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from m3ter_sdk._compat import PYDANTIC_V2
-from m3ter_sdk._models import BaseModel
+from m3ter._compat import PYDANTIC_V2
+from m3ter._models import BaseModel
 
 _T = TypeVar("_T")
 

@@ -7,14 +7,14 @@ from typing import Any, cast
 
 import pytest
 
-from m3ter_sdk import M3ter, AsyncM3ter
-from tests.utils import assert_matches_type
-from m3ter_sdk.types import (
+from m3ter import M3ter, AsyncM3ter
+from m3ter.types import (
     UsageQueryResponse,
     DownloadURLResponse,
     SubmitMeasurementsResponse,
 )
-from m3ter_sdk._utils import parse_datetime
+from tests.utils import assert_matches_type
+from m3ter._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
