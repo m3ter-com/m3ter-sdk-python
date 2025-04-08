@@ -1,6 +1,6 @@
 # M3ter Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/m3ter_sdk.svg)](https://pypi.org/project/m3ter_sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/m3ter.svg)](https://pypi.org/project/m3ter/)
 
 The M3ter Python library provides convenient access to the M3ter REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -15,12 +15,9 @@ The REST API documentation can be found on [www.m3ter.com](https://www.m3ter.com
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/m3ter-com/m3ter-sdk-python.git
+# install from PyPI
+pip install --pre m3ter
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainless.com/docs/guides/publish), this will become: `pip install --pre m3ter_sdk`
 
 ## Usage
 
@@ -28,7 +25,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 client = M3ter(
     api_key="My API Key",
@@ -52,7 +49,7 @@ Simply import `AsyncM3ter` instead of `M3ter` and use `await` with each API call
 ```python
 import os
 import asyncio
-from m3ter_sdk import AsyncM3ter
+from m3ter import AsyncM3ter
 
 client = AsyncM3ter(
     api_key="My API Key",
@@ -86,7 +83,7 @@ List methods in the M3ter API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 client = M3ter(
     api_key="My API Key",
@@ -106,7 +103,7 @@ Or, asynchronously:
 
 ```python
 import asyncio
-from m3ter_sdk import AsyncM3ter
+from m3ter import AsyncM3ter
 
 client = AsyncM3ter(
     api_key="My API Key",
@@ -156,7 +153,7 @@ for product in first_page.data:
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 client = M3ter(
     api_key="My API Key",
@@ -185,16 +182,16 @@ print(account_response.address)
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `m3ter_sdk.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `m3ter.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `m3ter_sdk.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `m3ter.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `m3ter_sdk.APIError`.
+All errors inherit from `m3ter.APIError`.
 
 ```python
-import m3ter_sdk
-from m3ter_sdk import M3ter
+import m3ter
+from m3ter import M3ter
 
 client = M3ter(
     api_key="My API Key",
@@ -204,12 +201,12 @@ client = M3ter(
 
 try:
     client.products.list()
-except m3ter_sdk.APIConnectionError as e:
+except m3ter.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except m3ter_sdk.RateLimitError as e:
+except m3ter.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except m3ter_sdk.APIStatusError as e:
+except m3ter.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -237,7 +234,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 # Configure the default for all requests:
 client = M3ter(
@@ -258,7 +255,7 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 # Configure the default for all requests:
 client = M3ter(
@@ -316,7 +313,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 client = M3ter(
     api_key="My API Key",
@@ -330,9 +327,9 @@ product = response.parse()  # get the object that `products.list()` would have r
 print(product.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/m3ter-com/m3ter-sdk-python/tree/main/src/m3ter_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/m3ter-com/m3ter-sdk-python/tree/main/src/m3ter/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/m3ter-com/m3ter-sdk-python/tree/main/src/m3ter_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/m3ter-com/m3ter-sdk-python/tree/main/src/m3ter/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -394,7 +391,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from m3ter_sdk import M3ter, DefaultHttpxClient
+from m3ter import M3ter, DefaultHttpxClient
 
 client = M3ter(
     # Or use the `M3TER_BASE_URL` env var
@@ -420,7 +417,7 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from m3ter_sdk import M3ter
+from m3ter import M3ter
 
 with M3ter(
     api_key="My API Key",
@@ -452,8 +449,8 @@ If you've upgraded to the latest version but aren't seeing any new features you 
 You can determine the version that is being used at runtime with:
 
 ```py
-import m3ter_sdk
-print(m3ter_sdk.__version__)
+import m3ter
+print(m3ter.__version__)
 ```
 
 ## Requirements
