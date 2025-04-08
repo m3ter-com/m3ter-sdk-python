@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1-alpha (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha...v0.1.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha...v0.1.1-alpha)
+
+### Chores
+
+* **internal:** slight transform perf improvement ([#79](https://github.com/m3ter-com/m3ter-sdk-python/issues/79)) ([7117cc2](https://github.com/m3ter-com/m3ter-sdk-python/commit/7117cc2f005922440da310e54ec5a032917c34d9))
+
 ## 0.1.0-alpha (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.11...v0.1.0-alpha)
