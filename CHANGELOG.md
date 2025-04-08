@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha (2025-04-08)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.11...v0.1.0-alpha)
+
+### Features
+
+* **api:** update contact email and package name ([#77](https://github.com/m3ter-com/m3ter-sdk-python/issues/77)) ([92d901e](https://github.com/m3ter-com/m3ter-sdk-python/commit/92d901ec6877ffd987d87bc766463d789e5e123e))
+
+
+### Chores
+
+* **internal:** remove trailing character ([#75](https://github.com/m3ter-com/m3ter-sdk-python/issues/75)) ([36ad0e5](https://github.com/m3ter-com/m3ter-sdk-python/commit/36ad0e5ca0768dce21866641212f26d0bb6f63b8))
+
 ## 0.1.0-alpha.11 (2025-03-27)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
