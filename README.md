@@ -35,7 +35,7 @@ client = M3ter(
 )
 
 page = client.products.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 )
 print(page.data)
 ```
@@ -64,7 +64,7 @@ client = AsyncM3ter(
 
 async def main() -> None:
     page = await client.products.list(
-        org_id="ORG_ID",
+        org_id="My Org ID",
     )
     print(page.data)
 
@@ -101,7 +101,7 @@ client = M3ter(
 all_products = []
 # Automatically fetches more pages as needed.
 for product in client.products.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 ):
     # Do something with product here
     all_products.append(product)
@@ -125,7 +125,7 @@ async def main() -> None:
     all_products = []
     # Iterate through items across all pages, issuing requests as needed.
     async for product in client.products.list(
-        org_id="ORG_ID",
+        org_id="My Org ID",
     ):
         all_products.append(product)
     print(all_products)
@@ -138,7 +138,7 @@ Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get
 
 ```python
 first_page = await client.products.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 )
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
@@ -152,7 +152,7 @@ Or just work directly with the returned data:
 
 ```python
 first_page = await client.products.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 )
 
 print(f"next page cursor: {first_page.next_token}")  # => "next page cursor: ..."
@@ -215,7 +215,7 @@ client = M3ter(
 
 try:
     client.products.list(
-        org_id="ORG_ID",
+        org_id="My Org ID",
     )
 except m3ter.APIConnectionError as e:
     print("The server could not be reached")
@@ -263,7 +263,7 @@ client = M3ter(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).products.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 )
 ```
 
@@ -294,7 +294,7 @@ client = M3ter(
 
 # Override per-request:
 client.with_options(timeout=5.0).products.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 )
 ```
 
@@ -341,7 +341,7 @@ client = M3ter(
     org_id="My Org ID",
 )
 response = client.products.with_raw_response.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -361,7 +361,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.products.with_streaming_response.list(
-    org_id="ORG_ID",
+    org_id="My Org ID",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
