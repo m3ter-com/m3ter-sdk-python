@@ -28,15 +28,12 @@ import os
 from m3ter import M3ter
 
 client = M3ter(
-    token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
 )
 
-page = client.products.list(
-    org_id="ORG_ID",
-)
+page = client.products.list()
 print(page.data)
 ```
 
@@ -55,7 +52,6 @@ import asyncio
 from m3ter import AsyncM3ter
 
 client = AsyncM3ter(
-    token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
@@ -63,11 +59,8 @@ client = AsyncM3ter(
 
 
 async def main() -> None:
-    page = await client.products.list(
-        org_id="ORG_ID",
-    )
+    page = await client.products.list()
     print(page.data)
-
 
 asyncio.run(main())
 ```
@@ -100,9 +93,7 @@ client = M3ter(
 
 all_products = []
 # Automatically fetches more pages as needed.
-for product in client.products.list(
-    org_id="ORG_ID",
-):
+for product in client.products.list():
     # Do something with product here
     all_products.append(product)
 print(all_products)
@@ -124,9 +115,7 @@ client = AsyncM3ter(
 async def main() -> None:
     all_products = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for product in client.products.list(
-        org_id="ORG_ID",
-    ):
+    async for product in client.products.list():
         all_products.append(product)
     print(all_products)
 
@@ -137,9 +126,8 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.products.list(
-    org_id="ORG_ID",
-)
+first_page = await client.products.list()
+
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -151,9 +139,7 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.products.list(
-    org_id="ORG_ID",
-)
+first_page = await client.products.list()
 
 print(f"next page cursor: {first_page.next_token}")  # => "next page cursor: ..."
 for product in first_page.data:
@@ -214,9 +200,7 @@ client = M3ter(
 )
 
 try:
-    client.products.list(
-        org_id="ORG_ID",
-    )
+    client.products.list()
 except m3ter.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -262,9 +246,7 @@ client = M3ter(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).products.list(
-    org_id="ORG_ID",
-)
+client.with_options(max_retries=5).products.list()
 ```
 
 ### Timeouts
@@ -293,9 +275,7 @@ client = M3ter(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).products.list(
-    org_id="ORG_ID",
-)
+client.with_options(timeout=5.0).products.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -340,9 +320,7 @@ client = M3ter(
     api_secret="My API Secret",
     org_id="My Org ID",
 )
-response = client.products.with_raw_response.list(
-    org_id="ORG_ID",
-)
+response = client.products.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 product = response.parse()  # get the object that `products.list()` would have returned
@@ -360,9 +338,7 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.products.with_streaming_response.list(
-    org_id="ORG_ID",
-) as response:
+with client.products.with_streaming_response.list() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
