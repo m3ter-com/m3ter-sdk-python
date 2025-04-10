@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0-alpha (2025-04-10)
+
+Full Changelog: [v0.2.0-alpha...v0.3.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.2.0-alpha...v0.3.0-alpha)
+
+### Features
+
+* **api:** add measurement request model ([ccaa85a](https://github.com/m3ter-com/m3ter-sdk-python/commit/ccaa85aafe2702dff827f90e494c001520887d60))
+
 ## 0.2.0-alpha (2025-04-10)
 
 Full Changelog: [v0.1.1-alpha...v0.2.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.1-alpha...v0.2.0-alpha)

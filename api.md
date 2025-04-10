@@ -720,7 +720,13 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import DownloadURLResponse, SubmitMeasurementsResponse, UsageQueryResponse
+from m3ter.types import (
+    DownloadURLResponse,
+    MeasurementRequest,
+    SubmitMeasurementsRequest,
+    SubmitMeasurementsResponse,
+    UsageQueryResponse,
+)
 ```
 
 Methods:
