@@ -106,6 +106,7 @@ from .bill_update_status_params import BillUpdateStatusParams as BillUpdateStatu
 from .credit_reason_list_params import CreditReasonListParams as CreditReasonListParams
 from .event_get_fields_response import EventGetFieldsResponse as EventGetFieldsResponse
 from .external_mapping_response import ExternalMappingResponse as ExternalMappingResponse
+from .measurement_request_param import MeasurementRequestParam as MeasurementRequestParam
 from .plan_template_list_params import PlanTemplateListParams as PlanTemplateListParams
 from .transaction_type_response import TransactionTypeResponse as TransactionTypeResponse
 from .webhook_set_active_params import WebhookSetActiveParams as WebhookSetActiveParams
