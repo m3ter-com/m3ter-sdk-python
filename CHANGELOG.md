@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1-alpha (2025-04-10)
+
+Full Changelog: [v0.3.0-alpha...v0.3.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.0-alpha...v0.3.1-alpha)
+
+### Bug Fixes
+
+* use correct base url for client.usage.submit() ([#86](https://github.com/m3ter-com/m3ter-sdk-python/issues/86)) ([5bce3a4](https://github.com/m3ter-com/m3ter-sdk-python/commit/5bce3a46045deb9117984b4599806aef190b7473))
+
 ## 0.3.0-alpha (2025-04-10)
 
 Full Changelog: [v0.2.0-alpha...v0.3.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.2.0-alpha...v0.3.0-alpha)
