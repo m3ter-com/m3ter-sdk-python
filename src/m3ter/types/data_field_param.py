@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["DataFieldResponseParam"]
+__all__ = ["DataFieldParam"]
 
 
-class DataFieldResponseParam(TypedDict, total=False):
+class DataFieldParam(TypedDict, total=False):
     category: Required[Literal["WHO", "WHERE", "WHAT", "OTHER", "METADATA", "MEASURE", "INCOME", "COST"]]
     """The type of field (WHO, WHAT, WHERE, MEASURE, METADATA, INCOME, COST, OTHER)."""
 

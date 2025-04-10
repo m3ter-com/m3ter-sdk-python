@@ -6,18 +6,10 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .data_field_response import DataFieldResponse
+from .data_field import DataField
+from .derived_field import DerivedField
 
-__all__ = ["MeterResponse", "DerivedField"]
-
-
-class DerivedField(DataFieldResponse):
-    calculation: str
-    """
-    The calculation used to transform the value of submitted `dataFields` in usage
-    data. Calculation can reference `dataFields`, `customFields`, or system
-    `Timestamp` fields. _(Example: datafieldms datafieldgb)_
-    """
+__all__ = ["MeterResponse"]
 
 
 class MeterResponse(BaseModel):
@@ -53,7 +45,7 @@ class MeterResponse(BaseModel):
     in the m3ter documentation for more information.
     """
 
-    data_fields: Optional[List[DataFieldResponse]] = FieldInfo(alias="dataFields", default=None)
+    data_fields: Optional[List[DataField]] = FieldInfo(alias="dataFields", default=None)
     """
     Used to submit categorized raw usage data values for ingest into the platform -
     either numeric quantitative values or non-numeric data values. At least one

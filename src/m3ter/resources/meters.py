@@ -23,7 +23,8 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.meter_response import MeterResponse
-from ..types.data_field_response_param import DataFieldResponseParam
+from ..types.data_field_param import DataFieldParam
+from ..types.derived_field_param import DerivedFieldParam
 
 __all__ = ["MetersResource", "AsyncMetersResource"]
 
@@ -53,8 +54,8 @@ class MetersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldResponseParam],
-        derived_fields: Iterable[meter_create_params.DerivedField],
+        data_fields: Iterable[DataFieldParam],
+        derived_fields: Iterable[DerivedFieldParam],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
@@ -221,8 +222,8 @@ class MetersResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldResponseParam],
-        derived_fields: Iterable[meter_update_params.DerivedField],
+        data_fields: Iterable[DataFieldParam],
+        derived_fields: Iterable[DerivedFieldParam],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
@@ -454,8 +455,8 @@ class AsyncMetersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldResponseParam],
-        derived_fields: Iterable[meter_create_params.DerivedField],
+        data_fields: Iterable[DataFieldParam],
+        derived_fields: Iterable[DerivedFieldParam],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
@@ -622,8 +623,8 @@ class AsyncMetersResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         code: str,
-        data_fields: Iterable[DataFieldResponseParam],
-        derived_fields: Iterable[meter_update_params.DerivedField],
+        data_fields: Iterable[DataFieldParam],
+        derived_fields: Iterable[DerivedFieldParam],
         name: str,
         custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         group_id: str | NotGiven = NOT_GIVEN,
