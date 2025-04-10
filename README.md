@@ -61,6 +61,7 @@ async def main() -> None:
     page = await client.products.list()
     print(page.data)
 
+
 asyncio.run(main())
 ```
 
