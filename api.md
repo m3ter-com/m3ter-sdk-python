@@ -491,7 +491,7 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import DataFieldResponse, MeterResponse
+from m3ter.types import DataField, DerivedField, MeterResponse
 ```
 
 Methods:
