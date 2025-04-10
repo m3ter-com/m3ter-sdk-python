@@ -34,7 +34,6 @@ client = M3ter(
 )
 
 page = client.products.list()
-print(page.data)
 ```
 
 While you can provide a `token` keyword argument,

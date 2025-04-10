@@ -6,9 +6,10 @@ from typing import Dict, Union, Iterable
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .data_field_response_param import DataFieldResponseParam
+from .data_field_param import DataFieldParam
+from .derived_field_param import DerivedFieldParam
 
-__all__ = ["MeterCreateParams", "DerivedField"]
+__all__ = ["MeterCreateParams"]
 
 
 class MeterCreateParams(TypedDict, total=False):
@@ -22,14 +23,14 @@ class MeterCreateParams(TypedDict, total=False):
     whitespace.
     """
 
-    data_fields: Required[Annotated[Iterable[DataFieldResponseParam], PropertyInfo(alias="dataFields")]]
+    data_fields: Required[Annotated[Iterable[DataFieldParam], PropertyInfo(alias="dataFields")]]
     """
     Used to submit categorized raw usage data values for ingest into the platform -
     either numeric quantitative values or non-numeric data values. At least one
     required per Meter; maximum 15 per Meter.
     """
 
-    derived_fields: Required[Annotated[Iterable[DerivedField], PropertyInfo(alias="derivedFields")]]
+    derived_fields: Required[Annotated[Iterable[DerivedFieldParam], PropertyInfo(alias="derivedFields")]]
     """
     Used to submit usage data values for ingest into the platform that are the
     result of a calculation performed on `dataFields`, `customFields`, or system
@@ -75,13 +76,4 @@ class MeterCreateParams(TypedDict, total=False):
     - **Update Entity:** On Update, version is required and must match the existing
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
-    """
-
-
-class DerivedField(DataFieldResponseParam, total=False):
-    calculation: Required[str]
-    """
-    The calculation used to transform the value of submitted `dataFields` in usage
-    data. Calculation can reference `dataFields`, `customFields`, or system
-    `Timestamp` fields. _(Example: datafieldms datafieldgb)_
     """

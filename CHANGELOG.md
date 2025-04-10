@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.0-alpha (2025-04-10)
+
+Full Changelog: [v0.1.1-alpha...v0.2.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.1-alpha...v0.2.0-alpha)
+
+### Features
+
+* **api:** rename DataFieldResponse to DataField and add DerivedField as a model ([3f6765b](https://github.com/m3ter-com/m3ter-sdk-python/commit/3f6765bf80ac31fa243ee5395221ba15172cfc03))
+
+
+### Chores
+
+* **internal:** expand CI branch coverage ([#84](https://github.com/m3ter-com/m3ter-sdk-python/issues/84)) ([9feb9b4](https://github.com/m3ter-com/m3ter-sdk-python/commit/9feb9b4041b67082ca5d13ade74ea3dc3027bd08))
+* **internal:** reduce CI branch coverage ([46c3e28](https://github.com/m3ter-com/m3ter-sdk-python/commit/46c3e2889a2140b763c73873a86dd81d961c8e13))
+
+
+### Documentation
+
+* Use "My Org Id" in example requests ([#81](https://github.com/m3ter-com/m3ter-sdk-python/issues/81)) ([acd1d40](https://github.com/m3ter-com/m3ter-sdk-python/commit/acd1d4002f29041cd2518721d07200643fc7c004))
+
 ## 0.1.1-alpha (2025-04-08)
 
 Full Changelog: [v0.1.0-alpha...v0.1.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.1.0-alpha...v0.1.1-alpha)
