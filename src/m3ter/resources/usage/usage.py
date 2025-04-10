@@ -32,6 +32,7 @@ from .file_uploads.file_uploads import (
 )
 from ...types.usage_query_response import UsageQueryResponse
 from ...types.download_url_response import DownloadURLResponse
+from ...types.measurement_request_param import MeasurementRequestParam
 from ...types.submit_measurements_response import SubmitMeasurementsResponse
 
 __all__ = ["UsageResource", "AsyncUsageResource"]
@@ -205,7 +206,7 @@ class UsageResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        measurements: Iterable[usage_submit_params.Measurement],
+        measurements: Iterable[MeasurementRequestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -447,7 +448,7 @@ class AsyncUsageResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        measurements: Iterable[usage_submit_params.Measurement],
+        measurements: Iterable[MeasurementRequestParam],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
