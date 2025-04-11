@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.2-alpha (2025-04-11)
+
+Full Changelog: [v0.3.1-alpha...v0.3.2-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.1-alpha...v0.3.2-alpha)
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([2bb3bbf](https://github.com/m3ter-com/m3ter-sdk-python/commit/2bb3bbfe32a81a89be48ce21930affcbe0971889))
+* **perf:** skip traversing types for NotGiven values ([a8039be](https://github.com/m3ter-com/m3ter-sdk-python/commit/a8039bef39e4d27bc7b7a4914add0a75bc36593c))
+
 ## 0.3.1-alpha (2025-04-10)
 
 Full Changelog: [v0.3.0-alpha...v0.3.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.0-alpha...v0.3.1-alpha)
