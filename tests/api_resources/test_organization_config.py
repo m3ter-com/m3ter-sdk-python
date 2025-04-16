@@ -19,16 +19,12 @@ class TestOrganizationConfig:
 
     @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
-        organization_config = client.organization_config.retrieve(
-            org_id="orgId",
-        )
+        organization_config = client.organization_config.retrieve()
         assert_matches_type(OrganizationConfigResponse, organization_config, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
-        response = client.organization_config.with_raw_response.retrieve(
-            org_id="orgId",
-        )
+        response = client.organization_config.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -37,9 +33,7 @@ class TestOrganizationConfig:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
-        with client.organization_config.with_streaming_response.retrieve(
-            org_id="orgId",
-        ) as response:
+        with client.organization_config.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -49,16 +43,8 @@ class TestOrganizationConfig:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.organization_config.with_raw_response.retrieve(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_update(self, client: M3ter) -> None:
         organization_config = client.organization_config.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -72,7 +58,6 @@ class TestOrganizationConfig:
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         organization_config = client.organization_config.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -108,7 +93,6 @@ class TestOrganizationConfig:
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.organization_config.with_raw_response.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -126,7 +110,6 @@ class TestOrganizationConfig:
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.organization_config.with_streaming_response.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -143,36 +126,18 @@ class TestOrganizationConfig:
 
         assert cast(Any, response.is_closed) is True
 
-    @parametrize
-    def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.organization_config.with_raw_response.update(
-                org_id="",
-                currency="USD",
-                day_epoch="2022-01-01",
-                days_before_bill_due=1,
-                month_epoch="2022-01-01",
-                timezone="UTC",
-                week_epoch="2022-01-04",
-                year_epoch="2022-01-01",
-            )
-
 
 class TestAsyncOrganizationConfig:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
-        organization_config = await async_client.organization_config.retrieve(
-            org_id="orgId",
-        )
+        organization_config = await async_client.organization_config.retrieve()
         assert_matches_type(OrganizationConfigResponse, organization_config, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.organization_config.with_raw_response.retrieve(
-            org_id="orgId",
-        )
+        response = await async_client.organization_config.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -181,9 +146,7 @@ class TestAsyncOrganizationConfig:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
-        async with async_client.organization_config.with_streaming_response.retrieve(
-            org_id="orgId",
-        ) as response:
+        async with async_client.organization_config.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -193,16 +156,8 @@ class TestAsyncOrganizationConfig:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.organization_config.with_raw_response.retrieve(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         organization_config = await async_client.organization_config.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -216,7 +171,6 @@ class TestAsyncOrganizationConfig:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         organization_config = await async_client.organization_config.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -252,7 +206,6 @@ class TestAsyncOrganizationConfig:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.organization_config.with_raw_response.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -270,7 +223,6 @@ class TestAsyncOrganizationConfig:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.organization_config.with_streaming_response.update(
-            org_id="orgId",
             currency="USD",
             day_epoch="2022-01-01",
             days_before_bill_due=1,
@@ -286,17 +238,3 @@ class TestAsyncOrganizationConfig:
             assert_matches_type(OrganizationConfigResponse, organization_config, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.organization_config.with_raw_response.update(
-                org_id="",
-                currency="USD",
-                day_epoch="2022-01-01",
-                days_before_bill_due=1,
-                month_epoch="2022-01-01",
-                timezone="UTC",
-                week_epoch="2022-01-04",
-                year_epoch="2022-01-01",
-            )

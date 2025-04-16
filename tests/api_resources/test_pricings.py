@@ -22,7 +22,6 @@ class TestPricings:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         pricing = client.pricings.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -37,7 +36,6 @@ class TestPricings:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         pricing = client.pricings.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -79,7 +77,6 @@ class TestPricings:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.pricings.with_raw_response.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -98,7 +95,6 @@ class TestPricings:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.pricings.with_streaming_response.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -117,25 +113,9 @@ class TestPricings:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.pricings.with_raw_response.create(
-                org_id="",
-                pricing_bands=[
-                    {
-                        "fixed_price": 0,
-                        "lower_limit": 0,
-                        "unit_price": 0,
-                    }
-                ],
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
         pricing = client.pricings.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(PricingResponse, pricing, path=["response"])
 
@@ -143,7 +123,6 @@ class TestPricings:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.pricings.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -155,7 +134,6 @@ class TestPricings:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.pricings.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -167,23 +145,15 @@ class TestPricings:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.pricings.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.pricings.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_update(self, client: M3ter) -> None:
         pricing = client.pricings.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -199,7 +169,6 @@ class TestPricings:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         pricing = client.pricings.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -242,7 +211,6 @@ class TestPricings:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.pricings.with_raw_response.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -262,7 +230,6 @@ class TestPricings:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.pricings.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -282,24 +249,9 @@ class TestPricings:
 
     @parametrize
     def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.pricings.with_raw_response.update(
-                id="id",
-                org_id="",
-                pricing_bands=[
-                    {
-                        "fixed_price": 0,
-                        "lower_limit": 0,
-                        "unit_price": 0,
-                    }
-                ],
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.pricings.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 pricing_bands=[
                     {
                         "fixed_price": 0,
@@ -312,15 +264,12 @@ class TestPricings:
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        pricing = client.pricings.list(
-            org_id="orgId",
-        )
+        pricing = client.pricings.list()
         assert_matches_type(SyncCursor[PricingResponse], pricing, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         pricing = client.pricings.list(
-            org_id="orgId",
             date="date",
             ids=["string"],
             next_token="nextToken",
@@ -332,9 +281,7 @@ class TestPricings:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.pricings.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.pricings.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -343,9 +290,7 @@ class TestPricings:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.pricings.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.pricings.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -355,17 +300,9 @@ class TestPricings:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.pricings.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_delete(self, client: M3ter) -> None:
         pricing = client.pricings.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(PricingResponse, pricing, path=["response"])
 
@@ -373,7 +310,6 @@ class TestPricings:
     def test_raw_response_delete(self, client: M3ter) -> None:
         response = client.pricings.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -385,7 +321,6 @@ class TestPricings:
     def test_streaming_response_delete(self, client: M3ter) -> None:
         with client.pricings.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -397,16 +332,9 @@ class TestPricings:
 
     @parametrize
     def test_path_params_delete(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.pricings.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.pricings.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )
 
 
@@ -416,7 +344,6 @@ class TestAsyncPricings:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -431,7 +358,6 @@ class TestAsyncPricings:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -473,7 +399,6 @@ class TestAsyncPricings:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.pricings.with_raw_response.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -492,7 +417,6 @@ class TestAsyncPricings:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.pricings.with_streaming_response.create(
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -511,25 +435,9 @@ class TestAsyncPricings:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.pricings.with_raw_response.create(
-                org_id="",
-                pricing_bands=[
-                    {
-                        "fixed_price": 0,
-                        "lower_limit": 0,
-                        "unit_price": 0,
-                    }
-                ],
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(PricingResponse, pricing, path=["response"])
 
@@ -537,7 +445,6 @@ class TestAsyncPricings:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.pricings.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -549,7 +456,6 @@ class TestAsyncPricings:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.pricings.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -561,23 +467,15 @@ class TestAsyncPricings:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.pricings.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.pricings.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -593,7 +491,6 @@ class TestAsyncPricings:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -636,7 +533,6 @@ class TestAsyncPricings:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.pricings.with_raw_response.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -656,7 +552,6 @@ class TestAsyncPricings:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.pricings.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             pricing_bands=[
                 {
                     "fixed_price": 0,
@@ -676,24 +571,9 @@ class TestAsyncPricings:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.pricings.with_raw_response.update(
-                id="id",
-                org_id="",
-                pricing_bands=[
-                    {
-                        "fixed_price": 0,
-                        "lower_limit": 0,
-                        "unit_price": 0,
-                    }
-                ],
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.pricings.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 pricing_bands=[
                     {
                         "fixed_price": 0,
@@ -706,15 +586,12 @@ class TestAsyncPricings:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        pricing = await async_client.pricings.list(
-            org_id="orgId",
-        )
+        pricing = await async_client.pricings.list()
         assert_matches_type(AsyncCursor[PricingResponse], pricing, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.list(
-            org_id="orgId",
             date="date",
             ids=["string"],
             next_token="nextToken",
@@ -726,9 +603,7 @@ class TestAsyncPricings:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.pricings.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.pricings.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -737,9 +612,7 @@ class TestAsyncPricings:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.pricings.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.pricings.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -749,17 +622,9 @@ class TestAsyncPricings:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.pricings.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_delete(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(PricingResponse, pricing, path=["response"])
 
@@ -767,7 +632,6 @@ class TestAsyncPricings:
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
         response = await async_client.pricings.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -779,7 +643,6 @@ class TestAsyncPricings:
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
         async with async_client.pricings.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -791,14 +654,7 @@ class TestAsyncPricings:
 
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.pricings.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.pricings.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )

@@ -22,7 +22,6 @@ class TestLineItems:
     def test_method_retrieve(self, client: M3ter) -> None:
         line_item = client.bills.line_items.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
         assert_matches_type(LineItemResponse, line_item, path=["response"])
@@ -31,7 +30,6 @@ class TestLineItems:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.bills.line_items.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
 
@@ -44,7 +42,6 @@ class TestLineItems:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.bills.line_items.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         ) as response:
             assert not response.is_closed
@@ -57,24 +54,15 @@ class TestLineItems:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.line_items.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-                bill_id="billId",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.line_items.with_raw_response.retrieve(
                 id="id",
-                org_id="orgId",
                 bill_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.bills.line_items.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
             )
 
@@ -82,7 +70,6 @@ class TestLineItems:
     def test_method_list(self, client: M3ter) -> None:
         line_item = client.bills.line_items.list(
             bill_id="billId",
-            org_id="orgId",
         )
         assert_matches_type(SyncCursor[LineItemResponse], line_item, path=["response"])
 
@@ -90,7 +77,6 @@ class TestLineItems:
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         line_item = client.bills.line_items.list(
             bill_id="billId",
-            org_id="orgId",
             next_token="nextToken",
             page_size=1,
         )
@@ -100,7 +86,6 @@ class TestLineItems:
     def test_raw_response_list(self, client: M3ter) -> None:
         response = client.bills.line_items.with_raw_response.list(
             bill_id="billId",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -112,7 +97,6 @@ class TestLineItems:
     def test_streaming_response_list(self, client: M3ter) -> None:
         with client.bills.line_items.with_streaming_response.list(
             bill_id="billId",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,16 +108,9 @@ class TestLineItems:
 
     @parametrize
     def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.line_items.with_raw_response.list(
-                bill_id="billId",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.line_items.with_raw_response.list(
                 bill_id="",
-                org_id="orgId",
             )
 
 
@@ -144,7 +121,6 @@ class TestAsyncLineItems:
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         line_item = await async_client.bills.line_items.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
         assert_matches_type(LineItemResponse, line_item, path=["response"])
@@ -153,7 +129,6 @@ class TestAsyncLineItems:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.line_items.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
 
@@ -166,7 +141,6 @@ class TestAsyncLineItems:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.line_items.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         ) as response:
             assert not response.is_closed
@@ -179,24 +153,15 @@ class TestAsyncLineItems:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.line_items.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-                bill_id="billId",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.line_items.with_raw_response.retrieve(
                 id="id",
-                org_id="orgId",
                 bill_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.bills.line_items.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
             )
 
@@ -204,7 +169,6 @@ class TestAsyncLineItems:
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
         line_item = await async_client.bills.line_items.list(
             bill_id="billId",
-            org_id="orgId",
         )
         assert_matches_type(AsyncCursor[LineItemResponse], line_item, path=["response"])
 
@@ -212,7 +176,6 @@ class TestAsyncLineItems:
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         line_item = await async_client.bills.line_items.list(
             bill_id="billId",
-            org_id="orgId",
             next_token="nextToken",
             page_size=1,
         )
@@ -222,7 +185,6 @@ class TestAsyncLineItems:
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.line_items.with_raw_response.list(
             bill_id="billId",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -234,7 +196,6 @@ class TestAsyncLineItems:
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.line_items.with_streaming_response.list(
             bill_id="billId",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -246,14 +207,7 @@ class TestAsyncLineItems:
 
     @parametrize
     async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.line_items.with_raw_response.list(
-                bill_id="billId",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.line_items.with_raw_response.list(
                 bill_id="",
-                org_id="orgId",
             )
