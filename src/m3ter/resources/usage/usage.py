@@ -270,8 +270,13 @@ class UsageResource(SyncAPIResource):
             org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+
+        # This endpoint exists on a different domain: ingest.m3ter.com in production
+        base_url = str(self._client.base_url)
+        ingest_url = base_url.replace("api.", "ingest.")
+
         return self._post(
-            f"/organizations/{org_id}/measurements",
+            f"{ingest_url}/organizations/{org_id}/measurements",
             body=maybe_transform({"measurements": measurements}, usage_submit_params.UsageSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -512,8 +517,13 @@ class AsyncUsageResource(AsyncAPIResource):
             org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+
+        # This endpoint exists on a different domain: ingest.m3ter.com in production
+        base_url = str(self._client.base_url)
+        ingest_url = base_url.replace("api.", "ingest.")
+
         return await self._post(
-            f"/organizations/{org_id}/measurements",
+            f"{ingest_url}/organizations/{org_id}/measurements",
             body=await async_maybe_transform({"measurements": measurements}, usage_submit_params.UsageSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
