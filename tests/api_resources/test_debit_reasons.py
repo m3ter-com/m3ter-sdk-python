@@ -23,7 +23,6 @@ class TestDebitReasons:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.create(
-            org_id="orgId",
             name="x",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
@@ -31,7 +30,6 @@ class TestDebitReasons:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.create(
-            org_id="orgId",
             name="x",
             archived=True,
             code="code",
@@ -42,7 +40,6 @@ class TestDebitReasons:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.debit_reasons.with_raw_response.create(
-            org_id="orgId",
             name="x",
         )
 
@@ -54,7 +51,6 @@ class TestDebitReasons:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.debit_reasons.with_streaming_response.create(
-            org_id="orgId",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -66,18 +62,9 @@ class TestDebitReasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.debit_reasons.with_raw_response.create(
-                org_id="",
-                name="x",
-            )
-
-    @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
 
@@ -85,7 +72,6 @@ class TestDebitReasons:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.debit_reasons.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -97,7 +83,6 @@ class TestDebitReasons:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.debit_reasons.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -109,23 +94,15 @@ class TestDebitReasons:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.debit_reasons.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.debit_reasons.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_update(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.update(
             id="id",
-            org_id="orgId",
             name="x",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
@@ -134,7 +111,6 @@ class TestDebitReasons:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.update(
             id="id",
-            org_id="orgId",
             name="x",
             archived=True,
             code="code",
@@ -146,7 +122,6 @@ class TestDebitReasons:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.debit_reasons.with_raw_response.update(
             id="id",
-            org_id="orgId",
             name="x",
         )
 
@@ -159,7 +134,6 @@ class TestDebitReasons:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.debit_reasons.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -172,31 +146,20 @@ class TestDebitReasons:
 
     @parametrize
     def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.debit_reasons.with_raw_response.update(
-                id="id",
-                org_id="",
-                name="x",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.debit_reasons.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 name="x",
             )
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        debit_reason = client.debit_reasons.list(
-            org_id="orgId",
-        )
+        debit_reason = client.debit_reasons.list()
         assert_matches_type(SyncCursor[DebitReasonResponse], debit_reason, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.list(
-            org_id="orgId",
             archived=True,
             codes=["string"],
             ids=["string"],
@@ -207,9 +170,7 @@ class TestDebitReasons:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.debit_reasons.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.debit_reasons.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -218,9 +179,7 @@ class TestDebitReasons:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.debit_reasons.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.debit_reasons.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -230,17 +189,9 @@ class TestDebitReasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.debit_reasons.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_delete(self, client: M3ter) -> None:
         debit_reason = client.debit_reasons.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
 
@@ -248,7 +199,6 @@ class TestDebitReasons:
     def test_raw_response_delete(self, client: M3ter) -> None:
         response = client.debit_reasons.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -260,7 +210,6 @@ class TestDebitReasons:
     def test_streaming_response_delete(self, client: M3ter) -> None:
         with client.debit_reasons.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -272,16 +221,9 @@ class TestDebitReasons:
 
     @parametrize
     def test_path_params_delete(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.debit_reasons.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.debit_reasons.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )
 
 
@@ -291,7 +233,6 @@ class TestAsyncDebitReasons:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.create(
-            org_id="orgId",
             name="x",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
@@ -299,7 +240,6 @@ class TestAsyncDebitReasons:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.create(
-            org_id="orgId",
             name="x",
             archived=True,
             code="code",
@@ -310,7 +250,6 @@ class TestAsyncDebitReasons:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.debit_reasons.with_raw_response.create(
-            org_id="orgId",
             name="x",
         )
 
@@ -322,7 +261,6 @@ class TestAsyncDebitReasons:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.debit_reasons.with_streaming_response.create(
-            org_id="orgId",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -334,18 +272,9 @@ class TestAsyncDebitReasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.debit_reasons.with_raw_response.create(
-                org_id="",
-                name="x",
-            )
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
 
@@ -353,7 +282,6 @@ class TestAsyncDebitReasons:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.debit_reasons.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -365,7 +293,6 @@ class TestAsyncDebitReasons:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.debit_reasons.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -377,23 +304,15 @@ class TestAsyncDebitReasons:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.debit_reasons.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.debit_reasons.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.update(
             id="id",
-            org_id="orgId",
             name="x",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
@@ -402,7 +321,6 @@ class TestAsyncDebitReasons:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.update(
             id="id",
-            org_id="orgId",
             name="x",
             archived=True,
             code="code",
@@ -414,7 +332,6 @@ class TestAsyncDebitReasons:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.debit_reasons.with_raw_response.update(
             id="id",
-            org_id="orgId",
             name="x",
         )
 
@@ -427,7 +344,6 @@ class TestAsyncDebitReasons:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.debit_reasons.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             name="x",
         ) as response:
             assert not response.is_closed
@@ -440,31 +356,20 @@ class TestAsyncDebitReasons:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.debit_reasons.with_raw_response.update(
-                id="id",
-                org_id="",
-                name="x",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.debit_reasons.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 name="x",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        debit_reason = await async_client.debit_reasons.list(
-            org_id="orgId",
-        )
+        debit_reason = await async_client.debit_reasons.list()
         assert_matches_type(AsyncCursor[DebitReasonResponse], debit_reason, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.list(
-            org_id="orgId",
             archived=True,
             codes=["string"],
             ids=["string"],
@@ -475,9 +380,7 @@ class TestAsyncDebitReasons:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.debit_reasons.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.debit_reasons.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -486,9 +389,7 @@ class TestAsyncDebitReasons:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.debit_reasons.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.debit_reasons.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -498,17 +399,9 @@ class TestAsyncDebitReasons:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.debit_reasons.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_delete(self, async_client: AsyncM3ter) -> None:
         debit_reason = await async_client.debit_reasons.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DebitReasonResponse, debit_reason, path=["response"])
 
@@ -516,7 +409,6 @@ class TestAsyncDebitReasons:
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
         response = await async_client.debit_reasons.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -528,7 +420,6 @@ class TestAsyncDebitReasons:
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
         async with async_client.debit_reasons.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -540,14 +431,7 @@ class TestAsyncDebitReasons:
 
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.debit_reasons.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.debit_reasons.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )

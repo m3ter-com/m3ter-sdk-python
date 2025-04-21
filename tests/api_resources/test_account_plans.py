@@ -24,7 +24,6 @@ class TestAccountPlans:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         account_plan = client.account_plans.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -33,7 +32,6 @@ class TestAccountPlans:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         account_plan = client.account_plans.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
@@ -51,7 +49,6 @@ class TestAccountPlans:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.account_plans.with_raw_response.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -64,7 +61,6 @@ class TestAccountPlans:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.account_plans.with_streaming_response.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -77,19 +73,9 @@ class TestAccountPlans:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.account_plans.with_raw_response.create(
-                org_id="",
-                account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
         account_plan = client.account_plans.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(AccountPlanResponse, account_plan, path=["response"])
 
@@ -97,7 +83,6 @@ class TestAccountPlans:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.account_plans.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -109,7 +94,6 @@ class TestAccountPlans:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.account_plans.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -121,23 +105,15 @@ class TestAccountPlans:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.account_plans.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.account_plans.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_update(self, client: M3ter) -> None:
         account_plan = client.account_plans.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -147,7 +123,6 @@ class TestAccountPlans:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         account_plan = client.account_plans.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
@@ -166,7 +141,6 @@ class TestAccountPlans:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.account_plans.with_raw_response.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -180,7 +154,6 @@ class TestAccountPlans:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.account_plans.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -194,33 +167,21 @@ class TestAccountPlans:
 
     @parametrize
     def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.account_plans.with_raw_response.update(
-                id="id",
-                org_id="",
-                account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.account_plans.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             )
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        account_plan = client.account_plans.list(
-            org_id="orgId",
-        )
+        account_plan = client.account_plans.list()
         assert_matches_type(SyncCursor[AccountPlanResponse], account_plan, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         account_plan = client.account_plans.list(
-            org_id="orgId",
             account="account",
             contract="contract",
             date="date",
@@ -235,9 +196,7 @@ class TestAccountPlans:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.account_plans.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.account_plans.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -246,9 +205,7 @@ class TestAccountPlans:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.account_plans.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.account_plans.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -258,17 +215,9 @@ class TestAccountPlans:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.account_plans.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_delete(self, client: M3ter) -> None:
         account_plan = client.account_plans.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(AccountPlanResponse, account_plan, path=["response"])
 
@@ -276,7 +225,6 @@ class TestAccountPlans:
     def test_raw_response_delete(self, client: M3ter) -> None:
         response = client.account_plans.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -288,7 +236,6 @@ class TestAccountPlans:
     def test_streaming_response_delete(self, client: M3ter) -> None:
         with client.account_plans.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -300,16 +247,9 @@ class TestAccountPlans:
 
     @parametrize
     def test_path_params_delete(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.account_plans.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.account_plans.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )
 
 
@@ -319,7 +259,6 @@ class TestAsyncAccountPlans:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -328,7 +267,6 @@ class TestAsyncAccountPlans:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
@@ -346,7 +284,6 @@ class TestAsyncAccountPlans:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.account_plans.with_raw_response.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -359,7 +296,6 @@ class TestAsyncAccountPlans:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.account_plans.with_streaming_response.create(
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -372,19 +308,9 @@ class TestAsyncAccountPlans:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.account_plans.with_raw_response.create(
-                org_id="",
-                account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(AccountPlanResponse, account_plan, path=["response"])
 
@@ -392,7 +318,6 @@ class TestAsyncAccountPlans:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.account_plans.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -404,7 +329,6 @@ class TestAsyncAccountPlans:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.account_plans.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -416,23 +340,15 @@ class TestAsyncAccountPlans:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.account_plans.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.account_plans.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -442,7 +358,6 @@ class TestAsyncAccountPlans:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
@@ -461,7 +376,6 @@ class TestAsyncAccountPlans:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.account_plans.with_raw_response.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -475,7 +389,6 @@ class TestAsyncAccountPlans:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.account_plans.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -489,33 +402,21 @@ class TestAsyncAccountPlans:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.account_plans.with_raw_response.update(
-                id="id",
-                org_id="",
-                account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.account_plans.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        account_plan = await async_client.account_plans.list(
-            org_id="orgId",
-        )
+        account_plan = await async_client.account_plans.list()
         assert_matches_type(AsyncCursor[AccountPlanResponse], account_plan, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.list(
-            org_id="orgId",
             account="account",
             contract="contract",
             date="date",
@@ -530,9 +431,7 @@ class TestAsyncAccountPlans:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.account_plans.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.account_plans.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -541,9 +440,7 @@ class TestAsyncAccountPlans:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.account_plans.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.account_plans.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -553,17 +450,9 @@ class TestAsyncAccountPlans:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.account_plans.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_delete(self, async_client: AsyncM3ter) -> None:
         account_plan = await async_client.account_plans.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(AccountPlanResponse, account_plan, path=["response"])
 
@@ -571,7 +460,6 @@ class TestAsyncAccountPlans:
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
         response = await async_client.account_plans.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -583,7 +471,6 @@ class TestAsyncAccountPlans:
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
         async with async_client.account_plans.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -595,14 +482,7 @@ class TestAsyncAccountPlans:
 
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.account_plans.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.account_plans.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )

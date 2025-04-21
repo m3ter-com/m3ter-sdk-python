@@ -21,7 +21,6 @@ class TestCounters:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         counter = client.counters.create(
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -30,7 +29,6 @@ class TestCounters:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         counter = client.counters.create(
-            org_id="orgId",
             name="x",
             unit="x",
             code="JS!?Q0]r] ]$]",
@@ -42,7 +40,6 @@ class TestCounters:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.counters.with_raw_response.create(
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -55,7 +52,6 @@ class TestCounters:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.counters.with_streaming_response.create(
-            org_id="orgId",
             name="x",
             unit="x",
         ) as response:
@@ -68,19 +64,9 @@ class TestCounters:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.counters.with_raw_response.create(
-                org_id="",
-                name="x",
-                unit="x",
-            )
-
-    @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
         counter = client.counters.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(CounterResponse, counter, path=["response"])
 
@@ -88,7 +74,6 @@ class TestCounters:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.counters.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -100,7 +85,6 @@ class TestCounters:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.counters.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -112,23 +96,15 @@ class TestCounters:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.counters.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.counters.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_update(self, client: M3ter) -> None:
         counter = client.counters.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -138,7 +114,6 @@ class TestCounters:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         counter = client.counters.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
             code="JS!?Q0]r] ]$]",
@@ -151,7 +126,6 @@ class TestCounters:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.counters.with_raw_response.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -165,7 +139,6 @@ class TestCounters:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.counters.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
         ) as response:
@@ -179,34 +152,22 @@ class TestCounters:
 
     @parametrize
     def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.counters.with_raw_response.update(
-                id="id",
-                org_id="",
-                name="x",
-                unit="x",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.counters.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 name="x",
                 unit="x",
             )
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        counter = client.counters.list(
-            org_id="orgId",
-        )
+        counter = client.counters.list()
         assert_matches_type(SyncCursor[CounterResponse], counter, path=["response"])
 
     @pytest.mark.skip(reason="array parameter schemas need some work")
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         counter = client.counters.list(
-            org_id="orgId",
             codes=["string"],
             ids=["string"],
             next_token="nextToken",
@@ -217,9 +178,7 @@ class TestCounters:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.counters.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.counters.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -228,9 +187,7 @@ class TestCounters:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.counters.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.counters.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -240,17 +197,9 @@ class TestCounters:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.counters.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_delete(self, client: M3ter) -> None:
         counter = client.counters.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(CounterResponse, counter, path=["response"])
 
@@ -258,7 +207,6 @@ class TestCounters:
     def test_raw_response_delete(self, client: M3ter) -> None:
         response = client.counters.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -270,7 +218,6 @@ class TestCounters:
     def test_streaming_response_delete(self, client: M3ter) -> None:
         with client.counters.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -282,16 +229,9 @@ class TestCounters:
 
     @parametrize
     def test_path_params_delete(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.counters.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.counters.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )
 
 
@@ -301,7 +241,6 @@ class TestAsyncCounters:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.create(
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -310,7 +249,6 @@ class TestAsyncCounters:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.create(
-            org_id="orgId",
             name="x",
             unit="x",
             code="JS!?Q0]r] ]$]",
@@ -322,7 +260,6 @@ class TestAsyncCounters:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.counters.with_raw_response.create(
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -335,7 +272,6 @@ class TestAsyncCounters:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.counters.with_streaming_response.create(
-            org_id="orgId",
             name="x",
             unit="x",
         ) as response:
@@ -348,19 +284,9 @@ class TestAsyncCounters:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.counters.with_raw_response.create(
-                org_id="",
-                name="x",
-                unit="x",
-            )
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(CounterResponse, counter, path=["response"])
 
@@ -368,7 +294,6 @@ class TestAsyncCounters:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.counters.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -380,7 +305,6 @@ class TestAsyncCounters:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.counters.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -392,23 +316,15 @@ class TestAsyncCounters:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.counters.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.counters.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -418,7 +334,6 @@ class TestAsyncCounters:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
             code="JS!?Q0]r] ]$]",
@@ -431,7 +346,6 @@ class TestAsyncCounters:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.counters.with_raw_response.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
         )
@@ -445,7 +359,6 @@ class TestAsyncCounters:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.counters.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             name="x",
             unit="x",
         ) as response:
@@ -459,34 +372,22 @@ class TestAsyncCounters:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.counters.with_raw_response.update(
-                id="id",
-                org_id="",
-                name="x",
-                unit="x",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.counters.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 name="x",
                 unit="x",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        counter = await async_client.counters.list(
-            org_id="orgId",
-        )
+        counter = await async_client.counters.list()
         assert_matches_type(AsyncCursor[CounterResponse], counter, path=["response"])
 
     @pytest.mark.skip(reason="array parameter schemas need some work")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.list(
-            org_id="orgId",
             codes=["string"],
             ids=["string"],
             next_token="nextToken",
@@ -497,9 +398,7 @@ class TestAsyncCounters:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.counters.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.counters.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -508,9 +407,7 @@ class TestAsyncCounters:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.counters.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.counters.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -520,17 +417,9 @@ class TestAsyncCounters:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.counters.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_delete(self, async_client: AsyncM3ter) -> None:
         counter = await async_client.counters.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(CounterResponse, counter, path=["response"])
 
@@ -538,7 +427,6 @@ class TestAsyncCounters:
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
         response = await async_client.counters.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -550,7 +438,6 @@ class TestAsyncCounters:
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
         async with async_client.counters.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -562,14 +449,7 @@ class TestAsyncCounters:
 
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.counters.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.counters.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )

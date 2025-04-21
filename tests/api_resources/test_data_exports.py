@@ -20,7 +20,6 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_overload_1(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
         )
@@ -29,7 +28,6 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_1(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
             version=0,
@@ -39,7 +37,6 @@ class TestDataExports:
     @parametrize
     def test_raw_response_create_adhoc_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
         )
@@ -52,7 +49,6 @@ class TestDataExports:
     @parametrize
     def test_streaming_response_create_adhoc_overload_1(self, client: M3ter) -> None:
         with client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
         ) as response:
@@ -65,18 +61,8 @@ class TestDataExports:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create_adhoc_overload_1(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                operational_data_types=["BILLS"],
-                source_type="USAGE",
-            )
-
-    @parametrize
     def test_method_create_adhoc_overload_2(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
@@ -85,7 +71,6 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_2(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
             account_ids=["string"],
@@ -99,7 +84,6 @@ class TestDataExports:
     @parametrize
     def test_raw_response_create_adhoc_overload_2(self, client: M3ter) -> None:
         response = client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
@@ -112,7 +96,6 @@ class TestDataExports:
     @parametrize
     def test_streaming_response_create_adhoc_overload_2(self, client: M3ter) -> None:
         with client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         ) as response:
@@ -124,15 +107,6 @@ class TestDataExports:
 
         assert cast(Any, response.is_closed) is True
 
-    @parametrize
-    def test_path_params_create_adhoc_overload_2(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                aggregation_frequency="ORIGINAL",
-                source_type="USAGE",
-            )
-
 
 class TestAsyncDataExports:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -140,7 +114,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
         )
@@ -149,7 +122,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
             version=0,
@@ -159,7 +131,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_raw_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
         )
@@ -172,7 +143,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_streaming_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
             source_type="USAGE",
         ) as response:
@@ -185,18 +155,8 @@ class TestAsyncDataExports:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                operational_data_types=["BILLS"],
-                source_type="USAGE",
-            )
-
-    @parametrize
     async def test_method_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
@@ -205,7 +165,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
             account_ids=["string"],
@@ -219,7 +178,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_raw_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
@@ -232,7 +190,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_streaming_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
             aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         ) as response:
@@ -243,12 +200,3 @@ class TestAsyncDataExports:
             assert_matches_type(AdHocResponse, data_export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                aggregation_frequency="ORIGINAL",
-                source_type="USAGE",
-            )

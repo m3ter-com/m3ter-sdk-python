@@ -25,7 +25,6 @@ class TestCreditLineItems:
     def test_method_create(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -40,7 +39,6 @@ class TestCreditLineItems:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -59,7 +57,6 @@ class TestCreditLineItems:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.bills.credit_line_items.with_raw_response.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -78,7 +75,6 @@ class TestCreditLineItems:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.bills.credit_line_items.with_streaming_response.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -97,23 +93,9 @@ class TestCreditLineItems:
 
     @parametrize
     def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.credit_line_items.with_raw_response.create(
-                bill_id="billId",
-                org_id="",
-                amount=1,
-                description="x",
-                product_id="productId",
-                referenced_bill_id="referencedBillId",
-                referenced_line_item_id="referencedLineItemId",
-                service_period_end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                service_period_start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.credit_line_items.with_raw_response.create(
                 bill_id="",
-                org_id="orgId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -127,7 +109,6 @@ class TestCreditLineItems:
     def test_method_retrieve(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
         assert_matches_type(CreditLineItemResponse, credit_line_item, path=["response"])
@@ -136,7 +117,6 @@ class TestCreditLineItems:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.bills.credit_line_items.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
 
@@ -149,7 +129,6 @@ class TestCreditLineItems:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.bills.credit_line_items.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         ) as response:
             assert not response.is_closed
@@ -162,24 +141,15 @@ class TestCreditLineItems:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.credit_line_items.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-                bill_id="billId",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.credit_line_items.with_raw_response.retrieve(
                 id="id",
-                org_id="orgId",
                 bill_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.bills.credit_line_items.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
             )
 
@@ -187,7 +157,6 @@ class TestCreditLineItems:
     def test_method_update(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -203,7 +172,6 @@ class TestCreditLineItems:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -223,7 +191,6 @@ class TestCreditLineItems:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.bills.credit_line_items.with_raw_response.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -243,7 +210,6 @@ class TestCreditLineItems:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.bills.credit_line_items.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -263,24 +229,9 @@ class TestCreditLineItems:
 
     @parametrize
     def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.credit_line_items.with_raw_response.update(
-                id="id",
-                org_id="",
-                bill_id="billId",
-                amount=1,
-                description="x",
-                product_id="productId",
-                referenced_bill_id="referencedBillId",
-                referenced_line_item_id="referencedLineItemId",
-                service_period_end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                service_period_start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.credit_line_items.with_raw_response.update(
                 id="id",
-                org_id="orgId",
                 bill_id="",
                 amount=1,
                 description="x",
@@ -294,7 +245,6 @@ class TestCreditLineItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.bills.credit_line_items.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
                 amount=1,
                 description="x",
@@ -309,7 +259,6 @@ class TestCreditLineItems:
     def test_method_list(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.list(
             bill_id="billId",
-            org_id="orgId",
         )
         assert_matches_type(SyncCursor[CreditLineItemResponse], credit_line_item, path=["response"])
 
@@ -317,7 +266,6 @@ class TestCreditLineItems:
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.list(
             bill_id="billId",
-            org_id="orgId",
             next_token="nextToken",
             page_size=1,
         )
@@ -327,7 +275,6 @@ class TestCreditLineItems:
     def test_raw_response_list(self, client: M3ter) -> None:
         response = client.bills.credit_line_items.with_raw_response.list(
             bill_id="billId",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -339,7 +286,6 @@ class TestCreditLineItems:
     def test_streaming_response_list(self, client: M3ter) -> None:
         with client.bills.credit_line_items.with_streaming_response.list(
             bill_id="billId",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -351,23 +297,15 @@ class TestCreditLineItems:
 
     @parametrize
     def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.credit_line_items.with_raw_response.list(
-                bill_id="billId",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.credit_line_items.with_raw_response.list(
                 bill_id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_delete(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.delete(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
         assert_matches_type(CreditLineItemResponse, credit_line_item, path=["response"])
@@ -376,7 +314,6 @@ class TestCreditLineItems:
     def test_raw_response_delete(self, client: M3ter) -> None:
         response = client.bills.credit_line_items.with_raw_response.delete(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
 
@@ -389,7 +326,6 @@ class TestCreditLineItems:
     def test_streaming_response_delete(self, client: M3ter) -> None:
         with client.bills.credit_line_items.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         ) as response:
             assert not response.is_closed
@@ -402,24 +338,15 @@ class TestCreditLineItems:
 
     @parametrize
     def test_path_params_delete(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bills.credit_line_items.with_raw_response.delete(
-                id="id",
-                org_id="",
-                bill_id="billId",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.credit_line_items.with_raw_response.delete(
                 id="id",
-                org_id="orgId",
                 bill_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.bills.credit_line_items.with_raw_response.delete(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
             )
 
@@ -431,7 +358,6 @@ class TestAsyncCreditLineItems:
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -446,7 +372,6 @@ class TestAsyncCreditLineItems:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -465,7 +390,6 @@ class TestAsyncCreditLineItems:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.credit_line_items.with_raw_response.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -484,7 +408,6 @@ class TestAsyncCreditLineItems:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.credit_line_items.with_streaming_response.create(
             bill_id="billId",
-            org_id="orgId",
             amount=1,
             description="x",
             product_id="productId",
@@ -503,23 +426,9 @@ class TestAsyncCreditLineItems:
 
     @parametrize
     async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.credit_line_items.with_raw_response.create(
-                bill_id="billId",
-                org_id="",
-                amount=1,
-                description="x",
-                product_id="productId",
-                referenced_bill_id="referencedBillId",
-                referenced_line_item_id="referencedLineItemId",
-                service_period_end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                service_period_start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.create(
                 bill_id="",
-                org_id="orgId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -533,7 +442,6 @@ class TestAsyncCreditLineItems:
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
         assert_matches_type(CreditLineItemResponse, credit_line_item, path=["response"])
@@ -542,7 +450,6 @@ class TestAsyncCreditLineItems:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.credit_line_items.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
 
@@ -555,7 +462,6 @@ class TestAsyncCreditLineItems:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.credit_line_items.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         ) as response:
             assert not response.is_closed
@@ -568,24 +474,15 @@ class TestAsyncCreditLineItems:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.credit_line_items.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-                bill_id="billId",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.retrieve(
                 id="id",
-                org_id="orgId",
                 bill_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
             )
 
@@ -593,7 +490,6 @@ class TestAsyncCreditLineItems:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -609,7 +505,6 @@ class TestAsyncCreditLineItems:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -629,7 +524,6 @@ class TestAsyncCreditLineItems:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.credit_line_items.with_raw_response.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -649,7 +543,6 @@ class TestAsyncCreditLineItems:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.credit_line_items.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             bill_id="billId",
             amount=1,
             description="x",
@@ -669,24 +562,9 @@ class TestAsyncCreditLineItems:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.credit_line_items.with_raw_response.update(
-                id="id",
-                org_id="",
-                bill_id="billId",
-                amount=1,
-                description="x",
-                product_id="productId",
-                referenced_bill_id="referencedBillId",
-                referenced_line_item_id="referencedLineItemId",
-                service_period_end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                service_period_start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.update(
                 id="id",
-                org_id="orgId",
                 bill_id="",
                 amount=1,
                 description="x",
@@ -700,7 +578,6 @@ class TestAsyncCreditLineItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
                 amount=1,
                 description="x",
@@ -715,7 +592,6 @@ class TestAsyncCreditLineItems:
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.list(
             bill_id="billId",
-            org_id="orgId",
         )
         assert_matches_type(AsyncCursor[CreditLineItemResponse], credit_line_item, path=["response"])
 
@@ -723,7 +599,6 @@ class TestAsyncCreditLineItems:
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.list(
             bill_id="billId",
-            org_id="orgId",
             next_token="nextToken",
             page_size=1,
         )
@@ -733,7 +608,6 @@ class TestAsyncCreditLineItems:
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.credit_line_items.with_raw_response.list(
             bill_id="billId",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -745,7 +619,6 @@ class TestAsyncCreditLineItems:
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.credit_line_items.with_streaming_response.list(
             bill_id="billId",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -757,23 +630,15 @@ class TestAsyncCreditLineItems:
 
     @parametrize
     async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.credit_line_items.with_raw_response.list(
-                bill_id="billId",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.list(
                 bill_id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.delete(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
         assert_matches_type(CreditLineItemResponse, credit_line_item, path=["response"])
@@ -782,7 +647,6 @@ class TestAsyncCreditLineItems:
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.credit_line_items.with_raw_response.delete(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         )
 
@@ -795,7 +659,6 @@ class TestAsyncCreditLineItems:
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.credit_line_items.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
             bill_id="billId",
         ) as response:
             assert not response.is_closed
@@ -808,23 +671,14 @@ class TestAsyncCreditLineItems:
 
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bills.credit_line_items.with_raw_response.delete(
-                id="id",
-                org_id="",
-                bill_id="billId",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.delete(
                 id="id",
-                org_id="orgId",
                 bill_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.delete(
                 id="",
-                org_id="orgId",
                 bill_id="billId",
             )

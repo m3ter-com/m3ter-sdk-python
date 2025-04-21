@@ -24,24 +24,19 @@ class TestUsage:
 
     @parametrize
     def test_method_get_failed_ingest_download_url(self, client: M3ter) -> None:
-        usage = client.usage.get_failed_ingest_download_url(
-            org_id="orgId",
-        )
+        usage = client.usage.get_failed_ingest_download_url()
         assert_matches_type(DownloadURLResponse, usage, path=["response"])
 
     @parametrize
     def test_method_get_failed_ingest_download_url_with_all_params(self, client: M3ter) -> None:
         usage = client.usage.get_failed_ingest_download_url(
-            org_id="orgId",
             file="file",
         )
         assert_matches_type(DownloadURLResponse, usage, path=["response"])
 
     @parametrize
     def test_raw_response_get_failed_ingest_download_url(self, client: M3ter) -> None:
-        response = client.usage.with_raw_response.get_failed_ingest_download_url(
-            org_id="orgId",
-        )
+        response = client.usage.with_raw_response.get_failed_ingest_download_url()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -50,9 +45,7 @@ class TestUsage:
 
     @parametrize
     def test_streaming_response_get_failed_ingest_download_url(self, client: M3ter) -> None:
-        with client.usage.with_streaming_response.get_failed_ingest_download_url(
-            org_id="orgId",
-        ) as response:
+        with client.usage.with_streaming_response.get_failed_ingest_download_url() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -62,16 +55,8 @@ class TestUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_get_failed_ingest_download_url(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.usage.with_raw_response.get_failed_ingest_download_url(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_query(self, client: M3ter) -> None:
         usage = client.usage.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -80,7 +65,6 @@ class TestUsage:
     @parametrize
     def test_method_query_with_all_params(self, client: M3ter) -> None:
         usage = client.usage.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             account_ids=["string"],
@@ -108,7 +92,6 @@ class TestUsage:
     @parametrize
     def test_raw_response_query(self, client: M3ter) -> None:
         response = client.usage.with_raw_response.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -121,7 +104,6 @@ class TestUsage:
     @parametrize
     def test_streaming_response_query(self, client: M3ter) -> None:
         with client.usage.with_streaming_response.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -134,18 +116,8 @@ class TestUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_query(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.usage.with_raw_response.query(
-                org_id="",
-                end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @parametrize
     def test_method_submit(self, client: M3ter) -> None:
         usage = client.usage.submit(
-            org_id="orgId",
             measurements=[
                 {
                     "account": "Acme Corp",
@@ -180,7 +152,6 @@ class TestUsage:
     @parametrize
     def test_raw_response_submit(self, client: M3ter) -> None:
         response = client.usage.with_raw_response.submit(
-            org_id="orgId",
             measurements=[
                 {
                     "account": "Acme Corp",
@@ -198,7 +169,6 @@ class TestUsage:
     @parametrize
     def test_streaming_response_submit(self, client: M3ter) -> None:
         with client.usage.with_streaming_response.submit(
-            org_id="orgId",
             measurements=[
                 {
                     "account": "Acme Corp",
@@ -215,44 +185,25 @@ class TestUsage:
 
         assert cast(Any, response.is_closed) is True
 
-    @parametrize
-    def test_path_params_submit(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.usage.with_raw_response.submit(
-                org_id="",
-                measurements=[
-                    {
-                        "account": "Acme Corp",
-                        "meter": "string",
-                        "ts": parse_datetime("2022-08-24T14:15:22Z"),
-                    }
-                ],
-            )
-
 
 class TestAsyncUsage:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_get_failed_ingest_download_url(self, async_client: AsyncM3ter) -> None:
-        usage = await async_client.usage.get_failed_ingest_download_url(
-            org_id="orgId",
-        )
+        usage = await async_client.usage.get_failed_ingest_download_url()
         assert_matches_type(DownloadURLResponse, usage, path=["response"])
 
     @parametrize
     async def test_method_get_failed_ingest_download_url_with_all_params(self, async_client: AsyncM3ter) -> None:
         usage = await async_client.usage.get_failed_ingest_download_url(
-            org_id="orgId",
             file="file",
         )
         assert_matches_type(DownloadURLResponse, usage, path=["response"])
 
     @parametrize
     async def test_raw_response_get_failed_ingest_download_url(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.usage.with_raw_response.get_failed_ingest_download_url(
-            org_id="orgId",
-        )
+        response = await async_client.usage.with_raw_response.get_failed_ingest_download_url()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -261,9 +212,7 @@ class TestAsyncUsage:
 
     @parametrize
     async def test_streaming_response_get_failed_ingest_download_url(self, async_client: AsyncM3ter) -> None:
-        async with async_client.usage.with_streaming_response.get_failed_ingest_download_url(
-            org_id="orgId",
-        ) as response:
+        async with async_client.usage.with_streaming_response.get_failed_ingest_download_url() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -273,16 +222,8 @@ class TestAsyncUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_get_failed_ingest_download_url(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.usage.with_raw_response.get_failed_ingest_download_url(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_query(self, async_client: AsyncM3ter) -> None:
         usage = await async_client.usage.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -291,7 +232,6 @@ class TestAsyncUsage:
     @parametrize
     async def test_method_query_with_all_params(self, async_client: AsyncM3ter) -> None:
         usage = await async_client.usage.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             account_ids=["string"],
@@ -319,7 +259,6 @@ class TestAsyncUsage:
     @parametrize
     async def test_raw_response_query(self, async_client: AsyncM3ter) -> None:
         response = await async_client.usage.with_raw_response.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -332,7 +271,6 @@ class TestAsyncUsage:
     @parametrize
     async def test_streaming_response_query(self, async_client: AsyncM3ter) -> None:
         async with async_client.usage.with_streaming_response.query(
-            org_id="orgId",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
@@ -345,18 +283,8 @@ class TestAsyncUsage:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_query(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.usage.with_raw_response.query(
-                org_id="",
-                end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-                start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            )
-
-    @parametrize
     async def test_method_submit(self, async_client: AsyncM3ter) -> None:
         usage = await async_client.usage.submit(
-            org_id="orgId",
             measurements=[
                 {
                     "account": "Acme Corp",
@@ -391,7 +319,6 @@ class TestAsyncUsage:
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncM3ter) -> None:
         response = await async_client.usage.with_raw_response.submit(
-            org_id="orgId",
             measurements=[
                 {
                     "account": "Acme Corp",
@@ -409,7 +336,6 @@ class TestAsyncUsage:
     @parametrize
     async def test_streaming_response_submit(self, async_client: AsyncM3ter) -> None:
         async with async_client.usage.with_streaming_response.submit(
-            org_id="orgId",
             measurements=[
                 {
                     "account": "Acme Corp",
@@ -425,17 +351,3 @@ class TestAsyncUsage:
             assert_matches_type(SubmitMeasurementsResponse, usage, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_submit(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.usage.with_raw_response.submit(
-                org_id="",
-                measurements=[
-                    {
-                        "account": "Acme Corp",
-                        "meter": "string",
-                        "ts": parse_datetime("2022-08-24T14:15:22Z"),
-                    }
-                ],
-            )

@@ -27,7 +27,6 @@ class TestDestinations:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -38,7 +37,6 @@ class TestDestinations:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -52,7 +50,6 @@ class TestDestinations:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -67,7 +64,6 @@ class TestDestinations:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -82,21 +78,9 @@ class TestDestinations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.destinations.with_raw_response.create(
-                org_id="",
-                bucket_name="xxx",
-                code="JS!?Q0]r] ]$]",
-                iam_role_arn="arn:aws:iam::321669910225:role/z",
-                name="x",
-            )
-
-    @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DestinationRetrieveResponse, destination, path=["response"])
 
@@ -104,7 +88,6 @@ class TestDestinations:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -116,7 +99,6 @@ class TestDestinations:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -128,23 +110,15 @@ class TestDestinations:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.destinations.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.data_exports.destinations.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_update(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -156,7 +130,6 @@ class TestDestinations:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -171,7 +144,6 @@ class TestDestinations:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -187,7 +159,6 @@ class TestDestinations:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -203,20 +174,9 @@ class TestDestinations:
 
     @parametrize
     def test_path_params_update(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.destinations.with_raw_response.update(
-                id="id",
-                org_id="",
-                bucket_name="xxx",
-                code="JS!?Q0]r] ]$]",
-                iam_role_arn="arn:aws:iam::321669910225:role/z",
-                name="x",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.data_exports.destinations.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 bucket_name="xxx",
                 code="JS!?Q0]r] ]$]",
                 iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -225,15 +185,12 @@ class TestDestinations:
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        destination = client.data_exports.destinations.list(
-            org_id="orgId",
-        )
+        destination = client.data_exports.destinations.list()
         assert_matches_type(SyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.list(
-            org_id="orgId",
             ids=["string"],
             next_token="nextToken",
             page_size=1,
@@ -242,9 +199,7 @@ class TestDestinations:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.data_exports.destinations.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.data_exports.destinations.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -253,9 +208,7 @@ class TestDestinations:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.data_exports.destinations.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.data_exports.destinations.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -265,17 +218,9 @@ class TestDestinations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.destinations.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_delete(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DestinationDeleteResponse, destination, path=["response"])
 
@@ -283,7 +228,6 @@ class TestDestinations:
     def test_raw_response_delete(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -295,7 +239,6 @@ class TestDestinations:
     def test_streaming_response_delete(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -307,16 +250,9 @@ class TestDestinations:
 
     @parametrize
     def test_path_params_delete(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.destinations.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.data_exports.destinations.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )
 
 
@@ -326,7 +262,6 @@ class TestAsyncDestinations:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -337,7 +272,6 @@ class TestAsyncDestinations:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -351,7 +285,6 @@ class TestAsyncDestinations:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -366,7 +299,6 @@ class TestAsyncDestinations:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.create(
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -381,21 +313,9 @@ class TestAsyncDestinations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.destinations.with_raw_response.create(
-                org_id="",
-                bucket_name="xxx",
-                code="JS!?Q0]r] ]$]",
-                iam_role_arn="arn:aws:iam::321669910225:role/z",
-                name="x",
-            )
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DestinationRetrieveResponse, destination, path=["response"])
 
@@ -403,7 +323,6 @@ class TestAsyncDestinations:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -415,7 +334,6 @@ class TestAsyncDestinations:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -427,23 +345,15 @@ class TestAsyncDestinations:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.destinations.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.data_exports.destinations.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -455,7 +365,6 @@ class TestAsyncDestinations:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -470,7 +379,6 @@ class TestAsyncDestinations:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -486,7 +394,6 @@ class TestAsyncDestinations:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.update(
             id="id",
-            org_id="orgId",
             bucket_name="xxx",
             code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -502,20 +409,9 @@ class TestAsyncDestinations:
 
     @parametrize
     async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.destinations.with_raw_response.update(
-                id="id",
-                org_id="",
-                bucket_name="xxx",
-                code="JS!?Q0]r] ]$]",
-                iam_role_arn="arn:aws:iam::321669910225:role/z",
-                name="x",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.data_exports.destinations.with_raw_response.update(
                 id="",
-                org_id="orgId",
                 bucket_name="xxx",
                 code="JS!?Q0]r] ]$]",
                 iam_role_arn="arn:aws:iam::321669910225:role/z",
@@ -524,15 +420,12 @@ class TestAsyncDestinations:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        destination = await async_client.data_exports.destinations.list(
-            org_id="orgId",
-        )
+        destination = await async_client.data_exports.destinations.list()
         assert_matches_type(AsyncCursor[DataExportDestinationResponse], destination, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.list(
-            org_id="orgId",
             ids=["string"],
             next_token="nextToken",
             page_size=1,
@@ -541,9 +434,7 @@ class TestAsyncDestinations:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.data_exports.destinations.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.data_exports.destinations.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -552,9 +443,7 @@ class TestAsyncDestinations:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.data_exports.destinations.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.data_exports.destinations.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -564,17 +453,9 @@ class TestAsyncDestinations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.destinations.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_delete(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.delete(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(DestinationDeleteResponse, destination, path=["response"])
 
@@ -582,7 +463,6 @@ class TestAsyncDestinations:
     async def test_raw_response_delete(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.delete(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -594,7 +474,6 @@ class TestAsyncDestinations:
     async def test_streaming_response_delete(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.delete(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -606,14 +485,7 @@ class TestAsyncDestinations:
 
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.destinations.with_raw_response.delete(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.data_exports.destinations.with_raw_response.delete(
                 id="",
-                org_id="orgId",
             )
