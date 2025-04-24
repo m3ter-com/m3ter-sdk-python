@@ -70,20 +70,33 @@ class TestSchedules:
     @parametrize
     def test_method_create_overload_2(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params_overload_2(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
             version=0,
         )
@@ -92,9 +105,8 @@ class TestSchedules:
     @parametrize
     def test_raw_response_create_overload_2(self, client: M3ter) -> None:
         response = client.data_exports.schedules.with_raw_response.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
 
         assert response.is_closed is True
@@ -105,9 +117,8 @@ class TestSchedules:
     @parametrize
     def test_streaming_response_create_overload_2(self, client: M3ter) -> None:
         with client.data_exports.schedules.with_streaming_response.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -215,9 +226,8 @@ class TestSchedules:
     def test_method_update_overload_2(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
 
@@ -225,11 +235,25 @@ class TestSchedules:
     def test_method_update_with_all_params_overload_2(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
             version=0,
         )
@@ -239,9 +263,8 @@ class TestSchedules:
     def test_raw_response_update_overload_2(self, client: M3ter) -> None:
         response = client.data_exports.schedules.with_raw_response.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
 
         assert response.is_closed is True
@@ -253,9 +276,8 @@ class TestSchedules:
     def test_streaming_response_update_overload_2(self, client: M3ter) -> None:
         with client.data_exports.schedules.with_streaming_response.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -270,9 +292,8 @@ class TestSchedules:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.data_exports.schedules.with_raw_response.update(
                 id="",
-                aggregation_frequency="ORIGINAL",
                 source_type="USAGE",
-                time_period="TODAY",
+                time_period="LAST_12_HOURS",
             )
 
     @parametrize
@@ -397,20 +418,33 @@ class TestAsyncSchedules:
     @parametrize
     async def test_method_create_overload_2(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
             version=0,
         )
@@ -419,9 +453,8 @@ class TestAsyncSchedules:
     @parametrize
     async def test_raw_response_create_overload_2(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.schedules.with_raw_response.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
 
         assert response.is_closed is True
@@ -432,9 +465,8 @@ class TestAsyncSchedules:
     @parametrize
     async def test_streaming_response_create_overload_2(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.schedules.with_streaming_response.create(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -542,9 +574,8 @@ class TestAsyncSchedules:
     async def test_method_update_overload_2(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
 
@@ -552,11 +583,25 @@ class TestAsyncSchedules:
     async def test_method_update_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
             version=0,
         )
@@ -566,9 +611,8 @@ class TestAsyncSchedules:
     async def test_raw_response_update_overload_2(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.schedules.with_raw_response.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         )
 
         assert response.is_closed is True
@@ -580,9 +624,8 @@ class TestAsyncSchedules:
     async def test_streaming_response_update_overload_2(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.schedules.with_streaming_response.update(
             id="id",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
-            time_period="TODAY",
+            time_period="LAST_12_HOURS",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -597,9 +640,8 @@ class TestAsyncSchedules:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.data_exports.schedules.with_raw_response.update(
                 id="",
-                aggregation_frequency="ORIGINAL",
                 source_type="USAGE",
-                time_period="TODAY",
+                time_period="LAST_12_HOURS",
             )
 
     @parametrize

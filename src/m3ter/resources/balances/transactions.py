@@ -154,6 +154,7 @@ class TransactionsResource(SyncAPIResource):
         org_id: str | None = None,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
+        schedule_id: Optional[str] | NotGiven = NOT_GIVEN,
         transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -201,6 +202,7 @@ class TransactionsResource(SyncAPIResource):
                     {
                         "next_token": next_token,
                         "page_size": page_size,
+                        "schedule_id": schedule_id,
                         "transaction_type_id": transaction_type_id,
                     },
                     transaction_list_params.TransactionListParams,
@@ -376,6 +378,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         org_id: str | None = None,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
+        schedule_id: Optional[str] | NotGiven = NOT_GIVEN,
         transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -423,6 +426,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
                     {
                         "next_token": next_token,
                         "page_size": page_size,
+                        "schedule_id": schedule_id,
                         "transaction_type_id": transaction_type_id,
                     },
                     transaction_list_params.TransactionListParams,

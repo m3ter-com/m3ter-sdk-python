@@ -22,6 +22,9 @@ from .destination_retrieve_response import DestinationRetrieveResponse as Destin
 from .job_get_download_url_response import JobGetDownloadURLResponse as JobGetDownloadURLResponse
 from .data_export_destination_response import DataExportDestinationResponse as DataExportDestinationResponse
 from .usage_data_export_schedule_response import UsageDataExportScheduleResponse as UsageDataExportScheduleResponse
+from .data_export_destination_s3_request_param import (
+    DataExportDestinationS3RequestParam as DataExportDestinationS3RequestParam,
+)
 from .usage_data_export_schedule_request_param import (
     UsageDataExportScheduleRequestParam as UsageDataExportScheduleRequestParam,
 )
@@ -30,4 +33,7 @@ from .operational_data_export_schedule_response import (
 )
 from .operational_data_export_schedule_request_param import (
     OperationalDataExportScheduleRequestParam as OperationalDataExportScheduleRequestParam,
+)
+from .data_export_destination_google_cloud_storage_request_param import (
+    DataExportDestinationGoogleCloudStorageRequestParam as DataExportDestinationGoogleCloudStorageRequestParam,
 )

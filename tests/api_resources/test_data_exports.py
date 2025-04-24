@@ -63,7 +63,6 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_overload_2(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -71,12 +70,25 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_2(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
-            time_period="TODAY",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -84,7 +96,6 @@ class TestDataExports:
     @parametrize
     def test_raw_response_create_adhoc_overload_2(self, client: M3ter) -> None:
         response = client.data_exports.with_raw_response.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
 
@@ -96,7 +107,6 @@ class TestDataExports:
     @parametrize
     def test_streaming_response_create_adhoc_overload_2(self, client: M3ter) -> None:
         with client.data_exports.with_streaming_response.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         ) as response:
             assert not response.is_closed
@@ -157,7 +167,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -165,12 +174,25 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
-            time_period="TODAY",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -178,7 +200,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_raw_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.with_raw_response.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
 
@@ -190,7 +211,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_streaming_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.with_streaming_response.create_adhoc(
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         ) as response:
             assert not response.is_closed
