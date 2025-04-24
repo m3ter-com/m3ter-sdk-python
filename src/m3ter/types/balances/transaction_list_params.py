@@ -23,4 +23,6 @@ class TransactionListParams(TypedDict, total=False):
     page_size: Annotated[int, PropertyInfo(alias="pageSize")]
     """The maximum number of transactions to return per page."""
 
+    schedule_id: Annotated[Optional[str], PropertyInfo(alias="scheduleId")]
+
     transaction_type_id: Annotated[Optional[str], PropertyInfo(alias="transactionTypeId")]

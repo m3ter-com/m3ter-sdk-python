@@ -16,13 +16,17 @@ class IntegrationConfigurationResponse(BaseModel):
     """The UUID of the entity."""
 
     destination: str
-    """The destination system for the integration."""
+    """The destination system for the integration run."""
 
     entity_id: str = FieldInfo(alias="entityId")
-    """The unique identifier (UUID) of the entity the integration is for."""
+    """The unique identifier (UUID) of the entity the integration run is for."""
 
     entity_type: str = FieldInfo(alias="entityType")
-    """The type of entity the integration is for _(e.g. Bill)_."""
+    """The type of entity the integration run is for. Two options:
+
+    - Bill
+    - Notification
+    """
 
     status: Literal[
         "WAITING",
@@ -49,7 +53,7 @@ class IntegrationConfigurationResponse(BaseModel):
     """The ID of the user who created this item."""
 
     dt_completed: Optional[datetime] = FieldInfo(alias="dtCompleted", default=None)
-    """The date and time the integration was completed _(in ISO-8601 format)_."""
+    """The date and time the integration was completed. _(in ISO-8601 format)_."""
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """The DateTime when this item was created _(in ISO-8601 format)_."""
@@ -58,7 +62,7 @@ class IntegrationConfigurationResponse(BaseModel):
     """The DateTime when this item was last modified _(in ISO-8601 format)_."""
 
     dt_started: Optional[datetime] = FieldInfo(alias="dtStarted", default=None)
-    """The date and time the integration was started _(in ISO-8601 format)_."""
+    """The date and time the integration run was started _(in ISO-8601 format)_."""
 
     error: Optional[str] = None
     """Describes any errors encountered during the integration run."""

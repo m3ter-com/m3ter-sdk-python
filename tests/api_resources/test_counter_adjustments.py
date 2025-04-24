@@ -194,6 +194,7 @@ class TestCounterAdjustments:
             end_date_start="endDateStart",
             next_token="nextToken",
             page_size=1,
+            sort_order="sortOrder",
         )
         assert_matches_type(SyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 
@@ -433,6 +434,7 @@ class TestAsyncCounterAdjustments:
             end_date_start="endDateStart",
             next_token="nextToken",
             page_size=1,
+            sort_order="sortOrder",
         )
         assert_matches_type(AsyncCursor[CounterAdjustmentResponse], counter_adjustment, path=["response"])
 

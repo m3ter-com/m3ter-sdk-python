@@ -2,12 +2,24 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._utils import PropertyInfo
+from ..data_explorer_time_group_param import DataExplorerTimeGroupParam
+from ..data_explorer_account_group_param import DataExplorerAccountGroupParam
+from ..data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
 
-__all__ = ["ScheduleCreateParams", "OperationalDataExportScheduleRequest", "UsageDataExportScheduleRequest"]
+__all__ = [
+    "ScheduleCreateParams",
+    "OperationalDataExportScheduleRequest",
+    "UsageDataExportScheduleRequest",
+    "UsageDataExportScheduleRequestAggregation",
+    "UsageDataExportScheduleRequestDimensionFilter",
+    "UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup",
+    "UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup",
+    "UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup",
+]
 
 
 class OperationalDataExportScheduleRequest(TypedDict, total=False):
@@ -59,39 +71,12 @@ class OperationalDataExportScheduleRequest(TypedDict, total=False):
 class UsageDataExportScheduleRequest(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    aggregation_frequency: Required[
-        Annotated[Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"], PropertyInfo(alias="aggregationFrequency")]
-    ]
-    """
-    Specifies the time period for the aggregation of usage data included each time
-    the Data Export Schedule runs:
-
-    - **ORIGINAL**. Usage data is _not aggregated_. If you select to not aggregate,
-      then raw usage data measurements collected by all Data Field types and any
-      Derived Fields on the selected Meters are included in the export. This is the
-      _Default_.
-
-    If you want to aggregate usage data for the Export Schedule you must define an
-    `aggregationFrequency`:
-
-    - **HOUR**. Aggregated hourly.
-    - **DAY**. Aggregated daily.
-    - **WEEK**. Aggregated weekly.
-    - **MONTH**. Aggregated monthly.
-
-    - If you select to aggregate usage data for a Export Schedule, then only the
-      aggregated usage data collected by numeric Data Fields of type **MEASURE**,
-      **INCOME**, or **COST** on selected Meters are included in the export.
-
-    **NOTE**: If you define an `aggregationFrequency` other than **ORIGINAL** and do
-    not define an `aggregation` method, then you'll receive and error.
-    """
-
     source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
 
     time_period: Required[
         Annotated[
             Literal[
+                "LAST_12_HOURS",
                 "TODAY",
                 "YESTERDAY",
                 "WEEK_TO_DATE",
@@ -130,25 +115,27 @@ class UsageDataExportScheduleRequest(TypedDict, total=False):
     """
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
-    """List of account IDs for which the usage data will be exported."""
+    """List of account IDs to export"""
 
-    aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"]
-    """
-    Specifies the aggregation method applied to usage data collected in the numeric
-    Data Fields of Meters included for the Data Export Schedule - that is, Data
-    Fields of type **MEASURE**, **INCOME**, or **COST**:
+    aggregations: Iterable[UsageDataExportScheduleRequestAggregation]
+    """List of aggregations to apply"""
 
-    - **SUM**. Adds the values.
-    - **MIN**. Uses the minimum value.
-    - **MAX**. Uses the maximum value.
-    - **COUNT**. Counts the number of values.
-    - **LATEST**. Uses the most recent value. Note: Based on the timestamp `ts`
-      value of usage data measurement submissions. If using this method, please
-      ensure _distinct_ `ts` values are used for usage data measurement submissions.
-    """
+    dimension_filters: Annotated[
+        Iterable[UsageDataExportScheduleRequestDimensionFilter], PropertyInfo(alias="dimensionFilters")
+    ]
+    """List of dimension filters to apply"""
+
+    groups: Iterable[
+        Union[
+            UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
+            UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
+            UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
+        ]
+    ]
+    """List of groups to apply"""
 
     meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
-    """List of meter IDs for which the usage data will be exported."""
+    """List of meter IDs to export"""
 
     version: int
     """The version number of the entity:
@@ -160,6 +147,47 @@ class UsageDataExportScheduleRequest(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
+
+
+class UsageDataExportScheduleRequestAggregation(TypedDict, total=False):
+    field_code: Required[Annotated[str, PropertyInfo(alias="fieldCode")]]
+    """Field code"""
+
+    field_type: Required[Annotated[Literal["DIMENSION", "MEASURE"], PropertyInfo(alias="fieldType")]]
+    """Type of field"""
+
+    function: Required[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]]
+    """Aggregation function"""
+
+    meter_id: Required[Annotated[str, PropertyInfo(alias="meterId")]]
+    """Meter ID"""
+
+
+class UsageDataExportScheduleRequestDimensionFilter(TypedDict, total=False):
+    field_code: Required[Annotated[str, PropertyInfo(alias="fieldCode")]]
+    """Field code"""
+
+    meter_id: Required[Annotated[str, PropertyInfo(alias="meterId")]]
+    """Meter ID"""
+
+    values: Required[List[str]]
+    """Values to filter by"""
+
+
+class UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup(
+    DataExplorerAccountGroupParam, total=False
+):
+    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
+
+
+class UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup(
+    DataExplorerDimensionGroupParam, total=False
+):
+    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
+
+
+class UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
+    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
 
 
 ScheduleCreateParams: TypeAlias = Union[OperationalDataExportScheduleRequest, UsageDataExportScheduleRequest]

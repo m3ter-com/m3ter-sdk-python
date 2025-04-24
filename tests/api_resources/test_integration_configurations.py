@@ -356,6 +356,8 @@ class TestIntegrationConfigurations:
     def test_method_get_by_entity_with_all_params(self, client: M3ter) -> None:
         integration_configuration = client.integration_configurations.get_by_entity(
             entity_type="entityType",
+            destination="destination",
+            destination_id="destinationId",
             entity_id="entityId",
         )
         assert_matches_type(IntegrationConfigurationResponse, integration_configuration, path=["response"])
@@ -726,6 +728,8 @@ class TestAsyncIntegrationConfigurations:
     async def test_method_get_by_entity_with_all_params(self, async_client: AsyncM3ter) -> None:
         integration_configuration = await async_client.integration_configurations.get_by_entity(
             entity_type="entityType",
+            destination="destination",
+            destination_id="destinationId",
             entity_id="entityId",
         )
         assert_matches_type(IntegrationConfigurationResponse, integration_configuration, path=["response"])

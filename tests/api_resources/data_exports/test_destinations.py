@@ -25,22 +25,18 @@ class TestDestinations:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: M3ter) -> None:
+    def test_method_create_overload_1(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params(self, client: M3ter) -> None:
+    def test_method_create_with_all_params_overload_1(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
             partition_order="TYPE_FIRST",
             prefix="prefix",
             version=0,
@@ -48,12 +44,10 @@ class TestDestinations:
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: M3ter) -> None:
+    def test_raw_response_create_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
 
         assert response.is_closed is True
@@ -62,12 +56,64 @@ class TestDestinations:
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
     @parametrize
-    def test_streaming_response_create(self, client: M3ter) -> None:
+    def test_streaming_response_create_overload_1(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            destination = response.parse()
+            assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_2(self, client: M3ter) -> None:
+        destination = client.data_exports.destinations.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+        assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params_overload_2(self, client: M3ter) -> None:
+        destination = client.data_exports.destinations.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+            partition_order="TYPE_FIRST",
+            prefix="prefix",
+            service_account_email="serviceAccountEmail",
+            version=0,
+        )
+        assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_2(self, client: M3ter) -> None:
+        response = client.data_exports.destinations.with_raw_response.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        destination = response.parse()
+        assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_2(self, client: M3ter) -> None:
+        with client.data_exports.destinations.with_streaming_response.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -116,24 +162,20 @@ class TestDestinations:
             )
 
     @parametrize
-    def test_method_update(self, client: M3ter) -> None:
+    def test_method_update_overload_1(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
     @parametrize
-    def test_method_update_with_all_params(self, client: M3ter) -> None:
+    def test_method_update_with_all_params_overload_1(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
             partition_order="TYPE_FIRST",
             prefix="prefix",
             version=0,
@@ -141,13 +183,11 @@ class TestDestinations:
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
     @parametrize
-    def test_raw_response_update(self, client: M3ter) -> None:
+    def test_raw_response_update_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
 
         assert response.is_closed is True
@@ -156,13 +196,11 @@ class TestDestinations:
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
     @parametrize
-    def test_streaming_response_update(self, client: M3ter) -> None:
+    def test_streaming_response_update_overload_1(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -173,14 +211,81 @@ class TestDestinations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_update(self, client: M3ter) -> None:
+    def test_path_params_update_overload_1(self, client: M3ter) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.data_exports.destinations.with_raw_response.update(
                 id="",
                 bucket_name="xxx",
-                code="JS!?Q0]r] ]$]",
                 iam_role_arn="arn:aws:iam::321669910225:role/z",
-                name="x",
+            )
+
+    @parametrize
+    def test_method_update_overload_2(self, client: M3ter) -> None:
+        destination = client.data_exports.destinations.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+        assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params_overload_2(self, client: M3ter) -> None:
+        destination = client.data_exports.destinations.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+            partition_order="TYPE_FIRST",
+            prefix="prefix",
+            service_account_email="serviceAccountEmail",
+            version=0,
+        )
+        assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+    @parametrize
+    def test_raw_response_update_overload_2(self, client: M3ter) -> None:
+        response = client.data_exports.destinations.with_raw_response.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        destination = response.parse()
+        assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_overload_2(self, client: M3ter) -> None:
+        with client.data_exports.destinations.with_streaming_response.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            destination = response.parse()
+            assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_overload_2(self, client: M3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.data_exports.destinations.with_raw_response.update(
+                id="",
+                bucket_name="xxx",
+                pool_id="x",
+                project_number="x",
+                provider_id="x",
             )
 
     @parametrize
@@ -260,22 +365,18 @@ class TestAsyncDestinations:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncM3ter) -> None:
+    async def test_method_create_overload_1(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
+    async def test_method_create_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
             partition_order="TYPE_FIRST",
             prefix="prefix",
             version=0,
@@ -283,12 +384,10 @@ class TestAsyncDestinations:
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
+    async def test_raw_response_create_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
 
         assert response.is_closed is True
@@ -297,12 +396,64 @@ class TestAsyncDestinations:
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
+    async def test_streaming_response_create_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.create(
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            destination = await response.parse()
+            assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_2(self, async_client: AsyncM3ter) -> None:
+        destination = await async_client.data_exports.destinations.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+        assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
+        destination = await async_client.data_exports.destinations.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+            partition_order="TYPE_FIRST",
+            prefix="prefix",
+            service_account_email="serviceAccountEmail",
+            version=0,
+        )
+        assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_2(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.data_exports.destinations.with_raw_response.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        destination = await response.parse()
+        assert_matches_type(DestinationCreateResponse, destination, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_2(self, async_client: AsyncM3ter) -> None:
+        async with async_client.data_exports.destinations.with_streaming_response.create(
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -351,24 +502,20 @@ class TestAsyncDestinations:
             )
 
     @parametrize
-    async def test_method_update(self, async_client: AsyncM3ter) -> None:
+    async def test_method_update_overload_1(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
+    async def test_method_update_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
             partition_order="TYPE_FIRST",
             prefix="prefix",
             version=0,
@@ -376,13 +523,11 @@ class TestAsyncDestinations:
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
+    async def test_raw_response_update_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         )
 
         assert response.is_closed is True
@@ -391,13 +536,11 @@ class TestAsyncDestinations:
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
+    async def test_streaming_response_update_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.update(
             id="id",
             bucket_name="xxx",
-            code="JS!?Q0]r] ]$]",
             iam_role_arn="arn:aws:iam::321669910225:role/z",
-            name="x",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -408,14 +551,81 @@ class TestAsyncDestinations:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncM3ter) -> None:
+    async def test_path_params_update_overload_1(self, async_client: AsyncM3ter) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.data_exports.destinations.with_raw_response.update(
                 id="",
                 bucket_name="xxx",
-                code="JS!?Q0]r] ]$]",
                 iam_role_arn="arn:aws:iam::321669910225:role/z",
-                name="x",
+            )
+
+    @parametrize
+    async def test_method_update_overload_2(self, async_client: AsyncM3ter) -> None:
+        destination = await async_client.data_exports.destinations.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+        assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
+        destination = await async_client.data_exports.destinations.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+            partition_order="TYPE_FIRST",
+            prefix="prefix",
+            service_account_email="serviceAccountEmail",
+            version=0,
+        )
+        assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update_overload_2(self, async_client: AsyncM3ter) -> None:
+        response = await async_client.data_exports.destinations.with_raw_response.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        destination = await response.parse()
+        assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_overload_2(self, async_client: AsyncM3ter) -> None:
+        async with async_client.data_exports.destinations.with_streaming_response.update(
+            id="id",
+            bucket_name="xxx",
+            pool_id="x",
+            project_number="x",
+            provider_id="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            destination = await response.parse()
+            assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_overload_2(self, async_client: AsyncM3ter) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.data_exports.destinations.with_raw_response.update(
+                id="",
+                bucket_name="xxx",
+                pool_id="x",
+                project_number="x",
+                provider_id="x",
             )
 
     @parametrize

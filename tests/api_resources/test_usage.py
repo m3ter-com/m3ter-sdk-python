@@ -56,17 +56,12 @@ class TestUsage:
 
     @parametrize
     def test_method_query(self, client: M3ter) -> None:
-        usage = client.usage.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
+        usage = client.usage.query()
         assert_matches_type(UsageQueryResponse, usage, path=["response"])
 
     @parametrize
     def test_method_query_with_all_params(self, client: M3ter) -> None:
         usage = client.usage.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             account_ids=["string"],
             aggregations=[
                 {
@@ -83,18 +78,17 @@ class TestUsage:
                     "values": ["string"],
                 }
             ],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             groups=[{"group_type": "ACCOUNT"}],
             limit=1,
             meter_ids=["string"],
+            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(UsageQueryResponse, usage, path=["response"])
 
     @parametrize
     def test_raw_response_query(self, client: M3ter) -> None:
-        response = client.usage.with_raw_response.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
+        response = client.usage.with_raw_response.query()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -103,10 +97,7 @@ class TestUsage:
 
     @parametrize
     def test_streaming_response_query(self, client: M3ter) -> None:
-        with client.usage.with_streaming_response.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
+        with client.usage.with_streaming_response.query() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -202,17 +193,12 @@ class TestAsyncUsage:
 
     @parametrize
     async def test_method_query(self, async_client: AsyncM3ter) -> None:
-        usage = await async_client.usage.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
+        usage = await async_client.usage.query()
         assert_matches_type(UsageQueryResponse, usage, path=["response"])
 
     @parametrize
     async def test_method_query_with_all_params(self, async_client: AsyncM3ter) -> None:
         usage = await async_client.usage.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             account_ids=["string"],
             aggregations=[
                 {
@@ -229,18 +215,17 @@ class TestAsyncUsage:
                     "values": ["string"],
                 }
             ],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             groups=[{"group_type": "ACCOUNT"}],
             limit=1,
             meter_ids=["string"],
+            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(UsageQueryResponse, usage, path=["response"])
 
     @parametrize
     async def test_raw_response_query(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.usage.with_raw_response.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
+        response = await async_client.usage.with_raw_response.query()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -249,10 +234,7 @@ class TestAsyncUsage:
 
     @parametrize
     async def test_streaming_response_query(self, async_client: AsyncM3ter) -> None:
-        async with async_client.usage.with_streaming_response.query(
-            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
+        async with async_client.usage.with_streaming_response.query() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

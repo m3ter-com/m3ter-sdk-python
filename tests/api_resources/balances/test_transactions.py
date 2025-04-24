@@ -92,6 +92,7 @@ class TestTransactions:
             balance_id="balanceId",
             next_token="nextToken",
             page_size=1,
+            schedule_id="scheduleId",
             transaction_type_id="transactionTypeId",
         )
         assert_matches_type(SyncCursor[TransactionResponse], transaction, path=["response"])
@@ -239,6 +240,7 @@ class TestAsyncTransactions:
             balance_id="balanceId",
             next_token="nextToken",
             page_size=1,
+            schedule_id="scheduleId",
             transaction_type_id="transactionTypeId",
         )
         assert_matches_type(AsyncCursor[TransactionResponse], transaction, path=["response"])
