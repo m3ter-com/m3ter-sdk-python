@@ -58,7 +58,8 @@ class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=Fa
 
 
 class UsageDataExportScheduleRequestParam(TypedDict, total=False):
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["USAGE"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: USAGE"""
 
     time_period: Required[
         Annotated[

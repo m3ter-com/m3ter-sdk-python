@@ -54,7 +54,8 @@ class AdHocOperationalDataRequest(TypedDict, total=False):
     ]
     """The list of the operational data types should be exported for."""
 
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: OPERATIONAL"""
 
     version: int
     """The version number of the entity:
@@ -71,7 +72,8 @@ class AdHocOperationalDataRequest(TypedDict, total=False):
 class AdHocUsageDataRequest(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["USAGE"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: USAGE"""
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
     """List of account IDs for which the usage data will be exported."""

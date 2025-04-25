@@ -21,7 +21,7 @@ class TestDataExports:
     def test_method_create_adhoc_overload_1(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
 
@@ -29,7 +29,7 @@ class TestDataExports:
     def test_method_create_adhoc_with_all_params_overload_1(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -38,7 +38,7 @@ class TestDataExports:
     def test_raw_response_create_adhoc_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.with_raw_response.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -50,7 +50,7 @@ class TestDataExports:
     def test_streaming_response_create_adhoc_overload_1(self, client: M3ter) -> None:
         with client.data_exports.with_streaming_response.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -125,7 +125,7 @@ class TestAsyncDataExports:
     async def test_method_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
 
@@ -133,7 +133,7 @@ class TestAsyncDataExports:
     async def test_method_create_adhoc_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -142,7 +142,7 @@ class TestAsyncDataExports:
     async def test_raw_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.with_raw_response.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -154,7 +154,7 @@ class TestAsyncDataExports:
     async def test_streaming_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.with_streaming_response.create_adhoc(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

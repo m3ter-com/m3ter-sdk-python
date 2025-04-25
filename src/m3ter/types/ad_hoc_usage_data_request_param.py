@@ -58,7 +58,8 @@ class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=Fa
 
 
 class AdHocUsageDataRequestParam(TypedDict, total=False):
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["USAGE"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: USAGE"""
 
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
     """List of account IDs for which the usage data will be exported."""

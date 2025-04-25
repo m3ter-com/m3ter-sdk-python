@@ -56,6 +56,7 @@ class DestinationsResource(SyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -93,6 +94,8 @@ class DestinationsResource(SyncAPIResource):
               Policies you can use to create the required IAM Role ARN, see
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
+
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -142,6 +145,7 @@ class DestinationsResource(SyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         service_account_email: str | NotGiven = NOT_GIVEN,
@@ -168,6 +172,8 @@ class DestinationsResource(SyncAPIResource):
           project_number: The export destination GCP projectNumber.
 
           provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -216,6 +222,7 @@ class DestinationsResource(SyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -242,6 +249,7 @@ class DestinationsResource(SyncAPIResource):
                     {
                         "bucket_name": bucket_name,
                         "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
                         "partition_order": partition_order,
                         "prefix": prefix,
                         "version": version,
@@ -312,6 +320,7 @@ class DestinationsResource(SyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -348,6 +357,8 @@ class DestinationsResource(SyncAPIResource):
               Policies you can use to create the required IAM Role ARN, see
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
+
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -398,6 +409,7 @@ class DestinationsResource(SyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         service_account_email: str | NotGiven = NOT_GIVEN,
@@ -423,6 +435,8 @@ class DestinationsResource(SyncAPIResource):
           project_number: The export destination GCP projectNumber.
 
           provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -472,6 +486,7 @@ class DestinationsResource(SyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -500,6 +515,7 @@ class DestinationsResource(SyncAPIResource):
                     {
                         "bucket_name": bucket_name,
                         "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
                         "partition_order": partition_order,
                         "prefix": prefix,
                         "version": version,
@@ -652,6 +668,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -689,6 +706,8 @@ class AsyncDestinationsResource(AsyncAPIResource):
               Policies you can use to create the required IAM Role ARN, see
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
+
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -738,6 +757,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         service_account_email: str | NotGiven = NOT_GIVEN,
@@ -764,6 +784,8 @@ class AsyncDestinationsResource(AsyncAPIResource):
           project_number: The export destination GCP projectNumber.
 
           provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -812,6 +834,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -838,6 +861,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
                     {
                         "bucket_name": bucket_name,
                         "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
                         "partition_order": partition_order,
                         "prefix": prefix,
                         "version": version,
@@ -908,6 +932,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -944,6 +969,8 @@ class AsyncDestinationsResource(AsyncAPIResource):
               Policies you can use to create the required IAM Role ARN, see
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
+
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -994,6 +1021,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         service_account_email: str | NotGiven = NOT_GIVEN,
@@ -1019,6 +1047,8 @@ class AsyncDestinationsResource(AsyncAPIResource):
           project_number: The export destination GCP projectNumber.
 
           provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -1068,6 +1098,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -1096,6 +1127,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
                     {
                         "bucket_name": bucket_name,
                         "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
                         "partition_order": partition_order,
                         "prefix": prefix,
                         "version": version,

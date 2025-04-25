@@ -54,7 +54,8 @@ class OperationalDataExportScheduleRequest(TypedDict, total=False):
     ]
     """A list of the entities whose operational data is included in the data export."""
 
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: OPERATIONAL"""
 
     version: int
     """The version number of the entity:
@@ -71,7 +72,8 @@ class OperationalDataExportScheduleRequest(TypedDict, total=False):
 class UsageDataExportScheduleRequest(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["USAGE"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: USAGE"""
 
     time_period: Required[
         Annotated[
