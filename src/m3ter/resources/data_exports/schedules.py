@@ -76,7 +76,7 @@ class SchedulesResource(SyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -118,7 +118,7 @@ class SchedulesResource(SyncAPIResource):
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -145,7 +145,7 @@ class SchedulesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         time_period: Literal[
             "LAST_12_HOURS",
             "TODAY",
@@ -209,7 +209,7 @@ class SchedulesResource(SyncAPIResource):
           included in the export each time the Export Schedule runs.
 
         Args:
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
@@ -292,7 +292,7 @@ class SchedulesResource(SyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
         time_period: Literal[
             "LAST_12_HOURS",
@@ -430,7 +430,7 @@ class SchedulesResource(SyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -472,7 +472,7 @@ class SchedulesResource(SyncAPIResource):
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -500,7 +500,7 @@ class SchedulesResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         time_period: Literal[
             "LAST_12_HOURS",
             "TODAY",
@@ -564,7 +564,7 @@ class SchedulesResource(SyncAPIResource):
           included in the export each time the Export Schedule runs.
 
         Args:
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
@@ -648,7 +648,7 @@ class SchedulesResource(SyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
         time_period: Literal[
             "LAST_12_HOURS",
@@ -869,7 +869,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -911,7 +911,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -938,7 +938,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         time_period: Literal[
             "LAST_12_HOURS",
             "TODAY",
@@ -1002,7 +1002,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
           included in the export each time the Export Schedule runs.
 
         Args:
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
@@ -1085,7 +1085,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
         time_period: Literal[
             "LAST_12_HOURS",
@@ -1223,7 +1223,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1265,7 +1265,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -1293,7 +1293,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         time_period: Literal[
             "LAST_12_HOURS",
             "TODAY",
@@ -1357,7 +1357,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
           included in the export each time the Export Schedule runs.
 
         Args:
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
@@ -1441,7 +1441,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
         time_period: Literal[
             "LAST_12_HOURS",

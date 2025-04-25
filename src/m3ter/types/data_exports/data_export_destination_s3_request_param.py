@@ -35,6 +35,9 @@ class DataExportDestinationS3RequestParam(TypedDict, total=False):
     in our main User documentation.
     """
 
+    destination_type: Annotated[Literal["S3"], PropertyInfo(alias="destinationType")]
+    """The type of destination to create. Possible values are: S3"""
+
     partition_order: Annotated[Optional[Literal["TYPE_FIRST", "TIME_FIRST"]], PropertyInfo(alias="partitionOrder")]
     """
     Specify how you want the file path to be structured in your bucket destination -

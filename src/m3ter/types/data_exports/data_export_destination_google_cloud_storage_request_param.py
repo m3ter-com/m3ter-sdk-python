@@ -23,6 +23,9 @@ class DataExportDestinationGoogleCloudStorageRequestParam(TypedDict, total=False
     provider_id: Required[Annotated[str, PropertyInfo(alias="providerId")]]
     """The export destination Web Identity Federation identity providerId."""
 
+    destination_type: Annotated[Literal["GCS"], PropertyInfo(alias="destinationType")]
+    """The type of destination to create. Possible values are: GCS"""
+
     partition_order: Annotated[Optional[Literal["TYPE_FIRST", "TIME_FIRST"]], PropertyInfo(alias="partitionOrder")]
     """
     Specify how you want the file path to be structured in your bucket destination -

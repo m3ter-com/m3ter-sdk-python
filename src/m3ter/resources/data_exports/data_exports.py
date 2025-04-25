@@ -107,7 +107,7 @@ class DataExportsResource(SyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -178,7 +178,7 @@ class DataExportsResource(SyncAPIResource):
         Args:
           operational_data_types: The list of the operational data types should be exported for.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -205,7 +205,7 @@ class DataExportsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
@@ -287,7 +287,7 @@ class DataExportsResource(SyncAPIResource):
         Reference.
 
         Args:
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           account_ids: List of account IDs for which the usage data will be exported.
 
@@ -347,7 +347,7 @@ class DataExportsResource(SyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
@@ -454,7 +454,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -525,7 +525,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         Args:
           operational_data_types: The list of the operational data types should be exported for.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -552,7 +552,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
@@ -634,7 +634,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         Reference.
 
         Args:
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           account_ids: List of account IDs for which the usage data will be exported.
 
@@ -694,7 +694,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,

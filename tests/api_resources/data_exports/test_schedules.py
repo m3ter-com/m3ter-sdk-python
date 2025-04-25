@@ -28,7 +28,7 @@ class TestSchedules:
     def test_method_create_overload_1(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
 
@@ -36,7 +36,7 @@ class TestSchedules:
     def test_method_create_with_all_params_overload_1(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
@@ -45,7 +45,7 @@ class TestSchedules:
     def test_raw_response_create_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.schedules.with_raw_response.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -57,7 +57,7 @@ class TestSchedules:
     def test_streaming_response_create_overload_1(self, client: M3ter) -> None:
         with client.data_exports.schedules.with_streaming_response.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -171,7 +171,7 @@ class TestSchedules:
         schedule = client.data_exports.schedules.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
 
@@ -180,7 +180,7 @@ class TestSchedules:
         schedule = client.data_exports.schedules.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
@@ -190,7 +190,7 @@ class TestSchedules:
         response = client.data_exports.schedules.with_raw_response.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -203,7 +203,7 @@ class TestSchedules:
         with client.data_exports.schedules.with_streaming_response.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -219,7 +219,7 @@ class TestSchedules:
             client.data_exports.schedules.with_raw_response.update(
                 id="",
                 operational_data_types=["BILLS"],
-                source_type="USAGE",
+                source_type="OPERATIONAL",
             )
 
     @parametrize
@@ -376,7 +376,7 @@ class TestAsyncSchedules:
     async def test_method_create_overload_1(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
 
@@ -384,7 +384,7 @@ class TestAsyncSchedules:
     async def test_method_create_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
@@ -393,7 +393,7 @@ class TestAsyncSchedules:
     async def test_raw_response_create_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.schedules.with_raw_response.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -405,7 +405,7 @@ class TestAsyncSchedules:
     async def test_streaming_response_create_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.schedules.with_streaming_response.create(
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -519,7 +519,7 @@ class TestAsyncSchedules:
         schedule = await async_client.data_exports.schedules.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
 
@@ -528,7 +528,7 @@ class TestAsyncSchedules:
         schedule = await async_client.data_exports.schedules.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
@@ -538,7 +538,7 @@ class TestAsyncSchedules:
         response = await async_client.data_exports.schedules.with_raw_response.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -551,7 +551,7 @@ class TestAsyncSchedules:
         async with async_client.data_exports.schedules.with_streaming_response.update(
             id="id",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -567,7 +567,7 @@ class TestAsyncSchedules:
             await async_client.data_exports.schedules.with_raw_response.update(
                 id="",
                 operational_data_types=["BILLS"],
-                source_type="USAGE",
+                source_type="OPERATIONAL",
             )
 
     @parametrize
