@@ -175,7 +175,7 @@ class TestUsage:
             responses += 1
             assert_matches_type(SubmitMeasurementsResponse, response, path=["response"])
 
-        assert responses is 2
+        assert responses == 2
 
     @parametrize
     def test_raw_response_submit(self, client: M3ter) -> None:
@@ -386,7 +386,7 @@ class TestAsyncUsage:
             responses += 1
             assert_matches_type(SubmitMeasurementsResponse, response, path=["response"])
 
-        assert responses is 2
+        assert responses == 2
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncM3ter) -> None:
