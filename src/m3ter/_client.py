@@ -309,7 +309,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
-        token_expiry: str | None = None,
+        token_expiry: datetime | None = None,
         org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
