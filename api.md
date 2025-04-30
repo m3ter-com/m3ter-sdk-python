@@ -532,7 +532,7 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import OrganizationConfigResponse
+from m3ter.types import OrganizationConfigRequest, OrganizationConfigResponse
 ```
 
 Methods:
