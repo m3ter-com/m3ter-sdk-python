@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import os
 import base64
-from datetime import datetime
 from typing import Any, Union, Mapping
+from datetime import datetime
 from typing_extensions import Self, override
 
 import httpx
@@ -291,7 +291,7 @@ class M3ter(SyncAPIClient):
         self,
         options: FinalRequestOptions,  # noqa: ARG002
     ) -> FinalRequestOptions:
-        token_valid: bool = self.token and (not self.token_expiry or self.token_expiry > datetime.now())
+        token_valid: bool = self.token is not None and (self.token_expiry is None or self.token_expiry > datetime.now())
         if not options.url.endswith("/oauth/token"):
             if not token_valid:
                 auth: str = base64.b64encode(f"{self.api_key}:{self.api_secret}".encode("utf8")).decode("utf8")
