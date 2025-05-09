@@ -71,7 +71,7 @@ class TestSchedules:
     def test_method_create_overload_2(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
 
@@ -79,7 +79,7 @@ class TestSchedules:
     def test_method_create_with_all_params_overload_2(self, client: M3ter) -> None:
         schedule = client.data_exports.schedules.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
             account_ids=["string"],
             aggregations=[
                 {
@@ -106,7 +106,7 @@ class TestSchedules:
     def test_raw_response_create_overload_2(self, client: M3ter) -> None:
         response = client.data_exports.schedules.with_raw_response.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
 
         assert response.is_closed is True
@@ -118,7 +118,7 @@ class TestSchedules:
     def test_streaming_response_create_overload_2(self, client: M3ter) -> None:
         with client.data_exports.schedules.with_streaming_response.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -227,7 +227,7 @@ class TestSchedules:
         schedule = client.data_exports.schedules.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
 
@@ -236,7 +236,7 @@ class TestSchedules:
         schedule = client.data_exports.schedules.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
             account_ids=["string"],
             aggregations=[
                 {
@@ -264,7 +264,7 @@ class TestSchedules:
         response = client.data_exports.schedules.with_raw_response.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
 
         assert response.is_closed is True
@@ -277,7 +277,7 @@ class TestSchedules:
         with client.data_exports.schedules.with_streaming_response.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -293,7 +293,7 @@ class TestSchedules:
             client.data_exports.schedules.with_raw_response.update(
                 id="",
                 source_type="USAGE",
-                time_period="LAST_12_HOURS",
+                time_period="TODAY",
             )
 
     @parametrize
@@ -419,7 +419,7 @@ class TestAsyncSchedules:
     async def test_method_create_overload_2(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
         assert_matches_type(ScheduleCreateResponse, schedule, path=["response"])
 
@@ -427,7 +427,7 @@ class TestAsyncSchedules:
     async def test_method_create_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
         schedule = await async_client.data_exports.schedules.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
             account_ids=["string"],
             aggregations=[
                 {
@@ -454,7 +454,7 @@ class TestAsyncSchedules:
     async def test_raw_response_create_overload_2(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.schedules.with_raw_response.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
 
         assert response.is_closed is True
@@ -466,7 +466,7 @@ class TestAsyncSchedules:
     async def test_streaming_response_create_overload_2(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.schedules.with_streaming_response.create(
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -575,7 +575,7 @@ class TestAsyncSchedules:
         schedule = await async_client.data_exports.schedules.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
         assert_matches_type(ScheduleUpdateResponse, schedule, path=["response"])
 
@@ -584,7 +584,7 @@ class TestAsyncSchedules:
         schedule = await async_client.data_exports.schedules.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
             account_ids=["string"],
             aggregations=[
                 {
@@ -612,7 +612,7 @@ class TestAsyncSchedules:
         response = await async_client.data_exports.schedules.with_raw_response.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         )
 
         assert response.is_closed is True
@@ -625,7 +625,7 @@ class TestAsyncSchedules:
         async with async_client.data_exports.schedules.with_streaming_response.update(
             id="id",
             source_type="USAGE",
-            time_period="LAST_12_HOURS",
+            time_period="TODAY",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -641,7 +641,7 @@ class TestAsyncSchedules:
             await async_client.data_exports.schedules.with_raw_response.update(
                 id="",
                 source_type="USAGE",
-                time_period="LAST_12_HOURS",
+                time_period="TODAY",
             )
 
     @parametrize

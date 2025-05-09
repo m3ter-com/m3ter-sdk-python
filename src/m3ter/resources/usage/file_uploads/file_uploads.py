@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from .jobs import (
@@ -57,9 +59,9 @@ class FileUploadsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        content_type: str,
+        content_length: int,
+        content_type: Literal["application/json", "text/json"],
         file_name: str,
-        content_length: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,6 +87,11 @@ class FileUploadsResource(SyncAPIResource):
         Part of the file upload service for submitting measurements data files.
 
         Args:
+          content_length: The size of the body in bytes. For example: `"contentLength": 485`, where 485 is
+              the size in bytes of the file to upload.
+
+              **NOTE:** Required.
+
           content_type:
               The media type of the entity body sent, for example:
               `"contentType":"text/json"`.
@@ -93,11 +100,6 @@ class FileUploadsResource(SyncAPIResource):
               Upload Service.
 
           file_name: The name of the measurements file to be uploaded.
-
-          content_length: The size of the body in bytes. For example: `"contentLength": 485`, where 485 is
-              the size in bytes of the file to upload.
-
-              **NOTE:** Required.
 
           extra_headers: Send extra headers
 
@@ -115,9 +117,9 @@ class FileUploadsResource(SyncAPIResource):
             f"/organizations/{org_id}/fileuploads/measurements/generateUploadUrl",
             body=maybe_transform(
                 {
+                    "content_length": content_length,
                     "content_type": content_type,
                     "file_name": file_name,
-                    "content_length": content_length,
                 },
                 file_upload_generate_upload_url_params.FileUploadGenerateUploadURLParams,
             ),
@@ -156,9 +158,9 @@ class AsyncFileUploadsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        content_type: str,
+        content_length: int,
+        content_type: Literal["application/json", "text/json"],
         file_name: str,
-        content_length: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,6 +186,11 @@ class AsyncFileUploadsResource(AsyncAPIResource):
         Part of the file upload service for submitting measurements data files.
 
         Args:
+          content_length: The size of the body in bytes. For example: `"contentLength": 485`, where 485 is
+              the size in bytes of the file to upload.
+
+              **NOTE:** Required.
+
           content_type:
               The media type of the entity body sent, for example:
               `"contentType":"text/json"`.
@@ -192,11 +199,6 @@ class AsyncFileUploadsResource(AsyncAPIResource):
               Upload Service.
 
           file_name: The name of the measurements file to be uploaded.
-
-          content_length: The size of the body in bytes. For example: `"contentLength": 485`, where 485 is
-              the size in bytes of the file to upload.
-
-              **NOTE:** Required.
 
           extra_headers: Send extra headers
 
@@ -214,9 +216,9 @@ class AsyncFileUploadsResource(AsyncAPIResource):
             f"/organizations/{org_id}/fileuploads/measurements/generateUploadUrl",
             body=await async_maybe_transform(
                 {
+                    "content_length": content_length,
                     "content_type": content_type,
                     "file_name": file_name,
-                    "content_length": content_length,
                 },
                 file_upload_generate_upload_url_params.FileUploadGenerateUploadURLParams,
             ),

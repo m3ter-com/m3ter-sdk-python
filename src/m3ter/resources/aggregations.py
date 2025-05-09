@@ -49,7 +49,7 @@ class AggregationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
@@ -146,7 +146,9 @@ class AggregationsResource(SyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -269,7 +271,7 @@ class AggregationsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
@@ -371,7 +373,9 @@ class AggregationsResource(SyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -582,7 +586,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
@@ -679,7 +683,9 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -802,7 +808,7 @@ class AsyncAggregationsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"],
+        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"],
         meter_id: str,
         name: str,
         quantity_per_unit: float,
@@ -904,7 +910,9 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.

@@ -20,24 +20,17 @@ class TestFileUploads:
     @parametrize
     def test_method_generate_upload_url(self, client: M3ter) -> None:
         file_upload = client.usage.file_uploads.generate_upload_url(
-            content_type="x",
-            file_name="x",
-        )
-        assert_matches_type(FileUploadGenerateUploadURLResponse, file_upload, path=["response"])
-
-    @parametrize
-    def test_method_generate_upload_url_with_all_params(self, client: M3ter) -> None:
-        file_upload = client.usage.file_uploads.generate_upload_url(
-            content_type="x",
-            file_name="x",
             content_length=1,
+            content_type="application/json",
+            file_name="x",
         )
         assert_matches_type(FileUploadGenerateUploadURLResponse, file_upload, path=["response"])
 
     @parametrize
     def test_raw_response_generate_upload_url(self, client: M3ter) -> None:
         response = client.usage.file_uploads.with_raw_response.generate_upload_url(
-            content_type="x",
+            content_length=1,
+            content_type="application/json",
             file_name="x",
         )
 
@@ -49,7 +42,8 @@ class TestFileUploads:
     @parametrize
     def test_streaming_response_generate_upload_url(self, client: M3ter) -> None:
         with client.usage.file_uploads.with_streaming_response.generate_upload_url(
-            content_type="x",
+            content_length=1,
+            content_type="application/json",
             file_name="x",
         ) as response:
             assert not response.is_closed
@@ -67,24 +61,17 @@ class TestAsyncFileUploads:
     @parametrize
     async def test_method_generate_upload_url(self, async_client: AsyncM3ter) -> None:
         file_upload = await async_client.usage.file_uploads.generate_upload_url(
-            content_type="x",
-            file_name="x",
-        )
-        assert_matches_type(FileUploadGenerateUploadURLResponse, file_upload, path=["response"])
-
-    @parametrize
-    async def test_method_generate_upload_url_with_all_params(self, async_client: AsyncM3ter) -> None:
-        file_upload = await async_client.usage.file_uploads.generate_upload_url(
-            content_type="x",
-            file_name="x",
             content_length=1,
+            content_type="application/json",
+            file_name="x",
         )
         assert_matches_type(FileUploadGenerateUploadURLResponse, file_upload, path=["response"])
 
     @parametrize
     async def test_raw_response_generate_upload_url(self, async_client: AsyncM3ter) -> None:
         response = await async_client.usage.file_uploads.with_raw_response.generate_upload_url(
-            content_type="x",
+            content_length=1,
+            content_type="application/json",
             file_name="x",
         )
 
@@ -96,7 +83,8 @@ class TestAsyncFileUploads:
     @parametrize
     async def test_streaming_response_generate_upload_url(self, async_client: AsyncM3ter) -> None:
         async with async_client.usage.file_uploads.with_streaming_response.generate_upload_url(
-            content_type="x",
+            content_length=1,
+            content_type="application/json",
             file_name="x",
         ) as response:
             assert not response.is_closed
