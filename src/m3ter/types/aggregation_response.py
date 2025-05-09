@@ -26,7 +26,7 @@ class AggregationResponse(BaseModel):
 
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
 
-    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]] = None
+    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]] = None
     """
     Specifies the computation method applied to usage data collected in
     `targetField`. Aggregation unit value depends on the **Category** configured for

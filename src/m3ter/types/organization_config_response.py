@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from datetime import date, datetime
+from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -105,7 +105,7 @@ class OrganizationConfigResponse(BaseModel):
     rate.
     """
 
-    day_epoch: Optional[date] = FieldInfo(alias="dayEpoch", default=None)
+    day_epoch: Optional[str] = FieldInfo(alias="dayEpoch", default=None)
     """The first bill date _(in ISO-8601 format)_ for daily billing periods."""
 
     days_before_bill_due: Optional[int] = FieldInfo(alias="daysBeforeBillDue", default=None)
@@ -148,7 +148,7 @@ class OrganizationConfigResponse(BaseModel):
     - **FALSE** - bill in arrears _(end of each billing period)_.
     """
 
-    month_epoch: Optional[date] = FieldInfo(alias="monthEpoch", default=None)
+    month_epoch: Optional[str] = FieldInfo(alias="monthEpoch", default=None)
     """The first bill date _(in ISO-8601 format)_ for monthly billing periods."""
 
     scheduled_bill_interval: Optional[float] = FieldInfo(alias="scheduledBillInterval", default=None)
@@ -186,8 +186,8 @@ class OrganizationConfigResponse(BaseModel):
     timezone: Optional[str] = None
     """The timezone for the Organization."""
 
-    week_epoch: Optional[date] = FieldInfo(alias="weekEpoch", default=None)
+    week_epoch: Optional[str] = FieldInfo(alias="weekEpoch", default=None)
     """The first bill date _(in ISO-8601 format)_ for weekly billing periods."""
 
-    year_epoch: Optional[date] = FieldInfo(alias="yearEpoch", default=None)
+    year_epoch: Optional[str] = FieldInfo(alias="yearEpoch", default=None)
     """The first bill date _(in ISO-8601 format)_ for yearly billing periods."""

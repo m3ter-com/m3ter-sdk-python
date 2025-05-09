@@ -64,15 +64,22 @@ class UsageDataExportScheduleRequestParam(TypedDict, total=False):
     time_period: Required[
         Annotated[
             Literal[
-                "LAST_12_HOURS",
                 "TODAY",
                 "YESTERDAY",
                 "WEEK_TO_DATE",
-                "CURRENT_MONTH",
-                "LAST_30_DAYS",
-                "LAST_35_DAYS",
+                "MONTH_TO_DATE",
+                "YEAR_TO_DATE",
                 "PREVIOUS_WEEK",
                 "PREVIOUS_MONTH",
+                "PREVIOUS_QUARTER",
+                "PREVIOUS_YEAR",
+                "LAST_12_HOURS",
+                "LAST_7_DAYS",
+                "LAST_30_DAYS",
+                "LAST_35_DAYS",
+                "LAST_90_DAYS",
+                "LAST_120_DAYS",
+                "LAST_YEAR",
             ],
             PropertyInfo(alias="timePeriod"),
         ]
