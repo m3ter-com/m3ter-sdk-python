@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union, Iterable
 from typing_extensions import Literal, overload
 
 import httpx
@@ -17,11 +17,7 @@ from .jobs import (
 )
 from ...types import data_export_create_adhoc_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    required_args,
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .schedules import (
     SchedulesResource,
@@ -111,7 +107,7 @@ class DataExportsResource(SyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -182,7 +178,7 @@ class DataExportsResource(SyncAPIResource):
         Args:
           operational_data_types: The list of the operational data types should be exported for.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -209,22 +205,20 @@ class DataExportsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        aggregation_frequency: Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        time_period: Literal[
-            "TODAY",
-            "YESTERDAY",
-            "WEEK_TO_DATE",
-            "CURRENT_MONTH",
-            "LAST_30_DAYS",
-            "LAST_35_DAYS",
-            "PREVIOUS_WEEK",
-            "PREVIOUS_MONTH",
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
+        | NotGiven = NOT_GIVEN,
+        groups: Iterable[
+            Union[
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -293,69 +287,17 @@ class DataExportsResource(SyncAPIResource):
         Reference.
 
         Args:
-          aggregation_frequency: Specifies the time period for the aggregation of usage data included each time
-              the Data Export Schedule runs:
-
-              - **ORIGINAL**. Usage data is _not aggregated_. If you select to not aggregate,
-                then raw usage data measurements collected by all Data Field types and any
-                Derived Fields on the selected Meters are included in the export. This is the
-                _Default_.
-
-              If you want to aggregate usage data for the Export Schedule you must define an
-              `aggregationFrequency`:
-
-              - **HOUR**. Aggregated hourly.
-              - **DAY**. Aggregated daily.
-              - **WEEK**. Aggregated weekly.
-              - **MONTH**. Aggregated monthly.
-
-              - If you select to aggregate usage data for a Export Schedule, then only the
-                aggregated usage data collected by numeric Data Fields of type **MEASURE**,
-                **INCOME**, or **COST** on selected Meters are included in the export.
-
-              **NOTE**: If you define an `aggregationFrequency` other than **ORIGINAL** and do
-              not define an `aggregation` method, then you'll receive and error.
-
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           account_ids: List of account IDs for which the usage data will be exported.
 
-          aggregation: Specifies the aggregation method applied to usage data collected in the numeric
-              Data Fields of Meters included for the Data Export Schedule - that is, Data
-              Fields of type **MEASURE**, **INCOME**, or **COST**:
+          aggregations: List of aggregations to apply
 
-              - **SUM**. Adds the values.
-              - **MIN**. Uses the minimum value.
-              - **MAX**. Uses the maximum value.
-              - **COUNT**. Counts the number of values.
-              - **LATEST**. Uses the most recent value. Note: Based on the timestamp `ts`
-                value of usage data measurement submissions. If using this method, please
-                ensure _distinct_ `ts` values are used for usage data measurement submissions.
+          dimension_filters: List of dimension filters to apply
+
+          groups: List of groups to apply
 
           meter_ids: List of meter IDs for which the usage data will be exported.
-
-          time_period: Define a time period to control the range of usage data you want the data export
-              to contain when it runs:
-
-              - **TODAY**. Data collected for the current day up until the time the export
-                runs.
-              - **YESTERDAY**. Data collected for the day before the export runs - that is,
-                the 24 hour period from midnight to midnight of the day before.
-              - **WEEK_TO_DATE**. Data collected for the period covering the current week to
-                the date and time the export runs, and weeks run Monday to Monday.
-              - **CURRENT_MONTH**. Data collected for the current month in which the export is
-                ran up to and including the date and time the export runs.
-              - **LAST_30_DAYS**. Data collected for the 30 days prior to the date the export
-                is ran.
-              - **LAST_35_DAYS**. Data collected for the 35 days prior to the date the export
-                is ran.
-              - **PREVIOUS_WEEK**. Data collected for the previous full week period, and weeks
-                run Monday to Monday.
-              - **PREVIOUS_MONTH**. Data collected for the previous full month period.
-
-              For more details and examples, see the
-              [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
-              section in our main User Documentation.
 
           version:
               The version number of the entity:
@@ -377,7 +319,7 @@ class DataExportsResource(SyncAPIResource):
         """
         ...
 
-    @required_args(["operational_data_types", "source_type"], ["aggregation_frequency", "source_type"])
+    @required_args(["operational_data_types", "source_type"], ["source_type"])
     def create_adhoc(
         self,
         *,
@@ -405,23 +347,21 @@ class DataExportsResource(SyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
-        aggregation_frequency: Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"] | NotGiven = NOT_GIVEN,
         account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        time_period: Literal[
-            "TODAY",
-            "YESTERDAY",
-            "WEEK_TO_DATE",
-            "CURRENT_MONTH",
-            "LAST_30_DAYS",
-            "LAST_35_DAYS",
-            "PREVIOUS_WEEK",
-            "PREVIOUS_MONTH",
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
+        | NotGiven = NOT_GIVEN,
+        groups: Iterable[
+            Union[
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -440,11 +380,11 @@ class DataExportsResource(SyncAPIResource):
                     "operational_data_types": operational_data_types,
                     "source_type": source_type,
                     "version": version,
-                    "aggregation_frequency": aggregation_frequency,
                     "account_ids": account_ids,
-                    "aggregation": aggregation,
+                    "aggregations": aggregations,
+                    "dimension_filters": dimension_filters,
+                    "groups": groups,
                     "meter_ids": meter_ids,
-                    "time_period": time_period,
                 },
                 data_export_create_adhoc_params.DataExportCreateAdhocParams,
             ),
@@ -514,7 +454,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "BALANCE_TRANSACTIONS",
             ]
         ],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -585,7 +525,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         Args:
           operational_data_types: The list of the operational data types should be exported for.
 
-          source_type
+          source_type: The type of data to export. Possible values are: OPERATIONAL
 
           version:
               The version number of the entity:
@@ -612,22 +552,20 @@ class AsyncDataExportsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        aggregation_frequency: Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"],
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["USAGE"],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        time_period: Literal[
-            "TODAY",
-            "YESTERDAY",
-            "WEEK_TO_DATE",
-            "CURRENT_MONTH",
-            "LAST_30_DAYS",
-            "LAST_35_DAYS",
-            "PREVIOUS_WEEK",
-            "PREVIOUS_MONTH",
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
+        | NotGiven = NOT_GIVEN,
+        groups: Iterable[
+            Union[
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -696,69 +634,17 @@ class AsyncDataExportsResource(AsyncAPIResource):
         Reference.
 
         Args:
-          aggregation_frequency: Specifies the time period for the aggregation of usage data included each time
-              the Data Export Schedule runs:
-
-              - **ORIGINAL**. Usage data is _not aggregated_. If you select to not aggregate,
-                then raw usage data measurements collected by all Data Field types and any
-                Derived Fields on the selected Meters are included in the export. This is the
-                _Default_.
-
-              If you want to aggregate usage data for the Export Schedule you must define an
-              `aggregationFrequency`:
-
-              - **HOUR**. Aggregated hourly.
-              - **DAY**. Aggregated daily.
-              - **WEEK**. Aggregated weekly.
-              - **MONTH**. Aggregated monthly.
-
-              - If you select to aggregate usage data for a Export Schedule, then only the
-                aggregated usage data collected by numeric Data Fields of type **MEASURE**,
-                **INCOME**, or **COST** on selected Meters are included in the export.
-
-              **NOTE**: If you define an `aggregationFrequency` other than **ORIGINAL** and do
-              not define an `aggregation` method, then you'll receive and error.
-
-          source_type
+          source_type: The type of data to export. Possible values are: USAGE
 
           account_ids: List of account IDs for which the usage data will be exported.
 
-          aggregation: Specifies the aggregation method applied to usage data collected in the numeric
-              Data Fields of Meters included for the Data Export Schedule - that is, Data
-              Fields of type **MEASURE**, **INCOME**, or **COST**:
+          aggregations: List of aggregations to apply
 
-              - **SUM**. Adds the values.
-              - **MIN**. Uses the minimum value.
-              - **MAX**. Uses the maximum value.
-              - **COUNT**. Counts the number of values.
-              - **LATEST**. Uses the most recent value. Note: Based on the timestamp `ts`
-                value of usage data measurement submissions. If using this method, please
-                ensure _distinct_ `ts` values are used for usage data measurement submissions.
+          dimension_filters: List of dimension filters to apply
+
+          groups: List of groups to apply
 
           meter_ids: List of meter IDs for which the usage data will be exported.
-
-          time_period: Define a time period to control the range of usage data you want the data export
-              to contain when it runs:
-
-              - **TODAY**. Data collected for the current day up until the time the export
-                runs.
-              - **YESTERDAY**. Data collected for the day before the export runs - that is,
-                the 24 hour period from midnight to midnight of the day before.
-              - **WEEK_TO_DATE**. Data collected for the period covering the current week to
-                the date and time the export runs, and weeks run Monday to Monday.
-              - **CURRENT_MONTH**. Data collected for the current month in which the export is
-                ran up to and including the date and time the export runs.
-              - **LAST_30_DAYS**. Data collected for the 30 days prior to the date the export
-                is ran.
-              - **LAST_35_DAYS**. Data collected for the 35 days prior to the date the export
-                is ran.
-              - **PREVIOUS_WEEK**. Data collected for the previous full week period, and weeks
-                run Monday to Monday.
-              - **PREVIOUS_MONTH**. Data collected for the previous full month period.
-
-              For more details and examples, see the
-              [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
-              section in our main User Documentation.
 
           version:
               The version number of the entity:
@@ -780,7 +666,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         """
         ...
 
-    @required_args(["operational_data_types", "source_type"], ["aggregation_frequency", "source_type"])
+    @required_args(["operational_data_types", "source_type"], ["source_type"])
     async def create_adhoc(
         self,
         *,
@@ -808,23 +694,21 @@ class AsyncDataExportsResource(AsyncAPIResource):
             ]
         ]
         | NotGiven = NOT_GIVEN,
-        source_type: Literal["USAGE", "OPERATIONAL"],
+        source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
         version: int | NotGiven = NOT_GIVEN,
-        aggregation_frequency: Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"] | NotGiven = NOT_GIVEN,
         account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregation: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        time_period: Literal[
-            "TODAY",
-            "YESTERDAY",
-            "WEEK_TO_DATE",
-            "CURRENT_MONTH",
-            "LAST_30_DAYS",
-            "LAST_35_DAYS",
-            "PREVIOUS_WEEK",
-            "PREVIOUS_MONTH",
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
+        | NotGiven = NOT_GIVEN,
+        groups: Iterable[
+            Union[
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
+                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -843,11 +727,11 @@ class AsyncDataExportsResource(AsyncAPIResource):
                     "operational_data_types": operational_data_types,
                     "source_type": source_type,
                     "version": version,
-                    "aggregation_frequency": aggregation_frequency,
                     "account_ids": account_ids,
-                    "aggregation": aggregation,
+                    "aggregations": aggregations,
+                    "dimension_filters": dimension_filters,
+                    "groups": groups,
                     "meter_ids": meter_ids,
-                    "time_period": time_period,
                 },
                 data_export_create_adhoc_params.DataExportCreateAdhocParams,
             ),

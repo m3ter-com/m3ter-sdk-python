@@ -2,6 +2,7 @@
 
 from typing import Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -28,6 +29,8 @@ class DataExportDestinationResponse(BaseModel):
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created the Export Destination."""
+
+    destination_type: Optional[Literal["S3", "GCS"]] = FieldInfo(alias="destinationType", default=None)
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """The DateTime when the Export Destination was created."""

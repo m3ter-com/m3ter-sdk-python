@@ -17,13 +17,16 @@ class CustomFieldUpdateParams(TypedDict, total=False):
     """Updates to Account entity CustomFields."""
 
     account_plan: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="accountPlan")]
-    """Updates to accountPlan entity CustomFields."""
+    """Updates to AccountPlan entity CustomFields."""
 
     aggregation: Dict[str, Union[str, float]]
     """Updates to simple Aggregation entity CustomFields."""
 
     compound_aggregation: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="compoundAggregation")]
     """Updates to Compound Aggregation entity CustomFields."""
+
+    contract: Dict[str, object]
+    """Updates to Contract entity CustomFields."""
 
     meter: Dict[str, Union[str, float]]
     """Updates to Meter entity CustomFields."""

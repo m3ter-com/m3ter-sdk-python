@@ -9,10 +9,7 @@ import httpx
 
 from ...types import usage_query_params, usage_submit_params, usage_get_failed_ingest_download_url_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -150,14 +147,21 @@ class UsageResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        end_date: Union[str, datetime],
-        start_date: Union[str, datetime],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
-        groups: Iterable[usage_query_params.Group] | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        groups: Iterable[
+            Union[
+                usage_query_params.GroupDataExportsDataExplorerAccountGroup,
+                usage_query_params.GroupDataExportsDataExplorerDimensionGroup,
+                usage_query_params.GroupDataExportsDataExplorerTimeGroup,
+            ]
+        ]
+        | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -166,24 +170,75 @@ class UsageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> UsageQueryResponse:
         """
-        Query and filter usage data
+        Query and filter usage data collected for your Organization.
+
+        You can use several parameters to filter the range of usage data returned:
+
+        - **Time period.** Use `startDate` and `endDate` to define a period. The query
+          references the `timestamp` values of usage data submissions for applying the
+          defined time period, and not the time submissions were `receivedAt` by the
+          platform. Only usage data with a `timestamp` that falls in the defined time
+          period are returned.(Required)
+        - **Meters.** Specify the Meters you want the query to return data for.
+        - **Accounts.** Specify the Accounts you want the query to return data for.
+        - **Dimension Filters.** Specify values for Dimension data fields on included
+          Meters. Only data that match the specified Dimension field values will be
+          returned for the query.
+
+        You can apply Aggregations functions to the usage data returned for the query.
+        If you apply Aggregations, you can select to group the data by:
+
+        - **Account**
+        - **Time**
+        - **Dimension**
 
         Args:
-          end_date: ISO 8601 formatted end date to filter by.
+          account_ids: Specify the Accounts you want the query to return usage data for.
 
-          start_date: ISO 8601 formatted start date to filter by.
+          aggregations: Define the Aggregation functions you want to apply to data fields on included
+              Meters:
 
-          account_ids
+              - **SUM**. Adds the values.
+              - **MIN**. Uses the minimum value.
+              - **MAX**. Uses the maximum value.
+              - **COUNT**. Counts the number of values.
+              - **LATEST**. Uses the most recent value.
+              - **MEAN**. Uses the arithmetic mean of the values.
+              - **UNIQUE**. Uses a count of the number of unique values.
 
-          aggregations
+              **NOTE!** The Aggregation functions that can be applied depend on the data field
+              type:
 
-          dimension_filters
+              - **Measure** fields. `SUM`, `MIN`, `MAX`, `COUNT`, `LATEST`, or `MEAN`
+                functions can be applied.
+              - **Dimension** field. `COUNT` or `UNIQUE` functions can be applied.
 
-          groups
+          dimension_filters: Define Dimension filters you want to apply for the query.
 
-          limit
+              Specify values for Dimension data fields on included Meters. Only data that
+              match the specified Dimension field values will be returned for the query.
 
-          meter_ids
+          end_date: The exclusive end date to define a time period to filter by. (_ISO 8601
+              formatted_)
+
+          groups: If you've applied Aggregations for your query, specify any grouping you want to
+              impose on the returned data:
+
+              - **Account**
+              - **Time** - group by frequency. Five options: `DAY`, `HOUR`, `WEEK`, `MONTH`,
+                or `QUARTER`.
+              - **Dimension** - group by Meter and data field.
+
+              **NOTE:** If you attempt to impose grouping for a query that doesn't apply
+              Aggregations, you'll receive an error.
+
+          limit: Define a limit for the number of usage data items you want the query to return,
+              starting with the most recently received data item.
+
+          meter_ids: Specify the Meters you want the query to return usage data for.
+
+          start_date: The inclusive start date to define a time period to filter by. (_ISO 8601
+              formatted_)
 
           extra_headers: Send extra headers
 
@@ -201,14 +256,14 @@ class UsageResource(SyncAPIResource):
             f"/organizations/{org_id}/usage/query",
             body=maybe_transform(
                 {
-                    "end_date": end_date,
-                    "start_date": start_date,
                     "account_ids": account_ids,
                     "aggregations": aggregations,
                     "dimension_filters": dimension_filters,
+                    "end_date": end_date,
                     "groups": groups,
                     "limit": limit,
                     "meter_ids": meter_ids,
+                    "start_date": start_date,
                 },
                 usage_query_params.UsageQueryParams,
             ),
@@ -244,14 +299,14 @@ class UsageResource(SyncAPIResource):
           The usage data measurement is accepted and ingested as data belonging to the
           new auto-created Account. At a later date, you can edit the Account's
           Code,??Name, and??e-mail address. For more details, see
-          [Submittting Usage Data for Non-Existent Accounts](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-for-non-existent-accounts)
+          [Submitting Usage Data for Non-Existent Accounts](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-for-non-existent-accounts)
           in our main documentation.
         - **Usage Data Adjustments.** If you need to make corrections for billing
           retrospectively against an Account, you can use date/time values in the past
           for the `ts` (timestamp) request parameter to submit positive or negative
           usage data amounts to correct and reconcile earlier billing anomalies. For
           more details, see
-          [Submittting Usage Data Adjustments Using Timestamp](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-adjustments-using-timestamp)
+          [Submitting Usage Data Adjustments Using Timestamp](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-adjustments-using-timestamp)
           in our main documentation.
         - **Ingest Validation Failure Events.** After the intial submission of a usage
           data measurement to the Ingest API, a data enrichment stage is performed to
@@ -482,14 +537,21 @@ class AsyncUsageResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        end_date: Union[str, datetime],
-        start_date: Union[str, datetime],
         account_ids: List[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
-        groups: Iterable[usage_query_params.Group] | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        groups: Iterable[
+            Union[
+                usage_query_params.GroupDataExportsDataExplorerAccountGroup,
+                usage_query_params.GroupDataExportsDataExplorerDimensionGroup,
+                usage_query_params.GroupDataExportsDataExplorerTimeGroup,
+            ]
+        ]
+        | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -498,24 +560,75 @@ class AsyncUsageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> UsageQueryResponse:
         """
-        Query and filter usage data
+        Query and filter usage data collected for your Organization.
+
+        You can use several parameters to filter the range of usage data returned:
+
+        - **Time period.** Use `startDate` and `endDate` to define a period. The query
+          references the `timestamp` values of usage data submissions for applying the
+          defined time period, and not the time submissions were `receivedAt` by the
+          platform. Only usage data with a `timestamp` that falls in the defined time
+          period are returned.(Required)
+        - **Meters.** Specify the Meters you want the query to return data for.
+        - **Accounts.** Specify the Accounts you want the query to return data for.
+        - **Dimension Filters.** Specify values for Dimension data fields on included
+          Meters. Only data that match the specified Dimension field values will be
+          returned for the query.
+
+        You can apply Aggregations functions to the usage data returned for the query.
+        If you apply Aggregations, you can select to group the data by:
+
+        - **Account**
+        - **Time**
+        - **Dimension**
 
         Args:
-          end_date: ISO 8601 formatted end date to filter by.
+          account_ids: Specify the Accounts you want the query to return usage data for.
 
-          start_date: ISO 8601 formatted start date to filter by.
+          aggregations: Define the Aggregation functions you want to apply to data fields on included
+              Meters:
 
-          account_ids
+              - **SUM**. Adds the values.
+              - **MIN**. Uses the minimum value.
+              - **MAX**. Uses the maximum value.
+              - **COUNT**. Counts the number of values.
+              - **LATEST**. Uses the most recent value.
+              - **MEAN**. Uses the arithmetic mean of the values.
+              - **UNIQUE**. Uses a count of the number of unique values.
 
-          aggregations
+              **NOTE!** The Aggregation functions that can be applied depend on the data field
+              type:
 
-          dimension_filters
+              - **Measure** fields. `SUM`, `MIN`, `MAX`, `COUNT`, `LATEST`, or `MEAN`
+                functions can be applied.
+              - **Dimension** field. `COUNT` or `UNIQUE` functions can be applied.
 
-          groups
+          dimension_filters: Define Dimension filters you want to apply for the query.
 
-          limit
+              Specify values for Dimension data fields on included Meters. Only data that
+              match the specified Dimension field values will be returned for the query.
 
-          meter_ids
+          end_date: The exclusive end date to define a time period to filter by. (_ISO 8601
+              formatted_)
+
+          groups: If you've applied Aggregations for your query, specify any grouping you want to
+              impose on the returned data:
+
+              - **Account**
+              - **Time** - group by frequency. Five options: `DAY`, `HOUR`, `WEEK`, `MONTH`,
+                or `QUARTER`.
+              - **Dimension** - group by Meter and data field.
+
+              **NOTE:** If you attempt to impose grouping for a query that doesn't apply
+              Aggregations, you'll receive an error.
+
+          limit: Define a limit for the number of usage data items you want the query to return,
+              starting with the most recently received data item.
+
+          meter_ids: Specify the Meters you want the query to return usage data for.
+
+          start_date: The inclusive start date to define a time period to filter by. (_ISO 8601
+              formatted_)
 
           extra_headers: Send extra headers
 
@@ -533,14 +646,14 @@ class AsyncUsageResource(AsyncAPIResource):
             f"/organizations/{org_id}/usage/query",
             body=await async_maybe_transform(
                 {
-                    "end_date": end_date,
-                    "start_date": start_date,
                     "account_ids": account_ids,
                     "aggregations": aggregations,
                     "dimension_filters": dimension_filters,
+                    "end_date": end_date,
                     "groups": groups,
                     "limit": limit,
                     "meter_ids": meter_ids,
+                    "start_date": start_date,
                 },
                 usage_query_params.UsageQueryParams,
             ),
@@ -576,14 +689,14 @@ class AsyncUsageResource(AsyncAPIResource):
           The usage data measurement is accepted and ingested as data belonging to the
           new auto-created Account. At a later date, you can edit the Account's
           Code,??Name, and??e-mail address. For more details, see
-          [Submittting Usage Data for Non-Existent Accounts](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-for-non-existent-accounts)
+          [Submitting Usage Data for Non-Existent Accounts](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-for-non-existent-accounts)
           in our main documentation.
         - **Usage Data Adjustments.** If you need to make corrections for billing
           retrospectively against an Account, you can use date/time values in the past
           for the `ts` (timestamp) request parameter to submit positive or negative
           usage data amounts to correct and reconcile earlier billing anomalies. For
           more details, see
-          [Submittting Usage Data Adjustments Using Timestamp](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-adjustments-using-timestamp)
+          [Submitting Usage Data Adjustments Using Timestamp](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-adjustments-using-timestamp)
           in our main documentation.
         - **Ingest Validation Failure Events.** After the intial submission of a usage
           data measurement to the Ingest API, a data enrichment stage is performed to

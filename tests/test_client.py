@@ -447,18 +447,6 @@ class TestM3ter:
         url = httpx.URL(request.url)
         assert dict(url.params) == {"foo": "baz", "query_param": "overridden"}
 
-    def test_org_id_client_params(self) -> None:
-        client = M3ter(
-            base_url=base_url,
-            api_key=api_key,
-            api_secret=api_secret,
-            token=token,
-            org_id="My Org ID",
-            _strict_response_validation=True,
-        )
-        with client as c2:
-            c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
-
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
             FinalRequestOptions(
@@ -912,9 +900,9 @@ class TestM3ter:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/organizations/orgId/products").mock(side_effect=retry_handler)
+        respx_mock.get("/organizations/My Org ID/products").mock(side_effect=retry_handler)
 
-        response = client.products.with_raw_response.list(org_id="orgId")
+        response = client.products.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -934,11 +922,9 @@ class TestM3ter:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/organizations/orgId/products").mock(side_effect=retry_handler)
+        respx_mock.get("/organizations/My Org ID/products").mock(side_effect=retry_handler)
 
-        response = client.products.with_raw_response.list(
-            org_id="orgId", extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = client.products.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -959,11 +945,9 @@ class TestM3ter:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/organizations/orgId/products").mock(side_effect=retry_handler)
+        respx_mock.get("/organizations/My Org ID/products").mock(side_effect=retry_handler)
 
-        response = client.products.with_raw_response.list(
-            org_id="orgId", extra_headers={"x-stainless-retry-count": "42"}
-        )
+        response = client.products.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1370,18 +1354,6 @@ class TestAsyncM3ter:
         )
         url = httpx.URL(request.url)
         assert dict(url.params) == {"foo": "baz", "query_param": "overridden"}
-
-    async def test_org_id_client_params(self) -> None:
-        client = AsyncM3ter(
-            base_url=base_url,
-            api_key=api_key,
-            api_secret=api_secret,
-            token=token,
-            org_id="My Org ID",
-            _strict_response_validation=True,
-        )
-        async with client as c2:
-            await c2.accounts.create(code="JS!?Q0]r] ]$]", email_address="dev@stainless.com", name="x")
 
     def test_request_extra_json(self) -> None:
         request = self.client._build_request(
@@ -1841,9 +1813,9 @@ class TestAsyncM3ter:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/organizations/orgId/products").mock(side_effect=retry_handler)
+        respx_mock.get("/organizations/My Org ID/products").mock(side_effect=retry_handler)
 
-        response = await client.products.with_raw_response.list(org_id="orgId")
+        response = await client.products.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1866,11 +1838,9 @@ class TestAsyncM3ter:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/organizations/orgId/products").mock(side_effect=retry_handler)
+        respx_mock.get("/organizations/My Org ID/products").mock(side_effect=retry_handler)
 
-        response = await client.products.with_raw_response.list(
-            org_id="orgId", extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = await client.products.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1892,11 +1862,9 @@ class TestAsyncM3ter:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.get("/organizations/orgId/products").mock(side_effect=retry_handler)
+        respx_mock.get("/organizations/My Org ID/products").mock(side_effect=retry_handler)
 
-        response = await client.products.with_raw_response.list(
-            org_id="orgId", extra_headers={"x-stainless-retry-count": "42"}
-        )
+        response = await client.products.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 

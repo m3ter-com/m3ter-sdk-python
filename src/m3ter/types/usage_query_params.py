@@ -4,41 +4,97 @@ from __future__ import annotations
 
 from typing import List, Union, Iterable
 from datetime import datetime
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
+from .data_explorer_time_group_param import DataExplorerTimeGroupParam
+from .data_explorer_account_group_param import DataExplorerAccountGroupParam
+from .data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
 
 __all__ = [
     "UsageQueryParams",
     "Aggregation",
     "DimensionFilter",
-    "Group",
-    "GroupDataExplorerAccountGroup",
-    "GroupDataExplorerDimensionGroup",
-    "GroupDataExplorerTimeGroup",
+    "GroupDataExportsDataExplorerAccountGroup",
+    "GroupDataExportsDataExplorerDimensionGroup",
+    "GroupDataExportsDataExplorerTimeGroup",
 ]
 
 
 class UsageQueryParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    end_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="endDate", format="iso8601")]]
-    """ISO 8601 formatted end date to filter by."""
-
-    start_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startDate", format="iso8601")]]
-    """ISO 8601 formatted start date to filter by."""
-
     account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
+    """Specify the Accounts you want the query to return usage data for."""
 
     aggregations: Iterable[Aggregation]
+    """
+    Define the Aggregation functions you want to apply to data fields on included
+    Meters:
+
+    - **SUM**. Adds the values.
+    - **MIN**. Uses the minimum value.
+    - **MAX**. Uses the maximum value.
+    - **COUNT**. Counts the number of values.
+    - **LATEST**. Uses the most recent value.
+    - **MEAN**. Uses the arithmetic mean of the values.
+    - **UNIQUE**. Uses a count of the number of unique values.
+
+    **NOTE!** The Aggregation functions that can be applied depend on the data field
+    type:
+
+    - **Measure** fields. `SUM`, `MIN`, `MAX`, `COUNT`, `LATEST`, or `MEAN`
+      functions can be applied.
+    - **Dimension** field. `COUNT` or `UNIQUE` functions can be applied.
+    """
 
     dimension_filters: Annotated[Iterable[DimensionFilter], PropertyInfo(alias="dimensionFilters")]
+    """Define Dimension filters you want to apply for the query.
 
-    groups: Iterable[Group]
+    Specify values for Dimension data fields on included Meters. Only data that
+    match the specified Dimension field values will be returned for the query.
+    """
+
+    end_date: Annotated[Union[str, datetime], PropertyInfo(alias="endDate", format="iso8601")]
+    """The exclusive end date to define a time period to filter by.
+
+    (_ISO 8601 formatted_)
+    """
+
+    groups: Iterable[
+        Union[
+            GroupDataExportsDataExplorerAccountGroup,
+            GroupDataExportsDataExplorerDimensionGroup,
+            GroupDataExportsDataExplorerTimeGroup,
+        ]
+    ]
+    """
+    If you've applied Aggregations for your query, specify any grouping you want to
+    impose on the returned data:
+
+    - **Account**
+    - **Time** - group by frequency. Five options: `DAY`, `HOUR`, `WEEK`, `MONTH`,
+      or `QUARTER`.
+    - **Dimension** - group by Meter and data field.
+
+    **NOTE:** If you attempt to impose grouping for a query that doesn't apply
+    Aggregations, you'll receive an error.
+    """
 
     limit: int
+    """
+    Define a limit for the number of usage data items you want the query to return,
+    starting with the most recently received data item.
+    """
 
     meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
+    """Specify the Meters you want the query to return usage data for."""
+
+    start_date: Annotated[Union[str, datetime], PropertyInfo(alias="startDate", format="iso8601")]
+    """The inclusive start date to define a time period to filter by.
+
+    (_ISO 8601 formatted_)
+    """
 
 
 class Aggregation(TypedDict, total=False):
@@ -66,25 +122,13 @@ class DimensionFilter(TypedDict, total=False):
     """Values to filter by"""
 
 
-class GroupDataExplorerAccountGroup(TypedDict, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]
+class GroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroupParam, total=False):
+    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
 
 
-class GroupDataExplorerDimensionGroup(TypedDict, total=False):
-    field_code: Required[Annotated[str, PropertyInfo(alias="fieldCode")]]
-    """Field code to group by"""
-
-    meter_id: Required[Annotated[str, PropertyInfo(alias="meterId")]]
-    """Meter ID to group by"""
-
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]
+class GroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroupParam, total=False):
+    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
 
 
-class GroupDataExplorerTimeGroup(TypedDict, total=False):
-    frequency: Required[Literal["DAY", "HOUR", "WEEK", "MONTH", "QUARTER"]]
-    """Frequency of usage data"""
-
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]
-
-
-Group: TypeAlias = Union[GroupDataExplorerAccountGroup, GroupDataExplorerDimensionGroup, GroupDataExplorerTimeGroup]
+class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
+    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore

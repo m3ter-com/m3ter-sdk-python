@@ -31,6 +31,7 @@ client = M3ter(
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
+    token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
 )
 
 page = client.products.list()
@@ -54,6 +55,7 @@ client = AsyncM3ter(
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
+    token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
 )
 
 
@@ -127,7 +129,6 @@ Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get
 
 ```python
 first_page = await client.products.list()
-
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -162,7 +163,6 @@ client = M3ter(
 )
 
 account_response = client.accounts.create(
-    org_id="orgId",
     code="JS!?Q0]r] ]$]",
     email_address="dev@stainless.com",
     name="x",
@@ -238,11 +238,11 @@ from m3ter import M3ter
 
 # Configure the default for all requests:
 client = M3ter(
-    # default is 2
-    max_retries=0,
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
+    # default is 2
+    max_retries=0,
 )
 
 # Or, configure per-request:
@@ -259,19 +259,19 @@ from m3ter import M3ter
 
 # Configure the default for all requests:
 client = M3ter(
-    # 20 seconds (default is 1 minute)
-    timeout=20.0,
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
+    # 20 seconds (default is 1 minute)
+    timeout=20.0,
 )
 
 # More granular control:
 client = M3ter(
-    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
     api_key="My API Key",
     api_secret="My API Secret",
     org_id="My Org ID",
+    timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
@@ -394,15 +394,15 @@ import httpx
 from m3ter import M3ter, DefaultHttpxClient
 
 client = M3ter(
+    api_key="My API Key",
+    api_secret="My API Secret",
+    org_id="My Org ID",
     # Or use the `M3TER_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
         proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
-    api_key="My API Key",
-    api_secret="My API Secret",
-    org_id="My Org ID",
 )
 ```
 

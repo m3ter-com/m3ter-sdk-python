@@ -39,3 +39,6 @@ class CounterAdjustmentListParams(TypedDict, total=False):
 
     page_size: Annotated[int, PropertyInfo(alias="pageSize")]
     """Number of CounterAdjustments to retrieve per page"""
+
+    sort_order: Annotated[str, PropertyInfo(alias="sortOrder")]
+    """Sort order for the results"""

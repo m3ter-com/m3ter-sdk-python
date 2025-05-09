@@ -9,10 +9,7 @@ import httpx
 
 from ..types import aggregation_list_params, aggregation_create_params, aggregation_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -149,7 +146,9 @@ class AggregationsResource(SyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -374,7 +373,9 @@ class AggregationsResource(SyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -682,7 +683,9 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.
@@ -907,7 +910,9 @@ class AsyncAggregationsResource(AsyncAPIResource):
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
-          custom_sql
+          custom_sql: **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+              release and on request. If you are interested in using this feature, please get
+              in touch with m3ter Support or your m3ter contact.
 
           default_value: Aggregation value used when no usage data is available to be aggregated.
               _(Optional)_.

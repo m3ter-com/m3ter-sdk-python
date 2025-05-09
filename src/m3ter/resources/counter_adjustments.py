@@ -6,16 +6,9 @@ from typing import Optional
 
 import httpx
 
-from ..types import (
-    counter_adjustment_list_params,
-    counter_adjustment_create_params,
-    counter_adjustment_update_params,
-)
+from ..types import counter_adjustment_list_params, counter_adjustment_create_params, counter_adjustment_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -279,6 +272,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
         end_date_start: str | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
+        sort_order: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -313,6 +307,8 @@ class CounterAdjustmentsResource(SyncAPIResource):
 
           page_size: Number of CounterAdjustments to retrieve per page
 
+          sort_order: Sort order for the results
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -344,6 +340,7 @@ class CounterAdjustmentsResource(SyncAPIResource):
                         "end_date_start": end_date_start,
                         "next_token": next_token,
                         "page_size": page_size,
+                        "sort_order": sort_order,
                     },
                     counter_adjustment_list_params.CounterAdjustmentListParams,
                 ),
@@ -638,6 +635,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
         end_date_start: str | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
+        sort_order: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -672,6 +670,8 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
 
           page_size: Number of CounterAdjustments to retrieve per page
 
+          sort_order: Sort order for the results
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -703,6 +703,7 @@ class AsyncCounterAdjustmentsResource(AsyncAPIResource):
                         "end_date_start": end_date_start,
                         "next_token": next_token,
                         "page_size": page_size,
+                        "sort_order": sort_order,
                     },
                     counter_adjustment_list_params.CounterAdjustmentListParams,
                 ),

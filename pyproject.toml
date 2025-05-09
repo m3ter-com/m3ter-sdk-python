@@ -1,6 +1,6 @@
 [project]
 name = "m3ter"
-version = "0.3.1-alpha"
+version = "0.4.0-alpha"
 description = "The official Python library for the m3ter API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -42,7 +42,7 @@ Repository = "https://github.com/m3ter-com/m3ter-sdk-python"
 managed = true
 # version pins are in requirements-dev.lock
 dev-dependencies = [
-    "pyright>=1.1.359",
+    "pyright==1.1.399",
     "mypy",
     "respx",
     "pytest",
@@ -147,6 +147,7 @@ exclude = [
 ]
 
 reportImplicitOverride = true
+reportOverlappingOverload = false
 
 reportImportCycles = false
 reportPrivateUsage = false

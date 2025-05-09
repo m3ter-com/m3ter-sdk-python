@@ -2,16 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import Any, List, Optional, cast
+from typing_extensions import Literal, overload
 
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from ..._utils import required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -52,14 +49,14 @@ class DestinationsResource(SyncAPIResource):
         """
         return DestinationsResourceWithStreamingResponse(self)
 
+    @overload
     def create(
         self,
         *,
         org_id: str | None = None,
         bucket_name: str,
-        code: str,
         iam_role_arn: str,
-        name: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -80,8 +77,6 @@ class DestinationsResource(SyncAPIResource):
         Args:
           bucket_name: Name of the S3 bucket for the Export Destination.
 
-          code: The code of the Export Destination.
-
           iam_role_arn: To enable m3ter to upload a Data Exports to your S3 bucket, the service has to
               assume an IAM role with PutObject permission for the specified `bucketName`.
               Create a suitable IAM role in your AWS account and enter ARN:
@@ -100,7 +95,7 @@ class DestinationsResource(SyncAPIResource):
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
 
-          name: The name of the Export Destination.
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -139,28 +134,139 @@ class DestinationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    def create(
+        self,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        pool_id: str,
+        project_number: str,
+        provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationCreateResponse:
+        """
+        Create a new Export Destination to use for your Data Export Schedules or Ad-Hoc
+        Data Exports.
+
+        **NOTE:** Currently, you can only create Export Destinations using an S3 bucket
+        on your AWS Account.
+
+        Args:
+          bucket_name: The export destination bucket name.
+
+          pool_id: The export destination Web Identity Federation poolId.
+
+          project_number: The export destination GCP projectNumber.
+
+          provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
+
+          partition_order: Specify how you want the file path to be structured in your bucket destination -
+              by Time first (Default) or Type first.
+
+              Type is dependent on whether the Export is for Usage data or Operational data:
+
+              - **Usage.** Type is `measurements`.
+              - **Operational.** Type is one of the entities for which operational data
+                exports are available, such as `account`, `commitment`, `meter`, and so on.
+
+              Example for Usage Data Export using .CSV format:
+
+              - Time first:
+                `{bucketName}/{prefix}/orgId={orgId}/date=2025-01-27/hour=10/type=measurements/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+              - Type first:
+                `{bucketName}/{prefix}/orgId={orgId}/type=measurements/date=2025-01-27/hour=10/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+
+          prefix: The export destination prefix.
+
+          service_account_email: The export destination service account email.
+
+          version:
+              The version number of the entity:
+
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
+                version because a check is performed to ensure sequential versioning is
+                preserved. Version is incremented by 1 and listed in the response.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["bucket_name", "iam_role_arn"], ["bucket_name", "pool_id", "project_number", "provider_id"])
+    def create(
+        self,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        pool_id: str | NotGiven = NOT_GIVEN,
+        project_number: str | NotGiven = NOT_GIVEN,
+        provider_id: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationCreateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return self._post(
-            f"/organizations/{org_id}/dataexports/destinations",
-            body=maybe_transform(
-                {
-                    "bucket_name": bucket_name,
-                    "code": code,
-                    "iam_role_arn": iam_role_arn,
-                    "name": name,
-                    "partition_order": partition_order,
-                    "prefix": prefix,
-                    "version": version,
-                },
-                destination_create_params.DestinationCreateParams,
+        return cast(
+            DestinationCreateResponse,
+            self._post(
+                f"/organizations/{org_id}/dataexports/destinations",
+                body=maybe_transform(
+                    {
+                        "bucket_name": bucket_name,
+                        "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
+                        "partition_order": partition_order,
+                        "prefix": prefix,
+                        "version": version,
+                        "pool_id": pool_id,
+                        "project_number": project_number,
+                        "provider_id": provider_id,
+                        "service_account_email": service_account_email,
+                    },
+                    destination_create_params.DestinationCreateParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationCreateResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DestinationCreateResponse,
         )
 
     def retrieve(
@@ -193,23 +299,28 @@ class DestinationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            f"/organizations/{org_id}/dataexports/destinations/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+        return cast(
+            DestinationRetrieveResponse,
+            self._get(
+                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationRetrieveResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            cast_to=DestinationRetrieveResponse,
         )
 
+    @overload
     def update(
         self,
         id: str,
         *,
         org_id: str | None = None,
         bucket_name: str,
-        code: str,
         iam_role_arn: str,
-        name: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -229,8 +340,6 @@ class DestinationsResource(SyncAPIResource):
         Args:
           bucket_name: Name of the S3 bucket for the Export Destination.
 
-          code: The code of the Export Destination.
-
           iam_role_arn: To enable m3ter to upload a Data Exports to your S3 bucket, the service has to
               assume an IAM role with PutObject permission for the specified `bucketName`.
               Create a suitable IAM role in your AWS account and enter ARN:
@@ -249,7 +358,7 @@ class DestinationsResource(SyncAPIResource):
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
 
-          name: The name of the Export Destination.
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -288,30 +397,142 @@ class DestinationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    def update(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        pool_id: str,
+        project_number: str,
+        provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationUpdateResponse:
+        """
+        Update an Export Destination for the given UUID.
+
+        **NOTE:** Currently, only Export Destinations using an S3 bucket on your AWS
+        Account are supported.
+
+        Args:
+          bucket_name: The export destination bucket name.
+
+          pool_id: The export destination Web Identity Federation poolId.
+
+          project_number: The export destination GCP projectNumber.
+
+          provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
+
+          partition_order: Specify how you want the file path to be structured in your bucket destination -
+              by Time first (Default) or Type first.
+
+              Type is dependent on whether the Export is for Usage data or Operational data:
+
+              - **Usage.** Type is `measurements`.
+              - **Operational.** Type is one of the entities for which operational data
+                exports are available, such as `account`, `commitment`, `meter`, and so on.
+
+              Example for Usage Data Export using .CSV format:
+
+              - Time first:
+                `{bucketName}/{prefix}/orgId={orgId}/date=2025-01-27/hour=10/type=measurements/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+              - Type first:
+                `{bucketName}/{prefix}/orgId={orgId}/type=measurements/date=2025-01-27/hour=10/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+
+          prefix: The export destination prefix.
+
+          service_account_email: The export destination service account email.
+
+          version:
+              The version number of the entity:
+
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
+                version because a check is performed to ensure sequential versioning is
+                preserved. Version is incremented by 1 and listed in the response.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["bucket_name", "iam_role_arn"], ["bucket_name", "pool_id", "project_number", "provider_id"])
+    def update(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        pool_id: str | NotGiven = NOT_GIVEN,
+        project_number: str | NotGiven = NOT_GIVEN,
+        provider_id: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationUpdateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._put(
-            f"/organizations/{org_id}/dataexports/destinations/{id}",
-            body=maybe_transform(
-                {
-                    "bucket_name": bucket_name,
-                    "code": code,
-                    "iam_role_arn": iam_role_arn,
-                    "name": name,
-                    "partition_order": partition_order,
-                    "prefix": prefix,
-                    "version": version,
-                },
-                destination_update_params.DestinationUpdateParams,
+        return cast(
+            DestinationUpdateResponse,
+            self._put(
+                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                body=maybe_transform(
+                    {
+                        "bucket_name": bucket_name,
+                        "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
+                        "partition_order": partition_order,
+                        "prefix": prefix,
+                        "version": version,
+                        "pool_id": pool_id,
+                        "project_number": project_number,
+                        "provider_id": provider_id,
+                        "service_account_email": service_account_email,
+                    },
+                    destination_update_params.DestinationUpdateParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationUpdateResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DestinationUpdateResponse,
         )
 
     def list(
@@ -406,12 +627,17 @@ class DestinationsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._delete(
-            f"/organizations/{org_id}/dataexports/destinations/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+        return cast(
+            DestinationDeleteResponse,
+            self._delete(
+                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationDeleteResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            cast_to=DestinationDeleteResponse,
         )
 
 
@@ -435,14 +661,14 @@ class AsyncDestinationsResource(AsyncAPIResource):
         """
         return AsyncDestinationsResourceWithStreamingResponse(self)
 
+    @overload
     async def create(
         self,
         *,
         org_id: str | None = None,
         bucket_name: str,
-        code: str,
         iam_role_arn: str,
-        name: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -463,8 +689,6 @@ class AsyncDestinationsResource(AsyncAPIResource):
         Args:
           bucket_name: Name of the S3 bucket for the Export Destination.
 
-          code: The code of the Export Destination.
-
           iam_role_arn: To enable m3ter to upload a Data Exports to your S3 bucket, the service has to
               assume an IAM role with PutObject permission for the specified `bucketName`.
               Create a suitable IAM role in your AWS account and enter ARN:
@@ -483,7 +707,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
 
-          name: The name of the Export Destination.
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -522,28 +746,139 @@ class AsyncDestinationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    async def create(
+        self,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        pool_id: str,
+        project_number: str,
+        provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationCreateResponse:
+        """
+        Create a new Export Destination to use for your Data Export Schedules or Ad-Hoc
+        Data Exports.
+
+        **NOTE:** Currently, you can only create Export Destinations using an S3 bucket
+        on your AWS Account.
+
+        Args:
+          bucket_name: The export destination bucket name.
+
+          pool_id: The export destination Web Identity Federation poolId.
+
+          project_number: The export destination GCP projectNumber.
+
+          provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
+
+          partition_order: Specify how you want the file path to be structured in your bucket destination -
+              by Time first (Default) or Type first.
+
+              Type is dependent on whether the Export is for Usage data or Operational data:
+
+              - **Usage.** Type is `measurements`.
+              - **Operational.** Type is one of the entities for which operational data
+                exports are available, such as `account`, `commitment`, `meter`, and so on.
+
+              Example for Usage Data Export using .CSV format:
+
+              - Time first:
+                `{bucketName}/{prefix}/orgId={orgId}/date=2025-01-27/hour=10/type=measurements/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+              - Type first:
+                `{bucketName}/{prefix}/orgId={orgId}/type=measurements/date=2025-01-27/hour=10/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+
+          prefix: The export destination prefix.
+
+          service_account_email: The export destination service account email.
+
+          version:
+              The version number of the entity:
+
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
+                version because a check is performed to ensure sequential versioning is
+                preserved. Version is incremented by 1 and listed in the response.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["bucket_name", "iam_role_arn"], ["bucket_name", "pool_id", "project_number", "provider_id"])
+    async def create(
+        self,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        pool_id: str | NotGiven = NOT_GIVEN,
+        project_number: str | NotGiven = NOT_GIVEN,
+        provider_id: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationCreateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
-        return await self._post(
-            f"/organizations/{org_id}/dataexports/destinations",
-            body=await async_maybe_transform(
-                {
-                    "bucket_name": bucket_name,
-                    "code": code,
-                    "iam_role_arn": iam_role_arn,
-                    "name": name,
-                    "partition_order": partition_order,
-                    "prefix": prefix,
-                    "version": version,
-                },
-                destination_create_params.DestinationCreateParams,
+        return cast(
+            DestinationCreateResponse,
+            await self._post(
+                f"/organizations/{org_id}/dataexports/destinations",
+                body=await async_maybe_transform(
+                    {
+                        "bucket_name": bucket_name,
+                        "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
+                        "partition_order": partition_order,
+                        "prefix": prefix,
+                        "version": version,
+                        "pool_id": pool_id,
+                        "project_number": project_number,
+                        "provider_id": provider_id,
+                        "service_account_email": service_account_email,
+                    },
+                    destination_create_params.DestinationCreateParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationCreateResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DestinationCreateResponse,
         )
 
     async def retrieve(
@@ -576,23 +911,28 @@ class AsyncDestinationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            f"/organizations/{org_id}/dataexports/destinations/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+        return cast(
+            DestinationRetrieveResponse,
+            await self._get(
+                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationRetrieveResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            cast_to=DestinationRetrieveResponse,
         )
 
+    @overload
     async def update(
         self,
         id: str,
         *,
         org_id: str | None = None,
         bucket_name: str,
-        code: str,
         iam_role_arn: str,
-        name: str,
+        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
         partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
         prefix: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -612,8 +952,6 @@ class AsyncDestinationsResource(AsyncAPIResource):
         Args:
           bucket_name: Name of the S3 bucket for the Export Destination.
 
-          code: The code of the Export Destination.
-
           iam_role_arn: To enable m3ter to upload a Data Exports to your S3 bucket, the service has to
               assume an IAM role with PutObject permission for the specified `bucketName`.
               Create a suitable IAM role in your AWS account and enter ARN:
@@ -632,7 +970,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
               [Creating Data Export Destinations](https://www.m3ter.com/docs/guides/data-exports/creating-data-export-destinations)
               in our main User documentation.
 
-          name: The name of the Export Destination.
+          destination_type: The type of destination to create. Possible values are: S3
 
           partition_order: Specify how you want the file path to be structured in your bucket destination -
               by Time first (Default) or Type first.
@@ -671,30 +1009,142 @@ class AsyncDestinationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    async def update(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        pool_id: str,
+        project_number: str,
+        provider_id: str,
+        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationUpdateResponse:
+        """
+        Update an Export Destination for the given UUID.
+
+        **NOTE:** Currently, only Export Destinations using an S3 bucket on your AWS
+        Account are supported.
+
+        Args:
+          bucket_name: The export destination bucket name.
+
+          pool_id: The export destination Web Identity Federation poolId.
+
+          project_number: The export destination GCP projectNumber.
+
+          provider_id: The export destination Web Identity Federation identity providerId.
+
+          destination_type: The type of destination to create. Possible values are: GCS
+
+          partition_order: Specify how you want the file path to be structured in your bucket destination -
+              by Time first (Default) or Type first.
+
+              Type is dependent on whether the Export is for Usage data or Operational data:
+
+              - **Usage.** Type is `measurements`.
+              - **Operational.** Type is one of the entities for which operational data
+                exports are available, such as `account`, `commitment`, `meter`, and so on.
+
+              Example for Usage Data Export using .CSV format:
+
+              - Time first:
+                `{bucketName}/{prefix}/orgId={orgId}/date=2025-01-27/hour=10/type=measurements/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+              - Type first:
+                `{bucketName}/{prefix}/orgId={orgId}/type=measurements/date=2025-01-27/hour=10/b9a317a6-860a-40f9-9bf4-e65c44c72c94_measurements.csv.gz`
+
+          prefix: The export destination prefix.
+
+          service_account_email: The export destination service account email.
+
+          version:
+              The version number of the entity:
+
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
+                version because a check is performed to ensure sequential versioning is
+                preserved. Version is incremented by 1 and listed in the response.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["bucket_name", "iam_role_arn"], ["bucket_name", "pool_id", "project_number", "provider_id"])
+    async def update(
+        self,
+        id: str,
+        *,
+        org_id: str | None = None,
+        bucket_name: str,
+        iam_role_arn: str | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
+        prefix: str | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
+        pool_id: str | NotGiven = NOT_GIVEN,
+        project_number: str | NotGiven = NOT_GIVEN,
+        provider_id: str | NotGiven = NOT_GIVEN,
+        service_account_email: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> DestinationUpdateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._put(
-            f"/organizations/{org_id}/dataexports/destinations/{id}",
-            body=await async_maybe_transform(
-                {
-                    "bucket_name": bucket_name,
-                    "code": code,
-                    "iam_role_arn": iam_role_arn,
-                    "name": name,
-                    "partition_order": partition_order,
-                    "prefix": prefix,
-                    "version": version,
-                },
-                destination_update_params.DestinationUpdateParams,
+        return cast(
+            DestinationUpdateResponse,
+            await self._put(
+                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                body=await async_maybe_transform(
+                    {
+                        "bucket_name": bucket_name,
+                        "iam_role_arn": iam_role_arn,
+                        "destination_type": destination_type,
+                        "partition_order": partition_order,
+                        "prefix": prefix,
+                        "version": version,
+                        "pool_id": pool_id,
+                        "project_number": project_number,
+                        "provider_id": provider_id,
+                        "service_account_email": service_account_email,
+                    },
+                    destination_update_params.DestinationUpdateParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationUpdateResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=DestinationUpdateResponse,
         )
 
     def list(
@@ -789,12 +1239,17 @@ class AsyncDestinationsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._delete(
-            f"/organizations/{org_id}/dataexports/destinations/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+        return cast(
+            DestinationDeleteResponse,
+            await self._delete(
+                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, DestinationDeleteResponse
+                ),  # Union types cannot be passed in as arguments in the type system
             ),
-            cast_to=DestinationDeleteResponse,
         )
 
 

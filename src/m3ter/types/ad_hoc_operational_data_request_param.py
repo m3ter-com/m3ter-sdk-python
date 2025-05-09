@@ -40,7 +40,8 @@ class AdHocOperationalDataRequestParam(TypedDict, total=False):
     ]
     """The list of the operational data types should be exported for."""
 
-    source_type: Required[Annotated[Literal["USAGE", "OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    source_type: Required[Annotated[Literal["OPERATIONAL"], PropertyInfo(alias="sourceType")]]
+    """The type of data to export. Possible values are: OPERATIONAL"""
 
     version: int
     """The version number of the entity:

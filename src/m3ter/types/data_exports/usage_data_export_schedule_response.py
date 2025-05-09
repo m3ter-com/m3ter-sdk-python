@@ -1,18 +1,65 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..data_explorer_time_group import DataExplorerTimeGroup
+from ..data_explorer_account_group import DataExplorerAccountGroup
+from ..data_explorer_dimension_group import DataExplorerDimensionGroup
 
-__all__ = ["UsageDataExportScheduleResponse"]
+__all__ = [
+    "UsageDataExportScheduleResponse",
+    "Aggregation",
+    "DimensionFilter",
+    "GroupDataExportsDataExplorerAccountGroup",
+    "GroupDataExportsDataExplorerDimensionGroup",
+    "GroupDataExportsDataExplorerTimeGroup",
+]
+
+
+class Aggregation(BaseModel):
+    field_code: str = FieldInfo(alias="fieldCode")
+    """Field code"""
+
+    field_type: Literal["DIMENSION", "MEASURE"] = FieldInfo(alias="fieldType")
+    """Type of field"""
+
+    function: Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]
+    """Aggregation function"""
+
+    meter_id: str = FieldInfo(alias="meterId")
+    """Meter ID"""
+
+
+class DimensionFilter(BaseModel):
+    field_code: str = FieldInfo(alias="fieldCode")
+    """Field code"""
+
+    meter_id: str = FieldInfo(alias="meterId")
+    """Meter ID"""
+
+    values: List[str]
+    """Values to filter by"""
+
+
+class GroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroup):
+    group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)  # type: ignore
+
+
+class GroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroup):
+    group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)  # type: ignore
+
+
+class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroup):
+    group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)  # type: ignore
 
 
 class UsageDataExportScheduleResponse(BaseModel):
     id: str
-    """The id of the schedule"""
+    """The id of the schedule configuration."""
 
     version: int
     """The version number:
@@ -26,48 +73,22 @@ class UsageDataExportScheduleResponse(BaseModel):
     account_ids: Optional[List[str]] = FieldInfo(alias="accountIds", default=None)
     """List of account IDs for which the usage data will be exported."""
 
-    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN"]] = None
-    """
-    Specifies the aggregation method applied to usage data collected in the numeric
-    Data Fields of Meters included for the Data Export Schedule - that is, Data
-    Fields of type **MEASURE**, **INCOME**, or **COST**:
+    aggregations: Optional[List[Aggregation]] = None
+    """List of aggregations to apply"""
 
-    - **SUM**. Adds the values.
-    - **MIN**. Uses the minimum value.
-    - **MAX**. Uses the maximum value.
-    - **COUNT**. Counts the number of values.
-    - **LATEST**. Uses the most recent value. Note: Based on the timestamp `ts`
-      value of usage data measurement submissions. If using this method, please
-      ensure _distinct_ `ts` values are used for usage data measurement submissions.
-    """
+    dimension_filters: Optional[List[DimensionFilter]] = FieldInfo(alias="dimensionFilters", default=None)
+    """List of dimension filters to apply"""
 
-    aggregation_frequency: Optional[Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH"]] = FieldInfo(
-        alias="aggregationFrequency", default=None
-    )
-    """
-    Specifies the time period for the aggregation of usage data included each time
-    the Data Export Schedule runs:
-
-    - **ORIGINAL**. Usage data is _not aggregated_. If you select to not aggregate,
-      then raw usage data measurements collected by all Data Field types and any
-      Derived Fields on the selected Meters are included in the export. This is the
-      _Default_.
-
-    If you want to aggregate usage data for the Export Schedule you must define an
-    `aggregationFrequency`:
-
-    - **HOUR**. Aggregated hourly.
-    - **DAY**. Aggregated daily.
-    - **WEEK**. Aggregated weekly.
-    - **MONTH**. Aggregated monthly.
-
-    - If you select to aggregate usage data for a Export Schedule, then only the
-      aggregated usage data collected by numeric Data Fields of type **MEASURE**,
-      **INCOME**, or **COST** on selected Meters are included in the export.
-
-    **NOTE**: If you define an `aggregationFrequency` other than **ORIGINAL** and do
-    not define an `aggregation` method, then you'll receive and error.
-    """
+    groups: Optional[
+        List[
+            Union[
+                GroupDataExportsDataExplorerAccountGroup,
+                GroupDataExportsDataExplorerDimensionGroup,
+                GroupDataExportsDataExplorerTimeGroup,
+            ]
+        ]
+    ] = None
+    """List of groups to apply"""
 
     meter_ids: Optional[List[str]] = FieldInfo(alias="meterIds", default=None)
     """List of meter IDs for which the usage data will be exported."""
@@ -77,11 +98,19 @@ class UsageDataExportScheduleResponse(BaseModel):
             "TODAY",
             "YESTERDAY",
             "WEEK_TO_DATE",
-            "CURRENT_MONTH",
-            "LAST_30_DAYS",
-            "LAST_35_DAYS",
+            "MONTH_TO_DATE",
+            "YEAR_TO_DATE",
             "PREVIOUS_WEEK",
             "PREVIOUS_MONTH",
+            "PREVIOUS_QUARTER",
+            "PREVIOUS_YEAR",
+            "LAST_12_HOURS",
+            "LAST_7_DAYS",
+            "LAST_30_DAYS",
+            "LAST_35_DAYS",
+            "LAST_90_DAYS",
+            "LAST_120_DAYS",
+            "LAST_YEAR",
         ]
     ] = FieldInfo(alias="timePeriod", default=None)
     """

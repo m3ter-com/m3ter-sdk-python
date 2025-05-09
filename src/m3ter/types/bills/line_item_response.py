@@ -79,6 +79,8 @@ class LineItemResponse(BaseModel):
     bill_id: Optional[str] = FieldInfo(alias="billId", default=None)
     """The unique identifier (UUID) for the Bill that includes this line item."""
 
+    charge_id: Optional[str] = FieldInfo(alias="chargeId", default=None)
+
     commitment_id: Optional[str] = FieldInfo(alias="commitmentId", default=None)
     """The unique identifier (UUID) of the Commitment _(if this is used)_."""
 

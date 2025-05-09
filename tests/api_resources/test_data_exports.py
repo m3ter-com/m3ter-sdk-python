@@ -20,18 +20,16 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_overload_1(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_1(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -39,9 +37,8 @@ class TestDataExports:
     @parametrize
     def test_raw_response_create_adhoc_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -52,9 +49,8 @@ class TestDataExports:
     @parametrize
     def test_streaming_response_create_adhoc_overload_1(self, client: M3ter) -> None:
         with client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,19 +61,8 @@ class TestDataExports:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create_adhoc_overload_1(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                operational_data_types=["BILLS"],
-                source_type="USAGE",
-            )
-
-    @parametrize
     def test_method_create_adhoc_overload_2(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -85,13 +70,25 @@ class TestDataExports:
     @parametrize
     def test_method_create_adhoc_with_all_params_overload_2(self, client: M3ter) -> None:
         data_export = client.data_exports.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
-            time_period="TODAY",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -99,8 +96,6 @@ class TestDataExports:
     @parametrize
     def test_raw_response_create_adhoc_overload_2(self, client: M3ter) -> None:
         response = client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
 
@@ -112,8 +107,6 @@ class TestDataExports:
     @parametrize
     def test_streaming_response_create_adhoc_overload_2(self, client: M3ter) -> None:
         with client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         ) as response:
             assert not response.is_closed
@@ -124,15 +117,6 @@ class TestDataExports:
 
         assert cast(Any, response.is_closed) is True
 
-    @parametrize
-    def test_path_params_create_adhoc_overload_2(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                aggregation_frequency="ORIGINAL",
-                source_type="USAGE",
-            )
-
 
 class TestAsyncDataExports:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -140,18 +124,16 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
 
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -159,9 +141,8 @@ class TestAsyncDataExports:
     @parametrize
     async def test_raw_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         )
 
         assert response.is_closed is True
@@ -172,9 +153,8 @@ class TestAsyncDataExports:
     @parametrize
     async def test_streaming_response_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
             operational_data_types=["BILLS"],
-            source_type="USAGE",
+            source_type="OPERATIONAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -185,19 +165,8 @@ class TestAsyncDataExports:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                operational_data_types=["BILLS"],
-                source_type="USAGE",
-            )
-
-    @parametrize
     async def test_method_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -205,13 +174,25 @@ class TestAsyncDataExports:
     @parametrize
     async def test_method_create_adhoc_with_all_params_overload_2(self, async_client: AsyncM3ter) -> None:
         data_export = await async_client.data_exports.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
             account_ids=["string"],
-            aggregation="SUM",
+            aggregations=[
+                {
+                    "field_code": "x",
+                    "field_type": "DIMENSION",
+                    "function": "SUM",
+                    "meter_id": "x",
+                }
+            ],
+            dimension_filters=[
+                {
+                    "field_code": "x",
+                    "meter_id": "x",
+                    "values": ["string"],
+                }
+            ],
+            groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
-            time_period="TODAY",
             version=0,
         )
         assert_matches_type(AdHocResponse, data_export, path=["response"])
@@ -219,8 +200,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_raw_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.with_raw_response.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         )
 
@@ -232,8 +211,6 @@ class TestAsyncDataExports:
     @parametrize
     async def test_streaming_response_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.with_streaming_response.create_adhoc(
-            org_id="orgId",
-            aggregation_frequency="ORIGINAL",
             source_type="USAGE",
         ) as response:
             assert not response.is_closed
@@ -243,12 +220,3 @@ class TestAsyncDataExports:
             assert_matches_type(AdHocResponse, data_export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_create_adhoc_overload_2(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.data_exports.with_raw_response.create_adhoc(
-                org_id="",
-                aggregation_frequency="ORIGINAL",
-                source_type="USAGE",
-            )

@@ -109,6 +109,11 @@ class AggregationCreateParams(TypedDict, total=False):
     custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
 
     custom_sql: Annotated[str, PropertyInfo(alias="customSql")]
+    """
+    **NOTE:** The `customSql` Aggregation type is currently only available in Beta
+    release and on request. If you are interested in using this feature, please get
+    in touch with m3ter Support or your m3ter contact.
+    """
 
     default_value: Annotated[float, PropertyInfo(alias="defaultValue")]
     """Aggregation value used when no usage data is available to be aggregated.

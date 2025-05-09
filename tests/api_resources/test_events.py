@@ -26,7 +26,6 @@ class TestEvents:
     def test_method_retrieve(self, client: M3ter) -> None:
         event = client.events.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(EventResponse, event, path=["response"])
 
@@ -34,7 +33,6 @@ class TestEvents:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.events.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -46,7 +44,6 @@ class TestEvents:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.events.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -58,29 +55,19 @@ class TestEvents:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.events.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.events.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        event = client.events.list(
-            org_id="orgId",
-        )
+        event = client.events.list()
         assert_matches_type(SyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         event = client.events.list(
-            org_id="orgId",
             account_id="accountId",
             event_name="eventName",
             event_type="eventType",
@@ -96,9 +83,7 @@ class TestEvents:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.events.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.events.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -107,9 +92,7 @@ class TestEvents:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.events.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.events.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -119,32 +102,20 @@ class TestEvents:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.events.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_get_fields(self, client: M3ter) -> None:
-        event = client.events.get_fields(
-            org_id="orgId",
-        )
+        event = client.events.get_fields()
         assert_matches_type(EventGetFieldsResponse, event, path=["response"])
 
     @parametrize
     def test_method_get_fields_with_all_params(self, client: M3ter) -> None:
         event = client.events.get_fields(
-            org_id="orgId",
             event_name="eventName",
         )
         assert_matches_type(EventGetFieldsResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_get_fields(self, client: M3ter) -> None:
-        response = client.events.with_raw_response.get_fields(
-            org_id="orgId",
-        )
+        response = client.events.with_raw_response.get_fields()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -153,9 +124,7 @@ class TestEvents:
 
     @parametrize
     def test_streaming_response_get_fields(self, client: M3ter) -> None:
-        with client.events.with_streaming_response.get_fields(
-            org_id="orgId",
-        ) as response:
+        with client.events.with_streaming_response.get_fields() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -165,24 +134,13 @@ class TestEvents:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_get_fields(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.events.with_raw_response.get_fields(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_get_types(self, client: M3ter) -> None:
-        event = client.events.get_types(
-            org_id="orgId",
-        )
+        event = client.events.get_types()
         assert_matches_type(EventGetTypesResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_get_types(self, client: M3ter) -> None:
-        response = client.events.with_raw_response.get_types(
-            org_id="orgId",
-        )
+        response = client.events.with_raw_response.get_types()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -191,9 +149,7 @@ class TestEvents:
 
     @parametrize
     def test_streaming_response_get_types(self, client: M3ter) -> None:
-        with client.events.with_streaming_response.get_types(
-            org_id="orgId",
-        ) as response:
+        with client.events.with_streaming_response.get_types() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -201,13 +157,6 @@ class TestEvents:
             assert_matches_type(EventGetTypesResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_path_params_get_types(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.events.with_raw_response.get_types(
-                org_id="",
-            )
 
 
 class TestAsyncEvents:
@@ -217,7 +166,6 @@ class TestAsyncEvents:
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         event = await async_client.events.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(EventResponse, event, path=["response"])
 
@@ -225,7 +173,6 @@ class TestAsyncEvents:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.events.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -237,7 +184,6 @@ class TestAsyncEvents:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.events.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -249,29 +195,19 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.events.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.events.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        event = await async_client.events.list(
-            org_id="orgId",
-        )
+        event = await async_client.events.list()
         assert_matches_type(AsyncCursor[EventResponse], event, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         event = await async_client.events.list(
-            org_id="orgId",
             account_id="accountId",
             event_name="eventName",
             event_type="eventType",
@@ -287,9 +223,7 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.events.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.events.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -298,9 +232,7 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.events.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.events.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -310,32 +242,20 @@ class TestAsyncEvents:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.events.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_get_fields(self, async_client: AsyncM3ter) -> None:
-        event = await async_client.events.get_fields(
-            org_id="orgId",
-        )
+        event = await async_client.events.get_fields()
         assert_matches_type(EventGetFieldsResponse, event, path=["response"])
 
     @parametrize
     async def test_method_get_fields_with_all_params(self, async_client: AsyncM3ter) -> None:
         event = await async_client.events.get_fields(
-            org_id="orgId",
             event_name="eventName",
         )
         assert_matches_type(EventGetFieldsResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_get_fields(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.events.with_raw_response.get_fields(
-            org_id="orgId",
-        )
+        response = await async_client.events.with_raw_response.get_fields()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -344,9 +264,7 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_streaming_response_get_fields(self, async_client: AsyncM3ter) -> None:
-        async with async_client.events.with_streaming_response.get_fields(
-            org_id="orgId",
-        ) as response:
+        async with async_client.events.with_streaming_response.get_fields() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -356,24 +274,13 @@ class TestAsyncEvents:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_get_fields(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.events.with_raw_response.get_fields(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_get_types(self, async_client: AsyncM3ter) -> None:
-        event = await async_client.events.get_types(
-            org_id="orgId",
-        )
+        event = await async_client.events.get_types()
         assert_matches_type(EventGetTypesResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_get_types(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.events.with_raw_response.get_types(
-            org_id="orgId",
-        )
+        response = await async_client.events.with_raw_response.get_types()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -382,9 +289,7 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_streaming_response_get_types(self, async_client: AsyncM3ter) -> None:
-        async with async_client.events.with_streaming_response.get_types(
-            org_id="orgId",
-        ) as response:
+        async with async_client.events.with_streaming_response.get_types() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -392,10 +297,3 @@ class TestAsyncEvents:
             assert_matches_type(EventGetTypesResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_get_types(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.events.with_raw_response.get_types(
-                org_id="",
-            )

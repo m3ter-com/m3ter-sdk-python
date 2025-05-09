@@ -21,15 +21,12 @@ class TestBillJobs:
 
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
-        bill_job = client.bill_jobs.create(
-            org_id="orgId",
-        )
+        bill_job = client.bill_jobs.create()
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         bill_job = client.bill_jobs.create(
-            org_id="orgId",
             account_ids=["string"],
             bill_date=parse_date("2019-12-27"),
             bill_frequency_interval=0,
@@ -56,9 +53,7 @@ class TestBillJobs:
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
-        response = client.bill_jobs.with_raw_response.create(
-            org_id="orgId",
-        )
+        response = client.bill_jobs.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,9 +62,7 @@ class TestBillJobs:
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
-        with client.bill_jobs.with_streaming_response.create(
-            org_id="orgId",
-        ) as response:
+        with client.bill_jobs.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -79,17 +72,9 @@ class TestBillJobs:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_create(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bill_jobs.with_raw_response.create(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_retrieve(self, client: M3ter) -> None:
         bill_job = client.bill_jobs.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
@@ -97,7 +82,6 @@ class TestBillJobs:
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.bill_jobs.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -109,7 +93,6 @@ class TestBillJobs:
     def test_streaming_response_retrieve(self, client: M3ter) -> None:
         with client.bill_jobs.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -121,29 +104,19 @@ class TestBillJobs:
 
     @parametrize
     def test_path_params_retrieve(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bill_jobs.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.bill_jobs.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_list(self, client: M3ter) -> None:
-        bill_job = client.bill_jobs.list(
-            org_id="orgId",
-        )
+        bill_job = client.bill_jobs.list()
         assert_matches_type(SyncCursor[BillJobResponse], bill_job, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         bill_job = client.bill_jobs.list(
-            org_id="orgId",
             active="active",
             next_token="nextToken",
             page_size=1,
@@ -153,9 +126,7 @@ class TestBillJobs:
 
     @parametrize
     def test_raw_response_list(self, client: M3ter) -> None:
-        response = client.bill_jobs.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = client.bill_jobs.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -164,9 +135,7 @@ class TestBillJobs:
 
     @parametrize
     def test_streaming_response_list(self, client: M3ter) -> None:
-        with client.bill_jobs.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        with client.bill_jobs.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -176,17 +145,9 @@ class TestBillJobs:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_list(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bill_jobs.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     def test_method_cancel(self, client: M3ter) -> None:
         bill_job = client.bill_jobs.cancel(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
@@ -194,7 +155,6 @@ class TestBillJobs:
     def test_raw_response_cancel(self, client: M3ter) -> None:
         response = client.bill_jobs.with_raw_response.cancel(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -206,7 +166,6 @@ class TestBillJobs:
     def test_streaming_response_cancel(self, client: M3ter) -> None:
         with client.bill_jobs.with_streaming_response.cancel(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -218,22 +177,14 @@ class TestBillJobs:
 
     @parametrize
     def test_path_params_cancel(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bill_jobs.with_raw_response.cancel(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.bill_jobs.with_raw_response.cancel(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     def test_method_recalculate(self, client: M3ter) -> None:
         bill_job = client.bill_jobs.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
         )
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
@@ -241,7 +192,6 @@ class TestBillJobs:
     @parametrize
     def test_method_recalculate_with_all_params(self, client: M3ter) -> None:
         bill_job = client.bill_jobs.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
             version=0,
         )
@@ -250,7 +200,6 @@ class TestBillJobs:
     @parametrize
     def test_raw_response_recalculate(self, client: M3ter) -> None:
         response = client.bill_jobs.with_raw_response.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
         )
 
@@ -262,7 +211,6 @@ class TestBillJobs:
     @parametrize
     def test_streaming_response_recalculate(self, client: M3ter) -> None:
         with client.bill_jobs.with_streaming_response.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
         ) as response:
             assert not response.is_closed
@@ -273,29 +221,18 @@ class TestBillJobs:
 
         assert cast(Any, response.is_closed) is True
 
-    @parametrize
-    def test_path_params_recalculate(self, client: M3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            client.bill_jobs.with_raw_response.recalculate(
-                org_id="",
-                bill_ids=["string"],
-            )
-
 
 class TestAsyncBillJobs:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
-        bill_job = await async_client.bill_jobs.create(
-            org_id="orgId",
-        )
+        bill_job = await async_client.bill_jobs.create()
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         bill_job = await async_client.bill_jobs.create(
-            org_id="orgId",
             account_ids=["string"],
             bill_date=parse_date("2019-12-27"),
             bill_frequency_interval=0,
@@ -322,9 +259,7 @@ class TestAsyncBillJobs:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.bill_jobs.with_raw_response.create(
-            org_id="orgId",
-        )
+        response = await async_client.bill_jobs.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -333,9 +268,7 @@ class TestAsyncBillJobs:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
-        async with async_client.bill_jobs.with_streaming_response.create(
-            org_id="orgId",
-        ) as response:
+        async with async_client.bill_jobs.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -345,17 +278,9 @@ class TestAsyncBillJobs:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_create(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bill_jobs.with_raw_response.create(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         bill_job = await async_client.bill_jobs.retrieve(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
@@ -363,7 +288,6 @@ class TestAsyncBillJobs:
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bill_jobs.with_raw_response.retrieve(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -375,7 +299,6 @@ class TestAsyncBillJobs:
     async def test_streaming_response_retrieve(self, async_client: AsyncM3ter) -> None:
         async with async_client.bill_jobs.with_streaming_response.retrieve(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -387,29 +310,19 @@ class TestAsyncBillJobs:
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bill_jobs.with_raw_response.retrieve(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.bill_jobs.with_raw_response.retrieve(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncM3ter) -> None:
-        bill_job = await async_client.bill_jobs.list(
-            org_id="orgId",
-        )
+        bill_job = await async_client.bill_jobs.list()
         assert_matches_type(AsyncCursor[BillJobResponse], bill_job, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         bill_job = await async_client.bill_jobs.list(
-            org_id="orgId",
             active="active",
             next_token="nextToken",
             page_size=1,
@@ -419,9 +332,7 @@ class TestAsyncBillJobs:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncM3ter) -> None:
-        response = await async_client.bill_jobs.with_raw_response.list(
-            org_id="orgId",
-        )
+        response = await async_client.bill_jobs.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -430,9 +341,7 @@ class TestAsyncBillJobs:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncM3ter) -> None:
-        async with async_client.bill_jobs.with_streaming_response.list(
-            org_id="orgId",
-        ) as response:
+        async with async_client.bill_jobs.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -442,17 +351,9 @@ class TestAsyncBillJobs:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_list(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bill_jobs.with_raw_response.list(
-                org_id="",
-            )
-
-    @parametrize
     async def test_method_cancel(self, async_client: AsyncM3ter) -> None:
         bill_job = await async_client.bill_jobs.cancel(
             id="id",
-            org_id="orgId",
         )
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
@@ -460,7 +361,6 @@ class TestAsyncBillJobs:
     async def test_raw_response_cancel(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bill_jobs.with_raw_response.cancel(
             id="id",
-            org_id="orgId",
         )
 
         assert response.is_closed is True
@@ -472,7 +372,6 @@ class TestAsyncBillJobs:
     async def test_streaming_response_cancel(self, async_client: AsyncM3ter) -> None:
         async with async_client.bill_jobs.with_streaming_response.cancel(
             id="id",
-            org_id="orgId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -484,22 +383,14 @@ class TestAsyncBillJobs:
 
     @parametrize
     async def test_path_params_cancel(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bill_jobs.with_raw_response.cancel(
-                id="id",
-                org_id="",
-            )
-
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.bill_jobs.with_raw_response.cancel(
                 id="",
-                org_id="orgId",
             )
 
     @parametrize
     async def test_method_recalculate(self, async_client: AsyncM3ter) -> None:
         bill_job = await async_client.bill_jobs.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
         )
         assert_matches_type(BillJobResponse, bill_job, path=["response"])
@@ -507,7 +398,6 @@ class TestAsyncBillJobs:
     @parametrize
     async def test_method_recalculate_with_all_params(self, async_client: AsyncM3ter) -> None:
         bill_job = await async_client.bill_jobs.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
             version=0,
         )
@@ -516,7 +406,6 @@ class TestAsyncBillJobs:
     @parametrize
     async def test_raw_response_recalculate(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bill_jobs.with_raw_response.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
         )
 
@@ -528,7 +417,6 @@ class TestAsyncBillJobs:
     @parametrize
     async def test_streaming_response_recalculate(self, async_client: AsyncM3ter) -> None:
         async with async_client.bill_jobs.with_streaming_response.recalculate(
-            org_id="orgId",
             bill_ids=["string"],
         ) as response:
             assert not response.is_closed
@@ -538,11 +426,3 @@ class TestAsyncBillJobs:
             assert_matches_type(BillJobResponse, bill_job, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_recalculate(self, async_client: AsyncM3ter) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `org_id` but received ''"):
-            await async_client.bill_jobs.with_raw_response.recalculate(
-                org_id="",
-                bill_ids=["string"],
-            )

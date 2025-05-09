@@ -343,7 +343,14 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import AdHocOperationalDataRequest, AdHocResponse, AdHocUsageDataRequest
+from m3ter.types import (
+    AdHocOperationalDataRequest,
+    AdHocResponse,
+    AdHocUsageDataRequest,
+    DataExplorerAccountGroup,
+    DataExplorerDimensionGroup,
+    DataExplorerTimeGroup,
+)
 ```
 
 Methods:
@@ -356,7 +363,9 @@ Types:
 
 ```python
 from m3ter.types.data_exports import (
+    DataExportDestinationGoogleCloudStorageRequest,
     DataExportDestinationResponse,
+    DataExportDestinationS3Request,
     DestinationCreateResponse,
     DestinationRetrieveResponse,
     DestinationUpdateResponse,
@@ -523,7 +532,7 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import OrganizationConfigResponse
+from m3ter.types import OrganizationConfigRequest, OrganizationConfigResponse
 ```
 
 Methods:

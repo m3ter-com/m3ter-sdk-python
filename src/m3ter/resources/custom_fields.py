@@ -8,10 +8,7 @@ import httpx
 
 from ..types import custom_field_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -90,6 +87,7 @@ class CustomFieldsResource(SyncAPIResource):
         account_plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         compound_aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        contract: Dict[str, object] | NotGiven = NOT_GIVEN,
         meter: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         organization: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -109,11 +107,13 @@ class CustomFieldsResource(SyncAPIResource):
         Args:
           account: Updates to Account entity CustomFields.
 
-          account_plan: Updates to accountPlan entity CustomFields.
+          account_plan: Updates to AccountPlan entity CustomFields.
 
           aggregation: Updates to simple Aggregation entity CustomFields.
 
           compound_aggregation: Updates to Compound Aggregation entity CustomFields.
+
+          contract: Updates to Contract entity CustomFields.
 
           meter: Updates to Meter entity CustomFields.
 
@@ -155,6 +155,7 @@ class CustomFieldsResource(SyncAPIResource):
                     "account_plan": account_plan,
                     "aggregation": aggregation,
                     "compound_aggregation": compound_aggregation,
+                    "contract": contract,
                     "meter": meter,
                     "organization": organization,
                     "plan": plan,
@@ -235,6 +236,7 @@ class AsyncCustomFieldsResource(AsyncAPIResource):
         account_plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         compound_aggregation: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
+        contract: Dict[str, object] | NotGiven = NOT_GIVEN,
         meter: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         organization: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         plan: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
@@ -254,11 +256,13 @@ class AsyncCustomFieldsResource(AsyncAPIResource):
         Args:
           account: Updates to Account entity CustomFields.
 
-          account_plan: Updates to accountPlan entity CustomFields.
+          account_plan: Updates to AccountPlan entity CustomFields.
 
           aggregation: Updates to simple Aggregation entity CustomFields.
 
           compound_aggregation: Updates to Compound Aggregation entity CustomFields.
+
+          contract: Updates to Contract entity CustomFields.
 
           meter: Updates to Meter entity CustomFields.
 
@@ -300,6 +304,7 @@ class AsyncCustomFieldsResource(AsyncAPIResource):
                     "account_plan": account_plan,
                     "aggregation": aggregation,
                     "compound_aggregation": compound_aggregation,
+                    "contract": contract,
                     "meter": meter,
                     "organization": organization,
                     "plan": plan,

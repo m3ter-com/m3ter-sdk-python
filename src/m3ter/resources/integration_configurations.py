@@ -13,10 +13,7 @@ from ..types import (
     integration_configuration_get_by_entity_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -426,6 +423,8 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         entity_type: str,
         *,
         org_id: str | None = None,
+        destination: str | NotGiven = NOT_GIVEN,
+        destination_id: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -438,6 +437,10 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         Retrieve the integration configuration for the entity
 
         Args:
+          destination: Destination type to retrieve IntegrationConfigs for
+
+          destination_id: UUID of the destination to retrieve IntegrationConfigs for
+
           entity_id: UUID of the entity to retrieve IntegrationConfigs for
 
           extra_headers: Send extra headers
@@ -462,7 +465,11 @@ class IntegrationConfigurationsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"entity_id": entity_id},
+                    {
+                        "destination": destination,
+                        "destination_id": destination_id,
+                        "entity_id": entity_id,
+                    },
                     integration_configuration_get_by_entity_params.IntegrationConfigurationGetByEntityParams,
                 ),
             ),
@@ -859,6 +866,8 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         entity_type: str,
         *,
         org_id: str | None = None,
+        destination: str | NotGiven = NOT_GIVEN,
+        destination_id: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -871,6 +880,10 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         Retrieve the integration configuration for the entity
 
         Args:
+          destination: Destination type to retrieve IntegrationConfigs for
+
+          destination_id: UUID of the destination to retrieve IntegrationConfigs for
+
           entity_id: UUID of the entity to retrieve IntegrationConfigs for
 
           extra_headers: Send extra headers
@@ -895,7 +908,11 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"entity_id": entity_id},
+                    {
+                        "destination": destination,
+                        "destination_id": destination_id,
+                        "entity_id": entity_id,
+                    },
                     integration_configuration_get_by_entity_params.IntegrationConfigurationGetByEntityParams,
                 ),
             ),
