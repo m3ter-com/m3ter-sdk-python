@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.4.0-alpha (2025-05-09)
+
+Full Changelog: [v0.3.1-alpha...v0.4.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.1-alpha...v0.4.0-alpha)
+
+### Features
+
+* **api:** Introduce OrganizationConfigRequest model ([f00b7b1](https://github.com/m3ter-com/m3ter-sdk-python/commit/f00b7b1057736b694077efb4358f4ef12e212213))
+* **api:** Spec fixes ([f0dfc1f](https://github.com/m3ter-com/m3ter-sdk-python/commit/f0dfc1fd7d3be6d6344d54cd60e6f97136180ce6))
+* **api:** update open api spec ([f1d5dd3](https://github.com/m3ter-com/m3ter-sdk-python/commit/f1d5dd33d6656c625cd8299bef430bf458207b4d))
+* **api:** update OpenAPI spec + associated fixes ([b4163ca](https://github.com/m3ter-com/m3ter-sdk-python/commit/b4163caef5396954739ee673a8a57302842f118a))
+
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([58a0322](https://github.com/m3ter-com/m3ter-sdk-python/commit/58a03227a3d5b7e2f5644353376847ee5823fb91))
+* **perf:** skip traversing types for NotGiven values ([e346612](https://github.com/m3ter-com/m3ter-sdk-python/commit/e3466121df216a0b5ec9233e610ec36c61ca8586))
+* **pydantic v1:** more robust ModelField.annotation check ([c218f3f](https://github.com/m3ter-com/m3ter-sdk-python/commit/c218f3f23df66246805e4a15c46bea5b8b67a43b))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([a8f4032](https://github.com/m3ter-com/m3ter-sdk-python/commit/a8f403244392cba48e1574bbe112bee1e39dff7c))
+* **ci:** add timeout thresholds for CI jobs ([7290e0b](https://github.com/m3ter-com/m3ter-sdk-python/commit/7290e0b714d9074e999c47551d6d207e2c2d2d60))
+* **ci:** only use depot for staging repos ([a8944ec](https://github.com/m3ter-com/m3ter-sdk-python/commit/a8944ec4982cc15d897943306d4cf0ca797717ea))
+* **ci:** run on more branches and use depot runners ([530e2c9](https://github.com/m3ter-com/m3ter-sdk-python/commit/530e2c9fbb2caa9e65d9efdbaf7f8694b265e65e))
+* **client:** minor internal fixes ([53b7bed](https://github.com/m3ter-com/m3ter-sdk-python/commit/53b7bed095583f86fd45469d9157a194bd079c98))
+* **internal:** avoid errors for isinstance checks on proxies ([70e0ce7](https://github.com/m3ter-com/m3ter-sdk-python/commit/70e0ce72bf9d8baa3f2e6320264317ae83908b2b))
+* **internal:** base client updates ([fa2b6cc](https://github.com/m3ter-com/m3ter-sdk-python/commit/fa2b6cc5bde9b1fb11f09641f65e6d55108b1549))
+* **internal:** bump pyright version ([869e1ee](https://github.com/m3ter-com/m3ter-sdk-python/commit/869e1eec241edefa84aee803dfbe1d69e84f959d))
+* **internal:** codegen related update ([5656210](https://github.com/m3ter-com/m3ter-sdk-python/commit/56562105e7e41d339ffd761d7ca8f08313dca29c))
+* **internal:** fix list file params ([1f0f063](https://github.com/m3ter-com/m3ter-sdk-python/commit/1f0f0634874b529dbf309e2205977b768f3196f2))
+* **internal:** import reformatting ([5172027](https://github.com/m3ter-com/m3ter-sdk-python/commit/51720271bb9301fee016ca4c64c7655b1f6042a8))
+* **internal:** minor formatting changes ([5986b32](https://github.com/m3ter-com/m3ter-sdk-python/commit/5986b32f796fbb2aa275a43de4f4ce24e1bb4a78))
+* **internal:** refactor retries to not use recursion ([f50b690](https://github.com/m3ter-com/m3ter-sdk-python/commit/f50b690683f235ff32062932db587915405a4b6b))
+* **internal:** update models test ([2d36eca](https://github.com/m3ter-com/m3ter-sdk-python/commit/2d36eca293d09bfd902dcfdaff240d30da343e18))
+* **internal:** update pyright settings ([d1815da](https://github.com/m3ter-com/m3ter-sdk-python/commit/d1815da8f4db4f284515ab201df7535eef392dfe))
+* **internal:** updates ([a72f1e2](https://github.com/m3ter-com/m3ter-sdk-python/commit/a72f1e293a2607866bba2d09514ede98a109e4b2))
+
 ## 0.3.1-alpha (2025-04-10)
 
 Full Changelog: [v0.3.0-alpha...v0.3.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.0-alpha...v0.3.1-alpha)
