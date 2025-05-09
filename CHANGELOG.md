@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1-alpha (2025-05-09)
+
+Full Changelog: [v0.4.0-alpha...v0.4.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.4.0-alpha...v0.4.1-alpha)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([0203cd1](https://github.com/m3ter-com/m3ter-sdk-python/commit/0203cd17ed94baecc653011e9bb399e9da490b87))
+
 ## 0.4.0-alpha (2025-05-09)
 
 Full Changelog: [v0.3.1-alpha...v0.4.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.1-alpha...v0.4.0-alpha)
