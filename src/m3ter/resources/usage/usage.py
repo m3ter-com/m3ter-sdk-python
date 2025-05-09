@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import List, Union, Iterable, AsyncIterable
 from datetime import datetime
 
 import httpx
@@ -36,6 +36,22 @@ from ...types.measurement_request_param import MeasurementRequestParam
 from ...types.submit_measurements_response import SubmitMeasurementsResponse
 
 __all__ = ["UsageResource", "AsyncUsageResource"]
+
+
+def chunk_measurements(
+    iterable: Iterable[MeasurementRequestParam], chunk_size: int = 1000
+) -> Iterable[Iterable[MeasurementRequestParam]]:
+    it = iter(iterable)
+    while True:
+        chunk: list[MeasurementRequestParam] = []
+        try:
+            for _ in range(chunk_size):
+                chunk.append(next(it))
+        except StopIteration:
+            if chunk:
+                yield chunk
+            break
+        yield chunk
 
 
 class UsageResource(SyncAPIResource):
@@ -284,6 +300,91 @@ class UsageResource(SyncAPIResource):
             cast_to=SubmitMeasurementsResponse,
         )
 
+    def submit_all(
+        self,
+        *,
+        org_id: str | None = None,
+        measurements: Iterable[MeasurementRequestParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> Iterable[SubmitMeasurementsResponse]:
+        """Submit a measurement or multiple measurements to the m3ter platform.
+
+        **Automatically chunks the supplied measurements into lots of 1000 (the maximum in one batch)**
+
+        The maximum
+        size of the payload needs to be less than 512,000 bytes.
+
+        **NOTES:**
+
+        - **Non-existent Accounts.** The `account` request parameter is required.
+          However, if you want to submit a usage data measurement for an Account which
+          does not yet exist in your Organization, you can use an `account` code for a
+          non-existent Account. A new skeleton Account will be automatically created.
+          The usage data measurement is accepted and ingested as data belonging to the
+          new auto-created Account. At a later date, you can edit the Account's
+          Code,??Name, and??e-mail address. For more details, see
+          [Submitting Usage Data for Non-Existent Accounts](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-for-non-existent-accounts)
+          in our main documentation.
+        - **Usage Data Adjustments.** If you need to make corrections for billing
+          retrospectively against an Account, you can use date/time values in the past
+          for the `ts` (timestamp) request parameter to submit positive or negative
+          usage data amounts to correct and reconcile earlier billing anomalies. For
+          more details, see
+          [Submitting Usage Data Adjustments Using Timestamp](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-adjustments-using-timestamp)
+          in our main documentation.
+        - **Ingest Validation Failure Events.** After the intial submission of a usage
+          data measurement to the Ingest API, a data enrichment stage is performed to
+          check for any errors in the usage data measurement, such as a missing field.
+          If an error is identified, this might result in the submission being rejected.
+          In these cases, an _ingest validation failure_ Event is generated, which you
+          can review on the
+          [Ingest Events](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/reviewing-and-resolving-ingest-events)
+          page in the Console. See also the
+          [Events](https://www.m3ter.com/docs/api#tag/Events) section in this API
+          Reference.
+
+        **IMPORTANT! - Use of PII:** The use of any of your end-customers' Personally
+        Identifiable Information (PII) in m3ter is restricted to a few fields on the
+        **Account** entity. Please ensure that any measurements you submit do not
+        contain any end-customer PII data. See the
+        [Introduction section](https://www.m3ter.com/docs/api#section/Introduction)
+        above for more details.
+
+        Args:
+          measurements: Request containing the usage data measurements for submission.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+
+        # This endpoint exists on a different domain: ingest.m3ter.com in production
+        base_url = str(self._client.base_url)
+        ingest_url = base_url.replace("api.", "ingest.")
+
+        for chunk in chunk_measurements(measurements):
+            yield self._post(
+                f"{ingest_url}/organizations/{org_id}/measurements",
+                body=maybe_transform({"measurements": chunk}, usage_submit_params.UsageSubmitParams),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=SubmitMeasurementsResponse,
+            )
+
 
 class AsyncUsageResource(AsyncAPIResource):
     @cached_property
@@ -530,6 +631,91 @@ class AsyncUsageResource(AsyncAPIResource):
             ),
             cast_to=SubmitMeasurementsResponse,
         )
+
+    async def submit_all(
+        self,
+        *,
+        org_id: str | None = None,
+        measurements: Iterable[MeasurementRequestParam],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncIterable[SubmitMeasurementsResponse]:
+        """Submit a measurement or multiple measurements to the m3ter platform.
+
+        **Automatically chunks the supplied measurements into lots of 1000 (the maximum in one batch)**
+
+        The maximum
+        size of the payload needs to be less than 512,000 bytes.
+
+        **NOTES:**
+
+        - **Non-existent Accounts.** The `account` request parameter is required.
+          However, if you want to submit a usage data measurement for an Account which
+          does not yet exist in your Organization, you can use an `account` code for a
+          non-existent Account. A new skeleton Account will be automatically created.
+          The usage data measurement is accepted and ingested as data belonging to the
+          new auto-created Account. At a later date, you can edit the Account's
+          Code,??Name, and??e-mail address. For more details, see
+          [Submitting Usage Data for Non-Existent Accounts](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-for-non-existent-accounts)
+          in our main documentation.
+        - **Usage Data Adjustments.** If you need to make corrections for billing
+          retrospectively against an Account, you can use date/time values in the past
+          for the `ts` (timestamp) request parameter to submit positive or negative
+          usage data amounts to correct and reconcile earlier billing anomalies. For
+          more details, see
+          [Submitting Usage Data Adjustments Using Timestamp](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/submitting-usage-data-adjustments-using-timestamp)
+          in our main documentation.
+        - **Ingest Validation Failure Events.** After the intial submission of a usage
+          data measurement to the Ingest API, a data enrichment stage is performed to
+          check for any errors in the usage data measurement, such as a missing field.
+          If an error is identified, this might result in the submission being rejected.
+          In these cases, an _ingest validation failure_ Event is generated, which you
+          can review on the
+          [Ingest Events](https://www.m3ter.com/docs/guides/billing-and-usage-data/submitting-usage-data/reviewing-and-resolving-ingest-events)
+          page in the Console. See also the
+          [Events](https://www.m3ter.com/docs/api#tag/Events) section in this API
+          Reference.
+
+        **IMPORTANT! - Use of PII:** The use of any of your end-customers' Personally
+        Identifiable Information (PII) in m3ter is restricted to a few fields on the
+        **Account** entity. Please ensure that any measurements you submit do not
+        contain any end-customer PII data. See the
+        [Introduction section](https://www.m3ter.com/docs/api#section/Introduction)
+        above for more details.
+
+        Args:
+          measurements: Request containing the usage data measurements for submission.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if org_id is None:
+            org_id = self._client._get_org_id_path_param()
+        if not org_id:
+            raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
+
+        # This endpoint exists on a different domain: ingest.m3ter.com in production
+        base_url = str(self._client.base_url)
+        ingest_url = base_url.replace("api.", "ingest.")
+
+        for chunk in chunk_measurements(measurements):
+            yield await self._post(
+                f"{ingest_url}/organizations/{org_id}/measurements",
+                body=maybe_transform({"measurements": chunk}, usage_submit_params.UsageSubmitParams),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=SubmitMeasurementsResponse,
+            )
 
 
 class UsageResourceWithRawResponse:

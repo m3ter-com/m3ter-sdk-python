@@ -157,6 +157,27 @@ class TestUsage:
         assert_matches_type(SubmitMeasurementsResponse, usage, path=["response"])
 
     @parametrize
+    def test_method_submit_all(self, client: M3ter) -> None:
+        usage = client.usage.submit_all(
+            org_id="orgId",
+            measurements=(
+                {
+                    "account": "Acme Corp",
+                    "meter": "string",
+                    "ts": parse_datetime("2022-08-24T14:15:22Z"),
+                }
+                for _ in range(1001)
+            ),
+        )
+
+        responses = 0
+        for response in usage:
+            responses += 1
+            assert_matches_type(SubmitMeasurementsResponse, response, path=["response"])
+
+        assert responses == 2
+
+    @parametrize
     def test_raw_response_submit(self, client: M3ter) -> None:
         response = client.usage.with_raw_response.submit(
             org_id="orgId",
@@ -345,6 +366,27 @@ class TestAsyncUsage:
             ],
         )
         assert_matches_type(SubmitMeasurementsResponse, usage, path=["response"])
+
+    @parametrize
+    async def test_method_submit_all(self, async_client: AsyncM3ter) -> None:
+        usage = async_client.usage.submit_all(
+            org_id="orgId",
+            measurements=(
+                {
+                    "account": "Acme Corp",
+                    "meter": "string",
+                    "ts": parse_datetime("2022-08-24T14:15:22Z"),
+                }
+                for _ in range(1001)
+            ),
+        )
+
+        responses = 0
+        async for response in usage:
+            responses += 1
+            assert_matches_type(SubmitMeasurementsResponse, response, path=["response"])
+
+        assert responses == 2
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncM3ter) -> None:
