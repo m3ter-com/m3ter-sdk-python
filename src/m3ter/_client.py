@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import base64
 from typing import Any, Union, Mapping
+from datetime import datetime
 from typing_extensions import Self, override
 
 import httpx
@@ -126,6 +127,7 @@ class M3ter(SyncAPIClient):
     api_key: str
     api_secret: str
     token: str | None
+    token_expiry: datetime | None
     org_id: str
 
     def __init__(
@@ -134,6 +136,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
+        token_expiry: datetime | None = None,
         org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -181,6 +184,7 @@ class M3ter(SyncAPIClient):
         if token is None:
             token = os.environ.get("M3TER_API_TOKEN")
         self.token = token
+        self.token_expiry = token_expiry
 
         if org_id is None:
             org_id = os.environ.get("M3TER_ORG_ID")
@@ -287,13 +291,16 @@ class M3ter(SyncAPIClient):
         self,
         options: FinalRequestOptions,  # noqa: ARG002
     ) -> FinalRequestOptions:
+        token_valid: bool = self.token is not None and (self.token_expiry is None or self.token_expiry > datetime.now())
         if not options.url.endswith("/oauth/token"):
-            if not self.token:
+            if not token_valid:
                 auth: str = base64.b64encode(f"{self.api_key}:{self.api_secret}".encode("utf8")).decode("utf8")
                 token: AuthenticationGetBearerTokenResponse = self.authentication.get_bearer_token(
                     grant_type="client_credentials", extra_headers={"Authorization": f"Basic {auth}"}
                 )
                 self.token = token.access_token
+                # expiry minus 5 minutes from effective refreshing
+                self.token_expiry = datetime.fromtimestamp(token.expires_in - 300)
         return options
 
     def copy(
@@ -302,6 +309,7 @@ class M3ter(SyncAPIClient):
         api_key: str | None = None,
         api_secret: str | None = None,
         token: str | None = None,
+        token_expiry: datetime | None = None,
         org_id: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -339,6 +347,7 @@ class M3ter(SyncAPIClient):
             api_key=api_key or self.api_key,
             api_secret=api_secret or self.api_secret,
             token=token or self.token,
+            token_expiry=token_expiry or self.token_expiry,
             org_id=org_id or self.org_id,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
