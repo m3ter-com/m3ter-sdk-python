@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.4.1-alpha (2025-05-15)
+
+Full Changelog: [v0.4.0-alpha...v0.4.1-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.4.0-alpha...v0.4.1-alpha)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([0203cd1](https://github.com/m3ter-com/m3ter-sdk-python/commit/0203cd17ed94baecc653011e9bb399e9da490b87))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([0dd5ea0](https://github.com/m3ter-com/m3ter-sdk-python/commit/0dd5ea0a282f796c75fe4f9e4abd4d2d6419cfb0))
+* **ci:** upload sdks to package manager ([69477c8](https://github.com/m3ter-com/m3ter-sdk-python/commit/69477c89744f2cf306ae8fa668447a198338150d))
+
 ## 0.4.0-alpha (2025-05-09)
 
 Full Changelog: [v0.3.1-alpha...v0.4.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.1-alpha...v0.4.0-alpha)
