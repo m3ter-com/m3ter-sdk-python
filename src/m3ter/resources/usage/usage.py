@@ -342,9 +342,7 @@ class UsageResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/measurements"
-            if self._client._base_url_overridden
-            else f"https://ingest.m3ter.com/organizations/{org_id}/measurements",
+            f"/organizations/{org_id}/measurements",
             body=maybe_transform({"measurements": measurements}, usage_submit_params.UsageSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -729,9 +727,7 @@ class AsyncUsageResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/measurements"
-            if self._client._base_url_overridden
-            else f"https://ingest.m3ter.com/organizations/{org_id}/measurements",
+            f"/organizations/{org_id}/measurements",
             body=await async_maybe_transform({"measurements": measurements}, usage_submit_params.UsageSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
