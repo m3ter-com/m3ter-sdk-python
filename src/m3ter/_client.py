@@ -193,6 +193,7 @@ class M3ter(SyncAPIClient):
 
         if base_url is None:
             base_url = os.environ.get("M3TER_BASE_URL")
+        self._base_url_overridden = base_url is not None
         if base_url is None:
             base_url = f"https://api.m3ter.com"
 
@@ -508,6 +509,7 @@ class AsyncM3ter(AsyncAPIClient):
 
         if base_url is None:
             base_url = os.environ.get("M3TER_BASE_URL")
+        self._base_url_overridden = base_url is not None
         if base_url is None:
             base_url = f"https://api.m3ter.com"
 
