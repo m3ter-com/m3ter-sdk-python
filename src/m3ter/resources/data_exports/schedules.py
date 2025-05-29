@@ -103,17 +103,31 @@ class SchedulesResource(SyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
+
+        Request and Response schema:
+
+        - Use the selector under the `sourceType` parameter to expose the relevant
+          request and response schema for the source data type.
+
+        Request and Response samples:
+
+        - Use the **Example** selector to show the relevant request and response samples
+          for source data type.
 
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
@@ -203,17 +217,31 @@ class SchedulesResource(SyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
+
+        Request and Response schema:
+
+        - Use the selector under the `sourceType` parameter to expose the relevant
+          request and response schema for the source data type.
+
+        Request and Response samples:
+
+        - Use the **Example** selector to show the relevant request and response samples
+          for source data type.
 
         Args:
           source_type: The type of data to export. Possible values are: USAGE
@@ -221,21 +249,31 @@ class SchedulesResource(SyncAPIResource):
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
 
-              - **TODAY**. Data collected for the current day up until the time the export
-                runs.
-              - **YESTERDAY**. Data collected for the day before the export runs - that is,
-                the 24 hour period from midnight to midnight of the day before.
-              - **WEEK_TO_DATE**. Data collected for the period covering the current week to
-                the date and time the export runs, and weeks run Monday to Monday.
-              - **CURRENT_MONTH**. Data collected for the current month in which the export is
-                ran up to and including the date and time the export runs.
-              - **LAST_30_DAYS**. Data collected for the 30 days prior to the date the export
-                is ran.
-              - **LAST_35_DAYS**. Data collected for the 35 days prior to the date the export
-                is ran.
-              - **PREVIOUS_WEEK**. Data collected for the previous full week period, and weeks
-                run Monday to Monday.
-              - **PREVIOUS_MONTH**. Data collected for the previous full month period.
+              - **TODAY**. Data collected for the current day up until the time the export is
+                scheduled to run.
+              - **YESTERDAY**. Data collected for the day before the export runs under the
+                schedule - that is, the 24 hour period from midnight to midnight of the day
+                before.
+              - **PREVIOUS_WEEK**, **PREVIOUS_MONTH**, **PREVIOUS_QUARTER**,
+                **PREVIOUS_YEAR**. Data collected for the previous full week, month, quarter,
+                or year period. For example if **PREVIOUS_WEEK**, weeks run Monday to Monday -
+                if the export is scheduled to run on June 12th 2024, which is a Wednesday, the
+                export will contain data for the period running from Monday, June 3rd 2024 to
+                midnight on Sunday, June 9th 2024.
+              - **WEEK_TO_DATE**, **MONTH_TO_DATE**, or **YEAR_TO_DATE**. Data collected for
+                the period covering the current week, month, or year period. For example if
+                **WEEK_TO_DATE**, weeks run Monday to Monday - if the Export is scheduled to
+                run at 10 a.m. UTC on October 16th 2024, which is a Wednesday, it will contain
+                all usage data collected starting Monday October 14th 2024 through to the
+                Wednesday at 10 a.m. UTC of the current week.
+              - **LAST_12_HOURS**. Data collected for the twelve hour period up to the start
+                of the hour in which the export is scheduled to run.
+              - **LAST_7_DAYS**, **LAST_30_DAYS**, **LAST_35_DAYS**, **LAST_90_DAYS**,
+                **LAST_120_DAYS** **LAST_YEAR**. Data collected for the selected period prior
+                to the date the export is scheduled to run. For example if **LAST_30_DAYS**
+                and the export is scheduled to run for any time on June 15th 2024, it will
+                contain usage data collected for the previous 30 days - starting May 16th 2024
+                through to midnight on June 14th 2024
 
               For more details and examples, see the
               [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
@@ -471,17 +509,21 @@ class SchedulesResource(SyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
 
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
@@ -572,17 +614,21 @@ class SchedulesResource(SyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
 
         Args:
           source_type: The type of data to export. Possible values are: USAGE
@@ -590,21 +636,31 @@ class SchedulesResource(SyncAPIResource):
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
 
-              - **TODAY**. Data collected for the current day up until the time the export
-                runs.
-              - **YESTERDAY**. Data collected for the day before the export runs - that is,
-                the 24 hour period from midnight to midnight of the day before.
-              - **WEEK_TO_DATE**. Data collected for the period covering the current week to
-                the date and time the export runs, and weeks run Monday to Monday.
-              - **CURRENT_MONTH**. Data collected for the current month in which the export is
-                ran up to and including the date and time the export runs.
-              - **LAST_30_DAYS**. Data collected for the 30 days prior to the date the export
-                is ran.
-              - **LAST_35_DAYS**. Data collected for the 35 days prior to the date the export
-                is ran.
-              - **PREVIOUS_WEEK**. Data collected for the previous full week period, and weeks
-                run Monday to Monday.
-              - **PREVIOUS_MONTH**. Data collected for the previous full month period.
+              - **TODAY**. Data collected for the current day up until the time the export is
+                scheduled to run.
+              - **YESTERDAY**. Data collected for the day before the export runs under the
+                schedule - that is, the 24 hour period from midnight to midnight of the day
+                before.
+              - **PREVIOUS_WEEK**, **PREVIOUS_MONTH**, **PREVIOUS_QUARTER**,
+                **PREVIOUS_YEAR**. Data collected for the previous full week, month, quarter,
+                or year period. For example if **PREVIOUS_WEEK**, weeks run Monday to Monday -
+                if the export is scheduled to run on June 12th 2024, which is a Wednesday, the
+                export will contain data for the period running from Monday, June 3rd 2024 to
+                midnight on Sunday, June 9th 2024.
+              - **WEEK_TO_DATE**, **MONTH_TO_DATE**, or **YEAR_TO_DATE**. Data collected for
+                the period covering the current week, month, or year period. For example if
+                **WEEK_TO_DATE**, weeks run Monday to Monday - if the Export is scheduled to
+                run at 10 a.m. UTC on October 16th 2024, which is a Wednesday, it will contain
+                all usage data collected starting Monday October 14th 2024 through to the
+                Wednesday at 10 a.m. UTC of the current week.
+              - **LAST_12_HOURS**. Data collected for the twelve hour period up to the start
+                of the hour in which the export is scheduled to run.
+              - **LAST_7_DAYS**, **LAST_30_DAYS**, **LAST_35_DAYS**, **LAST_90_DAYS**,
+                **LAST_120_DAYS** **LAST_YEAR**. Data collected for the selected period prior
+                to the date the export is scheduled to run. For example if **LAST_30_DAYS**
+                and the export is scheduled to run for any time on June 15th 2024, it will
+                contain usage data collected for the previous 30 days - starting May 16th 2024
+                through to midnight on June 14th 2024
 
               For more details and examples, see the
               [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
@@ -924,17 +980,31 @@ class AsyncSchedulesResource(AsyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
+
+        Request and Response schema:
+
+        - Use the selector under the `sourceType` parameter to expose the relevant
+          request and response schema for the source data type.
+
+        Request and Response samples:
+
+        - Use the **Example** selector to show the relevant request and response samples
+          for source data type.
 
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
@@ -1024,17 +1094,31 @@ class AsyncSchedulesResource(AsyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
+
+        Request and Response schema:
+
+        - Use the selector under the `sourceType` parameter to expose the relevant
+          request and response schema for the source data type.
+
+        Request and Response samples:
+
+        - Use the **Example** selector to show the relevant request and response samples
+          for source data type.
 
         Args:
           source_type: The type of data to export. Possible values are: USAGE
@@ -1042,21 +1126,31 @@ class AsyncSchedulesResource(AsyncAPIResource):
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
 
-              - **TODAY**. Data collected for the current day up until the time the export
-                runs.
-              - **YESTERDAY**. Data collected for the day before the export runs - that is,
-                the 24 hour period from midnight to midnight of the day before.
-              - **WEEK_TO_DATE**. Data collected for the period covering the current week to
-                the date and time the export runs, and weeks run Monday to Monday.
-              - **CURRENT_MONTH**. Data collected for the current month in which the export is
-                ran up to and including the date and time the export runs.
-              - **LAST_30_DAYS**. Data collected for the 30 days prior to the date the export
-                is ran.
-              - **LAST_35_DAYS**. Data collected for the 35 days prior to the date the export
-                is ran.
-              - **PREVIOUS_WEEK**. Data collected for the previous full week period, and weeks
-                run Monday to Monday.
-              - **PREVIOUS_MONTH**. Data collected for the previous full month period.
+              - **TODAY**. Data collected for the current day up until the time the export is
+                scheduled to run.
+              - **YESTERDAY**. Data collected for the day before the export runs under the
+                schedule - that is, the 24 hour period from midnight to midnight of the day
+                before.
+              - **PREVIOUS_WEEK**, **PREVIOUS_MONTH**, **PREVIOUS_QUARTER**,
+                **PREVIOUS_YEAR**. Data collected for the previous full week, month, quarter,
+                or year period. For example if **PREVIOUS_WEEK**, weeks run Monday to Monday -
+                if the export is scheduled to run on June 12th 2024, which is a Wednesday, the
+                export will contain data for the period running from Monday, June 3rd 2024 to
+                midnight on Sunday, June 9th 2024.
+              - **WEEK_TO_DATE**, **MONTH_TO_DATE**, or **YEAR_TO_DATE**. Data collected for
+                the period covering the current week, month, or year period. For example if
+                **WEEK_TO_DATE**, weeks run Monday to Monday - if the Export is scheduled to
+                run at 10 a.m. UTC on October 16th 2024, which is a Wednesday, it will contain
+                all usage data collected starting Monday October 14th 2024 through to the
+                Wednesday at 10 a.m. UTC of the current week.
+              - **LAST_12_HOURS**. Data collected for the twelve hour period up to the start
+                of the hour in which the export is scheduled to run.
+              - **LAST_7_DAYS**, **LAST_30_DAYS**, **LAST_35_DAYS**, **LAST_90_DAYS**,
+                **LAST_120_DAYS** **LAST_YEAR**. Data collected for the selected period prior
+                to the date the export is scheduled to run. For example if **LAST_30_DAYS**
+                and the export is scheduled to run for any time on June 15th 2024, it will
+                contain usage data collected for the previous 30 days - starting May 16th 2024
+                through to midnight on June 14th 2024
 
               For more details and examples, see the
               [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
@@ -1292,17 +1386,21 @@ class AsyncSchedulesResource(AsyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
 
         Args:
           operational_data_types: A list of the entities whose operational data is included in the data export.
@@ -1393,17 +1491,21 @@ class AsyncSchedulesResource(AsyncAPIResource):
 
         - Select the Meters and Accounts whose usage data you want to include in the
           export each time the Export Schedule runs.
-        - If _don't want to aggregate_ the usage data collected by the selected Meters,
-          use **ORIGINAL** for `aggregationFrequency`, which is the _default_. This
-          means the raw usage data collected by any type of Data Fields and the values
-          for any Derived Fields on the selected Meters will be included in the export.
-        - If you _do want to aggregate_ the usage data collected by the selected Meters,
-          use one of the other options for `aggregationFrequency`: **HOUR**, **DAY**,
-          **WEEK**, or **MONTH**. You _must_ then also specified an `aggregation` method
-          to be used on the usage data before export. Importantly, if you do aggregate
-          usage data, only the usage data collected by any numeric Data Fields on the
-          selected Meters - those of type **MEASURE**, **INCOME**, or **COST** - will be
-          included in the export each time the Export Schedule runs.
+        - You can use the `dimensionFilters` parameter to filter the usage data returned
+          for export by adding specific values of non-numeric Dimension data fields on
+          included Meters. Only the data collected for the values you've added for the
+          selected Dimension fields will be included in the export.
+        - You can use the `aggregations` to apply aggregation methods the usage data
+          returned for export. This restricts the range of usage data returned for
+          export to only the data collected by aggregated fields on selected Meters.
+          Nothing is returned for any non-aggregated fields on Meters. The usage data
+          for Meter fields is returned as the values resulting from applying the
+          selected aggregation method. See the
+          [Aggregations for Queries - Options and Consequences](https://www.m3ter.com/docs/guides/data-explorer/usage-data-explorer-v2#aggregations-for-queries---understanding-options-and-consequences)
+          for more details.
+        - If you've applied `aggregations` to the usage returned for export, you can
+          then use the `groups` parameter to group the data by _Account_, _Dimension_,
+          or _Time_.
 
         Args:
           source_type: The type of data to export. Possible values are: USAGE
@@ -1411,21 +1513,31 @@ class AsyncSchedulesResource(AsyncAPIResource):
           time_period: Define a time period to control the range of usage data you want the data export
               to contain when it runs:
 
-              - **TODAY**. Data collected for the current day up until the time the export
-                runs.
-              - **YESTERDAY**. Data collected for the day before the export runs - that is,
-                the 24 hour period from midnight to midnight of the day before.
-              - **WEEK_TO_DATE**. Data collected for the period covering the current week to
-                the date and time the export runs, and weeks run Monday to Monday.
-              - **CURRENT_MONTH**. Data collected for the current month in which the export is
-                ran up to and including the date and time the export runs.
-              - **LAST_30_DAYS**. Data collected for the 30 days prior to the date the export
-                is ran.
-              - **LAST_35_DAYS**. Data collected for the 35 days prior to the date the export
-                is ran.
-              - **PREVIOUS_WEEK**. Data collected for the previous full week period, and weeks
-                run Monday to Monday.
-              - **PREVIOUS_MONTH**. Data collected for the previous full month period.
+              - **TODAY**. Data collected for the current day up until the time the export is
+                scheduled to run.
+              - **YESTERDAY**. Data collected for the day before the export runs under the
+                schedule - that is, the 24 hour period from midnight to midnight of the day
+                before.
+              - **PREVIOUS_WEEK**, **PREVIOUS_MONTH**, **PREVIOUS_QUARTER**,
+                **PREVIOUS_YEAR**. Data collected for the previous full week, month, quarter,
+                or year period. For example if **PREVIOUS_WEEK**, weeks run Monday to Monday -
+                if the export is scheduled to run on June 12th 2024, which is a Wednesday, the
+                export will contain data for the period running from Monday, June 3rd 2024 to
+                midnight on Sunday, June 9th 2024.
+              - **WEEK_TO_DATE**, **MONTH_TO_DATE**, or **YEAR_TO_DATE**. Data collected for
+                the period covering the current week, month, or year period. For example if
+                **WEEK_TO_DATE**, weeks run Monday to Monday - if the Export is scheduled to
+                run at 10 a.m. UTC on October 16th 2024, which is a Wednesday, it will contain
+                all usage data collected starting Monday October 14th 2024 through to the
+                Wednesday at 10 a.m. UTC of the current week.
+              - **LAST_12_HOURS**. Data collected for the twelve hour period up to the start
+                of the hour in which the export is scheduled to run.
+              - **LAST_7_DAYS**, **LAST_30_DAYS**, **LAST_35_DAYS**, **LAST_90_DAYS**,
+                **LAST_120_DAYS** **LAST_YEAR**. Data collected for the selected period prior
+                to the date the export is scheduled to run. For example if **LAST_30_DAYS**
+                and the export is scheduled to run for any time on June 15th 2024, it will
+                contain usage data collected for the previous 30 days - starting May 16th 2024
+                through to midnight on June 14th 2024
 
               For more details and examples, see the
               [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)

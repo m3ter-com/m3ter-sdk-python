@@ -43,6 +43,7 @@ from .counter_list_params import CounterListParams as CounterListParams
 from .derived_field_param import DerivedFieldParam as DerivedFieldParam
 from .meter_create_params import MeterCreateParams as MeterCreateParams
 from .meter_update_params import MeterUpdateParams as MeterUpdateParams
+from .object_url_response import ObjectURLResponse as ObjectURLResponse
 from .plan_group_response import PlanGroupResponse as PlanGroupResponse
 from .pricing_list_params import PricingListParams as PricingListParams
 from .product_list_params import ProductListParams as ProductListParams

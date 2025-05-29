@@ -120,6 +120,14 @@ from .currencies import (
     CurrenciesResourceWithStreamingResponse,
     AsyncCurrenciesResourceWithStreamingResponse,
 )
+from .statements import (
+    StatementsResource,
+    AsyncStatementsResource,
+    StatementsResourceWithRawResponse,
+    AsyncStatementsResourceWithRawResponse,
+    StatementsResourceWithStreamingResponse,
+    AsyncStatementsResourceWithStreamingResponse,
+)
 from .bill_config import (
     BillConfigResource,
     AsyncBillConfigResource,
@@ -510,6 +518,12 @@ __all__ = [
     "AsyncScheduledEventConfigurationsResourceWithRawResponse",
     "ScheduledEventConfigurationsResourceWithStreamingResponse",
     "AsyncScheduledEventConfigurationsResourceWithStreamingResponse",
+    "StatementsResource",
+    "AsyncStatementsResource",
+    "StatementsResourceWithRawResponse",
+    "AsyncStatementsResourceWithRawResponse",
+    "StatementsResourceWithStreamingResponse",
+    "AsyncStatementsResourceWithStreamingResponse",
     "TransactionTypesResource",
     "AsyncTransactionTypesResource",
     "TransactionTypesResourceWithRawResponse",

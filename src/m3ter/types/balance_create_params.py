@@ -48,6 +48,8 @@ class BalanceCreateParams(TypedDict, total=False):
     accounting purposes
     """
 
+    contract_id: Annotated[str, PropertyInfo(alias="contractId")]
+
     description: str
     """A description of the Balance."""
 

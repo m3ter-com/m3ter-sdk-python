@@ -63,7 +63,7 @@ class TransactionResponse(BaseModel):
     specified by the `entityType`.
     """
 
-    entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER"]] = FieldInfo(
+    entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]] = FieldInfo(
         alias="entityType", default=None
     )
     """

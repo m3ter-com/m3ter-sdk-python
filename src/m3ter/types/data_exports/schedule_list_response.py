@@ -48,11 +48,11 @@ class ScheduleListResponse(BaseModel):
     """The name of the Data Export Schedule."""
 
     period: Optional[int] = None
-    """Defines the Schedule frequency for the Data Export to run in Hours or Days.
-
-    Used in conjunction with the `scheduleType` parameter.
+    """
+    Defines the Schedule frequency for the Data Export to run in Hours, Days, or
+    Minutes. Used in conjunction with the `scheduleType` parameter.
     """
 
-    schedule_type: Optional[Literal["HOURLY", "DAILY", "AD_HOC"]] = FieldInfo(alias="scheduleType", default=None)
+    schedule_type: Optional[Literal["HOUR", "DAY", "MINUTE", "AD_HOC"]] = FieldInfo(alias="scheduleType", default=None)
 
     source_type: Optional[Literal["USAGE", "OPERATIONAL"]] = FieldInfo(alias="sourceType", default=None)
