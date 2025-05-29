@@ -69,6 +69,7 @@ class BalancesResource(SyncAPIResource):
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        contract_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -118,6 +119,8 @@ class BalancesResource(SyncAPIResource):
 
           consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
               accounting purposes
+
+          contract_id
 
           description: A description of the Balance.
 
@@ -208,6 +211,7 @@ class BalancesResource(SyncAPIResource):
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
+                    "contract_id": contract_id,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -279,6 +283,7 @@ class BalancesResource(SyncAPIResource):
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        contract_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -328,6 +333,8 @@ class BalancesResource(SyncAPIResource):
 
           consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
               accounting purposes
+
+          contract_id
 
           description: A description of the Balance.
 
@@ -420,6 +427,7 @@ class BalancesResource(SyncAPIResource):
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
+                    "contract_id": contract_id,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -584,6 +592,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        contract_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -633,6 +642,8 @@ class AsyncBalancesResource(AsyncAPIResource):
 
           consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
               accounting purposes
+
+          contract_id
 
           description: A description of the Balance.
 
@@ -723,6 +734,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
+                    "contract_id": contract_id,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -794,6 +806,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         balance_draw_down_description: str | NotGiven = NOT_GIVEN,
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        contract_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -843,6 +856,8 @@ class AsyncBalancesResource(AsyncAPIResource):
 
           consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
               accounting purposes
+
+          contract_id
 
           description: A description of the Balance.
 
@@ -935,6 +950,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "balance_draw_down_description": balance_draw_down_description,
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
+                    "contract_id": contract_id,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,

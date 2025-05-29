@@ -44,6 +44,8 @@ class Balance(BaseModel):
 
     consumptions_accounting_product_id: Optional[str] = FieldInfo(alias="consumptionsAccountingProductId", default=None)
 
+    contract_id: Optional[str] = FieldInfo(alias="contractId", default=None)
+
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) for the user who created the Balance."""
 

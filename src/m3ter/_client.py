@@ -68,6 +68,7 @@ from .resources.bills import bills
 from .resources.usage import usage
 from .resources.users import users
 from .resources.balances import balances
+from .resources.statements import statements
 from .resources.data_exports import data_exports
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "M3ter", "AsyncM3ter", "Client", "AsyncClient"]
@@ -108,6 +109,7 @@ class M3ter(SyncAPIClient):
     products: products.ProductsResource
     resource_groups: resource_groups.ResourceGroupsResource
     scheduled_event_configurations: scheduled_event_configurations.ScheduledEventConfigurationsResource
+    statements: statements.StatementsResource
     transaction_types: transaction_types.TransactionTypesResource
     usage: usage.UsageResource
     users: users.UsersResource
@@ -234,6 +236,7 @@ class M3ter(SyncAPIClient):
         self.products = products.ProductsResource(self)
         self.resource_groups = resource_groups.ResourceGroupsResource(self)
         self.scheduled_event_configurations = scheduled_event_configurations.ScheduledEventConfigurationsResource(self)
+        self.statements = statements.StatementsResource(self)
         self.transaction_types = transaction_types.TransactionTypesResource(self)
         self.usage = usage.UsageResource(self)
         self.users = users.UsersResource(self)
@@ -403,6 +406,7 @@ class AsyncM3ter(AsyncAPIClient):
     products: products.AsyncProductsResource
     resource_groups: resource_groups.AsyncResourceGroupsResource
     scheduled_event_configurations: scheduled_event_configurations.AsyncScheduledEventConfigurationsResource
+    statements: statements.AsyncStatementsResource
     transaction_types: transaction_types.AsyncTransactionTypesResource
     usage: usage.AsyncUsageResource
     users: users.AsyncUsersResource
@@ -531,6 +535,7 @@ class AsyncM3ter(AsyncAPIClient):
         self.scheduled_event_configurations = scheduled_event_configurations.AsyncScheduledEventConfigurationsResource(
             self
         )
+        self.statements = statements.AsyncStatementsResource(self)
         self.transaction_types = transaction_types.AsyncTransactionTypesResource(self)
         self.usage = usage.AsyncUsageResource(self)
         self.users = users.AsyncUsersResource(self)
@@ -719,6 +724,7 @@ class M3terWithRawResponse:
                 client.scheduled_event_configurations
             )
         )
+        self.statements = statements.StatementsResourceWithRawResponse(client.statements)
         self.transaction_types = transaction_types.TransactionTypesResourceWithRawResponse(client.transaction_types)
         self.usage = usage.UsageResourceWithRawResponse(client.usage)
         self.users = users.UsersResourceWithRawResponse(client.users)
@@ -783,6 +789,7 @@ class AsyncM3terWithRawResponse:
                 client.scheduled_event_configurations
             )
         )
+        self.statements = statements.AsyncStatementsResourceWithRawResponse(client.statements)
         self.transaction_types = transaction_types.AsyncTransactionTypesResourceWithRawResponse(
             client.transaction_types
         )
@@ -849,6 +856,7 @@ class M3terWithStreamedResponse:
                 client.scheduled_event_configurations
             )
         )
+        self.statements = statements.StatementsResourceWithStreamingResponse(client.statements)
         self.transaction_types = transaction_types.TransactionTypesResourceWithStreamingResponse(
             client.transaction_types
         )
@@ -919,6 +927,7 @@ class AsyncM3terWithStreamedResponse:
                 client.scheduled_event_configurations
             )
         )
+        self.statements = statements.AsyncStatementsResourceWithStreamingResponse(client.statements)
         self.transaction_types = transaction_types.AsyncTransactionTypesResourceWithStreamingResponse(
             client.transaction_types
         )

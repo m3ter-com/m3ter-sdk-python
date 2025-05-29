@@ -708,6 +708,52 @@ Methods:
 - <code title="get /organizations/{orgId}/scheduledevents/configurations">client.scheduled_event_configurations.<a href="./src/m3ter/resources/scheduled_event_configurations.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/scheduled_event_configuration_list_params.py">params</a>) -> <a href="./src/m3ter/types/scheduled_event_configuration_response.py">SyncCursor[ScheduledEventConfigurationResponse]</a></code>
 - <code title="delete /organizations/{orgId}/scheduledevents/configurations/{id}">client.scheduled_event_configurations.<a href="./src/m3ter/resources/scheduled_event_configurations.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/scheduled_event_configuration_response.py">ScheduledEventConfigurationResponse</a></code>
 
+# Statements
+
+Types:
+
+```python
+from m3ter.types import ObjectURLResponse
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/bills/{id}/statement/csv">client.statements.<a href="./src/m3ter/resources/statements/statements.py">create_csv</a>(id, \*, org_id) -> <a href="./src/m3ter/types/object_url_response.py">ObjectURLResponse</a></code>
+- <code title="get /organizations/{orgId}/bills/{id}/statement/csv">client.statements.<a href="./src/m3ter/resources/statements/statements.py">get_csv</a>(id, \*, org_id) -> <a href="./src/m3ter/types/object_url_response.py">ObjectURLResponse</a></code>
+- <code title="get /organizations/{orgId}/bills/{id}/statement/json">client.statements.<a href="./src/m3ter/resources/statements/statements.py">get_json</a>(id, \*, org_id) -> <a href="./src/m3ter/types/object_url_response.py">ObjectURLResponse</a></code>
+
+## StatementJobs
+
+Types:
+
+```python
+from m3ter.types.statements import StatementJobResponse, StatementJobCreateBatchResponse
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/statementjobs">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_create_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_job_response.py">StatementJobResponse</a></code>
+- <code title="get /organizations/{orgId}/statementjobs/{id}">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_job_response.py">StatementJobResponse</a></code>
+- <code title="get /organizations/{orgId}/statementjobs">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_list_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_job_response.py">SyncCursor[StatementJobResponse]</a></code>
+- <code title="post /organizations/{orgId}/statementjobs/{id}/cancel">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">cancel</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_job_response.py">StatementJobResponse</a></code>
+- <code title="post /organizations/{orgId}/statementjobs/batch">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">create_batch</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_create_batch_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_job_create_batch_response.py">StatementJobCreateBatchResponse</a></code>
+
+## StatementDefinitions
+
+Types:
+
+```python
+from m3ter.types.statements import StatementDefinitionResponse
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/statementdefinitions">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_create_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="get /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="put /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_update_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="get /organizations/{orgId}/statementdefinitions">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_list_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">SyncCursor[StatementDefinitionResponse]</a></code>
+- <code title="delete /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
+
 # TransactionTypes
 
 Types:
