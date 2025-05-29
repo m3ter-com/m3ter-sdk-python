@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union, Optional
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -152,9 +153,11 @@ class TransactionsResource(SyncAPIResource):
         balance_id: str,
         *,
         org_id: str | None = None,
+        entity_id: Optional[str] | NotGiven = NOT_GIVEN,
+        entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]]
+        | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        schedule_id: Optional[str] | NotGiven = NOT_GIVEN,
         transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -171,6 +174,8 @@ class TransactionsResource(SyncAPIResource):
         `nextToken` parameters.
 
         Args:
+          entity_type
+
           next_token: `nextToken` for multi page retrievals. A token for retrieving the next page of
               transactions. You'll get this from the response to your request.
 
@@ -200,9 +205,10 @@ class TransactionsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_id": entity_id,
+                        "entity_type": entity_type,
                         "next_token": next_token,
                         "page_size": page_size,
-                        "schedule_id": schedule_id,
                         "transaction_type_id": transaction_type_id,
                     },
                     transaction_list_params.TransactionListParams,
@@ -376,9 +382,11 @@ class AsyncTransactionsResource(AsyncAPIResource):
         balance_id: str,
         *,
         org_id: str | None = None,
+        entity_id: Optional[str] | NotGiven = NOT_GIVEN,
+        entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]]
+        | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
-        schedule_id: Optional[str] | NotGiven = NOT_GIVEN,
         transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -395,6 +403,8 @@ class AsyncTransactionsResource(AsyncAPIResource):
         `nextToken` parameters.
 
         Args:
+          entity_type
+
           next_token: `nextToken` for multi page retrievals. A token for retrieving the next page of
               transactions. You'll get this from the response to your request.
 
@@ -424,9 +434,10 @@ class AsyncTransactionsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_id": entity_id,
+                        "entity_type": entity_type,
                         "next_token": next_token,
                         "page_size": page_size,
-                        "schedule_id": schedule_id,
                         "transaction_type_id": transaction_type_id,
                     },
                     transaction_list_params.TransactionListParams,
