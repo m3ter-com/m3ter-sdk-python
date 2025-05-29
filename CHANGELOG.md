@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.5.0-alpha (2025-05-29)
+
+Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.4.0-alpha...v0.5.0-alpha)
+
+### Features
+
+* **api:** add statements ([89dd6a3](https://github.com/m3ter-com/m3ter-sdk-python/commit/89dd6a3313e40cd6046fd3e17c3d6bc9630523ff))
+* **client:** add support for endpoint-specific base URLs ([74cfda6](https://github.com/m3ter-com/m3ter-sdk-python/commit/74cfda67200730e7f6c43866145f416bad74ba0e))
+
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([0203cd1](https://github.com/m3ter-com/m3ter-sdk-python/commit/0203cd17ed94baecc653011e9bb399e9da490b87))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([0dd5ea0](https://github.com/m3ter-com/m3ter-sdk-python/commit/0dd5ea0a282f796c75fe4f9e4abd4d2d6419cfb0))
+* **ci:** upload sdks to package manager ([69477c8](https://github.com/m3ter-com/m3ter-sdk-python/commit/69477c89744f2cf306ae8fa668447a198338150d))
+* **ci:** use --pre flag for prerelease installation instructions ([1196818](https://github.com/m3ter-com/m3ter-sdk-python/commit/11968184f6767fd46b79019d551dab928fda6b16))
+* **ci:** use --pre flag for prerelease installation instructions ([1e55bae](https://github.com/m3ter-com/m3ter-sdk-python/commit/1e55baed2c12ae8a7b6621a26be8abed3456c5f8))
+* **docs:** grammar improvements ([0c5fd06](https://github.com/m3ter-com/m3ter-sdk-python/commit/0c5fd0682db20b137d17a8926b4280ac23bc66ad))
+* **internal:** codegen related update ([1b117c6](https://github.com/m3ter-com/m3ter-sdk-python/commit/1b117c6e2559ee66ba8b6ff57be65b31280a2f46))
+* **internal:** codegen related update ([db10922](https://github.com/m3ter-com/m3ter-sdk-python/commit/db10922b953a720a985b94abb74cffd4b6b08d4a))
+
 ## 0.4.0-alpha (2025-05-09)
 
 Full Changelog: [v0.3.1-alpha...v0.4.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.3.1-alpha...v0.4.0-alpha)
