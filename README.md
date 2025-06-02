@@ -166,16 +166,7 @@ account_response = client.accounts.create(
     code="JS!?Q0]r] ]$]",
     email_address="dev@stainless.com",
     name="x",
-    address={
-        "address_line1": "addressLine1",
-        "address_line2": "addressLine2",
-        "address_line3": "addressLine3",
-        "address_line4": "addressLine4",
-        "country": "country",
-        "locality": "locality",
-        "post_code": "postCode",
-        "region": "region",
-    },
+    address={},
 )
 print(account_response.address)
 ```
