@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.0-alpha (2025-06-02)
+
+Full Changelog: [v0.5.0-alpha...v0.6.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.5.0-alpha...v0.6.0-alpha)
+
+### Features
+
+* **client:** add follow_redirects request option ([8d41e7f](https://github.com/m3ter-com/m3ter-sdk-python/commit/8d41e7fe9ffec54d76c1ba7486ad85f4bac9da86))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([15bb1b9](https://github.com/m3ter-com/m3ter-sdk-python/commit/15bb1b902dcdde20c223e55eba3e0fea0dab9c66))
+* **docs:** remove unnecessary param examples ([0fed9e0](https://github.com/m3ter-com/m3ter-sdk-python/commit/0fed9e0cf8917385a6a8fd072ae7bd477e5a4b1c))
+
 ## 0.5.0-alpha (2025-05-29)
 
 Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.4.0-alpha...v0.5.0-alpha)
