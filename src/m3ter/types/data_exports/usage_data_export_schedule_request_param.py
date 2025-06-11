@@ -2,22 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import List, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
-from ..data_explorer_time_group_param import DataExplorerTimeGroupParam
-from ..data_explorer_account_group_param import DataExplorerAccountGroupParam
-from ..data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
+from ..data_explorer_group_param import DataExplorerGroupParam
 
-__all__ = [
-    "UsageDataExportScheduleRequestParam",
-    "Aggregation",
-    "DimensionFilter",
-    "GroupDataExportsDataExplorerAccountGroup",
-    "GroupDataExportsDataExplorerDimensionGroup",
-    "GroupDataExportsDataExplorerTimeGroup",
-]
+__all__ = ["UsageDataExportScheduleRequestParam", "Aggregation", "DimensionFilter"]
 
 
 class Aggregation(TypedDict, total=False):
@@ -43,18 +34,6 @@ class DimensionFilter(TypedDict, total=False):
 
     values: Required[List[str]]
     """Values to filter by"""
-
-
-class GroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class GroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
 
 
 class UsageDataExportScheduleRequestParam(TypedDict, total=False):
@@ -128,13 +107,7 @@ class UsageDataExportScheduleRequestParam(TypedDict, total=False):
     dimension_filters: Annotated[Iterable[DimensionFilter], PropertyInfo(alias="dimensionFilters")]
     """List of dimension filters to apply"""
 
-    groups: Iterable[
-        Union[
-            GroupDataExportsDataExplorerAccountGroup,
-            GroupDataExportsDataExplorerDimensionGroup,
-            GroupDataExportsDataExplorerTimeGroup,
-        ]
-    ]
+    groups: Iterable[DataExplorerGroupParam]
     """List of groups to apply"""
 
     meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]

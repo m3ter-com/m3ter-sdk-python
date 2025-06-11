@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Dict, List, Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -49,6 +49,20 @@ class BalanceUpdateParams(TypedDict, total=False):
     """
 
     contract_id: Annotated[str, PropertyInfo(alias="contractId")]
+
+    custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
+    """User defined fields enabling you to attach custom data.
+
+    The value for a custom field can be either a string or a number.
+
+    If `customFields` can also be defined for this entity at the Organizational
+    level, `customField` values defined at individual level override values of
+    `customFields` with the same name defined at Organization level.
+
+    See
+    [Working with Custom Fields](https://www.m3ter.com/docs/guides/creating-and-managing-products/working-with-custom-fields)
+    in the m3ter documentation for more information.
+    """
 
     description: str
     """A description of the Balance."""

@@ -29,6 +29,7 @@ from .file_uploads.file_uploads import (
 )
 from ...types.usage_query_response import UsageQueryResponse
 from ...types.download_url_response import DownloadURLResponse
+from ...types.data_explorer_group_param import DataExplorerGroupParam
 from ...types.measurement_request_param import MeasurementRequestParam
 from ...types.submit_measurements_response import SubmitMeasurementsResponse
 
@@ -135,14 +136,7 @@ class UsageResource(SyncAPIResource):
         aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
         end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                usage_query_params.GroupDataExportsDataExplorerAccountGroup,
-                usage_query_params.GroupDataExportsDataExplorerDimensionGroup,
-                usage_query_params.GroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -437,14 +431,7 @@ class AsyncUsageResource(AsyncAPIResource):
         aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
         end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                usage_query_params.GroupDataExportsDataExplorerAccountGroup,
-                usage_query_params.GroupDataExportsDataExplorerDimensionGroup,
-                usage_query_params.GroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
