@@ -3,21 +3,13 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable
+from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .data_explorer_time_group_param import DataExplorerTimeGroupParam
-from .data_explorer_account_group_param import DataExplorerAccountGroupParam
-from .data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
+from .data_explorer_group_param import DataExplorerGroupParam
 
-__all__ = [
-    "AdHocUsageDataRequestParam",
-    "Aggregation",
-    "DimensionFilter",
-    "GroupDataExportsDataExplorerAccountGroup",
-    "GroupDataExportsDataExplorerDimensionGroup",
-    "GroupDataExportsDataExplorerTimeGroup",
-]
+__all__ = ["AdHocUsageDataRequestParam", "Aggregation", "DimensionFilter"]
 
 
 class Aggregation(TypedDict, total=False):
@@ -45,18 +37,6 @@ class DimensionFilter(TypedDict, total=False):
     """Values to filter by"""
 
 
-class GroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class GroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
 class AdHocUsageDataRequestParam(TypedDict, total=False):
     source_type: Required[Annotated[Literal["USAGE"], PropertyInfo(alias="sourceType")]]
     """The type of data to export. Possible values are: USAGE"""
@@ -70,13 +50,10 @@ class AdHocUsageDataRequestParam(TypedDict, total=False):
     dimension_filters: Annotated[Iterable[DimensionFilter], PropertyInfo(alias="dimensionFilters")]
     """List of dimension filters to apply"""
 
-    groups: Iterable[
-        Union[
-            GroupDataExportsDataExplorerAccountGroup,
-            GroupDataExportsDataExplorerDimensionGroup,
-            GroupDataExportsDataExplorerTimeGroup,
-        ]
-    ]
+    end_date: Annotated[Union[str, datetime], PropertyInfo(alias="endDate", format="iso8601")]
+    """The exclusive end date for the data export."""
+
+    groups: Iterable[DataExplorerGroupParam]
     """List of groups to apply"""
 
     meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]

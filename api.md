@@ -349,6 +349,7 @@ from m3ter.types import (
     AdHocUsageDataRequest,
     DataExplorerAccountGroup,
     DataExplorerDimensionGroup,
+    DataExplorerGroup,
     DataExplorerTimeGroup,
 )
 ```

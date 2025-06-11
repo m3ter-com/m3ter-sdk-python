@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable
+from datetime import datetime
 from typing_extensions import Literal, overload
 
 import httpx
@@ -44,6 +45,7 @@ from .destinations import (
 )
 from ..._base_client import make_request_options
 from ...types.ad_hoc_response import AdHocResponse
+from ...types.data_explorer_group_param import DataExplorerGroupParam
 
 __all__ = ["DataExportsResource", "AsyncDataExportsResource"]
 
@@ -150,17 +152,14 @@ class DataExportsResource(SyncAPIResource):
           or _Time_.
 
         **Date Range for Operational Data Exports**. To restrict the operational data
-        included in the export by a date/time range, use the `startDate` and `endDate`
-        date/time request parameters to specify the period. Constraints:
-
-        - `startDate` with no `endDate` is valid.
-        - `endDate` with no `startDate` is valid.
-        - If both are set,`startDate` must be before `endDate`.
-        - `endDate` must be before now UTC.
+        included in the ad-hoc export by a date/time range, use the `startDate`
+        date/time request parameter to specify the start of the time period. The export
+        will include all operational data from the specified `startDate` up until the
+        date/time the export job runs.
 
         **Date Range for Usage Data Exports**. To restrict the usage data included in
-        the export by date/time range, use the `startDate` and `endDate` date/time
-        parameters:
+        the ad-hoc export by date/time range, use the `startDate` and `endDate`
+        date/time parameters:
 
         - Both `startDate` and `endDate` are required.
         - `endDate` must be after `startDate`.
@@ -208,14 +207,8 @@ class DataExportsResource(SyncAPIResource):
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -259,17 +252,14 @@ class DataExportsResource(SyncAPIResource):
           or _Time_.
 
         **Date Range for Operational Data Exports**. To restrict the operational data
-        included in the export by a date/time range, use the `startDate` and `endDate`
-        date/time request parameters to specify the period. Constraints:
-
-        - `startDate` with no `endDate` is valid.
-        - `endDate` with no `startDate` is valid.
-        - If both are set,`startDate` must be before `endDate`.
-        - `endDate` must be before now UTC.
+        included in the ad-hoc export by a date/time range, use the `startDate`
+        date/time request parameter to specify the start of the time period. The export
+        will include all operational data from the specified `startDate` up until the
+        date/time the export job runs.
 
         **Date Range for Usage Data Exports**. To restrict the usage data included in
-        the export by date/time range, use the `startDate` and `endDate` date/time
-        parameters:
+        the ad-hoc export by date/time range, use the `startDate` and `endDate`
+        date/time parameters:
 
         - Both `startDate` and `endDate` are required.
         - `endDate` must be after `startDate`.
@@ -290,6 +280,8 @@ class DataExportsResource(SyncAPIResource):
           aggregations: List of aggregations to apply
 
           dimension_filters: List of dimension filters to apply
+
+          end_date: The exclusive end date for the data export.
 
           groups: List of groups to apply
 
@@ -349,14 +341,8 @@ class DataExportsResource(SyncAPIResource):
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -379,6 +365,7 @@ class DataExportsResource(SyncAPIResource):
                     "account_ids": account_ids,
                     "aggregations": aggregations,
                     "dimension_filters": dimension_filters,
+                    "end_date": end_date,
                     "groups": groups,
                     "meter_ids": meter_ids,
                 },
@@ -493,17 +480,14 @@ class AsyncDataExportsResource(AsyncAPIResource):
           or _Time_.
 
         **Date Range for Operational Data Exports**. To restrict the operational data
-        included in the export by a date/time range, use the `startDate` and `endDate`
-        date/time request parameters to specify the period. Constraints:
-
-        - `startDate` with no `endDate` is valid.
-        - `endDate` with no `startDate` is valid.
-        - If both are set,`startDate` must be before `endDate`.
-        - `endDate` must be before now UTC.
+        included in the ad-hoc export by a date/time range, use the `startDate`
+        date/time request parameter to specify the start of the time period. The export
+        will include all operational data from the specified `startDate` up until the
+        date/time the export job runs.
 
         **Date Range for Usage Data Exports**. To restrict the usage data included in
-        the export by date/time range, use the `startDate` and `endDate` date/time
-        parameters:
+        the ad-hoc export by date/time range, use the `startDate` and `endDate`
+        date/time parameters:
 
         - Both `startDate` and `endDate` are required.
         - `endDate` must be after `startDate`.
@@ -551,14 +535,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -602,17 +580,14 @@ class AsyncDataExportsResource(AsyncAPIResource):
           or _Time_.
 
         **Date Range for Operational Data Exports**. To restrict the operational data
-        included in the export by a date/time range, use the `startDate` and `endDate`
-        date/time request parameters to specify the period. Constraints:
-
-        - `startDate` with no `endDate` is valid.
-        - `endDate` with no `startDate` is valid.
-        - If both are set,`startDate` must be before `endDate`.
-        - `endDate` must be before now UTC.
+        included in the ad-hoc export by a date/time range, use the `startDate`
+        date/time request parameter to specify the start of the time period. The export
+        will include all operational data from the specified `startDate` up until the
+        date/time the export job runs.
 
         **Date Range for Usage Data Exports**. To restrict the usage data included in
-        the export by date/time range, use the `startDate` and `endDate` date/time
-        parameters:
+        the ad-hoc export by date/time range, use the `startDate` and `endDate`
+        date/time parameters:
 
         - Both `startDate` and `endDate` are required.
         - `endDate` must be after `startDate`.
@@ -633,6 +608,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
           aggregations: List of aggregations to apply
 
           dimension_filters: List of dimension filters to apply
+
+          end_date: The exclusive end date for the data export.
 
           groups: List of groups to apply
 
@@ -692,14 +669,8 @@ class AsyncDataExportsResource(AsyncAPIResource):
         aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
-                data_export_create_adhoc_params.AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -722,6 +693,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                     "account_ids": account_ids,
                     "aggregations": aggregations,
                     "dimension_filters": dimension_filters,
+                    "end_date": end_date,
                     "groups": groups,
                     "meter_ids": meter_ids,
                 },

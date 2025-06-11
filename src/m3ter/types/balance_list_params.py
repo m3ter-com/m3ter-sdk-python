@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -14,6 +15,8 @@ class BalanceListParams(TypedDict, total=False):
 
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
     """The unique identifier (UUID) for the end customer's account."""
+
+    contract: Optional[str]
 
     end_date_end: Annotated[str, PropertyInfo(alias="endDateEnd")]
     """Only include Balances with end dates earlier than this date."""

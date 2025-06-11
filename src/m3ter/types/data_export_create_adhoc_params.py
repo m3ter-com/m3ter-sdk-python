@@ -3,12 +3,11 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable
+from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
-from .data_explorer_time_group_param import DataExplorerTimeGroupParam
-from .data_explorer_account_group_param import DataExplorerAccountGroupParam
-from .data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
+from .data_explorer_group_param import DataExplorerGroupParam
 
 __all__ = [
     "DataExportCreateAdhocParams",
@@ -16,9 +15,6 @@ __all__ = [
     "AdHocUsageDataRequest",
     "AdHocUsageDataRequestAggregation",
     "AdHocUsageDataRequestDimensionFilter",
-    "AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup",
-    "AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup",
-    "AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup",
 ]
 
 
@@ -84,13 +80,10 @@ class AdHocUsageDataRequest(TypedDict, total=False):
     dimension_filters: Annotated[Iterable[AdHocUsageDataRequestDimensionFilter], PropertyInfo(alias="dimensionFilters")]
     """List of dimension filters to apply"""
 
-    groups: Iterable[
-        Union[
-            AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup,
-            AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup,
-            AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup,
-        ]
-    ]
+    end_date: Annotated[Union[str, datetime], PropertyInfo(alias="endDate", format="iso8601")]
+    """The exclusive end date for the data export."""
+
+    groups: Iterable[DataExplorerGroupParam]
     """List of groups to apply"""
 
     meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
@@ -131,18 +124,6 @@ class AdHocUsageDataRequestDimensionFilter(TypedDict, total=False):
 
     values: Required[List[str]]
     """Values to filter by"""
-
-
-class AdHocUsageDataRequestGroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class AdHocUsageDataRequestGroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class AdHocUsageDataRequestGroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
 
 
 DataExportCreateAdhocParams: TypeAlias = Union[AdHocOperationalDataRequest, AdHocUsageDataRequest]
