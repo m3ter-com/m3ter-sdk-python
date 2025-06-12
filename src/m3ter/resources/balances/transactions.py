@@ -232,6 +232,28 @@ class TransactionsResource(SyncAPIResource):
         """
         Retrieves the Balance Transactions Summary for a given Balance.
 
+        The response contains useful recorded and calculated Transaction amounts created
+        for a Balance during the time it is active for the Account, including amounts
+        relevant to any rollover amount configured for a Balance:
+
+        - `totalCreditAmount`. The sum of all credits amounts created for the Balance.
+        - `totalDebitAmount`. The sum of all debit amounts created for the Balance.
+        - `initialCreditAmount`. The initial credit amount created for the Balance.
+        - `expiredBalanceAmount`. The amount of the Balance remaining at the time the
+          Balance expires and which is not included in any configured Rollover amount.
+          For example, suppose a Balance reaches its end date and $1000 credit remains
+          unused. If the Balance is configured to rollover $800, then the
+          `expiredBalanceAmount` is calculated as $1000 - $800 = $200.
+        - `rolloverConsumed`. The sum of debits made against the configured rollover
+          amount. Note that this amount is dynamic relative to when the API call is made
+          until either the rollover end date is reached or the cap configured for the
+          rollover amount is reached, after which it will be unchanged. If no rollover
+          is configured for a Balance, then this is ignored.
+        - `balanceConsumed`. The sum of debits made against the Balance. Note that this
+          amount is dynamic relative to when the API call is made until either the
+          Balance end date is reached or the available Balance amount reaches zero,
+          after which it will be unchanged.
+
         Args:
           extra_headers: Send extra headers
 
@@ -460,6 +482,28 @@ class AsyncTransactionsResource(AsyncAPIResource):
     ) -> TransactionSummaryResponse:
         """
         Retrieves the Balance Transactions Summary for a given Balance.
+
+        The response contains useful recorded and calculated Transaction amounts created
+        for a Balance during the time it is active for the Account, including amounts
+        relevant to any rollover amount configured for a Balance:
+
+        - `totalCreditAmount`. The sum of all credits amounts created for the Balance.
+        - `totalDebitAmount`. The sum of all debit amounts created for the Balance.
+        - `initialCreditAmount`. The initial credit amount created for the Balance.
+        - `expiredBalanceAmount`. The amount of the Balance remaining at the time the
+          Balance expires and which is not included in any configured Rollover amount.
+          For example, suppose a Balance reaches its end date and $1000 credit remains
+          unused. If the Balance is configured to rollover $800, then the
+          `expiredBalanceAmount` is calculated as $1000 - $800 = $200.
+        - `rolloverConsumed`. The sum of debits made against the configured rollover
+          amount. Note that this amount is dynamic relative to when the API call is made
+          until either the rollover end date is reached or the cap configured for the
+          rollover amount is reached, after which it will be unchanged. If no rollover
+          is configured for a Balance, then this is ignored.
+        - `balanceConsumed`. The sum of debits made against the Balance. Note that this
+          amount is dynamic relative to when the API call is made until either the
+          Balance end date is reached or the available Balance amount reaches zero,
+          after which it will be unchanged.
 
         Args:
           extra_headers: Send extra headers

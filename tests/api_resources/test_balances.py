@@ -40,6 +40,7 @@ class TestBalances:
             code="JS!?Q0]r] ]$]",
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -144,6 +145,7 @@ class TestBalances:
             code="JS!?Q0]r] ]$]",
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -209,6 +211,7 @@ class TestBalances:
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         balance = client.balances.list(
             account_id="accountId",
+            contract="contract",
             end_date_end="endDateEnd",
             end_date_start="endDateStart",
             next_token="nextToken",
@@ -299,6 +302,7 @@ class TestAsyncBalances:
             code="JS!?Q0]r] ]$]",
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -403,6 +407,7 @@ class TestAsyncBalances:
             code="JS!?Q0]r] ]$]",
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -468,6 +473,7 @@ class TestAsyncBalances:
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         balance = await async_client.balances.list(
             account_id="accountId",
+            contract="contract",
             end_date_end="endDateEnd",
             end_date_start="endDateStart",
             next_token="nextToken",

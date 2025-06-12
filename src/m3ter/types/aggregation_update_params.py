@@ -13,7 +13,7 @@ __all__ = ["AggregationUpdateParams"]
 class AggregationUpdateParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    aggregation: Required[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]]
+    aggregation: Required[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]]
     """
     Specifies the computation method applied to usage data collected in
     `targetField`. Aggregation unit value depends on the **Category** configured for

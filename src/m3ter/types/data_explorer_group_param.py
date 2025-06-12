@@ -6,8 +6,8 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["DataExplorerAccountGroupParam"]
+__all__ = ["DataExplorerGroupParam"]
 
 
-class DataExplorerAccountGroupParam(TypedDict, total=False):
+class DataExplorerGroupParam(TypedDict, total=False):
     group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]
