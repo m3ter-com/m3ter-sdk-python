@@ -25,7 +25,7 @@ class CustomFieldUpdateParams(TypedDict, total=False):
     compound_aggregation: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="compoundAggregation")]
     """Updates to Compound Aggregation entity CustomFields."""
 
-    contract: Dict[str, object]
+    contract: Dict[str, Union[str, float]]
     """Updates to Contract entity CustomFields."""
 
     meter: Dict[str, Union[str, float]]
