@@ -178,7 +178,9 @@ class TestUsage:
 
 
 class TestAsyncUsage:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_get_failed_ingest_download_url(self, async_client: AsyncM3ter) -> None:
