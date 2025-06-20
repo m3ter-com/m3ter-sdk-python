@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.6.0-alpha (2025-06-20)
+
+Full Changelog: [v0.5.0-alpha...v0.6.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.5.0-alpha...v0.6.0-alpha)
+
+### Features
+
+* **api:** OpenAPI spec update ([b4b696c](https://github.com/m3ter-com/m3ter-sdk-python/commit/b4b696c361883008320bf4472af3a59ea24c426c))
+* **client:** add follow_redirects request option ([8d41e7f](https://github.com/m3ter-com/m3ter-sdk-python/commit/8d41e7fe9ffec54d76c1ba7486ad85f4bac9da86))
+* **client:** add support for aiohttp ([3d4c3fa](https://github.com/m3ter-com/m3ter-sdk-python/commit/3d4c3fae40e201b8dc18cc66b9d3d3eda99dbb85))
+
+
+### Bug Fixes
+
+* **api:** terraform release readiness ([fad32e2](https://github.com/m3ter-com/m3ter-sdk-python/commit/fad32e22ec86d5697c6483f5bd4da835670c9d10))
+* **client:** correctly parse binary response | stream ([c34e3ac](https://github.com/m3ter-com/m3ter-sdk-python/commit/c34e3ac0c81a7623a326c68d84a2dd9f8a39fde5))
+* **client:** handle .copy() with endpoint specific URLs ([84f9daa](https://github.com/m3ter-com/m3ter-sdk-python/commit/84f9daa987271a09c2f3833febc47fa1318fafb2))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([b06b080](https://github.com/m3ter-com/m3ter-sdk-python/commit/b06b080389d08f01c8a94ef7609b7c0a11140c21))
+* **docs:** remove reference to rye shell ([15bb1b9](https://github.com/m3ter-com/m3ter-sdk-python/commit/15bb1b902dcdde20c223e55eba3e0fea0dab9c66))
+* **docs:** remove unnecessary param examples ([0fed9e0](https://github.com/m3ter-com/m3ter-sdk-python/commit/0fed9e0cf8917385a6a8fd072ae7bd477e5a4b1c))
+* **internal:** update conftest.py ([410de35](https://github.com/m3ter-com/m3ter-sdk-python/commit/410de35bed396320b9f5cefe9ff6b2dc2d3b48c0))
+* **readme:** update badges ([8ac2b31](https://github.com/m3ter-com/m3ter-sdk-python/commit/8ac2b315cc860dadfa2685b7a9a43c2bc22fd624))
+* **tests:** add tests for httpx client instantiation & proxies ([093a35b](https://github.com/m3ter-com/m3ter-sdk-python/commit/093a35bbfb82777b811b1356344c9fa0b4efda15))
+* **tests:** run tests in parallel ([4553836](https://github.com/m3ter-com/m3ter-sdk-python/commit/455383612e5ad99eb0064db7d1abac393506bfb2))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([2522d49](https://github.com/m3ter-com/m3ter-sdk-python/commit/2522d496e983af7b5f135952e9953e7d49ea4ac8))
+
 ## 0.5.0-alpha (2025-05-29)
 
 Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.4.0-alpha...v0.5.0-alpha)

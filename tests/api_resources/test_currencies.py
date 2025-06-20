@@ -31,7 +31,7 @@ class TestCurrencies:
             name="x",
             archived=True,
             code="code",
-            max_decimal_places=0,
+            max_decimal_places=2,
             rounding_mode="UP",
             version=0,
         )
@@ -114,7 +114,7 @@ class TestCurrencies:
             name="x",
             archived=True,
             code="code",
-            max_decimal_places=0,
+            max_decimal_places=2,
             rounding_mode="UP",
             version=0,
         )
@@ -230,7 +230,9 @@ class TestCurrencies:
 
 
 class TestAsyncCurrencies:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -245,7 +247,7 @@ class TestAsyncCurrencies:
             name="x",
             archived=True,
             code="code",
-            max_decimal_places=0,
+            max_decimal_places=2,
             rounding_mode="UP",
             version=0,
         )
@@ -328,7 +330,7 @@ class TestAsyncCurrencies:
             name="x",
             archived=True,
             code="code",
-            max_decimal_places=0,
+            max_decimal_places=2,
             rounding_mode="UP",
             version=0,
         )

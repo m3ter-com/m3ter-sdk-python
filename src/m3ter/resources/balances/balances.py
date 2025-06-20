@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -70,6 +70,7 @@ class BalancesResource(SyncAPIResource):
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -121,6 +122,17 @@ class BalancesResource(SyncAPIResource):
               accounting purposes
 
           contract_id
+
+          custom_fields: User defined fields enabling you to attach custom data. The value for a custom
+              field can be either a string or a number.
+
+              If `customFields` can also be defined for this entity at the Organizational
+              level, `customField` values defined at individual level override values of
+              `customFields` with the same name defined at Organization level.
+
+              See
+              [Working with Custom Fields](https://www.m3ter.com/docs/guides/creating-and-managing-products/working-with-custom-fields)
+              in the m3ter documentation for more information.
 
           description: A description of the Balance.
 
@@ -212,6 +224,7 @@ class BalancesResource(SyncAPIResource):
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
+                    "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -284,6 +297,7 @@ class BalancesResource(SyncAPIResource):
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -335,6 +349,17 @@ class BalancesResource(SyncAPIResource):
               accounting purposes
 
           contract_id
+
+          custom_fields: User defined fields enabling you to attach custom data. The value for a custom
+              field can be either a string or a number.
+
+              If `customFields` can also be defined for this entity at the Organizational
+              level, `customField` values defined at individual level override values of
+              `customFields` with the same name defined at Organization level.
+
+              See
+              [Working with Custom Fields](https://www.m3ter.com/docs/guides/creating-and-managing-products/working-with-custom-fields)
+              in the m3ter documentation for more information.
 
           description: A description of the Balance.
 
@@ -428,6 +453,7 @@ class BalancesResource(SyncAPIResource):
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
+                    "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -452,6 +478,7 @@ class BalancesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | NotGiven = NOT_GIVEN,
+        contract: Optional[str] | NotGiven = NOT_GIVEN,
         end_date_end: str | NotGiven = NOT_GIVEN,
         end_date_start: str | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -505,6 +532,7 @@ class BalancesResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "contract": contract,
                         "end_date_end": end_date_end,
                         "end_date_start": end_date_start,
                         "next_token": next_token,
@@ -593,6 +621,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -644,6 +673,17 @@ class AsyncBalancesResource(AsyncAPIResource):
               accounting purposes
 
           contract_id
+
+          custom_fields: User defined fields enabling you to attach custom data. The value for a custom
+              field can be either a string or a number.
+
+              If `customFields` can also be defined for this entity at the Organizational
+              level, `customField` values defined at individual level override values of
+              `customFields` with the same name defined at Organization level.
+
+              See
+              [Working with Custom Fields](https://www.m3ter.com/docs/guides/creating-and-managing-products/working-with-custom-fields)
+              in the m3ter documentation for more information.
 
           description: A description of the Balance.
 
@@ -735,6 +775,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
+                    "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -807,6 +848,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         code: str | NotGiven = NOT_GIVEN,
         consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
         contract_id: str | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
@@ -858,6 +900,17 @@ class AsyncBalancesResource(AsyncAPIResource):
               accounting purposes
 
           contract_id
+
+          custom_fields: User defined fields enabling you to attach custom data. The value for a custom
+              field can be either a string or a number.
+
+              If `customFields` can also be defined for this entity at the Organizational
+              level, `customField` values defined at individual level override values of
+              `customFields` with the same name defined at Organization level.
+
+              See
+              [Working with Custom Fields](https://www.m3ter.com/docs/guides/creating-and-managing-products/working-with-custom-fields)
+              in the m3ter documentation for more information.
 
           description: A description of the Balance.
 
@@ -951,6 +1004,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
+                    "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
@@ -975,6 +1029,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | NotGiven = NOT_GIVEN,
+        contract: Optional[str] | NotGiven = NOT_GIVEN,
         end_date_end: str | NotGiven = NOT_GIVEN,
         end_date_start: str | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -1028,6 +1083,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "contract": contract,
                         "end_date_end": end_date_end,
                         "end_date_start": end_date_start,
                         "next_token": next_token,

@@ -10,6 +10,7 @@ import pytest
 from m3ter import M3ter, AsyncM3ter
 from m3ter.types import AdHocResponse
 from tests.utils import assert_matches_type
+from m3ter._utils import parse_datetime
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -87,6 +88,7 @@ class TestDataExports:
                     "values": ["string"],
                 }
             ],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
             version=0,
@@ -119,7 +121,9 @@ class TestDataExports:
 
 
 class TestAsyncDataExports:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create_adhoc_overload_1(self, async_client: AsyncM3ter) -> None:
@@ -191,6 +195,7 @@ class TestAsyncDataExports:
                     "values": ["string"],
                 }
             ],
+            end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             groups=[{"group_type": "ACCOUNT"}],
             meter_ids=["string"],
             version=0,

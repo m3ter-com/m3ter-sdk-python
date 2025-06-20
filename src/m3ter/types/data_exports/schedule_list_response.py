@@ -39,7 +39,7 @@ class ScheduleListResponse(BaseModel):
     dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
     """The DateTime when the Schedule was last modified."""
 
-    export_file_format: Optional[Literal["CSV", "JSON"]] = FieldInfo(alias="exportFileFormat", default=None)
+    export_file_format: Optional[Literal["CSV", "JSON", "JSONL"]] = FieldInfo(alias="exportFileFormat", default=None)
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The id of the user who last modified this Data Export Schedule."""

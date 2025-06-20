@@ -35,7 +35,7 @@ class CustomFieldsResponse(BaseModel):
     compound_aggregation: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="compoundAggregation", default=None)
     """CustomFields added to Compound Aggregation entities."""
 
-    contract: Optional[Dict[str, object]] = None
+    contract: Optional[Dict[str, Union[str, float]]] = None
     """CustomFields added to Contract entities."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
