@@ -15,15 +15,6 @@ class TransactionResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     amount: Optional[float] = None
     """The financial value of the transaction, as recorded in the balance."""
 
@@ -94,4 +85,13 @@ class TransactionResponse(BaseModel):
 
     This is obtained from the list of created Transaction Types within the
     Organization Configuration.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

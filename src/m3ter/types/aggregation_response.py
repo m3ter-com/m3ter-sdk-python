@@ -15,18 +15,9 @@ class AggregationResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
 
-    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]] = None
+    aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]] = None
     """
     Specifies the computation method applied to usage data collected in
     `targetField`. Aggregation unit value depends on the **Category** configured for
@@ -161,4 +152,13 @@ class AggregationResponse(BaseModel):
 
     Used as the label for billing, indicating to your customers what they are being
     charged for.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

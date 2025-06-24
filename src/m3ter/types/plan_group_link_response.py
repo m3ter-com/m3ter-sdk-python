@@ -14,15 +14,6 @@ class PlanGroupLinkResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this plan group link."""
 
@@ -40,3 +31,12 @@ class PlanGroupLinkResponse(BaseModel):
 
     plan_id: Optional[str] = FieldInfo(alias="planId", default=None)
     """ID of the linked Plan"""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

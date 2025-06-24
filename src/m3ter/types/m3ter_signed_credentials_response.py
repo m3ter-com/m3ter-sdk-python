@@ -20,15 +20,6 @@ class M3terSignedCredentialsResponse(BaseModel):
     type: str
     """the type of credentials"""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     api_key: Optional[str] = FieldInfo(alias="apiKey", default=None)
     """The API key provided by m3ter.
 
@@ -59,4 +50,13 @@ class M3terSignedCredentialsResponse(BaseModel):
 
     This secret is used in conjunction with the API key to generate a signature for
     secure authentication.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

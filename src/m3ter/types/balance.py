@@ -15,15 +15,6 @@ class Balance(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """
     The unique identifier (UUID) for the end customer Account the Balance belongs
@@ -131,3 +122,12 @@ class Balance(BaseModel):
 
     start_date: Optional[datetime] = FieldInfo(alias="startDate", default=None)
     """The date _(in ISO 8601 format)_ when the Balance becomes active."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

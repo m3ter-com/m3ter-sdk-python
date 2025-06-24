@@ -40,15 +40,6 @@ class UsageDataExportScheduleResponse(BaseModel):
     id: str
     """The id of the schedule configuration."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_ids: Optional[List[str]] = FieldInfo(alias="accountIds", default=None)
     """List of account IDs for which the usage data will be exported."""
 
@@ -117,4 +108,13 @@ class UsageDataExportScheduleResponse(BaseModel):
     For more details and examples, see the
     [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
     section in our main User Documentation.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

@@ -15,15 +15,6 @@ class Organization(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     address_line1: Optional[str] = FieldInfo(alias="addressLine1", default=None)
 
     address_line2: Optional[str] = FieldInfo(alias="addressLine2", default=None)
@@ -75,6 +66,15 @@ class Organization(BaseModel):
     tax_id: Optional[str] = FieldInfo(alias="taxId", default=None)
 
     type: Optional[Literal["PRODUCTION", "SANDBOX"]] = None
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
 
 class ServiceUser(BaseModel):

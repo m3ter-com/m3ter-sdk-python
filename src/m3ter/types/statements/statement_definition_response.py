@@ -12,15 +12,24 @@ __all__ = ["StatementDefinitionResponse", "Dimension", "Measure"]
 
 
 class Dimension(BaseModel):
-    dimension_attributes: Optional[List[str]] = FieldInfo(alias="dimensionAttributes", default=None)
-    """Attributes belonging to the dimension"""
+    filter: List[str]
+    """The value of a Dimension to use as a filter.
 
-    dimension_name: Optional[str] = FieldInfo(alias="dimensionName", default=None)
-    """The name of a dimension"""
+    Use "\\**" as a wildcard to filter on all Dimension values.
+    """
+
+    name: str
+    """The name of the Dimension to target in the Meter."""
+
+    attributes: Optional[List[str]] = None
+    """The Dimension attribute to target."""
+
+    meter_id: Optional[str] = FieldInfo(alias="meterId", default=None)
+    """The unique identifier (UUID) of the Meter containing this Dimension."""
 
 
 class Measure(BaseModel):
-    aggregations: Optional[List[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]]] = None
+    aggregations: Optional[List[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]]] = None
     """A list of Aggregations to apply to the Measure."""
 
     meter_id: Optional[str] = FieldInfo(alias="meterId", default=None)
@@ -37,18 +46,9 @@ class StatementDefinitionResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
-    aggregation_frequency: Optional[
-        Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"]
-    ] = FieldInfo(alias="aggregationFrequency", default=None)
+    aggregation_frequency: Optional[Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"]] = FieldInfo(
+        alias="aggregationFrequency", default=None
+    )
     """This specifies how often the Statement should aggregate data."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
@@ -90,3 +90,12 @@ class StatementDefinitionResponse(BaseModel):
 
     name: Optional[str] = None
     """Descriptive name for the StatementDefinition providing context and information."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

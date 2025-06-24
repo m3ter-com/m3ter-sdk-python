@@ -15,15 +15,6 @@ class ScheduleListResponse(BaseModel):
     id: str
     """The id of the Data Export Schedule."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     code: Optional[str] = None
     """Unique short code of the Data Export Schedule."""
 
@@ -56,3 +47,12 @@ class ScheduleListResponse(BaseModel):
     schedule_type: Optional[Literal["HOUR", "DAY", "MINUTE", "AD_HOC"]] = FieldInfo(alias="scheduleType", default=None)
 
     source_type: Optional[Literal["USAGE", "OPERATIONAL"]] = FieldInfo(alias="sourceType", default=None)
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

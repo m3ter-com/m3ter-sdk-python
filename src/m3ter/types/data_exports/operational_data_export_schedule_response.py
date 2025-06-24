@@ -14,15 +14,6 @@ class OperationalDataExportScheduleResponse(BaseModel):
     id: str
     """The id of the schedule."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     operational_data_types: Optional[
         List[
             Literal[
@@ -48,3 +39,12 @@ class OperationalDataExportScheduleResponse(BaseModel):
         ]
     ] = FieldInfo(alias="operationalDataTypes", default=None)
     """A list of the entities whose operational data is included in the data export."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

@@ -15,15 +15,6 @@ class DataExportDestinationResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     code: Optional[str] = None
     """The code of the data Export Destination."""
 
@@ -43,3 +34,12 @@ class DataExportDestinationResponse(BaseModel):
 
     name: Optional[str] = None
     """The name of the data Export Destination."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

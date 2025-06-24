@@ -41,15 +41,6 @@ class DebitLineItemResponse(BaseModel):
     _(inclusive of the starting date)_.
     """
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this debit line item."""
 
@@ -64,3 +55,12 @@ class DebitLineItemResponse(BaseModel):
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The id of the user who last modified this debit line item."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

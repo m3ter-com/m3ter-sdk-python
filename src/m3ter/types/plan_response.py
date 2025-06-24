@@ -14,15 +14,6 @@ class PlanResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """_(Optional)_.
 
@@ -138,3 +129,12 @@ class PlanResponse(BaseModel):
 
     standing_charge_description: Optional[str] = FieldInfo(alias="standingChargeDescription", default=None)
     """Standing charge description _(displayed on the bill line item)_."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

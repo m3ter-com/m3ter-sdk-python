@@ -35,15 +35,6 @@ class ScheduledEventConfigurationResponse(BaseModel):
     when the scheduled Event will trigger.
     """
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created this item."""
 
@@ -55,3 +46,12 @@ class ScheduledEventConfigurationResponse(BaseModel):
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The ID of the user who last modified this item."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
