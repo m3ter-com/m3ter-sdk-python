@@ -497,12 +497,20 @@ class BalancesResource(SyncAPIResource):
         You can filter the Balances by the end customer's Account UUID and end dates,
         and paginate through them using the `pageSize` and `nextToken` parameters.
 
+        **NOTE:** If a Balance has a rollover amount configured and you want to use the
+        `endDateStart` or `endDateEnd` query parameters, the `rolloverEndDate` is used
+        as the end date for the Balance.
+
         Args:
           account_id: The unique identifier (UUID) for the end customer's account.
 
-          end_date_end: Only include Balances with end dates earlier than this date.
+          end_date_end: Only include Balances with end dates earlier than this date. If a Balance has a
+              rollover amount configured, then the `rolloverEndDate` will be used as the end
+              date.
 
-          end_date_start: Only include Balances with end dates equal to or later than this date.
+          end_date_start: Only include Balances with end dates equal to or later than this date. If a
+              Balance has a rollover amount configured, then the `rolloverEndDate` will be
+              used as the end date.
 
           next_token: The `nextToken` for retrieving the next page of Balances. It is used to fetch
               the next page of Balances in a paginated list.
@@ -1048,12 +1056,20 @@ class AsyncBalancesResource(AsyncAPIResource):
         You can filter the Balances by the end customer's Account UUID and end dates,
         and paginate through them using the `pageSize` and `nextToken` parameters.
 
+        **NOTE:** If a Balance has a rollover amount configured and you want to use the
+        `endDateStart` or `endDateEnd` query parameters, the `rolloverEndDate` is used
+        as the end date for the Balance.
+
         Args:
           account_id: The unique identifier (UUID) for the end customer's account.
 
-          end_date_end: Only include Balances with end dates earlier than this date.
+          end_date_end: Only include Balances with end dates earlier than this date. If a Balance has a
+              rollover amount configured, then the `rolloverEndDate` will be used as the end
+              date.
 
-          end_date_start: Only include Balances with end dates equal to or later than this date.
+          end_date_start: Only include Balances with end dates equal to or later than this date. If a
+              Balance has a rollover amount configured, then the `rolloverEndDate` will be
+              used as the end date.
 
           next_token: The `nextToken` for retrieving the next page of Balances. It is used to fetch
               the next page of Balances in a paginated list.

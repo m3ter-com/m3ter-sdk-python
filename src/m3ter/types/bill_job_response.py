@@ -16,15 +16,6 @@ class BillJobResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_ids: Optional[List[str]] = FieldInfo(alias="accountIds", default=None)
     """
     An array of UUIDs representing the end customer Accounts associated with the
@@ -159,6 +150,15 @@ class BillJobResponse(BaseModel):
 
     - **CREATE** Returned for a _Create BillJob_ call.
     - **RECALCULATE** Returned for a successful _Create Recalculation BillJob_ call.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """
 
     week_epoch: Optional[date] = FieldInfo(alias="weekEpoch", default=None)

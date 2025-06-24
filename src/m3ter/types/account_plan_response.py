@@ -15,15 +15,6 @@ class AccountPlanResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """
     The unique identifier (UUID) for the Account to which the AccountPlan or
@@ -131,4 +122,13 @@ class AccountPlanResponse(BaseModel):
     """
     The start date _(in ISO-8601 format)_ for the when the AccountPlan or
     AccountPlanGroup starts to be active for the Account.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

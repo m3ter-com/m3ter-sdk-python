@@ -15,15 +15,6 @@ class CounterPricingResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
 
     code: Optional[str] = None
@@ -120,4 +111,13 @@ class CounterPricingResponse(BaseModel):
     """
     The start date _(in ISO-8601 format)_ for when the Pricing starts to be active
     for the Plan of Plan Template.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

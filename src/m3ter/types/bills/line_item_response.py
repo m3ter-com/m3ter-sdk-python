@@ -47,15 +47,6 @@ class LineItemResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)
     """
     A unique identifier (UUID) for the Aggregation that contributes to this Bill
@@ -243,4 +234,13 @@ class LineItemResponse(BaseModel):
     specified in the `unit` field. For example: 400 api_calls.
 
     In this example, the unit type of **api_calls** is read from the `unit` field.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

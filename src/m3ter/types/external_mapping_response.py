@@ -32,15 +32,6 @@ class ExternalMappingResponse(BaseModel):
     m3ter_id: str = FieldInfo(alias="m3terId")
     """The unique identifier (UUID) of the m3ter entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created this item."""
 
@@ -55,3 +46,12 @@ class ExternalMappingResponse(BaseModel):
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The ID of the user who last modified this item."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

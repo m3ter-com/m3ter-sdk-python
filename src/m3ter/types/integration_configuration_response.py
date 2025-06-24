@@ -38,16 +38,8 @@ class IntegrationConfigurationResponse(BaseModel):
         "ACCOUNTING_PERIOD_CLOSED",
         "INVOICE_ALREADY_PAID",
         "DISABLED",
+        "RATE_LIMIT_RETRY",
     ]
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created this item."""
@@ -75,3 +67,12 @@ class IntegrationConfigurationResponse(BaseModel):
 
     url: Optional[str] = None
     """The URL of the entity in the destination system if available."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
