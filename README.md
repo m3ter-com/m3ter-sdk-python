@@ -199,7 +199,7 @@ client = M3ter(
 )
 
 account_response = client.accounts.create(
-    code="JS!?Q0]r] ]$]",
+    code='S?oC"$]C] ]]]]]5]',
     email_address="dev@stainless.com",
     name="x",
     address={},

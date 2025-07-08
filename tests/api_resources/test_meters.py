@@ -21,7 +21,7 @@ class TestMeters:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         meter = client.meters.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -44,7 +44,7 @@ class TestMeters:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         meter = client.meters.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -73,7 +73,7 @@ class TestMeters:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.meters.with_raw_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -100,7 +100,7 @@ class TestMeters:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.meters.with_streaming_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -168,7 +168,7 @@ class TestMeters:
     def test_method_update(self, client: M3ter) -> None:
         meter = client.meters.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -192,7 +192,7 @@ class TestMeters:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         meter = client.meters.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -222,7 +222,7 @@ class TestMeters:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.meters.with_raw_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -250,7 +250,7 @@ class TestMeters:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.meters.with_streaming_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -281,7 +281,7 @@ class TestMeters:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.meters.with_raw_response.update(
                 id="",
-                code="JS!?Q0]r] ]$]",
+                code='S?oC"$]C] ]]]]]5]',
                 data_fields=[
                     {
                         "category": "WHO",
@@ -383,7 +383,7 @@ class TestAsyncMeters:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         meter = await async_client.meters.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -406,7 +406,7 @@ class TestAsyncMeters:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         meter = await async_client.meters.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -435,7 +435,7 @@ class TestAsyncMeters:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.meters.with_raw_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -462,7 +462,7 @@ class TestAsyncMeters:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.meters.with_streaming_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -530,7 +530,7 @@ class TestAsyncMeters:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         meter = await async_client.meters.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -554,7 +554,7 @@ class TestAsyncMeters:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         meter = await async_client.meters.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -584,7 +584,7 @@ class TestAsyncMeters:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.meters.with_raw_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -612,7 +612,7 @@ class TestAsyncMeters:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.meters.with_streaming_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             data_fields=[
                 {
                     "category": "WHO",
@@ -643,7 +643,7 @@ class TestAsyncMeters:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.meters.with_raw_response.update(
                 id="",
-                code="JS!?Q0]r] ]$]",
+                code='S?oC"$]C] ]]]]]5]',
                 data_fields=[
                     {
                         "category": "WHO",

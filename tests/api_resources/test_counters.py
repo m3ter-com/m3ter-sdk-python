@@ -31,7 +31,7 @@ class TestCounters:
         counter = client.counters.create(
             name="x",
             unit="x",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
@@ -116,7 +116,7 @@ class TestCounters:
             id="id",
             name="x",
             unit="x",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
@@ -252,7 +252,7 @@ class TestAsyncCounters:
         counter = await async_client.counters.create(
             name="x",
             unit="x",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
@@ -337,7 +337,7 @@ class TestAsyncCounters:
             id="id",
             name="x",
             unit="x",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             version=0,
         )
