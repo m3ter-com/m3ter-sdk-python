@@ -23,22 +23,22 @@ class TestExternalMappings:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         external_mapping = client.external_mappings.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
         assert_matches_type(ExternalMappingResponse, external_mapping, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         external_mapping = client.external_mappings.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
             integration_config_id="integrationConfigId",
             version=0,
         )
@@ -47,11 +47,11 @@ class TestExternalMappings:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.external_mappings.with_raw_response.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
 
         assert response.is_closed is True
@@ -62,11 +62,11 @@ class TestExternalMappings:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.external_mappings.with_streaming_response.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -118,11 +118,11 @@ class TestExternalMappings:
     def test_method_update(self, client: M3ter) -> None:
         external_mapping = client.external_mappings.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
         assert_matches_type(ExternalMappingResponse, external_mapping, path=["response"])
 
@@ -130,11 +130,11 @@ class TestExternalMappings:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         external_mapping = client.external_mappings.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
             integration_config_id="integrationConfigId",
             version=0,
         )
@@ -144,11 +144,11 @@ class TestExternalMappings:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.external_mappings.with_raw_response.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
 
         assert response.is_closed is True
@@ -160,11 +160,11 @@ class TestExternalMappings:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.external_mappings.with_streaming_response.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -179,11 +179,11 @@ class TestExternalMappings:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.external_mappings.with_raw_response.update(
                 id="",
-                external_id="JS!?Q0]r] ]$]",
-                external_system="JS!?Q0]r] ]$]",
-                external_table="JS!?Q0]r] ]$]",
-                m3ter_entity="JS!?Q0]r] ]$]",
-                m3ter_id="JS!?Q0]r] ]$]",
+                external_id='S?oC"$]C] ]]]]]5]',
+                external_system='S?oC"$]C] ]]]]]5]',
+                external_table='S?oC"$]C] ]]]]]5]',
+                m3ter_entity='S?oC"$]C] ]]]]]5]',
+                m3ter_id='S?oC"$]C] ]]]]]5]',
             )
 
     @parametrize
@@ -398,22 +398,22 @@ class TestAsyncExternalMappings:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         external_mapping = await async_client.external_mappings.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
         assert_matches_type(ExternalMappingResponse, external_mapping, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         external_mapping = await async_client.external_mappings.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
             integration_config_id="integrationConfigId",
             version=0,
         )
@@ -422,11 +422,11 @@ class TestAsyncExternalMappings:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.external_mappings.with_raw_response.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
 
         assert response.is_closed is True
@@ -437,11 +437,11 @@ class TestAsyncExternalMappings:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.external_mappings.with_streaming_response.create(
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -493,11 +493,11 @@ class TestAsyncExternalMappings:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         external_mapping = await async_client.external_mappings.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
         assert_matches_type(ExternalMappingResponse, external_mapping, path=["response"])
 
@@ -505,11 +505,11 @@ class TestAsyncExternalMappings:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         external_mapping = await async_client.external_mappings.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
             integration_config_id="integrationConfigId",
             version=0,
         )
@@ -519,11 +519,11 @@ class TestAsyncExternalMappings:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.external_mappings.with_raw_response.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         )
 
         assert response.is_closed is True
@@ -535,11 +535,11 @@ class TestAsyncExternalMappings:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.external_mappings.with_streaming_response.update(
             id="id",
-            external_id="JS!?Q0]r] ]$]",
-            external_system="JS!?Q0]r] ]$]",
-            external_table="JS!?Q0]r] ]$]",
-            m3ter_entity="JS!?Q0]r] ]$]",
-            m3ter_id="JS!?Q0]r] ]$]",
+            external_id='S?oC"$]C] ]]]]]5]',
+            external_system='S?oC"$]C] ]]]]]5]',
+            external_table='S?oC"$]C] ]]]]]5]',
+            m3ter_entity='S?oC"$]C] ]]]]]5]',
+            m3ter_id='S?oC"$]C] ]]]]]5]',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -554,11 +554,11 @@ class TestAsyncExternalMappings:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.external_mappings.with_raw_response.update(
                 id="",
-                external_id="JS!?Q0]r] ]$]",
-                external_system="JS!?Q0]r] ]$]",
-                external_table="JS!?Q0]r] ]$]",
-                m3ter_entity="JS!?Q0]r] ]$]",
-                m3ter_id="JS!?Q0]r] ]$]",
+                external_id='S?oC"$]C] ]]]]]5]',
+                external_system='S?oC"$]C] ]]]]]5]',
+                external_table='S?oC"$]C] ]]]]]5]',
+                m3ter_entity='S?oC"$]C] ]]]]]5]',
+                m3ter_id='S?oC"$]C] ]]]]]5]',
             )
 
     @parametrize

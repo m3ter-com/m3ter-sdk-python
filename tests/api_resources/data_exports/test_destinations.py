@@ -28,7 +28,7 @@ class TestDestinations:
     def test_method_create_overload_1(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
@@ -36,7 +36,7 @@ class TestDestinations:
     def test_method_create_with_all_params_overload_1(self, client: M3ter) -> None:
         destination = client.data_exports.destinations.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
             destination_type="S3",
             partition_order="TYPE_FIRST",
             prefix="prefix",
@@ -48,7 +48,7 @@ class TestDestinations:
     def test_raw_response_create_overload_1(self, client: M3ter) -> None:
         response = client.data_exports.destinations.with_raw_response.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
 
         assert response.is_closed is True
@@ -60,7 +60,7 @@ class TestDestinations:
     def test_streaming_response_create_overload_1(self, client: M3ter) -> None:
         with client.data_exports.destinations.with_streaming_response.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -168,7 +168,7 @@ class TestDestinations:
         destination = client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
@@ -177,7 +177,7 @@ class TestDestinations:
         destination = client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
             destination_type="S3",
             partition_order="TYPE_FIRST",
             prefix="prefix",
@@ -190,7 +190,7 @@ class TestDestinations:
         response = client.data_exports.destinations.with_raw_response.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
 
         assert response.is_closed is True
@@ -203,7 +203,7 @@ class TestDestinations:
         with client.data_exports.destinations.with_streaming_response.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -219,7 +219,7 @@ class TestDestinations:
             client.data_exports.destinations.with_raw_response.update(
                 id="",
                 bucket_name="xxx",
-                iam_role_arn="arn:aws:iam::321669910225:role/z",
+                iam_role_arn='arn:aws:iam::321669910225:role/"',
             )
 
     @parametrize
@@ -374,7 +374,7 @@ class TestAsyncDestinations:
     async def test_method_create_overload_1(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
         assert_matches_type(DestinationCreateResponse, destination, path=["response"])
 
@@ -382,7 +382,7 @@ class TestAsyncDestinations:
     async def test_method_create_with_all_params_overload_1(self, async_client: AsyncM3ter) -> None:
         destination = await async_client.data_exports.destinations.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
             destination_type="S3",
             partition_order="TYPE_FIRST",
             prefix="prefix",
@@ -394,7 +394,7 @@ class TestAsyncDestinations:
     async def test_raw_response_create_overload_1(self, async_client: AsyncM3ter) -> None:
         response = await async_client.data_exports.destinations.with_raw_response.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
 
         assert response.is_closed is True
@@ -406,7 +406,7 @@ class TestAsyncDestinations:
     async def test_streaming_response_create_overload_1(self, async_client: AsyncM3ter) -> None:
         async with async_client.data_exports.destinations.with_streaming_response.create(
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -514,7 +514,7 @@ class TestAsyncDestinations:
         destination = await async_client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
         assert_matches_type(DestinationUpdateResponse, destination, path=["response"])
 
@@ -523,7 +523,7 @@ class TestAsyncDestinations:
         destination = await async_client.data_exports.destinations.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
             destination_type="S3",
             partition_order="TYPE_FIRST",
             prefix="prefix",
@@ -536,7 +536,7 @@ class TestAsyncDestinations:
         response = await async_client.data_exports.destinations.with_raw_response.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         )
 
         assert response.is_closed is True
@@ -549,7 +549,7 @@ class TestAsyncDestinations:
         async with async_client.data_exports.destinations.with_streaming_response.update(
             id="id",
             bucket_name="xxx",
-            iam_role_arn="arn:aws:iam::321669910225:role/z",
+            iam_role_arn='arn:aws:iam::321669910225:role/"',
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -565,7 +565,7 @@ class TestAsyncDestinations:
             await async_client.data_exports.destinations.with_raw_response.update(
                 id="",
                 bucket_name="xxx",
-                iam_role_arn="arn:aws:iam::321669910225:role/z",
+                iam_role_arn='arn:aws:iam::321669910225:role/"',
             )
 
     @parametrize
