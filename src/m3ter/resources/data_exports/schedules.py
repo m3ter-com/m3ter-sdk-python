@@ -75,6 +75,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -328,6 +329,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -467,6 +469,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -702,6 +705,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -924,6 +928,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -1177,6 +1182,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -1316,6 +1322,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -1551,6 +1558,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,

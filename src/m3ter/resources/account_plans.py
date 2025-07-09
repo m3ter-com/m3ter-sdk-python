@@ -399,23 +399,29 @@ class AccountPlansResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncCursor[AccountPlanResponse]:
         """
-        Retrieve a list of AccountPlan and AccountPlanGroup entities for the specified
-        Organization.
-
-        This endpoint retrieves a list of AccountPlans and AccountPlanGroups for a
-        specific Organization. The list can be paginated for easier management, and
-        supports filtering with various parameters.
-
-        **NOTE:** You cannot use the `product` query parameter as a single filter
-        condition, but must always use it in combination with the `account` query
-        parameter.
+        Retrieves a list of AccountPlan and AccountPlanGroup entities for the specified
+        Organization. The list can be paginated for easier management, and supports
+        filtering with various query parameters.
 
         Args:
           account: The unique identifier (UUID) for the Account whose AccountPlans and
               AccountPlanGroups you want to retrieve.
 
-          date: The specific date for which you want to retrieve active AccountPlans and
+              **NOTE:** Only returns the currently active AccountPlans and AccountPlanGroups
+              for the specified Account. Use in combination with the `includeall` query
+              parameter to return both active and inactive.
+
+          contract: The unique identifier (UUID) of the Contract which the AccountPlans you want to
+              retrieve have been linked to.
+
+              **NOTE:** Does not return AccountPlanGroups that have been linked to the
+              Contract.
+
+          date: The specific date for which you want to retrieve AccountPlans and
               AccountPlanGroups.
+
+              **NOTE:** Returns both active and inactive AccountPlans and AccountPlanGroups
+              for the specified date.
 
           ids: A list of unique identifiers (UUIDs) for specific AccountPlans and
               AccountPlanGroups you want to retrieve.
@@ -434,8 +440,10 @@ class AccountPlansResource(SyncAPIResource):
 
           page_size: The maximum number of AccountPlans and AccountPlanGroups to return per page.
 
-          plan: The unique identifier (UUID) for the Plan or Plan Group whose associated
-              AccountPlans or AccountPlanGroups you want to retrieve.
+          plan: The unique identifier (UUID) for the Plan whose associated AccountPlans you want
+              to retrieve.
+
+              **NOTE:** Does not return AccountPlanGroups if you use a `planGroupId`.
 
           product: The unique identifier (UUID) for the Product whose associated AccountPlans you
               want to retrieve.
@@ -897,23 +905,29 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[AccountPlanResponse, AsyncCursor[AccountPlanResponse]]:
         """
-        Retrieve a list of AccountPlan and AccountPlanGroup entities for the specified
-        Organization.
-
-        This endpoint retrieves a list of AccountPlans and AccountPlanGroups for a
-        specific Organization. The list can be paginated for easier management, and
-        supports filtering with various parameters.
-
-        **NOTE:** You cannot use the `product` query parameter as a single filter
-        condition, but must always use it in combination with the `account` query
-        parameter.
+        Retrieves a list of AccountPlan and AccountPlanGroup entities for the specified
+        Organization. The list can be paginated for easier management, and supports
+        filtering with various query parameters.
 
         Args:
           account: The unique identifier (UUID) for the Account whose AccountPlans and
               AccountPlanGroups you want to retrieve.
 
-          date: The specific date for which you want to retrieve active AccountPlans and
+              **NOTE:** Only returns the currently active AccountPlans and AccountPlanGroups
+              for the specified Account. Use in combination with the `includeall` query
+              parameter to return both active and inactive.
+
+          contract: The unique identifier (UUID) of the Contract which the AccountPlans you want to
+              retrieve have been linked to.
+
+              **NOTE:** Does not return AccountPlanGroups that have been linked to the
+              Contract.
+
+          date: The specific date for which you want to retrieve AccountPlans and
               AccountPlanGroups.
+
+              **NOTE:** Returns both active and inactive AccountPlans and AccountPlanGroups
+              for the specified date.
 
           ids: A list of unique identifiers (UUIDs) for specific AccountPlans and
               AccountPlanGroups you want to retrieve.
@@ -932,8 +946,10 @@ class AsyncAccountPlansResource(AsyncAPIResource):
 
           page_size: The maximum number of AccountPlans and AccountPlanGroups to return per page.
 
-          plan: The unique identifier (UUID) for the Plan or Plan Group whose associated
-              AccountPlans or AccountPlanGroups you want to retrieve.
+          plan: The unique identifier (UUID) for the Plan whose associated AccountPlans you want
+              to retrieve.
+
+              **NOTE:** Does not return AccountPlanGroups if you use a `planGroupId`.
 
           product: The unique identifier (UUID) for the Product whose associated AccountPlans you
               want to retrieve.

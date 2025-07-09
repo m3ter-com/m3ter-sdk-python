@@ -112,11 +112,11 @@ from m3ter.types import BillResponse, BillApproveResponse, BillSearchResponse
 
 Methods:
 
-- <code title="get /organizations/{orgId}/bills/{id}">client.bills.<a href="./src/m3ter/resources/bills/bills.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
+- <code title="get /organizations/{orgId}/bills/{id}">client.bills.<a href="./src/m3ter/resources/bills/bills.py">retrieve</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/bill_retrieve_params.py">params</a>) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
 - <code title="get /organizations/{orgId}/bills">client.bills.<a href="./src/m3ter/resources/bills/bills.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/bill_list_params.py">params</a>) -> <a href="./src/m3ter/types/bill_response.py">SyncCursor[BillResponse]</a></code>
 - <code title="delete /organizations/{orgId}/bills/{id}">client.bills.<a href="./src/m3ter/resources/bills/bills.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
 - <code title="post /organizations/{orgId}/bills/approve">client.bills.<a href="./src/m3ter/resources/bills/bills.py">approve</a>(\*, org_id, \*\*<a href="src/m3ter/types/bill_approve_params.py">params</a>) -> <a href="./src/m3ter/types/bill_approve_response.py">BillApproveResponse</a></code>
-- <code title="get /organizations/{orgId}/bills/latest/{accountId}">client.bills.<a href="./src/m3ter/resources/bills/bills.py">latest_by_account</a>(account_id, \*, org_id) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
+- <code title="get /organizations/{orgId}/bills/latest/{accountId}">client.bills.<a href="./src/m3ter/resources/bills/bills.py">latest_by_account</a>(account_id, \*, org_id, \*\*<a href="src/m3ter/types/bill_latest_by_account_params.py">params</a>) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
 - <code title="put /organizations/{orgId}/bills/{id}/lock">client.bills.<a href="./src/m3ter/resources/bills/bills.py">lock</a>(id, \*, org_id) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
 - <code title="get /organizations/{orgId}/bills/search">client.bills.<a href="./src/m3ter/resources/bills/bills.py">search</a>(\*, org_id, \*\*<a href="src/m3ter/types/bill_search_params.py">params</a>) -> <a href="./src/m3ter/types/bill_search_response.py">BillSearchResponse</a></code>
 - <code title="put /organizations/{orgId}/bills/{id}/status">client.bills.<a href="./src/m3ter/resources/bills/bills.py">update_status</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/bill_update_status_params.py">params</a>) -> <a href="./src/m3ter/types/bill_response.py">BillResponse</a></code>
@@ -163,7 +163,7 @@ from m3ter.types.bills import LineItemResponse
 
 Methods:
 
-- <code title="get /organizations/{orgId}/bills/{billId}/lineitems/{id}">client.bills.line_items.<a href="./src/m3ter/resources/bills/line_items.py">retrieve</a>(id, \*, org_id, bill_id) -> <a href="./src/m3ter/types/bills/line_item_response.py">LineItemResponse</a></code>
+- <code title="get /organizations/{orgId}/bills/{billId}/lineitems/{id}">client.bills.line_items.<a href="./src/m3ter/resources/bills/line_items.py">retrieve</a>(id, \*, org_id, bill_id, \*\*<a href="src/m3ter/types/bills/line_item_retrieve_params.py">params</a>) -> <a href="./src/m3ter/types/bills/line_item_response.py">LineItemResponse</a></code>
 - <code title="get /organizations/{orgId}/bills/{billId}/lineitems">client.bills.line_items.<a href="./src/m3ter/resources/bills/line_items.py">list</a>(bill_id, \*, org_id, \*\*<a href="src/m3ter/types/bills/line_item_list_params.py">params</a>) -> <a href="./src/m3ter/types/bills/line_item_response.py">SyncCursor[LineItemResponse]</a></code>
 
 # BillConfig

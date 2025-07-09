@@ -6,6 +6,7 @@ from .line_item_response import LineItemResponse as LineItemResponse
 from .line_item_list_params import LineItemListParams as LineItemListParams
 from .debit_line_item_response import DebitLineItemResponse as DebitLineItemResponse
 from .credit_line_item_response import CreditLineItemResponse as CreditLineItemResponse
+from .line_item_retrieve_params import LineItemRetrieveParams as LineItemRetrieveParams
 from .debit_line_item_list_params import DebitLineItemListParams as DebitLineItemListParams
 from .credit_line_item_list_params import CreditLineItemListParams as CreditLineItemListParams
 from .debit_line_item_create_params import DebitLineItemCreateParams as DebitLineItemCreateParams

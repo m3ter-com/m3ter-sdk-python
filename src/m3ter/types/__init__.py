@@ -53,6 +53,7 @@ from .webhook_list_params import WebhookListParams as WebhookListParams
 from .aggregation_response import AggregationResponse as AggregationResponse
 from .bill_config_response import BillConfigResponse as BillConfigResponse
 from .bill_job_list_params import BillJobListParams as BillJobListParams
+from .bill_retrieve_params import BillRetrieveParams as BillRetrieveParams
 from .bill_search_response import BillSearchResponse as BillSearchResponse
 from .commitment_fee_param import CommitmentFeeParam as CommitmentFeeParam
 from .contract_list_params import ContractListParams as ContractListParams
@@ -139,6 +140,7 @@ from .resource_group_create_params import ResourceGroupCreateParams as ResourceG
 from .resource_group_update_params import ResourceGroupUpdateParams as ResourceGroupUpdateParams
 from .submit_measurements_response import SubmitMeasurementsResponse as SubmitMeasurementsResponse
 from .transaction_type_list_params import TransactionTypeListParams as TransactionTypeListParams
+from .bill_latest_by_account_params import BillLatestByAccountParams as BillLatestByAccountParams
 from .compound_aggregation_response import CompoundAggregationResponse as CompoundAggregationResponse
 from .counter_pricing_create_params import CounterPricingCreateParams as CounterPricingCreateParams
 from .counter_pricing_update_params import CounterPricingUpdateParams as CounterPricingUpdateParams

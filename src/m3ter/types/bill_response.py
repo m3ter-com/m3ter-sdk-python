@@ -22,6 +22,8 @@ class LineItemUsagePerPricingBand(BaseModel):
     band_units: Optional[float] = FieldInfo(alias="bandUnits", default=None)
     """The number of units used within the band."""
 
+    converted_band_subtotal: Optional[float] = FieldInfo(alias="convertedBandSubtotal", default=None)
+
     credit_type_id: Optional[str] = FieldInfo(alias="creditTypeId", default=None)
     """The UUID of the credit type."""
 
@@ -104,6 +106,8 @@ class LineItem(BaseModel):
 
     id: Optional[str] = None
     """The UUID for the line item."""
+
+    additional: Optional[Dict[str, object]] = None
 
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)
     """The Aggregation ID used for the line item."""
@@ -200,6 +204,9 @@ class BillResponse(BaseModel):
 
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
 
+    approved_by: Optional[str] = FieldInfo(alias="approvedBy", default=None)
+    """The id of the user who approved this bill."""
+
     bill_date: Optional[date] = FieldInfo(alias="billDate", default=None)
 
     bill_frequency_interval: Optional[int] = FieldInfo(alias="billFrequencyInterval", default=None)
@@ -231,11 +238,17 @@ class BillResponse(BaseModel):
 
     currency_conversions: Optional[List[CurrencyConversion]] = FieldInfo(alias="currencyConversions", default=None)
 
+    dt_approved: Optional[datetime] = FieldInfo(alias="dtApproved", default=None)
+    """The DateTime when the bill was approved."""
+
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """The date and time _(in ISO 8601 format)_ when the Bill was first created."""
 
     dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
     """The date and time _(in ISO 8601 format)_ when the Bill was last modified."""
+
+    dt_locked: Optional[datetime] = FieldInfo(alias="dtLocked", default=None)
+    """The DateTime when the bill was locked."""
 
     due_date: Optional[date] = FieldInfo(alias="dueDate", default=None)
 
@@ -283,6 +296,9 @@ class BillResponse(BaseModel):
     """An array of the Bill line items."""
 
     locked: Optional[bool] = None
+
+    locked_by: Optional[str] = FieldInfo(alias="lockedBy", default=None)
+    """The id of the user who locked this bill."""
 
     purchase_order_number: Optional[str] = FieldInfo(alias="purchaseOrderNumber", default=None)
     """Purchase Order number linked to the Account the Bill is for."""
