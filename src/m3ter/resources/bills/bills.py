@@ -7,7 +7,14 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...types import bill_list_params, bill_search_params, bill_approve_params, bill_update_status_params
+from ...types import (
+    bill_list_params,
+    bill_search_params,
+    bill_approve_params,
+    bill_retrieve_params,
+    bill_update_status_params,
+    bill_latest_by_account_params,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -88,6 +95,7 @@ class BillsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -102,6 +110,8 @@ class BillsResource(SyncAPIResource):
         specific Organization.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -119,7 +129,11 @@ class BillsResource(SyncAPIResource):
         return self._get(
             f"/organizations/{org_id}/bills/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"additional": additional}, bill_retrieve_params.BillRetrieveParams),
             ),
             cast_to=BillResponse,
         )
@@ -129,6 +143,7 @@ class BillsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | NotGiven = NOT_GIVEN,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         bill_date: str | NotGiven = NOT_GIVEN,
         bill_date_end: str | NotGiven = NOT_GIVEN,
         bill_date_start: str | NotGiven = NOT_GIVEN,
@@ -160,6 +175,8 @@ class BillsResource(SyncAPIResource):
         Args:
           account_id: Optional filter. An Account ID - returns the Bills for the single specified
               Account.
+
+          additional: Comma separated list of additional fields.
 
           bill_date: The specific date in ISO 8601 format for which you want to retrieve Bills.
 
@@ -212,6 +229,7 @@ class BillsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "additional": additional,
                         "bill_date": bill_date,
                         "bill_date_end": bill_date_end,
                         "bill_date_start": bill_date_start,
@@ -358,6 +376,7 @@ class BillsResource(SyncAPIResource):
         account_id: str,
         *,
         org_id: str | None = None,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -373,6 +392,8 @@ class BillsResource(SyncAPIResource):
         details.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -390,7 +411,13 @@ class BillsResource(SyncAPIResource):
         return self._get(
             f"/organizations/{org_id}/bills/latest/{account_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"additional": additional}, bill_latest_by_account_params.BillLatestByAccountParams
+                ),
             ),
             cast_to=BillResponse,
         )
@@ -618,6 +645,7 @@ class AsyncBillsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -632,6 +660,8 @@ class AsyncBillsResource(AsyncAPIResource):
         specific Organization.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -649,7 +679,11 @@ class AsyncBillsResource(AsyncAPIResource):
         return await self._get(
             f"/organizations/{org_id}/bills/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"additional": additional}, bill_retrieve_params.BillRetrieveParams),
             ),
             cast_to=BillResponse,
         )
@@ -659,6 +693,7 @@ class AsyncBillsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | NotGiven = NOT_GIVEN,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         bill_date: str | NotGiven = NOT_GIVEN,
         bill_date_end: str | NotGiven = NOT_GIVEN,
         bill_date_start: str | NotGiven = NOT_GIVEN,
@@ -690,6 +725,8 @@ class AsyncBillsResource(AsyncAPIResource):
         Args:
           account_id: Optional filter. An Account ID - returns the Bills for the single specified
               Account.
+
+          additional: Comma separated list of additional fields.
 
           bill_date: The specific date in ISO 8601 format for which you want to retrieve Bills.
 
@@ -742,6 +779,7 @@ class AsyncBillsResource(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "additional": additional,
                         "bill_date": bill_date,
                         "bill_date_end": bill_date_end,
                         "bill_date_start": bill_date_start,
@@ -888,6 +926,7 @@ class AsyncBillsResource(AsyncAPIResource):
         account_id: str,
         *,
         org_id: str | None = None,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -903,6 +942,8 @@ class AsyncBillsResource(AsyncAPIResource):
         details.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -920,7 +961,13 @@ class AsyncBillsResource(AsyncAPIResource):
         return await self._get(
             f"/organizations/{org_id}/bills/latest/{account_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"additional": additional}, bill_latest_by_account_params.BillLatestByAccountParams
+                ),
             ),
             cast_to=BillResponse,
         )

@@ -21,6 +21,8 @@ class BandUsage(BaseModel):
     band_units: Optional[float] = FieldInfo(alias="bandUnits", default=None)
     """The number of units used within the band."""
 
+    converted_band_subtotal: Optional[float] = FieldInfo(alias="convertedBandSubtotal", default=None)
+
     credit_type_id: Optional[str] = FieldInfo(alias="creditTypeId", default=None)
     """The UUID of the credit type."""
 
@@ -46,6 +48,8 @@ class BandUsage(BaseModel):
 class LineItemResponse(BaseModel):
     id: str
     """The UUID of the entity."""
+
+    additional: Optional[Dict[str, object]] = None
 
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)
     """

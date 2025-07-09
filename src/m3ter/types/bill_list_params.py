@@ -19,6 +19,9 @@ class BillListParams(TypedDict, total=False):
     An Account ID - returns the Bills for the single specified Account.
     """
 
+    additional: List[str]
+    """Comma separated list of additional fields."""
+
     bill_date: Annotated[str, PropertyInfo(alias="billDate")]
     """The specific date in ISO 8601 format for which you want to retrieve Bills."""
 

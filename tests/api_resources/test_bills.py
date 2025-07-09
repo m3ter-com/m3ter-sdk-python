@@ -30,6 +30,14 @@ class TestBills:
         assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
+    def test_method_retrieve_with_all_params(self, client: M3ter) -> None:
+        bill = client.bills.retrieve(
+            id="id",
+            additional=["string"],
+        )
+        assert_matches_type(BillResponse, bill, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.bills.with_raw_response.retrieve(
             id="id",
@@ -69,6 +77,7 @@ class TestBills:
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         bill = client.bills.list(
             account_id="accountId",
+            additional=["string"],
             bill_date="billDate",
             bill_date_end="billDateEnd",
             bill_date_start="billDateStart",
@@ -188,6 +197,14 @@ class TestBills:
     def test_method_latest_by_account(self, client: M3ter) -> None:
         bill = client.bills.latest_by_account(
             account_id="accountId",
+        )
+        assert_matches_type(BillResponse, bill, path=["response"])
+
+    @parametrize
+    def test_method_latest_by_account_with_all_params(self, client: M3ter) -> None:
+        bill = client.bills.latest_by_account(
+            account_id="accountId",
+            additional=["string"],
         )
         assert_matches_type(BillResponse, bill, path=["response"])
 
@@ -353,6 +370,14 @@ class TestAsyncBills:
         assert_matches_type(BillResponse, bill, path=["response"])
 
     @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncM3ter) -> None:
+        bill = await async_client.bills.retrieve(
+            id="id",
+            additional=["string"],
+        )
+        assert_matches_type(BillResponse, bill, path=["response"])
+
+    @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.with_raw_response.retrieve(
             id="id",
@@ -392,6 +417,7 @@ class TestAsyncBills:
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         bill = await async_client.bills.list(
             account_id="accountId",
+            additional=["string"],
             bill_date="billDate",
             bill_date_end="billDateEnd",
             bill_date_start="billDateStart",
@@ -511,6 +537,14 @@ class TestAsyncBills:
     async def test_method_latest_by_account(self, async_client: AsyncM3ter) -> None:
         bill = await async_client.bills.latest_by_account(
             account_id="accountId",
+        )
+        assert_matches_type(BillResponse, bill, path=["response"])
+
+    @parametrize
+    async def test_method_latest_by_account_with_all_params(self, async_client: AsyncM3ter) -> None:
+        bill = await async_client.bills.latest_by_account(
+            account_id="accountId",
+            additional=["string"],
         )
         assert_matches_type(BillResponse, bill, path=["response"])
 

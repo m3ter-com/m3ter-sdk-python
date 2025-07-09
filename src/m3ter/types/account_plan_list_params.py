@@ -17,14 +17,28 @@ class AccountPlanListParams(TypedDict, total=False):
     """
     The unique identifier (UUID) for the Account whose AccountPlans and
     AccountPlanGroups you want to retrieve.
+
+    **NOTE:** Only returns the currently active AccountPlans and AccountPlanGroups
+    for the specified Account. Use in combination with the `includeall` query
+    parameter to return both active and inactive.
     """
 
     contract: Optional[str]
+    """
+    The unique identifier (UUID) of the Contract which the AccountPlans you want to
+    retrieve have been linked to.
+
+    **NOTE:** Does not return AccountPlanGroups that have been linked to the
+    Contract.
+    """
 
     date: str
     """
-    The specific date for which you want to retrieve active AccountPlans and
+    The specific date for which you want to retrieve AccountPlans and
     AccountPlanGroups.
+
+    **NOTE:** Returns both active and inactive AccountPlans and AccountPlanGroups
+    for the specified date.
     """
 
     ids: List[str]
@@ -56,8 +70,10 @@ class AccountPlanListParams(TypedDict, total=False):
 
     plan: str
     """
-    The unique identifier (UUID) for the Plan or Plan Group whose associated
-    AccountPlans or AccountPlanGroups you want to retrieve.
+    The unique identifier (UUID) for the Plan whose associated AccountPlans you want
+    to retrieve.
+
+    **NOTE:** Does not return AccountPlanGroups if you use a `planGroupId`.
     """
 
     product: str

@@ -42,6 +42,7 @@ class OperationalDataExportScheduleRequest(TypedDict, total=False):
                     "PLAN_GROUP_LINKS",
                     "PLAN_TEMPLATES",
                     "BALANCE_TRANSACTIONS",
+                    "TRANSACTION_TYPES",
                 ]
             ],
             PropertyInfo(alias="operationalDataTypes"),

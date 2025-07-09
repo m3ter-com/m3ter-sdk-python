@@ -107,6 +107,7 @@ class DataExportsResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -332,6 +333,7 @@ class DataExportsResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -435,6 +437,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -660,6 +663,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
