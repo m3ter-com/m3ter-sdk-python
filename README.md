@@ -84,7 +84,6 @@ pip install --pre m3ter[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from m3ter import DefaultAioHttpClient
 from m3ter import AsyncM3ter
@@ -95,7 +94,7 @@ async def main() -> None:
         api_key="My API Key",
         api_secret="My API Secret",
         org_id="My Org ID",
-        token=os.environ.get("M3TER_API_TOKEN"),  # This is the default and can be omitted
+        token="My Token",
         http_client=DefaultAioHttpClient(),
     ) as client:
         page = await client.products.list()
