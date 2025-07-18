@@ -27,6 +27,8 @@ class StatementDefinitionCreateParams(TypedDict, total=False):
     Meters that have Dimensions setup)_.
     """
 
+    generate_slim_statements: Annotated[bool, PropertyInfo(alias="generateSlimStatements")]
+
     include_price_per_unit: Annotated[bool, PropertyInfo(alias="includePricePerUnit")]
     """A Boolean indicating whether to include the price per unit in the Statement.
 

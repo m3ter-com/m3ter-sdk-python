@@ -49,6 +49,12 @@ class LineItemResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
+    accounting_product_code: Optional[str] = FieldInfo(alias="accountingProductCode", default=None)
+
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
+    accounting_product_name: Optional[str] = FieldInfo(alias="accountingProductName", default=None)
+
     additional: Optional[Dict[str, object]] = None
 
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)

@@ -14,6 +14,8 @@ __all__ = ["DebitLineItemCreateParams"]
 class DebitLineItemCreateParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
+    accounting_product_id: Required[Annotated[str, PropertyInfo(alias="accountingProductId")]]
+
     amount: Required[float]
     """The amount for the line item."""
 
