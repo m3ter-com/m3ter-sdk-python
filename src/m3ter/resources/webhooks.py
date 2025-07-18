@@ -25,9 +25,6 @@ from .._response import (
 from ..pagination import SyncCursor, AsyncCursor
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.webhook import Webhook
-from ..types.webhook_create_response import WebhookCreateResponse
-from ..types.webhook_update_response import WebhookUpdateResponse
-from ..types.webhook_set_active_response import WebhookSetActiveResponse
 from ..types.m3ter_signed_credentials_request_param import M3terSignedCredentialsRequestParam
 
 __all__ = ["WebhooksResource", "AsyncWebhooksResource"]
@@ -70,7 +67,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookCreateResponse:
+    ) -> Webhook:
         """This endpoint creates a new webhook destination.
 
         A webhook destination is a URL
@@ -128,7 +125,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhookCreateResponse,
+            cast_to=Webhook,
         )
 
     def retrieve(
@@ -187,7 +184,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookUpdateResponse:
+    ) -> Webhook:
         """
         Update a destination to be used for a webhook.
 
@@ -245,7 +242,7 @@ class WebhooksResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhookUpdateResponse,
+            cast_to=Webhook,
         )
 
     def list(
@@ -352,7 +349,7 @@ class WebhooksResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookSetActiveResponse:
+    ) -> Webhook:
         """
         Set the `active` status on a webhook integration destination.
 
@@ -386,7 +383,7 @@ class WebhooksResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"active": active}, webhook_set_active_params.WebhookSetActiveParams),
             ),
-            cast_to=WebhookSetActiveResponse,
+            cast_to=Webhook,
         )
 
 
@@ -427,7 +424,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookCreateResponse:
+    ) -> Webhook:
         """This endpoint creates a new webhook destination.
 
         A webhook destination is a URL
@@ -485,7 +482,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhookCreateResponse,
+            cast_to=Webhook,
         )
 
     async def retrieve(
@@ -544,7 +541,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookUpdateResponse:
+    ) -> Webhook:
         """
         Update a destination to be used for a webhook.
 
@@ -602,7 +599,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebhookUpdateResponse,
+            cast_to=Webhook,
         )
 
     def list(
@@ -709,7 +706,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> WebhookSetActiveResponse:
+    ) -> Webhook:
         """
         Set the `active` status on a webhook integration destination.
 
@@ -743,7 +740,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform({"active": active}, webhook_set_active_params.WebhookSetActiveParams),
             ),
-            cast_to=WebhookSetActiveResponse,
+            cast_to=Webhook,
         )
 
 

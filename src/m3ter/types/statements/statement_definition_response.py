@@ -72,6 +72,8 @@ class StatementDefinitionResponse(BaseModel):
     modified.
     """
 
+    generate_slim_statements: Optional[bool] = FieldInfo(alias="generateSlimStatements", default=None)
+
     include_price_per_unit: Optional[bool] = FieldInfo(alias="includePricePerUnit", default=None)
     """A Boolean indicating whether to include the price per unit in the Statement.
 

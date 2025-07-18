@@ -55,6 +55,7 @@ class StatementDefinitionsResource(SyncAPIResource):
         org_id: str | None = None,
         aggregation_frequency: Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
         dimensions: Iterable[statement_definition_create_params.Dimension] | NotGiven = NOT_GIVEN,
+        generate_slim_statements: bool | NotGiven = NOT_GIVEN,
         include_price_per_unit: bool | NotGiven = NOT_GIVEN,
         measures: Iterable[statement_definition_create_params.Measure] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
@@ -78,6 +79,8 @@ class StatementDefinitionsResource(SyncAPIResource):
 
           dimensions: An array of objects, each representing a Dimension data field from a Meter _(for
               Meters that have Dimensions setup)_.
+
+          generate_slim_statements
 
           include_price_per_unit: A Boolean indicating whether to include the price per unit in the Statement.
 
@@ -116,6 +119,7 @@ class StatementDefinitionsResource(SyncAPIResource):
                 {
                     "aggregation_frequency": aggregation_frequency,
                     "dimensions": dimensions,
+                    "generate_slim_statements": generate_slim_statements,
                     "include_price_per_unit": include_price_per_unit,
                     "measures": measures,
                     "name": name,
@@ -178,6 +182,7 @@ class StatementDefinitionsResource(SyncAPIResource):
         org_id: str | None = None,
         aggregation_frequency: Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
         dimensions: Iterable[statement_definition_update_params.Dimension] | NotGiven = NOT_GIVEN,
+        generate_slim_statements: bool | NotGiven = NOT_GIVEN,
         include_price_per_unit: bool | NotGiven = NOT_GIVEN,
         measures: Iterable[statement_definition_update_params.Measure] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
@@ -201,6 +206,8 @@ class StatementDefinitionsResource(SyncAPIResource):
 
           dimensions: An array of objects, each representing a Dimension data field from a Meter _(for
               Meters that have Dimensions setup)_.
+
+          generate_slim_statements
 
           include_price_per_unit: A Boolean indicating whether to include the price per unit in the Statement.
 
@@ -241,6 +248,7 @@ class StatementDefinitionsResource(SyncAPIResource):
                 {
                     "aggregation_frequency": aggregation_frequency,
                     "dimensions": dimensions,
+                    "generate_slim_statements": generate_slim_statements,
                     "include_price_per_unit": include_price_per_unit,
                     "measures": measures,
                     "name": name,
@@ -378,6 +386,7 @@ class AsyncStatementDefinitionsResource(AsyncAPIResource):
         org_id: str | None = None,
         aggregation_frequency: Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
         dimensions: Iterable[statement_definition_create_params.Dimension] | NotGiven = NOT_GIVEN,
+        generate_slim_statements: bool | NotGiven = NOT_GIVEN,
         include_price_per_unit: bool | NotGiven = NOT_GIVEN,
         measures: Iterable[statement_definition_create_params.Measure] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
@@ -401,6 +410,8 @@ class AsyncStatementDefinitionsResource(AsyncAPIResource):
 
           dimensions: An array of objects, each representing a Dimension data field from a Meter _(for
               Meters that have Dimensions setup)_.
+
+          generate_slim_statements
 
           include_price_per_unit: A Boolean indicating whether to include the price per unit in the Statement.
 
@@ -439,6 +450,7 @@ class AsyncStatementDefinitionsResource(AsyncAPIResource):
                 {
                     "aggregation_frequency": aggregation_frequency,
                     "dimensions": dimensions,
+                    "generate_slim_statements": generate_slim_statements,
                     "include_price_per_unit": include_price_per_unit,
                     "measures": measures,
                     "name": name,
@@ -501,6 +513,7 @@ class AsyncStatementDefinitionsResource(AsyncAPIResource):
         org_id: str | None = None,
         aggregation_frequency: Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
         dimensions: Iterable[statement_definition_update_params.Dimension] | NotGiven = NOT_GIVEN,
+        generate_slim_statements: bool | NotGiven = NOT_GIVEN,
         include_price_per_unit: bool | NotGiven = NOT_GIVEN,
         measures: Iterable[statement_definition_update_params.Measure] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
@@ -524,6 +537,8 @@ class AsyncStatementDefinitionsResource(AsyncAPIResource):
 
           dimensions: An array of objects, each representing a Dimension data field from a Meter _(for
               Meters that have Dimensions setup)_.
+
+          generate_slim_statements
 
           include_price_per_unit: A Boolean indicating whether to include the price per unit in the Statement.
 
@@ -564,6 +579,7 @@ class AsyncStatementDefinitionsResource(AsyncAPIResource):
                 {
                     "aggregation_frequency": aggregation_frequency,
                     "dimensions": dimensions,
+                    "generate_slim_statements": generate_slim_statements,
                     "include_price_per_unit": include_price_per_unit,
                     "measures": measures,
                     "name": name,

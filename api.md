@@ -854,21 +854,14 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import (
-    M3terSignedCredentialsRequest,
-    M3terSignedCredentialsResponse,
-    Webhook,
-    WebhookCreateResponse,
-    WebhookUpdateResponse,
-    WebhookSetActiveResponse,
-)
+from m3ter.types import M3terSignedCredentialsRequest, M3terSignedCredentialsResponse, Webhook
 ```
 
 Methods:
 
-- <code title="post /organizations/{orgId}/integrationdestinations/webhooks">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/webhook_create_params.py">params</a>) -> <a href="./src/m3ter/types/webhook_create_response.py">WebhookCreateResponse</a></code>
+- <code title="post /organizations/{orgId}/integrationdestinations/webhooks">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/webhook_create_params.py">params</a>) -> <a href="./src/m3ter/types/webhook.py">Webhook</a></code>
 - <code title="get /organizations/{orgId}/integrationdestinations/webhooks/{id}">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/webhook.py">Webhook</a></code>
-- <code title="put /organizations/{orgId}/integrationdestinations/webhooks/{id}">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/webhook_update_params.py">params</a>) -> <a href="./src/m3ter/types/webhook_update_response.py">WebhookUpdateResponse</a></code>
+- <code title="put /organizations/{orgId}/integrationdestinations/webhooks/{id}">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/webhook_update_params.py">params</a>) -> <a href="./src/m3ter/types/webhook.py">Webhook</a></code>
 - <code title="get /organizations/{orgId}/integrationdestinations/webhooks">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/webhook_list_params.py">params</a>) -> <a href="./src/m3ter/types/webhook.py">SyncCursor[Webhook]</a></code>
 - <code title="delete /organizations/{orgId}/integrationdestinations/webhooks/{id}">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/webhook.py">Webhook</a></code>
-- <code title="put /organizations/{orgId}/integrationdestinations/webhooks/{id}/active">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">set_active</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/webhook_set_active_params.py">params</a>) -> <a href="./src/m3ter/types/webhook_set_active_response.py">WebhookSetActiveResponse</a></code>
+- <code title="put /organizations/{orgId}/integrationdestinations/webhooks/{id}/active">client.webhooks.<a href="./src/m3ter/resources/webhooks.py">set_active</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/webhook_set_active_params.py">params</a>) -> <a href="./src/m3ter/types/webhook.py">Webhook</a></code>

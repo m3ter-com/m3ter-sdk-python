@@ -39,6 +39,7 @@ class TestStatementDefinitions:
                     "meter_id": "meterId",
                 }
             ],
+            generate_slim_statements=True,
             include_price_per_unit=True,
             measures=[
                 {
@@ -135,6 +136,7 @@ class TestStatementDefinitions:
                     "meter_id": "meterId",
                 }
             ],
+            generate_slim_statements=True,
             include_price_per_unit=True,
             measures=[
                 {
@@ -278,6 +280,7 @@ class TestAsyncStatementDefinitions:
                     "meter_id": "meterId",
                 }
             ],
+            generate_slim_statements=True,
             include_price_per_unit=True,
             measures=[
                 {
@@ -374,6 +377,7 @@ class TestAsyncStatementDefinitions:
                     "meter_id": "meterId",
                 }
             ],
+            generate_slim_statements=True,
             include_price_per_unit=True,
             measures=[
                 {

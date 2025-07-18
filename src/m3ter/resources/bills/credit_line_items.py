@@ -51,6 +51,7 @@ class CreditLineItemsResource(SyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -146,6 +147,7 @@ class CreditLineItemsResource(SyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/creditlineitems",
             body=maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
@@ -213,6 +215,7 @@ class CreditLineItemsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -306,6 +309,7 @@ class CreditLineItemsResource(SyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/creditlineitems/{id}",
             body=maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
@@ -448,6 +452,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -543,6 +548,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/creditlineitems",
             body=await async_maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
@@ -610,6 +616,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -703,6 +710,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/creditlineitems/{id}",
             body=await async_maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
