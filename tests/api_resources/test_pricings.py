@@ -270,6 +270,7 @@ class TestPricings:
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         pricing = client.pricings.list(
+            aggregation_id="aggregationId",
             date="date",
             ids=["string"],
             next_token="nextToken",
@@ -594,6 +595,7 @@ class TestAsyncPricings:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.list(
+            aggregation_id="aggregationId",
             date="date",
             ids=["string"],
             next_token="nextToken",
