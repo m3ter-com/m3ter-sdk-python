@@ -468,6 +468,7 @@ class PricingsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
+        aggregation_id: str | NotGiven = NOT_GIVEN,
         date: str | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -486,6 +487,8 @@ class PricingsResource(SyncAPIResource):
         Pricing ID.
 
         Args:
+          aggregation_id: UUID of the Aggregation to retrieve pricings for
+
           date: Date on which to retrieve active Pricings.
 
           ids: List of Pricing IDs to retrieve.
@@ -520,6 +523,7 @@ class PricingsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "aggregation_id": aggregation_id,
                         "date": date,
                         "ids": ids,
                         "next_token": next_token,
@@ -1013,6 +1017,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
+        aggregation_id: str | NotGiven = NOT_GIVEN,
         date: str | NotGiven = NOT_GIVEN,
         ids: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -1031,6 +1036,8 @@ class AsyncPricingsResource(AsyncAPIResource):
         Pricing ID.
 
         Args:
+          aggregation_id: UUID of the Aggregation to retrieve pricings for
+
           date: Date on which to retrieve active Pricings.
 
           ids: List of Pricing IDs to retrieve.
@@ -1065,6 +1072,7 @@ class AsyncPricingsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "aggregation_id": aggregation_id,
                         "date": date,
                         "ids": ids,
                         "next_token": next_token,
