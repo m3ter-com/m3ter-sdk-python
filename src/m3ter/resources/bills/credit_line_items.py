@@ -98,6 +98,8 @@ class CreditLineItemsResource(SyncAPIResource):
         [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -258,6 +260,8 @@ class CreditLineItemsResource(SyncAPIResource):
         Update the Credit line item with the given UUID.
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -499,6 +503,8 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -659,6 +665,8 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         Update the Credit line item with the given UUID.
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.

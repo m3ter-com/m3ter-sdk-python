@@ -97,6 +97,8 @@ class DebitLineItemsResource(SyncAPIResource):
         Organization. See [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason).
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -257,6 +259,8 @@ class DebitLineItemsResource(SyncAPIResource):
         Update the Debit line item with the given UUID.
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -497,6 +501,8 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         Organization. See [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason).
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -657,6 +663,8 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         Update the Debit line item with the given UUID.
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
