@@ -23,20 +23,18 @@ class TestStatementDefinitions:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         statement_definition = client.statements.statement_definitions.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
         assert_matches_type(StatementDefinitionResponse, statement_definition, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         statement_definition = client.statements.statement_definitions.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
             dimensions=[
                 {
-                    "filter": ["string"],
-                    "name": "x",
-                    "attributes": ["string"],
-                    "meter_id": "meterId",
+                    "dimension_attributes": ["string"],
+                    "dimension_name": "dimensionName",
                 }
             ],
             generate_slim_statements=True,
@@ -56,7 +54,7 @@ class TestStatementDefinitions:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.statements.statement_definitions.with_raw_response.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
 
         assert response.is_closed is True
@@ -67,7 +65,7 @@ class TestStatementDefinitions:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.statements.statement_definitions.with_streaming_response.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -119,7 +117,7 @@ class TestStatementDefinitions:
     def test_method_update(self, client: M3ter) -> None:
         statement_definition = client.statements.statement_definitions.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
         assert_matches_type(StatementDefinitionResponse, statement_definition, path=["response"])
 
@@ -127,13 +125,11 @@ class TestStatementDefinitions:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         statement_definition = client.statements.statement_definitions.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
             dimensions=[
                 {
-                    "filter": ["string"],
-                    "name": "x",
-                    "attributes": ["string"],
-                    "meter_id": "meterId",
+                    "dimension_attributes": ["string"],
+                    "dimension_name": "dimensionName",
                 }
             ],
             generate_slim_statements=True,
@@ -154,7 +150,7 @@ class TestStatementDefinitions:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.statements.statement_definitions.with_raw_response.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
 
         assert response.is_closed is True
@@ -166,7 +162,7 @@ class TestStatementDefinitions:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.statements.statement_definitions.with_streaming_response.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -181,7 +177,7 @@ class TestStatementDefinitions:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.statements.statement_definitions.with_raw_response.update(
                 id="",
-                aggregation_frequency="DAY",
+                aggregation_frequency="ORIGINAL",
             )
 
     @parametrize
@@ -264,20 +260,18 @@ class TestAsyncStatementDefinitions:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         statement_definition = await async_client.statements.statement_definitions.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
         assert_matches_type(StatementDefinitionResponse, statement_definition, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         statement_definition = await async_client.statements.statement_definitions.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
             dimensions=[
                 {
-                    "filter": ["string"],
-                    "name": "x",
-                    "attributes": ["string"],
-                    "meter_id": "meterId",
+                    "dimension_attributes": ["string"],
+                    "dimension_name": "dimensionName",
                 }
             ],
             generate_slim_statements=True,
@@ -297,7 +291,7 @@ class TestAsyncStatementDefinitions:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.statements.statement_definitions.with_raw_response.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
 
         assert response.is_closed is True
@@ -308,7 +302,7 @@ class TestAsyncStatementDefinitions:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.statements.statement_definitions.with_streaming_response.create(
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -360,7 +354,7 @@ class TestAsyncStatementDefinitions:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         statement_definition = await async_client.statements.statement_definitions.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
         assert_matches_type(StatementDefinitionResponse, statement_definition, path=["response"])
 
@@ -368,13 +362,11 @@ class TestAsyncStatementDefinitions:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         statement_definition = await async_client.statements.statement_definitions.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
             dimensions=[
                 {
-                    "filter": ["string"],
-                    "name": "x",
-                    "attributes": ["string"],
-                    "meter_id": "meterId",
+                    "dimension_attributes": ["string"],
+                    "dimension_name": "dimensionName",
                 }
             ],
             generate_slim_statements=True,
@@ -395,7 +387,7 @@ class TestAsyncStatementDefinitions:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.statements.statement_definitions.with_raw_response.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         )
 
         assert response.is_closed is True
@@ -407,7 +399,7 @@ class TestAsyncStatementDefinitions:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.statements.statement_definitions.with_streaming_response.update(
             id="id",
-            aggregation_frequency="DAY",
+            aggregation_frequency="ORIGINAL",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -422,7 +414,7 @@ class TestAsyncStatementDefinitions:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.statements.statement_definitions.with_raw_response.update(
                 id="",
-                aggregation_frequency="DAY",
+                aggregation_frequency="ORIGINAL",
             )
 
     @parametrize
