@@ -1,5 +1,60 @@
 # Changelog
 
+## 0.6.0 (2025-08-01)
+
+Full Changelog: [v0.5.0-alpha...v0.6.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.5.0-alpha...v0.6.0)
+
+### Features
+
+* **api:** add aggregationId query param to ListPricings ([e2bc74c](https://github.com/m3ter-com/m3ter-sdk-python/commit/e2bc74c04bf9f70d1365376767c0273f3eb1a06a))
+* **api:** mark `version` attribute as computed in Terraform ([dd009d3](https://github.com/m3ter-com/m3ter-sdk-python/commit/dd009d365cfbc3928f12f2b4bbf85b00752459a9))
+* **api:** OpenAPI spec update ([b4b696c](https://github.com/m3ter-com/m3ter-sdk-python/commit/b4b696c361883008320bf4472af3a59ea24c426c))
+* **api:** remove audit fields from Terraform provider ([df51769](https://github.com/m3ter-com/m3ter-sdk-python/commit/df51769b17b8c50cc33f6bb670198d492b6353fc))
+* **api:** Set "version" attribute to "computed_optional" in Terraform ([efb49d3](https://github.com/m3ter-com/m3ter-sdk-python/commit/efb49d3be31857b87b34f6a9d333e2b68f5db5d3))
+* clean up environment call outs ([9699330](https://github.com/m3ter-com/m3ter-sdk-python/commit/9699330a0a8714090f3c7a91693b636491aac53b))
+* **client:** add follow_redirects request option ([8d41e7f](https://github.com/m3ter-com/m3ter-sdk-python/commit/8d41e7fe9ffec54d76c1ba7486ad85f4bac9da86))
+* **client:** add support for aiohttp ([3d4c3fa](https://github.com/m3ter-com/m3ter-sdk-python/commit/3d4c3fae40e201b8dc18cc66b9d3d3eda99dbb85))
+* **client:** support file upload requests ([c47870b](https://github.com/m3ter-com/m3ter-sdk-python/commit/c47870b65f8500d23976f0e9184c892b0f0c2cb4))
+
+
+### Bug Fixes
+
+* **api:** terraform release readiness ([fad32e2](https://github.com/m3ter-com/m3ter-sdk-python/commit/fad32e22ec86d5697c6483f5bd4da835670c9d10))
+* **api:** use WebhookDestinationResponse in webhook endpoint response schemas ([05fee13](https://github.com/m3ter-com/m3ter-sdk-python/commit/05fee13bb01a20782b2fd2ebcc255932e376ce70))
+* **ci:** correct conditional ([0a7571b](https://github.com/m3ter-com/m3ter-sdk-python/commit/0a7571b668b181ed5b8cd9a0dde86ac1abef82f5))
+* **ci:** release-doctor — report correct token name ([65031e3](https://github.com/m3ter-com/m3ter-sdk-python/commit/65031e3a9fefe1eac03230db925119e00d0e344b))
+* **client:** correctly parse binary response | stream ([c34e3ac](https://github.com/m3ter-com/m3ter-sdk-python/commit/c34e3ac0c81a7623a326c68d84a2dd9f8a39fde5))
+* **client:** don't send Content-Type header on GET requests ([670fb31](https://github.com/m3ter-com/m3ter-sdk-python/commit/670fb31efc94a40f0e8712f7b11ba065d6958314))
+* **client:** handle .copy() with endpoint specific URLs ([84f9daa](https://github.com/m3ter-com/m3ter-sdk-python/commit/84f9daa987271a09c2f3833febc47fa1318fafb2))
+* **parsing:** correctly handle nested discriminated unions ([7331ae7](https://github.com/m3ter-com/m3ter-sdk-python/commit/7331ae76377855f9c120c9111ec5bcd1d5f557b6))
+* **parsing:** ignore empty metadata ([6fb7665](https://github.com/m3ter-com/m3ter-sdk-python/commit/6fb7665725c132e3c7ad92806233e2dca1c8d8a1))
+* **parsing:** parse extra field types ([b044551](https://github.com/m3ter-com/m3ter-sdk-python/commit/b044551606ea9741fc53cafec888f8bf06ad06e3))
+
+
+### Chores
+
+* **ci:** change upload type ([c31508d](https://github.com/m3ter-com/m3ter-sdk-python/commit/c31508d284784f23715bac04bbbd24b703dd6cff))
+* **ci:** enable for pull requests ([b06b080](https://github.com/m3ter-com/m3ter-sdk-python/commit/b06b080389d08f01c8a94ef7609b7c0a11140c21))
+* **ci:** only run for pushes and fork pull requests ([e978320](https://github.com/m3ter-com/m3ter-sdk-python/commit/e9783202624d76e58f577e6396a3d32c7844e66c))
+* **docs:** remove reference to rye shell ([15bb1b9](https://github.com/m3ter-com/m3ter-sdk-python/commit/15bb1b902dcdde20c223e55eba3e0fea0dab9c66))
+* **docs:** remove unnecessary param examples ([0fed9e0](https://github.com/m3ter-com/m3ter-sdk-python/commit/0fed9e0cf8917385a6a8fd072ae7bd477e5a4b1c))
+* **internal:** bump pinned h11 dep ([a1c713b](https://github.com/m3ter-com/m3ter-sdk-python/commit/a1c713b74423d29d4d71ffdd19952ffdc530dee6))
+* **internal:** codegen related update ([76cf1a9](https://github.com/m3ter-com/m3ter-sdk-python/commit/76cf1a907421a5280c17a4be6c0ea3aac0021fb9))
+* **internal:** codegen related update ([3f776ea](https://github.com/m3ter-com/m3ter-sdk-python/commit/3f776ea8e85b3c93e3b78013dd8b7c4119312b42))
+* **internal:** update conftest.py ([410de35](https://github.com/m3ter-com/m3ter-sdk-python/commit/410de35bed396320b9f5cefe9ff6b2dc2d3b48c0))
+* **package:** mark python 3.13 as supported ([1552969](https://github.com/m3ter-com/m3ter-sdk-python/commit/15529699bf6470266bc5206b93ca02644d95089a))
+* **project:** add settings file for vscode ([9f269b9](https://github.com/m3ter-com/m3ter-sdk-python/commit/9f269b9eeff19d80d4850c2c1612b62a7d41f1b9))
+* **readme:** fix version rendering on pypi ([e6bcc85](https://github.com/m3ter-com/m3ter-sdk-python/commit/e6bcc85a6328eca40d990222552452cf364b33d2))
+* **readme:** update badges ([8ac2b31](https://github.com/m3ter-com/m3ter-sdk-python/commit/8ac2b315cc860dadfa2685b7a9a43c2bc22fd624))
+* **tests:** add tests for httpx client instantiation & proxies ([093a35b](https://github.com/m3ter-com/m3ter-sdk-python/commit/093a35bbfb82777b811b1356344c9fa0b4efda15))
+* **tests:** run tests in parallel ([4553836](https://github.com/m3ter-com/m3ter-sdk-python/commit/455383612e5ad99eb0064db7d1abac393506bfb2))
+* **tests:** skip some failing tests on the latest python versions ([18708e7](https://github.com/m3ter-com/m3ter-sdk-python/commit/18708e7fe593b8db9003797feb1485ee39d18e11))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([2522d49](https://github.com/m3ter-com/m3ter-sdk-python/commit/2522d496e983af7b5f135952e9953e7d49ea4ac8))
+
 ## 0.5.0-alpha (2025-05-29)
 
 Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.4.0-alpha...v0.5.0-alpha)
