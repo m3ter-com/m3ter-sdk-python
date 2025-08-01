@@ -16,15 +16,6 @@ class PricingResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
 
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)
@@ -153,4 +144,13 @@ class PricingResponse(BaseModel):
       bill as a credit _(negative amount)_. To prevent negative billing, the bill
       will be capped at the total of other line items for the entire bill, which
       might include other Products the Account consumes.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

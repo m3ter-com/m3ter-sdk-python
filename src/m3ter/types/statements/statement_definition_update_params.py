@@ -15,7 +15,7 @@ class StatementDefinitionUpdateParams(TypedDict, total=False):
 
     aggregation_frequency: Required[
         Annotated[
-            Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
+            Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
             PropertyInfo(alias="aggregationFrequency"),
         ]
     ]
@@ -26,6 +26,8 @@ class StatementDefinitionUpdateParams(TypedDict, total=False):
     An array of objects, each representing a Dimension data field from a Meter _(for
     Meters that have Dimensions setup)_.
     """
+
+    generate_slim_statements: Annotated[bool, PropertyInfo(alias="generateSlimStatements")]
 
     include_price_per_unit: Annotated[bool, PropertyInfo(alias="includePricePerUnit")]
     """A Boolean indicating whether to include the price per unit in the Statement.
@@ -53,24 +55,15 @@ class StatementDefinitionUpdateParams(TypedDict, total=False):
 
 
 class Dimension(TypedDict, total=False):
-    filter: Required[List[str]]
-    """The value of a Dimension to use as a filter.
+    dimension_attributes: Annotated[List[str], PropertyInfo(alias="dimensionAttributes")]
+    """Attributes belonging to the dimension"""
 
-    Use "\\**" as a wildcard to filter on all Dimension values.
-    """
-
-    name: Required[str]
-    """The name of the Dimension to target in the Meter."""
-
-    attributes: List[str]
-    """The Dimension attribute to target."""
-
-    meter_id: Annotated[str, PropertyInfo(alias="meterId")]
-    """The unique identifier (UUID) of the Meter containing this Dimension."""
+    dimension_name: Annotated[str, PropertyInfo(alias="dimensionName")]
+    """The name of a dimension"""
 
 
 class Measure(TypedDict, total=False):
-    aggregations: List[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]]
+    aggregations: List[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]]
     """A list of Aggregations to apply to the Measure."""
 
     meter_id: Annotated[str, PropertyInfo(alias="meterId")]

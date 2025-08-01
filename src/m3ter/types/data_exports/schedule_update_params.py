@@ -6,9 +6,7 @@ from typing import List, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._utils import PropertyInfo
-from ..data_explorer_time_group_param import DataExplorerTimeGroupParam
-from ..data_explorer_account_group_param import DataExplorerAccountGroupParam
-from ..data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
+from ..data_explorer_group_param import DataExplorerGroupParam
 
 __all__ = [
     "ScheduleUpdateParams",
@@ -16,9 +14,6 @@ __all__ = [
     "UsageDataExportScheduleRequest",
     "UsageDataExportScheduleRequestAggregation",
     "UsageDataExportScheduleRequestDimensionFilter",
-    "UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup",
-    "UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup",
-    "UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup",
 ]
 
 
@@ -47,6 +42,7 @@ class OperationalDataExportScheduleRequest(TypedDict, total=False):
                     "PLAN_GROUP_LINKS",
                     "PLAN_TEMPLATES",
                     "BALANCE_TRANSACTIONS",
+                    "TRANSACTION_TYPES",
                 ]
             ],
             PropertyInfo(alias="operationalDataTypes"),
@@ -144,13 +140,7 @@ class UsageDataExportScheduleRequest(TypedDict, total=False):
     ]
     """List of dimension filters to apply"""
 
-    groups: Iterable[
-        Union[
-            UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-            UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-            UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-        ]
-    ]
+    groups: Iterable[DataExplorerGroupParam]
     """List of groups to apply"""
 
     meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
@@ -191,22 +181,6 @@ class UsageDataExportScheduleRequestDimensionFilter(TypedDict, total=False):
 
     values: Required[List[str]]
     """Values to filter by"""
-
-
-class UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup(
-    DataExplorerAccountGroupParam, total=False
-):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup(
-    DataExplorerDimensionGroupParam, total=False
-):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
 
 
 ScheduleUpdateParams: TypeAlias = Union[OperationalDataExportScheduleRequest, UsageDataExportScheduleRequest]

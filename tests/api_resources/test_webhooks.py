@@ -10,9 +10,6 @@ import pytest
 from m3ter import M3ter, AsyncM3ter
 from m3ter.types import (
     Webhook,
-    WebhookCreateResponse,
-    WebhookUpdateResponse,
-    WebhookSetActiveResponse,
 )
 from tests.utils import assert_matches_type
 from m3ter.pagination import SyncCursor, AsyncCursor
@@ -35,7 +32,7 @@ class TestWebhooks:
             name="x",
             url="x",
         )
-        assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
@@ -54,7 +51,7 @@ class TestWebhooks:
             code="code",
             version=0,
         )
-        assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
@@ -72,7 +69,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
@@ -90,7 +87,7 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+            assert_matches_type(Webhook, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -145,7 +142,7 @@ class TestWebhooks:
             name="x",
             url="x",
         )
-        assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
@@ -165,7 +162,7 @@ class TestWebhooks:
             code="code",
             version=0,
         )
-        assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: M3ter) -> None:
@@ -184,7 +181,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: M3ter) -> None:
@@ -203,7 +200,7 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+            assert_matches_type(Webhook, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -299,7 +296,7 @@ class TestWebhooks:
         webhook = client.webhooks.set_active(
             id="id",
         )
-        assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_method_set_active_with_all_params(self, client: M3ter) -> None:
@@ -307,7 +304,7 @@ class TestWebhooks:
             id="id",
             active=True,
         )
-        assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_raw_response_set_active(self, client: M3ter) -> None:
@@ -318,7 +315,7 @@ class TestWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = response.parse()
-        assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     def test_streaming_response_set_active(self, client: M3ter) -> None:
@@ -329,7 +326,7 @@ class TestWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = response.parse()
-            assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+            assert_matches_type(Webhook, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -342,7 +339,9 @@ class TestWebhooks:
 
 
 class TestAsyncWebhooks:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -356,7 +355,7 @@ class TestAsyncWebhooks:
             name="x",
             url="x",
         )
-        assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -375,7 +374,7 @@ class TestAsyncWebhooks:
             code="code",
             version=0,
         )
-        assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
@@ -393,7 +392,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
@@ -411,7 +410,7 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(WebhookCreateResponse, webhook, path=["response"])
+            assert_matches_type(Webhook, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -466,7 +465,7 @@ class TestAsyncWebhooks:
             name="x",
             url="x",
         )
-        assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -486,7 +485,7 @@ class TestAsyncWebhooks:
             code="code",
             version=0,
         )
-        assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
@@ -505,7 +504,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
@@ -524,7 +523,7 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
+            assert_matches_type(Webhook, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -620,7 +619,7 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.set_active(
             id="id",
         )
-        assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_method_set_active_with_all_params(self, async_client: AsyncM3ter) -> None:
@@ -628,7 +627,7 @@ class TestAsyncWebhooks:
             id="id",
             active=True,
         )
-        assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_raw_response_set_active(self, async_client: AsyncM3ter) -> None:
@@ -639,7 +638,7 @@ class TestAsyncWebhooks:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         webhook = await response.parse()
-        assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+        assert_matches_type(Webhook, webhook, path=["response"])
 
     @parametrize
     async def test_streaming_response_set_active(self, async_client: AsyncM3ter) -> None:
@@ -650,7 +649,7 @@ class TestAsyncWebhooks:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             webhook = await response.parse()
-            assert_matches_type(WebhookSetActiveResponse, webhook, path=["response"])
+            assert_matches_type(Webhook, webhook, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -1,6 +1,7 @@
 # M3ter Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/m3ter.svg)](https://pypi.org/project/m3ter/)
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/m3ter.svg?label=pypi%20(stable))](https://pypi.org/project/m3ter/)
 
 The M3ter Python library provides convenient access to the M3ter REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -16,7 +17,7 @@ The REST API documentation can be found on [www.m3ter.com](https://www.m3ter.com
 
 ```sh
 # install from PyPI
-pip install --pre m3ter
+pip install m3ter
 ```
 
 ## Usage
@@ -68,6 +69,40 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install m3ter[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import asyncio
+from m3ter import DefaultAioHttpClient
+from m3ter import AsyncM3ter
+
+
+async def main() -> None:
+    async with AsyncM3ter(
+        api_key="My API Key",
+        api_secret="My API Secret",
+        org_id="My Org ID",
+        token="My Token",
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        page = await client.products.list()
+        print(page.data)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
@@ -163,19 +198,10 @@ client = M3ter(
 )
 
 account_response = client.accounts.create(
-    code="JS!?Q0]r] ]$]",
+    code='S?oC"$]C] ]]]]]5]',
     email_address="dev@stainless.com",
     name="x",
-    address={
-        "address_line1": "addressLine1",
-        "address_line2": "addressLine2",
-        "address_line3": "addressLine3",
-        "address_line4": "addressLine4",
-        "country": "country",
-        "locality": "locality",
-        "post_code": "postCode",
-        "region": "region",
-    },
+    address={},
 )
 print(account_response.address)
 ```
@@ -252,7 +278,7 @@ client.with_options(max_retries=5).products.list()
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from m3ter import M3ter

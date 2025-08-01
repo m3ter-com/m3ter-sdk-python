@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing import List
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -15,7 +17,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ...pagination import SyncCursor, AsyncCursor
-from ...types.bills import line_item_list_params
+from ...types.bills import line_item_list_params, line_item_retrieve_params
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.bills.line_item_response import LineItemResponse
 
@@ -48,6 +50,7 @@ class LineItemsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -62,6 +65,8 @@ class LineItemsResource(SyncAPIResource):
         a specific Bill.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -81,7 +86,11 @@ class LineItemsResource(SyncAPIResource):
         return self._get(
             f"/organizations/{org_id}/bills/{bill_id}/lineitems/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"additional": additional}, line_item_retrieve_params.LineItemRetrieveParams),
             ),
             cast_to=LineItemResponse,
         )
@@ -91,6 +100,7 @@ class LineItemsResource(SyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -109,6 +119,8 @@ class LineItemsResource(SyncAPIResource):
         adjustments within a Bill.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           next_token: The `nextToken` for multi-page retrievals. It is used to fetch the next page of
               line items in a paginated list.
 
@@ -138,6 +150,7 @@ class LineItemsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "additional": additional,
                         "next_token": next_token,
                         "page_size": page_size,
                     },
@@ -174,6 +187,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -188,6 +202,8 @@ class AsyncLineItemsResource(AsyncAPIResource):
         a specific Bill.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -207,7 +223,13 @@ class AsyncLineItemsResource(AsyncAPIResource):
         return await self._get(
             f"/organizations/{org_id}/bills/{bill_id}/lineitems/{id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"additional": additional}, line_item_retrieve_params.LineItemRetrieveParams
+                ),
             ),
             cast_to=LineItemResponse,
         )
@@ -217,6 +239,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
+        additional: List[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -235,6 +258,8 @@ class AsyncLineItemsResource(AsyncAPIResource):
         adjustments within a Bill.
 
         Args:
+          additional: Comma separated list of additional fields.
+
           next_token: The `nextToken` for multi-page retrievals. It is used to fetch the next page of
               line items in a paginated list.
 
@@ -264,6 +289,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "additional": additional,
                         "next_token": next_token,
                         "page_size": page_size,
                     },

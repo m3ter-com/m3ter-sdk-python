@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, List, Union, Iterable, cast
+from typing import Any, List, Iterable, cast
 from typing_extensions import Literal, overload
 
 import httpx
@@ -20,6 +20,7 @@ from ..._response import (
 from ...pagination import SyncCursor, AsyncCursor
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.data_exports import schedule_list_params, schedule_create_params, schedule_update_params
+from ...types.data_explorer_group_param import DataExplorerGroupParam
 from ...types.data_exports.schedule_list_response import ScheduleListResponse
 from ...types.data_exports.schedule_create_response import ScheduleCreateResponse
 from ...types.data_exports.schedule_delete_response import ScheduleDeleteResponse
@@ -74,6 +75,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -182,14 +184,7 @@ class SchedulesResource(SyncAPIResource):
         aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -334,6 +329,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -362,14 +358,7 @@ class SchedulesResource(SyncAPIResource):
         aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -480,6 +469,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -579,14 +569,7 @@ class SchedulesResource(SyncAPIResource):
         aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -722,6 +705,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -750,14 +734,7 @@ class SchedulesResource(SyncAPIResource):
         aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -951,6 +928,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -1059,14 +1037,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1211,6 +1182,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -1239,14 +1211,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_create_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1357,6 +1322,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -1456,14 +1422,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1599,6 +1558,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_GROUP_LINKS",
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
+                "TRANSACTION_TYPES",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -1627,14 +1587,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
         | NotGiven = NOT_GIVEN,
-        groups: Iterable[
-            Union[
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerAccountGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerDimensionGroup,
-                schedule_update_params.UsageDataExportScheduleRequestGroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-        | NotGiven = NOT_GIVEN,
+        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         meter_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

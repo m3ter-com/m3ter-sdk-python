@@ -36,7 +36,7 @@ class TestAccountPlans:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
             child_billing_mode="PARENT_SUMMARY",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             contract_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             custom_fields={"foo": "string"},
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -127,7 +127,7 @@ class TestAccountPlans:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
             child_billing_mode="PARENT_SUMMARY",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             contract_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             custom_fields={"foo": "string"},
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -254,7 +254,9 @@ class TestAccountPlans:
 
 
 class TestAsyncAccountPlans:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -271,7 +273,7 @@ class TestAsyncAccountPlans:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
             child_billing_mode="PARENT_SUMMARY",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             contract_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             custom_fields={"foo": "string"},
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -362,7 +364,7 @@ class TestAsyncAccountPlans:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             bill_epoch=parse_date("2019-12-27"),
             child_billing_mode="PARENT_SUMMARY",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             contract_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             custom_fields={"foo": "string"},
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),

@@ -48,7 +48,7 @@ class TestPricings:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             compound_aggregation_id="compoundAggregationId",
             cumulative=True,
             description="description",
@@ -181,7 +181,7 @@ class TestPricings:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             compound_aggregation_id="compoundAggregationId",
             cumulative=True,
             description="description",
@@ -270,6 +270,7 @@ class TestPricings:
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         pricing = client.pricings.list(
+            aggregation_id="aggregationId",
             date="date",
             ids=["string"],
             next_token="nextToken",
@@ -339,7 +340,9 @@ class TestPricings:
 
 
 class TestAsyncPricings:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -370,7 +373,7 @@ class TestAsyncPricings:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             compound_aggregation_id="compoundAggregationId",
             cumulative=True,
             description="description",
@@ -503,7 +506,7 @@ class TestAsyncPricings:
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             aggregation_id="aggregationId",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             compound_aggregation_id="compoundAggregationId",
             cumulative=True,
             description="description",
@@ -592,6 +595,7 @@ class TestAsyncPricings:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         pricing = await async_client.pricings.list(
+            aggregation_id="aggregationId",
             date="date",
             ids=["string"],
             next_token="nextToken",

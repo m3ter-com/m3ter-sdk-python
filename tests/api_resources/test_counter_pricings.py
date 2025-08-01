@@ -51,7 +51,7 @@ class TestCounterPricings:
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             cumulative=True,
             description="description",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -175,7 +175,7 @@ class TestCounterPricings:
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             cumulative=True,
             description="description",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -324,7 +324,9 @@ class TestCounterPricings:
 
 
 class TestAsyncCounterPricings:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -356,7 +358,7 @@ class TestAsyncCounterPricings:
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             cumulative=True,
             description="description",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -480,7 +482,7 @@ class TestAsyncCounterPricings:
             ],
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             cumulative=True,
             description="description",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),

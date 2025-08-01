@@ -15,15 +15,6 @@ class DataExportJobResponse(BaseModel):
     id: str
     """The id of the Export Job."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     date_created: Optional[datetime] = FieldInfo(alias="dateCreated", default=None)
     """When the data Export Job was created."""
 
@@ -36,3 +27,12 @@ class DataExportJobResponse(BaseModel):
     """When the data Export Job started running"""
 
     status: Optional[Literal["PENDING", "RUNNING", "SUCCEEDED", "FAILED"]] = None
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

@@ -13,6 +13,9 @@ __all__ = ["PricingListParams"]
 class PricingListParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
+    aggregation_id: Annotated[str, PropertyInfo(alias="aggregationId")]
+    """UUID of the Aggregation to retrieve pricings for"""
+
     date: str
     """Date on which to retrieve active Pricings."""
 

@@ -15,15 +15,6 @@ class PlanTemplateResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     bill_frequency: Optional[Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC", "MIXED"]] = FieldInfo(
         alias="billFrequency", default=None
     )
@@ -159,4 +150,13 @@ class PlanTemplateResponse(BaseModel):
     `standingChargeOfset` is 0, then the charge is applied to the first bill _(at
     three months)_; if 1, it would be applied to the second bill _(at six months)_,
     and so on.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

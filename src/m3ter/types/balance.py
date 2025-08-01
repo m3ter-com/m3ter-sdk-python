@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Union, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -14,15 +14,6 @@ __all__ = ["Balance"]
 class Balance(BaseModel):
     id: str
     """The UUID of the entity."""
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
 
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """
@@ -51,6 +42,20 @@ class Balance(BaseModel):
 
     currency: Optional[str] = None
     """The currency code used for the Balance amount. For example: USD, GBP or EUR."""
+
+    custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
+    """User defined fields enabling you to attach custom data.
+
+    The value for a custom field can be either a string or a number.
+
+    If `customFields` can also be defined for this entity at the Organizational
+    level,`customField` values defined at individual level override values of
+    `customFields` with the same name defined at Organization level.
+
+    See
+    [Working with Custom Fields](https://www.m3ter.com/docs/guides/creating-and-managing-products/working-with-custom-fields)
+    in the m3ter documentation for more information.
+    """
 
     description: Optional[str] = None
     """A description of the Balance."""
@@ -117,3 +122,12 @@ class Balance(BaseModel):
 
     start_date: Optional[datetime] = FieldInfo(alias="startDate", default=None)
     """The date _(in ISO 8601 format)_ when the Balance becomes active."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

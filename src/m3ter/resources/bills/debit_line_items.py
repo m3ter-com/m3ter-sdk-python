@@ -51,6 +51,7 @@ class DebitLineItemsResource(SyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -96,6 +97,8 @@ class DebitLineItemsResource(SyncAPIResource):
         Organization. See [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason).
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -145,6 +148,7 @@ class DebitLineItemsResource(SyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/debitlineitems",
             body=maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
@@ -212,6 +216,7 @@ class DebitLineItemsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -254,6 +259,8 @@ class DebitLineItemsResource(SyncAPIResource):
         Update the Debit line item with the given UUID.
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -305,6 +312,7 @@ class DebitLineItemsResource(SyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/debitlineitems/{id}",
             body=maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
@@ -447,6 +455,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -492,6 +501,8 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         Organization. See [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason).
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -541,6 +552,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/debitlineitems",
             body=await async_maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,
@@ -608,6 +620,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        accounting_product_id: str,
         amount: float,
         description: str,
         product_id: str,
@@ -650,6 +663,8 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         Update the Debit line item with the given UUID.
 
         Args:
+          accounting_product_id
+
           amount: The amount for the line item.
 
           description: The description for the line item.
@@ -701,6 +716,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             f"/organizations/{org_id}/bills/{bill_id}/debitlineitems/{id}",
             body=await async_maybe_transform(
                 {
+                    "accounting_product_id": accounting_product_id,
                     "amount": amount,
                     "description": description,
                     "product_id": product_id,

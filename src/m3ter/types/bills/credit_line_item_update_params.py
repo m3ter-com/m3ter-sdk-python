@@ -16,6 +16,8 @@ class CreditLineItemUpdateParams(TypedDict, total=False):
 
     bill_id: Required[Annotated[str, PropertyInfo(alias="billId")]]
 
+    accounting_product_id: Required[Annotated[str, PropertyInfo(alias="accountingProductId")]]
+
     amount: Required[float]
     """The amount for the line item."""
 

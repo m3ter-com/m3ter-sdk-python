@@ -14,15 +14,6 @@ class CounterAdjustmentResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """The Account ID the CounterAdjustment was created for."""
 
@@ -55,3 +46,12 @@ class CounterAdjustmentResponse(BaseModel):
 
     value: Optional[int] = None
     """Integer Value of the Counter that was used to make the CounterAdjustment."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

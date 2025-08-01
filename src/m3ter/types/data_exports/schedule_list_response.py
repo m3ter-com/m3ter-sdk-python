@@ -15,15 +15,6 @@ class ScheduleListResponse(BaseModel):
     id: str
     """The id of the Data Export Schedule."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     code: Optional[str] = None
     """Unique short code of the Data Export Schedule."""
 
@@ -39,7 +30,7 @@ class ScheduleListResponse(BaseModel):
     dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
     """The DateTime when the Schedule was last modified."""
 
-    export_file_format: Optional[Literal["CSV", "JSON"]] = FieldInfo(alias="exportFileFormat", default=None)
+    export_file_format: Optional[Literal["CSV", "JSON", "JSONL"]] = FieldInfo(alias="exportFileFormat", default=None)
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The id of the user who last modified this Data Export Schedule."""
@@ -56,3 +47,12 @@ class ScheduleListResponse(BaseModel):
     schedule_type: Optional[Literal["HOUR", "DAY", "MINUTE", "AD_HOC"]] = FieldInfo(alias="scheduleType", default=None)
 
     source_type: Optional[Literal["USAGE", "OPERATIONAL"]] = FieldInfo(alias="sourceType", default=None)
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

@@ -27,6 +27,15 @@ class TestLineItems:
         assert_matches_type(LineItemResponse, line_item, path=["response"])
 
     @parametrize
+    def test_method_retrieve_with_all_params(self, client: M3ter) -> None:
+        line_item = client.bills.line_items.retrieve(
+            id="id",
+            bill_id="billId",
+            additional=["string"],
+        )
+        assert_matches_type(LineItemResponse, line_item, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve(self, client: M3ter) -> None:
         response = client.bills.line_items.with_raw_response.retrieve(
             id="id",
@@ -77,6 +86,7 @@ class TestLineItems:
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         line_item = client.bills.line_items.list(
             bill_id="billId",
+            additional=["string"],
             next_token="nextToken",
             page_size=1,
         )
@@ -115,13 +125,24 @@ class TestLineItems:
 
 
 class TestAsyncLineItems:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
         line_item = await async_client.bills.line_items.retrieve(
             id="id",
             bill_id="billId",
+        )
+        assert_matches_type(LineItemResponse, line_item, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncM3ter) -> None:
+        line_item = await async_client.bills.line_items.retrieve(
+            id="id",
+            bill_id="billId",
+            additional=["string"],
         )
         assert_matches_type(LineItemResponse, line_item, path=["response"])
 
@@ -176,6 +197,7 @@ class TestAsyncLineItems:
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         line_item = await async_client.bills.line_items.list(
             bill_id="billId",
+            additional=["string"],
             next_token="nextToken",
             page_size=1,
         )

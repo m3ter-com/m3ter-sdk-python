@@ -54,7 +54,7 @@ class TestCustomFields:
             account_plan={"foo": "string"},
             aggregation={"foo": "string"},
             compound_aggregation={"foo": "string"},
-            contract={"foo": "bar"},
+            contract={"foo": "string"},
             meter={"foo": "string"},
             organization={"foo": "string"},
             plan={"foo": "string"},
@@ -86,7 +86,9 @@ class TestCustomFields:
 
 
 class TestAsyncCustomFields:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncM3ter) -> None:
@@ -125,7 +127,7 @@ class TestAsyncCustomFields:
             account_plan={"foo": "string"},
             aggregation={"foo": "string"},
             compound_aggregation={"foo": "string"},
-            contract={"foo": "bar"},
+            contract={"foo": "string"},
             meter={"foo": "string"},
             organization={"foo": "string"},
             plan={"foo": "string"},

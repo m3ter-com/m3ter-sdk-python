@@ -14,15 +14,6 @@ class ContractResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """The unique identifier (UUID) of the Account associated with this Contract."""
 
@@ -75,4 +66,13 @@ class ContractResponse(BaseModel):
     """The start date for the Contract _(in ISO-8601 format)_.
 
     This date is inclusive, meaning the Contract is active from this date onward.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

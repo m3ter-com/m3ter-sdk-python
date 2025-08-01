@@ -7,18 +7,9 @@ from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
-from .data_explorer_time_group_param import DataExplorerTimeGroupParam
-from .data_explorer_account_group_param import DataExplorerAccountGroupParam
-from .data_explorer_dimension_group_param import DataExplorerDimensionGroupParam
+from .data_explorer_group_param import DataExplorerGroupParam
 
-__all__ = [
-    "UsageQueryParams",
-    "Aggregation",
-    "DimensionFilter",
-    "GroupDataExportsDataExplorerAccountGroup",
-    "GroupDataExportsDataExplorerDimensionGroup",
-    "GroupDataExportsDataExplorerTimeGroup",
-]
+__all__ = ["UsageQueryParams", "Aggregation", "DimensionFilter"]
 
 
 class UsageQueryParams(TypedDict, total=False):
@@ -61,13 +52,7 @@ class UsageQueryParams(TypedDict, total=False):
     (_ISO 8601 formatted_)
     """
 
-    groups: Iterable[
-        Union[
-            GroupDataExportsDataExplorerAccountGroup,
-            GroupDataExportsDataExplorerDimensionGroup,
-            GroupDataExportsDataExplorerTimeGroup,
-        ]
-    ]
+    groups: Iterable[DataExplorerGroupParam]
     """
     If you've applied Aggregations for your query, specify any grouping you want to
     impose on the returned data:
@@ -120,15 +105,3 @@ class DimensionFilter(TypedDict, total=False):
 
     values: Required[List[str]]
     """Values to filter by"""
-
-
-class GroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class GroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore
-
-
-class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroupParam, total=False):
-    group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]  # type: ignore

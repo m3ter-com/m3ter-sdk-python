@@ -21,6 +21,8 @@ class BandUsage(BaseModel):
     band_units: Optional[float] = FieldInfo(alias="bandUnits", default=None)
     """The number of units used within the band."""
 
+    converted_band_subtotal: Optional[float] = FieldInfo(alias="convertedBandSubtotal", default=None)
+
     credit_type_id: Optional[str] = FieldInfo(alias="creditTypeId", default=None)
     """The UUID of the credit type."""
 
@@ -47,14 +49,13 @@ class LineItemResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
+    accounting_product_code: Optional[str] = FieldInfo(alias="accountingProductCode", default=None)
 
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
+    accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+
+    accounting_product_name: Optional[str] = FieldInfo(alias="accountingProductName", default=None)
+
+    additional: Optional[Dict[str, object]] = None
 
     aggregation_id: Optional[str] = FieldInfo(alias="aggregationId", default=None)
     """
@@ -243,4 +244,13 @@ class LineItemResponse(BaseModel):
     specified in the `unit` field. For example: 400 api_calls.
 
     In this example, the unit type of **api_calls** is read from the `unit` field.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

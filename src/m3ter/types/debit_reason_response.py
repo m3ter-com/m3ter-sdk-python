@@ -14,15 +14,6 @@ class DebitReasonResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     archived: Optional[bool] = None
     """TRUE / FALSE flag indicating whether the data entity is archived.
 
@@ -46,3 +37,12 @@ class DebitReasonResponse(BaseModel):
 
     name: Optional[str] = None
     """The name of the data entity."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

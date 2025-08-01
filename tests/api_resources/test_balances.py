@@ -37,9 +37,10 @@ class TestBalances:
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -141,9 +142,10 @@ class TestBalances:
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -209,6 +211,7 @@ class TestBalances:
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         balance = client.balances.list(
             account_id="accountId",
+            contract="contract",
             end_date_end="endDateEnd",
             end_date_start="endDateStart",
             next_token="nextToken",
@@ -276,7 +279,9 @@ class TestBalances:
 
 
 class TestAsyncBalances:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -296,9 +301,10 @@ class TestAsyncBalances:
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -400,9 +406,10 @@ class TestAsyncBalances:
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
+            custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
@@ -468,6 +475,7 @@ class TestAsyncBalances:
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         balance = await async_client.balances.list(
             account_id="accountId",
+            contract="contract",
             end_date_end="endDateEnd",
             end_date_start="endDateStart",
             next_token="nextToken",

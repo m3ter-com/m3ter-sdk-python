@@ -26,7 +26,7 @@ class TestAccounts:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         account = client.accounts.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -35,7 +35,7 @@ class TestAccounts:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         account = client.accounts.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
             address={
@@ -65,7 +65,7 @@ class TestAccounts:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.accounts.with_raw_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -78,7 +78,7 @@ class TestAccounts:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.accounts.with_streaming_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         ) as response:
@@ -132,7 +132,7 @@ class TestAccounts:
     def test_method_update(self, client: M3ter) -> None:
         account = client.accounts.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -142,7 +142,7 @@ class TestAccounts:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         account = client.accounts.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
             address={
@@ -173,7 +173,7 @@ class TestAccounts:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.accounts.with_raw_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -187,7 +187,7 @@ class TestAccounts:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.accounts.with_streaming_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         ) as response:
@@ -204,7 +204,7 @@ class TestAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.accounts.with_raw_response.update(
                 id="",
-                code="JS!?Q0]r] ]$]",
+                code='S?oC"$]C] ]]]]]5]',
                 email_address="dev@stainless.com",
                 name="x",
             )
@@ -424,12 +424,14 @@ class TestAccounts:
 
 
 class TestAsyncAccounts:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         account = await async_client.accounts.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -438,7 +440,7 @@ class TestAsyncAccounts:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         account = await async_client.accounts.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
             address={
@@ -468,7 +470,7 @@ class TestAsyncAccounts:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.accounts.with_raw_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -481,7 +483,7 @@ class TestAsyncAccounts:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.accounts.with_streaming_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         ) as response:
@@ -535,7 +537,7 @@ class TestAsyncAccounts:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         account = await async_client.accounts.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -545,7 +547,7 @@ class TestAsyncAccounts:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         account = await async_client.accounts.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
             address={
@@ -576,7 +578,7 @@ class TestAsyncAccounts:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.accounts.with_raw_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         )
@@ -590,7 +592,7 @@ class TestAsyncAccounts:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.accounts.with_streaming_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             email_address="dev@stainless.com",
             name="x",
         ) as response:
@@ -607,7 +609,7 @@ class TestAsyncAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.accounts.with_raw_response.update(
                 id="",
-                code="JS!?Q0]r] ]$]",
+                code='S?oC"$]C] ]]]]]5]',
                 email_address="dev@stainless.com",
                 name="x",
             )

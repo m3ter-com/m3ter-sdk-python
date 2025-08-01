@@ -25,6 +25,7 @@ class TestCreditLineItems:
     def test_method_create(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -39,6 +40,7 @@ class TestCreditLineItems:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         credit_line_item = client.bills.credit_line_items.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -57,6 +59,7 @@ class TestCreditLineItems:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.bills.credit_line_items.with_raw_response.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -75,6 +78,7 @@ class TestCreditLineItems:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.bills.credit_line_items.with_streaming_response.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -96,6 +100,7 @@ class TestCreditLineItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             client.bills.credit_line_items.with_raw_response.create(
                 bill_id="",
+                accounting_product_id="accountingProductId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -158,6 +163,7 @@ class TestCreditLineItems:
         credit_line_item = client.bills.credit_line_items.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -173,6 +179,7 @@ class TestCreditLineItems:
         credit_line_item = client.bills.credit_line_items.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -192,6 +199,7 @@ class TestCreditLineItems:
         response = client.bills.credit_line_items.with_raw_response.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -211,6 +219,7 @@ class TestCreditLineItems:
         with client.bills.credit_line_items.with_streaming_response.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -233,6 +242,7 @@ class TestCreditLineItems:
             client.bills.credit_line_items.with_raw_response.update(
                 id="id",
                 bill_id="",
+                accounting_product_id="accountingProductId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -246,6 +256,7 @@ class TestCreditLineItems:
             client.bills.credit_line_items.with_raw_response.update(
                 id="",
                 bill_id="billId",
+                accounting_product_id="accountingProductId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -352,12 +363,15 @@ class TestCreditLineItems:
 
 
 class TestAsyncCreditLineItems:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -372,6 +386,7 @@ class TestAsyncCreditLineItems:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         credit_line_item = await async_client.bills.credit_line_items.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -390,6 +405,7 @@ class TestAsyncCreditLineItems:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.bills.credit_line_items.with_raw_response.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -408,6 +424,7 @@ class TestAsyncCreditLineItems:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.bills.credit_line_items.with_streaming_response.create(
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -429,6 +446,7 @@ class TestAsyncCreditLineItems:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bill_id` but received ''"):
             await async_client.bills.credit_line_items.with_raw_response.create(
                 bill_id="",
+                accounting_product_id="accountingProductId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -491,6 +509,7 @@ class TestAsyncCreditLineItems:
         credit_line_item = await async_client.bills.credit_line_items.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -506,6 +525,7 @@ class TestAsyncCreditLineItems:
         credit_line_item = await async_client.bills.credit_line_items.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -525,6 +545,7 @@ class TestAsyncCreditLineItems:
         response = await async_client.bills.credit_line_items.with_raw_response.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -544,6 +565,7 @@ class TestAsyncCreditLineItems:
         async with async_client.bills.credit_line_items.with_streaming_response.update(
             id="id",
             bill_id="billId",
+            accounting_product_id="accountingProductId",
             amount=1,
             description="x",
             product_id="productId",
@@ -566,6 +588,7 @@ class TestAsyncCreditLineItems:
             await async_client.bills.credit_line_items.with_raw_response.update(
                 id="id",
                 bill_id="",
+                accounting_product_id="accountingProductId",
                 amount=1,
                 description="x",
                 product_id="productId",
@@ -579,6 +602,7 @@ class TestAsyncCreditLineItems:
             await async_client.bills.credit_line_items.with_raw_response.update(
                 id="",
                 bill_id="billId",
+                accounting_product_id="accountingProductId",
                 amount=1,
                 description="x",
                 product_id="productId",

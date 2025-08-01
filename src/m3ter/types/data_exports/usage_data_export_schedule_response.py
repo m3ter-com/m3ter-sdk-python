@@ -1,23 +1,14 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Union, Optional
+from typing import List, Optional
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..data_explorer_time_group import DataExplorerTimeGroup
-from ..data_explorer_account_group import DataExplorerAccountGroup
-from ..data_explorer_dimension_group import DataExplorerDimensionGroup
+from ..data_explorer_group import DataExplorerGroup
 
-__all__ = [
-    "UsageDataExportScheduleResponse",
-    "Aggregation",
-    "DimensionFilter",
-    "GroupDataExportsDataExplorerAccountGroup",
-    "GroupDataExportsDataExplorerDimensionGroup",
-    "GroupDataExportsDataExplorerTimeGroup",
-]
+__all__ = ["UsageDataExportScheduleResponse", "Aggregation", "DimensionFilter"]
 
 
 class Aggregation(BaseModel):
@@ -45,30 +36,9 @@ class DimensionFilter(BaseModel):
     """Values to filter by"""
 
 
-class GroupDataExportsDataExplorerAccountGroup(DataExplorerAccountGroup):
-    group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)  # type: ignore
-
-
-class GroupDataExportsDataExplorerDimensionGroup(DataExplorerDimensionGroup):
-    group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)  # type: ignore
-
-
-class GroupDataExportsDataExplorerTimeGroup(DataExplorerTimeGroup):
-    group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)  # type: ignore
-
-
 class UsageDataExportScheduleResponse(BaseModel):
     id: str
     """The id of the schedule configuration."""
-
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
 
     account_ids: Optional[List[str]] = FieldInfo(alias="accountIds", default=None)
     """List of account IDs for which the usage data will be exported."""
@@ -79,15 +49,7 @@ class UsageDataExportScheduleResponse(BaseModel):
     dimension_filters: Optional[List[DimensionFilter]] = FieldInfo(alias="dimensionFilters", default=None)
     """List of dimension filters to apply"""
 
-    groups: Optional[
-        List[
-            Union[
-                GroupDataExportsDataExplorerAccountGroup,
-                GroupDataExportsDataExplorerDimensionGroup,
-                GroupDataExportsDataExplorerTimeGroup,
-            ]
-        ]
-    ] = None
+    groups: Optional[List[DataExplorerGroup]] = None
     """List of groups to apply"""
 
     meter_ids: Optional[List[str]] = FieldInfo(alias="meterIds", default=None)
@@ -146,4 +108,13 @@ class UsageDataExportScheduleResponse(BaseModel):
     For more details and examples, see the
     [Time Period](https://www.m3ter.com/docs/guides/data-exports/creating-export-schedules#time-period)
     section in our main User Documentation.
+    """
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
     """

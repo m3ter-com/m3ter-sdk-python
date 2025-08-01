@@ -21,7 +21,7 @@ class TestPlans:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         plan = client.plans.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -30,7 +30,7 @@ class TestPlans:
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         plan = client.plans.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -52,7 +52,7 @@ class TestPlans:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.plans.with_raw_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -65,7 +65,7 @@ class TestPlans:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.plans.with_streaming_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         ) as response:
@@ -119,7 +119,7 @@ class TestPlans:
     def test_method_update(self, client: M3ter) -> None:
         plan = client.plans.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -129,7 +129,7 @@ class TestPlans:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         plan = client.plans.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -152,7 +152,7 @@ class TestPlans:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.plans.with_raw_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -166,7 +166,7 @@ class TestPlans:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.plans.with_streaming_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         ) as response:
@@ -183,7 +183,7 @@ class TestPlans:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.plans.with_raw_response.update(
                 id="",
-                code="JS!?Q0]r] ]$]",
+                code='S?oC"$]C] ]]]]]5]',
                 name="x",
                 plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             )
@@ -264,12 +264,14 @@ class TestPlans:
 
 
 class TestAsyncPlans:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         plan = await async_client.plans.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -278,7 +280,7 @@ class TestAsyncPlans:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         plan = await async_client.plans.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -300,7 +302,7 @@ class TestAsyncPlans:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.plans.with_raw_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -313,7 +315,7 @@ class TestAsyncPlans:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.plans.with_streaming_response.create(
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         ) as response:
@@ -367,7 +369,7 @@ class TestAsyncPlans:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         plan = await async_client.plans.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -377,7 +379,7 @@ class TestAsyncPlans:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         plan = await async_client.plans.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -400,7 +402,7 @@ class TestAsyncPlans:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.plans.with_raw_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         )
@@ -414,7 +416,7 @@ class TestAsyncPlans:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.plans.with_streaming_response.update(
             id="id",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             name="x",
             plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
         ) as response:
@@ -431,7 +433,7 @@ class TestAsyncPlans:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.plans.with_raw_response.update(
                 id="",
-                code="JS!?Q0]r] ]$]",
+                code='S?oC"$]C] ]]]]]5]',
                 name="x",
                 plan_template_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             )

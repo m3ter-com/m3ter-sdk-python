@@ -14,15 +14,6 @@ class ExportDestinationS3Response(DataExportDestinationResponse):
     id: str  # type: ignore
     """The UUID of the entity."""
 
-    version: int  # type: ignore
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     bucket_name: Optional[str] = FieldInfo(alias="bucketName", default=None)
     """Name of the S3 bucket for the Export Destination."""
 
@@ -57,12 +48,7 @@ class ExportDestinationS3Response(DataExportDestinationResponse):
     If no `prefix` is specified, then the root of the bucket is used.
     """
 
-
-class ExportDestinationGoogleCloudStorageResponse(DataExportDestinationResponse):
-    id: str  # type: ignore
-    """The UUID of the entity."""
-
-    version: int  # type: ignore
+    version: Optional[int] = None  # type: ignore
     """The version number:
 
     - **Create:** On initial Create to insert a new entity, the version is set at 1
@@ -70,6 +56,11 @@ class ExportDestinationGoogleCloudStorageResponse(DataExportDestinationResponse)
     - **Update:** On successful Update, the version is incremented by 1 in the
       response.
     """
+
+
+class ExportDestinationGoogleCloudStorageResponse(DataExportDestinationResponse):
+    id: str  # type: ignore
+    """The UUID of the entity."""
 
     bucket_name: Optional[str] = FieldInfo(alias="bucketName", default=None)
     """The bucket name."""
@@ -107,6 +98,15 @@ class ExportDestinationGoogleCloudStorageResponse(DataExportDestinationResponse)
 
     service_account_email: Optional[str] = FieldInfo(alias="serviceAccountEmail", default=None)
     """The export destination service account email."""
+
+    version: Optional[int] = None  # type: ignore
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
 
 DestinationCreateResponse: TypeAlias = Union[ExportDestinationS3Response, ExportDestinationGoogleCloudStorageResponse]

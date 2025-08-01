@@ -15,15 +15,6 @@ class CurrencyResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     archived: Optional[bool] = None
     """TRUE / FALSE flag indicating whether the data entity is archived.
 
@@ -54,3 +45,12 @@ class CurrencyResponse(BaseModel):
     rounding_mode: Optional[
         Literal["UP", "DOWN", "CEILING", "FLOOR", "HALF_UP", "HALF_DOWN", "HALF_EVEN", "UNNECESSARY"]
     ] = FieldInfo(alias="roundingMode", default=None)
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

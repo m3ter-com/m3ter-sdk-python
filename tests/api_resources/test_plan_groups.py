@@ -32,7 +32,7 @@ class TestPlanGroups:
             currency="xxx",
             name="x",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             minimum_spend=0,
             minimum_spend_accounting_product_id="minimumSpendAccountingProductId",
@@ -126,7 +126,7 @@ class TestPlanGroups:
             currency="xxx",
             name="x",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             minimum_spend=0,
             minimum_spend_accounting_product_id="minimumSpendAccountingProductId",
@@ -252,7 +252,9 @@ class TestPlanGroups:
 
 
 class TestAsyncPlanGroups:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
@@ -268,7 +270,7 @@ class TestAsyncPlanGroups:
             currency="xxx",
             name="x",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             minimum_spend=0,
             minimum_spend_accounting_product_id="minimumSpendAccountingProductId",
@@ -362,7 +364,7 @@ class TestAsyncPlanGroups:
             currency="xxx",
             name="x",
             account_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            code="JS!?Q0]r] ]$]",
+            code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             minimum_spend=0,
             minimum_spend_accounting_product_id="minimumSpendAccountingProductId",
