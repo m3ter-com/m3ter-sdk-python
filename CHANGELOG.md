@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.1 (2025-08-21)
+
+Full Changelog: [v0.6.0...v0.6.1](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.6.0...v0.6.1)
+
+### Chores
+
+* **internal:** fix ruff target version ([bf15d2f](https://github.com/m3ter-com/m3ter-sdk-python/commit/bf15d2f70321aa887acff92aa26dab49f019c0e6))
+* **internal:** update comment in script ([5daea5b](https://github.com/m3ter-com/m3ter-sdk-python/commit/5daea5be80b1e7503cfb17a1236fddb85be5374e))
+* update @stainless-api/prism-cli to v5.15.0 ([64023fe](https://github.com/m3ter-com/m3ter-sdk-python/commit/64023fe8e9fc700d2a3af5bd2da556708a939e9d))
+* update github action ([3744158](https://github.com/m3ter-com/m3ter-sdk-python/commit/3744158773b98848f120ceeb309e4a0dd2164cb5))
+
 ## 0.6.0 (2025-08-01)
 
 Full Changelog: [v0.5.0-alpha...v0.6.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.5.0-alpha...v0.6.0)
