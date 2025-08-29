@@ -24,9 +24,9 @@ class TestScheduledEventConfigurations:
     def test_method_create(self, client: M3ter) -> None:
         scheduled_event_configuration = client.scheduled_event_configurations.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
@@ -34,9 +34,9 @@ class TestScheduledEventConfigurations:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         scheduled_event_configuration = client.scheduled_event_configurations.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
             version=0,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
@@ -45,9 +45,9 @@ class TestScheduledEventConfigurations:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.scheduled_event_configurations.with_raw_response.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
 
         assert response.is_closed is True
@@ -59,9 +59,9 @@ class TestScheduledEventConfigurations:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.scheduled_event_configurations.with_streaming_response.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -114,9 +114,9 @@ class TestScheduledEventConfigurations:
         scheduled_event_configuration = client.scheduled_event_configurations.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
@@ -125,9 +125,9 @@ class TestScheduledEventConfigurations:
         scheduled_event_configuration = client.scheduled_event_configurations.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
             version=0,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
@@ -137,9 +137,9 @@ class TestScheduledEventConfigurations:
         response = client.scheduled_event_configurations.with_raw_response.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
 
         assert response.is_closed is True
@@ -152,9 +152,9 @@ class TestScheduledEventConfigurations:
         with client.scheduled_event_configurations.with_streaming_response.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -170,9 +170,9 @@ class TestScheduledEventConfigurations:
             client.scheduled_event_configurations.with_raw_response.update(
                 id="",
                 entity="Bill",
-                field="endDate",
-                name="scheduled.bill.enddateEvent",
-                offset=5,
+                field="dueDate",
+                name="10 Days After Bill Due Date",
+                offset=10,
             )
 
     @parametrize
@@ -265,9 +265,9 @@ class TestAsyncScheduledEventConfigurations:
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         scheduled_event_configuration = await async_client.scheduled_event_configurations.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
@@ -275,9 +275,9 @@ class TestAsyncScheduledEventConfigurations:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         scheduled_event_configuration = await async_client.scheduled_event_configurations.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
             version=0,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
@@ -286,9 +286,9 @@ class TestAsyncScheduledEventConfigurations:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.scheduled_event_configurations.with_raw_response.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
 
         assert response.is_closed is True
@@ -300,9 +300,9 @@ class TestAsyncScheduledEventConfigurations:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.scheduled_event_configurations.with_streaming_response.create(
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -355,9 +355,9 @@ class TestAsyncScheduledEventConfigurations:
         scheduled_event_configuration = await async_client.scheduled_event_configurations.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
 
@@ -366,9 +366,9 @@ class TestAsyncScheduledEventConfigurations:
         scheduled_event_configuration = await async_client.scheduled_event_configurations.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
             version=0,
         )
         assert_matches_type(ScheduledEventConfigurationResponse, scheduled_event_configuration, path=["response"])
@@ -378,9 +378,9 @@ class TestAsyncScheduledEventConfigurations:
         response = await async_client.scheduled_event_configurations.with_raw_response.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         )
 
         assert response.is_closed is True
@@ -393,9 +393,9 @@ class TestAsyncScheduledEventConfigurations:
         async with async_client.scheduled_event_configurations.with_streaming_response.update(
             id="id",
             entity="Bill",
-            field="endDate",
-            name="scheduled.bill.enddateEvent",
-            offset=5,
+            field="dueDate",
+            name="10 Days After Bill Due Date",
+            offset=10,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -411,9 +411,9 @@ class TestAsyncScheduledEventConfigurations:
             await async_client.scheduled_event_configurations.with_raw_response.update(
                 id="",
                 entity="Bill",
-                field="endDate",
-                name="scheduled.bill.enddateEvent",
-                offset=5,
+                field="dueDate",
+                name="10 Days After Bill Due Date",
+                offset=10,
             )
 
     @parametrize

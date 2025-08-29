@@ -50,10 +50,13 @@ class LineItemResponse(BaseModel):
     """The UUID of the entity."""
 
     accounting_product_code: Optional[str] = FieldInfo(alias="accountingProductCode", default=None)
+    """The code of the Accounting Product associated with this line item."""
 
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+    """The unique identifier (UUID) for the associated Accounting Product."""
 
     accounting_product_name: Optional[str] = FieldInfo(alias="accountingProductName", default=None)
+    """The name of the Accounting Product associated with this line item."""
 
     additional: Optional[Dict[str, object]] = None
 
@@ -185,6 +188,7 @@ class LineItemResponse(BaseModel):
     """The unique identifier (UUID) of the Pricing used for this line item,"""
 
     product_code: Optional[str] = FieldInfo(alias="productCode", default=None)
+    """The code of the Product associated with this line item."""
 
     product_id: Optional[str] = FieldInfo(alias="productId", default=None)
     """The unique identifier (UUID) for the associated Product."""

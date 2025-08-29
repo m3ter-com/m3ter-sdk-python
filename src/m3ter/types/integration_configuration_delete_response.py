@@ -21,15 +21,6 @@ class IntegrationConfigurationDeleteResponse(BaseModel):
     entity_type: str = FieldInfo(alias="entityType")
     """The type of entity the integration is for _(e.g. Bill)_."""
 
-    version: int
-    """The version number:
-
-    - **Create:** On initial Create to insert a new entity, the version is set at 1
-      in the response.
-    - **Update:** On successful Update, the version is incremented by 1 in the
-      response.
-    """
-
     authorized: Optional[bool] = None
     """A flag indicating whether the integration configuration is authorized.
 
@@ -78,3 +69,12 @@ class IntegrationConfigurationDeleteResponse(BaseModel):
 
     trigger_type: Optional[Literal["EVENT", "SCHEDULE"]] = FieldInfo(alias="triggerType", default=None)
     """Specifies the type of trigger for the integration."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

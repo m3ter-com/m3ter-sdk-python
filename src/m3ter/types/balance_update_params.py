@@ -76,7 +76,12 @@ class BalanceUpdateParams(TypedDict, total=False):
     line_item_types: Annotated[
         List[
             Literal[
-                "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
+                "STANDING_CHARGE",
+                "USAGE",
+                "MINIMUM_SPEND",
+                "COUNTER_RUNNING_TOTAL_CHARGE",
+                "COUNTER_ADJUSTMENT_DEBIT",
+                "AD_HOC",
             ]
         ],
         PropertyInfo(alias="lineItemTypes"),

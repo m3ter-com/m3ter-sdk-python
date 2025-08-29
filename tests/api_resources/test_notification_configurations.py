@@ -23,23 +23,23 @@ class TestNotificationConfigurations:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         notification_configuration = client.notification_configurations.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         notification_configuration = client.notification_configurations.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
             active=True,
-            always_fire_event=True,
-            calculation="calculation",
+            always_fire_event=False,
+            calculation="(new.amountSpent >= ((new.amount*90)/100)) \nAND ((old.amountSpent <= ((old.amount*90)/100)) OR (old.amountSpent == null))",
             version=0,
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
@@ -47,10 +47,10 @@ class TestNotificationConfigurations:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.notification_configurations.with_raw_response.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
 
         assert response.is_closed is True
@@ -61,10 +61,10 @@ class TestNotificationConfigurations:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.notification_configurations.with_streaming_response.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -116,10 +116,10 @@ class TestNotificationConfigurations:
     def test_method_update(self, client: M3ter) -> None:
         notification_configuration = client.notification_configurations.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
@@ -127,13 +127,13 @@ class TestNotificationConfigurations:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         notification_configuration = client.notification_configurations.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
             active=True,
-            always_fire_event=True,
-            calculation="calculation",
+            always_fire_event=False,
+            calculation="(new.amountSpent >= ((new.amount*90)/100)) \nAND ((old.amountSpent <= ((old.amount*90)/100)) OR (old.amountSpent == null))",
             version=0,
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
@@ -142,10 +142,10 @@ class TestNotificationConfigurations:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.notification_configurations.with_raw_response.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
 
         assert response.is_closed is True
@@ -157,10 +157,10 @@ class TestNotificationConfigurations:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.notification_configurations.with_streaming_response.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -175,10 +175,10 @@ class TestNotificationConfigurations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.notification_configurations.with_raw_response.update(
                 id="",
-                code="x",
-                description="x",
-                event_name="x",
-                name="x",
+                code="commitment_under_10_percent",
+                description="Commitment amount fell below 10%",
+                event_name="configuration.commitment.updated",
+                name="Commitment has under 10% remaining",
             )
 
     @parametrize
@@ -272,23 +272,23 @@ class TestAsyncNotificationConfigurations:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         notification_configuration = await async_client.notification_configurations.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         notification_configuration = await async_client.notification_configurations.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
             active=True,
-            always_fire_event=True,
-            calculation="calculation",
+            always_fire_event=False,
+            calculation="(new.amountSpent >= ((new.amount*90)/100)) \nAND ((old.amountSpent <= ((old.amount*90)/100)) OR (old.amountSpent == null))",
             version=0,
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
@@ -296,10 +296,10 @@ class TestAsyncNotificationConfigurations:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.notification_configurations.with_raw_response.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
 
         assert response.is_closed is True
@@ -310,10 +310,10 @@ class TestAsyncNotificationConfigurations:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.notification_configurations.with_streaming_response.create(
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -365,10 +365,10 @@ class TestAsyncNotificationConfigurations:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         notification_configuration = await async_client.notification_configurations.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
 
@@ -376,13 +376,13 @@ class TestAsyncNotificationConfigurations:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         notification_configuration = await async_client.notification_configurations.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
             active=True,
-            always_fire_event=True,
-            calculation="calculation",
+            always_fire_event=False,
+            calculation="(new.amountSpent >= ((new.amount*90)/100)) \nAND ((old.amountSpent <= ((old.amount*90)/100)) OR (old.amountSpent == null))",
             version=0,
         )
         assert_matches_type(NotificationConfigurationResponse, notification_configuration, path=["response"])
@@ -391,10 +391,10 @@ class TestAsyncNotificationConfigurations:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.notification_configurations.with_raw_response.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         )
 
         assert response.is_closed is True
@@ -406,10 +406,10 @@ class TestAsyncNotificationConfigurations:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.notification_configurations.with_streaming_response.update(
             id="id",
-            code="x",
-            description="x",
-            event_name="x",
-            name="x",
+            code="commitment_under_10_percent",
+            description="Commitment amount fell below 10%",
+            event_name="configuration.commitment.updated",
+            name="Commitment has under 10% remaining",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -424,10 +424,10 @@ class TestAsyncNotificationConfigurations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.notification_configurations.with_raw_response.update(
                 id="",
-                code="x",
-                description="x",
-                event_name="x",
-                name="x",
+                code="commitment_under_10_percent",
+                description="Commitment amount fell below 10%",
+                event_name="configuration.commitment.updated",
+                name="Commitment has under 10% remaining",
             )
 
     @parametrize
