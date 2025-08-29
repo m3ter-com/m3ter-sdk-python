@@ -58,14 +58,14 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        config_data: Dict[str, object],
-        credentials: integration_configuration_create_params.Credentials,
         destination: str,
-        destination_id: str,
-        entity_id: str,
         entity_type: str,
-        integration_credentials_id: str,
-        name: str,
+        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
+        credentials: integration_configuration_create_params.Credentials | NotGiven = NOT_GIVEN,
+        destination_id: str | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        integration_credentials_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -78,22 +78,22 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         Set the integration configuration for the entity.
 
         Args:
+          destination: Denotes the integration destination. This field identifies the target platform
+              or service for the integration.
+
+          entity_type: Specifies the type of entity for which the integration configuration is being
+              updated. Must be a valid alphanumeric string.
+
           config_data: A flexible object to include any additional configuration data specific to the
               integration.
 
           credentials: Base model for defining integration credentials across different types of
               integrations.
 
-          destination: Denotes the integration destination. This field identifies the target platform
-              or service for the integration.
-
           destination_id: The unique identifier (UUID) for the integration destination.
 
           entity_id: The unique identifier (UUID) of the entity. This field is used to specify which
               entity's integration configuration you're updating.
-
-          entity_type: Specifies the type of entity for which the integration configuration is being
-              updated. Must be a valid alphanumeric string.
 
           integration_credentials_id
 
@@ -125,12 +125,12 @@ class IntegrationConfigurationsResource(SyncAPIResource):
             f"/organizations/{org_id}/integrationconfigs",
             body=maybe_transform(
                 {
+                    "destination": destination,
+                    "entity_type": entity_type,
                     "config_data": config_data,
                     "credentials": credentials,
-                    "destination": destination,
                     "destination_id": destination_id,
                     "entity_id": entity_id,
-                    "entity_type": entity_type,
                     "integration_credentials_id": integration_credentials_id,
                     "name": name,
                     "version": version,
@@ -190,14 +190,14 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        config_data: Dict[str, object],
-        credentials: integration_configuration_update_params.Credentials,
         destination: str,
-        destination_id: str,
-        entity_id: str,
         entity_type: str,
-        integration_credentials_id: str,
-        name: str,
+        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
+        credentials: integration_configuration_update_params.Credentials | NotGiven = NOT_GIVEN,
+        destination_id: str | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        integration_credentials_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -214,22 +214,22 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         existing integration.
 
         Args:
+          destination: Denotes the integration destination. This field identifies the target platform
+              or service for the integration.
+
+          entity_type: Specifies the type of entity for which the integration configuration is being
+              updated. Must be a valid alphanumeric string.
+
           config_data: A flexible object to include any additional configuration data specific to the
               integration.
 
           credentials: Base model for defining integration credentials across different types of
               integrations.
 
-          destination: Denotes the integration destination. This field identifies the target platform
-              or service for the integration.
-
           destination_id: The unique identifier (UUID) for the integration destination.
 
           entity_id: The unique identifier (UUID) of the entity. This field is used to specify which
               entity's integration configuration you're updating.
-
-          entity_type: Specifies the type of entity for which the integration configuration is being
-              updated. Must be a valid alphanumeric string.
 
           integration_credentials_id
 
@@ -263,12 +263,12 @@ class IntegrationConfigurationsResource(SyncAPIResource):
             f"/organizations/{org_id}/integrationconfigs/{id}",
             body=maybe_transform(
                 {
+                    "destination": destination,
+                    "entity_type": entity_type,
                     "config_data": config_data,
                     "credentials": credentials,
-                    "destination": destination,
                     "destination_id": destination_id,
                     "entity_id": entity_id,
-                    "entity_type": entity_type,
                     "integration_credentials_id": integration_credentials_id,
                     "name": name,
                     "version": version,
@@ -285,6 +285,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
+        destination_id: str | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -301,6 +302,8 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         specified Organization. The list can be paginated for easier management.
 
         Args:
+          destination_id: optional filter for a specific destination
+
           next_token: The `nextToken` for multi-page retrievals. It is used to fetch the next page of
               integration configurations in a paginated list.
 
@@ -328,6 +331,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "destination_id": destination_id,
                         "next_token": next_token,
                         "page_size": page_size,
                     },
@@ -501,14 +505,14 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        config_data: Dict[str, object],
-        credentials: integration_configuration_create_params.Credentials,
         destination: str,
-        destination_id: str,
-        entity_id: str,
         entity_type: str,
-        integration_credentials_id: str,
-        name: str,
+        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
+        credentials: integration_configuration_create_params.Credentials | NotGiven = NOT_GIVEN,
+        destination_id: str | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        integration_credentials_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -521,22 +525,22 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         Set the integration configuration for the entity.
 
         Args:
+          destination: Denotes the integration destination. This field identifies the target platform
+              or service for the integration.
+
+          entity_type: Specifies the type of entity for which the integration configuration is being
+              updated. Must be a valid alphanumeric string.
+
           config_data: A flexible object to include any additional configuration data specific to the
               integration.
 
           credentials: Base model for defining integration credentials across different types of
               integrations.
 
-          destination: Denotes the integration destination. This field identifies the target platform
-              or service for the integration.
-
           destination_id: The unique identifier (UUID) for the integration destination.
 
           entity_id: The unique identifier (UUID) of the entity. This field is used to specify which
               entity's integration configuration you're updating.
-
-          entity_type: Specifies the type of entity for which the integration configuration is being
-              updated. Must be a valid alphanumeric string.
 
           integration_credentials_id
 
@@ -568,12 +572,12 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
             f"/organizations/{org_id}/integrationconfigs",
             body=await async_maybe_transform(
                 {
+                    "destination": destination,
+                    "entity_type": entity_type,
                     "config_data": config_data,
                     "credentials": credentials,
-                    "destination": destination,
                     "destination_id": destination_id,
                     "entity_id": entity_id,
-                    "entity_type": entity_type,
                     "integration_credentials_id": integration_credentials_id,
                     "name": name,
                     "version": version,
@@ -633,14 +637,14 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        config_data: Dict[str, object],
-        credentials: integration_configuration_update_params.Credentials,
         destination: str,
-        destination_id: str,
-        entity_id: str,
         entity_type: str,
-        integration_credentials_id: str,
-        name: str,
+        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
+        credentials: integration_configuration_update_params.Credentials | NotGiven = NOT_GIVEN,
+        destination_id: str | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        integration_credentials_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -657,22 +661,22 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         existing integration.
 
         Args:
+          destination: Denotes the integration destination. This field identifies the target platform
+              or service for the integration.
+
+          entity_type: Specifies the type of entity for which the integration configuration is being
+              updated. Must be a valid alphanumeric string.
+
           config_data: A flexible object to include any additional configuration data specific to the
               integration.
 
           credentials: Base model for defining integration credentials across different types of
               integrations.
 
-          destination: Denotes the integration destination. This field identifies the target platform
-              or service for the integration.
-
           destination_id: The unique identifier (UUID) for the integration destination.
 
           entity_id: The unique identifier (UUID) of the entity. This field is used to specify which
               entity's integration configuration you're updating.
-
-          entity_type: Specifies the type of entity for which the integration configuration is being
-              updated. Must be a valid alphanumeric string.
 
           integration_credentials_id
 
@@ -706,12 +710,12 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
             f"/organizations/{org_id}/integrationconfigs/{id}",
             body=await async_maybe_transform(
                 {
+                    "destination": destination,
+                    "entity_type": entity_type,
                     "config_data": config_data,
                     "credentials": credentials,
-                    "destination": destination,
                     "destination_id": destination_id,
                     "entity_id": entity_id,
-                    "entity_type": entity_type,
                     "integration_credentials_id": integration_credentials_id,
                     "name": name,
                     "version": version,
@@ -728,6 +732,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
+        destination_id: str | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -744,6 +749,8 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         specified Organization. The list can be paginated for easier management.
 
         Args:
+          destination_id: optional filter for a specific destination
+
           next_token: The `nextToken` for multi-page retrievals. It is used to fetch the next page of
               integration configurations in a paginated list.
 
@@ -771,6 +778,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "destination_id": destination_id,
                         "next_token": next_token,
                         "page_size": page_size,
                     },

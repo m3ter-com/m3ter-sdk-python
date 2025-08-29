@@ -75,7 +75,12 @@ class BalancesResource(SyncAPIResource):
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
-                "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
+                "STANDING_CHARGE",
+                "USAGE",
+                "MINIMUM_SPEND",
+                "COUNTER_RUNNING_TOTAL_CHARGE",
+                "COUNTER_ADJUSTMENT_DEBIT",
+                "AD_HOC",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -302,7 +307,12 @@ class BalancesResource(SyncAPIResource):
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
-                "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
+                "STANDING_CHARGE",
+                "USAGE",
+                "MINIMUM_SPEND",
+                "COUNTER_RUNNING_TOTAL_CHARGE",
+                "COUNTER_ADJUSTMENT_DEBIT",
+                "AD_HOC",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -634,7 +644,12 @@ class AsyncBalancesResource(AsyncAPIResource):
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
-                "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
+                "STANDING_CHARGE",
+                "USAGE",
+                "MINIMUM_SPEND",
+                "COUNTER_RUNNING_TOTAL_CHARGE",
+                "COUNTER_ADJUSTMENT_DEBIT",
+                "AD_HOC",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -861,7 +876,12 @@ class AsyncBalancesResource(AsyncAPIResource):
         fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
         line_item_types: List[
             Literal[
-                "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
+                "STANDING_CHARGE",
+                "USAGE",
+                "MINIMUM_SPEND",
+                "COUNTER_RUNNING_TOTAL_CHARGE",
+                "COUNTER_ADJUSTMENT_DEBIT",
+                "AD_HOC",
             ]
         ]
         | NotGiven = NOT_GIVEN,

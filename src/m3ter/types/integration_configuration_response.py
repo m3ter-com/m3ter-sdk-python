@@ -38,6 +38,7 @@ class IntegrationConfigurationResponse(BaseModel):
         "ACCOUNTING_PERIOD_CLOSED",
         "INVOICE_ALREADY_PAID",
         "DISABLED",
+        "TIMEOUT_LIMIT_EXCEEDED",
         "RATE_LIMIT_RETRY",
     ]
 

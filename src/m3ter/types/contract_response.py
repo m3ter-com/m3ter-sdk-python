@@ -17,6 +17,8 @@ class ContractResponse(BaseModel):
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """The unique identifier (UUID) of the Account associated with this Contract."""
 
+    bill_grouping_key: Optional[str] = FieldInfo(alias="billGroupingKey", default=None)
+
     code: Optional[str] = None
     """The short code of the Contract."""
 

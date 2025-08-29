@@ -24,8 +24,8 @@ class TestWebhooks:
     def test_method_create(self, client: M3ter) -> None:
         webhook = client.webhooks.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -38,8 +38,8 @@ class TestWebhooks:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         webhook = client.webhooks.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
                 "version": 0,
@@ -57,8 +57,8 @@ class TestWebhooks:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.webhooks.with_raw_response.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -75,8 +75,8 @@ class TestWebhooks:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.webhooks.with_streaming_response.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -134,8 +134,8 @@ class TestWebhooks:
         webhook = client.webhooks.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -149,8 +149,8 @@ class TestWebhooks:
         webhook = client.webhooks.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
                 "version": 0,
@@ -169,8 +169,8 @@ class TestWebhooks:
         response = client.webhooks.with_raw_response.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -188,8 +188,8 @@ class TestWebhooks:
         with client.webhooks.with_streaming_response.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -210,8 +210,8 @@ class TestWebhooks:
             client.webhooks.with_raw_response.update(
                 id="",
                 credentials={
-                    "api_key": "x",
-                    "secret": "x",
+                    "api_key": "api key",
+                    "secret": "api secret",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
                 description="x",
@@ -347,8 +347,8 @@ class TestAsyncWebhooks:
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         webhook = await async_client.webhooks.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -361,8 +361,8 @@ class TestAsyncWebhooks:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         webhook = await async_client.webhooks.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
                 "version": 0,
@@ -380,8 +380,8 @@ class TestAsyncWebhooks:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.webhooks.with_raw_response.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -398,8 +398,8 @@ class TestAsyncWebhooks:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.webhooks.with_streaming_response.create(
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -457,8 +457,8 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -472,8 +472,8 @@ class TestAsyncWebhooks:
         webhook = await async_client.webhooks.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
                 "empty": True,
                 "version": 0,
@@ -492,8 +492,8 @@ class TestAsyncWebhooks:
         response = await async_client.webhooks.with_raw_response.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -511,8 +511,8 @@ class TestAsyncWebhooks:
         async with async_client.webhooks.with_streaming_response.update(
             id="id",
             credentials={
-                "api_key": "x",
-                "secret": "x",
+                "api_key": "api key",
+                "secret": "api secret",
                 "type": "M3TER_SIGNED_REQUEST",
             },
             description="x",
@@ -533,8 +533,8 @@ class TestAsyncWebhooks:
             await async_client.webhooks.with_raw_response.update(
                 id="",
                 credentials={
-                    "api_key": "x",
-                    "secret": "x",
+                    "api_key": "api key",
+                    "secret": "api secret",
                     "type": "M3TER_SIGNED_REQUEST",
                 },
                 description="x",

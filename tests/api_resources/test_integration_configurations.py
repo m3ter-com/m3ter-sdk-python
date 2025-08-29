@@ -28,34 +28,28 @@ class TestIntegrationConfigurations:
     @parametrize
     def test_method_create(self, client: M3ter) -> None:
         integration_configuration = client.integration_configurations.create(
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
         assert_matches_type(IntegrationConfigurationCreateResponse, integration_configuration, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         integration_configuration = client.integration_configurations.create(
+            destination="Stripe",
+            entity_type="Bill",
             config_data={"foo": "bar"},
             credentials={
                 "type": "HTTP_BASIC",
                 "destination": "WEBHOOK",
                 "empty": True,
-                "name": "name",
+                "name": "Integration Credentials",
                 "version": 0,
             },
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination_id="00000000-0000-0000-0000-000000000000",
+            entity_id="00000000-0000-0000-0000-000000000000",
+            integration_credentials_id="00000000-0000-0000-0000-000000000000",
+            name="My Integration",
             version=0,
         )
         assert_matches_type(IntegrationConfigurationCreateResponse, integration_configuration, path=["response"])
@@ -63,14 +57,8 @@ class TestIntegrationConfigurations:
     @parametrize
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.integration_configurations.with_raw_response.create(
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
 
         assert response.is_closed is True
@@ -81,14 +69,8 @@ class TestIntegrationConfigurations:
     @parametrize
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.integration_configurations.with_streaming_response.create(
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,14 +122,8 @@ class TestIntegrationConfigurations:
     def test_method_update(self, client: M3ter) -> None:
         integration_configuration = client.integration_configurations.update(
             id="id",
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
         assert_matches_type(IntegrationConfigurationUpdateResponse, integration_configuration, path=["response"])
 
@@ -155,20 +131,20 @@ class TestIntegrationConfigurations:
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         integration_configuration = client.integration_configurations.update(
             id="id",
+            destination="Stripe",
+            entity_type="Bill",
             config_data={"foo": "bar"},
             credentials={
                 "type": "HTTP_BASIC",
                 "destination": "WEBHOOK",
                 "empty": True,
-                "name": "name",
+                "name": "Integration Credentials",
                 "version": 0,
             },
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination_id="00000000-0000-0000-0000-000000000000",
+            entity_id="00000000-0000-0000-0000-000000000000",
+            integration_credentials_id="00000000-0000-0000-0000-000000000000",
+            name="My Integration",
             version=0,
         )
         assert_matches_type(IntegrationConfigurationUpdateResponse, integration_configuration, path=["response"])
@@ -177,14 +153,8 @@ class TestIntegrationConfigurations:
     def test_raw_response_update(self, client: M3ter) -> None:
         response = client.integration_configurations.with_raw_response.update(
             id="id",
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
 
         assert response.is_closed is True
@@ -196,14 +166,8 @@ class TestIntegrationConfigurations:
     def test_streaming_response_update(self, client: M3ter) -> None:
         with client.integration_configurations.with_streaming_response.update(
             id="id",
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -218,14 +182,8 @@ class TestIntegrationConfigurations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.integration_configurations.with_raw_response.update(
                 id="",
-                config_data={"foo": "bar"},
-                credentials={"type": "HTTP_BASIC"},
-                destination="destination",
-                destination_id="destinationId",
-                entity_id="entityId",
-                entity_type="entityType",
-                integration_credentials_id="integrationCredentialsId",
-                name="name",
+                destination="Stripe",
+                entity_type="Bill",
             )
 
     @parametrize
@@ -238,6 +196,7 @@ class TestIntegrationConfigurations:
     @parametrize
     def test_method_list_with_all_params(self, client: M3ter) -> None:
         integration_configuration = client.integration_configurations.list(
+            destination_id="destinationId",
             next_token="nextToken",
             page_size=1,
         )
@@ -402,34 +361,28 @@ class TestAsyncIntegrationConfigurations:
     @parametrize
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         integration_configuration = await async_client.integration_configurations.create(
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
         assert_matches_type(IntegrationConfigurationCreateResponse, integration_configuration, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         integration_configuration = await async_client.integration_configurations.create(
+            destination="Stripe",
+            entity_type="Bill",
             config_data={"foo": "bar"},
             credentials={
                 "type": "HTTP_BASIC",
                 "destination": "WEBHOOK",
                 "empty": True,
-                "name": "name",
+                "name": "Integration Credentials",
                 "version": 0,
             },
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination_id="00000000-0000-0000-0000-000000000000",
+            entity_id="00000000-0000-0000-0000-000000000000",
+            integration_credentials_id="00000000-0000-0000-0000-000000000000",
+            name="My Integration",
             version=0,
         )
         assert_matches_type(IntegrationConfigurationCreateResponse, integration_configuration, path=["response"])
@@ -437,14 +390,8 @@ class TestAsyncIntegrationConfigurations:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.integration_configurations.with_raw_response.create(
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
 
         assert response.is_closed is True
@@ -455,14 +402,8 @@ class TestAsyncIntegrationConfigurations:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.integration_configurations.with_streaming_response.create(
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -514,14 +455,8 @@ class TestAsyncIntegrationConfigurations:
     async def test_method_update(self, async_client: AsyncM3ter) -> None:
         integration_configuration = await async_client.integration_configurations.update(
             id="id",
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
         assert_matches_type(IntegrationConfigurationUpdateResponse, integration_configuration, path=["response"])
 
@@ -529,20 +464,20 @@ class TestAsyncIntegrationConfigurations:
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         integration_configuration = await async_client.integration_configurations.update(
             id="id",
+            destination="Stripe",
+            entity_type="Bill",
             config_data={"foo": "bar"},
             credentials={
                 "type": "HTTP_BASIC",
                 "destination": "WEBHOOK",
                 "empty": True,
-                "name": "name",
+                "name": "Integration Credentials",
                 "version": 0,
             },
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination_id="00000000-0000-0000-0000-000000000000",
+            entity_id="00000000-0000-0000-0000-000000000000",
+            integration_credentials_id="00000000-0000-0000-0000-000000000000",
+            name="My Integration",
             version=0,
         )
         assert_matches_type(IntegrationConfigurationUpdateResponse, integration_configuration, path=["response"])
@@ -551,14 +486,8 @@ class TestAsyncIntegrationConfigurations:
     async def test_raw_response_update(self, async_client: AsyncM3ter) -> None:
         response = await async_client.integration_configurations.with_raw_response.update(
             id="id",
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         )
 
         assert response.is_closed is True
@@ -570,14 +499,8 @@ class TestAsyncIntegrationConfigurations:
     async def test_streaming_response_update(self, async_client: AsyncM3ter) -> None:
         async with async_client.integration_configurations.with_streaming_response.update(
             id="id",
-            config_data={"foo": "bar"},
-            credentials={"type": "HTTP_BASIC"},
-            destination="destination",
-            destination_id="destinationId",
-            entity_id="entityId",
-            entity_type="entityType",
-            integration_credentials_id="integrationCredentialsId",
-            name="name",
+            destination="Stripe",
+            entity_type="Bill",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -592,14 +515,8 @@ class TestAsyncIntegrationConfigurations:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.integration_configurations.with_raw_response.update(
                 id="",
-                config_data={"foo": "bar"},
-                credentials={"type": "HTTP_BASIC"},
-                destination="destination",
-                destination_id="destinationId",
-                entity_id="entityId",
-                entity_type="entityType",
-                integration_credentials_id="integrationCredentialsId",
-                name="name",
+                destination="Stripe",
+                entity_type="Bill",
             )
 
     @parametrize
@@ -612,6 +529,7 @@ class TestAsyncIntegrationConfigurations:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncM3ter) -> None:
         integration_configuration = await async_client.integration_configurations.list(
+            destination_id="destinationId",
             next_token="nextToken",
             page_size=1,
         )

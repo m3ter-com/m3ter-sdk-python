@@ -12,6 +12,9 @@ __all__ = ["IntegrationConfigurationListParams"]
 class IntegrationConfigurationListParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
+    destination_id: Annotated[str, PropertyInfo(alias="destinationId")]
+    """optional filter for a specific destination"""
+
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]
     """The `nextToken` for multi-page retrievals.
 
