@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import Dict, Union, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["AggregationCreateParams"]
@@ -125,7 +126,7 @@ class AggregationCreateParams(TypedDict, total=False):
     Compound Aggregation calculation with a value = 0.
     """
 
-    segmented_fields: Annotated[List[str], PropertyInfo(alias="segmentedFields")]
+    segmented_fields: Annotated[SequenceNotStr[str], PropertyInfo(alias="segmentedFields")]
     """_(Optional)_.
 
     Used when creating a segmented Aggregation, which segments the usage data

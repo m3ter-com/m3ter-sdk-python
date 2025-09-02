@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import commitment_list_params, commitment_create_params, commitment_search_params, commitment_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -80,7 +80,7 @@ class CommitmentsResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         separate_overage_usage: bool | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -394,7 +394,7 @@ class CommitmentsResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         separate_overage_usage: bool | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -633,7 +633,7 @@ class CommitmentsResource(SyncAPIResource):
         date: str | NotGiven = NOT_GIVEN,
         end_date_end: str | NotGiven = NOT_GIVEN,
         end_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
@@ -903,7 +903,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         separate_overage_usage: bool | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1217,7 +1217,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         separate_overage_usage: bool | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1456,7 +1456,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         date: str | NotGiven = NOT_GIVEN,
         end_date_end: str | NotGiven = NOT_GIVEN,
         end_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,

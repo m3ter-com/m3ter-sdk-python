@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import Dict, Union
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import plan_template_list_params, plan_template_create_params, plan_template_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -462,7 +462,7 @@ class PlanTemplatesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,
@@ -1003,7 +1003,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         product_id: str | NotGiven = NOT_GIVEN,

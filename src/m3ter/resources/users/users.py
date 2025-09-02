@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 
 import httpx
 
 from ...types import user_list_params, user_update_params, user_get_permissions_params, user_get_user_groups_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -178,7 +178,7 @@ class UsersResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -588,7 +588,7 @@ class AsyncUsersResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

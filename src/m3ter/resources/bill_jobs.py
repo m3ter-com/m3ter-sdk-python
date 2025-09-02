@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import bill_job_list_params, bill_job_create_params, bill_job_recalculate_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,7 +51,7 @@ class BillJobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         bill_date: Union[str, date] | NotGiven = NOT_GIVEN,
         bill_frequency_interval: int | NotGiven = NOT_GIVEN,
         billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | NotGiven = NOT_GIVEN,
@@ -397,7 +397,7 @@ class BillJobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
+        bill_ids: SequenceNotStr[str],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -489,7 +489,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         bill_date: Union[str, date] | NotGiven = NOT_GIVEN,
         bill_frequency_interval: int | NotGiven = NOT_GIVEN,
         billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | NotGiven = NOT_GIVEN,
@@ -835,7 +835,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
+        bill_ids: SequenceNotStr[str],
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

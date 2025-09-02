@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 
 import httpx
 
 from ..types import counter_pricing_list_params, counter_pricing_create_params, counter_pricing_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -412,7 +412,7 @@ class CounterPricingsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         plan_id: str | NotGiven = NOT_GIVEN,
@@ -901,7 +901,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         plan_id: str | NotGiven = NOT_GIVEN,

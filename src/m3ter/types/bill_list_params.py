@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["BillListParams"]
@@ -19,7 +20,7 @@ class BillListParams(TypedDict, total=False):
     An Account ID - returns the Bills for the single specified Account.
     """
 
-    additional: List[str]
+    additional: SequenceNotStr[str]
     """Comma separated list of additional fields."""
 
     bill_date: Annotated[str, PropertyInfo(alias="billDate")]
@@ -44,7 +45,7 @@ class BillListParams(TypedDict, total=False):
     Only include Bills with external invoice dates equal to or later than this date.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """Optional filter. The list of Bill IDs to retrieve."""
 
     include_bill_total: Annotated[bool, PropertyInfo(alias="includeBillTotal")]

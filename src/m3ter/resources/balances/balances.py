@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import balance_list_params, balance_create_params, balance_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -87,7 +87,7 @@ class BalancesResource(SyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         rollover_amount: float | NotGiven = NOT_GIVEN,
         rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -319,7 +319,7 @@ class BalancesResource(SyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         rollover_amount: float | NotGiven = NOT_GIVEN,
         rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -656,7 +656,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         rollover_amount: float | NotGiven = NOT_GIVEN,
         rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
@@ -888,7 +888,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         overage_description: str | NotGiven = NOT_GIVEN,
         overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
+        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         rollover_amount: float | NotGiven = NOT_GIVEN,
         rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,

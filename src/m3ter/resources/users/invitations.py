@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -56,7 +56,7 @@ class InvitationsResource(SyncAPIResource):
         dt_end_access: Union[str, datetime] | NotGiven = NOT_GIVEN,
         dt_expiry: Union[str, datetime] | NotGiven = NOT_GIVEN,
         m3ter_user: bool | NotGiven = NOT_GIVEN,
-        permission_policy_ids: List[str] | NotGiven = NOT_GIVEN,
+        permission_policy_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -250,7 +250,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         dt_end_access: Union[str, datetime] | NotGiven = NOT_GIVEN,
         dt_expiry: Union[str, datetime] | NotGiven = NOT_GIVEN,
         m3ter_user: bool | NotGiven = NOT_GIVEN,
-        permission_policy_ids: List[str] | NotGiven = NOT_GIVEN,
+        permission_policy_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

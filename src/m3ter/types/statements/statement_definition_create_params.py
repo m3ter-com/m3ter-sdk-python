@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import List, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["StatementDefinitionCreateParams", "Dimension", "Measure"]
@@ -55,7 +56,7 @@ class StatementDefinitionCreateParams(TypedDict, total=False):
 
 
 class Dimension(TypedDict, total=False):
-    filter: Required[List[str]]
+    filter: Required[SequenceNotStr[str]]
     """The value of a Dimension to use as a filter.
 
     Use "\\**" as a wildcard to filter on all Dimension values.
@@ -64,7 +65,7 @@ class Dimension(TypedDict, total=False):
     name: Required[str]
     """The name of the Dimension to target in the Meter."""
 
-    attributes: List[str]
+    attributes: SequenceNotStr[str]
     """The Dimension attribute to target."""
 
     meter_id: Annotated[str, PropertyInfo(alias="meterId")]

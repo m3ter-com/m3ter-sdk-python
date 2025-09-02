@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CreditReasonListParams"]
@@ -22,10 +22,10 @@ class CreditReasonListParams(TypedDict, total=False):
     - FALSE excludes CreditReasons that are archived.
     """
 
-    codes: List[str]
+    codes: SequenceNotStr[str]
     """List of Credit Reason short codes to retrieve."""
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """List of Credit Reason IDs to retrieve."""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

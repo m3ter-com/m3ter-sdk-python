@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CurrencyListParams"]
@@ -23,13 +23,13 @@ class CurrencyListParams(TypedDict, total=False):
     - FALSE - archived Currencies are not returned.
     """
 
-    codes: List[str]
+    codes: SequenceNotStr[str]
     """
     An optional parameter to retrieve specific Currencies based on their short
     codes.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """
     An optional parameter to filter the list based on specific Currency unique
     identifiers (UUIDs).

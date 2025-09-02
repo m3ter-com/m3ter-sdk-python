@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
+from .._types import SequenceNotStr
+
 __all__ = ["PermissionStatementResponseParam"]
 
 
@@ -56,7 +58,7 @@ class PermissionStatementResponseParam(TypedDict, total=False):
     receive an error.
     """
 
-    resource: Required[List[str]]
+    resource: Required[SequenceNotStr[str]]
     """
     See
     [Statements - Available Resources](https://www.m3ter.com/docs/guides/managing-organization-and-users/creating-and-managing-permissions#statements---available-resources)

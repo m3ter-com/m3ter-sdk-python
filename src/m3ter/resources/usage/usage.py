@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 
 import httpx
 
 from ...types import usage_query_params, usage_submit_params, usage_get_failed_ingest_download_url_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -132,13 +132,13 @@ class UsageResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
         end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -427,13 +427,13 @@ class AsyncUsageResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
         dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
         end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

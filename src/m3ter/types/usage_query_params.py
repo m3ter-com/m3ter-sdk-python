@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .data_explorer_group_param import DataExplorerGroupParam
 
@@ -15,7 +16,7 @@ __all__ = ["UsageQueryParams", "Aggregation", "DimensionFilter"]
 class UsageQueryParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
+    account_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="accountIds")]
     """Specify the Accounts you want the query to return usage data for."""
 
     aggregations: Iterable[Aggregation]
@@ -72,7 +73,7 @@ class UsageQueryParams(TypedDict, total=False):
     starting with the most recently received data item.
     """
 
-    meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
+    meter_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="meterIds")]
     """Specify the Meters you want the query to return usage data for."""
 
     start_date: Annotated[Union[str, datetime], PropertyInfo(alias="startDate", format="iso8601")]
@@ -103,5 +104,5 @@ class DimensionFilter(TypedDict, total=False):
     meter_id: Required[Annotated[str, PropertyInfo(alias="meterId")]]
     """Meter ID"""
 
-    values: Required[List[str]]
+    values: Required[SequenceNotStr[str]]
     """Values to filter by"""

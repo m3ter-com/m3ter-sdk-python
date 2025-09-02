@@ -6,6 +6,7 @@ from typing import List, Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .data_explorer_group_param import DataExplorerGroupParam
 
@@ -72,7 +73,7 @@ class AdHocUsageDataRequest(TypedDict, total=False):
     source_type: Required[Annotated[Literal["USAGE"], PropertyInfo(alias="sourceType")]]
     """The type of data to export. Possible values are: USAGE"""
 
-    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
+    account_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="accountIds")]
     """List of account IDs for which the usage data will be exported."""
 
     aggregations: Iterable[AdHocUsageDataRequestAggregation]
@@ -87,7 +88,7 @@ class AdHocUsageDataRequest(TypedDict, total=False):
     groups: Iterable[DataExplorerGroupParam]
     """List of groups to apply"""
 
-    meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
+    meter_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="meterIds")]
     """List of meter IDs for which the usage data will be exported."""
 
     version: int
@@ -123,7 +124,7 @@ class AdHocUsageDataRequestDimensionFilter(TypedDict, total=False):
     meter_id: Required[Annotated[str, PropertyInfo(alias="meterId")]]
     """Meter ID"""
 
-    values: Required[List[str]]
+    values: Required[SequenceNotStr[str]]
     """Values to filter by"""
 
 

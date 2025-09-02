@@ -6,6 +6,7 @@ from typing import List, Union, Iterable
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .commitment_fee_param import CommitmentFeeParam
 
@@ -198,7 +199,7 @@ class CommitmentUpdateParams(TypedDict, total=False):
     rate for usage to end customers who exceed their Commitment amount
     """
 
-    product_ids: Annotated[List[str], PropertyInfo(alias="productIds")]
+    product_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="productIds")]
     """A list of unique identifiers (UUIDs) for Products the Account consumes.
 
     Charges due for these Products will be made available for draw-down against the
