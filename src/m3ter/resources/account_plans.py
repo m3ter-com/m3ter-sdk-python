@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import account_plan_list_params, account_plan_create_params, account_plan_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -385,7 +385,7 @@ class AccountPlansResource(SyncAPIResource):
         account: str | NotGiven = NOT_GIVEN,
         contract: Optional[str] | NotGiven = NOT_GIVEN,
         date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         includeall: bool | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
@@ -891,7 +891,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         account: str | NotGiven = NOT_GIVEN,
         contract: Optional[str] | NotGiven = NOT_GIVEN,
         date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         includeall: bool | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,

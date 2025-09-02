@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["BillApproveParams"]
@@ -13,7 +13,7 @@ __all__ = ["BillApproveParams"]
 class BillApproveParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    bill_ids: Required[Annotated[List[str], PropertyInfo(alias="billIds")]]
+    bill_ids: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="billIds")]]
     """Use to specify a collection of Bills by their IDs for batch approval"""
 
     account_ids: Annotated[str, PropertyInfo(alias="accountIds")]

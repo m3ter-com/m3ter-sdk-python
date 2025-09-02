@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +15,7 @@ from ...types import (
     bill_update_status_params,
     bill_latest_by_account_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .line_items import (
@@ -95,7 +95,7 @@ class BillsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,7 +143,7 @@ class BillsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | NotGiven = NOT_GIVEN,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         bill_date: str | NotGiven = NOT_GIVEN,
         bill_date_end: str | NotGiven = NOT_GIVEN,
         bill_date_start: str | NotGiven = NOT_GIVEN,
@@ -151,7 +151,7 @@ class BillsResource(SyncAPIResource):
         exclude_line_items: bool | NotGiven = NOT_GIVEN,
         external_invoice_date_end: str | NotGiven = NOT_GIVEN,
         external_invoice_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         include_bill_total: bool | NotGiven = NOT_GIVEN,
         locked: bool | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -298,7 +298,7 @@ class BillsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
+        bill_ids: SequenceNotStr[str],
         account_ids: str | NotGiven = NOT_GIVEN,
         external_invoice_date_end: str | NotGiven = NOT_GIVEN,
         external_invoice_date_start: str | NotGiven = NOT_GIVEN,
@@ -376,7 +376,7 @@ class BillsResource(SyncAPIResource):
         account_id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -645,7 +645,7 @@ class AsyncBillsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -693,7 +693,7 @@ class AsyncBillsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | NotGiven = NOT_GIVEN,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         bill_date: str | NotGiven = NOT_GIVEN,
         bill_date_end: str | NotGiven = NOT_GIVEN,
         bill_date_start: str | NotGiven = NOT_GIVEN,
@@ -701,7 +701,7 @@ class AsyncBillsResource(AsyncAPIResource):
         exclude_line_items: bool | NotGiven = NOT_GIVEN,
         external_invoice_date_end: str | NotGiven = NOT_GIVEN,
         external_invoice_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         include_bill_total: bool | NotGiven = NOT_GIVEN,
         locked: bool | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
@@ -848,7 +848,7 @@ class AsyncBillsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
+        bill_ids: SequenceNotStr[str],
         account_ids: str | NotGiven = NOT_GIVEN,
         external_invoice_date_end: str | NotGiven = NOT_GIVEN,
         external_invoice_date_start: str | NotGiven = NOT_GIVEN,
@@ -926,7 +926,7 @@ class AsyncBillsResource(AsyncAPIResource):
         account_id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

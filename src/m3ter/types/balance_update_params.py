@@ -6,6 +6,7 @@ from typing import Dict, List, Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["BalanceUpdateParams"]
@@ -115,7 +116,7 @@ class BalanceUpdateParams(TypedDict, total=False):
     original Balance amount is charged at $11 per unit of usage.
     """
 
-    product_ids: Annotated[List[str], PropertyInfo(alias="productIds")]
+    product_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="productIds")]
     """
     Specify the Products whose consumption charges due at billing can be drawn-down
     against the Balance amount.

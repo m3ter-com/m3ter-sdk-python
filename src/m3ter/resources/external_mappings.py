@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..types import (
@@ -13,7 +11,7 @@ from ..types import (
     external_mapping_list_by_m3ter_entity_params,
     external_mapping_list_by_external_entity_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -264,7 +262,7 @@ class ExternalMappingsResource(SyncAPIResource):
         org_id: str | None = None,
         external_system_id: str | NotGiven = NOT_GIVEN,
         integration_config_id: str | NotGiven = NOT_GIVEN,
-        m3ter_ids: List[str] | NotGiven = NOT_GIVEN,
+        m3ter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -734,7 +732,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         org_id: str | None = None,
         external_system_id: str | NotGiven = NOT_GIVEN,
         integration_config_id: str | NotGiven = NOT_GIVEN,
-        m3ter_ids: List[str] | NotGiven = NOT_GIVEN,
+        m3ter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

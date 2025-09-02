@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 
 import httpx
 
 from ..types import event_list_params, event_get_fields_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -95,7 +95,7 @@ class EventsResource(SyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         event_name: Optional[str] | NotGiven = NOT_GIVEN,
         event_type: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         include_actioned: bool | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         notification_code: str | NotGiven = NOT_GIVEN,
@@ -372,7 +372,7 @@ class AsyncEventsResource(AsyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         event_name: Optional[str] | NotGiven = NOT_GIVEN,
         event_type: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         include_actioned: bool | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         notification_code: str | NotGiven = NOT_GIVEN,

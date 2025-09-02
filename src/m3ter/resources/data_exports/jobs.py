@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -96,7 +95,7 @@ class JobsResource(SyncAPIResource):
         org_id: str | None = None,
         date_created_end: str | NotGiven = NOT_GIVEN,
         date_created_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         schedule_id: str | NotGiven = NOT_GIVEN,
@@ -292,7 +291,7 @@ class AsyncJobsResource(AsyncAPIResource):
         org_id: str | None = None,
         date_created_end: str | NotGiven = NOT_GIVEN,
         date_created_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         next_token: str | NotGiven = NOT_GIVEN,
         page_size: int | NotGiven = NOT_GIVEN,
         schedule_id: str | NotGiven = NOT_GIVEN,

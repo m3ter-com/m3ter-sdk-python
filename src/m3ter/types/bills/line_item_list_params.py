@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["LineItemListParams"]
@@ -13,7 +13,7 @@ __all__ = ["LineItemListParams"]
 class LineItemListParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    additional: List[str]
+    additional: SequenceNotStr[str]
     """Comma separated list of additional fields."""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

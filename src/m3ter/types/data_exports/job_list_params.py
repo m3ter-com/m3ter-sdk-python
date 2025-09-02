@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["JobListParams"]
@@ -25,7 +25,7 @@ class JobListParams(TypedDict, total=False):
     Format: yyyy-MM-dd'T'HH:mm:ss'Z'
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """List Job entities for the given UUIDs"""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

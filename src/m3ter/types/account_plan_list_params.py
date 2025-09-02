@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["AccountPlanListParams"]
@@ -41,7 +42,7 @@ class AccountPlanListParams(TypedDict, total=False):
     for the specified date.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """
     A list of unique identifiers (UUIDs) for specific AccountPlans and
     AccountPlanGroups you want to retrieve.

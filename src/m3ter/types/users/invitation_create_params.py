@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["InvitationCreateParams"]
@@ -37,7 +38,7 @@ class InvitationCreateParams(TypedDict, total=False):
 
     m3ter_user: Annotated[bool, PropertyInfo(alias="m3terUser")]
 
-    permission_policy_ids: Annotated[List[str], PropertyInfo(alias="permissionPolicyIds")]
+    permission_policy_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="permissionPolicyIds")]
     """The IDs of the permission policies the invited user has been assigned.
 
     This controls the access rights and privileges that this user will have when
