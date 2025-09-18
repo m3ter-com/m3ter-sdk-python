@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -53,19 +53,19 @@ class TransactionsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         amount: float,
-        applied_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        currency_paid: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        paid: float | NotGiven = NOT_GIVEN,
-        transaction_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        transaction_type_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        applied_date: Union[str, datetime] | Omit = omit,
+        currency_paid: str | Omit = omit,
+        description: str | Omit = omit,
+        paid: float | Omit = omit,
+        transaction_date: Union[str, datetime] | Omit = omit,
+        transaction_type_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionResponse:
         """Add a Transaction to a Balance.
 
@@ -153,18 +153,17 @@ class TransactionsResource(SyncAPIResource):
         balance_id: str,
         *,
         org_id: str | None = None,
-        entity_id: Optional[str] | NotGiven = NOT_GIVEN,
-        entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]]
-        | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
+        entity_id: Optional[str] | Omit = omit,
+        entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        transaction_type_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[TransactionResponse]:
         """
         Retrieve all Transactions for a specific Balance.
@@ -227,7 +226,7 @@ class TransactionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionSummaryResponse:
         """
         Retrieves the Balance Transactions Summary for a given Balance.
@@ -304,19 +303,19 @@ class AsyncTransactionsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         amount: float,
-        applied_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        currency_paid: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        paid: float | NotGiven = NOT_GIVEN,
-        transaction_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        transaction_type_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        applied_date: Union[str, datetime] | Omit = omit,
+        currency_paid: str | Omit = omit,
+        description: str | Omit = omit,
+        paid: float | Omit = omit,
+        transaction_date: Union[str, datetime] | Omit = omit,
+        transaction_type_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionResponse:
         """Add a Transaction to a Balance.
 
@@ -404,18 +403,17 @@ class AsyncTransactionsResource(AsyncAPIResource):
         balance_id: str,
         *,
         org_id: str | None = None,
-        entity_id: Optional[str] | NotGiven = NOT_GIVEN,
-        entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]]
-        | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        transaction_type_id: Optional[str] | NotGiven = NOT_GIVEN,
+        entity_id: Optional[str] | Omit = omit,
+        entity_type: Optional[Literal["BILL", "COMMITMENT", "USER", "SERVICE_USER", "SCHEDULER"]] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        transaction_type_id: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[TransactionResponse, AsyncCursor[TransactionResponse]]:
         """
         Retrieve all Transactions for a specific Balance.
@@ -478,7 +476,7 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionSummaryResponse:
         """
         Retrieves the Balance Transactions Summary for a given Balance.

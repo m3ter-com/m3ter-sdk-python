@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -59,7 +59,7 @@ class DebitLineItemsResource(SyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
-        debit_reason_id: str | NotGiven = NOT_GIVEN,
+        debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
             "USAGE",
@@ -80,15 +80,15 @@ class DebitLineItemsResource(SyncAPIResource):
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
         ]
-        | NotGiven = NOT_GIVEN,
-        reason_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        reason_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Create a new Debit line item for the given bill.
@@ -180,7 +180,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Retrieve the Debit line item with the given UUID.
@@ -224,7 +224,7 @@ class DebitLineItemsResource(SyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
-        debit_reason_id: str | NotGiven = NOT_GIVEN,
+        debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
             "USAGE",
@@ -245,15 +245,15 @@ class DebitLineItemsResource(SyncAPIResource):
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
         ]
-        | NotGiven = NOT_GIVEN,
-        reason_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        reason_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Update the Debit line item with the given UUID.
@@ -338,14 +338,14 @@ class DebitLineItemsResource(SyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[DebitLineItemResponse]:
         """
         List the Debit line items for the given bill.
@@ -399,7 +399,7 @@ class DebitLineItemsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Delete the Debit line item with the given UUID.
@@ -463,7 +463,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
-        debit_reason_id: str | NotGiven = NOT_GIVEN,
+        debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
             "USAGE",
@@ -484,15 +484,15 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
         ]
-        | NotGiven = NOT_GIVEN,
-        reason_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        reason_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Create a new Debit line item for the given bill.
@@ -584,7 +584,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Retrieve the Debit line item with the given UUID.
@@ -628,7 +628,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
-        debit_reason_id: str | NotGiven = NOT_GIVEN,
+        debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
             "USAGE",
@@ -649,15 +649,15 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
         ]
-        | NotGiven = NOT_GIVEN,
-        reason_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        reason_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Update the Debit line item with the given UUID.
@@ -742,14 +742,14 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         bill_id: str,
         *,
         org_id: str | None = None,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DebitLineItemResponse, AsyncCursor[DebitLineItemResponse]]:
         """
         List the Debit line items for the given bill.
@@ -803,7 +803,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DebitLineItemResponse:
         """
         Delete the Debit line item with the given UUID.

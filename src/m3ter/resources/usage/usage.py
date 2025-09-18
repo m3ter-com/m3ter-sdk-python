@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ...types import usage_query_params, usage_submit_params, usage_get_failed_ingest_download_url_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -80,13 +80,13 @@ class UsageResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        file: str | NotGiven = NOT_GIVEN,
+        file: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DownloadURLResponse:
         """
         Returns a presigned download URL for failed ingest file download based on the
@@ -148,20 +148,20 @@ class UsageResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[usage_query_params.Aggregation] | Omit = omit,
+        dimension_filters: Iterable[usage_query_params.DimensionFilter] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        limit: int | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        start_date: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UsageQueryResponse:
         """
         Query and filter usage data collected for your Organization.
@@ -277,7 +277,7 @@ class UsageResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubmitMeasurementsResponse:
         """Submit a measurement or multiple measurements to the m3ter platform.
 
@@ -460,13 +460,13 @@ class AsyncUsageResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        file: str | NotGiven = NOT_GIVEN,
+        file: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DownloadURLResponse:
         """
         Returns a presigned download URL for failed ingest file download based on the
@@ -528,20 +528,20 @@ class AsyncUsageResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[usage_query_params.Aggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[usage_query_params.DimensionFilter] | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        start_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[usage_query_params.Aggregation] | Omit = omit,
+        dimension_filters: Iterable[usage_query_params.DimensionFilter] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        limit: int | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        start_date: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UsageQueryResponse:
         """
         Query and filter usage data collected for your Organization.
@@ -657,7 +657,7 @@ class AsyncUsageResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SubmitMeasurementsResponse:
         """Submit a measurement or multiple measurements to the m3ter platform.
 

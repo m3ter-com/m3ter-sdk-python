@@ -11,7 +11,7 @@ from ..types import (
     external_mapping_list_by_m3ter_entity_params,
     external_mapping_list_by_external_entity_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -57,14 +57,14 @@ class ExternalMappingsResource(SyncAPIResource):
         external_table: str,
         m3ter_entity: str,
         m3ter_id: str,
-        integration_config_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        integration_config_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Creates a new External Mapping.
@@ -140,7 +140,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Retrieve an External Mapping with the given UUID.
@@ -181,14 +181,14 @@ class ExternalMappingsResource(SyncAPIResource):
         external_table: str,
         m3ter_entity: str,
         m3ter_id: str,
-        integration_config_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        integration_config_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Updates an External Mapping with the given UUID.
@@ -260,17 +260,17 @@ class ExternalMappingsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        external_system_id: str | NotGiven = NOT_GIVEN,
-        integration_config_id: str | NotGiven = NOT_GIVEN,
-        m3ter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        external_system_id: str | Omit = omit,
+        integration_config_id: str | Omit = omit,
+        m3ter_ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[ExternalMappingResponse]:
         """
         Retrieve a list of all External Mapping entities.
@@ -340,7 +340,7 @@ class ExternalMappingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Delete an External Mapping with the given UUID.
@@ -375,14 +375,14 @@ class ExternalMappingsResource(SyncAPIResource):
         org_id: str | None = None,
         system: str,
         external_table: str,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[ExternalMappingResponse]:
         """
         Retrieve a list of External Mapping entities for a specified external system
@@ -441,14 +441,14 @@ class ExternalMappingsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         entity: str,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[ExternalMappingResponse]:
         """
         Retrieve a list of External Mapping entities for a specified m3ter entity.
@@ -527,14 +527,14 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         external_table: str,
         m3ter_entity: str,
         m3ter_id: str,
-        integration_config_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        integration_config_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Creates a new External Mapping.
@@ -610,7 +610,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Retrieve an External Mapping with the given UUID.
@@ -651,14 +651,14 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         external_table: str,
         m3ter_entity: str,
         m3ter_id: str,
-        integration_config_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        integration_config_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Updates an External Mapping with the given UUID.
@@ -730,17 +730,17 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        external_system_id: str | NotGiven = NOT_GIVEN,
-        integration_config_id: str | NotGiven = NOT_GIVEN,
-        m3ter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        external_system_id: str | Omit = omit,
+        integration_config_id: str | Omit = omit,
+        m3ter_ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ExternalMappingResponse, AsyncCursor[ExternalMappingResponse]]:
         """
         Retrieve a list of all External Mapping entities.
@@ -810,7 +810,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalMappingResponse:
         """
         Delete an External Mapping with the given UUID.
@@ -845,14 +845,14 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         org_id: str | None = None,
         system: str,
         external_table: str,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ExternalMappingResponse, AsyncCursor[ExternalMappingResponse]]:
         """
         Retrieve a list of External Mapping entities for a specified external system
@@ -911,14 +911,14 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         entity: str,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ExternalMappingResponse, AsyncCursor[ExternalMappingResponse]]:
         """
         Retrieve a list of External Mapping entities for a specified m3ter entity.
