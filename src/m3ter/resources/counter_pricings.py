@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ..types import counter_pricing_list_params, counter_pricing_create_params, counter_pricing_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -53,24 +53,24 @@ class CounterPricingsResource(SyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_credit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_debit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_running_total: bool | NotGiven = NOT_GIVEN,
-        running_total_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        pro_rate_adjustment_credit: bool | Omit = omit,
+        pro_rate_adjustment_debit: bool | Omit = omit,
+        pro_rate_running_total: bool | Omit = omit,
+        running_total_bill_in_advance: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Create a new CounterPricing.
@@ -216,7 +216,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Retrieve a CounterPricing for the given UUID.
@@ -252,24 +252,24 @@ class CounterPricingsResource(SyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_credit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_debit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_running_total: bool | NotGiven = NOT_GIVEN,
-        running_total_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        pro_rate_adjustment_credit: bool | Omit = omit,
+        pro_rate_adjustment_debit: bool | Omit = omit,
+        pro_rate_running_total: bool | Omit = omit,
+        running_total_bill_in_advance: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Update CounterPricing for the given UUID.
@@ -411,18 +411,18 @@ class CounterPricingsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        date: str | NotGiven = NOT_GIVEN,
-        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
+        date: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[CounterPricingResponse]:
         """
         Retrieve a list of CounterPricing entities filtered by date, Plan ID, Plan
@@ -486,7 +486,7 @@ class CounterPricingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Delete a CounterPricing for the given UUID.
@@ -542,24 +542,24 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_credit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_debit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_running_total: bool | NotGiven = NOT_GIVEN,
-        running_total_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        pro_rate_adjustment_credit: bool | Omit = omit,
+        pro_rate_adjustment_debit: bool | Omit = omit,
+        pro_rate_running_total: bool | Omit = omit,
+        running_total_bill_in_advance: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Create a new CounterPricing.
@@ -705,7 +705,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Retrieve a CounterPricing for the given UUID.
@@ -741,24 +741,24 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         counter_id: str,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_credit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_adjustment_debit: bool | NotGiven = NOT_GIVEN,
-        pro_rate_running_total: bool | NotGiven = NOT_GIVEN,
-        running_total_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        pro_rate_adjustment_credit: bool | Omit = omit,
+        pro_rate_adjustment_debit: bool | Omit = omit,
+        pro_rate_running_total: bool | Omit = omit,
+        running_total_bill_in_advance: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Update CounterPricing for the given UUID.
@@ -900,18 +900,18 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        date: str | NotGiven = NOT_GIVEN,
-        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
+        date: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CounterPricingResponse, AsyncCursor[CounterPricingResponse]]:
         """
         Retrieve a list of CounterPricing entities filtered by date, Plan ID, Plan
@@ -975,7 +975,7 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CounterPricingResponse:
         """
         Delete a CounterPricing for the given UUID.

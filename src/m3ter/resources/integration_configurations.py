@@ -12,7 +12,7 @@ from ..types import (
     integration_configuration_update_params,
     integration_configuration_get_by_entity_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -60,19 +60,19 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         org_id: str | None = None,
         destination: str,
         entity_type: str,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credentials: integration_configuration_create_params.Credentials | NotGiven = NOT_GIVEN,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        integration_credentials_id: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        config_data: Dict[str, object] | Omit = omit,
+        credentials: integration_configuration_create_params.Credentials | Omit = omit,
+        destination_id: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        integration_credentials_id: str | Omit = omit,
+        name: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationCreateResponse:
         """
         Set the integration configuration for the entity.
@@ -153,7 +153,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the given UUID.
@@ -192,19 +192,19 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         org_id: str | None = None,
         destination: str,
         entity_type: str,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credentials: integration_configuration_update_params.Credentials | NotGiven = NOT_GIVEN,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        integration_credentials_id: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        config_data: Dict[str, object] | Omit = omit,
+        credentials: integration_configuration_update_params.Credentials | Omit = omit,
+        destination_id: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        integration_credentials_id: str | Omit = omit,
+        name: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationUpdateResponse:
         """
         Update the integration configuration for the given UUID.
@@ -285,15 +285,15 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        destination_id: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[IntegrationConfigurationListResponse]:
         """
         List all integration configurations.
@@ -351,7 +351,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationDeleteResponse:
         """
         Delete the integration configuration for the given UUID.
@@ -393,7 +393,7 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationEnableResponse:
         """
         Enables a previously disabled integration configuration, allowing it to be
@@ -427,15 +427,15 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         entity_type: str,
         *,
         org_id: str | None = None,
-        destination: str | NotGiven = NOT_GIVEN,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
+        destination: str | Omit = omit,
+        destination_id: str | Omit = omit,
+        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the entity
@@ -507,19 +507,19 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         org_id: str | None = None,
         destination: str,
         entity_type: str,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credentials: integration_configuration_create_params.Credentials | NotGiven = NOT_GIVEN,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        integration_credentials_id: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        config_data: Dict[str, object] | Omit = omit,
+        credentials: integration_configuration_create_params.Credentials | Omit = omit,
+        destination_id: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        integration_credentials_id: str | Omit = omit,
+        name: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationCreateResponse:
         """
         Set the integration configuration for the entity.
@@ -600,7 +600,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the given UUID.
@@ -639,19 +639,19 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         org_id: str | None = None,
         destination: str,
         entity_type: str,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credentials: integration_configuration_update_params.Credentials | NotGiven = NOT_GIVEN,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        integration_credentials_id: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        config_data: Dict[str, object] | Omit = omit,
+        credentials: integration_configuration_update_params.Credentials | Omit = omit,
+        destination_id: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        integration_credentials_id: str | Omit = omit,
+        name: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationUpdateResponse:
         """
         Update the integration configuration for the given UUID.
@@ -732,15 +732,15 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        destination_id: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[IntegrationConfigurationListResponse, AsyncCursor[IntegrationConfigurationListResponse]]:
         """
         List all integration configurations.
@@ -798,7 +798,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationDeleteResponse:
         """
         Delete the integration configuration for the given UUID.
@@ -840,7 +840,7 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationEnableResponse:
         """
         Enables a previously disabled integration configuration, allowing it to be
@@ -874,15 +874,15 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         entity_type: str,
         *,
         org_id: str | None = None,
-        destination: str | NotGiven = NOT_GIVEN,
-        destination_id: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
+        destination: str | Omit = omit,
+        destination_id: str | Omit = omit,
+        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IntegrationConfigurationResponse:
         """
         Retrieve the integration configuration for the entity

@@ -10,7 +10,7 @@ from ..types import (
     webhook_update_params,
     webhook_set_active_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -56,15 +56,15 @@ class WebhooksResource(SyncAPIResource):
         description: str,
         name: str,
         url: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """This endpoint creates a new webhook destination.
 
@@ -136,7 +136,7 @@ class WebhooksResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         Retrieve the webhook Destination for the UUID.
@@ -173,15 +173,15 @@ class WebhooksResource(SyncAPIResource):
         description: str,
         name: str,
         url: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         Update a destination to be used for a webhook.
@@ -247,15 +247,15 @@ class WebhooksResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[Webhook]:
         """
         Retrieve a list of all Destinations created in the Organization.
@@ -307,7 +307,7 @@ class WebhooksResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         This endpoint deletes a specific webhook destination identified by its UUID.
@@ -340,13 +340,13 @@ class WebhooksResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        active: bool | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         Set the `active` status on a webhook integration destination.
@@ -413,15 +413,15 @@ class AsyncWebhooksResource(AsyncAPIResource):
         description: str,
         name: str,
         url: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """This endpoint creates a new webhook destination.
 
@@ -493,7 +493,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         Retrieve the webhook Destination for the UUID.
@@ -530,15 +530,15 @@ class AsyncWebhooksResource(AsyncAPIResource):
         description: str,
         name: str,
         url: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         Update a destination to be used for a webhook.
@@ -604,15 +604,15 @@ class AsyncWebhooksResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Webhook, AsyncCursor[Webhook]]:
         """
         Retrieve a list of all Destinations created in the Organization.
@@ -664,7 +664,7 @@ class AsyncWebhooksResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         This endpoint deletes a specific webhook destination identified by its UUID.
@@ -697,13 +697,13 @@ class AsyncWebhooksResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        active: bool | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Webhook:
         """
         Set the `active` status on a webhook integration destination.

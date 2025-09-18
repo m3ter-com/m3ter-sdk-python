@@ -17,7 +17,7 @@ from .jobs import (
     AsyncJobsResourceWithStreamingResponse,
 )
 from ...types import data_export_create_adhoc_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .schedules import (
@@ -111,13 +111,13 @@ class DataExportsResource(SyncAPIResource):
             ]
         ],
         source_type: Literal["OPERATIONAL"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
@@ -204,20 +204,19 @@ class DataExportsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         source_type: Literal["USAGE"],
-        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
@@ -336,22 +335,21 @@ class DataExportsResource(SyncAPIResource):
                 "TRANSACTION_TYPES",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
-        version: int | NotGiven = NOT_GIVEN,
-        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AdHocResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -441,13 +439,13 @@ class AsyncDataExportsResource(AsyncAPIResource):
             ]
         ],
         source_type: Literal["OPERATIONAL"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
@@ -534,20 +532,19 @@ class AsyncDataExportsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         source_type: Literal["USAGE"],
-        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AdHocResponse:
         """Trigger an ad-hoc Data Export.
 
@@ -666,22 +663,21 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "TRANSACTION_TYPES",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
-        version: int | NotGiven = NOT_GIVEN,
-        account_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[data_export_create_adhoc_params.AdHocUsageDataRequestDimensionFilter] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AdHocResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()

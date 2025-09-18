@@ -9,7 +9,7 @@ from ..types import (
     notification_configuration_create_params,
     notification_configuration_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -54,16 +54,16 @@ class NotificationConfigurationsResource(SyncAPIResource):
         description: str,
         event_name: str,
         name: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        always_fire_event: bool | NotGiven = NOT_GIVEN,
-        calculation: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        always_fire_event: bool | Omit = omit,
+        calculation: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """
         Create a new Notification for an Event.
@@ -168,7 +168,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """Retrieve the details of a specific Notification using its UUID.
 
@@ -209,16 +209,16 @@ class NotificationConfigurationsResource(SyncAPIResource):
         description: str,
         event_name: str,
         name: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        always_fire_event: bool | NotGiven = NOT_GIVEN,
-        calculation: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        always_fire_event: bool | Omit = omit,
+        calculation: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """
         Update a Notification with the given UUID.
@@ -319,17 +319,17 @@ class NotificationConfigurationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        active: bool | NotGiven = NOT_GIVEN,
-        event_name: str | NotGiven = NOT_GIVEN,
-        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        event_name: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[NotificationConfigurationResponse]:
         """
         Retrieve a list of Event Notifications for the specified Organization.
@@ -399,7 +399,7 @@ class NotificationConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """
         Delete the Notification with the given UUID.
@@ -459,16 +459,16 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         description: str,
         event_name: str,
         name: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        always_fire_event: bool | NotGiven = NOT_GIVEN,
-        calculation: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        always_fire_event: bool | Omit = omit,
+        calculation: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """
         Create a new Notification for an Event.
@@ -573,7 +573,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """Retrieve the details of a specific Notification using its UUID.
 
@@ -614,16 +614,16 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         description: str,
         event_name: str,
         name: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        always_fire_event: bool | NotGiven = NOT_GIVEN,
-        calculation: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        always_fire_event: bool | Omit = omit,
+        calculation: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """
         Update a Notification with the given UUID.
@@ -724,17 +724,17 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        active: bool | NotGiven = NOT_GIVEN,
-        event_name: str | NotGiven = NOT_GIVEN,
-        ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        event_name: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[NotificationConfigurationResponse, AsyncCursor[NotificationConfigurationResponse]]:
         """
         Retrieve a list of Event Notifications for the specified Organization.
@@ -804,7 +804,7 @@ class AsyncNotificationConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NotificationConfigurationResponse:
         """
         Delete the Notification with the given UUID.

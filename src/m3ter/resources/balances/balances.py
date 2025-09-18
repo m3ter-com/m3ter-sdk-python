@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import balance_list_params, balance_create_params, balance_update_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -66,13 +66,13 @@ class BalancesResource(SyncAPIResource):
         currency: str,
         end_date: Union[str, datetime],
         start_date: Union[str, datetime],
-        balance_draw_down_description: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        balance_draw_down_description: str | Omit = omit,
+        code: str | Omit = omit,
+        consumptions_accounting_product_id: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        description: str | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE",
@@ -83,20 +83,20 @@ class BalancesResource(SyncAPIResource):
                 "AD_HOC",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rollover_amount: float | NotGiven = NOT_GIVEN,
-        rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        name: str | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        rollover_amount: float | Omit = omit,
+        rollover_end_date: Union[str, datetime] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Create a new Balance for the given end customer Account.
@@ -259,7 +259,7 @@ class BalancesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Retrieve a specific Balance.
@@ -298,13 +298,13 @@ class BalancesResource(SyncAPIResource):
         currency: str,
         end_date: Union[str, datetime],
         start_date: Union[str, datetime],
-        balance_draw_down_description: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        balance_draw_down_description: str | Omit = omit,
+        code: str | Omit = omit,
+        consumptions_accounting_product_id: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        description: str | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE",
@@ -315,20 +315,20 @@ class BalancesResource(SyncAPIResource):
                 "AD_HOC",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rollover_amount: float | NotGiven = NOT_GIVEN,
-        rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        name: str | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        rollover_amount: float | Omit = omit,
+        rollover_end_date: Union[str, datetime] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Update a specific Balance.
@@ -487,18 +487,18 @@ class BalancesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: str | NotGiven = NOT_GIVEN,
-        contract: Optional[str] | NotGiven = NOT_GIVEN,
-        end_date_end: str | NotGiven = NOT_GIVEN,
-        end_date_start: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        contract: Optional[str] | Omit = omit,
+        end_date_end: str | Omit = omit,
+        end_date_start: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[Balance]:
         """
         Retrieve a list of all Balances for your Organization.
@@ -572,7 +572,7 @@ class BalancesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Delete a specific Balance.
@@ -635,13 +635,13 @@ class AsyncBalancesResource(AsyncAPIResource):
         currency: str,
         end_date: Union[str, datetime],
         start_date: Union[str, datetime],
-        balance_draw_down_description: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        balance_draw_down_description: str | Omit = omit,
+        code: str | Omit = omit,
+        consumptions_accounting_product_id: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        description: str | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE",
@@ -652,20 +652,20 @@ class AsyncBalancesResource(AsyncAPIResource):
                 "AD_HOC",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rollover_amount: float | NotGiven = NOT_GIVEN,
-        rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        name: str | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        rollover_amount: float | Omit = omit,
+        rollover_end_date: Union[str, datetime] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Create a new Balance for the given end customer Account.
@@ -828,7 +828,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Retrieve a specific Balance.
@@ -867,13 +867,13 @@ class AsyncBalancesResource(AsyncAPIResource):
         currency: str,
         end_date: Union[str, datetime],
         start_date: Union[str, datetime],
-        balance_draw_down_description: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        consumptions_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        balance_draw_down_description: str | Omit = omit,
+        code: str | Omit = omit,
+        consumptions_accounting_product_id: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        description: str | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE",
@@ -884,20 +884,20 @@ class AsyncBalancesResource(AsyncAPIResource):
                 "AD_HOC",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rollover_amount: float | NotGiven = NOT_GIVEN,
-        rollover_end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        name: str | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        rollover_amount: float | Omit = omit,
+        rollover_end_date: Union[str, datetime] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Update a specific Balance.
@@ -1056,18 +1056,18 @@ class AsyncBalancesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: str | NotGiven = NOT_GIVEN,
-        contract: Optional[str] | NotGiven = NOT_GIVEN,
-        end_date_end: str | NotGiven = NOT_GIVEN,
-        end_date_start: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        contract: Optional[str] | Omit = omit,
+        end_date_end: str | Omit = omit,
+        end_date_start: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Balance, AsyncCursor[Balance]]:
         """
         Retrieve a list of all Balances for your Organization.
@@ -1141,7 +1141,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Balance:
         """
         Delete a specific Balance.

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -52,14 +52,14 @@ class StatementJobsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
-        include_csv_format: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        include_csv_format: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobResponse:
         """
         This endpoint creates a StatementJob for a single bill within an Organization
@@ -154,7 +154,7 @@ class StatementJobsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobResponse:
         """
         Retrieves the details of a specific StatementJob using its UUID.
@@ -198,17 +198,17 @@ class StatementJobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        active: str | NotGiven = NOT_GIVEN,
-        bill_id: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        active: str | Omit = omit,
+        bill_id: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[StatementJobResponse]:
         """
         Retrieve a list of StatementJobs.
@@ -295,7 +295,7 @@ class StatementJobsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobResponse:
         """
         Cancel the StatementJob with the given UUID.
@@ -332,14 +332,14 @@ class StatementJobsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_ids: SequenceNotStr[str],
-        include_csv_format: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        include_csv_format: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobCreateBatchResponse:
         """
         Create a batch of StatementJobs for multiple bills.
@@ -451,14 +451,14 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
-        include_csv_format: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        include_csv_format: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobResponse:
         """
         This endpoint creates a StatementJob for a single bill within an Organization
@@ -553,7 +553,7 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobResponse:
         """
         Retrieves the details of a specific StatementJob using its UUID.
@@ -597,17 +597,17 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        active: str | NotGiven = NOT_GIVEN,
-        bill_id: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        active: str | Omit = omit,
+        bill_id: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[StatementJobResponse, AsyncCursor[StatementJobResponse]]:
         """
         Retrieve a list of StatementJobs.
@@ -694,7 +694,7 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobResponse:
         """
         Cancel the StatementJob with the given UUID.
@@ -731,14 +731,14 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_ids: SequenceNotStr[str],
-        include_csv_format: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        include_csv_format: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatementJobCreateBatchResponse:
         """
         Create a batch of StatementJobs for multiple bills.

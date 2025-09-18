@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import organization_config_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -54,7 +54,7 @@ class OrganizationConfigResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrganizationConfigResponse:
         """
         Retrieve the Organization-wide configuration details.
@@ -91,28 +91,28 @@ class OrganizationConfigResource(SyncAPIResource):
         timezone: str,
         week_epoch: str,
         year_epoch: str,
-        auto_approve_bills_grace_period: int | NotGiven = NOT_GIVEN,
-        auto_approve_bills_grace_period_unit: str | NotGiven = NOT_GIVEN,
-        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
-        bill_prefix: str | NotGiven = NOT_GIVEN,
-        commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        consolidate_bills: bool | NotGiven = NOT_GIVEN,
-        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
-        default_statement_definition_id: str | NotGiven = NOT_GIVEN,
-        external_invoice_date: str | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        scheduled_bill_interval: float | NotGiven = NOT_GIVEN,
-        sequence_start_number: int | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        suppressed_empty_bills: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        auto_approve_bills_grace_period: int | Omit = omit,
+        auto_approve_bills_grace_period_unit: str | Omit = omit,
+        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
+        bill_prefix: str | Omit = omit,
+        commitment_fee_bill_in_advance: bool | Omit = omit,
+        consolidate_bills: bool | Omit = omit,
+        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
+        currency_conversions: Iterable[CurrencyConversion] | Omit = omit,
+        default_statement_definition_id: str | Omit = omit,
+        external_invoice_date: str | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        scheduled_bill_interval: float | Omit = omit,
+        sequence_start_number: int | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        suppressed_empty_bills: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrganizationConfigResponse:
         """
         Update the Organization-wide configuration details.
@@ -404,7 +404,7 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrganizationConfigResponse:
         """
         Retrieve the Organization-wide configuration details.
@@ -441,28 +441,28 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
         timezone: str,
         week_epoch: str,
         year_epoch: str,
-        auto_approve_bills_grace_period: int | NotGiven = NOT_GIVEN,
-        auto_approve_bills_grace_period_unit: str | NotGiven = NOT_GIVEN,
-        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
-        bill_prefix: str | NotGiven = NOT_GIVEN,
-        commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        consolidate_bills: bool | NotGiven = NOT_GIVEN,
-        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
-        default_statement_definition_id: str | NotGiven = NOT_GIVEN,
-        external_invoice_date: str | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        scheduled_bill_interval: float | NotGiven = NOT_GIVEN,
-        sequence_start_number: int | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        suppressed_empty_bills: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        auto_approve_bills_grace_period: int | Omit = omit,
+        auto_approve_bills_grace_period_unit: str | Omit = omit,
+        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
+        bill_prefix: str | Omit = omit,
+        commitment_fee_bill_in_advance: bool | Omit = omit,
+        consolidate_bills: bool | Omit = omit,
+        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
+        currency_conversions: Iterable[CurrencyConversion] | Omit = omit,
+        default_statement_definition_id: str | Omit = omit,
+        external_invoice_date: str | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        scheduled_bill_interval: float | Omit = omit,
+        sequence_start_number: int | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        suppressed_empty_bills: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrganizationConfigResponse:
         """
         Update the Organization-wide configuration details.
