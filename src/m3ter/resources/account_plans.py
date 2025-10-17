@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import account_plan_list_params, account_plan_create_params, account_plan_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -52,21 +52,21 @@ class AccountPlansResource(SyncAPIResource):
         org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_group_id: str | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_epoch: Union[str, date] | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        code: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_group_id: str | Omit = omit,
+        plan_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Create a new AccountPlan or AccountPlanGroup.
@@ -198,7 +198,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Retrieve the AccountPlan or AccountPlanGroup details corresponding to the given
@@ -234,21 +234,21 @@ class AccountPlansResource(SyncAPIResource):
         org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_group_id: str | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_epoch: Union[str, date] | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        code: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_group_id: str | Omit = omit,
+        plan_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Update the AccountPlan or AccountPlanGroup with the given UUID.
@@ -382,21 +382,21 @@ class AccountPlansResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account: str | NotGiven = NOT_GIVEN,
-        contract: Optional[str] | NotGiven = NOT_GIVEN,
-        date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        includeall: bool | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        plan: str | NotGiven = NOT_GIVEN,
-        product: str | NotGiven = NOT_GIVEN,
+        account: str | Omit = omit,
+        contract: Optional[str] | Omit = omit,
+        date: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        includeall: bool | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        plan: str | Omit = omit,
+        product: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[AccountPlanResponse]:
         """
         Retrieves a list of AccountPlan and AccountPlanGroup entities for the specified
@@ -500,7 +500,7 @@ class AccountPlansResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Delete the AccountPlan or AccountPlanGroup with the given UUID.
@@ -558,21 +558,21 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_group_id: str | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_epoch: Union[str, date] | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        code: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_group_id: str | Omit = omit,
+        plan_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Create a new AccountPlan or AccountPlanGroup.
@@ -704,7 +704,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Retrieve the AccountPlan or AccountPlanGroup details corresponding to the given
@@ -740,21 +740,21 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         org_id: str | None = None,
         account_id: str,
         start_date: Union[str, datetime],
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        plan_group_id: str | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_epoch: Union[str, date] | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        code: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        plan_group_id: str | Omit = omit,
+        plan_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Update the AccountPlan or AccountPlanGroup with the given UUID.
@@ -888,21 +888,21 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account: str | NotGiven = NOT_GIVEN,
-        contract: Optional[str] | NotGiven = NOT_GIVEN,
-        date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        includeall: bool | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        plan: str | NotGiven = NOT_GIVEN,
-        product: str | NotGiven = NOT_GIVEN,
+        account: str | Omit = omit,
+        contract: Optional[str] | Omit = omit,
+        date: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        includeall: bool | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        plan: str | Omit = omit,
+        product: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AccountPlanResponse, AsyncCursor[AccountPlanResponse]]:
         """
         Retrieves a list of AccountPlan and AccountPlanGroup entities for the specified
@@ -1006,7 +1006,7 @@ class AsyncAccountPlansResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountPlanResponse:
         """
         Delete the AccountPlan or AccountPlanGroup with the given UUID.

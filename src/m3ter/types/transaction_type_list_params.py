@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["TransactionTypeListParams"]
@@ -22,10 +22,10 @@ class TransactionTypeListParams(TypedDict, total=False):
     - FALSE - exclude archived TransactionTypes.
     """
 
-    codes: List[str]
+    codes: SequenceNotStr[str]
     """A list of TransactionType short codes to retrieve."""
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """A list of TransactionType unique identifiers (UUIDs) to retrieve."""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

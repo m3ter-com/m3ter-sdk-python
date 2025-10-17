@@ -7,7 +7,7 @@ from typing_extensions import Literal, overload
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -79,13 +79,13 @@ class SchedulesResource(SyncAPIResource):
             ]
         ],
         source_type: Literal["OPERATIONAL"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleCreateResponse:
         """Create a new Data Export Schedule.
 
@@ -180,19 +180,18 @@ class SchedulesResource(SyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ],
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleCreateResponse:
         """Create a new Data Export Schedule.
 
@@ -332,9 +331,9 @@ class SchedulesResource(SyncAPIResource):
                 "TRANSACTION_TYPES",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         time_period: Literal[
             "TODAY",
             "YESTERDAY",
@@ -353,19 +352,18 @@ class SchedulesResource(SyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ]
-        | NotGiven = NOT_GIVEN,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleCreateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -408,7 +406,7 @@ class SchedulesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleRetrieveResponse:
         """Retrieve a Data Export Schedule for the given UUID.
 
@@ -473,13 +471,13 @@ class SchedulesResource(SyncAPIResource):
             ]
         ],
         source_type: Literal["OPERATIONAL"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleUpdateResponse:
         """Update a Data Export Schedule for the given UUID.
 
@@ -565,19 +563,18 @@ class SchedulesResource(SyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ],
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleUpdateResponse:
         """Update a Data Export Schedule for the given UUID.
 
@@ -708,9 +705,9 @@ class SchedulesResource(SyncAPIResource):
                 "TRANSACTION_TYPES",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         time_period: Literal[
             "TODAY",
             "YESTERDAY",
@@ -729,19 +726,18 @@ class SchedulesResource(SyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ]
-        | NotGiven = NOT_GIVEN,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleUpdateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -780,15 +776,15 @@ class SchedulesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[ScheduleListResponse]:
         """Retrieve a list of Data Export Schedules created for your Organization.
 
@@ -847,7 +843,7 @@ class SchedulesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleDeleteResponse:
         """Delete the Data Export Schedule for the given UUID.
 
@@ -932,13 +928,13 @@ class AsyncSchedulesResource(AsyncAPIResource):
             ]
         ],
         source_type: Literal["OPERATIONAL"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleCreateResponse:
         """Create a new Data Export Schedule.
 
@@ -1033,19 +1029,18 @@ class AsyncSchedulesResource(AsyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ],
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleCreateResponse:
         """Create a new Data Export Schedule.
 
@@ -1185,9 +1180,9 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "TRANSACTION_TYPES",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         time_period: Literal[
             "TODAY",
             "YESTERDAY",
@@ -1206,19 +1201,18 @@ class AsyncSchedulesResource(AsyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ]
-        | NotGiven = NOT_GIVEN,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_create_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_create_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleCreateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -1261,7 +1255,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleRetrieveResponse:
         """Retrieve a Data Export Schedule for the given UUID.
 
@@ -1326,13 +1320,13 @@ class AsyncSchedulesResource(AsyncAPIResource):
             ]
         ],
         source_type: Literal["OPERATIONAL"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleUpdateResponse:
         """Update a Data Export Schedule for the given UUID.
 
@@ -1418,19 +1412,18 @@ class AsyncSchedulesResource(AsyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ],
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleUpdateResponse:
         """Update a Data Export Schedule for the given UUID.
 
@@ -1561,9 +1554,9 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "TRANSACTION_TYPES",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         source_type: Literal["OPERATIONAL"] | Literal["USAGE"],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         time_period: Literal[
             "TODAY",
             "YESTERDAY",
@@ -1582,19 +1575,18 @@ class AsyncSchedulesResource(AsyncAPIResource):
             "LAST_120_DAYS",
             "LAST_YEAR",
         ]
-        | NotGiven = NOT_GIVEN,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | NotGiven = NOT_GIVEN,
-        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter]
-        | NotGiven = NOT_GIVEN,
-        groups: Iterable[DataExplorerGroupParam] | NotGiven = NOT_GIVEN,
-        meter_ids: List[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        aggregations: Iterable[schedule_update_params.UsageDataExportScheduleRequestAggregation] | Omit = omit,
+        dimension_filters: Iterable[schedule_update_params.UsageDataExportScheduleRequestDimensionFilter] | Omit = omit,
+        groups: Iterable[DataExplorerGroupParam] | Omit = omit,
+        meter_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleUpdateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -1633,15 +1625,15 @@ class AsyncSchedulesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ScheduleListResponse, AsyncCursor[ScheduleListResponse]]:
         """Retrieve a list of Data Export Schedules created for your Organization.
 
@@ -1700,7 +1692,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduleDeleteResponse:
         """Delete the Data Export Schedule for the given UUID.
 

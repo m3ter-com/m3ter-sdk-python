@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -56,7 +55,7 @@ class JobsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DataExportJobResponse:
         """
         Retrieve an Export Job for the given UUID.
@@ -94,19 +93,19 @@ class JobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        date_created_end: str | NotGiven = NOT_GIVEN,
-        date_created_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        schedule_id: str | NotGiven = NOT_GIVEN,
-        status: Literal["PENDING", "RUNNING", "SUCCEEDED", "FAILED"] | NotGiven = NOT_GIVEN,
+        date_created_end: str | Omit = omit,
+        date_created_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        schedule_id: str | Omit = omit,
+        status: Literal["PENDING", "RUNNING", "SUCCEEDED", "FAILED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[DataExportJobResponse]:
         """
         Retrieve a list of Export Job entities.
@@ -176,7 +175,7 @@ class JobsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> JobGetDownloadURLResponse:
         """
         Returns a presigned download URL for data export file download based on the
@@ -194,8 +193,9 @@ class JobsResource(SyncAPIResource):
         - The download URL is time-bound and is only valid for 15 minutes.
 
         **NOTE!** This ExportDestination endpoint is available in Beta release version.
-        Beta release features are functional but may be incomplete, and there is no
-        commitment at this stage to particular functionality or timelines.
+        See
+        [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages)
+        for Beta release definition.
 
         Args:
           extra_headers: Send extra headers
@@ -251,7 +251,7 @@ class AsyncJobsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DataExportJobResponse:
         """
         Retrieve an Export Job for the given UUID.
@@ -289,19 +289,19 @@ class AsyncJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        date_created_end: str | NotGiven = NOT_GIVEN,
-        date_created_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        schedule_id: str | NotGiven = NOT_GIVEN,
-        status: Literal["PENDING", "RUNNING", "SUCCEEDED", "FAILED"] | NotGiven = NOT_GIVEN,
+        date_created_end: str | Omit = omit,
+        date_created_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        schedule_id: str | Omit = omit,
+        status: Literal["PENDING", "RUNNING", "SUCCEEDED", "FAILED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DataExportJobResponse, AsyncCursor[DataExportJobResponse]]:
         """
         Retrieve a list of Export Job entities.
@@ -371,7 +371,7 @@ class AsyncJobsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> JobGetDownloadURLResponse:
         """
         Returns a presigned download URL for data export file download based on the
@@ -389,8 +389,9 @@ class AsyncJobsResource(AsyncAPIResource):
         - The download URL is time-bound and is only valid for 15 minutes.
 
         **NOTE!** This ExportDestination endpoint is available in Beta release version.
-        Beta release features are functional but may be incomplete, and there is no
-        commitment at this stage to particular functionality or timelines.
+        See
+        [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages)
+        for Beta release definition.
 
         Args:
           extra_headers: Send extra headers

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import Dict, Union
 from typing_extensions import Literal
 
 import httpx
@@ -12,7 +12,7 @@ from ..types import (
     compound_aggregation_create_params,
     compound_aggregation_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -59,18 +59,18 @@ class CompoundAggregationsResource(SyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        evaluate_null_aggregations: bool | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AggregationResponse:
         """
         Create a new CompoundAggregation.
@@ -202,7 +202,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompoundAggregationResponse:
         """
         Retrieve a CompoundAggregation using the given UUID.
@@ -243,18 +243,18 @@ class CompoundAggregationsResource(SyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        evaluate_null_aggregations: bool | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AggregationResponse:
         """
         Update the CompoundAggregation with the given UUID.
@@ -387,17 +387,17 @@ class CompoundAggregationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: List[str] | NotGiven = NOT_GIVEN,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[CompoundAggregationResponse]:
         """
         Retrieve a list of all CompoundAggregations.
@@ -467,7 +467,7 @@ class CompoundAggregationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompoundAggregationResponse:
         """
         Delete a CompoundAggregation with the given UUID.
@@ -530,18 +530,18 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        evaluate_null_aggregations: bool | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AggregationResponse:
         """
         Create a new CompoundAggregation.
@@ -673,7 +673,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompoundAggregationResponse:
         """
         Retrieve a CompoundAggregation using the given UUID.
@@ -714,18 +714,18 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         quantity_per_unit: float,
         rounding: Literal["UP", "DOWN", "NEAREST", "NONE"],
         unit: str,
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        evaluate_null_aggregations: bool | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        evaluate_null_aggregations: bool | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AggregationResponse:
         """
         Update the CompoundAggregation with the given UUID.
@@ -858,17 +858,17 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: List[str] | NotGiven = NOT_GIVEN,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompoundAggregationResponse, AsyncCursor[CompoundAggregationResponse]]:
         """
         Retrieve a list of all CompoundAggregations.
@@ -938,7 +938,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompoundAggregationResponse:
         """
         Delete a CompoundAggregation with the given UUID.

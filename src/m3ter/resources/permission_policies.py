@@ -18,7 +18,7 @@ from ..types import (
     permission_policy_remove_from_user_group_params,
     permission_policy_remove_from_service_user_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -70,13 +70,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         org_id: str | None = None,
         name: str,
         permission_policy: Iterable[PermissionStatementResponseParam],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Create a new Permission Policy
@@ -159,7 +159,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Retrieve the permission policy for the UUID
@@ -194,13 +194,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         org_id: str | None = None,
         name: str,
         permission_policy: Iterable[PermissionStatementResponseParam],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Update a Permission Policy for the UUID
@@ -279,14 +279,14 @@ class PermissionPoliciesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[PermissionPolicyResponse]:
         """
         Retrieve a list of PermissionPolicy entities
@@ -337,7 +337,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Delete the PermissionPolicy for the UUID
@@ -371,13 +371,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToServiceUserResponse:
         """
         Add a permission policy to a service user.
@@ -431,13 +431,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         permission_policy_id: str,
         *,
         org_id: str | None = None,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToSupportUserResponse:
         """
         Add a permission policy to support users for an organization.
@@ -487,13 +487,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToUserResponse:
         """
         Add a permission policy to a user.
@@ -548,13 +548,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToUserGroupResponse:
         """
         Add a permission Policy to a user group
@@ -609,13 +609,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromServiceUserResponse:
         """
         Remove a permission policy from a service user.
@@ -674,7 +674,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromSupportUserResponse:
         """
         Remove a permission policy from support users for an organization.
@@ -710,13 +710,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromUserResponse:
         """
         Remove a permission policy from a user.
@@ -771,13 +771,13 @@ class PermissionPoliciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromUserGroupResponse:
         """
         Remove a permission policy from a user group.
@@ -853,13 +853,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         org_id: str | None = None,
         name: str,
         permission_policy: Iterable[PermissionStatementResponseParam],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Create a new Permission Policy
@@ -942,7 +942,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Retrieve the permission policy for the UUID
@@ -977,13 +977,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         org_id: str | None = None,
         name: str,
         permission_policy: Iterable[PermissionStatementResponseParam],
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Update a Permission Policy for the UUID
@@ -1062,14 +1062,14 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PermissionPolicyResponse, AsyncCursor[PermissionPolicyResponse]]:
         """
         Retrieve a list of PermissionPolicy entities
@@ -1120,7 +1120,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyResponse:
         """
         Delete the PermissionPolicy for the UUID
@@ -1154,13 +1154,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToServiceUserResponse:
         """
         Add a permission policy to a service user.
@@ -1214,13 +1214,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         permission_policy_id: str,
         *,
         org_id: str | None = None,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToSupportUserResponse:
         """
         Add a permission policy to support users for an organization.
@@ -1270,13 +1270,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToUserResponse:
         """
         Add a permission policy to a user.
@@ -1331,13 +1331,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyAddToUserGroupResponse:
         """
         Add a permission Policy to a user group
@@ -1392,13 +1392,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromServiceUserResponse:
         """
         Remove a permission policy from a service user.
@@ -1457,7 +1457,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromSupportUserResponse:
         """
         Remove a permission policy from support users for an organization.
@@ -1493,13 +1493,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromUserResponse:
         """
         Remove a permission policy from a user.
@@ -1554,13 +1554,13 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         principal_id: str,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PermissionPolicyRemoveFromUserGroupResponse:
         """
         Remove a permission policy from a user group.

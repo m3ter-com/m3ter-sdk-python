@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import commitment_list_params, commitment_create_params, commitment_search_params, commitment_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -57,38 +57,38 @@ class CommitmentsResource(SyncAPIResource):
         currency: str,
         end_date: Union[str, date],
         start_date: Union[str, date],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        amount_first_bill: float | NotGiven = NOT_GIVEN,
-        amount_pre_paid: float | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        billing_interval: int | NotGiven = NOT_GIVEN,
-        billing_offset: int | NotGiven = NOT_GIVEN,
-        billing_plan_id: str | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        commitment_fee_description: str | NotGiven = NOT_GIVEN,
-        commitment_usage_description: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        amount_first_bill: float | Omit = omit,
+        amount_pre_paid: float | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        billing_interval: int | Omit = omit,
+        billing_offset: int | Omit = omit,
+        billing_plan_id: str | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        commitment_fee_bill_in_advance: bool | Omit = omit,
+        commitment_fee_description: str | Omit = omit,
+        commitment_usage_description: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        drawdowns_accounting_product_id: str | Omit = omit,
+        fee_dates: Iterable[CommitmentFeeParam] | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
-        separate_overage_usage: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        separate_overage_usage: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """Create a new Commitment.
 
@@ -329,7 +329,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """
         Retrieve a specific Commitment.
@@ -371,38 +371,38 @@ class CommitmentsResource(SyncAPIResource):
         currency: str,
         end_date: Union[str, date],
         start_date: Union[str, date],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        amount_first_bill: float | NotGiven = NOT_GIVEN,
-        amount_pre_paid: float | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        billing_interval: int | NotGiven = NOT_GIVEN,
-        billing_offset: int | NotGiven = NOT_GIVEN,
-        billing_plan_id: str | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        commitment_fee_description: str | NotGiven = NOT_GIVEN,
-        commitment_usage_description: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        amount_first_bill: float | Omit = omit,
+        amount_pre_paid: float | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        billing_interval: int | Omit = omit,
+        billing_offset: int | Omit = omit,
+        billing_plan_id: str | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        commitment_fee_bill_in_advance: bool | Omit = omit,
+        commitment_fee_description: str | Omit = omit,
+        commitment_usage_description: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        drawdowns_accounting_product_id: str | Omit = omit,
+        fee_dates: Iterable[CommitmentFeeParam] | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
-        separate_overage_usage: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        separate_overage_usage: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """
         Modify a specific Commitment.
@@ -628,21 +628,21 @@ class CommitmentsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: str | NotGiven = NOT_GIVEN,
-        contract_id: Optional[str] | NotGiven = NOT_GIVEN,
-        date: str | NotGiven = NOT_GIVEN,
-        end_date_end: str | NotGiven = NOT_GIVEN,
-        end_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        contract_id: Optional[str] | Omit = omit,
+        date: str | Omit = omit,
+        end_date_end: str | Omit = omit,
+        end_date_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[CommitmentResponse]:
         """
         Retrieve a list of Commitments.
@@ -723,7 +723,7 @@ class CommitmentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """Remove a specific Commitment.
 
@@ -759,18 +759,18 @@ class CommitmentsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        from_document: int | NotGiven = NOT_GIVEN,
-        operator: Literal["AND", "OR"] | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        search_query: str | NotGiven = NOT_GIVEN,
-        sort_by: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ASC", "DESC"] | NotGiven = NOT_GIVEN,
+        from_document: int | Omit = omit,
+        operator: Literal["AND", "OR"] | Omit = omit,
+        page_size: int | Omit = omit,
+        search_query: str | Omit = omit,
+        sort_by: str | Omit = omit,
+        sort_order: Literal["ASC", "DESC"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentSearchResponse:
         """
         Search for commitment entities.
@@ -880,38 +880,38 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         currency: str,
         end_date: Union[str, date],
         start_date: Union[str, date],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        amount_first_bill: float | NotGiven = NOT_GIVEN,
-        amount_pre_paid: float | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        billing_interval: int | NotGiven = NOT_GIVEN,
-        billing_offset: int | NotGiven = NOT_GIVEN,
-        billing_plan_id: str | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        commitment_fee_description: str | NotGiven = NOT_GIVEN,
-        commitment_usage_description: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        amount_first_bill: float | Omit = omit,
+        amount_pre_paid: float | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        billing_interval: int | Omit = omit,
+        billing_offset: int | Omit = omit,
+        billing_plan_id: str | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        commitment_fee_bill_in_advance: bool | Omit = omit,
+        commitment_fee_description: str | Omit = omit,
+        commitment_usage_description: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        drawdowns_accounting_product_id: str | Omit = omit,
+        fee_dates: Iterable[CommitmentFeeParam] | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
-        separate_overage_usage: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        separate_overage_usage: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """Create a new Commitment.
 
@@ -1152,7 +1152,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """
         Retrieve a specific Commitment.
@@ -1194,38 +1194,38 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         currency: str,
         end_date: Union[str, date],
         start_date: Union[str, date],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        amount_first_bill: float | NotGiven = NOT_GIVEN,
-        amount_pre_paid: float | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        billing_interval: int | NotGiven = NOT_GIVEN,
-        billing_offset: int | NotGiven = NOT_GIVEN,
-        billing_plan_id: str | NotGiven = NOT_GIVEN,
-        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | NotGiven = NOT_GIVEN,
-        commitment_fee_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        commitment_fee_description: str | NotGiven = NOT_GIVEN,
-        commitment_usage_description: str | NotGiven = NOT_GIVEN,
-        contract_id: str | NotGiven = NOT_GIVEN,
-        drawdowns_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        fee_dates: Iterable[CommitmentFeeParam] | NotGiven = NOT_GIVEN,
-        fees_accounting_product_id: str | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        amount_first_bill: float | Omit = omit,
+        amount_pre_paid: float | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        billing_interval: int | Omit = omit,
+        billing_offset: int | Omit = omit,
+        billing_plan_id: str | Omit = omit,
+        child_billing_mode: Literal["PARENT_SUMMARY", "PARENT_BREAKDOWN", "CHILD"] | Omit = omit,
+        commitment_fee_bill_in_advance: bool | Omit = omit,
+        commitment_fee_description: str | Omit = omit,
+        commitment_usage_description: str | Omit = omit,
+        contract_id: str | Omit = omit,
+        drawdowns_accounting_product_id: str | Omit = omit,
+        fee_dates: Iterable[CommitmentFeeParam] | Omit = omit,
+        fees_accounting_product_id: str | Omit = omit,
         line_item_types: List[
             Literal[
                 "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        overage_description: str | NotGiven = NOT_GIVEN,
-        overage_surcharge_percent: float | NotGiven = NOT_GIVEN,
-        product_ids: List[str] | NotGiven = NOT_GIVEN,
-        separate_overage_usage: bool | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        overage_description: str | Omit = omit,
+        overage_surcharge_percent: float | Omit = omit,
+        product_ids: SequenceNotStr[str] | Omit = omit,
+        separate_overage_usage: bool | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """
         Modify a specific Commitment.
@@ -1451,21 +1451,21 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: str | NotGiven = NOT_GIVEN,
-        contract_id: Optional[str] | NotGiven = NOT_GIVEN,
-        date: str | NotGiven = NOT_GIVEN,
-        end_date_end: str | NotGiven = NOT_GIVEN,
-        end_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        contract_id: Optional[str] | Omit = omit,
+        date: str | Omit = omit,
+        end_date_end: str | Omit = omit,
+        end_date_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CommitmentResponse, AsyncCursor[CommitmentResponse]]:
         """
         Retrieve a list of Commitments.
@@ -1546,7 +1546,7 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentResponse:
         """Remove a specific Commitment.
 
@@ -1582,18 +1582,18 @@ class AsyncCommitmentsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        from_document: int | NotGiven = NOT_GIVEN,
-        operator: Literal["AND", "OR"] | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        search_query: str | NotGiven = NOT_GIVEN,
-        sort_by: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ASC", "DESC"] | NotGiven = NOT_GIVEN,
+        from_document: int | Omit = omit,
+        operator: Literal["AND", "OR"] | Omit = omit,
+        page_size: int | Omit = omit,
+        search_query: str | Omit = omit,
+        sort_by: str | Omit = omit,
+        sort_order: Literal["ASC", "DESC"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CommitmentSearchResponse:
         """
         Search for commitment entities.

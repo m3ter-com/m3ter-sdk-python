@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ExternalMappingListParams"]
@@ -25,7 +25,7 @@ class ExternalMappingListParams(TypedDict, total=False):
     integration_config_id: Annotated[str, PropertyInfo(alias="integrationConfigId")]
     """ID of the integration config"""
 
-    m3ter_ids: Annotated[List[str], PropertyInfo(alias="m3terIds")]
+    m3ter_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="m3terIds")]
     """IDs for m3ter entities"""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..types import (
@@ -11,7 +9,7 @@ from ..types import (
     scheduled_event_configuration_create_params,
     scheduled_event_configuration_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -56,13 +54,13 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         field: str,
         name: str,
         offset: int,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Create a new ScheduledEventConfiguration.
@@ -88,11 +86,12 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
               when the scheduled Event will trigger.
 
           version:
-              The version number of the scheduled event configuration:
+              The version number of the entity:
 
-              - **Create entity**: Not valid for initial insertion - do not use for Create. On
-                initial Create, version is set at 1 and listed in the response.
-              - **Update Entity**: On Update, version is required and must match the existing
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
                 version because a check is performed to ensure sequential versioning is
                 preserved. Version is incremented by 1 and listed in the response.
 
@@ -136,7 +135,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Retrieve a ScheduledEventConfiguration for the given UUID.
@@ -173,13 +172,13 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         field: str,
         name: str,
         offset: int,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Update a ScheduledEventConfiguration for the given UUID.
@@ -205,11 +204,12 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
               when the scheduled Event will trigger.
 
           version:
-              The version number of the scheduled event configuration:
+              The version number of the entity:
 
-              - **Create entity**: Not valid for initial insertion - do not use for Create. On
-                initial Create, version is set at 1 and listed in the response.
-              - **Update Entity**: On Update, version is required and must match the existing
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
                 version because a check is performed to ensure sequential versioning is
                 preserved. Version is incremented by 1 and listed in the response.
 
@@ -249,15 +249,15 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[ScheduledEventConfigurationResponse]:
         """
         Retrieve a list of ScheduledEventConfiguration entities
@@ -311,7 +311,7 @@ class ScheduledEventConfigurationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Delete the ScheduledEventConfiguration for the given UUID.
@@ -368,13 +368,13 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         field: str,
         name: str,
         offset: int,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Create a new ScheduledEventConfiguration.
@@ -400,11 +400,12 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
               when the scheduled Event will trigger.
 
           version:
-              The version number of the scheduled event configuration:
+              The version number of the entity:
 
-              - **Create entity**: Not valid for initial insertion - do not use for Create. On
-                initial Create, version is set at 1 and listed in the response.
-              - **Update Entity**: On Update, version is required and must match the existing
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
                 version because a check is performed to ensure sequential versioning is
                 preserved. Version is incremented by 1 and listed in the response.
 
@@ -448,7 +449,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Retrieve a ScheduledEventConfiguration for the given UUID.
@@ -485,13 +486,13 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         field: str,
         name: str,
         offset: int,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Update a ScheduledEventConfiguration for the given UUID.
@@ -517,11 +518,12 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
               when the scheduled Event will trigger.
 
           version:
-              The version number of the scheduled event configuration:
+              The version number of the entity:
 
-              - **Create entity**: Not valid for initial insertion - do not use for Create. On
-                initial Create, version is set at 1 and listed in the response.
-              - **Update Entity**: On Update, version is required and must match the existing
+              - **Create entity:** Not valid for initial insertion of new entity - _do not use
+                for Create_. On initial Create, version is set at 1 and listed in the
+                response.
+              - **Update Entity:** On Update, version is required and must match the existing
                 version because a check is performed to ensure sequential versioning is
                 preserved. Version is incremented by 1 and listed in the response.
 
@@ -561,15 +563,15 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ScheduledEventConfigurationResponse, AsyncCursor[ScheduledEventConfigurationResponse]]:
         """
         Retrieve a list of ScheduledEventConfiguration entities
@@ -623,7 +625,7 @@ class AsyncScheduledEventConfigurationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScheduledEventConfigurationResponse:
         """
         Delete the ScheduledEventConfiguration for the given UUID.

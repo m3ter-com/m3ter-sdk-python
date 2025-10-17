@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..types import transaction_type_list_params, transaction_type_create_params, transaction_type_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,15 +47,15 @@ class TransactionTypesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """Create a new TransactionType for the specified Organization.
 
@@ -124,7 +122,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """
         Retrieves the TransactionType with the given UUID from the specified
@@ -159,15 +157,15 @@ class TransactionTypesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """
         Updates the TransactionType with the specified UUID for the specified
@@ -230,17 +228,17 @@ class TransactionTypesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        archived: bool | NotGiven = NOT_GIVEN,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[TransactionTypeResponse]:
         """Retrieves a list of TransactionType entities for the specified Organization.
 
@@ -308,7 +306,7 @@ class TransactionTypesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """
         Deletes the TransactionType with the given UUID from the specified Organization.
@@ -362,15 +360,15 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """Create a new TransactionType for the specified Organization.
 
@@ -437,7 +435,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """
         Retrieves the TransactionType with the given UUID from the specified
@@ -472,15 +470,15 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """
         Updates the TransactionType with the specified UUID for the specified
@@ -543,17 +541,17 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        archived: bool | NotGiven = NOT_GIVEN,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[TransactionTypeResponse, AsyncCursor[TransactionTypeResponse]]:
         """Retrieves a list of TransactionType entities for the specified Organization.
 
@@ -621,7 +619,7 @@ class AsyncTransactionTypesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TransactionTypeResponse:
         """
         Deletes the TransactionType with the given UUID from the specified Organization.

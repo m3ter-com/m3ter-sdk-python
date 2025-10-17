@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 from ..data_explorer_group_param import DataExplorerGroupParam
 
@@ -32,7 +33,7 @@ class DimensionFilter(TypedDict, total=False):
     meter_id: Required[Annotated[str, PropertyInfo(alias="meterId")]]
     """Meter ID"""
 
-    values: Required[List[str]]
+    values: Required[SequenceNotStr[str]]
     """Values to filter by"""
 
 
@@ -98,7 +99,7 @@ class UsageDataExportScheduleRequestParam(TypedDict, total=False):
     section in our main User Documentation.
     """
 
-    account_ids: Annotated[List[str], PropertyInfo(alias="accountIds")]
+    account_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="accountIds")]
     """List of account IDs to export"""
 
     aggregations: Iterable[Aggregation]
@@ -110,7 +111,7 @@ class UsageDataExportScheduleRequestParam(TypedDict, total=False):
     groups: Iterable[DataExplorerGroupParam]
     """List of groups to apply"""
 
-    meter_ids: Annotated[List[str], PropertyInfo(alias="meterIds")]
+    meter_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="meterIds")]
     """List of meter IDs to export"""
 
     version: int

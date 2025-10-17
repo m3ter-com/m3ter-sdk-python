@@ -16,7 +16,7 @@ from ..types import (
     account_get_children_params,
     account_end_date_billing_entities_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -63,24 +63,24 @@ class AccountsResource(SyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: AddressParam | NotGiven = NOT_GIVEN,
-        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        days_before_bill_due: int | NotGiven = NOT_GIVEN,
-        parent_account_id: str | NotGiven = NOT_GIVEN,
-        purchase_order_number: str | NotGiven = NOT_GIVEN,
-        statement_definition_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        address: AddressParam | Omit = omit,
+        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        config_data: Dict[str, object] | Omit = omit,
+        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
+        currency: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        days_before_bill_due: int | Omit = omit,
+        parent_account_id: str | Omit = omit,
+        purchase_order_number: str | Omit = omit,
+        statement_definition_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """Create a new Account within the Organization.
 
@@ -252,7 +252,7 @@ class AccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """
         Retrieve the Account with the given Account UUID.
@@ -288,24 +288,24 @@ class AccountsResource(SyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: AddressParam | NotGiven = NOT_GIVEN,
-        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        days_before_bill_due: int | NotGiven = NOT_GIVEN,
-        parent_account_id: str | NotGiven = NOT_GIVEN,
-        purchase_order_number: str | NotGiven = NOT_GIVEN,
-        statement_definition_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        address: AddressParam | Omit = omit,
+        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        config_data: Dict[str, object] | Omit = omit,
+        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
+        currency: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        days_before_bill_due: int | Omit = omit,
+        parent_account_id: str | Omit = omit,
+        purchase_order_number: str | Omit = omit,
+        statement_definition_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """
         Update the Account with the given Account UUID.
@@ -477,16 +477,16 @@ class AccountsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[AccountResponse]:
         """
         Retrieve a list of Accounts that can be filtered by Account ID or Account Code.
@@ -544,7 +544,7 @@ class AccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """Delete the Account with the given UUID.
 
@@ -581,13 +581,13 @@ class AccountsResource(SyncAPIResource):
         org_id: str | None = None,
         billing_entities: List[Literal["CONTRACT", "ACCOUNTPLAN", "PREPAYMENT", "PRICINGS", "COUNTER_PRICINGS"]],
         end_date: Union[str, datetime],
-        apply_to_children: bool | NotGiven = NOT_GIVEN,
+        apply_to_children: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountEndDateBillingEntitiesResponse:
         """
         Apply the specified end-date to billing entities associated with an Account.
@@ -645,14 +645,14 @@ class AccountsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        next_token: Optional[str] | NotGiven = NOT_GIVEN,
-        page_size: Optional[int] | NotGiven = NOT_GIVEN,
+        next_token: Optional[str] | Omit = omit,
+        page_size: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """
         Retrieve a list of Accounts that are children of the specified Account.
@@ -694,18 +694,18 @@ class AccountsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        from_document: int | NotGiven = NOT_GIVEN,
-        operator: Literal["AND", "OR"] | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        search_query: str | NotGiven = NOT_GIVEN,
-        sort_by: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ASC", "DESC"] | NotGiven = NOT_GIVEN,
+        from_document: int | Omit = omit,
+        operator: Literal["AND", "OR"] | Omit = omit,
+        page_size: int | Omit = omit,
+        search_query: str | Omit = omit,
+        sort_by: str | Omit = omit,
+        sort_order: Literal["ASC", "DESC"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountSearchResponse:
         """
         Search for Account entities.
@@ -812,24 +812,24 @@ class AsyncAccountsResource(AsyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: AddressParam | NotGiven = NOT_GIVEN,
-        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        days_before_bill_due: int | NotGiven = NOT_GIVEN,
-        parent_account_id: str | NotGiven = NOT_GIVEN,
-        purchase_order_number: str | NotGiven = NOT_GIVEN,
-        statement_definition_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        address: AddressParam | Omit = omit,
+        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        config_data: Dict[str, object] | Omit = omit,
+        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
+        currency: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        days_before_bill_due: int | Omit = omit,
+        parent_account_id: str | Omit = omit,
+        purchase_order_number: str | Omit = omit,
+        statement_definition_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """Create a new Account within the Organization.
 
@@ -1001,7 +1001,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """
         Retrieve the Account with the given Account UUID.
@@ -1037,24 +1037,24 @@ class AsyncAccountsResource(AsyncAPIResource):
         code: str,
         email_address: str,
         name: str,
-        address: AddressParam | NotGiven = NOT_GIVEN,
-        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | NotGiven = NOT_GIVEN,
-        bill_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        config_data: Dict[str, object] | NotGiven = NOT_GIVEN,
-        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | NotGiven = NOT_GIVEN,
-        currency: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        days_before_bill_due: int | NotGiven = NOT_GIVEN,
-        parent_account_id: str | NotGiven = NOT_GIVEN,
-        purchase_order_number: str | NotGiven = NOT_GIVEN,
-        statement_definition_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        address: AddressParam | Omit = omit,
+        auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
+        bill_epoch: Union[str, date] | Omit = omit,
+        config_data: Dict[str, object] | Omit = omit,
+        credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
+        currency: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        days_before_bill_due: int | Omit = omit,
+        parent_account_id: str | Omit = omit,
+        purchase_order_number: str | Omit = omit,
+        statement_definition_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """
         Update the Account with the given Account UUID.
@@ -1226,16 +1226,16 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AccountResponse, AsyncCursor[AccountResponse]]:
         """
         Retrieve a list of Accounts that can be filtered by Account ID or Account Code.
@@ -1293,7 +1293,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """Delete the Account with the given UUID.
 
@@ -1330,13 +1330,13 @@ class AsyncAccountsResource(AsyncAPIResource):
         org_id: str | None = None,
         billing_entities: List[Literal["CONTRACT", "ACCOUNTPLAN", "PREPAYMENT", "PRICINGS", "COUNTER_PRICINGS"]],
         end_date: Union[str, datetime],
-        apply_to_children: bool | NotGiven = NOT_GIVEN,
+        apply_to_children: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountEndDateBillingEntitiesResponse:
         """
         Apply the specified end-date to billing entities associated with an Account.
@@ -1394,14 +1394,14 @@ class AsyncAccountsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        next_token: Optional[str] | NotGiven = NOT_GIVEN,
-        page_size: Optional[int] | NotGiven = NOT_GIVEN,
+        next_token: Optional[str] | Omit = omit,
+        page_size: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountResponse:
         """
         Retrieve a list of Accounts that are children of the specified Account.
@@ -1443,18 +1443,18 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        from_document: int | NotGiven = NOT_GIVEN,
-        operator: Literal["AND", "OR"] | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        search_query: str | NotGiven = NOT_GIVEN,
-        sort_by: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ASC", "DESC"] | NotGiven = NOT_GIVEN,
+        from_document: int | Omit = omit,
+        operator: Literal["AND", "OR"] | Omit = omit,
+        page_size: int | Omit = omit,
+        search_query: str | Omit = omit,
+        sort_by: str | Omit = omit,
+        sort_order: Literal["ASC", "DESC"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AccountSearchResponse:
         """
         Search for Account entities.

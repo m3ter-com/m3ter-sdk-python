@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import Dict, Union, Iterable
 
 import httpx
 
 from ..types import meter_list_params, meter_create_params, meter_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -54,16 +54,16 @@ class MetersResource(SyncAPIResource):
         data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[DerivedFieldParam],
         name: str,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        group_id: str | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        group_id: str | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Create a new Meter.
@@ -185,7 +185,7 @@ class MetersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Retrieve the Meter with the given UUID.
@@ -222,16 +222,16 @@ class MetersResource(SyncAPIResource):
         data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[DerivedFieldParam],
         name: str,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        group_id: str | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        group_id: str | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Update the Meter with the given UUID.
@@ -326,17 +326,17 @@ class MetersResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: List[str] | NotGiven = NOT_GIVEN,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[MeterResponse]:
         """
         Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
@@ -398,7 +398,7 @@ class MetersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Delete the Meter with the given UUID.
@@ -455,16 +455,16 @@ class AsyncMetersResource(AsyncAPIResource):
         data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[DerivedFieldParam],
         name: str,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        group_id: str | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        group_id: str | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Create a new Meter.
@@ -586,7 +586,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Retrieve the Meter with the given UUID.
@@ -623,16 +623,16 @@ class AsyncMetersResource(AsyncAPIResource):
         data_fields: Iterable[DataFieldParam],
         derived_fields: Iterable[DerivedFieldParam],
         name: str,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        group_id: str | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        group_id: str | Omit = omit,
+        product_id: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Update the Meter with the given UUID.
@@ -727,17 +727,17 @@ class AsyncMetersResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: List[str] | NotGiven = NOT_GIVEN,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[MeterResponse, AsyncCursor[MeterResponse]]:
         """
         Retrieve a list of Meters that can be filtered by Product, Meter ID, or Meter
@@ -799,7 +799,7 @@ class AsyncMetersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MeterResponse:
         """
         Delete the Meter with the given UUID.

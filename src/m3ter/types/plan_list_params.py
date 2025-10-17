@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["PlanListParams"]
@@ -13,10 +13,10 @@ __all__ = ["PlanListParams"]
 class PlanListParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    account_id: Annotated[List[str], PropertyInfo(alias="accountId")]
+    account_id: Annotated[SequenceNotStr[str], PropertyInfo(alias="accountId")]
     """List of Account IDs the Plan belongs to."""
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """List of Plan IDs to retrieve."""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import Dict, Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import pricing_list_params, pricing_create_params, pricing_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -53,29 +53,29 @@ class PricingsResource(SyncAPIResource):
         org_id: str | None = None,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        aggregation_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        compound_aggregation_id: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        segment: Dict[str, str] | NotGiven = NOT_GIVEN,
-        tiers_span_plan: bool | NotGiven = NOT_GIVEN,
-        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        aggregation_id: str | Omit = omit,
+        code: str | Omit = omit,
+        compound_aggregation_id: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        overage_pricing_bands: Iterable[PricingBand] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        segment: Dict[str, str] | Omit = omit,
+        tiers_span_plan: bool | Omit = omit,
+        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Create a new Pricing.
@@ -245,7 +245,7 @@ class PricingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Retrieve the Pricing with the given UUID.
@@ -280,29 +280,29 @@ class PricingsResource(SyncAPIResource):
         org_id: str | None = None,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        aggregation_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        compound_aggregation_id: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        segment: Dict[str, str] | NotGiven = NOT_GIVEN,
-        tiers_span_plan: bool | NotGiven = NOT_GIVEN,
-        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        aggregation_id: str | Omit = omit,
+        code: str | Omit = omit,
+        compound_aggregation_id: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        overage_pricing_bands: Iterable[PricingBand] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        segment: Dict[str, str] | Omit = omit,
+        tiers_span_plan: bool | Omit = omit,
+        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Update Pricing for the given UUID.
@@ -468,19 +468,19 @@ class PricingsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        aggregation_id: str | NotGiven = NOT_GIVEN,
-        date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
+        aggregation_id: str | Omit = omit,
+        date: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[PricingResponse]:
         """
         Retrieve a list of Pricings filtered by date, Plan ID, PlanTemplate ID, or
@@ -547,7 +547,7 @@ class PricingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Delete the Pricing with the given UUID.
@@ -602,29 +602,29 @@ class AsyncPricingsResource(AsyncAPIResource):
         org_id: str | None = None,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        aggregation_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        compound_aggregation_id: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        segment: Dict[str, str] | NotGiven = NOT_GIVEN,
-        tiers_span_plan: bool | NotGiven = NOT_GIVEN,
-        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        aggregation_id: str | Omit = omit,
+        code: str | Omit = omit,
+        compound_aggregation_id: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        overage_pricing_bands: Iterable[PricingBand] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        segment: Dict[str, str] | Omit = omit,
+        tiers_span_plan: bool | Omit = omit,
+        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Create a new Pricing.
@@ -794,7 +794,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Retrieve the Pricing with the given UUID.
@@ -829,29 +829,29 @@ class AsyncPricingsResource(AsyncAPIResource):
         org_id: str | None = None,
         pricing_bands: Iterable[PricingBand],
         start_date: Union[str, datetime],
-        accounting_product_id: str | NotGiven = NOT_GIVEN,
-        aggregation_id: str | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        compound_aggregation_id: str | NotGiven = NOT_GIVEN,
-        cumulative: bool | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        end_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        overage_pricing_bands: Iterable[PricingBand] | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
-        segment: Dict[str, str] | NotGiven = NOT_GIVEN,
-        tiers_span_plan: bool | NotGiven = NOT_GIVEN,
-        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        accounting_product_id: str | Omit = omit,
+        aggregation_id: str | Omit = omit,
+        code: str | Omit = omit,
+        compound_aggregation_id: str | Omit = omit,
+        cumulative: bool | Omit = omit,
+        description: str | Omit = omit,
+        end_date: Union[str, datetime] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        overage_pricing_bands: Iterable[PricingBand] | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
+        segment: Dict[str, str] | Omit = omit,
+        tiers_span_plan: bool | Omit = omit,
+        type: Literal["DEBIT", "PRODUCT_CREDIT", "GLOBAL_CREDIT"] | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Update Pricing for the given UUID.
@@ -1017,19 +1017,19 @@ class AsyncPricingsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        aggregation_id: str | NotGiven = NOT_GIVEN,
-        date: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        plan_id: str | NotGiven = NOT_GIVEN,
-        plan_template_id: str | NotGiven = NOT_GIVEN,
+        aggregation_id: str | Omit = omit,
+        date: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        plan_id: str | Omit = omit,
+        plan_template_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PricingResponse, AsyncCursor[PricingResponse]]:
         """
         Retrieve a list of Pricings filtered by date, Plan ID, PlanTemplate ID, or
@@ -1096,7 +1096,7 @@ class AsyncPricingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PricingResponse:
         """
         Delete the Pricing with the given UUID.

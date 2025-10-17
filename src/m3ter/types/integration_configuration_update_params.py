@@ -13,32 +13,10 @@ __all__ = ["IntegrationConfigurationUpdateParams", "Credentials"]
 class IntegrationConfigurationUpdateParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
-    config_data: Required[Annotated[Dict[str, object], PropertyInfo(alias="configData")]]
-    """
-    A flexible object to include any additional configuration data specific to the
-    integration.
-    """
-
-    credentials: Required[Credentials]
-    """
-    Base model for defining integration credentials across different types of
-    integrations.
-    """
-
     destination: Required[str]
     """Denotes the integration destination.
 
     This field identifies the target platform or service for the integration.
-    """
-
-    destination_id: Required[Annotated[str, PropertyInfo(alias="destinationId")]]
-    """The unique identifier (UUID) for the integration destination."""
-
-    entity_id: Required[Annotated[str, PropertyInfo(alias="entityId")]]
-    """The unique identifier (UUID) of the entity.
-
-    This field is used to specify which entity's integration configuration you're
-    updating.
     """
 
     entity_type: Required[Annotated[str, PropertyInfo(alias="entityType")]]
@@ -47,9 +25,31 @@ class IntegrationConfigurationUpdateParams(TypedDict, total=False):
     updated. Must be a valid alphanumeric string.
     """
 
-    integration_credentials_id: Required[Annotated[str, PropertyInfo(alias="integrationCredentialsId")]]
+    config_data: Annotated[Dict[str, object], PropertyInfo(alias="configData")]
+    """
+    A flexible object to include any additional configuration data specific to the
+    integration.
+    """
 
-    name: Required[str]
+    credentials: Credentials
+    """
+    Base model for defining integration credentials across different types of
+    integrations.
+    """
+
+    destination_id: Annotated[str, PropertyInfo(alias="destinationId")]
+    """The unique identifier (UUID) for the integration destination."""
+
+    entity_id: Annotated[str, PropertyInfo(alias="entityId")]
+    """The unique identifier (UUID) of the entity.
+
+    This field is used to specify which entity's integration configuration you're
+    updating.
+    """
+
+    integration_credentials_id: Annotated[str, PropertyInfo(alias="integrationCredentialsId")]
+
+    name: str
 
     version: int
     """The version number of the entity:
@@ -75,6 +75,10 @@ class Credentials(TypedDict, total=False):
             "CHARGEBEE_AUTH",
             "M3TER_SERVICE_USER",
             "STRIPE_SIGNED_REQUEST",
+            "HUBSPOT_ACCESS_TOKEN",
+            "HUBSPOT_CLIENT_SECRET",
+            "OPSGENIE_KEY",
+            "SAP_BYD",
         ]
     ]
     """Specifies the type of authorization required for the integration."""

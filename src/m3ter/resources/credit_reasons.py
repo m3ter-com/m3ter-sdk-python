@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..types import credit_reason_list_params, credit_reason_create_params, credit_reason_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,15 +47,15 @@ class CreditReasonsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """Create a new Credit Reason for your Organization.
 
@@ -125,7 +123,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """
         Retrieve the Credit Reason with the given UUID.
@@ -159,15 +157,15 @@ class CreditReasonsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """
         Update the Credit Reason with the given UUID.
@@ -228,17 +226,17 @@ class CreditReasonsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        archived: bool | NotGiven = NOT_GIVEN,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[CreditReasonResponse]:
         """Retrieve a list of the Credit Reason entities created for your Organization.
 
@@ -305,7 +303,7 @@ class CreditReasonsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """
         Delete the Credit Reason with the given UUID.
@@ -359,15 +357,15 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """Create a new Credit Reason for your Organization.
 
@@ -435,7 +433,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """
         Retrieve the Credit Reason with the given UUID.
@@ -469,15 +467,15 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """
         Update the Credit Reason with the given UUID.
@@ -538,17 +536,17 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        archived: bool | NotGiven = NOT_GIVEN,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CreditReasonResponse, AsyncCursor[CreditReasonResponse]]:
         """Retrieve a list of the Credit Reason entities created for your Organization.
 
@@ -615,7 +613,7 @@ class AsyncCreditReasonsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreditReasonResponse:
         """
         Delete the Credit Reason with the given UUID.

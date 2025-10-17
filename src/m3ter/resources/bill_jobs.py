@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import bill_job_list_params, bill_job_create_params, bill_job_recalculate_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,27 +51,27 @@ class BillJobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        bill_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        bill_frequency_interval: int | NotGiven = NOT_GIVEN,
-        billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
-        day_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        external_invoice_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        last_date_in_billing_period: Union[str, date] | NotGiven = NOT_GIVEN,
-        month_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        target_currency: str | NotGiven = NOT_GIVEN,
-        timezone: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
-        week_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        year_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        bill_date: Union[str, date] | Omit = omit,
+        bill_frequency_interval: int | Omit = omit,
+        billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | Omit = omit,
+        currency_conversions: Iterable[CurrencyConversion] | Omit = omit,
+        day_epoch: Union[str, date] | Omit = omit,
+        due_date: Union[str, date] | Omit = omit,
+        external_invoice_date: Union[str, date] | Omit = omit,
+        last_date_in_billing_period: Union[str, date] | Omit = omit,
+        month_epoch: Union[str, date] | Omit = omit,
+        target_currency: str | Omit = omit,
+        timezone: str | Omit = omit,
+        version: int | Omit = omit,
+        week_epoch: Union[str, date] | Omit = omit,
+        year_epoch: Union[str, date] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Create a new BillJob to handle asynchronous bill calculations for a specific
@@ -244,7 +244,7 @@ class BillJobsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Retrieve a Bill Job for the given UUID.
@@ -276,16 +276,16 @@ class BillJobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        active: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        active: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[BillJobResponse]:
         """
         Retrieve a list of BillJobs.
@@ -361,7 +361,7 @@ class BillJobsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Cancel an ongoing BillJob for the given Organization and BillJob UUID.
@@ -397,14 +397,14 @@ class BillJobsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
-        version: int | NotGiven = NOT_GIVEN,
+        bill_ids: SequenceNotStr[str],
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Create a new BillJob specifically to recalculate existing bills for a given
@@ -489,27 +489,27 @@ class AsyncBillJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_ids: List[str] | NotGiven = NOT_GIVEN,
-        bill_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        bill_frequency_interval: int | NotGiven = NOT_GIVEN,
-        billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | NotGiven = NOT_GIVEN,
-        currency_conversions: Iterable[CurrencyConversion] | NotGiven = NOT_GIVEN,
-        day_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        due_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        external_invoice_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        last_date_in_billing_period: Union[str, date] | NotGiven = NOT_GIVEN,
-        month_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        target_currency: str | NotGiven = NOT_GIVEN,
-        timezone: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
-        week_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
-        year_epoch: Union[str, date] | NotGiven = NOT_GIVEN,
+        account_ids: SequenceNotStr[str] | Omit = omit,
+        bill_date: Union[str, date] | Omit = omit,
+        bill_frequency_interval: int | Omit = omit,
+        billing_frequency: Literal["DAILY", "WEEKLY", "MONTHLY", "ANNUALLY", "AD_HOC"] | Omit = omit,
+        currency_conversions: Iterable[CurrencyConversion] | Omit = omit,
+        day_epoch: Union[str, date] | Omit = omit,
+        due_date: Union[str, date] | Omit = omit,
+        external_invoice_date: Union[str, date] | Omit = omit,
+        last_date_in_billing_period: Union[str, date] | Omit = omit,
+        month_epoch: Union[str, date] | Omit = omit,
+        target_currency: str | Omit = omit,
+        timezone: str | Omit = omit,
+        version: int | Omit = omit,
+        week_epoch: Union[str, date] | Omit = omit,
+        year_epoch: Union[str, date] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Create a new BillJob to handle asynchronous bill calculations for a specific
@@ -682,7 +682,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Retrieve a Bill Job for the given UUID.
@@ -714,16 +714,16 @@ class AsyncBillJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        active: str | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        active: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BillJobResponse, AsyncCursor[BillJobResponse]]:
         """
         Retrieve a list of BillJobs.
@@ -799,7 +799,7 @@ class AsyncBillJobsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Cancel an ongoing BillJob for the given Organization and BillJob UUID.
@@ -835,14 +835,14 @@ class AsyncBillJobsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
-        version: int | NotGiven = NOT_GIVEN,
+        bill_ids: SequenceNotStr[str],
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillJobResponse:
         """
         Create a new BillJob specifically to recalculate existing bills for a given

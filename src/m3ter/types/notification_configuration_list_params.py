@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["NotificationConfigurationListParams"]
@@ -28,7 +28,7 @@ class NotificationConfigurationListParams(TypedDict, total=False):
     are based on the _Event type_ specified by `eventName` are returned.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """A list of specific Notification UUIDs to retrieve."""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["CommitmentListParams"]
@@ -40,7 +41,7 @@ class CommitmentListParams(TypedDict, total=False):
     Only Commitments with end dates on or after this date will be included.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """A list of unique identifiers (UUIDs) for the Commitments to retrieve.
 
     Use this to fetch specific Commitments in a single request.

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ContractListParams"]
@@ -15,12 +16,12 @@ class ContractListParams(TypedDict, total=False):
 
     account_id: Annotated[Optional[str], PropertyInfo(alias="accountId")]
 
-    codes: List[str]
+    codes: SequenceNotStr[str]
     """
     An optional parameter to retrieve specific Contracts based on their short codes.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """
     An optional parameter to filter the list based on specific Contract unique
     identifiers (UUIDs).

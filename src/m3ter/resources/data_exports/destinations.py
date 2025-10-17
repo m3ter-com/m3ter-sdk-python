@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Any, List, Optional, cast
+from typing import Any, Optional, cast
 from typing_extensions import Literal, overload
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -56,16 +56,16 @@ class DestinationsResource(SyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
-        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationCreateResponse:
         """
         Create a new Export Destination to use for your Data Export Schedules or Ad-Hoc
@@ -157,17 +157,17 @@ class DestinationsResource(SyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
-        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        service_account_email: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationCreateResponse:
         """
         Create a new Export Destination to use for your Data Export Schedules or Ad-Hoc
@@ -245,21 +245,21 @@ class DestinationsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bucket_name: str,
-        iam_role_arn: str | NotGiven = NOT_GIVEN,
-        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
-        pool_id: str | NotGiven = NOT_GIVEN,
-        project_number: str | NotGiven = NOT_GIVEN,
-        provider_id: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
+        iam_role_arn: str | Omit = omit,
+        destination_type: Literal["S3"] | Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
+        pool_id: str | Omit = omit,
+        project_number: str | Omit = omit,
+        provider_id: str | Omit = omit,
+        service_account_email: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationCreateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -303,7 +303,7 @@ class DestinationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationRetrieveResponse:
         """
         Retrieve an Export Destination for the given UUID.
@@ -344,16 +344,16 @@ class DestinationsResource(SyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
-        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationUpdateResponse:
         """
         Update an Export Destination for the given UUID.
@@ -445,17 +445,17 @@ class DestinationsResource(SyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
-        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        service_account_email: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationUpdateResponse:
         """
         Update an Export Destination for the given UUID.
@@ -533,21 +533,21 @@ class DestinationsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bucket_name: str,
-        iam_role_arn: str | NotGiven = NOT_GIVEN,
-        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
-        pool_id: str | NotGiven = NOT_GIVEN,
-        project_number: str | NotGiven = NOT_GIVEN,
-        provider_id: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
+        iam_role_arn: str | Omit = omit,
+        destination_type: Literal["S3"] | Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
+        pool_id: str | Omit = omit,
+        project_number: str | Omit = omit,
+        provider_id: str | Omit = omit,
+        service_account_email: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationUpdateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -587,15 +587,15 @@ class DestinationsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[DataExportDestinationResponse]:
         """Retrieve a list of Export Destination entities.
 
@@ -651,7 +651,7 @@ class DestinationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationDeleteResponse:
         """
         Delete an Export Destination for the given UUID.
@@ -716,16 +716,16 @@ class AsyncDestinationsResource(AsyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
-        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationCreateResponse:
         """
         Create a new Export Destination to use for your Data Export Schedules or Ad-Hoc
@@ -817,17 +817,17 @@ class AsyncDestinationsResource(AsyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
-        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        service_account_email: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationCreateResponse:
         """
         Create a new Export Destination to use for your Data Export Schedules or Ad-Hoc
@@ -905,21 +905,21 @@ class AsyncDestinationsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bucket_name: str,
-        iam_role_arn: str | NotGiven = NOT_GIVEN,
-        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
-        pool_id: str | NotGiven = NOT_GIVEN,
-        project_number: str | NotGiven = NOT_GIVEN,
-        provider_id: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
+        iam_role_arn: str | Omit = omit,
+        destination_type: Literal["S3"] | Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
+        pool_id: str | Omit = omit,
+        project_number: str | Omit = omit,
+        provider_id: str | Omit = omit,
+        service_account_email: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationCreateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -963,7 +963,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationRetrieveResponse:
         """
         Retrieve an Export Destination for the given UUID.
@@ -1004,16 +1004,16 @@ class AsyncDestinationsResource(AsyncAPIResource):
         org_id: str | None = None,
         bucket_name: str,
         iam_role_arn: str,
-        destination_type: Literal["S3"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["S3"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationUpdateResponse:
         """
         Update an Export Destination for the given UUID.
@@ -1105,17 +1105,17 @@ class AsyncDestinationsResource(AsyncAPIResource):
         pool_id: str,
         project_number: str,
         provider_id: str,
-        destination_type: Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        destination_type: Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        service_account_email: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationUpdateResponse:
         """
         Update an Export Destination for the given UUID.
@@ -1193,21 +1193,21 @@ class AsyncDestinationsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bucket_name: str,
-        iam_role_arn: str | NotGiven = NOT_GIVEN,
-        destination_type: Literal["S3"] | Literal["GCS"] | NotGiven = NOT_GIVEN,
-        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
-        pool_id: str | NotGiven = NOT_GIVEN,
-        project_number: str | NotGiven = NOT_GIVEN,
-        provider_id: str | NotGiven = NOT_GIVEN,
-        service_account_email: str | NotGiven = NOT_GIVEN,
+        iam_role_arn: str | Omit = omit,
+        destination_type: Literal["S3"] | Literal["GCS"] | Omit = omit,
+        partition_order: Optional[Literal["TYPE_FIRST", "TIME_FIRST"]] | Omit = omit,
+        prefix: str | Omit = omit,
+        version: int | Omit = omit,
+        pool_id: str | Omit = omit,
+        project_number: str | Omit = omit,
+        provider_id: str | Omit = omit,
+        service_account_email: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationUpdateResponse:
         if org_id is None:
             org_id = self._client._get_org_id_path_param()
@@ -1247,15 +1247,15 @@ class AsyncDestinationsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DataExportDestinationResponse, AsyncCursor[DataExportDestinationResponse]]:
         """Retrieve a list of Export Destination entities.
 
@@ -1311,7 +1311,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DestinationDeleteResponse:
         """
         Delete an Export Destination for the given UUID.

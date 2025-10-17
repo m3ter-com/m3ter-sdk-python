@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +15,7 @@ from ...types import (
     bill_update_status_params,
     bill_latest_by_account_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .line_items import (
@@ -95,13 +95,13 @@ class BillsResource(SyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Retrieve the Bill with the given UUID.
@@ -142,27 +142,27 @@ class BillsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: str | NotGiven = NOT_GIVEN,
-        additional: List[str] | NotGiven = NOT_GIVEN,
-        bill_date: str | NotGiven = NOT_GIVEN,
-        bill_date_end: str | NotGiven = NOT_GIVEN,
-        bill_date_start: str | NotGiven = NOT_GIVEN,
-        billing_frequency: Optional[str] | NotGiven = NOT_GIVEN,
-        exclude_line_items: bool | NotGiven = NOT_GIVEN,
-        external_invoice_date_end: str | NotGiven = NOT_GIVEN,
-        external_invoice_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        include_bill_total: bool | NotGiven = NOT_GIVEN,
-        locked: bool | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        status: Literal["PENDING", "APPROVED"] | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        additional: SequenceNotStr[str] | Omit = omit,
+        bill_date: str | Omit = omit,
+        bill_date_end: str | Omit = omit,
+        bill_date_start: str | Omit = omit,
+        billing_frequency: Optional[str] | Omit = omit,
+        exclude_line_items: bool | Omit = omit,
+        external_invoice_date_end: str | Omit = omit,
+        external_invoice_date_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        include_bill_total: bool | Omit = omit,
+        locked: bool | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        status: Literal["PENDING", "APPROVED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[BillResponse]:
         """
         Retrieve a list of Bills.
@@ -260,7 +260,7 @@ class BillsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Delete the Bill with the given UUID.
@@ -298,16 +298,16 @@ class BillsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
-        account_ids: str | NotGiven = NOT_GIVEN,
-        external_invoice_date_end: str | NotGiven = NOT_GIVEN,
-        external_invoice_date_start: str | NotGiven = NOT_GIVEN,
+        bill_ids: SequenceNotStr[str],
+        account_ids: str | Omit = omit,
+        external_invoice_date_end: str | Omit = omit,
+        external_invoice_date_start: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillApproveResponse:
         """
         Approve multiple Bills for the specified Organization based on the given
@@ -376,13 +376,13 @@ class BillsResource(SyncAPIResource):
         account_id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Retrieve the latest Bill for the given Account.
@@ -432,7 +432,7 @@ class BillsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """Lock the specific Bill identified by the given UUID.
 
@@ -471,18 +471,18 @@ class BillsResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        from_document: int | NotGiven = NOT_GIVEN,
-        operator: Literal["AND", "OR"] | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        search_query: str | NotGiven = NOT_GIVEN,
-        sort_by: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ASC", "DESC"] | NotGiven = NOT_GIVEN,
+        from_document: int | Omit = omit,
+        operator: Literal["AND", "OR"] | Omit = omit,
+        page_size: int | Omit = omit,
+        search_query: str | Omit = omit,
+        sort_by: str | Omit = omit,
+        sort_order: Literal["ASC", "DESC"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillSearchResponse:
         """
         Search for Bill entities.
@@ -572,7 +572,7 @@ class BillsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Updates the status of a specified Bill with the given Bill ID.
@@ -645,13 +645,13 @@ class AsyncBillsResource(AsyncAPIResource):
         id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Retrieve the Bill with the given UUID.
@@ -692,27 +692,27 @@ class AsyncBillsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: str | NotGiven = NOT_GIVEN,
-        additional: List[str] | NotGiven = NOT_GIVEN,
-        bill_date: str | NotGiven = NOT_GIVEN,
-        bill_date_end: str | NotGiven = NOT_GIVEN,
-        bill_date_start: str | NotGiven = NOT_GIVEN,
-        billing_frequency: Optional[str] | NotGiven = NOT_GIVEN,
-        exclude_line_items: bool | NotGiven = NOT_GIVEN,
-        external_invoice_date_end: str | NotGiven = NOT_GIVEN,
-        external_invoice_date_start: str | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        include_bill_total: bool | NotGiven = NOT_GIVEN,
-        locked: bool | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        status: Literal["PENDING", "APPROVED"] | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        additional: SequenceNotStr[str] | Omit = omit,
+        bill_date: str | Omit = omit,
+        bill_date_end: str | Omit = omit,
+        bill_date_start: str | Omit = omit,
+        billing_frequency: Optional[str] | Omit = omit,
+        exclude_line_items: bool | Omit = omit,
+        external_invoice_date_end: str | Omit = omit,
+        external_invoice_date_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        include_bill_total: bool | Omit = omit,
+        locked: bool | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        status: Literal["PENDING", "APPROVED"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BillResponse, AsyncCursor[BillResponse]]:
         """
         Retrieve a list of Bills.
@@ -810,7 +810,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Delete the Bill with the given UUID.
@@ -848,16 +848,16 @@ class AsyncBillsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        bill_ids: List[str],
-        account_ids: str | NotGiven = NOT_GIVEN,
-        external_invoice_date_end: str | NotGiven = NOT_GIVEN,
-        external_invoice_date_start: str | NotGiven = NOT_GIVEN,
+        bill_ids: SequenceNotStr[str],
+        account_ids: str | Omit = omit,
+        external_invoice_date_end: str | Omit = omit,
+        external_invoice_date_start: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillApproveResponse:
         """
         Approve multiple Bills for the specified Organization based on the given
@@ -926,13 +926,13 @@ class AsyncBillsResource(AsyncAPIResource):
         account_id: str,
         *,
         org_id: str | None = None,
-        additional: List[str] | NotGiven = NOT_GIVEN,
+        additional: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Retrieve the latest Bill for the given Account.
@@ -982,7 +982,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """Lock the specific Bill identified by the given UUID.
 
@@ -1021,18 +1021,18 @@ class AsyncBillsResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        from_document: int | NotGiven = NOT_GIVEN,
-        operator: Literal["AND", "OR"] | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        search_query: str | NotGiven = NOT_GIVEN,
-        sort_by: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ASC", "DESC"] | NotGiven = NOT_GIVEN,
+        from_document: int | Omit = omit,
+        operator: Literal["AND", "OR"] | Omit = omit,
+        page_size: int | Omit = omit,
+        search_query: str | Omit = omit,
+        sort_by: str | Omit = omit,
+        sort_order: Literal["ASC", "DESC"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillSearchResponse:
         """
         Search for Bill entities.
@@ -1122,7 +1122,7 @@ class AsyncBillsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BillResponse:
         """
         Updates the status of a specified Bill with the given Bill ID.

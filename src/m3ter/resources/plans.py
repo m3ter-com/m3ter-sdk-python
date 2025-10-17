@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import Dict, Union
 
 import httpx
 
 from ..types import plan_list_params, plan_create_params, plan_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,25 +51,25 @@ class PlansResource(SyncAPIResource):
         code: str,
         name: str,
         plan_template_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
-        bespoke: bool | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge: float | NotGiven = NOT_GIVEN,
-        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        bespoke: bool | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_accounting_product_id: str | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge: float | Omit = omit,
+        standing_charge_accounting_product_id: str | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Create a new Plan.
@@ -209,7 +209,7 @@ class PlansResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Retrieve the Plan with the given UUID.
@@ -245,25 +245,25 @@ class PlansResource(SyncAPIResource):
         code: str,
         name: str,
         plan_template_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
-        bespoke: bool | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge: float | NotGiven = NOT_GIVEN,
-        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        bespoke: bool | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_accounting_product_id: str | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge: float | Omit = omit,
+        standing_charge_accounting_product_id: str | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Update the Plan with the given UUID.
@@ -403,17 +403,17 @@ class PlansResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
+        account_id: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[PlanResponse]:
         """
         Retrieve a list of Plans that can be filtered by Product, Account, or Plan ID.
@@ -473,7 +473,7 @@ class PlansResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Delete the Plan with the given UUID.
@@ -529,25 +529,25 @@ class AsyncPlansResource(AsyncAPIResource):
         code: str,
         name: str,
         plan_template_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
-        bespoke: bool | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge: float | NotGiven = NOT_GIVEN,
-        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        bespoke: bool | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_accounting_product_id: str | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge: float | Omit = omit,
+        standing_charge_accounting_product_id: str | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Create a new Plan.
@@ -687,7 +687,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Retrieve the Plan with the given UUID.
@@ -723,25 +723,25 @@ class AsyncPlansResource(AsyncAPIResource):
         code: str,
         name: str,
         plan_template_id: str,
-        account_id: str | NotGiven = NOT_GIVEN,
-        bespoke: bool | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge: float | NotGiven = NOT_GIVEN,
-        standing_charge_accounting_product_id: str | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        bespoke: bool | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_accounting_product_id: str | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge: float | Omit = omit,
+        standing_charge_accounting_product_id: str | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Update the Plan with the given UUID.
@@ -881,17 +881,17 @@ class AsyncPlansResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        account_id: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
+        account_id: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PlanResponse, AsyncCursor[PlanResponse]]:
         """
         Retrieve a list of Plans that can be filtered by Product, Account, or Plan ID.
@@ -951,7 +951,7 @@ class AsyncPlansResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanResponse:
         """
         Delete the Plan with the given UUID.

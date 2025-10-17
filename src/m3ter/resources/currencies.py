@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import currency_list_params, currency_create_params, currency_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,18 +49,18 @@ class CurrenciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        max_decimal_places: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        max_decimal_places: int | Omit = omit,
         rounding_mode: Literal["UP", "DOWN", "CEILING", "FLOOR", "HALF_UP", "HALF_DOWN", "HALF_EVEN", "UNNECESSARY"]
-        | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """
         Creates a new Currency for the specified Organization.
@@ -134,7 +133,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """Retrieve the specified Currency with the given UUID.
 
@@ -170,18 +169,18 @@ class CurrenciesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        max_decimal_places: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        max_decimal_places: int | Omit = omit,
         rounding_mode: Literal["UP", "DOWN", "CEILING", "FLOOR", "HALF_UP", "HALF_DOWN", "HALF_EVEN", "UNNECESSARY"]
-        | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """
         Update a Currency with the given UUID.
@@ -251,17 +250,17 @@ class CurrenciesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        archived: bool | NotGiven = NOT_GIVEN,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[CurrencyResponse]:
         """
         Retrieve a list of Currencies.
@@ -332,7 +331,7 @@ class CurrenciesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """
         Delete the Currency with the given UUID.
@@ -389,18 +388,18 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        max_decimal_places: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        max_decimal_places: int | Omit = omit,
         rounding_mode: Literal["UP", "DOWN", "CEILING", "FLOOR", "HALF_UP", "HALF_DOWN", "HALF_EVEN", "UNNECESSARY"]
-        | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """
         Creates a new Currency for the specified Organization.
@@ -473,7 +472,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """Retrieve the specified Currency with the given UUID.
 
@@ -509,18 +508,18 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         name: str,
-        archived: bool | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        max_decimal_places: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        code: str | Omit = omit,
+        max_decimal_places: int | Omit = omit,
         rounding_mode: Literal["UP", "DOWN", "CEILING", "FLOOR", "HALF_UP", "HALF_DOWN", "HALF_EVEN", "UNNECESSARY"]
-        | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """
         Update a Currency with the given UUID.
@@ -590,17 +589,17 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        archived: bool | NotGiven = NOT_GIVEN,
-        codes: List[str] | NotGiven = NOT_GIVEN,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
+        archived: bool | Omit = omit,
+        codes: SequenceNotStr[str] | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CurrencyResponse, AsyncCursor[CurrencyResponse]]:
         """
         Retrieve a list of Currencies.
@@ -671,7 +670,7 @@ class AsyncCurrenciesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CurrencyResponse:
         """
         Delete the Currency with the given UUID.

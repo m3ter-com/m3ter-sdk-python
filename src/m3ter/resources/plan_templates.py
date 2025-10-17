@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import Dict, Union
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import plan_template_list_params, plan_template_create_params, plan_template_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -54,24 +54,24 @@ class PlanTemplatesResource(SyncAPIResource):
         name: str,
         product_id: str,
         standing_charge: float,
-        bill_frequency_interval: int | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        standing_charge_interval: int | NotGiven = NOT_GIVEN,
-        standing_charge_offset: int | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_frequency_interval: int | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        standing_charge_interval: int | Omit = omit,
+        standing_charge_offset: int | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Create a new PlanTemplate.
@@ -237,7 +237,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Retrieve a specific PlanTemplate.
@@ -278,24 +278,24 @@ class PlanTemplatesResource(SyncAPIResource):
         name: str,
         product_id: str,
         standing_charge: float,
-        bill_frequency_interval: int | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        standing_charge_interval: int | NotGiven = NOT_GIVEN,
-        standing_charge_offset: int | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_frequency_interval: int | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        standing_charge_interval: int | Omit = omit,
+        standing_charge_offset: int | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Update a specific PlanTemplate.
@@ -462,16 +462,16 @@ class PlanTemplatesResource(SyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursor[PlanTemplateResponse]:
         """
         Retrieve a list of PlanTemplates.
@@ -534,7 +534,7 @@ class PlanTemplatesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Delete a specific PlanTemplate.
@@ -595,24 +595,24 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         name: str,
         product_id: str,
         standing_charge: float,
-        bill_frequency_interval: int | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        standing_charge_interval: int | NotGiven = NOT_GIVEN,
-        standing_charge_offset: int | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_frequency_interval: int | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        standing_charge_interval: int | Omit = omit,
+        standing_charge_offset: int | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Create a new PlanTemplate.
@@ -778,7 +778,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Retrieve a specific PlanTemplate.
@@ -819,24 +819,24 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         name: str,
         product_id: str,
         standing_charge: float,
-        bill_frequency_interval: int | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        custom_fields: Dict[str, Union[str, float]] | NotGiven = NOT_GIVEN,
-        minimum_spend: float | NotGiven = NOT_GIVEN,
-        minimum_spend_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        minimum_spend_description: str | NotGiven = NOT_GIVEN,
-        ordinal: int | NotGiven = NOT_GIVEN,
-        standing_charge_bill_in_advance: bool | NotGiven = NOT_GIVEN,
-        standing_charge_description: str | NotGiven = NOT_GIVEN,
-        standing_charge_interval: int | NotGiven = NOT_GIVEN,
-        standing_charge_offset: int | NotGiven = NOT_GIVEN,
-        version: int | NotGiven = NOT_GIVEN,
+        bill_frequency_interval: int | Omit = omit,
+        code: str | Omit = omit,
+        custom_fields: Dict[str, Union[str, float]] | Omit = omit,
+        minimum_spend: float | Omit = omit,
+        minimum_spend_bill_in_advance: bool | Omit = omit,
+        minimum_spend_description: str | Omit = omit,
+        ordinal: int | Omit = omit,
+        standing_charge_bill_in_advance: bool | Omit = omit,
+        standing_charge_description: str | Omit = omit,
+        standing_charge_interval: int | Omit = omit,
+        standing_charge_offset: int | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Update a specific PlanTemplate.
@@ -1003,16 +1003,16 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         self,
         *,
         org_id: str | None = None,
-        ids: List[str] | NotGiven = NOT_GIVEN,
-        next_token: str | NotGiven = NOT_GIVEN,
-        page_size: int | NotGiven = NOT_GIVEN,
-        product_id: str | NotGiven = NOT_GIVEN,
+        ids: SequenceNotStr[str] | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
+        product_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PlanTemplateResponse, AsyncCursor[PlanTemplateResponse]]:
         """
         Retrieve a list of PlanTemplates.
@@ -1075,7 +1075,7 @@ class AsyncPlanTemplatesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlanTemplateResponse:
         """
         Delete a specific PlanTemplate.

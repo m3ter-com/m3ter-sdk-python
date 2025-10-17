@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import List, Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["StatementDefinitionUpdateParams", "Dimension", "Measure"]
@@ -15,7 +16,7 @@ class StatementDefinitionUpdateParams(TypedDict, total=False):
 
     aggregation_frequency: Required[
         Annotated[
-            Literal["ORIGINAL", "HOUR", "DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
+            Literal["DAY", "WEEK", "MONTH", "QUARTER", "YEAR", "WHOLE_PERIOD"],
             PropertyInfo(alias="aggregationFrequency"),
         ]
     ]
@@ -55,15 +56,24 @@ class StatementDefinitionUpdateParams(TypedDict, total=False):
 
 
 class Dimension(TypedDict, total=False):
-    dimension_attributes: Annotated[List[str], PropertyInfo(alias="dimensionAttributes")]
-    """Attributes belonging to the dimension"""
+    filter: Required[SequenceNotStr[str]]
+    """The value of a Dimension to use as a filter.
 
-    dimension_name: Annotated[str, PropertyInfo(alias="dimensionName")]
-    """The name of a dimension"""
+    Use "\\**" as a wildcard to filter on all Dimension values.
+    """
+
+    name: Required[str]
+    """The name of the Dimension to target in the Meter."""
+
+    attributes: SequenceNotStr[str]
+    """The Dimension attribute to target."""
+
+    meter_id: Annotated[str, PropertyInfo(alias="meterId")]
+    """The unique identifier (UUID) of the Meter containing this Dimension."""
 
 
 class Measure(TypedDict, total=False):
-    aggregations: List[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE"]]
+    aggregations: List[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]]
     """A list of Aggregations to apply to the Measure."""
 
     meter_id: Annotated[str, PropertyInfo(alias="meterId")]

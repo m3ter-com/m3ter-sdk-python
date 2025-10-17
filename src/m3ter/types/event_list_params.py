@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EventListParams"]
@@ -30,7 +31,7 @@ class EventListParams(TypedDict, total=False):
     - DataExportJobFailure
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """List of Event UUIDs to filter the results.
 
     **NOTE:** cannot be used with other filters.

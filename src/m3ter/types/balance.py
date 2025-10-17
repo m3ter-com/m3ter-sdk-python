@@ -80,7 +80,12 @@ class Balance(BaseModel):
     line_item_types: Optional[
         List[
             Literal[
-                "STANDING_CHARGE", "USAGE", "MINIMUM_SPEND", "COUNTER_RUNNING_TOTAL_CHARGE", "COUNTER_ADJUSTMENT_DEBIT"
+                "STANDING_CHARGE",
+                "USAGE",
+                "MINIMUM_SPEND",
+                "COUNTER_RUNNING_TOTAL_CHARGE",
+                "COUNTER_ADJUSTMENT_DEBIT",
+                "AD_HOC",
             ]
         ]
     ] = FieldInfo(alias="lineItemTypes", default=None)
