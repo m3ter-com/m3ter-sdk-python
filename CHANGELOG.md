@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.7.0 (2025-10-17)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** Add examples to integrations and events ([099feea](https://github.com/m3ter-com/m3ter-sdk-python/commit/099feeab5738656f8d33ef010c95e18377d8588f))
+* improve future compat with pydantic v3 ([1996ec4](https://github.com/m3ter-com/m3ter-sdk-python/commit/1996ec48ff4536322cf9e2c472ec55020e820aa0))
+* **types:** replace List[str] with SequenceNotStr in params ([15e1524](https://github.com/m3ter-com/m3ter-sdk-python/commit/15e152408c618ea346f2b38280d423cfad37fd78))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([cba95ba](https://github.com/m3ter-com/m3ter-sdk-python/commit/cba95bab4f30c95de1c1aee73ea23a5e98e2a536))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([d10b4ef](https://github.com/m3ter-com/m3ter-sdk-python/commit/d10b4efcfedc4f2537a5d71ffa41ae2e6800cb9e))
+* do not install brew dependencies in ./scripts/bootstrap by default ([bb9147b](https://github.com/m3ter-com/m3ter-sdk-python/commit/bb9147b097188453c20745126411b0310fd60df7))
+* **internal:** add Sequence related utils ([23c2b7a](https://github.com/m3ter-com/m3ter-sdk-python/commit/23c2b7a423e79f8f86d828e9feff4d79ecb7e316))
+* **internal:** change ci workflow machines ([1a56dff](https://github.com/m3ter-com/m3ter-sdk-python/commit/1a56dff78e573d029055c993e24a464d28cc8d09))
+* **internal:** detect missing future annotations with ruff ([165c6e4](https://github.com/m3ter-com/m3ter-sdk-python/commit/165c6e47dabb84e73bd95e7860b59426063970cb))
+* **internal:** fix ruff target version ([bf15d2f](https://github.com/m3ter-com/m3ter-sdk-python/commit/bf15d2f70321aa887acff92aa26dab49f019c0e6))
+* **internal:** move mypy configurations to `pyproject.toml` file ([e8665c2](https://github.com/m3ter-com/m3ter-sdk-python/commit/e8665c2940935a84e3c7e4399734d06094668fbd))
+* **internal:** update comment in script ([5daea5b](https://github.com/m3ter-com/m3ter-sdk-python/commit/5daea5be80b1e7503cfb17a1236fddb85be5374e))
+* **internal:** update pydantic dependency ([e157197](https://github.com/m3ter-com/m3ter-sdk-python/commit/e157197788f8ebf8662d07b4158d6c9154ee5e09))
+* **internal:** update pyright exclude list ([0200662](https://github.com/m3ter-com/m3ter-sdk-python/commit/020066272ddd2d2a52b751eedc9491b2dc9a199b))
+* **tests:** simplify `get_platform` test ([a8cac9b](https://github.com/m3ter-com/m3ter-sdk-python/commit/a8cac9bb8c2b5be730e7bb491a49ef96b282aa9f))
+* **types:** change optional parameter type from NotGiven to Omit ([714a76a](https://github.com/m3ter-com/m3ter-sdk-python/commit/714a76a83a89cda259cdc465f52032fade9665e7))
+* update @stainless-api/prism-cli to v5.15.0 ([64023fe](https://github.com/m3ter-com/m3ter-sdk-python/commit/64023fe8e9fc700d2a3af5bd2da556708a939e9d))
+* update github action ([3744158](https://github.com/m3ter-com/m3ter-sdk-python/commit/3744158773b98848f120ceeb309e4a0dd2164cb5))
+
 ## 0.6.0 (2025-08-01)
 
 Full Changelog: [v0.5.0-alpha...v0.6.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.5.0-alpha...v0.6.0)
