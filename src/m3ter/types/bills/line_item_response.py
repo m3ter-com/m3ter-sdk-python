@@ -73,6 +73,7 @@ class LineItemResponse(BaseModel):
     """
 
     balance_id: Optional[str] = FieldInfo(alias="balanceId", default=None)
+    """The unique identifier (UUID) for the Balance associated with this line item."""
 
     band_usage: Optional[List[BandUsage]] = FieldInfo(alias="bandUsage", default=None)
     """
@@ -84,15 +85,16 @@ class LineItemResponse(BaseModel):
     """The unique identifier (UUID) for the Bill that includes this line item."""
 
     charge_id: Optional[str] = FieldInfo(alias="chargeId", default=None)
+    """The unique identifier (UUID) for the Charge associated with this line item."""
 
     commitment_id: Optional[str] = FieldInfo(alias="commitmentId", default=None)
-    """The unique identifier (UUID) of the Commitment _(if this is used)_."""
+    """The unique identifier (UUID) of the Commitment associated with this line item."""
 
     compound_aggregation_id: Optional[str] = FieldInfo(alias="compoundAggregationId", default=None)
     """A unique identifier (UUID) for the Compound Aggregation, if applicable."""
 
     contract_id: Optional[str] = FieldInfo(alias="contractId", default=None)
-    """The unique identifier (UUID) for the contract associated with this line item."""
+    """The unique identifier (UUID) for the Contract associated with this line item."""
 
     conversion_rate: Optional[float] = FieldInfo(alias="conversionRate", default=None)
     """The currency conversion rate _(if used)_ for the line item."""
@@ -103,9 +105,10 @@ class LineItemResponse(BaseModel):
     """
 
     counter_id: Optional[str] = FieldInfo(alias="counterId", default=None)
+    """The unique identifier (UUID) for the Counter associated with this line item."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
-    """The unique identifier (UUID) for the user who created the Bill line item."""
+    """The ID of the user who created this line item."""
 
     credit_type_id: Optional[str] = FieldInfo(alias="creditTypeId", default=None)
     """The unique identifier (UUID) for the type of credit applied to this line item."""
@@ -117,19 +120,12 @@ class LineItemResponse(BaseModel):
     """
 
     description: Optional[str] = None
-    """A detailed description providing context for the line item within the Bill."""
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
-    """
-    The date and time _(in ISO 8601 format)_ when the Bill line item was first
-    created.
-    """
+    """The DateTime when the line item was created."""
 
     dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
-    """
-    The date and time _(in ISO 8601 format)_ when the Bill line item was last
-    modified.
-    """
+    """The DateTime when the line item was last modified."""
 
     group: Optional[Dict[str, str]] = None
 
@@ -138,16 +134,10 @@ class LineItemResponse(BaseModel):
     Boolean flag indicating whether the Bill line item has associated statement
     usage in JSON format. When a Bill statement is generated, usage line items have
     their usage stored in JSON format.
-
-    See
-    [Working with Bill Statements](https://www.m3ter.com/docs/guides/running-viewing-and-managing-bills/working-with-bill-statements)
-    for more information.
     """
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
-    """
-    The unique identifier (UUID) for the user who last modified this Bill line item.
-    """
+    """The ID of the user who last modified this line item."""
 
     line_item_type: Optional[
         Literal[
@@ -169,6 +159,7 @@ class LineItemResponse(BaseModel):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
     ] = FieldInfo(alias="lineItemType", default=None)
 
@@ -176,13 +167,10 @@ class LineItemResponse(BaseModel):
     """The unique identifier (UUID) of the Meter responsible for tracking usage."""
 
     plan_group_id: Optional[str] = FieldInfo(alias="planGroupId", default=None)
-    """The UUID of the PlanGroup.
-
-    The unique identifier (UUID) for the PlanGroup, if applicable.
-    """
+    """The unique identifier (UUID) of the Plan Group associated with this line item."""
 
     plan_id: Optional[str] = FieldInfo(alias="planId", default=None)
-    """A unique identifier (UUID) for the billing Plan associated with this line item,"""
+    """A unique identifier (UUID) for the billing Plan associated with this line item."""
 
     pricing_id: Optional[str] = FieldInfo(alias="pricingId", default=None)
     """The unique identifier (UUID) of the Pricing used for this line item,"""
@@ -191,7 +179,6 @@ class LineItemResponse(BaseModel):
     """The code of the Product associated with this line item."""
 
     product_id: Optional[str] = FieldInfo(alias="productId", default=None)
-    """The unique identifier (UUID) for the associated Product."""
 
     product_name: Optional[str] = FieldInfo(alias="productName", default=None)
     """The name of the Product associated with this line item."""
@@ -200,23 +187,14 @@ class LineItemResponse(BaseModel):
     """The amount of the product or service used in this line item."""
 
     reason_id: Optional[str] = FieldInfo(alias="reasonId", default=None)
-    """The UUID of the reason used for the line item.
-
+    """
     A unique identifier (UUID) for the reason or justification for this line item,
     if applicable.
     """
 
     referenced_bill_id: Optional[str] = FieldInfo(alias="referencedBillId", default=None)
-    """
-    A unique identifier (UUID) for a Bill that this line item may be related to or
-    derived from.
-    """
 
     referenced_line_item_id: Optional[str] = FieldInfo(alias="referencedLineItemId", default=None)
-    """
-    A unique identifier (UUID) for another line item that this line item may be
-    related to or derived from.
-    """
 
     segment: Optional[Dict[str, str]] = None
     """Specifies the segment name or identifier when segmented Aggregation is used.
@@ -225,13 +203,11 @@ class LineItemResponse(BaseModel):
     """
 
     sequence_number: Optional[int] = FieldInfo(alias="sequenceNumber", default=None)
-    """The number used for sequential invoices."""
+    """The line item sequence number."""
 
     service_period_end_date: Optional[datetime] = FieldInfo(alias="servicePeriodEndDate", default=None)
-    """The _(exclusive)_ end date for the service period in ISO 68601 format."""
 
     service_period_start_date: Optional[datetime] = FieldInfo(alias="servicePeriodStartDate", default=None)
-    """The _(inclusive)_ start date for the service period in ISO 8601 format."""
 
     subtotal: Optional[float] = None
     """

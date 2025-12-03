@@ -12,8 +12,8 @@ __all__ = ["UserResponse"]
 
 
 class UserResponse(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier (UUID) of this user."""
+    id: str
+    """The UUID of the entity."""
 
     contact_number: Optional[str] = FieldInfo(alias="contactNumber", default=None)
     """The user's contact telephone number."""

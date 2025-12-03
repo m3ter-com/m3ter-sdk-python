@@ -16,6 +16,16 @@ class OrganizationConfigResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
+    allow_negative_balances: Optional[bool] = FieldInfo(alias="allowNegativeBalances", default=None)
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
+    allow_overlapping_plans: Optional[bool] = FieldInfo(alias="allowOverlappingPlans", default=None)
+    """Allows plans to overlap time periods for different contracts."""
+
     auto_approve_bills_grace_period: Optional[int] = FieldInfo(alias="autoApproveBillsGracePeriod", default=None)
     """Grace period before bills are auto-approved.
 

@@ -12,7 +12,7 @@ __all__ = ["InvitationResponse"]
 
 class InvitationResponse(BaseModel):
     id: str
-    """The UUID of the invitation."""
+    """The UUID of the entity."""
 
     accepted: bool
     """Boolean indicating whether the user has accepted the invitation.
@@ -57,9 +57,6 @@ class InvitationResponse(BaseModel):
     working in the m3ter Organization.
     """
 
-    version: int
-    """The version number. Default value when newly created is one."""
-
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The UUID of the user who created the invitation."""
 
@@ -71,3 +68,12 @@ class InvitationResponse(BaseModel):
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The UUID of the user who last modified the invitation."""
+
+    version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

@@ -45,6 +45,9 @@ class IntegrationConfigurationResponse(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created this item."""
 
+    destination_id: Optional[str] = FieldInfo(alias="destinationId", default=None)
+    """Identifier of the destination"""
+
     dt_completed: Optional[datetime] = FieldInfo(alias="dtCompleted", default=None)
     """The date and time the integration was completed. _(in ISO-8601 format)_."""
 
@@ -65,6 +68,9 @@ class IntegrationConfigurationResponse(BaseModel):
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The ID of the user who last modified this item."""
+
+    parent_integration_run_id: Optional[str] = FieldInfo(alias="parentIntegrationRunId", default=None)
+    """ID of the parent integration run, or null if this is a parent integration run"""
 
     url: Optional[str] = None
     """The URL of the entity in the destination system if available."""

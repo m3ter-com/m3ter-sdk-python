@@ -48,6 +48,8 @@ class DebitLineItemUpdateParams(TypedDict, total=False):
     _(inclusive of the starting date)_.
     """
 
+    amount_to_apply_on_bill: Annotated[float, PropertyInfo(alias="amountToApplyOnBill")]
+
     debit_reason_id: Annotated[str, PropertyInfo(alias="debitReasonId")]
     """The ID of the Debit Reason given for this debit line item."""
 
@@ -71,6 +73,7 @@ class DebitLineItemUpdateParams(TypedDict, total=False):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ],
         PropertyInfo(alias="lineItemType"),
     ]

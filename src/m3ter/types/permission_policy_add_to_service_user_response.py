@@ -12,7 +12,8 @@ __all__ = ["PermissionPolicyAddToServiceUserResponse"]
 
 
 class PermissionPolicyAddToServiceUserResponse(BaseModel):
-    id: Optional[str] = None
+    id: str
+    """The UUID of the entity."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this principal permission."""

@@ -59,6 +59,7 @@ class DebitLineItemsResource(SyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -79,6 +80,7 @@ class DebitLineItemsResource(SyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -113,6 +115,8 @@ class DebitLineItemsResource(SyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           debit_reason_id: The ID of the Debit Reason given for this debit line item.
 
@@ -156,6 +160,7 @@ class DebitLineItemsResource(SyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "debit_reason_id": debit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,
@@ -224,6 +229,7 @@ class DebitLineItemsResource(SyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -244,6 +250,7 @@ class DebitLineItemsResource(SyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -275,6 +282,8 @@ class DebitLineItemsResource(SyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           debit_reason_id: The ID of the Debit Reason given for this debit line item.
 
@@ -320,6 +329,7 @@ class DebitLineItemsResource(SyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "debit_reason_id": debit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,
@@ -463,6 +473,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -483,6 +494,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -517,6 +529,8 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           debit_reason_id: The ID of the Debit Reason given for this debit line item.
 
@@ -560,6 +574,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "debit_reason_id": debit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,
@@ -628,6 +643,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         debit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -648,6 +664,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -679,6 +696,8 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           debit_reason_id: The ID of the Debit Reason given for this debit line item.
 
@@ -724,6 +743,7 @@ class AsyncDebitLineItemsResource(AsyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "debit_reason_id": debit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,

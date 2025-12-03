@@ -31,6 +31,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.address_param import AddressParam
 from ..types.account_response import AccountResponse
 from ..types.account_search_response import AccountSearchResponse
+from ..types.account_get_children_response import AccountGetChildrenResponse
 from ..types.account_end_date_billing_entities_response import AccountEndDateBillingEntitiesResponse
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
@@ -653,7 +654,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AccountResponse:
+    ) -> AccountGetChildrenResponse:
         """
         Retrieve a list of Accounts that are children of the specified Account.
 
@@ -687,7 +688,7 @@ class AccountsResource(SyncAPIResource):
                     account_get_children_params.AccountGetChildrenParams,
                 ),
             ),
-            cast_to=AccountResponse,
+            cast_to=AccountGetChildrenResponse,
         )
 
     def search(
@@ -1402,7 +1403,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AccountResponse:
+    ) -> AccountGetChildrenResponse:
         """
         Retrieve a list of Accounts that are children of the specified Account.
 
@@ -1436,7 +1437,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     account_get_children_params.AccountGetChildrenParams,
                 ),
             ),
-            cast_to=AccountResponse,
+            cast_to=AccountGetChildrenResponse,
         )
 
     async def search(

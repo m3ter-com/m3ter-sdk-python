@@ -11,8 +11,8 @@ __all__ = ["ResourceGroupResponse"]
 
 
 class ResourceGroupResponse(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier (UUID) of the Resource Group."""
+    id: str
+    """The UUID of the entity."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) of the user who created this Resource Group."""
@@ -33,4 +33,10 @@ class ResourceGroupResponse(BaseModel):
     """The name of the Resource Group."""
 
     version: Optional[int] = None
-    """The version number. Default value when newly created is one."""
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
