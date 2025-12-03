@@ -48,6 +48,8 @@ class CreditLineItemUpdateParams(TypedDict, total=False):
     _(inclusive of the starting date)_.
     """
 
+    amount_to_apply_on_bill: Annotated[float, PropertyInfo(alias="amountToApplyOnBill")]
+
     credit_reason_id: Annotated[str, PropertyInfo(alias="creditReasonId")]
     """The UUID of the credit reason."""
 
@@ -71,6 +73,7 @@ class CreditLineItemUpdateParams(TypedDict, total=False):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ],
         PropertyInfo(alias="lineItemType"),
     ]

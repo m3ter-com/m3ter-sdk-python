@@ -104,6 +104,16 @@ class OrganizationConfigUpdateParams(TypedDict, total=False):
     - The date is in ISO-8601 format.
     """
 
+    allow_negative_balances: Annotated[bool, PropertyInfo(alias="allowNegativeBalances")]
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
+    allow_overlapping_plans: Annotated[bool, PropertyInfo(alias="allowOverlappingPlans")]
+    """Allows plans to overlap time periods for different contracts."""
+
     auto_approve_bills_grace_period: Annotated[int, PropertyInfo(alias="autoApproveBillsGracePeriod")]
     """Grace period before bills are auto-approved.
 

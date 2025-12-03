@@ -20,3 +20,9 @@ class IntegrationConfigurationGetByEntityParams(TypedDict, total=False):
 
     entity_id: Annotated[str, PropertyInfo(alias="entityId")]
     """UUID of the entity to retrieve IntegrationConfigs for"""
+
+    next_token: Annotated[str, PropertyInfo(alias="nextToken")]
+    """nextToken for multi page retrievals"""
+
+    page_size: Annotated[int, PropertyInfo(alias="pageSize")]
+    """Number of configs to retrieve per page"""

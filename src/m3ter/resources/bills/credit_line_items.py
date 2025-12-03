@@ -59,6 +59,7 @@ class CreditLineItemsResource(SyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         credit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -79,6 +80,7 @@ class CreditLineItemsResource(SyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -114,6 +116,8 @@ class CreditLineItemsResource(SyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           credit_reason_id: The UUID of the credit reason.
 
@@ -157,6 +161,7 @@ class CreditLineItemsResource(SyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "credit_reason_id": credit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,
@@ -225,6 +230,7 @@ class CreditLineItemsResource(SyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         credit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -245,6 +251,7 @@ class CreditLineItemsResource(SyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -276,6 +283,8 @@ class CreditLineItemsResource(SyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           credit_reason_id: The UUID of the credit reason.
 
@@ -321,6 +330,7 @@ class CreditLineItemsResource(SyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "credit_reason_id": credit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,
@@ -464,6 +474,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         credit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -484,6 +495,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -519,6 +531,8 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           credit_reason_id: The UUID of the credit reason.
 
@@ -562,6 +576,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "credit_reason_id": credit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,
@@ -630,6 +645,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
         referenced_line_item_id: str,
         service_period_end_date: Union[str, datetime],
         service_period_start_date: Union[str, datetime],
+        amount_to_apply_on_bill: float | Omit = omit,
         credit_reason_id: str | Omit = omit,
         line_item_type: Literal[
             "STANDING_CHARGE",
@@ -650,6 +666,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
             "OVERAGE_USAGE",
             "BALANCE_CONSUMED",
             "BALANCE_FEE",
+            "AD_HOC",
         ]
         | Omit = omit,
         reason_id: str | Omit = omit,
@@ -681,6 +698,8 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
 
           service_period_start_date: The service period start date in ISO-8601 format. _(inclusive of the starting
               date)_.
+
+          amount_to_apply_on_bill
 
           credit_reason_id: The UUID of the credit reason.
 
@@ -726,6 +745,7 @@ class AsyncCreditLineItemsResource(AsyncAPIResource):
                     "referenced_line_item_id": referenced_line_item_id,
                     "service_period_end_date": service_period_end_date,
                     "service_period_start_date": service_period_start_date,
+                    "amount_to_apply_on_bill": amount_to_apply_on_bill,
                     "credit_reason_id": credit_reason_id,
                     "line_item_type": line_item_type,
                     "reason_id": reason_id,

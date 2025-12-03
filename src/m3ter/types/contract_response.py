@@ -1,13 +1,22 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import date, datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ContractResponse"]
+__all__ = ["ContractResponse", "UsageFilter"]
+
+
+class UsageFilter(BaseModel):
+    dimension_code: str = FieldInfo(alias="dimensionCode")
+
+    mode: Literal["INCLUDE", "EXCLUDE"]
+
+    value: str
 
 
 class ContractResponse(BaseModel):
@@ -17,7 +26,9 @@ class ContractResponse(BaseModel):
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """The unique identifier (UUID) of the Account associated with this Contract."""
 
-    bill_grouping_key: Optional[str] = FieldInfo(alias="billGroupingKey", default=None)
+    apply_contract_period_limits: Optional[bool] = FieldInfo(alias="applyContractPeriodLimits", default=None)
+
+    bill_grouping_key_id: Optional[str] = FieldInfo(alias="billGroupingKeyId", default=None)
 
     code: Optional[str] = None
     """The short code of the Contract."""
@@ -69,6 +80,8 @@ class ContractResponse(BaseModel):
 
     This date is inclusive, meaning the Contract is active from this date onward.
     """
+
+    usage_filters: Optional[List[UsageFilter]] = FieldInfo(alias="usageFilters", default=None)
 
     version: Optional[int] = None
     """The version number:

@@ -76,6 +76,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -329,6 +330,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
         | Omit = omit,
@@ -468,6 +470,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -703,6 +706,7 @@ class SchedulesResource(SyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
         | Omit = omit,
@@ -925,6 +929,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -1178,6 +1183,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
         | Omit = omit,
@@ -1317,6 +1323,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -1552,6 +1559,7 @@ class AsyncSchedulesResource(AsyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
         | Omit = omit,

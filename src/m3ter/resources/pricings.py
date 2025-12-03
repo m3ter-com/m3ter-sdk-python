@@ -80,9 +80,14 @@ class PricingsResource(SyncAPIResource):
         """
         Create a new Pricing.
 
-        **Note:** Either `planId` or `planTemplateId` request parameters are required
-        for this call to be valid. If you omit both, then you will receive a validation
-        error.
+        **Notes:**
+
+        - Exactly one of `planId` or `planTemplateId` request parameters are required
+          for this call to be valid. If you omit both, then you will receive a
+          validation error.
+        - Exactly one of `aggregationId` or `compoundAggregationId` request parameters
+          are required for this call to be valid. If you omit both, then you will
+          receive a validation error.
 
         Args:
           pricing_bands
@@ -137,7 +142,19 @@ class PricingsResource(SyncAPIResource):
           minimum_spend_description: Minimum spend description _(displayed on the bill line item)_.
 
           overage_pricing_bands: Specify Prepayment/Balance overage pricing in pricing bands for the case of a
-              **Tiered** pricing structure.
+              **Tiered** pricing structure. The overage pricing rates will be used to charge
+              for usage if the Account has a Commitment/Prepayment or Balance applied to it
+              and the entire Commitment/Prepayment or Balance amount has been consumed.
+
+              **Constraints:**
+
+              - Can only be used for a **Tiered** pricing structure. If cumulative is
+                **FALSE** and you defined `overagePricingBands`, then you'll receive an error.
+              - If `tiersSpanPlan` is set to **TRUE** for usage accumulates over entire
+                contract period, then cannot be used.
+              - If the Commitment/Prepayement or Balance has an `overageSurchargePercent`
+                defined, then this will override any `overagePricingBands` you've defined for
+                the pricing.
 
           plan_id: UUID of the Plan the Pricing is created for.
 
@@ -307,9 +324,14 @@ class PricingsResource(SyncAPIResource):
         """
         Update Pricing for the given UUID.
 
-        **Note:** Either `planId` or `planTemplateId` request parameters are required
-        for this call to be valid. If you omit both, then you will receive a validation
-        error.
+        **Notes:**
+
+        - Exactly one of `planId` or `planTemplateId` request parameters are required
+          for this call to be valid. If you omit both, then you will receive a
+          validation error.
+        - Exactly one of `aggregationId` or `compoundAggregationId` request parameters
+          are required for this call to be valid. If you omit both, then you will
+          receive a validation error.
 
         Args:
           pricing_bands
@@ -364,7 +386,19 @@ class PricingsResource(SyncAPIResource):
           minimum_spend_description: Minimum spend description _(displayed on the bill line item)_.
 
           overage_pricing_bands: Specify Prepayment/Balance overage pricing in pricing bands for the case of a
-              **Tiered** pricing structure.
+              **Tiered** pricing structure. The overage pricing rates will be used to charge
+              for usage if the Account has a Commitment/Prepayment or Balance applied to it
+              and the entire Commitment/Prepayment or Balance amount has been consumed.
+
+              **Constraints:**
+
+              - Can only be used for a **Tiered** pricing structure. If cumulative is
+                **FALSE** and you defined `overagePricingBands`, then you'll receive an error.
+              - If `tiersSpanPlan` is set to **TRUE** for usage accumulates over entire
+                contract period, then cannot be used.
+              - If the Commitment/Prepayement or Balance has an `overageSurchargePercent`
+                defined, then this will override any `overagePricingBands` you've defined for
+                the pricing.
 
           plan_id: UUID of the Plan the Pricing is created for.
 
@@ -629,9 +663,14 @@ class AsyncPricingsResource(AsyncAPIResource):
         """
         Create a new Pricing.
 
-        **Note:** Either `planId` or `planTemplateId` request parameters are required
-        for this call to be valid. If you omit both, then you will receive a validation
-        error.
+        **Notes:**
+
+        - Exactly one of `planId` or `planTemplateId` request parameters are required
+          for this call to be valid. If you omit both, then you will receive a
+          validation error.
+        - Exactly one of `aggregationId` or `compoundAggregationId` request parameters
+          are required for this call to be valid. If you omit both, then you will
+          receive a validation error.
 
         Args:
           pricing_bands
@@ -686,7 +725,19 @@ class AsyncPricingsResource(AsyncAPIResource):
           minimum_spend_description: Minimum spend description _(displayed on the bill line item)_.
 
           overage_pricing_bands: Specify Prepayment/Balance overage pricing in pricing bands for the case of a
-              **Tiered** pricing structure.
+              **Tiered** pricing structure. The overage pricing rates will be used to charge
+              for usage if the Account has a Commitment/Prepayment or Balance applied to it
+              and the entire Commitment/Prepayment or Balance amount has been consumed.
+
+              **Constraints:**
+
+              - Can only be used for a **Tiered** pricing structure. If cumulative is
+                **FALSE** and you defined `overagePricingBands`, then you'll receive an error.
+              - If `tiersSpanPlan` is set to **TRUE** for usage accumulates over entire
+                contract period, then cannot be used.
+              - If the Commitment/Prepayement or Balance has an `overageSurchargePercent`
+                defined, then this will override any `overagePricingBands` you've defined for
+                the pricing.
 
           plan_id: UUID of the Plan the Pricing is created for.
 
@@ -856,9 +907,14 @@ class AsyncPricingsResource(AsyncAPIResource):
         """
         Update Pricing for the given UUID.
 
-        **Note:** Either `planId` or `planTemplateId` request parameters are required
-        for this call to be valid. If you omit both, then you will receive a validation
-        error.
+        **Notes:**
+
+        - Exactly one of `planId` or `planTemplateId` request parameters are required
+          for this call to be valid. If you omit both, then you will receive a
+          validation error.
+        - Exactly one of `aggregationId` or `compoundAggregationId` request parameters
+          are required for this call to be valid. If you omit both, then you will
+          receive a validation error.
 
         Args:
           pricing_bands
@@ -913,7 +969,19 @@ class AsyncPricingsResource(AsyncAPIResource):
           minimum_spend_description: Minimum spend description _(displayed on the bill line item)_.
 
           overage_pricing_bands: Specify Prepayment/Balance overage pricing in pricing bands for the case of a
-              **Tiered** pricing structure.
+              **Tiered** pricing structure. The overage pricing rates will be used to charge
+              for usage if the Account has a Commitment/Prepayment or Balance applied to it
+              and the entire Commitment/Prepayment or Balance amount has been consumed.
+
+              **Constraints:**
+
+              - Can only be used for a **Tiered** pricing structure. If cumulative is
+                **FALSE** and you defined `overagePricingBands`, then you'll receive an error.
+              - If `tiersSpanPlan` is set to **TRUE** for usage accumulates over entire
+                contract period, then cannot be used.
+              - If the Commitment/Prepayement or Balance has an `overageSurchargePercent`
+                defined, then this will override any `overagePricingBands` you've defined for
+                the pricing.
 
           plan_id: UUID of the Plan the Pricing is created for.
 

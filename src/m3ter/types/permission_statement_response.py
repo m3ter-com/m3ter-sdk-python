@@ -28,6 +28,7 @@ class PermissionStatementResponse(BaseModel):
             "EXPORTS_DOWNLOAD",
             "MARKETPLACE_USAGE_CREATE",
             "MARKETPLACE_USAGE_RETRIEVE",
+            "AUDIT_RETRIEVE",
         ]
     ]
     """

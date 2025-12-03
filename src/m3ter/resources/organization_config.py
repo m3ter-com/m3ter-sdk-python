@@ -91,6 +91,8 @@ class OrganizationConfigResource(SyncAPIResource):
         timezone: str,
         week_epoch: str,
         year_epoch: str,
+        allow_negative_balances: bool | Omit = omit,
+        allow_overlapping_plans: bool | Omit = omit,
         auto_approve_bills_grace_period: int | Omit = omit,
         auto_approve_bills_grace_period_unit: str | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
@@ -190,6 +192,12 @@ class OrganizationConfigResource(SyncAPIResource):
                 through to the end of the billing service period - January 1st, 2023, January
                 1st, 2024 and so on.
               - The date is in ISO-8601 format.
+
+          allow_negative_balances: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
+
+          allow_overlapping_plans: Allows plans to overlap time periods for different contracts.
 
           auto_approve_bills_grace_period: Grace period before bills are auto-approved. Used in combination with
               `autoApproveBillsGracePeriodUnit` parameter.
@@ -349,6 +357,8 @@ class OrganizationConfigResource(SyncAPIResource):
                     "timezone": timezone,
                     "week_epoch": week_epoch,
                     "year_epoch": year_epoch,
+                    "allow_negative_balances": allow_negative_balances,
+                    "allow_overlapping_plans": allow_overlapping_plans,
                     "auto_approve_bills_grace_period": auto_approve_bills_grace_period,
                     "auto_approve_bills_grace_period_unit": auto_approve_bills_grace_period_unit,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
@@ -441,6 +451,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
         timezone: str,
         week_epoch: str,
         year_epoch: str,
+        allow_negative_balances: bool | Omit = omit,
+        allow_overlapping_plans: bool | Omit = omit,
         auto_approve_bills_grace_period: int | Omit = omit,
         auto_approve_bills_grace_period_unit: str | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
@@ -540,6 +552,12 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
                 through to the end of the billing service period - January 1st, 2023, January
                 1st, 2024 and so on.
               - The date is in ISO-8601 format.
+
+          allow_negative_balances: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
+
+          allow_overlapping_plans: Allows plans to overlap time periods for different contracts.
 
           auto_approve_bills_grace_period: Grace period before bills are auto-approved. Used in combination with
               `autoApproveBillsGracePeriodUnit` parameter.
@@ -699,6 +717,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
                     "timezone": timezone,
                     "week_epoch": week_epoch,
                     "year_epoch": year_epoch,
+                    "allow_negative_balances": allow_negative_balances,
+                    "allow_overlapping_plans": allow_overlapping_plans,
                     "auto_approve_bills_grace_period": auto_approve_bills_grace_period,
                     "auto_approve_bills_grace_period_unit": auto_approve_bills_grace_period_unit,
                     "auto_generate_statement_mode": auto_generate_statement_mode,

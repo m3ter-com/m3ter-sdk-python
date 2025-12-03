@@ -78,7 +78,8 @@ class Organization(BaseModel):
 
 
 class ServiceUser(BaseModel):
-    id: Optional[str] = None
+    id: str
+    """The UUID of the entity."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this service user."""
@@ -95,11 +96,18 @@ class ServiceUser(BaseModel):
     name: Optional[str] = None
 
     version: Optional[int] = None
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """
 
 
 class User(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier (UUID) of this user."""
+    id: str
+    """The UUID of the entity."""
 
     contact_number: Optional[str] = FieldInfo(alias="contactNumber", default=None)
     """The user's contact telephone number."""

@@ -23,8 +23,10 @@ class TestBalances:
     def test_method_create(self, client: M3ter) -> None:
         balance = client.balances.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(Balance, balance, path=["response"])
@@ -33,18 +35,18 @@ class TestBalances:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         balance = client.balances.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
             custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
-            name="name",
             overage_description="overageDescription",
             overage_surcharge_percent=0,
             product_ids=["string"],
@@ -58,8 +60,10 @@ class TestBalances:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.balances.with_raw_response.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
@@ -72,8 +76,10 @@ class TestBalances:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.balances.with_streaming_response.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
@@ -127,8 +133,10 @@ class TestBalances:
         balance = client.balances.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(Balance, balance, path=["response"])
@@ -138,18 +146,18 @@ class TestBalances:
         balance = client.balances.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
             custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
-            name="name",
             overage_description="overageDescription",
             overage_surcharge_percent=0,
             product_ids=["string"],
@@ -164,8 +172,10 @@ class TestBalances:
         response = client.balances.with_raw_response.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
@@ -179,8 +189,10 @@ class TestBalances:
         with client.balances.with_streaming_response.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
@@ -197,8 +209,10 @@ class TestBalances:
             client.balances.with_raw_response.update(
                 id="",
                 account_id="x",
+                code='S?oC"$]C] ]]]]]5]',
                 currency="x",
                 end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+                name="x",
                 start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             )
 
@@ -212,8 +226,10 @@ class TestBalances:
         balance = client.balances.list(
             account_id="accountId",
             contract="contract",
+            contract_id="contractId",
             end_date_end="endDateEnd",
             end_date_start="endDateStart",
+            ids=["string"],
             next_token="nextToken",
             page_size=1,
         )
@@ -287,8 +303,10 @@ class TestAsyncBalances:
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         balance = await async_client.balances.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(Balance, balance, path=["response"])
@@ -297,18 +315,18 @@ class TestAsyncBalances:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         balance = await async_client.balances.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
             custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
-            name="name",
             overage_description="overageDescription",
             overage_surcharge_percent=0,
             product_ids=["string"],
@@ -322,8 +340,10 @@ class TestAsyncBalances:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.balances.with_raw_response.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
@@ -336,8 +356,10 @@ class TestAsyncBalances:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.balances.with_streaming_response.create(
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
@@ -391,8 +413,10 @@ class TestAsyncBalances:
         balance = await async_client.balances.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(Balance, balance, path=["response"])
@@ -402,18 +426,18 @@ class TestAsyncBalances:
         balance = await async_client.balances.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             balance_draw_down_description="balanceDrawDownDescription",
-            code='S?oC"$]C] ]]]]]5]',
             consumptions_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             contract_id="contractId",
             custom_fields={"foo": "string"},
             description="description",
             fees_accounting_product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             line_item_types=["STANDING_CHARGE"],
-            name="name",
             overage_description="overageDescription",
             overage_surcharge_percent=0,
             product_ids=["string"],
@@ -428,8 +452,10 @@ class TestAsyncBalances:
         response = await async_client.balances.with_raw_response.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
 
@@ -443,8 +469,10 @@ class TestAsyncBalances:
         async with async_client.balances.with_streaming_response.update(
             id="id",
             account_id="x",
+            code='S?oC"$]C] ]]]]]5]',
             currency="x",
             end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            name="x",
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
         ) as response:
             assert not response.is_closed
@@ -461,8 +489,10 @@ class TestAsyncBalances:
             await async_client.balances.with_raw_response.update(
                 id="",
                 account_id="x",
+                code='S?oC"$]C] ]]]]]5]',
                 currency="x",
                 end_date=parse_datetime("2019-12-27T18:11:19.117Z"),
+                name="x",
                 start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
             )
 
@@ -476,8 +506,10 @@ class TestAsyncBalances:
         balance = await async_client.balances.list(
             account_id="accountId",
             contract="contract",
+            contract_id="contractId",
             end_date_end="endDateEnd",
             end_date_start="endDateStart",
+            ids=["string"],
             next_token="nextToken",
             page_size=1,
         )

@@ -25,6 +25,7 @@ from m3ter.types import (
     AccountResponse,
     Address,
     AccountEndDateBillingEntitiesResponse,
+    AccountGetChildrenResponse,
     AccountSearchResponse,
 )
 ```
@@ -37,7 +38,7 @@ Methods:
 - <code title="get /organizations/{orgId}/accounts">client.accounts.<a href="./src/m3ter/resources/accounts.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/account_list_params.py">params</a>) -> <a href="./src/m3ter/types/account_response.py">SyncCursor[AccountResponse]</a></code>
 - <code title="delete /organizations/{orgId}/accounts/{id}">client.accounts.<a href="./src/m3ter/resources/accounts.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/account_response.py">AccountResponse</a></code>
 - <code title="put /organizations/{orgId}/accounts/{id}/enddatebillingentities">client.accounts.<a href="./src/m3ter/resources/accounts.py">end_date_billing_entities</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/account_end_date_billing_entities_params.py">params</a>) -> <a href="./src/m3ter/types/account_end_date_billing_entities_response.py">AccountEndDateBillingEntitiesResponse</a></code>
-- <code title="get /organizations/{orgId}/accounts/{id}/children">client.accounts.<a href="./src/m3ter/resources/accounts.py">get_children</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/account_get_children_params.py">params</a>) -> <a href="./src/m3ter/types/account_response.py">AccountResponse</a></code>
+- <code title="get /organizations/{orgId}/accounts/{id}/children">client.accounts.<a href="./src/m3ter/resources/accounts.py">get_children</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/account_get_children_params.py">params</a>) -> <a href="./src/m3ter/types/account_get_children_response.py">AccountGetChildrenResponse</a></code>
 - <code title="get /organizations/{orgId}/accounts/search">client.accounts.<a href="./src/m3ter/resources/accounts.py">search</a>(\*, org_id, \*\*<a href="src/m3ter/types/account_search_params.py">params</a>) -> <a href="./src/m3ter/types/account_search_response.py">AccountSearchResponse</a></code>
 
 # AccountPlans

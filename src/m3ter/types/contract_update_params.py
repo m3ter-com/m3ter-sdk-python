@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union
+from typing import Dict, Union, Iterable
 from datetime import date
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ContractUpdateParams"]
+__all__ = ["ContractUpdateParams", "UsageFilter"]
 
 
 class ContractUpdateParams(TypedDict, total=False):
@@ -33,6 +33,10 @@ class ContractUpdateParams(TypedDict, total=False):
     This date is inclusive, meaning the Contract is active from this date onward.
     """
 
+    apply_contract_period_limits: Annotated[bool, PropertyInfo(alias="applyContractPeriodLimits")]
+
+    bill_grouping_key_id: Annotated[str, PropertyInfo(alias="billGroupingKeyId")]
+
     code: str
     """The short code of the Contract."""
 
@@ -56,6 +60,8 @@ class ContractUpdateParams(TypedDict, total=False):
     purchase_order_number: Annotated[str, PropertyInfo(alias="purchaseOrderNumber")]
     """The Purchase Order Number associated with the Contract."""
 
+    usage_filters: Annotated[Iterable[UsageFilter], PropertyInfo(alias="usageFilters")]
+
     version: int
     """The version number of the entity:
 
@@ -66,3 +72,11 @@ class ContractUpdateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
+
+
+class UsageFilter(TypedDict, total=False):
+    dimension_code: Required[Annotated[str, PropertyInfo(alias="dimensionCode")]]
+
+    mode: Required[Literal["INCLUDE", "EXCLUDE"]]
+
+    value: Required[str]

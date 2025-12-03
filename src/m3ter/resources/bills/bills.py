@@ -148,6 +148,7 @@ class BillsResource(SyncAPIResource):
         bill_date_end: str | Omit = omit,
         bill_date_start: str | Omit = omit,
         billing_frequency: Optional[str] | Omit = omit,
+        bill_job_id: str | Omit = omit,
         exclude_line_items: bool | Omit = omit,
         external_invoice_date_end: str | Omit = omit,
         external_invoice_date_start: str | Omit = omit,
@@ -183,6 +184,8 @@ class BillsResource(SyncAPIResource):
           bill_date_end: Only include Bills with bill dates earlier than this date.
 
           bill_date_start: Only include Bills with bill dates equal to or later than this date.
+
+          bill_job_id: List Bill entities by the bill job that last calculated them.
 
           exclude_line_items: Exclude Line Items
 
@@ -234,6 +237,7 @@ class BillsResource(SyncAPIResource):
                         "bill_date_end": bill_date_end,
                         "bill_date_start": bill_date_start,
                         "billing_frequency": billing_frequency,
+                        "bill_job_id": bill_job_id,
                         "exclude_line_items": exclude_line_items,
                         "external_invoice_date_end": external_invoice_date_end,
                         "external_invoice_date_start": external_invoice_date_start,
@@ -698,6 +702,7 @@ class AsyncBillsResource(AsyncAPIResource):
         bill_date_end: str | Omit = omit,
         bill_date_start: str | Omit = omit,
         billing_frequency: Optional[str] | Omit = omit,
+        bill_job_id: str | Omit = omit,
         exclude_line_items: bool | Omit = omit,
         external_invoice_date_end: str | Omit = omit,
         external_invoice_date_start: str | Omit = omit,
@@ -733,6 +738,8 @@ class AsyncBillsResource(AsyncAPIResource):
           bill_date_end: Only include Bills with bill dates earlier than this date.
 
           bill_date_start: Only include Bills with bill dates equal to or later than this date.
+
+          bill_job_id: List Bill entities by the bill job that last calculated them.
 
           exclude_line_items: Exclude Line Items
 
@@ -784,6 +791,7 @@ class AsyncBillsResource(AsyncAPIResource):
                         "bill_date_end": bill_date_end,
                         "bill_date_start": bill_date_start,
                         "billing_frequency": billing_frequency,
+                        "bill_job_id": bill_job_id,
                         "exclude_line_items": exclude_line_items,
                         "external_invoice_date_end": external_invoice_date_end,
                         "external_invoice_date_start": external_invoice_date_start,

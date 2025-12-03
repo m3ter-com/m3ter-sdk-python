@@ -93,7 +93,19 @@ class PricingCreateParams(TypedDict, total=False):
     overage_pricing_bands: Annotated[Iterable[PricingBand], PropertyInfo(alias="overagePricingBands")]
     """
     Specify Prepayment/Balance overage pricing in pricing bands for the case of a
-    **Tiered** pricing structure.
+    **Tiered** pricing structure. The overage pricing rates will be used to charge
+    for usage if the Account has a Commitment/Prepayment or Balance applied to it
+    and the entire Commitment/Prepayment or Balance amount has been consumed.
+
+    **Constraints:**
+
+    - Can only be used for a **Tiered** pricing structure. If cumulative is
+      **FALSE** and you defined `overagePricingBands`, then you'll receive an error.
+    - If `tiersSpanPlan` is set to **TRUE** for usage accumulates over entire
+      contract period, then cannot be used.
+    - If the Commitment/Prepayement or Balance has an `overageSurchargePercent`
+      defined, then this will override any `overagePricingBands` you've defined for
+      the pricing.
     """
 
     plan_id: Annotated[str, PropertyInfo(alias="planId")]

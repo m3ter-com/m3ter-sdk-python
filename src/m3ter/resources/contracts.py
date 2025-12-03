@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -60,10 +60,13 @@ class ContractsResource(SyncAPIResource):
         end_date: Union[str, date],
         name: str,
         start_date: Union[str, date],
+        apply_contract_period_limits: bool | Omit = omit,
+        bill_grouping_key_id: str | Omit = omit,
         code: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
         description: str | Omit = omit,
         purchase_order_number: str | Omit = omit,
+        usage_filters: Iterable[contract_create_params.UsageFilter] | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -90,6 +93,10 @@ class ContractsResource(SyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
+          apply_contract_period_limits
+
+          bill_grouping_key_id
+
           code: The short code of the Contract.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
@@ -106,6 +113,8 @@ class ContractsResource(SyncAPIResource):
           description: The description of the Contract, which provides context and information.
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
+
+          usage_filters
 
           version:
               The version number of the entity:
@@ -137,10 +146,13 @@ class ContractsResource(SyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "apply_contract_period_limits": apply_contract_period_limits,
+                    "bill_grouping_key_id": bill_grouping_key_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "description": description,
                     "purchase_order_number": purchase_order_number,
+                    "usage_filters": usage_filters,
                     "version": version,
                 },
                 contract_create_params.ContractCreateParams,
@@ -200,10 +212,13 @@ class ContractsResource(SyncAPIResource):
         end_date: Union[str, date],
         name: str,
         start_date: Union[str, date],
+        apply_contract_period_limits: bool | Omit = omit,
+        bill_grouping_key_id: str | Omit = omit,
         code: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
         description: str | Omit = omit,
         purchase_order_number: str | Omit = omit,
+        usage_filters: Iterable[contract_update_params.UsageFilter] | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -234,6 +249,10 @@ class ContractsResource(SyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
+          apply_contract_period_limits
+
+          bill_grouping_key_id
+
           code: The short code of the Contract.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
@@ -250,6 +269,8 @@ class ContractsResource(SyncAPIResource):
           description: The description of the Contract, which provides context and information.
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
+
+          usage_filters
 
           version:
               The version number of the entity:
@@ -283,10 +304,13 @@ class ContractsResource(SyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "apply_contract_period_limits": apply_contract_period_limits,
+                    "bill_grouping_key_id": bill_grouping_key_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "description": description,
                     "purchase_order_number": purchase_order_number,
+                    "usage_filters": usage_filters,
                     "version": version,
                 },
                 contract_update_params.ContractUpdateParams,
@@ -509,10 +533,13 @@ class AsyncContractsResource(AsyncAPIResource):
         end_date: Union[str, date],
         name: str,
         start_date: Union[str, date],
+        apply_contract_period_limits: bool | Omit = omit,
+        bill_grouping_key_id: str | Omit = omit,
         code: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
         description: str | Omit = omit,
         purchase_order_number: str | Omit = omit,
+        usage_filters: Iterable[contract_create_params.UsageFilter] | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -539,6 +566,10 @@ class AsyncContractsResource(AsyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
+          apply_contract_period_limits
+
+          bill_grouping_key_id
+
           code: The short code of the Contract.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
@@ -555,6 +586,8 @@ class AsyncContractsResource(AsyncAPIResource):
           description: The description of the Contract, which provides context and information.
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
+
+          usage_filters
 
           version:
               The version number of the entity:
@@ -586,10 +619,13 @@ class AsyncContractsResource(AsyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "apply_contract_period_limits": apply_contract_period_limits,
+                    "bill_grouping_key_id": bill_grouping_key_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "description": description,
                     "purchase_order_number": purchase_order_number,
+                    "usage_filters": usage_filters,
                     "version": version,
                 },
                 contract_create_params.ContractCreateParams,
@@ -649,10 +685,13 @@ class AsyncContractsResource(AsyncAPIResource):
         end_date: Union[str, date],
         name: str,
         start_date: Union[str, date],
+        apply_contract_period_limits: bool | Omit = omit,
+        bill_grouping_key_id: str | Omit = omit,
         code: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
         description: str | Omit = omit,
         purchase_order_number: str | Omit = omit,
+        usage_filters: Iterable[contract_update_params.UsageFilter] | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -683,6 +722,10 @@ class AsyncContractsResource(AsyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
+          apply_contract_period_limits
+
+          bill_grouping_key_id
+
           code: The short code of the Contract.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
@@ -699,6 +742,8 @@ class AsyncContractsResource(AsyncAPIResource):
           description: The description of the Contract, which provides context and information.
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
+
+          usage_filters
 
           version:
               The version number of the entity:
@@ -732,10 +777,13 @@ class AsyncContractsResource(AsyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "apply_contract_period_limits": apply_contract_period_limits,
+                    "bill_grouping_key_id": bill_grouping_key_id,
                     "code": code,
                     "custom_fields": custom_fields,
                     "description": description,
                     "purchase_order_number": purchase_order_number,
+                    "usage_filters": usage_filters,
                     "version": version,
                 },
                 contract_update_params.ContractUpdateParams,

@@ -34,6 +34,9 @@ class BillListParams(TypedDict, total=False):
 
     billing_frequency: Annotated[Optional[str], PropertyInfo(alias="billingFrequency")]
 
+    bill_job_id: Annotated[str, PropertyInfo(alias="billJobId")]
+    """List Bill entities by the bill job that last calculated them."""
+
     exclude_line_items: Annotated[bool, PropertyInfo(alias="excludeLineItems")]
     """Exclude Line Items"""
 

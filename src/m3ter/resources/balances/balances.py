@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -63,11 +63,12 @@ class BalancesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str,
+        code: str,
         currency: str,
         end_date: Union[str, datetime],
+        name: str,
         start_date: Union[str, datetime],
         balance_draw_down_description: str | Omit = omit,
-        code: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -84,7 +85,6 @@ class BalancesResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
-        name: str | Omit = omit,
         overage_description: str | Omit = omit,
         overage_surcharge_percent: float | Omit = omit,
         product_ids: SequenceNotStr[str] | Omit = omit,
@@ -107,6 +107,8 @@ class BalancesResource(SyncAPIResource):
         Args:
           account_id: The unique identifier (UUID) for the end customer Account.
 
+          code: Unique short code for the Balance.
+
           currency: The currency code used for the Balance amount. For example: USD, GBP or EUR.
 
           end_date: The date _(in ISO 8601 format)_ after which the Balance will no longer be active
@@ -116,17 +118,18 @@ class BalancesResource(SyncAPIResource):
               extended grace period for continued draw-down against the Balance if any amount
               remains when the specified `endDate` is reached.
 
+          name: The official name for the Balance.
+
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
 
-          code: Unique short code for the Balance.
+          consumptions_accounting_product_id: Product ID that any Balance Consumed line items will be attributed to for
+              accounting purposes.(_Optional_)
 
-          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
-              accounting purposes
-
-          contract_id
+          contract_id: The unique identifier (UUID) of a Contract on the Account that the Balance will
+              be added to.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
               field can be either a string or a number.
@@ -141,8 +144,8 @@ class BalancesResource(SyncAPIResource):
 
           description: A description of the Balance.
 
-          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
-              purposes
+          fees_accounting_product_id: Product ID that any Balance Fees line items will be attributed to for accounting
+              purposes.(_Optional_)
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -152,11 +155,10 @@ class BalancesResource(SyncAPIResource):
               - `"USAGE"`
               - `"COUNTER_RUNNING_TOTAL_CHARGE"`
               - `"COUNTER_ADJUSTMENT_DEBIT"`
+              - `AD_HOC`
 
               **NOTE:** If no charge types are specified, by default _all types_ can draw-down
               against the Balance amount at billing.
-
-          name: The official name for the Balance.
 
           overage_description: A description for Bill line items overage charges.
 
@@ -222,18 +224,18 @@ class BalancesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "code": code,
                     "currency": currency,
                     "end_date": end_date,
+                    "name": name,
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
-                    "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
                     "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
-                    "name": name,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
                     "product_ids": product_ids,
@@ -295,11 +297,12 @@ class BalancesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str,
+        code: str,
         currency: str,
         end_date: Union[str, datetime],
+        name: str,
         start_date: Union[str, datetime],
         balance_draw_down_description: str | Omit = omit,
-        code: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -316,7 +319,6 @@ class BalancesResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
-        name: str | Omit = omit,
         overage_description: str | Omit = omit,
         overage_surcharge_percent: float | Omit = omit,
         product_ids: SequenceNotStr[str] | Omit = omit,
@@ -339,6 +341,8 @@ class BalancesResource(SyncAPIResource):
         Args:
           account_id: The unique identifier (UUID) for the end customer Account.
 
+          code: Unique short code for the Balance.
+
           currency: The currency code used for the Balance amount. For example: USD, GBP or EUR.
 
           end_date: The date _(in ISO 8601 format)_ after which the Balance will no longer be active
@@ -348,17 +352,18 @@ class BalancesResource(SyncAPIResource):
               extended grace period for continued draw-down against the Balance if any amount
               remains when the specified `endDate` is reached.
 
+          name: The official name for the Balance.
+
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
 
-          code: Unique short code for the Balance.
+          consumptions_accounting_product_id: Product ID that any Balance Consumed line items will be attributed to for
+              accounting purposes.(_Optional_)
 
-          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
-              accounting purposes
-
-          contract_id
+          contract_id: The unique identifier (UUID) of a Contract on the Account that the Balance will
+              be added to.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
               field can be either a string or a number.
@@ -373,8 +378,8 @@ class BalancesResource(SyncAPIResource):
 
           description: A description of the Balance.
 
-          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
-              purposes
+          fees_accounting_product_id: Product ID that any Balance Fees line items will be attributed to for accounting
+              purposes.(_Optional_)
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -384,11 +389,10 @@ class BalancesResource(SyncAPIResource):
               - `"USAGE"`
               - `"COUNTER_RUNNING_TOTAL_CHARGE"`
               - `"COUNTER_ADJUSTMENT_DEBIT"`
+              - `AD_HOC`
 
               **NOTE:** If no charge types are specified, by default _all types_ can draw-down
               against the Balance amount at billing.
-
-          name: The official name for the Balance.
 
           overage_description: A description for Bill line items overage charges.
 
@@ -456,18 +460,18 @@ class BalancesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "code": code,
                     "currency": currency,
                     "end_date": end_date,
+                    "name": name,
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
-                    "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
                     "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
-                    "name": name,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
                     "product_ids": product_ids,
@@ -488,9 +492,11 @@ class BalancesResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | Omit = omit,
-        contract: Optional[str] | Omit = omit,
+        contract: str | Omit = omit,
+        contract_id: str | Omit = omit,
         end_date_end: str | Omit = omit,
         end_date_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
         next_token: str | Omit = omit,
         page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -514,6 +520,9 @@ class BalancesResource(SyncAPIResource):
         Args:
           account_id: The unique identifier (UUID) for the end customer's account.
 
+          contract_id: Filter Balances by contract id. Use '' with accountId to fetch unlinked
+              balances.
+
           end_date_end: Only include Balances with end dates earlier than this date. If a Balance has a
               rollover amount configured, then the `rolloverEndDate` will be used as the end
               date.
@@ -521,6 +530,8 @@ class BalancesResource(SyncAPIResource):
           end_date_start: Only include Balances with end dates equal to or later than this date. If a
               Balance has a rollover amount configured, then the `rolloverEndDate` will be
               used as the end date.
+
+          ids: A list of unique identifiers (UUIDs) for specific Balances to retrieve.
 
           next_token: The `nextToken` for retrieving the next page of Balances. It is used to fetch
               the next page of Balances in a paginated list.
@@ -551,8 +562,10 @@ class BalancesResource(SyncAPIResource):
                     {
                         "account_id": account_id,
                         "contract": contract,
+                        "contract_id": contract_id,
                         "end_date_end": end_date_end,
                         "end_date_start": end_date_start,
+                        "ids": ids,
                         "next_token": next_token,
                         "page_size": page_size,
                     },
@@ -632,11 +645,12 @@ class AsyncBalancesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str,
+        code: str,
         currency: str,
         end_date: Union[str, datetime],
+        name: str,
         start_date: Union[str, datetime],
         balance_draw_down_description: str | Omit = omit,
-        code: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -653,7 +667,6 @@ class AsyncBalancesResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
-        name: str | Omit = omit,
         overage_description: str | Omit = omit,
         overage_surcharge_percent: float | Omit = omit,
         product_ids: SequenceNotStr[str] | Omit = omit,
@@ -676,6 +689,8 @@ class AsyncBalancesResource(AsyncAPIResource):
         Args:
           account_id: The unique identifier (UUID) for the end customer Account.
 
+          code: Unique short code for the Balance.
+
           currency: The currency code used for the Balance amount. For example: USD, GBP or EUR.
 
           end_date: The date _(in ISO 8601 format)_ after which the Balance will no longer be active
@@ -685,17 +700,18 @@ class AsyncBalancesResource(AsyncAPIResource):
               extended grace period for continued draw-down against the Balance if any amount
               remains when the specified `endDate` is reached.
 
+          name: The official name for the Balance.
+
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
 
-          code: Unique short code for the Balance.
+          consumptions_accounting_product_id: Product ID that any Balance Consumed line items will be attributed to for
+              accounting purposes.(_Optional_)
 
-          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
-              accounting purposes
-
-          contract_id
+          contract_id: The unique identifier (UUID) of a Contract on the Account that the Balance will
+              be added to.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
               field can be either a string or a number.
@@ -710,8 +726,8 @@ class AsyncBalancesResource(AsyncAPIResource):
 
           description: A description of the Balance.
 
-          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
-              purposes
+          fees_accounting_product_id: Product ID that any Balance Fees line items will be attributed to for accounting
+              purposes.(_Optional_)
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -721,11 +737,10 @@ class AsyncBalancesResource(AsyncAPIResource):
               - `"USAGE"`
               - `"COUNTER_RUNNING_TOTAL_CHARGE"`
               - `"COUNTER_ADJUSTMENT_DEBIT"`
+              - `AD_HOC`
 
               **NOTE:** If no charge types are specified, by default _all types_ can draw-down
               against the Balance amount at billing.
-
-          name: The official name for the Balance.
 
           overage_description: A description for Bill line items overage charges.
 
@@ -791,18 +806,18 @@ class AsyncBalancesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
+                    "code": code,
                     "currency": currency,
                     "end_date": end_date,
+                    "name": name,
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
-                    "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
                     "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
-                    "name": name,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
                     "product_ids": product_ids,
@@ -864,11 +879,12 @@ class AsyncBalancesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str,
+        code: str,
         currency: str,
         end_date: Union[str, datetime],
+        name: str,
         start_date: Union[str, datetime],
         balance_draw_down_description: str | Omit = omit,
-        code: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -885,7 +901,6 @@ class AsyncBalancesResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
-        name: str | Omit = omit,
         overage_description: str | Omit = omit,
         overage_surcharge_percent: float | Omit = omit,
         product_ids: SequenceNotStr[str] | Omit = omit,
@@ -908,6 +923,8 @@ class AsyncBalancesResource(AsyncAPIResource):
         Args:
           account_id: The unique identifier (UUID) for the end customer Account.
 
+          code: Unique short code for the Balance.
+
           currency: The currency code used for the Balance amount. For example: USD, GBP or EUR.
 
           end_date: The date _(in ISO 8601 format)_ after which the Balance will no longer be active
@@ -917,17 +934,18 @@ class AsyncBalancesResource(AsyncAPIResource):
               extended grace period for continued draw-down against the Balance if any amount
               remains when the specified `endDate` is reached.
 
+          name: The official name for the Balance.
+
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
 
-          code: Unique short code for the Balance.
+          consumptions_accounting_product_id: Product ID that any Balance Consumed line items will be attributed to for
+              accounting purposes.(_Optional_)
 
-          consumptions_accounting_product_id: Optional Product ID this Balance Consumptions should be attributed to for
-              accounting purposes
-
-          contract_id
+          contract_id: The unique identifier (UUID) of a Contract on the Account that the Balance will
+              be added to.
 
           custom_fields: User defined fields enabling you to attach custom data. The value for a custom
               field can be either a string or a number.
@@ -942,8 +960,8 @@ class AsyncBalancesResource(AsyncAPIResource):
 
           description: A description of the Balance.
 
-          fees_accounting_product_id: Optional Product ID this Balance Fees should be attributed to for accounting
-              purposes
+          fees_accounting_product_id: Product ID that any Balance Fees line items will be attributed to for accounting
+              purposes.(_Optional_)
 
           line_item_types: Specify the line item charge types that can draw-down at billing against the
               Balance amount. Options are:
@@ -953,11 +971,10 @@ class AsyncBalancesResource(AsyncAPIResource):
               - `"USAGE"`
               - `"COUNTER_RUNNING_TOTAL_CHARGE"`
               - `"COUNTER_ADJUSTMENT_DEBIT"`
+              - `AD_HOC`
 
               **NOTE:** If no charge types are specified, by default _all types_ can draw-down
               against the Balance amount at billing.
-
-          name: The official name for the Balance.
 
           overage_description: A description for Bill line items overage charges.
 
@@ -1025,18 +1042,18 @@ class AsyncBalancesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
+                    "code": code,
                     "currency": currency,
                     "end_date": end_date,
+                    "name": name,
                     "start_date": start_date,
                     "balance_draw_down_description": balance_draw_down_description,
-                    "code": code,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
                     "custom_fields": custom_fields,
                     "description": description,
                     "fees_accounting_product_id": fees_accounting_product_id,
                     "line_item_types": line_item_types,
-                    "name": name,
                     "overage_description": overage_description,
                     "overage_surcharge_percent": overage_surcharge_percent,
                     "product_ids": product_ids,
@@ -1057,9 +1074,11 @@ class AsyncBalancesResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         account_id: str | Omit = omit,
-        contract: Optional[str] | Omit = omit,
+        contract: str | Omit = omit,
+        contract_id: str | Omit = omit,
         end_date_end: str | Omit = omit,
         end_date_start: str | Omit = omit,
+        ids: SequenceNotStr[str] | Omit = omit,
         next_token: str | Omit = omit,
         page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1083,6 +1102,9 @@ class AsyncBalancesResource(AsyncAPIResource):
         Args:
           account_id: The unique identifier (UUID) for the end customer's account.
 
+          contract_id: Filter Balances by contract id. Use '' with accountId to fetch unlinked
+              balances.
+
           end_date_end: Only include Balances with end dates earlier than this date. If a Balance has a
               rollover amount configured, then the `rolloverEndDate` will be used as the end
               date.
@@ -1090,6 +1112,8 @@ class AsyncBalancesResource(AsyncAPIResource):
           end_date_start: Only include Balances with end dates equal to or later than this date. If a
               Balance has a rollover amount configured, then the `rolloverEndDate` will be
               used as the end date.
+
+          ids: A list of unique identifiers (UUIDs) for specific Balances to retrieve.
 
           next_token: The `nextToken` for retrieving the next page of Balances. It is used to fetch
               the next page of Balances in a paginated list.
@@ -1120,8 +1144,10 @@ class AsyncBalancesResource(AsyncAPIResource):
                     {
                         "account_id": account_id,
                         "contract": contract,
+                        "contract_id": contract_id,
                         "end_date_end": end_date_end,
                         "end_date_start": end_date_start,
+                        "ids": ids,
                         "next_token": next_token,
                         "page_size": page_size,
                     },
