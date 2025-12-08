@@ -75,6 +75,8 @@ class ContractUpdateParams(TypedDict, total=False):
 
 
 class UsageFilter(TypedDict, total=False):
+    """Filters that determine which usage records are included in contract billing"""
+
     dimension_code: Required[Annotated[str, PropertyInfo(alias="dimensionCode")]]
 
     mode: Required[Literal["INCLUDE", "EXCLUDE"]]

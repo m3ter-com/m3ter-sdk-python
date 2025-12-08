@@ -10,6 +10,8 @@ __all__ = ["FileUploadGenerateUploadURLResponse"]
 
 
 class FileUploadGenerateUploadURLResponse(BaseModel):
+    """Response containing the upload job URL details"""
+
     headers: Optional[Dict[str, str]] = None
     """The headers"""
 

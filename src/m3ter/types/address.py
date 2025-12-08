@@ -10,6 +10,8 @@ __all__ = ["Address"]
 
 
 class Address(BaseModel):
+    """Contact address."""
+
     address_line1: Optional[str] = FieldInfo(alias="addressLine1", default=None)
 
     address_line2: Optional[str] = FieldInfo(alias="addressLine2", default=None)

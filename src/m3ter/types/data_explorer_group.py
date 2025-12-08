@@ -11,4 +11,6 @@ __all__ = ["DataExplorerGroup"]
 
 
 class DataExplorerGroup(BaseModel):
+    """Group by a field"""
+
     group_type: Optional[Literal["ACCOUNT", "DIMENSION", "TIME"]] = FieldInfo(alias="groupType", default=None)

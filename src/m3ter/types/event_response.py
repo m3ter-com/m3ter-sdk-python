@@ -10,6 +10,8 @@ __all__ = ["EventResponse"]
 
 
 class EventResponse(BaseModel):
+    """Response containing an Event entity."""
+
     id: str
     """The uniqie identifier (UUID) of the Event."""
 

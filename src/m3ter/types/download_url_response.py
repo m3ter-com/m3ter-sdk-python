@@ -8,5 +8,7 @@ __all__ = ["DownloadURLResponse"]
 
 
 class DownloadURLResponse(BaseModel):
+    """It contains details for downloading a file"""
+
     url: Optional[str] = None
     """The presigned download URL"""

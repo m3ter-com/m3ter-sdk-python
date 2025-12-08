@@ -12,6 +12,8 @@ __all__ = ["StatementDefinitionResponse", "Dimension", "Measure"]
 
 
 class Dimension(BaseModel):
+    """A Dimension belonging to a Meter."""
+
     filter: List[str]
     """The value of a Dimension to use as a filter.
 

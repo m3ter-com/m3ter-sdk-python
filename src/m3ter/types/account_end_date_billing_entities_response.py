@@ -11,6 +11,10 @@ __all__ = ["AccountEndDateBillingEntitiesResponse", "FailedEntities", "UpdatedEn
 
 
 class FailedEntities(BaseModel):
+    """
+    A dictionary with keys as identifiers of billing entities and values as lists containing details of the entities for which the update failed.
+    """
+
     accountplan: Optional[SetString] = FieldInfo(alias="ACCOUNTPLAN", default=None)
 
     contract: Optional[SetString] = FieldInfo(alias="CONTRACT", default=None)
@@ -23,6 +27,10 @@ class FailedEntities(BaseModel):
 
 
 class UpdatedEntities(BaseModel):
+    """
+    A dictionary with keys as identifiers of billing entities and values as lists containing details of the updated entities.
+    """
+
     accountplan: Optional[SetString] = FieldInfo(alias="ACCOUNTPLAN", default=None)
 
     contract: Optional[SetString] = FieldInfo(alias="CONTRACT", default=None)

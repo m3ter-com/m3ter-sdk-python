@@ -11,6 +11,8 @@ __all__ = ["FileUploadJobResponse"]
 
 
 class FileUploadJobResponse(BaseModel):
+    """Response containing the upload job details."""
+
     id: Optional[str] = None
     """UUID of the file upload job."""
 

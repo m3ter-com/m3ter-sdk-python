@@ -11,6 +11,8 @@ __all__ = ["JobGetDownloadURLResponse"]
 
 
 class JobGetDownloadURLResponse(BaseModel):
+    """It contains details for downloading an export file"""
+
     expiration_time: Optional[datetime] = FieldInfo(alias="expirationTime", default=None)
     """The expiration time of the URL"""
 

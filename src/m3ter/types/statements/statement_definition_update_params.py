@@ -56,6 +56,8 @@ class StatementDefinitionUpdateParams(TypedDict, total=False):
 
 
 class Dimension(TypedDict, total=False):
+    """A Dimension belonging to a Meter."""
+
     filter: Required[SequenceNotStr[str]]
     """The value of a Dimension to use as a filter.
 
