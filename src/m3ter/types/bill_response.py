@@ -13,6 +13,10 @@ __all__ = ["BillResponse", "LineItem", "LineItemUsagePerPricingBand"]
 
 
 class LineItemUsagePerPricingBand(BaseModel):
+    """
+    Array containing the pricing band information, which shows the details for each pricing band or tier.
+    """
+
     band_quantity: Optional[float] = FieldInfo(alias="bandQuantity", default=None)
     """Usage amount within the band."""
 

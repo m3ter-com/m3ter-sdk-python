@@ -10,4 +10,6 @@ __all__ = ["DataExplorerGroupParam"]
 
 
 class DataExplorerGroupParam(TypedDict, total=False):
+    """Group by a field"""
+
     group_type: Annotated[Literal["ACCOUNT", "DIMENSION", "TIME"], PropertyInfo(alias="groupType")]

@@ -64,6 +64,10 @@ class IntegrationConfigurationUpdateParams(TypedDict, total=False):
 
 
 class Credentials(TypedDict, total=False):
+    """
+    Base model for defining integration credentials across different types of integrations.
+    """
+
     type: Required[
         Literal[
             "HTTP_BASIC",

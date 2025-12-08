@@ -59,6 +59,10 @@ class ExportDestinationS3Response(DataExportDestinationResponse):
 
 
 class ExportDestinationGoogleCloudStorageResponse(DataExportDestinationResponse):
+    """
+    The response containing the details of an Google Cloud Storage export destination.
+    """
+
     id: str  # type: ignore
     """The UUID of the entity."""
 

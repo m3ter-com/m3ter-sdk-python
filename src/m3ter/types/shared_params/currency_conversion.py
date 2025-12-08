@@ -16,6 +16,10 @@ _CurrencyConversionReservedKeywords = TypedDict(
 
 
 class CurrencyConversion(_CurrencyConversionReservedKeywords, total=False):
+    """
+    An array of currency conversion rates from Bill currency to Organization currency. For example, if Account is billed in GBP and Organization is set to USD, Bill line items are calculated in GBP and then converted to USD using the defined rate.
+    """
+
     to: Required[str]
     """Currency to convert to. For example: USD."""
 

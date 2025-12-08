@@ -12,6 +12,8 @@ __all__ = ["ContractResponse", "UsageFilter"]
 
 
 class UsageFilter(BaseModel):
+    """Filters that determine which usage records are included in contract billing"""
+
     dimension_code: str = FieldInfo(alias="dimensionCode")
 
     mode: Literal["INCLUDE", "EXCLUDE"]

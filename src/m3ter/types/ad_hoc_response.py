@@ -10,5 +10,7 @@ __all__ = ["AdHocResponse"]
 
 
 class AdHocResponse(BaseModel):
+    """Response containing data export ad-hoc jobId"""
+
     job_id: Optional[str] = FieldInfo(alias="jobId", default=None)
     """The id of the job"""
