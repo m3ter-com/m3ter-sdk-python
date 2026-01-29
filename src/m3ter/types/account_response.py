@@ -43,9 +43,6 @@ class AccountResponse(BaseModel):
     code: Optional[str] = None
     """Code of the Account. This is a unique short code used for the Account."""
 
-    config_data: Optional[Dict[str, object]] = FieldInfo(alias="configData", default=None)
-    """Configuration data for the Account"""
-
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The ID of the user who created the account."""
 

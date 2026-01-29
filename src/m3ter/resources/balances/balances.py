@@ -30,6 +30,22 @@ from .transactions import (
 )
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.balance import Balance
+from .charge_schedules import (
+    ChargeSchedulesResource,
+    AsyncChargeSchedulesResource,
+    ChargeSchedulesResourceWithRawResponse,
+    AsyncChargeSchedulesResourceWithRawResponse,
+    ChargeSchedulesResourceWithStreamingResponse,
+    AsyncChargeSchedulesResourceWithStreamingResponse,
+)
+from .transaction_schedules import (
+    TransactionSchedulesResource,
+    AsyncTransactionSchedulesResource,
+    TransactionSchedulesResourceWithRawResponse,
+    AsyncTransactionSchedulesResourceWithRawResponse,
+    TransactionSchedulesResourceWithStreamingResponse,
+    AsyncTransactionSchedulesResourceWithStreamingResponse,
+)
 
 __all__ = ["BalancesResource", "AsyncBalancesResource"]
 
@@ -38,6 +54,14 @@ class BalancesResource(SyncAPIResource):
     @cached_property
     def transactions(self) -> TransactionsResource:
         return TransactionsResource(self._client)
+
+    @cached_property
+    def charge_schedules(self) -> ChargeSchedulesResource:
+        return ChargeSchedulesResource(self._client)
+
+    @cached_property
+    def transaction_schedules(self) -> TransactionSchedulesResource:
+        return TransactionSchedulesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> BalancesResourceWithRawResponse:
@@ -68,6 +92,7 @@ class BalancesResource(SyncAPIResource):
         end_date: Union[str, datetime],
         name: str,
         start_date: Union[str, datetime],
+        allow_overdraft: bool | Omit = omit,
         balance_draw_down_description: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
@@ -121,6 +146,10 @@ class BalancesResource(SyncAPIResource):
           name: The official name for the Balance.
 
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
+
+          allow_overdraft: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
@@ -229,6 +258,7 @@ class BalancesResource(SyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "allow_overdraft": allow_overdraft,
                     "balance_draw_down_description": balance_draw_down_description,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
@@ -302,6 +332,7 @@ class BalancesResource(SyncAPIResource):
         end_date: Union[str, datetime],
         name: str,
         start_date: Union[str, datetime],
+        allow_overdraft: bool | Omit = omit,
         balance_draw_down_description: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
@@ -355,6 +386,10 @@ class BalancesResource(SyncAPIResource):
           name: The official name for the Balance.
 
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
+
+          allow_overdraft: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
@@ -465,6 +500,7 @@ class BalancesResource(SyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "allow_overdraft": allow_overdraft,
                     "balance_draw_down_description": balance_draw_down_description,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
@@ -622,6 +658,14 @@ class AsyncBalancesResource(AsyncAPIResource):
         return AsyncTransactionsResource(self._client)
 
     @cached_property
+    def charge_schedules(self) -> AsyncChargeSchedulesResource:
+        return AsyncChargeSchedulesResource(self._client)
+
+    @cached_property
+    def transaction_schedules(self) -> AsyncTransactionSchedulesResource:
+        return AsyncTransactionSchedulesResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncBalancesResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -650,6 +694,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         end_date: Union[str, datetime],
         name: str,
         start_date: Union[str, datetime],
+        allow_overdraft: bool | Omit = omit,
         balance_draw_down_description: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
@@ -703,6 +748,10 @@ class AsyncBalancesResource(AsyncAPIResource):
           name: The official name for the Balance.
 
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
+
+          allow_overdraft: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
@@ -811,6 +860,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "allow_overdraft": allow_overdraft,
                     "balance_draw_down_description": balance_draw_down_description,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
@@ -884,6 +934,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         end_date: Union[str, datetime],
         name: str,
         start_date: Union[str, datetime],
+        allow_overdraft: bool | Omit = omit,
         balance_draw_down_description: str | Omit = omit,
         consumptions_accounting_product_id: str | Omit = omit,
         contract_id: str | Omit = omit,
@@ -937,6 +988,10 @@ class AsyncBalancesResource(AsyncAPIResource):
           name: The official name for the Balance.
 
           start_date: The date _(in ISO 8601 format)_ when the Balance becomes active.
+
+          allow_overdraft: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
 
           balance_draw_down_description: A description for the bill line items for draw-down charges against the Balance.
               _(Optional)._
@@ -1047,6 +1102,7 @@ class AsyncBalancesResource(AsyncAPIResource):
                     "end_date": end_date,
                     "name": name,
                     "start_date": start_date,
+                    "allow_overdraft": allow_overdraft,
                     "balance_draw_down_description": balance_draw_down_description,
                     "consumptions_accounting_product_id": consumptions_accounting_product_id,
                     "contract_id": contract_id,
@@ -1222,6 +1278,14 @@ class BalancesResourceWithRawResponse:
     def transactions(self) -> TransactionsResourceWithRawResponse:
         return TransactionsResourceWithRawResponse(self._balances.transactions)
 
+    @cached_property
+    def charge_schedules(self) -> ChargeSchedulesResourceWithRawResponse:
+        return ChargeSchedulesResourceWithRawResponse(self._balances.charge_schedules)
+
+    @cached_property
+    def transaction_schedules(self) -> TransactionSchedulesResourceWithRawResponse:
+        return TransactionSchedulesResourceWithRawResponse(self._balances.transaction_schedules)
+
 
 class AsyncBalancesResourceWithRawResponse:
     def __init__(self, balances: AsyncBalancesResource) -> None:
@@ -1246,6 +1310,14 @@ class AsyncBalancesResourceWithRawResponse:
     @cached_property
     def transactions(self) -> AsyncTransactionsResourceWithRawResponse:
         return AsyncTransactionsResourceWithRawResponse(self._balances.transactions)
+
+    @cached_property
+    def charge_schedules(self) -> AsyncChargeSchedulesResourceWithRawResponse:
+        return AsyncChargeSchedulesResourceWithRawResponse(self._balances.charge_schedules)
+
+    @cached_property
+    def transaction_schedules(self) -> AsyncTransactionSchedulesResourceWithRawResponse:
+        return AsyncTransactionSchedulesResourceWithRawResponse(self._balances.transaction_schedules)
 
 
 class BalancesResourceWithStreamingResponse:
@@ -1272,6 +1344,14 @@ class BalancesResourceWithStreamingResponse:
     def transactions(self) -> TransactionsResourceWithStreamingResponse:
         return TransactionsResourceWithStreamingResponse(self._balances.transactions)
 
+    @cached_property
+    def charge_schedules(self) -> ChargeSchedulesResourceWithStreamingResponse:
+        return ChargeSchedulesResourceWithStreamingResponse(self._balances.charge_schedules)
+
+    @cached_property
+    def transaction_schedules(self) -> TransactionSchedulesResourceWithStreamingResponse:
+        return TransactionSchedulesResourceWithStreamingResponse(self._balances.transaction_schedules)
+
 
 class AsyncBalancesResourceWithStreamingResponse:
     def __init__(self, balances: AsyncBalancesResource) -> None:
@@ -1296,3 +1376,11 @@ class AsyncBalancesResourceWithStreamingResponse:
     @cached_property
     def transactions(self) -> AsyncTransactionsResourceWithStreamingResponse:
         return AsyncTransactionsResourceWithStreamingResponse(self._balances.transactions)
+
+    @cached_property
+    def charge_schedules(self) -> AsyncChargeSchedulesResourceWithStreamingResponse:
+        return AsyncChargeSchedulesResourceWithStreamingResponse(self._balances.charge_schedules)
+
+    @cached_property
+    def transaction_schedules(self) -> AsyncTransactionSchedulesResourceWithStreamingResponse:
+        return AsyncTransactionSchedulesResourceWithStreamingResponse(self._balances.transaction_schedules)

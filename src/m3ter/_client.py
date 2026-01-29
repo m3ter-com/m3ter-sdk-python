@@ -39,6 +39,7 @@ if TYPE_CHECKING:
         users,
         events,
         meters,
+        charges,
         accounts,
         balances,
         counters,
@@ -57,6 +58,7 @@ if TYPE_CHECKING:
         account_plans,
         custom_fields,
         debit_reasons,
+        lookup_tables,
         authentication,
         credit_reasons,
         plan_templates,
@@ -76,6 +78,7 @@ if TYPE_CHECKING:
     from .resources.plans import PlansResource, AsyncPlansResource
     from .resources.events import EventsResource, AsyncEventsResource
     from .resources.meters import MetersResource, AsyncMetersResource
+    from .resources.charges import ChargesResource, AsyncChargesResource
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.counters import CountersResource, AsyncCountersResource
     from .resources.pricings import PricingsResource, AsyncPricingsResource
@@ -113,6 +116,7 @@ if TYPE_CHECKING:
         IntegrationConfigurationsResource,
         AsyncIntegrationConfigurationsResource,
     )
+    from .resources.lookup_tables.lookup_tables import LookupTablesResource, AsyncLookupTablesResource
     from .resources.notification_configurations import (
         NotificationConfigurationsResource,
         AsyncNotificationConfigurationsResource,
@@ -266,6 +270,12 @@ class M3ter(SyncAPIClient):
         return BillJobsResource(self)
 
     @cached_property
+    def charges(self) -> ChargesResource:
+        from .resources.charges import ChargesResource
+
+        return ChargesResource(self)
+
+    @cached_property
     def compound_aggregations(self) -> CompoundAggregationsResource:
         from .resources.compound_aggregations import CompoundAggregationsResource
 
@@ -342,6 +352,12 @@ class M3ter(SyncAPIClient):
         from .resources.integration_configurations import IntegrationConfigurationsResource
 
         return IntegrationConfigurationsResource(self)
+
+    @cached_property
+    def lookup_tables(self) -> LookupTablesResource:
+        from .resources.lookup_tables import LookupTablesResource
+
+        return LookupTablesResource(self)
 
     @cached_property
     def meters(self) -> MetersResource:
@@ -721,6 +737,12 @@ class AsyncM3ter(AsyncAPIClient):
         return AsyncBillJobsResource(self)
 
     @cached_property
+    def charges(self) -> AsyncChargesResource:
+        from .resources.charges import AsyncChargesResource
+
+        return AsyncChargesResource(self)
+
+    @cached_property
     def compound_aggregations(self) -> AsyncCompoundAggregationsResource:
         from .resources.compound_aggregations import AsyncCompoundAggregationsResource
 
@@ -797,6 +819,12 @@ class AsyncM3ter(AsyncAPIClient):
         from .resources.integration_configurations import AsyncIntegrationConfigurationsResource
 
         return AsyncIntegrationConfigurationsResource(self)
+
+    @cached_property
+    def lookup_tables(self) -> AsyncLookupTablesResource:
+        from .resources.lookup_tables import AsyncLookupTablesResource
+
+        return AsyncLookupTablesResource(self)
 
     @cached_property
     def meters(self) -> AsyncMetersResource:
@@ -1096,6 +1124,12 @@ class M3terWithRawResponse:
         return BillJobsResourceWithRawResponse(self._client.bill_jobs)
 
     @cached_property
+    def charges(self) -> charges.ChargesResourceWithRawResponse:
+        from .resources.charges import ChargesResourceWithRawResponse
+
+        return ChargesResourceWithRawResponse(self._client.charges)
+
+    @cached_property
     def compound_aggregations(self) -> compound_aggregations.CompoundAggregationsResourceWithRawResponse:
         from .resources.compound_aggregations import CompoundAggregationsResourceWithRawResponse
 
@@ -1172,6 +1206,12 @@ class M3terWithRawResponse:
         from .resources.integration_configurations import IntegrationConfigurationsResourceWithRawResponse
 
         return IntegrationConfigurationsResourceWithRawResponse(self._client.integration_configurations)
+
+    @cached_property
+    def lookup_tables(self) -> lookup_tables.LookupTablesResourceWithRawResponse:
+        from .resources.lookup_tables import LookupTablesResourceWithRawResponse
+
+        return LookupTablesResourceWithRawResponse(self._client.lookup_tables)
 
     @cached_property
     def meters(self) -> meters.MetersResourceWithRawResponse:
@@ -1341,6 +1381,12 @@ class AsyncM3terWithRawResponse:
         return AsyncBillJobsResourceWithRawResponse(self._client.bill_jobs)
 
     @cached_property
+    def charges(self) -> charges.AsyncChargesResourceWithRawResponse:
+        from .resources.charges import AsyncChargesResourceWithRawResponse
+
+        return AsyncChargesResourceWithRawResponse(self._client.charges)
+
+    @cached_property
     def compound_aggregations(self) -> compound_aggregations.AsyncCompoundAggregationsResourceWithRawResponse:
         from .resources.compound_aggregations import AsyncCompoundAggregationsResourceWithRawResponse
 
@@ -1419,6 +1465,12 @@ class AsyncM3terWithRawResponse:
         from .resources.integration_configurations import AsyncIntegrationConfigurationsResourceWithRawResponse
 
         return AsyncIntegrationConfigurationsResourceWithRawResponse(self._client.integration_configurations)
+
+    @cached_property
+    def lookup_tables(self) -> lookup_tables.AsyncLookupTablesResourceWithRawResponse:
+        from .resources.lookup_tables import AsyncLookupTablesResourceWithRawResponse
+
+        return AsyncLookupTablesResourceWithRawResponse(self._client.lookup_tables)
 
     @cached_property
     def meters(self) -> meters.AsyncMetersResourceWithRawResponse:
@@ -1588,6 +1640,12 @@ class M3terWithStreamedResponse:
         return BillJobsResourceWithStreamingResponse(self._client.bill_jobs)
 
     @cached_property
+    def charges(self) -> charges.ChargesResourceWithStreamingResponse:
+        from .resources.charges import ChargesResourceWithStreamingResponse
+
+        return ChargesResourceWithStreamingResponse(self._client.charges)
+
+    @cached_property
     def compound_aggregations(self) -> compound_aggregations.CompoundAggregationsResourceWithStreamingResponse:
         from .resources.compound_aggregations import CompoundAggregationsResourceWithStreamingResponse
 
@@ -1666,6 +1724,12 @@ class M3terWithStreamedResponse:
         from .resources.integration_configurations import IntegrationConfigurationsResourceWithStreamingResponse
 
         return IntegrationConfigurationsResourceWithStreamingResponse(self._client.integration_configurations)
+
+    @cached_property
+    def lookup_tables(self) -> lookup_tables.LookupTablesResourceWithStreamingResponse:
+        from .resources.lookup_tables import LookupTablesResourceWithStreamingResponse
+
+        return LookupTablesResourceWithStreamingResponse(self._client.lookup_tables)
 
     @cached_property
     def meters(self) -> meters.MetersResourceWithStreamingResponse:
@@ -1835,6 +1899,12 @@ class AsyncM3terWithStreamedResponse:
         return AsyncBillJobsResourceWithStreamingResponse(self._client.bill_jobs)
 
     @cached_property
+    def charges(self) -> charges.AsyncChargesResourceWithStreamingResponse:
+        from .resources.charges import AsyncChargesResourceWithStreamingResponse
+
+        return AsyncChargesResourceWithStreamingResponse(self._client.charges)
+
+    @cached_property
     def compound_aggregations(self) -> compound_aggregations.AsyncCompoundAggregationsResourceWithStreamingResponse:
         from .resources.compound_aggregations import AsyncCompoundAggregationsResourceWithStreamingResponse
 
@@ -1913,6 +1983,12 @@ class AsyncM3terWithStreamedResponse:
         from .resources.integration_configurations import AsyncIntegrationConfigurationsResourceWithStreamingResponse
 
         return AsyncIntegrationConfigurationsResourceWithStreamingResponse(self._client.integration_configurations)
+
+    @cached_property
+    def lookup_tables(self) -> lookup_tables.AsyncLookupTablesResourceWithStreamingResponse:
+        from .resources.lookup_tables import AsyncLookupTablesResourceWithStreamingResponse
+
+        return AsyncLookupTablesResourceWithStreamingResponse(self._client.lookup_tables)
 
     @cached_property
     def meters(self) -> meters.AsyncMetersResourceWithStreamingResponse:

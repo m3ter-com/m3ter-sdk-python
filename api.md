@@ -25,7 +25,6 @@ from m3ter.types import (
     AccountResponse,
     Address,
     AccountEndDateBillingEntitiesResponse,
-    AccountGetChildrenResponse,
     AccountSearchResponse,
 )
 ```
@@ -38,7 +37,7 @@ Methods:
 - <code title="get /organizations/{orgId}/accounts">client.accounts.<a href="./src/m3ter/resources/accounts.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/account_list_params.py">params</a>) -> <a href="./src/m3ter/types/account_response.py">SyncCursor[AccountResponse]</a></code>
 - <code title="delete /organizations/{orgId}/accounts/{id}">client.accounts.<a href="./src/m3ter/resources/accounts.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/account_response.py">AccountResponse</a></code>
 - <code title="put /organizations/{orgId}/accounts/{id}/enddatebillingentities">client.accounts.<a href="./src/m3ter/resources/accounts.py">end_date_billing_entities</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/account_end_date_billing_entities_params.py">params</a>) -> <a href="./src/m3ter/types/account_end_date_billing_entities_response.py">AccountEndDateBillingEntitiesResponse</a></code>
-- <code title="get /organizations/{orgId}/accounts/{id}/children">client.accounts.<a href="./src/m3ter/resources/accounts.py">get_children</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/account_get_children_params.py">params</a>) -> <a href="./src/m3ter/types/account_get_children_response.py">AccountGetChildrenResponse</a></code>
+- <code title="get /organizations/{orgId}/accounts/{id}/children">client.accounts.<a href="./src/m3ter/resources/accounts.py">list_children</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/account_list_children_params.py">params</a>) -> <a href="./src/m3ter/types/account_response.py">SyncCursor[AccountResponse]</a></code>
 - <code title="get /organizations/{orgId}/accounts/search">client.accounts.<a href="./src/m3ter/resources/accounts.py">search</a>(\*, org_id, \*\*<a href="src/m3ter/types/account_search_params.py">params</a>) -> <a href="./src/m3ter/types/account_search_response.py">AccountSearchResponse</a></code>
 
 # AccountPlans
@@ -94,7 +93,12 @@ Methods:
 Types:
 
 ```python
-from m3ter.types.balances import TransactionResponse, TransactionSummaryResponse
+from m3ter.types.balances import (
+    ScheduleRequest,
+    ScheduleResponse,
+    TransactionResponse,
+    TransactionSummaryResponse,
+)
 ```
 
 Methods:
@@ -102,6 +106,41 @@ Methods:
 - <code title="post /organizations/{orgId}/balances/{balanceId}/transactions">client.balances.transactions.<a href="./src/m3ter/resources/balances/transactions.py">create</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/transaction_create_params.py">params</a>) -> <a href="./src/m3ter/types/balances/transaction_response.py">TransactionResponse</a></code>
 - <code title="get /organizations/{orgId}/balances/{balanceId}/transactions">client.balances.transactions.<a href="./src/m3ter/resources/balances/transactions.py">list</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/transaction_list_params.py">params</a>) -> <a href="./src/m3ter/types/balances/transaction_response.py">SyncCursor[TransactionResponse]</a></code>
 - <code title="get /organizations/{orgId}/balances/{balanceId}/transactions/summary">client.balances.transactions.<a href="./src/m3ter/resources/balances/transactions.py">summary</a>(balance_id, \*, org_id) -> <a href="./src/m3ter/types/balances/transaction_summary_response.py">TransactionSummaryResponse</a></code>
+
+## ChargeSchedules
+
+Types:
+
+```python
+from m3ter.types.balances import (
+    ChargeScheduleCreateResponse,
+    ChargeScheduleRetrieveResponse,
+    ChargeScheduleUpdateResponse,
+    ChargeScheduleListResponse,
+    ChargeScheduleDeleteResponse,
+    ChargeSchedulePreviewResponse,
+)
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/balances/{balanceId}/balancechargeschedules">client.balances.charge_schedules.<a href="./src/m3ter/resources/balances/charge_schedules.py">create</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/charge_schedule_create_params.py">params</a>) -> <a href="./src/m3ter/types/balances/charge_schedule_create_response.py">ChargeScheduleCreateResponse</a></code>
+- <code title="get /organizations/{orgId}/balances/{balanceId}/balancechargeschedules/{id}">client.balances.charge_schedules.<a href="./src/m3ter/resources/balances/charge_schedules.py">retrieve</a>(id, \*, org_id, balance_id) -> <a href="./src/m3ter/types/balances/charge_schedule_retrieve_response.py">ChargeScheduleRetrieveResponse</a></code>
+- <code title="put /organizations/{orgId}/balances/{balanceId}/balancechargeschedules/{id}">client.balances.charge_schedules.<a href="./src/m3ter/resources/balances/charge_schedules.py">update</a>(id, \*, org_id, balance_id, \*\*<a href="src/m3ter/types/balances/charge_schedule_update_params.py">params</a>) -> <a href="./src/m3ter/types/balances/charge_schedule_update_response.py">ChargeScheduleUpdateResponse</a></code>
+- <code title="get /organizations/{orgId}/balances/{balanceId}/balancechargeschedules">client.balances.charge_schedules.<a href="./src/m3ter/resources/balances/charge_schedules.py">list</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/charge_schedule_list_params.py">params</a>) -> <a href="./src/m3ter/types/balances/charge_schedule_list_response.py">SyncCursor[ChargeScheduleListResponse]</a></code>
+- <code title="delete /organizations/{orgId}/balances/{balanceId}/balancechargeschedules/{id}">client.balances.charge_schedules.<a href="./src/m3ter/resources/balances/charge_schedules.py">delete</a>(id, \*, org_id, balance_id) -> <a href="./src/m3ter/types/balances/charge_schedule_delete_response.py">ChargeScheduleDeleteResponse</a></code>
+- <code title="post /organizations/{orgId}/balances/{balanceId}/balancechargeschedules/preview">client.balances.charge_schedules.<a href="./src/m3ter/resources/balances/charge_schedules.py">preview</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/charge_schedule_preview_params.py">params</a>) -> <a href="./src/m3ter/types/balances/charge_schedule_preview_response.py">ChargeSchedulePreviewResponse</a></code>
+
+## TransactionSchedules
+
+Methods:
+
+- <code title="post /organizations/{orgId}/balances/{balanceId}/balancetransactionschedules">client.balances.transaction_schedules.<a href="./src/m3ter/resources/balances/transaction_schedules.py">create</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/transaction_schedule_create_params.py">params</a>) -> <a href="./src/m3ter/types/balances/schedule_response.py">ScheduleResponse</a></code>
+- <code title="get /organizations/{orgId}/balances/{balanceId}/balancetransactionschedules/{id}">client.balances.transaction_schedules.<a href="./src/m3ter/resources/balances/transaction_schedules.py">retrieve</a>(id, \*, org_id, balance_id) -> <a href="./src/m3ter/types/balances/schedule_response.py">ScheduleResponse</a></code>
+- <code title="put /organizations/{orgId}/balances/{balanceId}/balancetransactionschedules/{id}">client.balances.transaction_schedules.<a href="./src/m3ter/resources/balances/transaction_schedules.py">update</a>(id, \*, org_id, balance_id, \*\*<a href="src/m3ter/types/balances/transaction_schedule_update_params.py">params</a>) -> <a href="./src/m3ter/types/balances/schedule_response.py">ScheduleResponse</a></code>
+- <code title="get /organizations/{orgId}/balances/{balanceId}/balancetransactionschedules">client.balances.transaction_schedules.<a href="./src/m3ter/resources/balances/transaction_schedules.py">list</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/transaction_schedule_list_params.py">params</a>) -> <a href="./src/m3ter/types/balances/schedule_response.py">SyncCursor[ScheduleResponse]</a></code>
+- <code title="delete /organizations/{orgId}/balances/{balanceId}/balancetransactionschedules/{id}">client.balances.transaction_schedules.<a href="./src/m3ter/resources/balances/transaction_schedules.py">delete</a>(id, \*, org_id, balance_id) -> <a href="./src/m3ter/types/balances/schedule_response.py">ScheduleResponse</a></code>
+- <code title="post /organizations/{orgId}/balances/{balanceId}/balancetransactionschedules/preview">client.balances.transaction_schedules.<a href="./src/m3ter/resources/balances/transaction_schedules.py">preview</a>(balance_id, \*, org_id, \*\*<a href="src/m3ter/types/balances/transaction_schedule_preview_params.py">params</a>) -> <a href="./src/m3ter/types/balances/schedule_response.py">ScheduleResponse</a></code>
 
 # Bills
 
@@ -212,6 +251,28 @@ Methods:
 - <code title="get /organizations/{orgId}/billjobs">client.bill_jobs.<a href="./src/m3ter/resources/bill_jobs.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/bill_job_list_params.py">params</a>) -> <a href="./src/m3ter/types/bill_job_response.py">SyncCursor[BillJobResponse]</a></code>
 - <code title="post /organizations/{orgId}/billjobs/{id}/cancel">client.bill_jobs.<a href="./src/m3ter/resources/bill_jobs.py">cancel</a>(id, \*, org_id) -> <a href="./src/m3ter/types/bill_job_response.py">BillJobResponse</a></code>
 - <code title="post /organizations/{orgId}/billjobs/recalculate">client.bill_jobs.<a href="./src/m3ter/resources/bill_jobs.py">recalculate</a>(\*, org_id, \*\*<a href="src/m3ter/types/bill_job_recalculate_params.py">params</a>) -> <a href="./src/m3ter/types/bill_job_response.py">BillJobResponse</a></code>
+
+# Charges
+
+Types:
+
+```python
+from m3ter.types import (
+    ChargeCreateResponse,
+    ChargeRetrieveResponse,
+    ChargeUpdateResponse,
+    ChargeListResponse,
+    ChargeDeleteResponse,
+)
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/charges">client.charges.<a href="./src/m3ter/resources/charges.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/charge_create_params.py">params</a>) -> <a href="./src/m3ter/types/charge_create_response.py">ChargeCreateResponse</a></code>
+- <code title="get /organizations/{orgId}/charges/{id}">client.charges.<a href="./src/m3ter/resources/charges.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/charge_retrieve_response.py">ChargeRetrieveResponse</a></code>
+- <code title="put /organizations/{orgId}/charges/{id}">client.charges.<a href="./src/m3ter/resources/charges.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/charge_update_params.py">params</a>) -> <a href="./src/m3ter/types/charge_update_response.py">ChargeUpdateResponse</a></code>
+- <code title="get /organizations/{orgId}/charges">client.charges.<a href="./src/m3ter/resources/charges.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/charge_list_params.py">params</a>) -> <a href="./src/m3ter/types/charge_list_response.py">SyncCursor[ChargeListResponse]</a></code>
+- <code title="delete /organizations/{orgId}/charges/{id}">client.charges.<a href="./src/m3ter/resources/charges.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/charge_delete_response.py">ChargeDeleteResponse</a></code>
 
 # CompoundAggregations
 
@@ -497,6 +558,93 @@ Methods:
 - <code title="post /organizations/{orgId}/integrationconfigs/{id}/enable">client.integration_configurations.<a href="./src/m3ter/resources/integration_configurations.py">enable</a>(id, \*, org_id) -> <a href="./src/m3ter/types/integration_configuration_enable_response.py">IntegrationConfigurationEnableResponse</a></code>
 - <code title="get /organizations/{orgId}/integrationconfigs/entity/{entityType}">client.integration_configurations.<a href="./src/m3ter/resources/integration_configurations.py">get_by_entity</a>(entity_type, \*, org_id, \*\*<a href="src/m3ter/types/integration_configuration_get_by_entity_params.py">params</a>) -> <a href="./src/m3ter/types/integration_configuration_response.py">IntegrationConfigurationResponse</a></code>
 
+# LookupTables
+
+Types:
+
+```python
+from m3ter.types import LookupTableRequest, LookupTableResponse
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/lookuptables">client.lookup_tables.<a href="./src/m3ter/resources/lookup_tables/lookup_tables.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/lookup_table_create_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_table_response.py">LookupTableResponse</a></code>
+- <code title="get /organizations/{orgId}/lookuptables/{id}">client.lookup_tables.<a href="./src/m3ter/resources/lookup_tables/lookup_tables.py">retrieve</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/lookup_table_retrieve_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_table_response.py">LookupTableResponse</a></code>
+- <code title="put /organizations/{orgId}/lookuptables/{id}">client.lookup_tables.<a href="./src/m3ter/resources/lookup_tables/lookup_tables.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/lookup_table_update_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_table_response.py">LookupTableResponse</a></code>
+- <code title="get /organizations/{orgId}/lookuptables">client.lookup_tables.<a href="./src/m3ter/resources/lookup_tables/lookup_tables.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/lookup_table_list_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_table_response.py">SyncCursor[LookupTableResponse]</a></code>
+- <code title="delete /organizations/{orgId}/lookuptables/{id}">client.lookup_tables.<a href="./src/m3ter/resources/lookup_tables/lookup_tables.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/lookup_table_response.py">LookupTableResponse</a></code>
+
+## LookupTableRevisions
+
+Types:
+
+```python
+from m3ter.types.lookup_tables import (
+    LookupTableRevisionRequest,
+    LookupTableRevisionResponse,
+    LookupTableRevisionStatusRequest,
+)
+```
+
+Methods:
+
+- <code title="post /organizations/{orgId}/lookuptables/{lookupTableId}/revisions">client.lookup_tables.lookup_table_revisions.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revisions.py">create</a>(lookup_table_id, \*, org_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_create_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_response.py">LookupTableRevisionResponse</a></code>
+- <code title="get /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{id}">client.lookup_tables.lookup_table_revisions.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revisions.py">retrieve</a>(id, \*, org_id, lookup_table_id) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_response.py">LookupTableRevisionResponse</a></code>
+- <code title="put /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{id}">client.lookup_tables.lookup_table_revisions.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revisions.py">update</a>(id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_update_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_response.py">LookupTableRevisionResponse</a></code>
+- <code title="get /organizations/{orgId}/lookuptables/{lookupTableId}/revisions">client.lookup_tables.lookup_table_revisions.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revisions.py">list</a>(lookup_table_id, \*, org_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_list_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_response.py">SyncCursor[LookupTableRevisionResponse]</a></code>
+- <code title="delete /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{id}">client.lookup_tables.lookup_table_revisions.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revisions.py">delete</a>(id, \*, org_id, lookup_table_id) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_response.py">LookupTableRevisionResponse</a></code>
+- <code title="put /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{id}/status">client.lookup_tables.lookup_table_revisions.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revisions.py">update_status</a>(id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_update_status_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_response.py">LookupTableRevisionResponse</a></code>
+
+## LookupTableRevisionData
+
+Types:
+
+```python
+from m3ter.types.lookup_tables import (
+    LookupTableRevisionDataRetrieveResponse,
+    LookupTableRevisionDataUpdateResponse,
+    LookupTableRevisionDataDeleteResponse,
+    LookupTableRevisionDataArchieveResponse,
+    LookupTableRevisionDataCopyResponse,
+    LookupTableRevisionDataDeleteKeyResponse,
+    LookupTableRevisionDataGenerateDownloadURLResponse,
+    LookupTableRevisionDataRetrieveKeyResponse,
+    LookupTableRevisionDataUpdateKeyResponse,
+)
+```
+
+Methods:
+
+- <code title="get /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">retrieve</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_retrieve_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_retrieve_response.py">LookupTableRevisionDataRetrieveResponse</a></code>
+- <code title="put /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">update</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_update_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_update_response.py">LookupTableRevisionDataUpdateResponse</a></code>
+- <code title="delete /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">delete</a>(lookup_table_revision_id, \*, org_id, lookup_table_id) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_delete_response.py">LookupTableRevisionDataDeleteResponse</a></code>
+- <code title="post /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/archived">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">archieve</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_archieve_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_archieve_response.py">LookupTableRevisionDataArchieveResponse</a></code>
+- <code title="post /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/copy">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">copy</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_copy_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_copy_response.py">LookupTableRevisionDataCopyResponse</a></code>
+- <code title="delete /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/{lookupKey}">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">delete_key</a>(lookup_key, \*, org_id, lookup_table_id, lookup_table_revision_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_delete_key_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_delete_key_response.py">LookupTableRevisionDataDeleteKeyResponse</a></code>
+- <code title="post /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/generateuploadurl">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">generate_download_url</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_generate_download_url_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_generate_download_url_response.py">LookupTableRevisionDataGenerateDownloadURLResponse</a></code>
+- <code title="get /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/{lookupKey}">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">retrieve_key</a>(lookup_key, \*, org_id, lookup_table_id, lookup_table_revision_id) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_retrieve_key_response.py">LookupTableRevisionDataRetrieveKeyResponse</a></code>
+- <code title="put /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/{lookupKey}">client.lookup_tables.lookup_table_revision_data.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data.py">update_key</a>(lookup_key, \*, org_id, lookup_table_id, lookup_table_revision_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data_update_key_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data_update_key_response.py">LookupTableRevisionDataUpdateKeyResponse</a></code>
+
+### LookupTableRevisionDataJobs
+
+Types:
+
+```python
+from m3ter.types.lookup_tables.lookup_table_revision_data import (
+    LookupTableRevisionDataJobRetrieveResponse,
+    LookupTableRevisionDataJobListResponse,
+    LookupTableRevisionDataJobDeleteResponse,
+    LookupTableRevisionDataJobDownloadResponse,
+)
+```
+
+Methods:
+
+- <code title="get /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/jobs/{id}">client.lookup_tables.lookup_table_revision_data.lookup_table_revision_data_jobs.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_jobs.py">retrieve</a>(id, \*, org_id, lookup_table_id, lookup_table_revision_id) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_job_retrieve_response.py">LookupTableRevisionDataJobRetrieveResponse</a></code>
+- <code title="get /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/jobs">client.lookup_tables.lookup_table_revision_data.lookup_table_revision_data_jobs.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_jobs.py">list</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_job_list_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_job_list_response.py">SyncCursor[LookupTableRevisionDataJobListResponse]</a></code>
+- <code title="delete /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/jobs/{id}">client.lookup_tables.lookup_table_revision_data.lookup_table_revision_data_jobs.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_jobs.py">delete</a>(id, \*, org_id, lookup_table_id, lookup_table_revision_id) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_job_delete_response.py">LookupTableRevisionDataJobDeleteResponse</a></code>
+- <code title="post /organizations/{orgId}/lookuptables/{lookupTableId}/revisions/{lookupTableRevisionId}/data/jobs/download">client.lookup_tables.lookup_table_revision_data.lookup_table_revision_data_jobs.<a href="./src/m3ter/resources/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_jobs.py">download</a>(lookup_table_revision_id, \*, org_id, lookup_table_id, \*\*<a href="src/m3ter/types/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_job_download_params.py">params</a>) -> <a href="./src/m3ter/types/lookup_tables/lookup_table_revision_data/lookup_table_revision_data_job_download_response.py">LookupTableRevisionDataJobDownloadResponse</a></code>
+
 # Meters
 
 Types:
@@ -715,7 +863,7 @@ Methods:
 Types:
 
 ```python
-from m3ter.types import ObjectURLResponse
+from m3ter.types import ObjectURLResponse, StatementDefinitionResponse, StatementJobResponse
 ```
 
 Methods:
@@ -729,32 +877,26 @@ Methods:
 Types:
 
 ```python
-from m3ter.types.statements import StatementJobResponse, StatementJobCreateBatchResponse
+from m3ter.types.statements import StatementJobCreateBatchResponse
 ```
 
 Methods:
 
-- <code title="post /organizations/{orgId}/statementjobs">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_create_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_job_response.py">StatementJobResponse</a></code>
-- <code title="get /organizations/{orgId}/statementjobs/{id}">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_job_response.py">StatementJobResponse</a></code>
-- <code title="get /organizations/{orgId}/statementjobs">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_list_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_job_response.py">SyncCursor[StatementJobResponse]</a></code>
-- <code title="post /organizations/{orgId}/statementjobs/{id}/cancel">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">cancel</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_job_response.py">StatementJobResponse</a></code>
+- <code title="post /organizations/{orgId}/statementjobs">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_create_params.py">params</a>) -> <a href="./src/m3ter/types/statement_job_response.py">StatementJobResponse</a></code>
+- <code title="get /organizations/{orgId}/statementjobs/{id}">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statement_job_response.py">StatementJobResponse</a></code>
+- <code title="get /organizations/{orgId}/statementjobs">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_list_params.py">params</a>) -> <a href="./src/m3ter/types/statement_job_response.py">SyncCursor[StatementJobResponse]</a></code>
+- <code title="post /organizations/{orgId}/statementjobs/{id}/cancel">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">cancel</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statement_job_response.py">StatementJobResponse</a></code>
 - <code title="post /organizations/{orgId}/statementjobs/batch">client.statements.statement_jobs.<a href="./src/m3ter/resources/statements/statement_jobs.py">create_batch</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_job_create_batch_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_job_create_batch_response.py">StatementJobCreateBatchResponse</a></code>
 
 ## StatementDefinitions
 
-Types:
-
-```python
-from m3ter.types.statements import StatementDefinitionResponse
-```
-
 Methods:
 
-- <code title="post /organizations/{orgId}/statementdefinitions">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_create_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
-- <code title="get /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
-- <code title="put /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_update_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
-- <code title="get /organizations/{orgId}/statementdefinitions">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_list_params.py">params</a>) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">SyncCursor[StatementDefinitionResponse]</a></code>
-- <code title="delete /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statements/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="post /organizations/{orgId}/statementdefinitions">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">create</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_create_params.py">params</a>) -> <a href="./src/m3ter/types/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="get /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">retrieve</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="put /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">update</a>(id, \*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_update_params.py">params</a>) -> <a href="./src/m3ter/types/statement_definition_response.py">StatementDefinitionResponse</a></code>
+- <code title="get /organizations/{orgId}/statementdefinitions">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">list</a>(\*, org_id, \*\*<a href="src/m3ter/types/statements/statement_definition_list_params.py">params</a>) -> <a href="./src/m3ter/types/statement_definition_response.py">SyncCursor[StatementDefinitionResponse]</a></code>
+- <code title="delete /organizations/{orgId}/statementdefinitions/{id}">client.statements.statement_definitions.<a href="./src/m3ter/resources/statements/statement_definitions.py">delete</a>(id, \*, org_id) -> <a href="./src/m3ter/types/statement_definition_response.py">StatementDefinitionResponse</a></code>
 
 # TransactionTypes
 

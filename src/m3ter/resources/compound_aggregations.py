@@ -123,7 +123,7 @@ class CompoundAggregationsResource(SyncAPIResource):
               customers what they are being charged for.
 
           accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
-              purposes
+              purposes.
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
@@ -312,7 +312,7 @@ class CompoundAggregationsResource(SyncAPIResource):
               customers what they are being charged for.
 
           accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
-              purposes
+              purposes.
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
@@ -594,7 +594,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
               customers what they are being charged for.
 
           accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
-              purposes
+              purposes.
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 
@@ -783,7 +783,7 @@ class AsyncCompoundAggregationsResource(AsyncAPIResource):
               customers what they are being charged for.
 
           accounting_product_id: Optional Product ID this Aggregation should be attributed to for accounting
-              purposes
+              purposes.
 
           code: Code of the new Aggregation. A unique short code to identify the Aggregation.
 

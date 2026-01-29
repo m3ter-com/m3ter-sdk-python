@@ -132,9 +132,9 @@ class PricingsResource(SyncAPIResource):
 
           minimum_spend_bill_in_advance: The default value is **FALSE**.
 
-              - When TRUE, minimum spend is billed at the start of each billing period.
+              - When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              - When FALSE, minimum spend is billed at the end of each billing period.
+              - When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at Organization level for minimum spend
               billing in arrears/in advance.
@@ -179,11 +179,11 @@ class PricingsResource(SyncAPIResource):
 
           tiers_span_plan: The default value is **FALSE**.
 
-              - If TRUE, usage accumulates over the entire period the priced Plan is active
-                for the account, and is not reset for pricing band rates at the start of each
-                billing period.
+              - If **TRUE**, usage accumulates over the entire period the priced Plan is
+                active for the account, and is not reset for pricing band rates at the start
+                of each billing period.
 
-              - If FALSE, usage does not accumulate, and is reset for pricing bands at the
+              - If **FALSE**, usage does not accumulate, and is reset for pricing bands at the
                 start of each billing period.
 
           type: - **DEBIT**. Default setting. The amount calculated using the Pricing is added
@@ -376,9 +376,9 @@ class PricingsResource(SyncAPIResource):
 
           minimum_spend_bill_in_advance: The default value is **FALSE**.
 
-              - When TRUE, minimum spend is billed at the start of each billing period.
+              - When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              - When FALSE, minimum spend is billed at the end of each billing period.
+              - When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at Organization level for minimum spend
               billing in arrears/in advance.
@@ -423,11 +423,11 @@ class PricingsResource(SyncAPIResource):
 
           tiers_span_plan: The default value is **FALSE**.
 
-              - If TRUE, usage accumulates over the entire period the priced Plan is active
-                for the account, and is not reset for pricing band rates at the start of each
-                billing period.
+              - If **TRUE**, usage accumulates over the entire period the priced Plan is
+                active for the account, and is not reset for pricing band rates at the start
+                of each billing period.
 
-              - If FALSE, usage does not accumulate, and is reset for pricing bands at the
+              - If **FALSE**, usage does not accumulate, and is reset for pricing bands at the
                 start of each billing period.
 
           type: - **DEBIT**. Default setting. The amount calculated using the Pricing is added
@@ -715,9 +715,9 @@ class AsyncPricingsResource(AsyncAPIResource):
 
           minimum_spend_bill_in_advance: The default value is **FALSE**.
 
-              - When TRUE, minimum spend is billed at the start of each billing period.
+              - When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              - When FALSE, minimum spend is billed at the end of each billing period.
+              - When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at Organization level for minimum spend
               billing in arrears/in advance.
@@ -762,11 +762,11 @@ class AsyncPricingsResource(AsyncAPIResource):
 
           tiers_span_plan: The default value is **FALSE**.
 
-              - If TRUE, usage accumulates over the entire period the priced Plan is active
-                for the account, and is not reset for pricing band rates at the start of each
-                billing period.
+              - If **TRUE**, usage accumulates over the entire period the priced Plan is
+                active for the account, and is not reset for pricing band rates at the start
+                of each billing period.
 
-              - If FALSE, usage does not accumulate, and is reset for pricing bands at the
+              - If **FALSE**, usage does not accumulate, and is reset for pricing bands at the
                 start of each billing period.
 
           type: - **DEBIT**. Default setting. The amount calculated using the Pricing is added
@@ -959,9 +959,9 @@ class AsyncPricingsResource(AsyncAPIResource):
 
           minimum_spend_bill_in_advance: The default value is **FALSE**.
 
-              - When TRUE, minimum spend is billed at the start of each billing period.
+              - When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              - When FALSE, minimum spend is billed at the end of each billing period.
+              - When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at Organization level for minimum spend
               billing in arrears/in advance.
@@ -1006,11 +1006,11 @@ class AsyncPricingsResource(AsyncAPIResource):
 
           tiers_span_plan: The default value is **FALSE**.
 
-              - If TRUE, usage accumulates over the entire period the priced Plan is active
-                for the account, and is not reset for pricing band rates at the start of each
-                billing period.
+              - If **TRUE**, usage accumulates over the entire period the priced Plan is
+                active for the account, and is not reset for pricing band rates at the start
+                of each billing period.
 
-              - If FALSE, usage does not accumulate, and is reset for pricing bands at the
+              - If **FALSE**, usage does not accumulate, and is reset for pricing bands at the
                 start of each billing period.
 
           type: - **DEBIT**. Default setting. The amount calculated using the Pricing is added

@@ -71,7 +71,7 @@ class CompoundAggregationUpdateParams(TypedDict, total=False):
     accounting_product_id: Annotated[str, PropertyInfo(alias="accountingProductId")]
     """
     Optional Product ID this Aggregation should be attributed to for accounting
-    purposes
+    purposes.
     """
 
     code: str

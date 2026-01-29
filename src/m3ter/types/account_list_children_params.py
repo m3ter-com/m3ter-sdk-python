@@ -7,10 +7,10 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AccountGetChildrenParams"]
+__all__ = ["AccountListChildrenParams"]
 
 
-class AccountGetChildrenParams(TypedDict, total=False):
+class AccountListChildrenParams(TypedDict, total=False):
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     next_token: Annotated[Optional[str], PropertyInfo(alias="nextToken")]

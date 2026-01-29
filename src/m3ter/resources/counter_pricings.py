@@ -120,39 +120,39 @@ class CounterPricingsResource(SyncAPIResource):
 
           pro_rate_adjustment_credit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment credits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment credits are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter adjustment credits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment credits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_adjustment_debit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment debits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment debits are prorated and are billed according
+                to the number of days in billing period.
 
-              - When FALSE, counter adjustment debits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment debits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_running_total: The default value is **TRUE**.
 
-              - When TRUE, counter running total charges are prorated and are billed according
-                to the number of days in billing period.
+              - When **TRUE**, counter running total charges are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter running total charges are not prorated and are billed for
-                the entire billing period.
+              - When **FALSE**, counter running total charges are not prorated and are billed
+                for the entire billing period.
 
               _(Optional)_.
 
           running_total_bill_in_advance: The default value is **TRUE**.
 
-              - When TRUE, running totals are billed at the start of each billing period.
+              - When **TRUE**, running totals are billed at the start of each billing period.
 
-              - When FALSE, running totals are billed at the end of each billing period.
+              - When **FALSE**, running totals are billed at the end of each billing period.
 
               _(Optional)_.
 
@@ -319,39 +319,39 @@ class CounterPricingsResource(SyncAPIResource):
 
           pro_rate_adjustment_credit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment credits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment credits are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter adjustment credits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment credits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_adjustment_debit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment debits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment debits are prorated and are billed according
+                to the number of days in billing period.
 
-              - When FALSE, counter adjustment debits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment debits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_running_total: The default value is **TRUE**.
 
-              - When TRUE, counter running total charges are prorated and are billed according
-                to the number of days in billing period.
+              - When **TRUE**, counter running total charges are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter running total charges are not prorated and are billed for
-                the entire billing period.
+              - When **FALSE**, counter running total charges are not prorated and are billed
+                for the entire billing period.
 
               _(Optional)_.
 
           running_total_bill_in_advance: The default value is **TRUE**.
 
-              - When TRUE, running totals are billed at the start of each billing period.
+              - When **TRUE**, running totals are billed at the start of each billing period.
 
-              - When FALSE, running totals are billed at the end of each billing period.
+              - When **FALSE**, running totals are billed at the end of each billing period.
 
               _(Optional)_.
 
@@ -609,39 +609,39 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
 
           pro_rate_adjustment_credit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment credits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment credits are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter adjustment credits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment credits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_adjustment_debit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment debits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment debits are prorated and are billed according
+                to the number of days in billing period.
 
-              - When FALSE, counter adjustment debits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment debits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_running_total: The default value is **TRUE**.
 
-              - When TRUE, counter running total charges are prorated and are billed according
-                to the number of days in billing period.
+              - When **TRUE**, counter running total charges are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter running total charges are not prorated and are billed for
-                the entire billing period.
+              - When **FALSE**, counter running total charges are not prorated and are billed
+                for the entire billing period.
 
               _(Optional)_.
 
           running_total_bill_in_advance: The default value is **TRUE**.
 
-              - When TRUE, running totals are billed at the start of each billing period.
+              - When **TRUE**, running totals are billed at the start of each billing period.
 
-              - When FALSE, running totals are billed at the end of each billing period.
+              - When **FALSE**, running totals are billed at the end of each billing period.
 
               _(Optional)_.
 
@@ -808,39 +808,39 @@ class AsyncCounterPricingsResource(AsyncAPIResource):
 
           pro_rate_adjustment_credit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment credits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment credits are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter adjustment credits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment credits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_adjustment_debit: The default value is **TRUE**.
 
-              - When TRUE, counter adjustment debits are prorated and are billed according to
-                the number of days in billing period.
+              - When **TRUE**, counter adjustment debits are prorated and are billed according
+                to the number of days in billing period.
 
-              - When FALSE, counter adjustment debits are not prorated and are billed for the
-                entire billing period.
+              - When **FALSE**, counter adjustment debits are not prorated and are billed for
+                the entire billing period.
 
               _(Optional)_.
 
           pro_rate_running_total: The default value is **TRUE**.
 
-              - When TRUE, counter running total charges are prorated and are billed according
-                to the number of days in billing period.
+              - When **TRUE**, counter running total charges are prorated and are billed
+                according to the number of days in billing period.
 
-              - When FALSE, counter running total charges are not prorated and are billed for
-                the entire billing period.
+              - When **FALSE**, counter running total charges are not prorated and are billed
+                for the entire billing period.
 
               _(Optional)_.
 
           running_total_bill_in_advance: The default value is **TRUE**.
 
-              - When TRUE, running totals are billed at the start of each billing period.
+              - When **TRUE**, running totals are billed at the start of each billing period.
 
-              - When FALSE, running totals are billed at the end of each billing period.
+              - When **FALSE**, running totals are billed at the end of each billing period.
 
               _(Optional)_.
 

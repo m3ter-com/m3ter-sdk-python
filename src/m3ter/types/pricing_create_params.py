@@ -79,9 +79,9 @@ class PricingCreateParams(TypedDict, total=False):
     minimum_spend_bill_in_advance: Annotated[bool, PropertyInfo(alias="minimumSpendBillInAdvance")]
     """The default value is **FALSE**.
 
-    - When TRUE, minimum spend is billed at the start of each billing period.
+    - When **TRUE**, minimum spend is billed at the start of each billing period.
 
-    - When FALSE, minimum spend is billed at the end of each billing period.
+    - When **FALSE**, minimum spend is billed at the end of each billing period.
 
     _(Optional)_. Overrides the setting at Organization level for minimum spend
     billing in arrears/in advance.
@@ -137,11 +137,11 @@ class PricingCreateParams(TypedDict, total=False):
     tiers_span_plan: Annotated[bool, PropertyInfo(alias="tiersSpanPlan")]
     """The default value is **FALSE**.
 
-    - If TRUE, usage accumulates over the entire period the priced Plan is active
-      for the account, and is not reset for pricing band rates at the start of each
-      billing period.
+    - If **TRUE**, usage accumulates over the entire period the priced Plan is
+      active for the account, and is not reset for pricing band rates at the start
+      of each billing period.
 
-    - If FALSE, usage does not accumulate, and is reset for pricing bands at the
+    - If **FALSE**, usage does not accumulate, and is reset for pricing bands at the
       start of each billing period.
     """
 

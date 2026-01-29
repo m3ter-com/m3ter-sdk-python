@@ -86,6 +86,7 @@ class Credentials(TypedDict, total=False):
             "SAP_BYD",
             "SLACK_WEBHOOK",
             "SAGE_INTACCT_CLIENT_CREDENTIALS",
+            "SAGE_INTACCT_CLIENT_SECRET",
         ]
     ]
     """Specifies the type of authorization required for the integration."""

@@ -16,6 +16,10 @@ class AggregationResponse(BaseModel):
     """The UUID of the entity."""
 
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+    """
+    Optional Product ID this Aggregation should be attributed to for accounting
+    purposes.
+    """
 
     aggregation: Optional[Literal["SUM", "MIN", "MAX", "COUNT", "LATEST", "MEAN", "UNIQUE", "CUSTOM_SQL"]] = None
     """
@@ -47,6 +51,9 @@ class AggregationResponse(BaseModel):
 
     - **UNIQUE**. Uses unique values and returns a count of the number of unique
       values. Can be applied to a **Metadata** `targetField`.
+
+    - **CUSTOM_SQL**. Uses an SQL query expression. The `customSQL` parameter is
+      used for the SQL query.
     """
 
     code: Optional[str] = None
@@ -58,6 +65,7 @@ class AggregationResponse(BaseModel):
     custom_fields: Optional[Dict[str, Union[str, float]]] = FieldInfo(alias="customFields", default=None)
 
     custom_sql: Optional[str] = FieldInfo(alias="customSql", default=None)
+    """The SQL query expression to be used for a Custom SQL Aggregation."""
 
     default_value: Optional[float] = FieldInfo(alias="defaultValue", default=None)
     """Aggregation value used when no usage data is available to be aggregated.

@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from .statement_job_response import StatementJobResponse as StatementJobResponse
 from .statement_job_list_params import StatementJobListParams as StatementJobListParams
 from .statement_job_create_params import StatementJobCreateParams as StatementJobCreateParams
-from .statement_definition_response import StatementDefinitionResponse as StatementDefinitionResponse
 from .statement_definition_list_params import StatementDefinitionListParams as StatementDefinitionListParams
 from .statement_job_create_batch_params import StatementJobCreateBatchParams as StatementJobCreateBatchParams
 from .statement_definition_create_params import StatementDefinitionCreateParams as StatementDefinitionCreateParams
