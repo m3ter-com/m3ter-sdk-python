@@ -23,8 +23,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
-from ._models import FinalRequestOptions
 from ._compat import cached_property
+from ._models import FinalRequestOptions
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import M3terError, APIStatusError
