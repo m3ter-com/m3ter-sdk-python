@@ -29,8 +29,19 @@ class ContractResponse(BaseModel):
     """The unique identifier (UUID) of the Account associated with this Contract."""
 
     apply_contract_period_limits: Optional[bool] = FieldInfo(alias="applyContractPeriodLimits", default=None)
+    """
+    For Contract billing, a boolean setting for restricting the charges billed to
+    the period defined for the Contract:
+
+    - **TRUE** - Contract billing for the Account will be restricted to charge
+      amounts that fall within the defined Contract period.
+    - **FALSE** - The period for amounts billed under the Contract will be
+      determined by the Account Plan attached to the Account and linked to the
+      Contract.(_Default_)
+    """
 
     bill_grouping_key_id: Optional[str] = FieldInfo(alias="billGroupingKeyId", default=None)
+    """The ID of the Bill Grouping Key assigned to the Contract."""
 
     code: Optional[str] = None
     """The short code of the Contract."""
@@ -84,6 +95,15 @@ class ContractResponse(BaseModel):
     """
 
     usage_filters: Optional[List[UsageFilter]] = FieldInfo(alias="usageFilters", default=None)
+    """
+    Used to control Contract billing and charge at billing only for usage where
+    Product Meter dimensions equal specific defined values:
+
+    - Usage filters are defined to either _include_ or _exclude_ charges for usage
+      associated with specific Meter dimensions.
+    - The Meter dimensions must be present in the data field schema of the Meter
+      used to submit usage data measurements.
+    """
 
     version: Optional[int] = None
     """The version number:

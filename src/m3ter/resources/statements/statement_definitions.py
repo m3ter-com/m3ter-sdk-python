@@ -24,7 +24,7 @@ from ...types.statements import (
     statement_definition_create_params,
     statement_definition_update_params,
 )
-from ...types.statements.statement_definition_response import StatementDefinitionResponse
+from ...types.statement_definition_response import StatementDefinitionResponse
 
 __all__ = ["StatementDefinitionsResource", "AsyncStatementDefinitionsResource"]
 

@@ -21,6 +21,13 @@ class Balance(BaseModel):
     to.
     """
 
+    allow_overdraft: Optional[bool] = FieldInfo(alias="allowOverdraft", default=None)
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
     amount: Optional[float] = None
     """The financial value that the Balance holds."""
 

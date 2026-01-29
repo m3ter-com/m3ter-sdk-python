@@ -40,6 +40,13 @@ class BalanceUpdateParams(TypedDict, total=False):
     start_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startDate", format="iso8601")]]
     """The date _(in ISO 8601 format)_ when the Balance becomes active."""
 
+    allow_overdraft: Annotated[bool, PropertyInfo(alias="allowOverdraft")]
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
     balance_draw_down_description: Annotated[str, PropertyInfo(alias="balanceDrawDownDescription")]
     """A description for the bill line items for draw-down charges against the Balance.
 

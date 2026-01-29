@@ -75,12 +75,14 @@ class ContractsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContractResponse:
-        """Create a new Contract.
-
-        Creates a new Contract for the specified Account.
+        """Creates a new Contract for the specified Account.
 
         The Contract includes
         information such as the associated Account along with start and end dates.
+
+        If you intend to bill an Account on a Contract basis, you can use the
+        `billGroupingKeyId`, `applyContractPeriodLimits`, and `usageFilters` request
+        parameters to control Contract billing.
 
         Args:
           account_id: The unique identifier (UUID) of the Account associated with this Contract.
@@ -93,9 +95,26 @@ class ContractsResource(SyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
-          apply_contract_period_limits
+          apply_contract_period_limits: For Contract billing, a boolean setting for restricting the charges billed to
+              the period defined for the Contract:
 
-          bill_grouping_key_id
+              - **TRUE** - Contract billing for the Account will be restricted to charge
+                amounts that fall within the defined Contract period.
+              - **FALSE** - The period for amounts billed under the Contract will be
+                determined by the Account Plan attached to the Account and linked to the
+                Contract.(_Default_)
+
+          bill_grouping_key_id: The ID of the Bill Grouping Key assigned to the Contract.
+
+              If you are implementing Contract Billing for an Account, use `billGroupingKey`
+              to control how charges linked to Contracts on the Account will be billed:
+
+              - **Independent Contract billing**. Assign an _exclusive_ Bill Grouping Key to
+                the Contract - only charges due against the Account and linked to the single
+                Contract will appear on a separate Bill.
+              - **Collective Contract billing**. Assign the same _non-exclusive_ Bill Grouping
+                Key to multiple Contracts - all charges due against the Account and linked to
+                the multiple Contracts will appear together on a single Bill.
 
           code: The short code of the Contract.
 
@@ -114,7 +133,13 @@ class ContractsResource(SyncAPIResource):
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
 
-          usage_filters
+          usage_filters: Use `usageFilters` to control Contract billing and charge at billing only for
+              usage where Product Meter dimensions equal specific defined values:
+
+              - Define Usage filters to either _include_ or _exclude_ charges for usage
+                associated with specific Meter dimensions.
+              - The Meter dimensions must be present in the data field schema of the Meter
+                used to submit usage data measurements.
 
           version:
               The version number of the entity:
@@ -249,9 +274,26 @@ class ContractsResource(SyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
-          apply_contract_period_limits
+          apply_contract_period_limits: For Contract billing, a boolean setting for restricting the charges billed to
+              the period defined for the Contract:
 
-          bill_grouping_key_id
+              - **TRUE** - Contract billing for the Account will be restricted to charge
+                amounts that fall within the defined Contract period.
+              - **FALSE** - The period for amounts billed under the Contract will be
+                determined by the Account Plan attached to the Account and linked to the
+                Contract.(_Default_)
+
+          bill_grouping_key_id: The ID of the Bill Grouping Key assigned to the Contract.
+
+              If you are implementing Contract Billing for an Account, use `billGroupingKey`
+              to control how charges linked to Contracts on the Account will be billed:
+
+              - **Independent Contract billing**. Assign an _exclusive_ Bill Grouping Key to
+                the Contract - only charges due against the Account and linked to the single
+                Contract will appear on a separate Bill.
+              - **Collective Contract billing**. Assign the same _non-exclusive_ Bill Grouping
+                Key to multiple Contracts - all charges due against the Account and linked to
+                the multiple Contracts will appear together on a single Bill.
 
           code: The short code of the Contract.
 
@@ -270,7 +312,13 @@ class ContractsResource(SyncAPIResource):
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
 
-          usage_filters
+          usage_filters: Use `usageFilters` to control Contract billing and charge at billing only for
+              usage where Product Meter dimensions equal specific defined values:
+
+              - Define Usage filters to either _include_ or _exclude_ charges for usage
+                associated with specific Meter dimensions.
+              - The Meter dimensions must be present in the data field schema of the Meter
+                used to submit usage data measurements.
 
           version:
               The version number of the entity:
@@ -405,8 +453,9 @@ class ContractsResource(SyncAPIResource):
         Used to remove an existing
         Contract from an Account.
 
-        **Note:** This call will fail if there are any AccountPlans or Commitments that
-        have been added to the Contract.
+        **Note:** This call will fail if there are any other billing entities associated
+        with the Account and that have been added to the Contract, such as AccountPlans,
+        Balance, or Commitments.
 
         Args:
           extra_headers: Send extra headers
@@ -548,12 +597,14 @@ class AsyncContractsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContractResponse:
-        """Create a new Contract.
-
-        Creates a new Contract for the specified Account.
+        """Creates a new Contract for the specified Account.
 
         The Contract includes
         information such as the associated Account along with start and end dates.
+
+        If you intend to bill an Account on a Contract basis, you can use the
+        `billGroupingKeyId`, `applyContractPeriodLimits`, and `usageFilters` request
+        parameters to control Contract billing.
 
         Args:
           account_id: The unique identifier (UUID) of the Account associated with this Contract.
@@ -566,9 +617,26 @@ class AsyncContractsResource(AsyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
-          apply_contract_period_limits
+          apply_contract_period_limits: For Contract billing, a boolean setting for restricting the charges billed to
+              the period defined for the Contract:
 
-          bill_grouping_key_id
+              - **TRUE** - Contract billing for the Account will be restricted to charge
+                amounts that fall within the defined Contract period.
+              - **FALSE** - The period for amounts billed under the Contract will be
+                determined by the Account Plan attached to the Account and linked to the
+                Contract.(_Default_)
+
+          bill_grouping_key_id: The ID of the Bill Grouping Key assigned to the Contract.
+
+              If you are implementing Contract Billing for an Account, use `billGroupingKey`
+              to control how charges linked to Contracts on the Account will be billed:
+
+              - **Independent Contract billing**. Assign an _exclusive_ Bill Grouping Key to
+                the Contract - only charges due against the Account and linked to the single
+                Contract will appear on a separate Bill.
+              - **Collective Contract billing**. Assign the same _non-exclusive_ Bill Grouping
+                Key to multiple Contracts - all charges due against the Account and linked to
+                the multiple Contracts will appear together on a single Bill.
 
           code: The short code of the Contract.
 
@@ -587,7 +655,13 @@ class AsyncContractsResource(AsyncAPIResource):
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
 
-          usage_filters
+          usage_filters: Use `usageFilters` to control Contract billing and charge at billing only for
+              usage where Product Meter dimensions equal specific defined values:
+
+              - Define Usage filters to either _include_ or _exclude_ charges for usage
+                associated with specific Meter dimensions.
+              - The Meter dimensions must be present in the data field schema of the Meter
+                used to submit usage data measurements.
 
           version:
               The version number of the entity:
@@ -722,9 +796,26 @@ class AsyncContractsResource(AsyncAPIResource):
           start_date: The start date for the Contract _(in ISO-8601 format)_. This date is inclusive,
               meaning the Contract is active from this date onward.
 
-          apply_contract_period_limits
+          apply_contract_period_limits: For Contract billing, a boolean setting for restricting the charges billed to
+              the period defined for the Contract:
 
-          bill_grouping_key_id
+              - **TRUE** - Contract billing for the Account will be restricted to charge
+                amounts that fall within the defined Contract period.
+              - **FALSE** - The period for amounts billed under the Contract will be
+                determined by the Account Plan attached to the Account and linked to the
+                Contract.(_Default_)
+
+          bill_grouping_key_id: The ID of the Bill Grouping Key assigned to the Contract.
+
+              If you are implementing Contract Billing for an Account, use `billGroupingKey`
+              to control how charges linked to Contracts on the Account will be billed:
+
+              - **Independent Contract billing**. Assign an _exclusive_ Bill Grouping Key to
+                the Contract - only charges due against the Account and linked to the single
+                Contract will appear on a separate Bill.
+              - **Collective Contract billing**. Assign the same _non-exclusive_ Bill Grouping
+                Key to multiple Contracts - all charges due against the Account and linked to
+                the multiple Contracts will appear together on a single Bill.
 
           code: The short code of the Contract.
 
@@ -743,7 +834,13 @@ class AsyncContractsResource(AsyncAPIResource):
 
           purchase_order_number: The Purchase Order Number associated with the Contract.
 
-          usage_filters
+          usage_filters: Use `usageFilters` to control Contract billing and charge at billing only for
+              usage where Product Meter dimensions equal specific defined values:
+
+              - Define Usage filters to either _include_ or _exclude_ charges for usage
+                associated with specific Meter dimensions.
+              - The Meter dimensions must be present in the data field schema of the Meter
+                used to submit usage data measurements.
 
           version:
               The version number of the entity:
@@ -878,8 +975,9 @@ class AsyncContractsResource(AsyncAPIResource):
         Used to remove an existing
         Contract from an Account.
 
-        **Note:** This call will fail if there are any AccountPlans or Commitments that
-        have been added to the Contract.
+        **Note:** This call will fail if there are any other billing entities associated
+        with the Account and that have been added to the Contract, such as AccountPlans,
+        Balance, or Commitments.
 
         Args:
           extra_headers: Send extra headers

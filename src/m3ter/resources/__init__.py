@@ -48,6 +48,14 @@ from .meters import (
     MetersResourceWithStreamingResponse,
     AsyncMetersResourceWithStreamingResponse,
 )
+from .charges import (
+    ChargesResource,
+    AsyncChargesResource,
+    ChargesResourceWithRawResponse,
+    AsyncChargesResourceWithRawResponse,
+    ChargesResourceWithStreamingResponse,
+    AsyncChargesResourceWithStreamingResponse,
+)
 from .accounts import (
     AccountsResource,
     AsyncAccountsResource,
@@ -191,6 +199,14 @@ from .debit_reasons import (
     AsyncDebitReasonsResourceWithRawResponse,
     DebitReasonsResourceWithStreamingResponse,
     AsyncDebitReasonsResourceWithStreamingResponse,
+)
+from .lookup_tables import (
+    LookupTablesResource,
+    AsyncLookupTablesResource,
+    LookupTablesResourceWithRawResponse,
+    AsyncLookupTablesResourceWithRawResponse,
+    LookupTablesResourceWithStreamingResponse,
+    AsyncLookupTablesResourceWithStreamingResponse,
 )
 from .authentication import (
     AuthenticationResource,
@@ -368,6 +384,12 @@ __all__ = [
     "AsyncBillJobsResourceWithRawResponse",
     "BillJobsResourceWithStreamingResponse",
     "AsyncBillJobsResourceWithStreamingResponse",
+    "ChargesResource",
+    "AsyncChargesResource",
+    "ChargesResourceWithRawResponse",
+    "AsyncChargesResourceWithRawResponse",
+    "ChargesResourceWithStreamingResponse",
+    "AsyncChargesResourceWithStreamingResponse",
     "CompoundAggregationsResource",
     "AsyncCompoundAggregationsResource",
     "CompoundAggregationsResourceWithRawResponse",
@@ -446,6 +468,12 @@ __all__ = [
     "AsyncIntegrationConfigurationsResourceWithRawResponse",
     "IntegrationConfigurationsResourceWithStreamingResponse",
     "AsyncIntegrationConfigurationsResourceWithStreamingResponse",
+    "LookupTablesResource",
+    "AsyncLookupTablesResource",
+    "LookupTablesResourceWithRawResponse",
+    "AsyncLookupTablesResourceWithRawResponse",
+    "LookupTablesResourceWithStreamingResponse",
+    "AsyncLookupTablesResourceWithStreamingResponse",
     "MetersResource",
     "AsyncMetersResource",
     "MetersResourceWithRawResponse",

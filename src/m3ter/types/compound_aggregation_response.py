@@ -16,6 +16,10 @@ class CompoundAggregationResponse(BaseModel):
     """The UUID of the entity."""
 
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+    """
+    Optional Product ID this Aggregation should be attributed to for accounting
+    purposes.
+    """
 
     calculation: Optional[str] = None
     """This field is a string that represents the formula for the calculation.

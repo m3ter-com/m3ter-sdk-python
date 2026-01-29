@@ -432,7 +432,10 @@ class AccountPlansResource(SyncAPIResource):
               - **TRUE** - both active and inactive AccountPlans and AccountPlanGroups are
                 included in the list.
               - **FALSE** - only active AccountPlans and AccountPlanGroups are retrieved in
-                the list.
+                the list._(Default)_
+
+              **NOTE:** Only operative if you also have one of `account`, `plan` or `contract`
+              as a query parameter.
 
           next_token: The `nextToken` for retrieving the next page of AccountPlans and
               AccountPlanGroups. It is used to fetch the next page of AccountPlans and
@@ -938,7 +941,10 @@ class AsyncAccountPlansResource(AsyncAPIResource):
               - **TRUE** - both active and inactive AccountPlans and AccountPlanGroups are
                 included in the list.
               - **FALSE** - only active AccountPlans and AccountPlanGroups are retrieved in
-                the list.
+                the list._(Default)_
+
+              **NOTE:** Only operative if you also have one of `account`, `plan` or `contract`
+              as a query parameter.
 
           next_token: The `nextToken` for retrieving the next page of AccountPlans and
               AccountPlanGroups. It is used to fetch the next page of AccountPlans and

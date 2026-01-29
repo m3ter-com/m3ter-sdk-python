@@ -16,6 +16,10 @@ class CounterPricingResponse(BaseModel):
     """The UUID of the entity."""
 
     accounting_product_id: Optional[str] = FieldInfo(alias="accountingProductId", default=None)
+    """
+    Optional Product ID this Pricing should be attributed to for accounting
+    purposes.
+    """
 
     code: Optional[str] = None
     """Unique short code for the Pricing."""

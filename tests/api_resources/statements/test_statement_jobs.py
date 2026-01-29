@@ -8,10 +8,10 @@ from typing import Any, cast
 import pytest
 
 from m3ter import M3ter, AsyncM3ter
+from m3ter.types import StatementJobResponse
 from tests.utils import assert_matches_type
 from m3ter.pagination import SyncCursor, AsyncCursor
 from m3ter.types.statements import (
-    StatementJobResponse,
     StatementJobCreateBatchResponse,
 )
 
