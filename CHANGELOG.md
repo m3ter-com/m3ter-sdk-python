@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.8.0 (2026-01-29)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** spec update ([b5a4376](https://github.com/m3ter-com/m3ter-sdk-python/commit/b5a43763361354d855cb94dedce21c8d33aaef19))
+* **api:** updating api spec + fixes ([83dbdc4](https://github.com/m3ter-com/m3ter-sdk-python/commit/83dbdc459a95212d64f09d540cd909671ec68a80))
+* **client:** add support for binary request streaming ([52dcc72](https://github.com/m3ter-com/m3ter-sdk-python/commit/52dcc72f7441587f1514ee6695ed2af5756f8825))
+
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([a10f19b](https://github.com/m3ter-com/m3ter-sdk-python/commit/a10f19b8a30b36d66161adf610773b32a70bd085))
+* **client:** loosen auth header validation ([aca1b80](https://github.com/m3ter-com/m3ter-sdk-python/commit/aca1b807762b89fbf7448feab0e673a0be2d447c))
+* compat with Python 3.14 ([7566bd4](https://github.com/m3ter-com/m3ter-sdk-python/commit/7566bd4227a132f634b3f43bb7d42b09062b808a))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([08320b3](https://github.com/m3ter-com/m3ter-sdk-python/commit/08320b3f81fba40e92458826770c4ef42f8d8f09))
+* ensure streams are always closed ([e2f596f](https://github.com/m3ter-com/m3ter-sdk-python/commit/e2f596f1ce9e91e5e3b1a54077638928c3be91bd))
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([2ba5119](https://github.com/m3ter-com/m3ter-sdk-python/commit/2ba5119303f5f4eb730bec2edcc5d32649bbba37))
+* use async_to_httpx_files in patch method ([e5d73f0](https://github.com/m3ter-com/m3ter-sdk-python/commit/e5d73f0d35f5dbc7f9a29d3b4bfb22a682e8a236))
+
+
+### Chores
+
+* add missing docstrings ([5c845b7](https://github.com/m3ter-com/m3ter-sdk-python/commit/5c845b7633f1bb7895ba805e9b60d92a40447c41))
+* **ci:** upgrade `actions/github-script` ([532e8a8](https://github.com/m3ter-com/m3ter-sdk-python/commit/532e8a8343714237e762a3037179b32ee9a9d656))
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([88326ba](https://github.com/m3ter-com/m3ter-sdk-python/commit/88326baadf0944f09d516b1f3ce0c595fb7a5001))
+* **docs:** use environment variables for authentication in code snippets ([df20b37](https://github.com/m3ter-com/m3ter-sdk-python/commit/df20b3714e75332184239f833a3a6709614b7cdb))
+* **internal/tests:** avoid race condition with implicit client cleanup ([e1eb70f](https://github.com/m3ter-com/m3ter-sdk-python/commit/e1eb70faf0092692e76778f73903770ce8d04d66))
+* **internal:** add `--fix` argument to lint script ([8429663](https://github.com/m3ter-com/m3ter-sdk-python/commit/8429663d95cbf8944eea2cf41ffd09212632fb25))
+* **internal:** add missing files argument to base client ([edfd25f](https://github.com/m3ter-com/m3ter-sdk-python/commit/edfd25f83709964a36b9d07964206aaeb32b388f))
+* **internal:** codegen related update ([ab14c8a](https://github.com/m3ter-com/m3ter-sdk-python/commit/ab14c8a3aee51aa802273a5b2384a3acf2c95002))
+* **internal:** codegen related update ([217f03c](https://github.com/m3ter-com/m3ter-sdk-python/commit/217f03c25e227e0417e30297be277f2fd2ef82ff))
+* **internal:** grammar fix (it's -&gt; its) ([537711c](https://github.com/m3ter-com/m3ter-sdk-python/commit/537711c4fcb8bda9fc54b10e5223bd7dab49f782))
+* **internal:** update `actions/checkout` version ([ef2a34e](https://github.com/m3ter-com/m3ter-sdk-python/commit/ef2a34ee7d372c824784cc5c36175ce778c620b6))
+* **package:** drop Python 3.8 support ([b7446bc](https://github.com/m3ter-com/m3ter-sdk-python/commit/b7446bc98fd8f35db81e3d082bc2070926d3a922))
+* speedup initial import ([d963cd1](https://github.com/m3ter-com/m3ter-sdk-python/commit/d963cd1211102b88736ce9d538cb2563a87e8492))
+* update lockfile ([e2964db](https://github.com/m3ter-com/m3ter-sdk-python/commit/e2964db4797c26a0ff4915d9947b99445b976c99))
+
 ## 0.7.0 (2025-10-17)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.6.0...v0.7.0)
