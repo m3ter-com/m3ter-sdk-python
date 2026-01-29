@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 (2026-01-29)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([60bb2d8](https://github.com/m3ter-com/m3ter-sdk-python/commit/60bb2d8b29b01ab229ef8ee0bc49d3df84d5ed4c))
+
 ## 0.8.0 (2026-01-29)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.7.0...v0.8.0)
