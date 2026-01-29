@@ -1,6 +1,6 @@
 [project]
 name = "m3ter"
-version = "0.8.0"
+version = "0.9.0"
 description = "The official Python library for the m3ter API"
 dynamic = ["readme"]
 license = "Apache-2.0"
