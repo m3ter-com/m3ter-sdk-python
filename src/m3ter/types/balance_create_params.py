@@ -18,6 +18,9 @@ class BalanceCreateParams(TypedDict, total=False):
     account_id: Required[Annotated[str, PropertyInfo(alias="accountId")]]
     """The unique identifier (UUID) for the end customer Account."""
 
+    code: Required[str]
+    """Unique short code for the Balance."""
+
     currency: Required[str]
     """The currency code used for the Balance amount. For example: USD, GBP or EUR."""
 
@@ -31,8 +34,18 @@ class BalanceCreateParams(TypedDict, total=False):
     remains when the specified `endDate` is reached.
     """
 
+    name: Required[str]
+    """The official name for the Balance."""
+
     start_date: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startDate", format="iso8601")]]
     """The date _(in ISO 8601 format)_ when the Balance becomes active."""
+
+    allow_overdraft: Annotated[bool, PropertyInfo(alias="allowOverdraft")]
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
 
     balance_draw_down_description: Annotated[str, PropertyInfo(alias="balanceDrawDownDescription")]
     """A description for the bill line items for draw-down charges against the Balance.
@@ -40,16 +53,17 @@ class BalanceCreateParams(TypedDict, total=False):
     _(Optional)._
     """
 
-    code: str
-    """Unique short code for the Balance."""
-
     consumptions_accounting_product_id: Annotated[str, PropertyInfo(alias="consumptionsAccountingProductId")]
     """
-    Optional Product ID this Balance Consumptions should be attributed to for
-    accounting purposes
+    Product ID that any Balance Consumed line items will be attributed to for
+    accounting purposes.(_Optional_)
     """
 
     contract_id: Annotated[str, PropertyInfo(alias="contractId")]
+    """
+    The unique identifier (UUID) of a Contract on the Account that the Balance will
+    be added to.
+    """
 
     custom_fields: Annotated[Dict[str, Union[str, float]], PropertyInfo(alias="customFields")]
     """User defined fields enabling you to attach custom data.
@@ -70,8 +84,8 @@ class BalanceCreateParams(TypedDict, total=False):
 
     fees_accounting_product_id: Annotated[str, PropertyInfo(alias="feesAccountingProductId")]
     """
-    Optional Product ID this Balance Fees should be attributed to for accounting
-    purposes
+    Product ID that any Balance Fees line items will be attributed to for accounting
+    purposes.(_Optional_)
     """
 
     line_item_types: Annotated[
@@ -96,13 +110,11 @@ class BalanceCreateParams(TypedDict, total=False):
     - `"USAGE"`
     - `"COUNTER_RUNNING_TOTAL_CHARGE"`
     - `"COUNTER_ADJUSTMENT_DEBIT"`
+    - `AD_HOC`
 
     **NOTE:** If no charge types are specified, by default _all types_ can draw-down
     against the Balance amount at billing.
     """
-
-    name: str
-    """The official name for the Balance."""
 
     overage_description: Annotated[str, PropertyInfo(alias="overageDescription")]
     """A description for Bill line items overage charges."""

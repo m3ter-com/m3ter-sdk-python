@@ -318,6 +318,8 @@ class TestIntegrationConfigurations:
             destination="destination",
             destination_id="destinationId",
             entity_id="entityId",
+            next_token="nextToken",
+            page_size=1,
         )
         assert_matches_type(IntegrationConfigurationResponse, integration_configuration, path=["response"])
 
@@ -651,6 +653,8 @@ class TestAsyncIntegrationConfigurations:
             destination="destination",
             destination_id="destinationId",
             entity_id="entityId",
+            next_token="nextToken",
+            page_size=1,
         )
         assert_matches_type(IntegrationConfigurationResponse, integration_configuration, path=["response"])
 

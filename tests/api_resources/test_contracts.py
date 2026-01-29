@@ -39,10 +39,19 @@ class TestContracts:
             end_date=parse_date("2019-12-27"),
             name="x",
             start_date=parse_date("2019-12-27"),
+            apply_contract_period_limits=True,
+            bill_grouping_key_id="billGroupingKeyId",
             code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             description="description",
             purchase_order_number="purchaseOrderNumber",
+            usage_filters=[
+                {
+                    "dimension_code": "x",
+                    "mode": "INCLUDE",
+                    "value": "x",
+                }
+            ],
             version=0,
         )
         assert_matches_type(ContractResponse, contract, path=["response"])
@@ -134,10 +143,19 @@ class TestContracts:
             end_date=parse_date("2019-12-27"),
             name="x",
             start_date=parse_date("2019-12-27"),
+            apply_contract_period_limits=True,
+            bill_grouping_key_id="billGroupingKeyId",
             code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             description="description",
             purchase_order_number="purchaseOrderNumber",
+            usage_filters=[
+                {
+                    "dimension_code": "x",
+                    "mode": "INCLUDE",
+                    "value": "x",
+                }
+            ],
             version=0,
         )
         assert_matches_type(ContractResponse, contract, path=["response"])
@@ -338,10 +356,19 @@ class TestAsyncContracts:
             end_date=parse_date("2019-12-27"),
             name="x",
             start_date=parse_date("2019-12-27"),
+            apply_contract_period_limits=True,
+            bill_grouping_key_id="billGroupingKeyId",
             code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             description="description",
             purchase_order_number="purchaseOrderNumber",
+            usage_filters=[
+                {
+                    "dimension_code": "x",
+                    "mode": "INCLUDE",
+                    "value": "x",
+                }
+            ],
             version=0,
         )
         assert_matches_type(ContractResponse, contract, path=["response"])
@@ -433,10 +460,19 @@ class TestAsyncContracts:
             end_date=parse_date("2019-12-27"),
             name="x",
             start_date=parse_date("2019-12-27"),
+            apply_contract_period_limits=True,
+            bill_grouping_key_id="billGroupingKeyId",
             code='S?oC"$]C] ]]]]]5]',
             custom_fields={"foo": "string"},
             description="description",
             purchase_order_number="purchaseOrderNumber",
+            usage_filters=[
+                {
+                    "dimension_code": "x",
+                    "mode": "INCLUDE",
+                    "value": "x",
+                }
+            ],
             version=0,
         )
         assert_matches_type(ContractResponse, contract, path=["response"])

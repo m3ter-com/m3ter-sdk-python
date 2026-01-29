@@ -12,8 +12,8 @@ __all__ = ["PermissionPolicyResponse"]
 
 
 class PermissionPolicyResponse(BaseModel):
-    id: Optional[str] = None
-    """The unique identifier (UUID) for this Permission Policy."""
+    id: str
+    """The UUID of the entity."""
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) of the user who created this Permission Policy."""
@@ -45,4 +45,10 @@ class PermissionPolicyResponse(BaseModel):
     """Array containing the Permission Policies information."""
 
     version: Optional[int] = None
-    """The version number. Default value when newly created is one."""
+    """The version number:
+
+    - **Create:** On initial Create to insert a new entity, the version is set at 1
+      in the response.
+    - **Update:** On successful Update, the version is incremented by 1 in the
+      response.
+    """

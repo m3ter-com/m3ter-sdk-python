@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._models import BaseModel
+from .._models import BaseModel
 
 __all__ = ["StatementJobResponse"]
 
@@ -20,6 +20,10 @@ class StatementJobResponse(BaseModel):
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) of the user who created this StatementJob."""
+
+    csv_statement_status: Optional[Literal["LATEST", "STALE", "INVALIDATED"]] = FieldInfo(
+        alias="csvStatementStatus", default=None
+    )
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
     """The date and time _(in ISO-8601 format)_ when the StatementJob was created."""
@@ -39,6 +43,10 @@ class StatementJobResponse(BaseModel):
     - FALSE - no CSV format statement.
     """
 
+    json_statement_status: Optional[Literal["LATEST", "STALE", "INVALIDATED"]] = FieldInfo(
+        alias="jsonStatementStatus", default=None
+    )
+
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The unique identifier (UUID) of the user who last modified this StatementJob."""
 
@@ -47,6 +55,8 @@ class StatementJobResponse(BaseModel):
 
     The Organization represents your company as a direct customer of our service.
     """
+
+    presigned_csv_statement_url: Optional[str] = FieldInfo(alias="presignedCsvStatementUrl", default=None)
 
     presigned_json_statement_url: Optional[str] = FieldInfo(alias="presignedJsonStatementUrl", default=None)
     """The URL to access the generated statement in JSON format.

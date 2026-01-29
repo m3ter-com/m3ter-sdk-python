@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["BalanceListParams"]
@@ -16,7 +16,13 @@ class BalanceListParams(TypedDict, total=False):
     account_id: Annotated[str, PropertyInfo(alias="accountId")]
     """The unique identifier (UUID) for the end customer's account."""
 
-    contract: Optional[str]
+    contract: str
+
+    contract_id: Annotated[str, PropertyInfo(alias="contractId")]
+    """Filter Balances by contract id.
+
+    Use '' with accountId to fetch unlinked balances.
+    """
 
     end_date_end: Annotated[str, PropertyInfo(alias="endDateEnd")]
     """Only include Balances with end dates earlier than this date.
@@ -31,6 +37,9 @@ class BalanceListParams(TypedDict, total=False):
     If a Balance has a rollover amount configured, then the `rolloverEndDate` will
     be used as the end date.
     """
+
+    ids: SequenceNotStr[str]
+    """A list of unique identifiers (UUIDs) for specific Balances to retrieve."""
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]
     """The `nextToken` for retrieving the next page of Balances.

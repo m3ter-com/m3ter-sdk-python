@@ -8,6 +8,8 @@ __all__ = ["EventGetFieldsResponse"]
 
 
 class EventGetFieldsResponse(BaseModel):
+    """Response containing the list of Fields for an Event Type."""
+
     events: Optional[Dict[str, Dict[str, str]]] = None
     """An object containing the list of Fields for the queried Event Type.
 

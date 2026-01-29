@@ -55,12 +55,6 @@ class AccountCreateParams(TypedDict, total=False):
     - The date is in ISO-8601 format.
     """
 
-    config_data: Annotated[Dict[str, object], PropertyInfo(alias="configData")]
-    """Configuration data for the Account Supported settings:
-
-    - SendBillsToThirdParties ("true"/"false")
-    """
-
     credit_application_order: Annotated[
         List[Literal["PREPAYMENT", "BALANCE"]], PropertyInfo(alias="creditApplicationOrder")
     ]

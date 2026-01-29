@@ -21,6 +21,12 @@ class ScheduleListResponse(BaseModel):
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The id of the user who created this Schedule."""
 
+    cron_expression: Optional[str] = FieldInfo(alias="cronExpression", default=None)
+    """
+    A cron expression (https://en.wikipedia.org/wiki/Cron) describing the frequency
+    of the expression. Executions cannot be more frequent than every 15 minutes.
+    """
+
     destination_ids: Optional[List[str]] = FieldInfo(alias="destinationIds", default=None)
     """The Export Destination ids."""
 
@@ -30,13 +36,20 @@ class ScheduleListResponse(BaseModel):
     dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
     """The DateTime when the Schedule was last modified."""
 
-    export_file_format: Optional[Literal["CSV", "JSON", "JSONL"]] = FieldInfo(alias="exportFileFormat", default=None)
+    export_file_format: Optional[Literal["CSV", "JSONL"]] = FieldInfo(alias="exportFileFormat", default=None)
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The id of the user who last modified this Data Export Schedule."""
 
     name: Optional[str] = None
     """The name of the Data Export Schedule."""
+
+    offset: Optional[int] = None
+    """
+    Offset indicating starting point of the export within the configured
+    scheduleType. For DAY, offset is in hours. For HOUR, offset is in minutes.
+    Offset is not valid for MINUTE.
+    """
 
     period: Optional[int] = None
     """

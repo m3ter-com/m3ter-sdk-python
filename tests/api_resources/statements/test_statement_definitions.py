@@ -8,11 +8,9 @@ from typing import Any, cast
 import pytest
 
 from m3ter import M3ter, AsyncM3ter
+from m3ter.types import StatementDefinitionResponse
 from tests.utils import assert_matches_type
 from m3ter.pagination import SyncCursor, AsyncCursor
-from m3ter.types.statements import (
-    StatementDefinitionResponse,
-)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

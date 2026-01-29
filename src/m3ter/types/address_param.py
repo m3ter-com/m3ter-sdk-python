@@ -10,6 +10,8 @@ __all__ = ["AddressParam"]
 
 
 class AddressParam(TypedDict, total=False):
+    """Contact address."""
+
     address_line1: Annotated[str, PropertyInfo(alias="addressLine1")]
 
     address_line2: Annotated[str, PropertyInfo(alias="addressLine2")]

@@ -36,6 +36,7 @@ class OperationalDataExportScheduleResponse(BaseModel):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
     ] = FieldInfo(alias="operationalDataTypes", default=None)

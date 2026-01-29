@@ -21,7 +21,7 @@ from ...types.statements import (
     statement_job_create_params,
     statement_job_create_batch_params,
 )
-from ...types.statements.statement_job_response import StatementJobResponse
+from ...types.statement_job_response import StatementJobResponse
 from ...types.statements.statement_job_create_batch_response import StatementJobCreateBatchResponse
 
 __all__ = ["StatementJobsResource", "AsyncStatementJobsResource"]

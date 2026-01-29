@@ -64,6 +64,10 @@ class IntegrationConfigurationCreateParams(TypedDict, total=False):
 
 
 class Credentials(TypedDict, total=False):
+    """
+    Base model for defining integration credentials across different types of integrations.
+    """
+
     type: Required[
         Literal[
             "HTTP_BASIC",
@@ -73,12 +77,16 @@ class Credentials(TypedDict, total=False):
             "PADDLE_AUTH",
             "NETSUITE_AUTH",
             "CHARGEBEE_AUTH",
+            "M3TER_APP_SIGNATURE",
             "M3TER_SERVICE_USER",
             "STRIPE_SIGNED_REQUEST",
             "HUBSPOT_ACCESS_TOKEN",
             "HUBSPOT_CLIENT_SECRET",
             "OPSGENIE_KEY",
             "SAP_BYD",
+            "SLACK_WEBHOOK",
+            "SAGE_INTACCT_CLIENT_CREDENTIALS",
+            "SAGE_INTACCT_CLIENT_SECRET",
         ]
     ]
     """Specifies the type of authorization required for the integration."""

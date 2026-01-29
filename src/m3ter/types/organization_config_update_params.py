@@ -104,6 +104,24 @@ class OrganizationConfigUpdateParams(TypedDict, total=False):
     - The date is in ISO-8601 format.
     """
 
+    allow_negative_balances: Annotated[bool, PropertyInfo(alias="allowNegativeBalances")]
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
+    allow_overlapping_plans: Annotated[bool, PropertyInfo(alias="allowOverlappingPlans")]
+    """
+    Boolean setting to control whether or not multiple plans for the same Product
+    can be active on an Account at the same time:
+
+    - **TRUE** - multiple overlapping plans for the same product can be attached to
+      the same Account.
+    - **FALSE** - multiple overlapping plans for the same product cannot be attached
+      to the same Account.(_Default_)
+    """
+
     auto_approve_bills_grace_period: Annotated[int, PropertyInfo(alias="autoApproveBillsGracePeriod")]
     """Grace period before bills are auto-approved.
 
@@ -243,6 +261,13 @@ class OrganizationConfigUpdateParams(TypedDict, total=False):
       so on. Eight options: **1**, **2**, **3**, **4**, **6**, **8**, **12**, or
       **24**.
     - **Default.** The default is **0**, which disables scheduling.
+    """
+
+    scheduled_bill_offset: Annotated[int, PropertyInfo(alias="scheduledBillOffset")]
+    """
+    Offset (hours) within the scheduled interval to start the run, interpreted in
+    the organization's timezone. For daily (24h) schedules this is the hour of day
+    (0-23). Only supported when ScheduledBillInterval is 24 (daily) at present.
     """
 
     sequence_start_number: Annotated[int, PropertyInfo(alias="sequenceStartNumber")]

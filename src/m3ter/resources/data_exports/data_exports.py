@@ -108,6 +108,7 @@ class DataExportsResource(SyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -333,6 +334,7 @@ class DataExportsResource(SyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
         | Omit = omit,
@@ -436,6 +438,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ],
         source_type: Literal["OPERATIONAL"],
@@ -661,6 +664,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
                 "PLAN_TEMPLATES",
                 "BALANCE_TRANSACTIONS",
                 "TRANSACTION_TYPES",
+                "CHARGES",
             ]
         ]
         | Omit = omit,

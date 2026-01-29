@@ -1,13 +1,24 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from datetime import date, datetime
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ContractResponse"]
+__all__ = ["ContractResponse", "UsageFilter"]
+
+
+class UsageFilter(BaseModel):
+    """Filters that determine which usage records are included in contract billing"""
+
+    dimension_code: str = FieldInfo(alias="dimensionCode")
+
+    mode: Literal["INCLUDE", "EXCLUDE"]
+
+    value: str
 
 
 class ContractResponse(BaseModel):
@@ -17,7 +28,20 @@ class ContractResponse(BaseModel):
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """The unique identifier (UUID) of the Account associated with this Contract."""
 
-    bill_grouping_key: Optional[str] = FieldInfo(alias="billGroupingKey", default=None)
+    apply_contract_period_limits: Optional[bool] = FieldInfo(alias="applyContractPeriodLimits", default=None)
+    """
+    For Contract billing, a boolean setting for restricting the charges billed to
+    the period defined for the Contract:
+
+    - **TRUE** - Contract billing for the Account will be restricted to charge
+      amounts that fall within the defined Contract period.
+    - **FALSE** - The period for amounts billed under the Contract will be
+      determined by the Account Plan attached to the Account and linked to the
+      Contract.(_Default_)
+    """
+
+    bill_grouping_key_id: Optional[str] = FieldInfo(alias="billGroupingKeyId", default=None)
+    """The ID of the Bill Grouping Key assigned to the Contract."""
 
     code: Optional[str] = None
     """The short code of the Contract."""
@@ -68,6 +92,17 @@ class ContractResponse(BaseModel):
     """The start date for the Contract _(in ISO-8601 format)_.
 
     This date is inclusive, meaning the Contract is active from this date onward.
+    """
+
+    usage_filters: Optional[List[UsageFilter]] = FieldInfo(alias="usageFilters", default=None)
+    """
+    Used to control Contract billing and charge at billing only for usage where
+    Product Meter dimensions equal specific defined values:
+
+    - Usage filters are defined to either _include_ or _exclude_ charges for usage
+      associated with specific Meter dimensions.
+    - The Meter dimensions must be present in the data field schema of the Meter
+      used to submit usage data measurements.
     """
 
     version: Optional[int] = None

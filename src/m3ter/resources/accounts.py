@@ -13,7 +13,7 @@ from ..types import (
     account_create_params,
     account_search_params,
     account_update_params,
-    account_get_children_params,
+    account_list_children_params,
     account_end_date_billing_entities_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
@@ -66,7 +66,6 @@ class AccountsResource(SyncAPIResource):
         address: AddressParam | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
         bill_epoch: Union[str, date] | Omit = omit,
-        config_data: Dict[str, object] | Omit = omit,
         credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
         currency: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -115,11 +114,6 @@ class AccountsResource(SyncAPIResource):
               - If not defined, then the relevant Epoch date set for the billing frequency
                 period at Organization level will be used instead.
               - The date is in ISO-8601 format.
-
-          config_data:
-              Configuration data for the Account Supported settings:
-
-              - SendBillsToThirdParties ("true"/"false")
 
           credit_application_order: Define the order in which any Prepayment or Balance amounts on the Account are
               to be drawn-down against for billing. Four options:
@@ -224,7 +218,6 @@ class AccountsResource(SyncAPIResource):
                     "address": address,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
                     "bill_epoch": bill_epoch,
-                    "config_data": config_data,
                     "credit_application_order": credit_application_order,
                     "currency": currency,
                     "custom_fields": custom_fields,
@@ -291,7 +284,6 @@ class AccountsResource(SyncAPIResource):
         address: AddressParam | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
         bill_epoch: Union[str, date] | Omit = omit,
-        config_data: Dict[str, object] | Omit = omit,
         credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
         currency: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -344,11 +336,6 @@ class AccountsResource(SyncAPIResource):
               - If not defined, then the relevant Epoch date set for the billing frequency
                 period at Organization level will be used instead.
               - The date is in ISO-8601 format.
-
-          config_data:
-              Configuration data for the Account Supported settings:
-
-              - SendBillsToThirdParties ("true"/"false")
 
           credit_application_order: Define the order in which any Prepayment or Balance amounts on the Account are
               to be drawn-down against for billing. Four options:
@@ -455,7 +442,6 @@ class AccountsResource(SyncAPIResource):
                     "address": address,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
                     "bill_epoch": bill_epoch,
-                    "config_data": config_data,
                     "credit_application_order": credit_application_order,
                     "currency": currency,
                     "custom_fields": custom_fields,
@@ -640,7 +626,7 @@ class AccountsResource(SyncAPIResource):
             cast_to=AccountEndDateBillingEntitiesResponse,
         )
 
-    def get_children(
+    def list_children(
         self,
         id: str,
         *,
@@ -653,7 +639,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AccountResponse:
+    ) -> SyncCursor[AccountResponse]:
         """
         Retrieve a list of Accounts that are children of the specified Account.
 
@@ -672,8 +658,9 @@ class AccountsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/accounts/{id}/children",
+            page=SyncCursor[AccountResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -684,10 +671,10 @@ class AccountsResource(SyncAPIResource):
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    account_get_children_params.AccountGetChildrenParams,
+                    account_list_children_params.AccountListChildrenParams,
                 ),
             ),
-            cast_to=AccountResponse,
+            model=AccountResponse,
         )
 
     def search(
@@ -815,7 +802,6 @@ class AsyncAccountsResource(AsyncAPIResource):
         address: AddressParam | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
         bill_epoch: Union[str, date] | Omit = omit,
-        config_data: Dict[str, object] | Omit = omit,
         credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
         currency: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -864,11 +850,6 @@ class AsyncAccountsResource(AsyncAPIResource):
               - If not defined, then the relevant Epoch date set for the billing frequency
                 period at Organization level will be used instead.
               - The date is in ISO-8601 format.
-
-          config_data:
-              Configuration data for the Account Supported settings:
-
-              - SendBillsToThirdParties ("true"/"false")
 
           credit_application_order: Define the order in which any Prepayment or Balance amounts on the Account are
               to be drawn-down against for billing. Four options:
@@ -973,7 +954,6 @@ class AsyncAccountsResource(AsyncAPIResource):
                     "address": address,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
                     "bill_epoch": bill_epoch,
-                    "config_data": config_data,
                     "credit_application_order": credit_application_order,
                     "currency": currency,
                     "custom_fields": custom_fields,
@@ -1040,7 +1020,6 @@ class AsyncAccountsResource(AsyncAPIResource):
         address: AddressParam | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
         bill_epoch: Union[str, date] | Omit = omit,
-        config_data: Dict[str, object] | Omit = omit,
         credit_application_order: List[Literal["PREPAYMENT", "BALANCE"]] | Omit = omit,
         currency: str | Omit = omit,
         custom_fields: Dict[str, Union[str, float]] | Omit = omit,
@@ -1093,11 +1072,6 @@ class AsyncAccountsResource(AsyncAPIResource):
               - If not defined, then the relevant Epoch date set for the billing frequency
                 period at Organization level will be used instead.
               - The date is in ISO-8601 format.
-
-          config_data:
-              Configuration data for the Account Supported settings:
-
-              - SendBillsToThirdParties ("true"/"false")
 
           credit_application_order: Define the order in which any Prepayment or Balance amounts on the Account are
               to be drawn-down against for billing. Four options:
@@ -1204,7 +1178,6 @@ class AsyncAccountsResource(AsyncAPIResource):
                     "address": address,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
                     "bill_epoch": bill_epoch,
-                    "config_data": config_data,
                     "credit_application_order": credit_application_order,
                     "currency": currency,
                     "custom_fields": custom_fields,
@@ -1389,7 +1362,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             cast_to=AccountEndDateBillingEntitiesResponse,
         )
 
-    async def get_children(
+    def list_children(
         self,
         id: str,
         *,
@@ -1402,7 +1375,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AccountResponse:
+    ) -> AsyncPaginator[AccountResponse, AsyncCursor[AccountResponse]]:
         """
         Retrieve a list of Accounts that are children of the specified Account.
 
@@ -1421,22 +1394,23 @@ class AsyncAccountsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
+        return self._get_api_list(
             f"/organizations/{org_id}/accounts/{id}/children",
+            page=AsyncCursor[AccountResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "next_token": next_token,
                         "page_size": page_size,
                     },
-                    account_get_children_params.AccountGetChildrenParams,
+                    account_list_children_params.AccountListChildrenParams,
                 ),
             ),
-            cast_to=AccountResponse,
+            model=AccountResponse,
         )
 
     async def search(
@@ -1556,8 +1530,8 @@ class AccountsResourceWithRawResponse:
         self.end_date_billing_entities = to_raw_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.get_children = to_raw_response_wrapper(
-            accounts.get_children,
+        self.list_children = to_raw_response_wrapper(
+            accounts.list_children,
         )
         self.search = to_raw_response_wrapper(
             accounts.search,
@@ -1586,8 +1560,8 @@ class AsyncAccountsResourceWithRawResponse:
         self.end_date_billing_entities = async_to_raw_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.get_children = async_to_raw_response_wrapper(
-            accounts.get_children,
+        self.list_children = async_to_raw_response_wrapper(
+            accounts.list_children,
         )
         self.search = async_to_raw_response_wrapper(
             accounts.search,
@@ -1616,8 +1590,8 @@ class AccountsResourceWithStreamingResponse:
         self.end_date_billing_entities = to_streamed_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.get_children = to_streamed_response_wrapper(
-            accounts.get_children,
+        self.list_children = to_streamed_response_wrapper(
+            accounts.list_children,
         )
         self.search = to_streamed_response_wrapper(
             accounts.search,
@@ -1646,8 +1620,8 @@ class AsyncAccountsResourceWithStreamingResponse:
         self.end_date_billing_entities = async_to_streamed_response_wrapper(
             accounts.end_date_billing_entities,
         )
-        self.get_children = async_to_streamed_response_wrapper(
-            accounts.get_children,
+        self.list_children = async_to_streamed_response_wrapper(
+            accounts.list_children,
         )
         self.search = async_to_streamed_response_wrapper(
             accounts.search,

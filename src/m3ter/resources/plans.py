@@ -112,12 +112,12 @@ class PlansResource(SyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
-              accounting purposes
+          minimum_spend_accounting_product_id: Optional Product ID this Plan's minimum spend should be attributed to for
+              accounting purposes.
 
-          minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
+          minimum_spend_bill_in_advance: When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              When FALSE, minimum spend is billed at the end of each billing period.
+              When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for minimum spend
               billing in arrears/in advance.
@@ -136,12 +136,12 @@ class PlansResource(SyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
-              accounting purposes
+          standing_charge_accounting_product_id: Optional Product ID this Plan's standing charge should be attributed to for
+              accounting purposes.
 
-          standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
+          standing_charge_bill_in_advance: When **TRUE**, standing charge is billed at the start of each billing period.
 
-              When FALSE, standing charge is billed at the end of each billing period.
+              When **FALSE**, standing charge is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for standing charge
               billing in arrears/in advance.
@@ -310,12 +310,12 @@ class PlansResource(SyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
-              accounting purposes
+          minimum_spend_accounting_product_id: Optional Product ID this Plan's minimum spend should be attributed to for
+              accounting purposes.
 
-          minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
+          minimum_spend_bill_in_advance: When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              When FALSE, minimum spend is billed at the end of each billing period.
+              When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for minimum spend
               billing in arrears/in advance.
@@ -334,12 +334,12 @@ class PlansResource(SyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
-              accounting purposes
+          standing_charge_accounting_product_id: Optional Product ID this Plan's standing charge should be attributed to for
+              accounting purposes.
 
-          standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
+          standing_charge_bill_in_advance: When **TRUE**, standing charge is billed at the start of each billing period.
 
-              When FALSE, standing charge is billed at the end of each billing period.
+              When **FALSE**, standing charge is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for standing charge
               billing in arrears/in advance.
@@ -590,12 +590,12 @@ class AsyncPlansResource(AsyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
-              accounting purposes
+          minimum_spend_accounting_product_id: Optional Product ID this Plan's minimum spend should be attributed to for
+              accounting purposes.
 
-          minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
+          minimum_spend_bill_in_advance: When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              When FALSE, minimum spend is billed at the end of each billing period.
+              When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for minimum spend
               billing in arrears/in advance.
@@ -614,12 +614,12 @@ class AsyncPlansResource(AsyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
-              accounting purposes
+          standing_charge_accounting_product_id: Optional Product ID this Plan's standing charge should be attributed to for
+              accounting purposes.
 
-          standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
+          standing_charge_bill_in_advance: When **TRUE**, standing charge is billed at the start of each billing period.
 
-              When FALSE, standing charge is billed at the end of each billing period.
+              When **FALSE**, standing charge is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for standing charge
               billing in arrears/in advance.
@@ -788,12 +788,12 @@ class AsyncPlansResource(AsyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          minimum_spend_accounting_product_id: Optional Product ID this plan's minimum spend should be attributed to for
-              accounting purposes
+          minimum_spend_accounting_product_id: Optional Product ID this Plan's minimum spend should be attributed to for
+              accounting purposes.
 
-          minimum_spend_bill_in_advance: When TRUE, minimum spend is billed at the start of each billing period.
+          minimum_spend_bill_in_advance: When **TRUE**, minimum spend is billed at the start of each billing period.
 
-              When FALSE, minimum spend is billed at the end of each billing period.
+              When **FALSE**, minimum spend is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for minimum spend
               billing in arrears/in advance.
@@ -812,12 +812,12 @@ class AsyncPlansResource(AsyncAPIResource):
 
               _(Optional)_. Overrides PlanTemplate value.
 
-          standing_charge_accounting_product_id: Optional Product ID this plan's standing charge should be attributed to for
-              accounting purposes
+          standing_charge_accounting_product_id: Optional Product ID this Plan's standing charge should be attributed to for
+              accounting purposes.
 
-          standing_charge_bill_in_advance: When TRUE, standing charge is billed at the start of each billing period.
+          standing_charge_bill_in_advance: When **TRUE**, standing charge is billed at the start of each billing period.
 
-              When FALSE, standing charge is billed at the end of each billing period.
+              When **FALSE**, standing charge is billed at the end of each billing period.
 
               _(Optional)_. Overrides the setting at PlanTemplate level for standing charge
               billing in arrears/in advance.

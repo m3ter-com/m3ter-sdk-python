@@ -73,11 +73,11 @@ class CounterPricingUpdateParams(TypedDict, total=False):
     pro_rate_adjustment_credit: Annotated[bool, PropertyInfo(alias="proRateAdjustmentCredit")]
     """The default value is **TRUE**.
 
-    - When TRUE, counter adjustment credits are prorated and are billed according to
-      the number of days in billing period.
+    - When **TRUE**, counter adjustment credits are prorated and are billed
+      according to the number of days in billing period.
 
-    - When FALSE, counter adjustment credits are not prorated and are billed for the
-      entire billing period.
+    - When **FALSE**, counter adjustment credits are not prorated and are billed for
+      the entire billing period.
 
     _(Optional)_.
     """
@@ -85,11 +85,11 @@ class CounterPricingUpdateParams(TypedDict, total=False):
     pro_rate_adjustment_debit: Annotated[bool, PropertyInfo(alias="proRateAdjustmentDebit")]
     """The default value is **TRUE**.
 
-    - When TRUE, counter adjustment debits are prorated and are billed according to
-      the number of days in billing period.
+    - When **TRUE**, counter adjustment debits are prorated and are billed according
+      to the number of days in billing period.
 
-    - When FALSE, counter adjustment debits are not prorated and are billed for the
-      entire billing period.
+    - When **FALSE**, counter adjustment debits are not prorated and are billed for
+      the entire billing period.
 
     _(Optional)_.
     """
@@ -97,11 +97,11 @@ class CounterPricingUpdateParams(TypedDict, total=False):
     pro_rate_running_total: Annotated[bool, PropertyInfo(alias="proRateRunningTotal")]
     """The default value is **TRUE**.
 
-    - When TRUE, counter running total charges are prorated and are billed according
-      to the number of days in billing period.
+    - When **TRUE**, counter running total charges are prorated and are billed
+      according to the number of days in billing period.
 
-    - When FALSE, counter running total charges are not prorated and are billed for
-      the entire billing period.
+    - When **FALSE**, counter running total charges are not prorated and are billed
+      for the entire billing period.
 
     _(Optional)_.
     """
@@ -109,9 +109,9 @@ class CounterPricingUpdateParams(TypedDict, total=False):
     running_total_bill_in_advance: Annotated[bool, PropertyInfo(alias="runningTotalBillInAdvance")]
     """The default value is **TRUE**.
 
-    - When TRUE, running totals are billed at the start of each billing period.
+    - When **TRUE**, running totals are billed at the start of each billing period.
 
-    - When FALSE, running totals are billed at the end of each billing period.
+    - When **FALSE**, running totals are billed at the end of each billing period.
 
     _(Optional)_.
     """

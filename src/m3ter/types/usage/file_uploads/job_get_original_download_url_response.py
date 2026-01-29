@@ -10,6 +10,8 @@ __all__ = ["JobGetOriginalDownloadURLResponse"]
 
 
 class JobGetOriginalDownloadURLResponse(BaseModel):
+    """It contains details for downloading a file"""
+
     headers: Optional[Dict[str, str]] = None
     """The headers"""
 

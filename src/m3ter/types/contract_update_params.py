@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union
+from typing import Dict, Union, Iterable
 from datetime import date
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ContractUpdateParams"]
+__all__ = ["ContractUpdateParams", "UsageFilter"]
 
 
 class ContractUpdateParams(TypedDict, total=False):
@@ -31,6 +31,32 @@ class ContractUpdateParams(TypedDict, total=False):
     """The start date for the Contract _(in ISO-8601 format)_.
 
     This date is inclusive, meaning the Contract is active from this date onward.
+    """
+
+    apply_contract_period_limits: Annotated[bool, PropertyInfo(alias="applyContractPeriodLimits")]
+    """
+    For Contract billing, a boolean setting for restricting the charges billed to
+    the period defined for the Contract:
+
+    - **TRUE** - Contract billing for the Account will be restricted to charge
+      amounts that fall within the defined Contract period.
+    - **FALSE** - The period for amounts billed under the Contract will be
+      determined by the Account Plan attached to the Account and linked to the
+      Contract.(_Default_)
+    """
+
+    bill_grouping_key_id: Annotated[str, PropertyInfo(alias="billGroupingKeyId")]
+    """The ID of the Bill Grouping Key assigned to the Contract.
+
+    If you are implementing Contract Billing for an Account, use `billGroupingKey`
+    to control how charges linked to Contracts on the Account will be billed:
+
+    - **Independent Contract billing**. Assign an _exclusive_ Bill Grouping Key to
+      the Contract - only charges due against the Account and linked to the single
+      Contract will appear on a separate Bill.
+    - **Collective Contract billing**. Assign the same _non-exclusive_ Bill Grouping
+      Key to multiple Contracts - all charges due against the Account and linked to
+      the multiple Contracts will appear together on a single Bill.
     """
 
     code: str
@@ -56,6 +82,17 @@ class ContractUpdateParams(TypedDict, total=False):
     purchase_order_number: Annotated[str, PropertyInfo(alias="purchaseOrderNumber")]
     """The Purchase Order Number associated with the Contract."""
 
+    usage_filters: Annotated[Iterable[UsageFilter], PropertyInfo(alias="usageFilters")]
+    """
+    Use `usageFilters` to control Contract billing and charge at billing only for
+    usage where Product Meter dimensions equal specific defined values:
+
+    - Define Usage filters to either _include_ or _exclude_ charges for usage
+      associated with specific Meter dimensions.
+    - The Meter dimensions must be present in the data field schema of the Meter
+      used to submit usage data measurements.
+    """
+
     version: int
     """The version number of the entity:
 
@@ -66,3 +103,13 @@ class ContractUpdateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
+
+
+class UsageFilter(TypedDict, total=False):
+    """Filters that determine which usage records are included in contract billing"""
+
+    dimension_code: Required[Annotated[str, PropertyInfo(alias="dimensionCode")]]
+
+    mode: Required[Literal["INCLUDE", "EXCLUDE"]]
+
+    value: Required[str]

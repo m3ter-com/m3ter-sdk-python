@@ -8,6 +8,10 @@ __all__ = ["EventGetTypesResponse"]
 
 
 class EventGetTypesResponse(BaseModel):
+    """
+    Response containing list of Event Types that can have Notification rules configured.
+    """
+
     events: Optional[List[str]] = None
     """
     An array containing a list of all Event Types for which Notification rules can

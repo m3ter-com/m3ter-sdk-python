@@ -6,12 +6,14 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._models import BaseModel
+from .._models import BaseModel
 
 __all__ = ["StatementDefinitionResponse", "Dimension", "Measure"]
 
 
 class Dimension(BaseModel):
+    """A Dimension belonging to a Meter."""
+
     filter: List[str]
     """The value of a Dimension to use as a filter.
 

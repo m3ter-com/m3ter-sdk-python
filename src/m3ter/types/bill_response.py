@@ -13,6 +13,10 @@ __all__ = ["BillResponse", "LineItem", "LineItemUsagePerPricingBand"]
 
 
 class LineItemUsagePerPricingBand(BaseModel):
+    """
+    Array containing the pricing band information, which shows the details for each pricing band or tier.
+    """
+
     band_quantity: Optional[float] = FieldInfo(alias="bandQuantity", default=None)
     """Usage amount within the band."""
 
@@ -87,6 +91,7 @@ class LineItem(BaseModel):
         "OVERAGE_USAGE",
         "BALANCE_CONSUMED",
         "BALANCE_FEE",
+        "AD_HOC",
     ] = FieldInfo(alias="lineItemType")
 
     quantity: float
@@ -320,6 +325,9 @@ class BillResponse(BaseModel):
     start_date: Optional[date] = FieldInfo(alias="startDate", default=None)
 
     start_date_time_utc: Optional[datetime] = FieldInfo(alias="startDateTimeUTC", default=None)
+
+    statement_stale: Optional[bool] = FieldInfo(alias="statementStale", default=None)
+    """True if the existing bill statement (JSON or CSV) is marked as stale/outdated."""
 
     status: Optional[Literal["PENDING", "APPROVED"]] = None
 

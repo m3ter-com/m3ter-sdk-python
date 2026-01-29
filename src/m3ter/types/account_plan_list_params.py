@@ -56,7 +56,10 @@ class AccountPlanListParams(TypedDict, total=False):
     - **TRUE** - both active and inactive AccountPlans and AccountPlanGroups are
       included in the list.
     - **FALSE** - only active AccountPlans and AccountPlanGroups are retrieved in
-      the list.
+      the list._(Default)_
+
+    **NOTE:** Only operative if you also have one of `account`, `plan` or `contract`
+    as a query parameter.
     """
 
     next_token: Annotated[str, PropertyInfo(alias="nextToken")]

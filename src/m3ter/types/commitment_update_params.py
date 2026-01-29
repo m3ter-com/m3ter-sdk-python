@@ -135,8 +135,8 @@ class CommitmentUpdateParams(TypedDict, total=False):
 
     drawdowns_accounting_product_id: Annotated[str, PropertyInfo(alias="drawdownsAccountingProductId")]
     """
-    Optional Product ID this Commitment consumptions should be attributed to for
-    accounting purposes
+    Optional Product ID this Commitment's consumptions should be attributed to for
+    accounting purposes.
     """
 
     fee_dates: Annotated[Iterable[CommitmentFeeParam], PropertyInfo(alias="feeDates")]
@@ -161,8 +161,8 @@ class CommitmentUpdateParams(TypedDict, total=False):
 
     fees_accounting_product_id: Annotated[str, PropertyInfo(alias="feesAccountingProductId")]
     """
-    Optional Product ID this Commitment fees should be attributed to for accounting
-    purposes
+    Optional Product ID this Commitment's fees should be attributed to for
+    accounting purposes.
     """
 
     line_item_types: Annotated[

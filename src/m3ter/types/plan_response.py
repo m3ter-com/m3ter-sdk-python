@@ -17,13 +17,13 @@ class PlanResponse(BaseModel):
     account_id: Optional[str] = FieldInfo(alias="accountId", default=None)
     """_(Optional)_.
 
-    The Account ID for which this plan was created as custom/bespoke. A
+    The Account ID for which this Plan was created as custom/bespoke. A
     custom/bespoke Plan can only be attached to the specified Account.
     """
 
     bespoke: Optional[bool] = None
     """
-    TRUE/FALSE flag indicating whether the plan is custom/bespoke for a particular
+    TRUE/FALSE flag indicating whether the Plan is custom/bespoke for a particular
     Account.
     """
 
@@ -48,13 +48,13 @@ class PlanResponse(BaseModel):
     """
 
     dt_created: Optional[datetime] = FieldInfo(alias="dtCreated", default=None)
-    """The DateTime _(in ISO-8601 format)_ when the plan was created."""
+    """The DateTime _(in ISO-8601 format)_ when the Plan was created."""
 
     dt_last_modified: Optional[datetime] = FieldInfo(alias="dtLastModified", default=None)
-    """The DateTime _(in ISO-8601 format)_ when the plan was last modified."""
+    """The DateTime _(in ISO-8601 format)_ when the Plan was last modified."""
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
-    """The id of the user who last modified this plan."""
+    """The id of the user who last modified this Plan."""
 
     minimum_spend: Optional[float] = FieldInfo(alias="minimumSpend", default=None)
     """
@@ -68,14 +68,14 @@ class PlanResponse(BaseModel):
         alias="minimumSpendAccountingProductId", default=None
     )
     """
-    Optional Product ID this plan's minimum spend should be attributed to for
-    accounting purposes
+    Optional Product ID this Plan's minimum spend should be attributed to for
+    accounting purposes.
     """
 
     minimum_spend_bill_in_advance: Optional[bool] = FieldInfo(alias="minimumSpendBillInAdvance", default=None)
-    """When TRUE, minimum spend is billed at the start of each billing period.
+    """When **TRUE**, minimum spend is billed at the start of each billing period.
 
-    When FALSE, minimum spend is billed at the end of each billing period.
+    When **FALSE**, minimum spend is billed at the end of each billing period.
 
     _(Optional)_. Overrides the setting at PlanTemplate level for minimum spend
     billing in arrears/in advance.
@@ -114,14 +114,14 @@ class PlanResponse(BaseModel):
         alias="standingChargeAccountingProductId", default=None
     )
     """
-    Optional Product ID this plan's standing charge should be attributed to for
-    accounting purposes
+    Optional Product ID this Plan's standing charge should be attributed to for
+    accounting purposes.
     """
 
     standing_charge_bill_in_advance: Optional[bool] = FieldInfo(alias="standingChargeBillInAdvance", default=None)
-    """When TRUE, standing charge is billed at the start of each billing period.
+    """When **TRUE**, standing charge is billed at the start of each billing period.
 
-    When FALSE, standing charge is billed at the end of each billing period.
+    When **FALSE**, standing charge is billed at the end of each billing period.
 
     _(Optional)_. Overrides the setting at PlanTemplate level for standing charge
     billing in arrears/in advance.

@@ -45,6 +45,7 @@ class AdHocOperationalDataRequest(TypedDict, total=False):
                     "PLAN_TEMPLATES",
                     "BALANCE_TRANSACTIONS",
                     "TRANSACTION_TYPES",
+                    "CHARGES",
                 ]
             ],
             PropertyInfo(alias="operationalDataTypes"),

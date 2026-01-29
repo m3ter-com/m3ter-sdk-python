@@ -430,6 +430,8 @@ class IntegrationConfigurationsResource(SyncAPIResource):
         destination: str | Omit = omit,
         destination_id: str | Omit = omit,
         entity_id: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -446,6 +448,10 @@ class IntegrationConfigurationsResource(SyncAPIResource):
           destination_id: UUID of the destination to retrieve IntegrationConfigs for
 
           entity_id: UUID of the entity to retrieve IntegrationConfigs for
+
+          next_token: nextToken for multi page retrievals
+
+          page_size: Number of configs to retrieve per page
 
           extra_headers: Send extra headers
 
@@ -473,6 +479,8 @@ class IntegrationConfigurationsResource(SyncAPIResource):
                         "destination": destination,
                         "destination_id": destination_id,
                         "entity_id": entity_id,
+                        "next_token": next_token,
+                        "page_size": page_size,
                     },
                     integration_configuration_get_by_entity_params.IntegrationConfigurationGetByEntityParams,
                 ),
@@ -877,6 +885,8 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
         destination: str | Omit = omit,
         destination_id: str | Omit = omit,
         entity_id: str | Omit = omit,
+        next_token: str | Omit = omit,
+        page_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -893,6 +903,10 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
           destination_id: UUID of the destination to retrieve IntegrationConfigs for
 
           entity_id: UUID of the entity to retrieve IntegrationConfigs for
+
+          next_token: nextToken for multi page retrievals
+
+          page_size: Number of configs to retrieve per page
 
           extra_headers: Send extra headers
 
@@ -920,6 +934,8 @@ class AsyncIntegrationConfigurationsResource(AsyncAPIResource):
                         "destination": destination,
                         "destination_id": destination_id,
                         "entity_id": entity_id,
+                        "next_token": next_token,
+                        "page_size": page_size,
                     },
                     integration_configuration_get_by_entity_params.IntegrationConfigurationGetByEntityParams,
                 ),

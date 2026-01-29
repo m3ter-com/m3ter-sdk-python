@@ -16,6 +16,16 @@ class OrganizationConfigResponse(BaseModel):
     id: str
     """The UUID of the entity."""
 
+    allow_negative_balances: Optional[bool] = FieldInfo(alias="allowNegativeBalances", default=None)
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
+    allow_overlapping_plans: Optional[bool] = FieldInfo(alias="allowOverlappingPlans", default=None)
+    """Allows plans to overlap time periods for different contracts."""
+
     auto_approve_bills_grace_period: Optional[int] = FieldInfo(alias="autoApproveBillsGracePeriod", default=None)
     """Grace period before bills are auto-approved.
 
@@ -150,6 +160,13 @@ class OrganizationConfigResponse(BaseModel):
     - **For full hours.** Eight possible values: **1**, **2**, **3**, **4**, **6**,
       **8**, **12**, or **24**.
     - **Default.** The default is **0**, which disables scheduling.
+    """
+
+    scheduled_bill_offset: Optional[int] = FieldInfo(alias="scheduledBillOffset", default=None)
+    """
+    Offset (hours) within the scheduled interval to run the job, interpreted in the
+    organization's timezone. For daily (24h) schedules this is the hour of day
+    (0-23). Only supported when ScheduledBillInterval is 24 (daily) at present.
     """
 
     sequence_start_number: Optional[int] = FieldInfo(alias="sequenceStartNumber", default=None)

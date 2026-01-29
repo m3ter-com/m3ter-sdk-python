@@ -91,6 +91,8 @@ class OrganizationConfigResource(SyncAPIResource):
         timezone: str,
         week_epoch: str,
         year_epoch: str,
+        allow_negative_balances: bool | Omit = omit,
+        allow_overlapping_plans: bool | Omit = omit,
         auto_approve_bills_grace_period: int | Omit = omit,
         auto_approve_bills_grace_period_unit: str | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
@@ -103,6 +105,7 @@ class OrganizationConfigResource(SyncAPIResource):
         external_invoice_date: str | Omit = omit,
         minimum_spend_bill_in_advance: bool | Omit = omit,
         scheduled_bill_interval: float | Omit = omit,
+        scheduled_bill_offset: int | Omit = omit,
         sequence_start_number: int | Omit = omit,
         standing_charge_bill_in_advance: bool | Omit = omit,
         suppressed_empty_bills: bool | Omit = omit,
@@ -190,6 +193,18 @@ class OrganizationConfigResource(SyncAPIResource):
                 through to the end of the billing service period - January 1st, 2023, January
                 1st, 2024 and so on.
               - The date is in ISO-8601 format.
+
+          allow_negative_balances: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
+
+          allow_overlapping_plans: Boolean setting to control whether or not multiple plans for the same Product
+              can be active on an Account at the same time:
+
+              - **TRUE** - multiple overlapping plans for the same product can be attached to
+                the same Account.
+              - **FALSE** - multiple overlapping plans for the same product cannot be attached
+                to the same Account.(_Default_)
 
           auto_approve_bills_grace_period: Grace period before bills are auto-approved. Used in combination with
               `autoApproveBillsGracePeriodUnit` parameter.
@@ -295,6 +310,10 @@ class OrganizationConfigResource(SyncAPIResource):
                 **24**.
               - **Default.** The default is **0**, which disables scheduling.
 
+          scheduled_bill_offset: Offset (hours) within the scheduled interval to start the run, interpreted in
+              the organization's timezone. For daily (24h) schedules this is the hour of day
+              (0-23). Only supported when ScheduledBillInterval is 24 (daily) at present.
+
           sequence_start_number: The starting number to be used for sequential invoice numbers. This will be
               combined with the `billPrefix`.
 
@@ -349,6 +368,8 @@ class OrganizationConfigResource(SyncAPIResource):
                     "timezone": timezone,
                     "week_epoch": week_epoch,
                     "year_epoch": year_epoch,
+                    "allow_negative_balances": allow_negative_balances,
+                    "allow_overlapping_plans": allow_overlapping_plans,
                     "auto_approve_bills_grace_period": auto_approve_bills_grace_period,
                     "auto_approve_bills_grace_period_unit": auto_approve_bills_grace_period_unit,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
@@ -361,6 +382,7 @@ class OrganizationConfigResource(SyncAPIResource):
                     "external_invoice_date": external_invoice_date,
                     "minimum_spend_bill_in_advance": minimum_spend_bill_in_advance,
                     "scheduled_bill_interval": scheduled_bill_interval,
+                    "scheduled_bill_offset": scheduled_bill_offset,
                     "sequence_start_number": sequence_start_number,
                     "standing_charge_bill_in_advance": standing_charge_bill_in_advance,
                     "suppressed_empty_bills": suppressed_empty_bills,
@@ -441,6 +463,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
         timezone: str,
         week_epoch: str,
         year_epoch: str,
+        allow_negative_balances: bool | Omit = omit,
+        allow_overlapping_plans: bool | Omit = omit,
         auto_approve_bills_grace_period: int | Omit = omit,
         auto_approve_bills_grace_period_unit: str | Omit = omit,
         auto_generate_statement_mode: Literal["NONE", "JSON", "JSON_AND_CSV"] | Omit = omit,
@@ -453,6 +477,7 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
         external_invoice_date: str | Omit = omit,
         minimum_spend_bill_in_advance: bool | Omit = omit,
         scheduled_bill_interval: float | Omit = omit,
+        scheduled_bill_offset: int | Omit = omit,
         sequence_start_number: int | Omit = omit,
         standing_charge_bill_in_advance: bool | Omit = omit,
         suppressed_empty_bills: bool | Omit = omit,
@@ -540,6 +565,18 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
                 through to the end of the billing service period - January 1st, 2023, January
                 1st, 2024 and so on.
               - The date is in ISO-8601 format.
+
+          allow_negative_balances: Allow balance amounts to fall below zero. This feature is enabled on request.
+              Please get in touch with m3ter Support or your m3ter contact if you would like
+              it enabling for your organization(s).
+
+          allow_overlapping_plans: Boolean setting to control whether or not multiple plans for the same Product
+              can be active on an Account at the same time:
+
+              - **TRUE** - multiple overlapping plans for the same product can be attached to
+                the same Account.
+              - **FALSE** - multiple overlapping plans for the same product cannot be attached
+                to the same Account.(_Default_)
 
           auto_approve_bills_grace_period: Grace period before bills are auto-approved. Used in combination with
               `autoApproveBillsGracePeriodUnit` parameter.
@@ -645,6 +682,10 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
                 **24**.
               - **Default.** The default is **0**, which disables scheduling.
 
+          scheduled_bill_offset: Offset (hours) within the scheduled interval to start the run, interpreted in
+              the organization's timezone. For daily (24h) schedules this is the hour of day
+              (0-23). Only supported when ScheduledBillInterval is 24 (daily) at present.
+
           sequence_start_number: The starting number to be used for sequential invoice numbers. This will be
               combined with the `billPrefix`.
 
@@ -699,6 +740,8 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
                     "timezone": timezone,
                     "week_epoch": week_epoch,
                     "year_epoch": year_epoch,
+                    "allow_negative_balances": allow_negative_balances,
+                    "allow_overlapping_plans": allow_overlapping_plans,
                     "auto_approve_bills_grace_period": auto_approve_bills_grace_period,
                     "auto_approve_bills_grace_period_unit": auto_approve_bills_grace_period_unit,
                     "auto_generate_statement_mode": auto_generate_statement_mode,
@@ -711,6 +754,7 @@ class AsyncOrganizationConfigResource(AsyncAPIResource):
                     "external_invoice_date": external_invoice_date,
                     "minimum_spend_bill_in_advance": minimum_spend_bill_in_advance,
                     "scheduled_bill_interval": scheduled_bill_interval,
+                    "scheduled_bill_offset": scheduled_bill_offset,
                     "sequence_start_number": sequence_start_number,
                     "standing_charge_bill_in_advance": standing_charge_bill_in_advance,
                     "suppressed_empty_bills": suppressed_empty_bills,

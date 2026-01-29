@@ -21,6 +21,13 @@ class Balance(BaseModel):
     to.
     """
 
+    allow_overdraft: Optional[bool] = FieldInfo(alias="allowOverdraft", default=None)
+    """Allow balance amounts to fall below zero.
+
+    This feature is enabled on request. Please get in touch with m3ter Support or
+    your m3ter contact if you would like it enabling for your organization(s).
+    """
+
     amount: Optional[float] = None
     """The financial value that the Balance holds."""
 
@@ -34,8 +41,16 @@ class Balance(BaseModel):
     """A unique short code assigned to the Balance."""
 
     consumptions_accounting_product_id: Optional[str] = FieldInfo(alias="consumptionsAccountingProductId", default=None)
+    """
+    Product ID that any Balance Consumed line items will be attributed to for
+    accounting purposes.(_Optional_)
+    """
 
     contract_id: Optional[str] = FieldInfo(alias="contractId", default=None)
+    """
+    The unique identifier (UUID) for a Contract on the Account the Balance has been
+    added to.
+    """
 
     created_by: Optional[str] = FieldInfo(alias="createdBy", default=None)
     """The unique identifier (UUID) for the user who created the Balance."""
@@ -73,6 +88,10 @@ class Balance(BaseModel):
     """
 
     fees_accounting_product_id: Optional[str] = FieldInfo(alias="feesAccountingProductId", default=None)
+    """
+    Product ID that any Balance Fees line items will be attributed to for accounting
+    purposes.(_Optional_)
+    """
 
     last_modified_by: Optional[str] = FieldInfo(alias="lastModifiedBy", default=None)
     """The unique identifier (UUID) for the user who last modified the Balance."""
