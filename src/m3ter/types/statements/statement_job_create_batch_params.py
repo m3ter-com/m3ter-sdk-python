@@ -7,7 +7,7 @@ from typing_extensions import Required, Annotated, TypedDict
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
-__all__ = ["StatementJobCreateBatchParams"]
+__all__ = ["StatementJobCreateBatchParams", "Filters"]
 
 
 class StatementJobCreateBatchParams(TypedDict, total=False):
@@ -18,6 +18,8 @@ class StatementJobCreateBatchParams(TypedDict, total=False):
     The list of unique identifiers (UUIDs) of the bills associated with the
     StatementJob.
     """
+
+    filters: Filters
 
     include_csv_format: Annotated[bool, PropertyInfo(alias="includeCsvFormat")]
     """
@@ -38,3 +40,8 @@ class StatementJobCreateBatchParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
+
+
+class Filters(TypedDict, total=False):
+    meter_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="meterIds")]
+    """Include usage line items whose meterId matches one of these values."""

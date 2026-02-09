@@ -26,7 +26,7 @@ class TestLookupTableRevisions:
         lookup_table_revision = client.lookup_tables.lookup_table_revisions.create(
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
         assert_matches_type(LookupTableRevisionResponse, lookup_table_revision, path=["response"])
@@ -38,14 +38,14 @@ class TestLookupTableRevisions:
             fields=[
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
             ],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
             custom_fields={"foo": "string"},
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -58,7 +58,7 @@ class TestLookupTableRevisions:
         response = client.lookup_tables.lookup_table_revisions.with_raw_response.create(
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
 
@@ -72,7 +72,7 @@ class TestLookupTableRevisions:
         with client.lookup_tables.lookup_table_revisions.with_streaming_response.create(
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         ) as response:
             assert not response.is_closed
@@ -89,7 +89,7 @@ class TestLookupTableRevisions:
             client.lookup_tables.lookup_table_revisions.with_raw_response.create(
                 lookup_table_id="",
                 fields=[{"type": "STRING"}, {"type": "STRING"}],
-                keys=["foo", "bar", "baz"],
+                keys=["string"],
                 name="x",
             )
 
@@ -147,7 +147,7 @@ class TestLookupTableRevisions:
             id="id",
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
         assert_matches_type(LookupTableRevisionResponse, lookup_table_revision, path=["response"])
@@ -160,14 +160,14 @@ class TestLookupTableRevisions:
             fields=[
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
             ],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
             custom_fields={"foo": "string"},
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -181,7 +181,7 @@ class TestLookupTableRevisions:
             id="id",
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
 
@@ -196,7 +196,7 @@ class TestLookupTableRevisions:
             id="id",
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         ) as response:
             assert not response.is_closed
@@ -214,7 +214,7 @@ class TestLookupTableRevisions:
                 id="id",
                 lookup_table_id="",
                 fields=[{"type": "STRING"}, {"type": "STRING"}],
-                keys=["foo", "bar", "baz"],
+                keys=["string"],
                 name="x",
             )
 
@@ -223,7 +223,7 @@ class TestLookupTableRevisions:
                 id="",
                 lookup_table_id="lookupTableId",
                 fields=[{"type": "STRING"}, {"type": "STRING"}],
-                keys=["foo", "bar", "baz"],
+                keys=["string"],
                 name="x",
             )
 
@@ -392,7 +392,7 @@ class TestAsyncLookupTableRevisions:
         lookup_table_revision = await async_client.lookup_tables.lookup_table_revisions.create(
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
         assert_matches_type(LookupTableRevisionResponse, lookup_table_revision, path=["response"])
@@ -404,14 +404,14 @@ class TestAsyncLookupTableRevisions:
             fields=[
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
             ],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
             custom_fields={"foo": "string"},
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -424,7 +424,7 @@ class TestAsyncLookupTableRevisions:
         response = await async_client.lookup_tables.lookup_table_revisions.with_raw_response.create(
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
 
@@ -438,7 +438,7 @@ class TestAsyncLookupTableRevisions:
         async with async_client.lookup_tables.lookup_table_revisions.with_streaming_response.create(
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         ) as response:
             assert not response.is_closed
@@ -455,7 +455,7 @@ class TestAsyncLookupTableRevisions:
             await async_client.lookup_tables.lookup_table_revisions.with_raw_response.create(
                 lookup_table_id="",
                 fields=[{"type": "STRING"}, {"type": "STRING"}],
-                keys=["foo", "bar", "baz"],
+                keys=["string"],
                 name="x",
             )
 
@@ -513,7 +513,7 @@ class TestAsyncLookupTableRevisions:
             id="id",
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
         assert_matches_type(LookupTableRevisionResponse, lookup_table_revision, path=["response"])
@@ -526,14 +526,14 @@ class TestAsyncLookupTableRevisions:
             fields=[
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
                 {
                     "type": "STRING",
-                    "name": "lookupfield",
+                    "name": "lookuptablerevisionfieldkey",
                 },
             ],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
             custom_fields={"foo": "string"},
             start_date=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -547,7 +547,7 @@ class TestAsyncLookupTableRevisions:
             id="id",
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         )
 
@@ -562,7 +562,7 @@ class TestAsyncLookupTableRevisions:
             id="id",
             lookup_table_id="lookupTableId",
             fields=[{"type": "STRING"}, {"type": "STRING"}],
-            keys=["foo", "bar", "baz"],
+            keys=["string"],
             name="x",
         ) as response:
             assert not response.is_closed
@@ -580,7 +580,7 @@ class TestAsyncLookupTableRevisions:
                 id="id",
                 lookup_table_id="",
                 fields=[{"type": "STRING"}, {"type": "STRING"}],
-                keys=["foo", "bar", "baz"],
+                keys=["string"],
                 name="x",
             )
 
@@ -589,7 +589,7 @@ class TestAsyncLookupTableRevisions:
                 id="",
                 lookup_table_id="lookupTableId",
                 fields=[{"type": "STRING"}, {"type": "STRING"}],
-                keys=["foo", "bar", "baz"],
+                keys=["string"],
                 name="x",
             )
 

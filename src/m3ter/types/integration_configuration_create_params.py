@@ -87,6 +87,7 @@ class Credentials(TypedDict, total=False):
             "SLACK_WEBHOOK",
             "SAGE_INTACCT_CLIENT_CREDENTIALS",
             "SAGE_INTACCT_CLIENT_SECRET",
+            "STATIC_API_KEY",
         ]
     ]
     """Specifies the type of authorization required for the integration."""
