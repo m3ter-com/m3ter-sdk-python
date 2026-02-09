@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -8,7 +8,12 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["StatementJobResponse"]
+__all__ = ["StatementJobResponse", "Filters"]
+
+
+class Filters(BaseModel):
+    meter_ids: Optional[List[str]] = FieldInfo(alias="meterIds", default=None)
+    """Include usage line items whose meterId matches one of these values."""
 
 
 class StatementJobResponse(BaseModel):
@@ -33,6 +38,8 @@ class StatementJobResponse(BaseModel):
     The date and time _(in ISO-8601 format)_ when the StatementJob was last
     modified.
     """
+
+    filters: Optional[Filters] = None
 
     include_csv_format: Optional[bool] = FieldInfo(alias="includeCsvFormat", default=None)
     """
