@@ -12,6 +12,8 @@ __all__ = ["ChargeRetrieveResponse"]
 
 
 class ChargeRetrieveResponse(BaseModel):
+    """Response containing a Charge entity"""
+
     id: str
     """The UUID of the entity."""
 
