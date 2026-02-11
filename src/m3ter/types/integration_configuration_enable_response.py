@@ -12,6 +12,8 @@ __all__ = ["IntegrationConfigurationEnableResponse"]
 
 
 class IntegrationConfigurationEnableResponse(BaseModel):
+    """Response containing a IntegrationConfigResponse entity."""
+
     id: str
     """The UUID of the entity."""
 
