@@ -31,6 +31,20 @@ __all__ = ["SchedulesResource", "AsyncSchedulesResource"]
 
 
 class SchedulesResource(SyncAPIResource):
+    """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+    You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+    **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+    **Export Destinations** When creating an Export Schedule:
+    * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+    * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+    * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+    **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+    """
+
     @cached_property
     def with_raw_response(self) -> SchedulesResourceWithRawResponse:
         """
@@ -884,6 +898,20 @@ class SchedulesResource(SyncAPIResource):
 
 
 class AsyncSchedulesResource(AsyncAPIResource):
+    """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+    You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+    **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+    **Export Destinations** When creating an Export Schedule:
+    * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+    * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+    * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+    **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSchedulesResourceWithRawResponse:
         """

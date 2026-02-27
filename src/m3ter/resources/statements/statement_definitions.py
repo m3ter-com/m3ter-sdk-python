@@ -30,6 +30,14 @@ __all__ = ["StatementDefinitionsResource", "AsyncStatementDefinitionsResource"]
 
 
 class StatementDefinitionsResource(SyncAPIResource):
+    """
+    Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+    Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+    Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+    """
+
     @cached_property
     def with_raw_response(self) -> StatementDefinitionsResourceWithRawResponse:
         """
@@ -361,6 +369,14 @@ class StatementDefinitionsResource(SyncAPIResource):
 
 
 class AsyncStatementDefinitionsResource(AsyncAPIResource):
+    """
+    Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+    Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+    Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncStatementDefinitionsResourceWithRawResponse:
         """

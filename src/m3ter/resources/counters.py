@@ -23,6 +23,15 @@ __all__ = ["CountersResource", "AsyncCountersResource"]
 
 
 class CountersResource(SyncAPIResource):
+    """Endpoints for listing, creating, retrieving, updating, or deleting Counters.
+
+    You can create Counters for your m3ter Organization, which can then be used as pricing metrics to apply a unit-based [CounterPricing](https://www.m3ter.com/docs/api#tag/CounterPricing) to Product Plans or Plan Templates for recurring subscription charges on Accounts.
+
+    Counters can then be used to post [CounterAdjustments](https://www.m3ter.com/docs/api#tag/CounterAdjustments) on your end-customer Accounts.
+
+    Accounts are then billed in accordance with the CounterPricing on Plans attached to the Accounts and for the actual Counter quantities Accounts subscribe to. See [Recurring Charges: Counters](https://www.m3ter.com/docs/guides/recurring-charges-counters) in our main user documentation for more details.
+    """
+
     @cached_property
     def with_raw_response(self) -> CountersResourceWithRawResponse:
         """
@@ -331,6 +340,15 @@ class CountersResource(SyncAPIResource):
 
 
 class AsyncCountersResource(AsyncAPIResource):
+    """Endpoints for listing, creating, retrieving, updating, or deleting Counters.
+
+    You can create Counters for your m3ter Organization, which can then be used as pricing metrics to apply a unit-based [CounterPricing](https://www.m3ter.com/docs/api#tag/CounterPricing) to Product Plans or Plan Templates for recurring subscription charges on Accounts.
+
+    Counters can then be used to post [CounterAdjustments](https://www.m3ter.com/docs/api#tag/CounterAdjustments) on your end-customer Accounts.
+
+    Accounts are then billed in accordance with the CounterPricing on Plans attached to the Accounts and for the actual Counter quantities Accounts subscribe to. See [Recurring Charges: Counters](https://www.m3ter.com/docs/guides/recurring-charges-counters) in our main user documentation for more details.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCountersResourceWithRawResponse:
         """

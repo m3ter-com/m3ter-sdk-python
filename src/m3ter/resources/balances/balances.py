@@ -51,16 +51,79 @@ __all__ = ["BalancesResource", "AsyncBalancesResource"]
 
 
 class BalancesResource(SyncAPIResource):
+    """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+    When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+    Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+    Examples of how Balances for end customer Accounts can be used:
+
+    * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+    * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+    * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+    * Facilitating Balance Adjustments:
+        * Apply negative amounts to immediately write-off outstanding Balances.
+
+    #### What is the difference between Balances and Commitments/Prepayments?
+
+    To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+    Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+    In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+    You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+    """
+
     @cached_property
     def transactions(self) -> TransactionsResource:
+        """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+        When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+        Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+        Examples of how Balances for end customer Accounts can be used:
+
+        * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+        * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+        * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+        * Facilitating Balance Adjustments:
+                * Apply negative amounts to immediately write-off outstanding Balances.
+
+        #### What is the difference between Balances and Commitments/Prepayments?
+
+        To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+        Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+        In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+        You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+        """
         return TransactionsResource(self._client)
 
     @cached_property
     def charge_schedules(self) -> ChargeSchedulesResource:
+        """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+        **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return ChargeSchedulesResource(self._client)
 
     @cached_property
     def transaction_schedules(self) -> TransactionSchedulesResource:
+        """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+        **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return TransactionSchedulesResource(self._client)
 
     @cached_property
@@ -653,16 +716,79 @@ class BalancesResource(SyncAPIResource):
 
 
 class AsyncBalancesResource(AsyncAPIResource):
+    """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+    When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+    Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+    Examples of how Balances for end customer Accounts can be used:
+
+    * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+    * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+    * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+    * Facilitating Balance Adjustments:
+        * Apply negative amounts to immediately write-off outstanding Balances.
+
+    #### What is the difference between Balances and Commitments/Prepayments?
+
+    To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+    Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+    In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+    You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+    """
+
     @cached_property
     def transactions(self) -> AsyncTransactionsResource:
+        """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+        When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+        Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+        Examples of how Balances for end customer Accounts can be used:
+
+        * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+        * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+        * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+        * Facilitating Balance Adjustments:
+                * Apply negative amounts to immediately write-off outstanding Balances.
+
+        #### What is the difference between Balances and Commitments/Prepayments?
+
+        To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+        Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+        In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+        You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+        """
         return AsyncTransactionsResource(self._client)
 
     @cached_property
     def charge_schedules(self) -> AsyncChargeSchedulesResource:
+        """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+        **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return AsyncChargeSchedulesResource(self._client)
 
     @cached_property
     def transaction_schedules(self) -> AsyncTransactionSchedulesResource:
+        """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+        **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return AsyncTransactionSchedulesResource(self._client)
 
     @cached_property
@@ -1276,14 +1402,49 @@ class BalancesResourceWithRawResponse:
 
     @cached_property
     def transactions(self) -> TransactionsResourceWithRawResponse:
+        """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+        When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+        Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+        Examples of how Balances for end customer Accounts can be used:
+
+        * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+        * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+        * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+        * Facilitating Balance Adjustments:
+                * Apply negative amounts to immediately write-off outstanding Balances.
+
+        #### What is the difference between Balances and Commitments/Prepayments?
+
+        To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+        Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+        In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+        You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+        """
         return TransactionsResourceWithRawResponse(self._balances.transactions)
 
     @cached_property
     def charge_schedules(self) -> ChargeSchedulesResourceWithRawResponse:
+        """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+        **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return ChargeSchedulesResourceWithRawResponse(self._balances.charge_schedules)
 
     @cached_property
     def transaction_schedules(self) -> TransactionSchedulesResourceWithRawResponse:
+        """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+        **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return TransactionSchedulesResourceWithRawResponse(self._balances.transaction_schedules)
 
 
@@ -1309,14 +1470,49 @@ class AsyncBalancesResourceWithRawResponse:
 
     @cached_property
     def transactions(self) -> AsyncTransactionsResourceWithRawResponse:
+        """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+        When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+        Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+        Examples of how Balances for end customer Accounts can be used:
+
+        * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+        * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+        * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+        * Facilitating Balance Adjustments:
+                * Apply negative amounts to immediately write-off outstanding Balances.
+
+        #### What is the difference between Balances and Commitments/Prepayments?
+
+        To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+        Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+        In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+        You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+        """
         return AsyncTransactionsResourceWithRawResponse(self._balances.transactions)
 
     @cached_property
     def charge_schedules(self) -> AsyncChargeSchedulesResourceWithRawResponse:
+        """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+        **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return AsyncChargeSchedulesResourceWithRawResponse(self._balances.charge_schedules)
 
     @cached_property
     def transaction_schedules(self) -> AsyncTransactionSchedulesResourceWithRawResponse:
+        """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+        **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return AsyncTransactionSchedulesResourceWithRawResponse(self._balances.transaction_schedules)
 
 
@@ -1342,14 +1538,49 @@ class BalancesResourceWithStreamingResponse:
 
     @cached_property
     def transactions(self) -> TransactionsResourceWithStreamingResponse:
+        """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+        When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+        Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+        Examples of how Balances for end customer Accounts can be used:
+
+        * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+        * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+        * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+        * Facilitating Balance Adjustments:
+                * Apply negative amounts to immediately write-off outstanding Balances.
+
+        #### What is the difference between Balances and Commitments/Prepayments?
+
+        To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+        Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+        In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+        You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+        """
         return TransactionsResourceWithStreamingResponse(self._balances.transactions)
 
     @cached_property
     def charge_schedules(self) -> ChargeSchedulesResourceWithStreamingResponse:
+        """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+        **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return ChargeSchedulesResourceWithStreamingResponse(self._balances.charge_schedules)
 
     @cached_property
     def transaction_schedules(self) -> TransactionSchedulesResourceWithStreamingResponse:
+        """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+        **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return TransactionSchedulesResourceWithStreamingResponse(self._balances.transaction_schedules)
 
 
@@ -1375,12 +1606,47 @@ class AsyncBalancesResourceWithStreamingResponse:
 
     @cached_property
     def transactions(self) -> AsyncTransactionsResourceWithStreamingResponse:
+        """Endpoints for creating/retrieving/updating/deleting Balances on Accounts.
+
+        When you have created a Balance for an Account, you can create a positive or negative Transaction amounts for the Balance. To do this, you must first define Transaction Types for your Organization, and then use one of these Transaction Types when you add a specific Transaction to a Balance - see the [Create TransactionType](https://www.m3ter.com/docs/api#tag/TransactionType/operation/CreateTransactionType) call in the Transaction Type section in this API Reference for more details.
+
+        Balances are typically used when a customer prepays an amount to add a credit to their Account, which can then be draw-down against charges due for product or service consumption. You can include options to top-up the original Balance.
+
+        Examples of how Balances for end customer Accounts can be used:
+
+        * Onboarding Balance/Free Trials. Offering an onboarding incentive to new customers as an initial free credit Balance on their Account.
+
+        * Balance as initial commitment. Add a Balance amount to a new customer Account. This acts as an initial commitment, which allows them to use the service and gain an accurate insight into their usage level.
+
+        * Managing Customer Satisfaction. Use Balance as credits that will be applied to subsequent Bills as compensation for acknowledged service delivery issues.
+
+        * Facilitating Balance Adjustments:
+                * Apply negative amounts to immediately write-off outstanding Balances.
+
+        #### What is the difference between Balances and Commitments/Prepayments?
+
+        To manage credit amounts for your end-customer Accounts, you can use Balances or Commitments/Prepayments. However, these two kinds of credits for Accounts serve different purposes.
+
+        Commitments - also referred to as Prepayments - are used for amounts end-customers have agreed to pay for consuming your product or services across a full contract term. A customer might pay the entire or only part of the agreed amount upfront, but ***the commitment or prepayment amount is payable regardless of the actual usage by the customer of your service or product.***
+
+        In contrast, a Balance - often referred to as a Top-Up or Prepaid draw-down - is used when a customer wants to add a credit amount to their Account at any time during the service period or when you as service provider want to add a credit to a customer Account. This Balance credit can then be drawn-down against for billing the Account for usage, minimum spend, standing charges, or recurring charges due. Balances therefore serve payment use cases in a more flexible way, for example to be used for a "Free Credit" sign-up scheme you offer to encourage sales or to enhance customer satisfaction by adding credit to an Account to compensate for service delivery issues.
+
+        You can use Commitments/Prepayments and Balances together on Account, and define at Organization or individual Account level the order in which any Balance/Commitment credit on an Account is drawn-down - Balance amounts first or Commitment/Prepayment amounts first.
+        """
         return AsyncTransactionsResourceWithStreamingResponse(self._balances.transactions)
 
     @cached_property
     def charge_schedules(self) -> AsyncChargeSchedulesResourceWithStreamingResponse:
+        """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+        **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return AsyncChargeSchedulesResourceWithStreamingResponse(self._balances.charge_schedules)
 
     @cached_property
     def transaction_schedules(self) -> AsyncTransactionSchedulesResourceWithStreamingResponse:
+        """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+        **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+        """
         return AsyncTransactionSchedulesResourceWithStreamingResponse(self._balances.transaction_schedules)

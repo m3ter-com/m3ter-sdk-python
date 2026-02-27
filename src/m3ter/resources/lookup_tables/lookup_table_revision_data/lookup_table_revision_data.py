@@ -57,8 +57,35 @@ __all__ = ["LookupTableRevisionDataResource", "AsyncLookupTableRevisionDataResou
 
 
 class LookupTableRevisionDataResource(SyncAPIResource):
+    """
+    Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+    When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+    * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+    * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+    **NOTES:**
+    * You can only create or update field data values for DRAFT Revisions.
+    * You cannot change the field data values for PUBLISHED Revisions.
+
+    **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+    """
+
     @cached_property
     def lookup_table_revision_data_jobs(self) -> LookupTableRevisionDataJobsResource:
+        """
+        Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+        When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+        * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+        * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+        **NOTES:**
+        * You can only create or update field data values for DRAFT Revisions.
+        * You cannot change the field data values for PUBLISHED Revisions.
+
+        **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+        """
         return LookupTableRevisionDataJobsResource(self._client)
 
     @cached_property
@@ -657,8 +684,35 @@ class LookupTableRevisionDataResource(SyncAPIResource):
 
 
 class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
+    """
+    Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+    When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+    * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+    * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+    **NOTES:**
+    * You can only create or update field data values for DRAFT Revisions.
+    * You cannot change the field data values for PUBLISHED Revisions.
+
+    **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+    """
+
     @cached_property
     def lookup_table_revision_data_jobs(self) -> AsyncLookupTableRevisionDataJobsResource:
+        """
+        Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+        When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+        * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+        * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+        **NOTES:**
+        * You can only create or update field data values for DRAFT Revisions.
+        * You cannot change the field data values for PUBLISHED Revisions.
+
+        **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+        """
         return AsyncLookupTableRevisionDataJobsResource(self._client)
 
     @cached_property
@@ -1290,6 +1344,19 @@ class LookupTableRevisionDataResourceWithRawResponse:
 
     @cached_property
     def lookup_table_revision_data_jobs(self) -> LookupTableRevisionDataJobsResourceWithRawResponse:
+        """
+        Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+        When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+        * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+        * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+        **NOTES:**
+        * You can only create or update field data values for DRAFT Revisions.
+        * You cannot change the field data values for PUBLISHED Revisions.
+
+        **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+        """
         return LookupTableRevisionDataJobsResourceWithRawResponse(
             self._lookup_table_revision_data.lookup_table_revision_data_jobs
         )
@@ -1329,6 +1396,19 @@ class AsyncLookupTableRevisionDataResourceWithRawResponse:
 
     @cached_property
     def lookup_table_revision_data_jobs(self) -> AsyncLookupTableRevisionDataJobsResourceWithRawResponse:
+        """
+        Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+        When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+        * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+        * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+        **NOTES:**
+        * You can only create or update field data values for DRAFT Revisions.
+        * You cannot change the field data values for PUBLISHED Revisions.
+
+        **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+        """
         return AsyncLookupTableRevisionDataJobsResourceWithRawResponse(
             self._lookup_table_revision_data.lookup_table_revision_data_jobs
         )
@@ -1368,6 +1448,19 @@ class LookupTableRevisionDataResourceWithStreamingResponse:
 
     @cached_property
     def lookup_table_revision_data_jobs(self) -> LookupTableRevisionDataJobsResourceWithStreamingResponse:
+        """
+        Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+        When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+        * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+        * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+        **NOTES:**
+        * You can only create or update field data values for DRAFT Revisions.
+        * You cannot change the field data values for PUBLISHED Revisions.
+
+        **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+        """
         return LookupTableRevisionDataJobsResourceWithStreamingResponse(
             self._lookup_table_revision_data.lookup_table_revision_data_jobs
         )
@@ -1407,6 +1500,19 @@ class AsyncLookupTableRevisionDataResourceWithStreamingResponse:
 
     @cached_property
     def lookup_table_revision_data_jobs(self) -> AsyncLookupTableRevisionDataJobsResourceWithStreamingResponse:
+        """
+        Endpoints for creating/updating/deleting Data for specific Lookup Table Revisions.
+
+        When you've added fields to create a data schema for a Lookup Table Revision, you can use upsert operations to create or update the data values for those fields:
+        * Use [Upsert LookupTableRevisionData](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionData) to upsert some or all of a Revision's field data values.
+        * Use [Upsert LookupTableRevisionData Entry](https://www.m3ter.com/docs/api#tag/LookupTableRevisionData/operation/PutLookupTableRevisionDataEntry) to upsert an individual Revision field's data value.
+
+        **NOTES:**
+        * You can only create or update field data values for DRAFT Revisions.
+        * You cannot change the field data values for PUBLISHED Revisions.
+
+        **Beta Version!** The Lookup Table feature is currently available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition. Lookup Table Revision Data endpoints will only be available if Lookup Tables have been enabled for your Organization. For more details see [Lookup Tables (Beta)](https://www.m3ter.com/docs/guides/lookup-tables) in our main User documentation.
+        """
         return AsyncLookupTableRevisionDataJobsResourceWithStreamingResponse(
             self._lookup_table_revision_data.lookup_table_revision_data_jobs
         )

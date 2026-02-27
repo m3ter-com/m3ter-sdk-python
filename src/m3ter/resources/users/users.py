@@ -40,6 +40,21 @@ __all__ = ["UsersResource", "AsyncUsersResource"]
 class UsersResource(SyncAPIResource):
     @cached_property
     def invitations(self) -> InvitationsResource:
+        """Endpoints for creating and retrieving user invitations.
+
+        Use invitations to invite other people to join your m3ter Organization.
+
+        An invitation sends an email inviting someone to join your Organization. When you set up an invitation, you can:
+        *  Assign the required permission policies to control what the invitee can do when they accept the invite and join your Organization.
+        *  Set a date for when the invitation will expire.
+        *  Set a date for when the invited user's access will expire.
+
+        When the invitee receives the invitation email:
+        * If the invitee is already a m3ter user and has a m3ter account, they can click a link and use their credentials to log into your Organization.
+        * If the invitee is not a m3ter user and does not have a m3ter account, they'll be invited to create a m3ter account before logging into your Organization.
+
+        See [Inviting Users to your Organization](https://www.m3ter.com/docs/guides/organization-and-access-management/managing-users#inviting-users-to-your-organization) in our user documentation for more details.
+        """
         return InvitationsResource(self._client)
 
     @cached_property
@@ -450,6 +465,21 @@ class UsersResource(SyncAPIResource):
 class AsyncUsersResource(AsyncAPIResource):
     @cached_property
     def invitations(self) -> AsyncInvitationsResource:
+        """Endpoints for creating and retrieving user invitations.
+
+        Use invitations to invite other people to join your m3ter Organization.
+
+        An invitation sends an email inviting someone to join your Organization. When you set up an invitation, you can:
+        *  Assign the required permission policies to control what the invitee can do when they accept the invite and join your Organization.
+        *  Set a date for when the invitation will expire.
+        *  Set a date for when the invited user's access will expire.
+
+        When the invitee receives the invitation email:
+        * If the invitee is already a m3ter user and has a m3ter account, they can click a link and use their credentials to log into your Organization.
+        * If the invitee is not a m3ter user and does not have a m3ter account, they'll be invited to create a m3ter account before logging into your Organization.
+
+        See [Inviting Users to your Organization](https://www.m3ter.com/docs/guides/organization-and-access-management/managing-users#inviting-users-to-your-organization) in our user documentation for more details.
+        """
         return AsyncInvitationsResource(self._client)
 
     @cached_property
@@ -885,6 +915,21 @@ class UsersResourceWithRawResponse:
 
     @cached_property
     def invitations(self) -> InvitationsResourceWithRawResponse:
+        """Endpoints for creating and retrieving user invitations.
+
+        Use invitations to invite other people to join your m3ter Organization.
+
+        An invitation sends an email inviting someone to join your Organization. When you set up an invitation, you can:
+        *  Assign the required permission policies to control what the invitee can do when they accept the invite and join your Organization.
+        *  Set a date for when the invitation will expire.
+        *  Set a date for when the invited user's access will expire.
+
+        When the invitee receives the invitation email:
+        * If the invitee is already a m3ter user and has a m3ter account, they can click a link and use their credentials to log into your Organization.
+        * If the invitee is not a m3ter user and does not have a m3ter account, they'll be invited to create a m3ter account before logging into your Organization.
+
+        See [Inviting Users to your Organization](https://www.m3ter.com/docs/guides/organization-and-access-management/managing-users#inviting-users-to-your-organization) in our user documentation for more details.
+        """
         return InvitationsResourceWithRawResponse(self._users.invitations)
 
 
@@ -916,6 +961,21 @@ class AsyncUsersResourceWithRawResponse:
 
     @cached_property
     def invitations(self) -> AsyncInvitationsResourceWithRawResponse:
+        """Endpoints for creating and retrieving user invitations.
+
+        Use invitations to invite other people to join your m3ter Organization.
+
+        An invitation sends an email inviting someone to join your Organization. When you set up an invitation, you can:
+        *  Assign the required permission policies to control what the invitee can do when they accept the invite and join your Organization.
+        *  Set a date for when the invitation will expire.
+        *  Set a date for when the invited user's access will expire.
+
+        When the invitee receives the invitation email:
+        * If the invitee is already a m3ter user and has a m3ter account, they can click a link and use their credentials to log into your Organization.
+        * If the invitee is not a m3ter user and does not have a m3ter account, they'll be invited to create a m3ter account before logging into your Organization.
+
+        See [Inviting Users to your Organization](https://www.m3ter.com/docs/guides/organization-and-access-management/managing-users#inviting-users-to-your-organization) in our user documentation for more details.
+        """
         return AsyncInvitationsResourceWithRawResponse(self._users.invitations)
 
 
@@ -947,6 +1007,21 @@ class UsersResourceWithStreamingResponse:
 
     @cached_property
     def invitations(self) -> InvitationsResourceWithStreamingResponse:
+        """Endpoints for creating and retrieving user invitations.
+
+        Use invitations to invite other people to join your m3ter Organization.
+
+        An invitation sends an email inviting someone to join your Organization. When you set up an invitation, you can:
+        *  Assign the required permission policies to control what the invitee can do when they accept the invite and join your Organization.
+        *  Set a date for when the invitation will expire.
+        *  Set a date for when the invited user's access will expire.
+
+        When the invitee receives the invitation email:
+        * If the invitee is already a m3ter user and has a m3ter account, they can click a link and use their credentials to log into your Organization.
+        * If the invitee is not a m3ter user and does not have a m3ter account, they'll be invited to create a m3ter account before logging into your Organization.
+
+        See [Inviting Users to your Organization](https://www.m3ter.com/docs/guides/organization-and-access-management/managing-users#inviting-users-to-your-organization) in our user documentation for more details.
+        """
         return InvitationsResourceWithStreamingResponse(self._users.invitations)
 
 
@@ -978,4 +1053,19 @@ class AsyncUsersResourceWithStreamingResponse:
 
     @cached_property
     def invitations(self) -> AsyncInvitationsResourceWithStreamingResponse:
+        """Endpoints for creating and retrieving user invitations.
+
+        Use invitations to invite other people to join your m3ter Organization.
+
+        An invitation sends an email inviting someone to join your Organization. When you set up an invitation, you can:
+        *  Assign the required permission policies to control what the invitee can do when they accept the invite and join your Organization.
+        *  Set a date for when the invitation will expire.
+        *  Set a date for when the invited user's access will expire.
+
+        When the invitee receives the invitation email:
+        * If the invitee is already a m3ter user and has a m3ter account, they can click a link and use their credentials to log into your Organization.
+        * If the invitee is not a m3ter user and does not have a m3ter account, they'll be invited to create a m3ter account before logging into your Organization.
+
+        See [Inviting Users to your Organization](https://www.m3ter.com/docs/guides/organization-and-access-management/managing-users#inviting-users-to-your-organization) in our user documentation for more details.
+        """
         return AsyncInvitationsResourceWithStreamingResponse(self._users.invitations)

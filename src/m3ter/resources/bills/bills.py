@@ -59,16 +59,37 @@ __all__ = ["BillsResource", "AsyncBillsResource"]
 
 
 class BillsResource(SyncAPIResource):
+    """
+    Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+    Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+    """
+
     @cached_property
     def credit_line_items(self) -> CreditLineItemsResource:
+        """
+        Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+        You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+        """
         return CreditLineItemsResource(self._client)
 
     @cached_property
     def debit_line_items(self) -> DebitLineItemsResource:
+        """
+        Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+        You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+        """
         return DebitLineItemsResource(self._client)
 
     @cached_property
     def line_items(self) -> LineItemsResource:
+        """
+        Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+        Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+        """
         return LineItemsResource(self._client)
 
     @cached_property
@@ -613,16 +634,37 @@ class BillsResource(SyncAPIResource):
 
 
 class AsyncBillsResource(AsyncAPIResource):
+    """
+    Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+    Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+    """
+
     @cached_property
     def credit_line_items(self) -> AsyncCreditLineItemsResource:
+        """
+        Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+        You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+        """
         return AsyncCreditLineItemsResource(self._client)
 
     @cached_property
     def debit_line_items(self) -> AsyncDebitLineItemsResource:
+        """
+        Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+        You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+        """
         return AsyncDebitLineItemsResource(self._client)
 
     @cached_property
     def line_items(self) -> AsyncLineItemsResource:
+        """
+        Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+        Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+        """
         return AsyncLineItemsResource(self._client)
 
     @cached_property
@@ -1197,14 +1239,29 @@ class BillsResourceWithRawResponse:
 
     @cached_property
     def credit_line_items(self) -> CreditLineItemsResourceWithRawResponse:
+        """
+        Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+        You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+        """
         return CreditLineItemsResourceWithRawResponse(self._bills.credit_line_items)
 
     @cached_property
     def debit_line_items(self) -> DebitLineItemsResourceWithRawResponse:
+        """
+        Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+        You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+        """
         return DebitLineItemsResourceWithRawResponse(self._bills.debit_line_items)
 
     @cached_property
     def line_items(self) -> LineItemsResourceWithRawResponse:
+        """
+        Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+        Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+        """
         return LineItemsResourceWithRawResponse(self._bills.line_items)
 
 
@@ -1239,14 +1296,29 @@ class AsyncBillsResourceWithRawResponse:
 
     @cached_property
     def credit_line_items(self) -> AsyncCreditLineItemsResourceWithRawResponse:
+        """
+        Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+        You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+        """
         return AsyncCreditLineItemsResourceWithRawResponse(self._bills.credit_line_items)
 
     @cached_property
     def debit_line_items(self) -> AsyncDebitLineItemsResourceWithRawResponse:
+        """
+        Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+        You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+        """
         return AsyncDebitLineItemsResourceWithRawResponse(self._bills.debit_line_items)
 
     @cached_property
     def line_items(self) -> AsyncLineItemsResourceWithRawResponse:
+        """
+        Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+        Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+        """
         return AsyncLineItemsResourceWithRawResponse(self._bills.line_items)
 
 
@@ -1281,14 +1353,29 @@ class BillsResourceWithStreamingResponse:
 
     @cached_property
     def credit_line_items(self) -> CreditLineItemsResourceWithStreamingResponse:
+        """
+        Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+        You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+        """
         return CreditLineItemsResourceWithStreamingResponse(self._bills.credit_line_items)
 
     @cached_property
     def debit_line_items(self) -> DebitLineItemsResourceWithStreamingResponse:
+        """
+        Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+        You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+        """
         return DebitLineItemsResourceWithStreamingResponse(self._bills.debit_line_items)
 
     @cached_property
     def line_items(self) -> LineItemsResourceWithStreamingResponse:
+        """
+        Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+        Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+        """
         return LineItemsResourceWithStreamingResponse(self._bills.line_items)
 
 
@@ -1323,12 +1410,27 @@ class AsyncBillsResourceWithStreamingResponse:
 
     @cached_property
     def credit_line_items(self) -> AsyncCreditLineItemsResourceWithStreamingResponse:
+        """
+        Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+        You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+        """
         return AsyncCreditLineItemsResourceWithStreamingResponse(self._bills.credit_line_items)
 
     @cached_property
     def debit_line_items(self) -> AsyncDebitLineItemsResourceWithStreamingResponse:
+        """
+        Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+        You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+        """
         return AsyncDebitLineItemsResourceWithStreamingResponse(self._bills.debit_line_items)
 
     @cached_property
     def line_items(self) -> AsyncLineItemsResourceWithStreamingResponse:
+        """
+        Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+        Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+        """
         return AsyncLineItemsResourceWithStreamingResponse(self._bills.line_items)

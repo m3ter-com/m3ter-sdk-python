@@ -26,6 +26,14 @@ __all__ = ["PlanTemplatesResource", "AsyncPlanTemplatesResource"]
 
 
 class PlanTemplatesResource(SyncAPIResource):
+    """
+    Endpoints for listing, creating, updating, retrieving, or deleting PlanTemplates.
+
+    Use PlanTemplates to define default values for Plans. These default values control the billing operations you want applied to your products. PlanTemplates avoid repetition in configuration work - many Plans will share settings for billing operations and differ only in the details of their pricing structures.
+
+    A PlanTemplate is linked to a Product, and each Plan is a child of a PlanTemplate.
+    """
+
     @cached_property
     def with_raw_response(self) -> PlanTemplatesResourceWithRawResponse:
         """
@@ -567,6 +575,14 @@ class PlanTemplatesResource(SyncAPIResource):
 
 
 class AsyncPlanTemplatesResource(AsyncAPIResource):
+    """
+    Endpoints for listing, creating, updating, retrieving, or deleting PlanTemplates.
+
+    Use PlanTemplates to define default values for Plans. These default values control the billing operations you want applied to your products. PlanTemplates avoid repetition in configuration work - many Plans will share settings for billing operations and differ only in the details of their pricing structures.
+
+    A PlanTemplate is linked to a Product, and each Plan is a child of a PlanTemplate.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncPlanTemplatesResourceWithRawResponse:
         """

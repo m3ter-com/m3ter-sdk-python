@@ -32,8 +32,43 @@ __all__ = ["FileUploadsResource", "AsyncFileUploadsResource"]
 
 
 class FileUploadsResource(SyncAPIResource):
+    """
+    Endpoints for submitting usage data measurements to the m3ter platform:
+    - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+    - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+    To use the file upload service:
+    - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+    - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+    - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+    - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+    **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+    In the m3ter documentation, see also:
+    - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+    - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+    """
+
     @cached_property
     def jobs(self) -> JobsResource:
+        """
+        Endpoints for submitting usage data measurements to the m3ter platform:
+        - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+        - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+        To use the file upload service:
+        - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+        - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+        - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+        - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+        **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+        In the m3ter documentation, see also:
+        - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+        - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+        """
         return JobsResource(self._client)
 
     @cached_property
@@ -131,8 +166,43 @@ class FileUploadsResource(SyncAPIResource):
 
 
 class AsyncFileUploadsResource(AsyncAPIResource):
+    """
+    Endpoints for submitting usage data measurements to the m3ter platform:
+    - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+    - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+    To use the file upload service:
+    - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+    - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+    - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+    - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+    **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+    In the m3ter documentation, see also:
+    - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+    - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+    """
+
     @cached_property
     def jobs(self) -> AsyncJobsResource:
+        """
+        Endpoints for submitting usage data measurements to the m3ter platform:
+        - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+        - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+        To use the file upload service:
+        - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+        - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+        - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+        - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+        **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+        In the m3ter documentation, see also:
+        - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+        - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+        """
         return AsyncJobsResource(self._client)
 
     @cached_property
@@ -239,6 +309,23 @@ class FileUploadsResourceWithRawResponse:
 
     @cached_property
     def jobs(self) -> JobsResourceWithRawResponse:
+        """
+        Endpoints for submitting usage data measurements to the m3ter platform:
+        - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+        - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+        To use the file upload service:
+        - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+        - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+        - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+        - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+        **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+        In the m3ter documentation, see also:
+        - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+        - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+        """
         return JobsResourceWithRawResponse(self._file_uploads.jobs)
 
 
@@ -252,6 +339,23 @@ class AsyncFileUploadsResourceWithRawResponse:
 
     @cached_property
     def jobs(self) -> AsyncJobsResourceWithRawResponse:
+        """
+        Endpoints for submitting usage data measurements to the m3ter platform:
+        - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+        - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+        To use the file upload service:
+        - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+        - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+        - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+        - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+        **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+        In the m3ter documentation, see also:
+        - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+        - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+        """
         return AsyncJobsResourceWithRawResponse(self._file_uploads.jobs)
 
 
@@ -265,6 +369,23 @@ class FileUploadsResourceWithStreamingResponse:
 
     @cached_property
     def jobs(self) -> JobsResourceWithStreamingResponse:
+        """
+        Endpoints for submitting usage data measurements to the m3ter platform:
+        - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+        - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+        To use the file upload service:
+        - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+        - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+        - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+        - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+        **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+        In the m3ter documentation, see also:
+        - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+        - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+        """
         return JobsResourceWithStreamingResponse(self._file_uploads.jobs)
 
 
@@ -278,4 +399,21 @@ class AsyncFileUploadsResourceWithStreamingResponse:
 
     @cached_property
     def jobs(self) -> AsyncJobsResourceWithStreamingResponse:
+        """
+        Endpoints for submitting usage data measurements to the m3ter platform:
+        - **Directly:** You can use the **Submit Measurements** call to submit raw data measurements directly using the **Ingest API**.
+        - **Indirectly:** You can use the platform's file upload service calls to prepare for and submit a file for data ingest using the **Config API**.
+
+        To use the file upload service:
+        - First, make a **Generate an upload URL** call to obtain a temporary upload URL and an upload job ID.
+        - You can then upload your data measurements file using a `PUT` request using the upload URL as the endpoint.
+        - Any errors are reported via the normal [Alerts](https://www.m3ter.com/docs/guides/viewing-and-managing-alerts) service in the Console UI.
+        - If any issues occur with a file upload, you can use the upload job ID with other file upload service calls we provide to troubleshoot and resolve issues.
+
+        **Note:** You can also perform a File Upload via a Meter's Details page in the m3ter Console using a `CSV` formatted file you've prepared for usage data measurements ingest for the Meter.
+
+        In the m3ter documentation, see also:
+        - [Optimizing Measurement Submissions](https://www.m3ter.com/docs/guides/m3ter-apis/ingest-api-limits).
+        - [File Uploads for Data Ingest](https://www.m3ter.com/docs/guides/submitting-usage-data/file-uploads-for-data-ingest)
+        """
         return AsyncJobsResourceWithStreamingResponse(self._file_uploads.jobs)
