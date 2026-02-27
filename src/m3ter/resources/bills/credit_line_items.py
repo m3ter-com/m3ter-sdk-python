@@ -27,6 +27,12 @@ __all__ = ["CreditLineItemsResource", "AsyncCreditLineItemsResource"]
 
 
 class CreditLineItemsResource(SyncAPIResource):
+    """
+    Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+    You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+    """
+
     @cached_property
     def with_raw_response(self) -> CreditLineItemsResourceWithRawResponse:
         """
@@ -442,6 +448,12 @@ class CreditLineItemsResource(SyncAPIResource):
 
 
 class AsyncCreditLineItemsResource(AsyncAPIResource):
+    """
+    Endpoints for Credit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Credits.
+
+    You use the Credit Reasons created for your Organization when you create Credit line items for Bills. See [CreditReason](https://www.m3ter.com/docs/api#tag/CreditReason).
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCreditLineItemsResourceWithRawResponse:
         """

@@ -28,6 +28,13 @@ __all__ = ["BillJobsResource", "AsyncBillJobsResource"]
 
 
 class BillJobsResource(SyncAPIResource):
+    """Endpoints for creating, retrieving, listing, and cancelling Bill Jobs.
+
+    Bill Jobs are critical components in billing management, providing asynchronous mechanisms to calculate and handle bills.
+
+    Bill Jobs give you the flexibiity to run Bills manually for Accounts to suit different billing management purposes. For example, some historical usage data has come in for an Account and you want to run a Bill for a specific date on that Account to check that the Bill is showing correctly for the charges due on the new usage data.
+    """
+
     @cached_property
     def with_raw_response(self) -> BillJobsResourceWithRawResponse:
         """
@@ -466,6 +473,13 @@ class BillJobsResource(SyncAPIResource):
 
 
 class AsyncBillJobsResource(AsyncAPIResource):
+    """Endpoints for creating, retrieving, listing, and cancelling Bill Jobs.
+
+    Bill Jobs are critical components in billing management, providing asynchronous mechanisms to calculate and handle bills.
+
+    Bill Jobs give you the flexibiity to run Bills manually for Accounts to suit different billing management purposes. For example, some historical usage data has come in for an Account and you want to run a Bill for a specific date on that Account to check that the Bill is showing correctly for the charges due on the new usage data.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBillJobsResourceWithRawResponse:
         """

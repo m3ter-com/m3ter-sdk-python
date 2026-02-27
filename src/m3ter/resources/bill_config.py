@@ -25,6 +25,16 @@ __all__ = ["BillConfigResource", "AsyncBillConfigResource"]
 
 
 class BillConfigResource(SyncAPIResource):
+    """Endpoints for updating and retreiving the Bill Configuration for an Organization.
+
+
+    The Organization represents your company as a direct customer of the m3ter service.
+
+    You can use the **Update BillConfig** endpoint to set a global lock date for **all** Bills - any Bill with a service period end date on or before the set date will be locked and cannot be updated.
+
+    **Warning: Ensure all Bills are Approved!** If you try to set a global lock date when there remains Bills in a *Pending* state whose service period end date is on or before the specified lock date, then you'll receive an error.
+    """
+
     @cached_property
     def with_raw_response(self) -> BillConfigResourceWithRawResponse:
         """
@@ -141,6 +151,16 @@ class BillConfigResource(SyncAPIResource):
 
 
 class AsyncBillConfigResource(AsyncAPIResource):
+    """Endpoints for updating and retreiving the Bill Configuration for an Organization.
+
+
+    The Organization represents your company as a direct customer of the m3ter service.
+
+    You can use the **Update BillConfig** endpoint to set a global lock date for **all** Bills - any Bill with a service period end date on or before the set date will be locked and cannot be updated.
+
+    **Warning: Ensure all Bills are Approved!** If you try to set a global lock date when there remains Bills in a *Pending* state whose service period end date is on or before the specified lock date, then you'll receive an error.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBillConfigResourceWithRawResponse:
         """

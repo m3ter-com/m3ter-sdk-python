@@ -27,6 +27,12 @@ __all__ = ["DebitLineItemsResource", "AsyncDebitLineItemsResource"]
 
 
 class DebitLineItemsResource(SyncAPIResource):
+    """
+    Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+    You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+    """
+
     @cached_property
     def with_raw_response(self) -> DebitLineItemsResourceWithRawResponse:
         """
@@ -441,6 +447,12 @@ class DebitLineItemsResource(SyncAPIResource):
 
 
 class AsyncDebitLineItemsResource(AsyncAPIResource):
+    """
+    Endpoints for Debit line item related operations such as creation, update, list and delete. These are line items on Bills that are specifically related to Debits.
+
+    You use the Debit Reasons created for your Organization when you create Debit line items for Bills. See the [DebitReason](https://www.m3ter.com/docs/api#tag/DebitReason) section for calls you can use to create and manage Debit Reasons for your Organization.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncDebitLineItemsResourceWithRawResponse:
         """

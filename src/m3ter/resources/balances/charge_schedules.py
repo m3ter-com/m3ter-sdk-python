@@ -37,6 +37,11 @@ __all__ = ["ChargeSchedulesResource", "AsyncChargeSchedulesResource"]
 
 
 class ChargeSchedulesResource(SyncAPIResource):
+    """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+    **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+    """
+
     @cached_property
     def with_raw_response(self) -> ChargeSchedulesResourceWithRawResponse:
         """
@@ -624,6 +629,11 @@ class ChargeSchedulesResource(SyncAPIResource):
 
 
 class AsyncChargeSchedulesResource(AsyncAPIResource):
+    """Endpoints for creating/updating/deleting BalanceChargeSchedules.
+
+    **NOTE!** The BalanceChargeSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncChargeSchedulesResourceWithRawResponse:
         """

@@ -28,6 +28,13 @@ __all__ = ["StatementJobsResource", "AsyncStatementJobsResource"]
 
 
 class StatementJobsResource(SyncAPIResource):
+    """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+    StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+    Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> StatementJobsResourceWithRawResponse:
         """
@@ -435,6 +442,13 @@ class StatementJobsResource(SyncAPIResource):
 
 
 class AsyncStatementJobsResource(AsyncAPIResource):
+    """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+    StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+    Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncStatementJobsResourceWithRawResponse:
         """

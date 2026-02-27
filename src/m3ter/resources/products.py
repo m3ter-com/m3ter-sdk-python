@@ -25,6 +25,11 @@ __all__ = ["ProductsResource", "AsyncProductsResource"]
 
 
 class ProductsResource(SyncAPIResource):
+    """Endpoints for listing, creating, updating, retrieving, or deleting Products.
+
+    A Product represents the products and services you offer to your end customers. Products act as a container for the Meters, Aggregations, Pricing, and Plans required to implement usage-based and other pricing models for your Organization.
+    """
+
     @cached_property
     def with_raw_response(self) -> ProductsResourceWithRawResponse:
         """
@@ -352,6 +357,11 @@ class ProductsResource(SyncAPIResource):
 
 
 class AsyncProductsResource(AsyncAPIResource):
+    """Endpoints for listing, creating, updating, retrieving, or deleting Products.
+
+    A Product represents the products and services you offer to your end customers. Products act as a container for the Meters, Aggregations, Pricing, and Plans required to implement usage-based and other pricing models for your Organization.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncProductsResourceWithRawResponse:
         """

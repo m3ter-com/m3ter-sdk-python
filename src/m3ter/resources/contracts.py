@@ -33,6 +33,14 @@ __all__ = ["ContractsResource", "AsyncContractsResource"]
 
 
 class ContractsResource(SyncAPIResource):
+    """
+    Endpoints for Contract related operations such as creation, update, list and delete.
+
+    Contracts are created for Accounts, which are your end-user customers. Contracts can be used for:
+    * **Accounts Reporting**. To serve your general accounting operations and processes, you can report on total Contract values for an Account.
+    * **Contract Billing**. Various billing entities associated with an Account can  be linked to Contracts on the Account to meet your specific Contract billing use cases.
+    """
+
     @cached_property
     def with_raw_response(self) -> ContractsResourceWithRawResponse:
         """
@@ -555,6 +563,14 @@ class ContractsResource(SyncAPIResource):
 
 
 class AsyncContractsResource(AsyncAPIResource):
+    """
+    Endpoints for Contract related operations such as creation, update, list and delete.
+
+    Contracts are created for Accounts, which are your end-user customers. Contracts can be used for:
+    * **Accounts Reporting**. To serve your general accounting operations and processes, you can report on total Contract values for an Account.
+    * **Contract Billing**. Various billing entities associated with an Account can  be linked to Contracts on the Account to meet your specific Contract billing use cases.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncContractsResourceWithRawResponse:
         """

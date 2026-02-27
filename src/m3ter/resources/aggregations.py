@@ -26,6 +26,17 @@ __all__ = ["AggregationsResource", "AsyncAggregationsResource"]
 
 
 class AggregationsResource(SyncAPIResource):
+    """Endpoints for listing, creating, updating, retrieving, or deleting Aggregations.
+
+    An Aggregation links to a Meter and targets a Data Field or Derived Field on the Meter. You define the method of aggregation used to convert the usage data collected by the targeted Meter field into a numerical unit of measurement.
+
+    You can then use the unit of measurement an Aggregation yields as a metric for pricing Product Plans and apply usage-based pricing to your products and services. You might also want to aggregate raw data measures for other purposes, such as to feed into analytical or business performance tools.
+
+    **Notes:**
+    * **Contrast with Compound Aggregations**. Standard or simple Aggregations of this type, which apply an aggregation method directly to Meter usage data fields, are contrasted with [Compound Aggregations](https://www.m3ter.com/docs/api#tag/CompoundAggregation). A Compound Aggregation typically references one or more simple Aggregations and applies a calculation to them to derive pricing metrics needed to serve more complex usage-based pricing scenarios.
+    * **Segmented Aggregations**. Segmented Aggregations allow you to segment the usage data collected by a single Meter. This capability is very useful for implementing some pricing and billing use cases. See [Segmented Aggregations](https://www.m3ter.com/docs/guides/usage-data-aggregations/segmented-aggregations) in our main documentation for more details.
+    """
+
     @cached_property
     def with_raw_response(self) -> AggregationsResourceWithRawResponse:
         """
@@ -579,6 +590,17 @@ class AggregationsResource(SyncAPIResource):
 
 
 class AsyncAggregationsResource(AsyncAPIResource):
+    """Endpoints for listing, creating, updating, retrieving, or deleting Aggregations.
+
+    An Aggregation links to a Meter and targets a Data Field or Derived Field on the Meter. You define the method of aggregation used to convert the usage data collected by the targeted Meter field into a numerical unit of measurement.
+
+    You can then use the unit of measurement an Aggregation yields as a metric for pricing Product Plans and apply usage-based pricing to your products and services. You might also want to aggregate raw data measures for other purposes, such as to feed into analytical or business performance tools.
+
+    **Notes:**
+    * **Contrast with Compound Aggregations**. Standard or simple Aggregations of this type, which apply an aggregation method directly to Meter usage data fields, are contrasted with [Compound Aggregations](https://www.m3ter.com/docs/api#tag/CompoundAggregation). A Compound Aggregation typically references one or more simple Aggregations and applies a calculation to them to derive pricing metrics needed to serve more complex usage-based pricing scenarios.
+    * **Segmented Aggregations**. Segmented Aggregations allow you to segment the usage data collected by a single Meter. This capability is very useful for implementing some pricing and billing use cases. See [Segmented Aggregations](https://www.m3ter.com/docs/guides/usage-data-aggregations/segmented-aggregations) in our main documentation for more details.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAggregationsResourceWithRawResponse:
         """

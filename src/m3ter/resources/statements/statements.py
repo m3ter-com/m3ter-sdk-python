@@ -36,12 +36,31 @@ __all__ = ["StatementsResource", "AsyncStatementsResource"]
 
 
 class StatementsResource(SyncAPIResource):
+    """
+    Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+    Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+    """
+
     @cached_property
     def statement_jobs(self) -> StatementJobsResource:
+        """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+        StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+        """
         return StatementJobsResource(self._client)
 
     @cached_property
     def statement_definitions(self) -> StatementDefinitionsResource:
+        """
+        Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+        Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+        """
         return StatementDefinitionsResource(self._client)
 
     @cached_property
@@ -201,12 +220,31 @@ class StatementsResource(SyncAPIResource):
 
 
 class AsyncStatementsResource(AsyncAPIResource):
+    """
+    Endpoints for billing operations such as creating, updating, listing,downloading, and deleting Bills.
+
+    Bills are generated for an Account, and are calculated in accordance with the usage-based pricing Plans applied for the Products the Account consumes. These endpoints enable interaction with the billing system, allowing you to obtain billing details and insights into the consumption patterns and charges of your end-customer Accounts.
+    """
+
     @cached_property
     def statement_jobs(self) -> AsyncStatementJobsResource:
+        """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+        StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+        """
         return AsyncStatementJobsResource(self._client)
 
     @cached_property
     def statement_definitions(self) -> AsyncStatementDefinitionsResource:
+        """
+        Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+        Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+        """
         return AsyncStatementDefinitionsResource(self._client)
 
     @cached_property
@@ -381,10 +419,23 @@ class StatementsResourceWithRawResponse:
 
     @cached_property
     def statement_jobs(self) -> StatementJobsResourceWithRawResponse:
+        """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+        StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+        """
         return StatementJobsResourceWithRawResponse(self._statements.statement_jobs)
 
     @cached_property
     def statement_definitions(self) -> StatementDefinitionsResourceWithRawResponse:
+        """
+        Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+        Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+        """
         return StatementDefinitionsResourceWithRawResponse(self._statements.statement_definitions)
 
 
@@ -404,10 +455,23 @@ class AsyncStatementsResourceWithRawResponse:
 
     @cached_property
     def statement_jobs(self) -> AsyncStatementJobsResourceWithRawResponse:
+        """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+        StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+        """
         return AsyncStatementJobsResourceWithRawResponse(self._statements.statement_jobs)
 
     @cached_property
     def statement_definitions(self) -> AsyncStatementDefinitionsResourceWithRawResponse:
+        """
+        Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+        Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+        """
         return AsyncStatementDefinitionsResourceWithRawResponse(self._statements.statement_definitions)
 
 
@@ -427,10 +491,23 @@ class StatementsResourceWithStreamingResponse:
 
     @cached_property
     def statement_jobs(self) -> StatementJobsResourceWithStreamingResponse:
+        """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+        StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+        """
         return StatementJobsResourceWithStreamingResponse(self._statements.statement_jobs)
 
     @cached_property
     def statement_definitions(self) -> StatementDefinitionsResourceWithStreamingResponse:
+        """
+        Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+        Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+        """
         return StatementDefinitionsResourceWithStreamingResponse(self._statements.statement_definitions)
 
 
@@ -450,8 +527,21 @@ class AsyncStatementsResourceWithStreamingResponse:
 
     @cached_property
     def statement_jobs(self) -> AsyncStatementJobsResourceWithStreamingResponse:
+        """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+        StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+        """
         return AsyncStatementJobsResourceWithStreamingResponse(self._statements.statement_jobs)
 
     @cached_property
     def statement_definitions(self) -> AsyncStatementDefinitionsResourceWithStreamingResponse:
+        """
+        Endpoints for listing, creating, updating, retrieving, or deleting Statement Definitions.
+
+        Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+
+        Statement Definitions specify the way billed usage will be aggregated and compiled in the Statement. For example, if you are billing customers monthly, you might want to breakdown the usage responsible for the monthly charge on a Bill into weekly portions in Bill statements.
+        """
         return AsyncStatementDefinitionsResourceWithStreamingResponse(self._statements.statement_definitions)

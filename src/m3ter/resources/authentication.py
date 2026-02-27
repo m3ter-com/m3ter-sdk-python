@@ -24,6 +24,12 @@ __all__ = ["AuthenticationResource", "AsyncAuthenticationResource"]
 
 
 class AuthenticationResource(SyncAPIResource):
+    """
+    Endpoint for retrieving a JSON Web Token (JWT) bearer token for a ServiceUser using the Client Credentials Grant flow.
+
+    A ServiceUser represents the automated process you want to grant access to your Organization - that is, as an API user.
+    """
+
     @cached_property
     def with_raw_response(self) -> AuthenticationResourceWithRawResponse:
         """
@@ -89,6 +95,12 @@ class AuthenticationResource(SyncAPIResource):
 
 
 class AsyncAuthenticationResource(AsyncAPIResource):
+    """
+    Endpoint for retrieving a JSON Web Token (JWT) bearer token for a ServiceUser using the Client Credentials Grant flow.
+
+    A ServiceUser represents the automated process you want to grant access to your Organization - that is, as an API user.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAuthenticationResourceWithRawResponse:
         """
