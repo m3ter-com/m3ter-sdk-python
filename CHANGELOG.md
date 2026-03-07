@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.9.0 (2026-03-07)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** Updating OpenAPI Spec ([8e1c835](https://github.com/m3ter-com/m3ter-sdk-python/commit/8e1c835b27893ed87b4431981929d81f3c645774))
+* **client:** add custom JSON encoder for extended type support ([60bb2d8](https://github.com/m3ter-com/m3ter-sdk-python/commit/60bb2d8b29b01ab229ef8ee0bc49d3df84d5ed4c))
+
+
+### Chores
+
+* **api:** minor updates ([6bfb2e1](https://github.com/m3ter-com/m3ter-sdk-python/commit/6bfb2e171696b9423885692eb2c8f456952263fd))
+* **ci:** skip uploading artifacts on stainless-internal branches ([62b0734](https://github.com/m3ter-com/m3ter-sdk-python/commit/62b0734695d5f0724e30a8e983469b8fabf1f462))
+* **docs:** add missing descriptions ([89c2654](https://github.com/m3ter-com/m3ter-sdk-python/commit/89c2654b524b9317b9cd8398819d8232ba9988ef))
+* format all `api.md` files ([3a1cc4f](https://github.com/m3ter-com/m3ter-sdk-python/commit/3a1cc4fab5dde8dfd09ca510036e4af3c7b04543))
+* **internal:** add request options to SSE classes ([b0f810e](https://github.com/m3ter-com/m3ter-sdk-python/commit/b0f810e03390a0fb7256d78087092d77ccfe0be2))
+* **internal:** bump dependencies ([7fd3a91](https://github.com/m3ter-com/m3ter-sdk-python/commit/7fd3a91abc9ee69b1fc61ee8317212fc2ca1446e))
+* **internal:** fix lint error on Python 3.14 ([430993e](https://github.com/m3ter-com/m3ter-sdk-python/commit/430993ef047a39aa7ff95a45720d11b3b09f5005))
+* **internal:** make `test_proxy_environment_variables` more resilient ([479f696](https://github.com/m3ter-com/m3ter-sdk-python/commit/479f696a2052faee97ec622aeedc7bf6e53fdeb0))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([64326b9](https://github.com/m3ter-com/m3ter-sdk-python/commit/64326b9d0bc7606a71b6c235a2228d28d0f79180))
+* **test:** do not count install time for mock server timeout ([9203e31](https://github.com/m3ter-com/m3ter-sdk-python/commit/9203e31e9016e693aa71d4d507747de3d28e0936))
+* update mock server docs ([a5d2224](https://github.com/m3ter-com/m3ter-sdk-python/commit/a5d22249e3a0db8bfcd9a6cc7e3381a338351b43))
+
 ## 0.8.0 (2026-01-29)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.7.0...v0.8.0)
