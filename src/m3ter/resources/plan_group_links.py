@@ -23,6 +23,12 @@ __all__ = ["PlanGroupLinksResource", "AsyncPlanGroupLinksResource"]
 
 
 class PlanGroupLinksResource(SyncAPIResource):
+    """
+    Endpoints for PlanGroupLink related operations such as creation, update, list and delete.
+
+    PlanGroupLinks are the intersection table between a PlanGroup and its associated Plans. A PlanGroupLink is only created when at least 1 Plan is linked to a PlanGroup.
+    """
+
     @cached_property
     def with_raw_response(self) -> PlanGroupLinksResourceWithRawResponse:
         """
@@ -307,6 +313,12 @@ class PlanGroupLinksResource(SyncAPIResource):
 
 
 class AsyncPlanGroupLinksResource(AsyncAPIResource):
+    """
+    Endpoints for PlanGroupLink related operations such as creation, update, list and delete.
+
+    PlanGroupLinks are the intersection table between a PlanGroup and its associated Plans. A PlanGroupLink is only created when at least 1 Plan is linked to a PlanGroup.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncPlanGroupLinksResourceWithRawResponse:
         """

@@ -50,17 +50,20 @@ class TestCustomFields:
     @parametrize
     def test_method_update_with_all_params(self, client: M3ter) -> None:
         custom_field = client.custom_fields.update(
-            account={"foo": "string"},
-            account_plan={"foo": "string"},
-            aggregation={"foo": "string"},
-            compound_aggregation={"foo": "string"},
+            account={},
+            account_plan={"New CF Test": "Test Value"},
+            aggregation={},
+            compound_aggregation={},
             contract={"foo": "string"},
-            meter={"foo": "string"},
-            organization={"foo": "string"},
-            plan={"foo": "string"},
-            plan_template={"foo": "string"},
-            product={"foo": "string"},
-            version=0,
+            meter={},
+            organization={
+                "Org Example 2": "Sample text 2.",
+                "Org Example 1": "Sample text 1.",
+            },
+            plan={},
+            plan_template={},
+            product={"Product CF Example": 42},
+            version=6,
         )
         assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 
@@ -123,17 +126,20 @@ class TestAsyncCustomFields:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncM3ter) -> None:
         custom_field = await async_client.custom_fields.update(
-            account={"foo": "string"},
-            account_plan={"foo": "string"},
-            aggregation={"foo": "string"},
-            compound_aggregation={"foo": "string"},
+            account={},
+            account_plan={"New CF Test": "Test Value"},
+            aggregation={},
+            compound_aggregation={},
             contract={"foo": "string"},
-            meter={"foo": "string"},
-            organization={"foo": "string"},
-            plan={"foo": "string"},
-            plan_template={"foo": "string"},
-            product={"foo": "string"},
-            version=0,
+            meter={},
+            organization={
+                "Org Example 2": "Sample text 2.",
+                "Org Example 1": "Sample text 1.",
+            },
+            plan={},
+            plan_template={},
+            product={"Product CF Example": 42},
+            version=6,
         )
         assert_matches_type(CustomFieldsResponse, custom_field, path=["response"])
 

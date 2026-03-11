@@ -45,6 +45,14 @@ __all__ = ["PermissionPoliciesResource", "AsyncPermissionPoliciesResource"]
 
 
 class PermissionPoliciesResource(SyncAPIResource):
+    """
+    Endpoints for Permission Policy related operations such as creation, update, add and retrieve.
+
+    Permission Policies can restrict or grant access to specific resources for both Users *(people)* and Service Users *(automated processes with direct API access)*. This enables you to control precisely what a User can do in your m3ter Organization.
+
+    For more details, see [Understanding, Creating, and Managing Permission Policies](https://www.m3ter.com/docs/guides/organization-and-access-management/creating-and-managing-permissions#permission-policy-statements---available-actions-and-resources) in our main Documentation.
+    """
+
     @cached_property
     def with_raw_response(self) -> PermissionPoliciesResourceWithRawResponse:
         """
@@ -828,6 +836,14 @@ class PermissionPoliciesResource(SyncAPIResource):
 
 
 class AsyncPermissionPoliciesResource(AsyncAPIResource):
+    """
+    Endpoints for Permission Policy related operations such as creation, update, add and retrieve.
+
+    Permission Policies can restrict or grant access to specific resources for both Users *(people)* and Service Users *(automated processes with direct API access)*. This enables you to control precisely what a User can do in your m3ter Organization.
+
+    For more details, see [Understanding, Creating, and Managing Permission Policies](https://www.m3ter.com/docs/guides/organization-and-access-management/creating-and-managing-permissions#permission-policy-statements---available-actions-and-resources) in our main Documentation.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncPermissionPoliciesResourceWithRawResponse:
         """

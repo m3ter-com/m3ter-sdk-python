@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
-__all__ = ["StatementJobCreateParams"]
+__all__ = ["StatementJobCreateParams", "Filters"]
 
 
 class StatementJobCreateParams(TypedDict, total=False):
@@ -14,6 +15,8 @@ class StatementJobCreateParams(TypedDict, total=False):
 
     bill_id: Required[Annotated[str, PropertyInfo(alias="billId")]]
     """The unique identifier (UUID) of the bill associated with the StatementJob."""
+
+    filters: Filters
 
     include_csv_format: Annotated[bool, PropertyInfo(alias="includeCsvFormat")]
     """
@@ -34,3 +37,8 @@ class StatementJobCreateParams(TypedDict, total=False):
       version because a check is performed to ensure sequential versioning is
       preserved. Version is incremented by 1 and listed in the response.
     """
+
+
+class Filters(TypedDict, total=False):
+    meter_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="meterIds")]
+    """Include usage line items whose meterId matches one of these values."""

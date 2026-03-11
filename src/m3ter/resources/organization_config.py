@@ -26,6 +26,26 @@ __all__ = ["OrganizationConfigResource", "AsyncOrganizationConfigResource"]
 
 
 class OrganizationConfigResource(SyncAPIResource):
+    """Endpoints for retrieving or updating the Organization Config.
+
+    Organization represents your company as a direct customer of m3ter. Use Organization configuration to define *Organization-wide* settings. For example:
+    - Timezone.
+    - Currencies and currency conversions.
+    - Billing operations settings, such as:
+        - Epoch dates to control first billing dates.
+        - Whether to bill customer accounts in advance/in arrears for standing charge amounts, minimum spend amounts, and commitment fees.
+
+    For other aspects of your Organization setup and configuration, see the following sections in this API Reference:
+    * [Custom Fields](https://www.m3ter.com/docs/api#tag/CustomField)
+    * [Currencies](https://www.m3ter.com/docs/api#tag/Currency)
+    * [Credit Reasons](https://www.m3ter.com/docs/api#tag/CreditReason)
+    * [Debit Reason](https://www.m3ter.com/docs/api#tag/DebitReason)
+    * [Transaction Types](https://www.m3ter.com/docs/api#tag/TransactionType)
+
+    See also:
+    - [Managing your Organization](https://www.m3ter.com/docs/guides/managing-organization-and-users/viewing-and-editing-organization).
+    """
+
     @cached_property
     def with_raw_response(self) -> OrganizationConfigResourceWithRawResponse:
         """
@@ -398,6 +418,26 @@ class OrganizationConfigResource(SyncAPIResource):
 
 
 class AsyncOrganizationConfigResource(AsyncAPIResource):
+    """Endpoints for retrieving or updating the Organization Config.
+
+    Organization represents your company as a direct customer of m3ter. Use Organization configuration to define *Organization-wide* settings. For example:
+    - Timezone.
+    - Currencies and currency conversions.
+    - Billing operations settings, such as:
+        - Epoch dates to control first billing dates.
+        - Whether to bill customer accounts in advance/in arrears for standing charge amounts, minimum spend amounts, and commitment fees.
+
+    For other aspects of your Organization setup and configuration, see the following sections in this API Reference:
+    * [Custom Fields](https://www.m3ter.com/docs/api#tag/CustomField)
+    * [Currencies](https://www.m3ter.com/docs/api#tag/Currency)
+    * [Credit Reasons](https://www.m3ter.com/docs/api#tag/CreditReason)
+    * [Debit Reason](https://www.m3ter.com/docs/api#tag/DebitReason)
+    * [Transaction Types](https://www.m3ter.com/docs/api#tag/TransactionType)
+
+    See also:
+    - [Managing your Organization](https://www.m3ter.com/docs/guides/managing-organization-and-users/viewing-and-editing-organization).
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncOrganizationConfigResourceWithRawResponse:
         """

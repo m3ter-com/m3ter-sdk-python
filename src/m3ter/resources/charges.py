@@ -31,6 +31,20 @@ __all__ = ["ChargesResource", "AsyncChargesResource"]
 
 
 class ChargesResource(SyncAPIResource):
+    """Endpoints for creating/updating/deleting Charges.
+
+    Create Charges for your end-customer Accounts to create ad-hoc line items for Account billing. Charges are:
+    * Created for either debit or credit amounts.
+    * Linked to a Product for accounting purposes.
+    * Optionally linked to a Contract.
+    * Given a specific date for billing. When a bill job has run for the specified Charge bill date, a Charge appears as an Ad-hoc line item on the Bill.
+    * Assigned a service period.
+    * Available in any currency defined for your Organization.
+    See [Creating Charges for Accounts](https://www.m3ter.com/docs/guides/end-customer-accounts/creating-charges-for-accounts) in our main user documentation for more details.
+
+    Alternatively, you can create a Charge for a Balance on an end-customer Account to create balance fee line items for Account billing. See [Creating Charges for Balances](https://www.m3ter.com/docs/guides/end-customer-accounts/creating-balances-for-accounts/creating-charges-for-balances) in our main user documentation for more details.
+    """
+
     @cached_property
     def with_raw_response(self) -> ChargesResourceWithRawResponse:
         """
@@ -483,6 +497,20 @@ class ChargesResource(SyncAPIResource):
 
 
 class AsyncChargesResource(AsyncAPIResource):
+    """Endpoints for creating/updating/deleting Charges.
+
+    Create Charges for your end-customer Accounts to create ad-hoc line items for Account billing. Charges are:
+    * Created for either debit or credit amounts.
+    * Linked to a Product for accounting purposes.
+    * Optionally linked to a Contract.
+    * Given a specific date for billing. When a bill job has run for the specified Charge bill date, a Charge appears as an Ad-hoc line item on the Bill.
+    * Assigned a service period.
+    * Available in any currency defined for your Organization.
+    See [Creating Charges for Accounts](https://www.m3ter.com/docs/guides/end-customer-accounts/creating-charges-for-accounts) in our main user documentation for more details.
+
+    Alternatively, you can create a Charge for a Balance on an end-customer Account to create balance fee line items for Account billing. See [Creating Charges for Balances](https://www.m3ter.com/docs/guides/end-customer-accounts/creating-balances-for-accounts/creating-charges-for-balances) in our main user documentation for more details.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncChargesResourceWithRawResponse:
         """

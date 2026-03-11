@@ -51,8 +51,33 @@ __all__ = ["DataExportsResource", "AsyncDataExportsResource"]
 
 
 class DataExportsResource(SyncAPIResource):
+    """Endpoints for triggering one-off, ad-hoc Data Exports.
+
+    You can set up and run ad-hoc Exports to export two kinds of data from your m3ter Organization:
+    * Usage data.
+    * Operational data for entities.
+
+    **Ad-Hoc Export Destinations** When setting up and running an ad-hoc Export:
+    * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+    * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+    * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+    **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportAdHoc endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+    """
+
     @cached_property
     def destinations(self) -> DestinationsResource:
+        """
+        Endpoints for creating, updating, retrieving, or deleting Data Export Destinations.
+
+        Before you can configure and run either [Export Schedules](https://www.m3ter.com/docs/api#tag/ExportSchedule) or [Ad-Hoc Exports](https://www.m3ter.com/docs/api#tag/ExportAdHoc), you can set up Export Destinations. Currently, two options for setting up Data Export Destinations are available:
+        * S3 buckets on your AWS account.
+        * Buckets in your Google Cloud Storage account.
+
+        **NOTE: Exporting without a Destination?** When a Data Export runs, the data is sent through to the specified Destination. However, the export file is also made available for you to download it locally. You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportDestination endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return DestinationsResource(self._client)
 
     @cached_property
@@ -61,6 +86,19 @@ class DataExportsResource(SyncAPIResource):
 
     @cached_property
     def schedules(self) -> SchedulesResource:
+        """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+        You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+        **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+        **Export Destinations** When creating an Export Schedule:
+        * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+        * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+        * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return SchedulesResource(self._client)
 
     @cached_property
@@ -381,8 +419,33 @@ class DataExportsResource(SyncAPIResource):
 
 
 class AsyncDataExportsResource(AsyncAPIResource):
+    """Endpoints for triggering one-off, ad-hoc Data Exports.
+
+    You can set up and run ad-hoc Exports to export two kinds of data from your m3ter Organization:
+    * Usage data.
+    * Operational data for entities.
+
+    **Ad-Hoc Export Destinations** When setting up and running an ad-hoc Export:
+    * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+    * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+    * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+    **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportAdHoc endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+    """
+
     @cached_property
     def destinations(self) -> AsyncDestinationsResource:
+        """
+        Endpoints for creating, updating, retrieving, or deleting Data Export Destinations.
+
+        Before you can configure and run either [Export Schedules](https://www.m3ter.com/docs/api#tag/ExportSchedule) or [Ad-Hoc Exports](https://www.m3ter.com/docs/api#tag/ExportAdHoc), you can set up Export Destinations. Currently, two options for setting up Data Export Destinations are available:
+        * S3 buckets on your AWS account.
+        * Buckets in your Google Cloud Storage account.
+
+        **NOTE: Exporting without a Destination?** When a Data Export runs, the data is sent through to the specified Destination. However, the export file is also made available for you to download it locally. You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportDestination endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return AsyncDestinationsResource(self._client)
 
     @cached_property
@@ -391,6 +454,19 @@ class AsyncDataExportsResource(AsyncAPIResource):
 
     @cached_property
     def schedules(self) -> AsyncSchedulesResource:
+        """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+        You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+        **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+        **Export Destinations** When creating an Export Schedule:
+        * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+        * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+        * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return AsyncSchedulesResource(self._client)
 
     @cached_property
@@ -720,6 +796,17 @@ class DataExportsResourceWithRawResponse:
 
     @cached_property
     def destinations(self) -> DestinationsResourceWithRawResponse:
+        """
+        Endpoints for creating, updating, retrieving, or deleting Data Export Destinations.
+
+        Before you can configure and run either [Export Schedules](https://www.m3ter.com/docs/api#tag/ExportSchedule) or [Ad-Hoc Exports](https://www.m3ter.com/docs/api#tag/ExportAdHoc), you can set up Export Destinations. Currently, two options for setting up Data Export Destinations are available:
+        * S3 buckets on your AWS account.
+        * Buckets in your Google Cloud Storage account.
+
+        **NOTE: Exporting without a Destination?** When a Data Export runs, the data is sent through to the specified Destination. However, the export file is also made available for you to download it locally. You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportDestination endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return DestinationsResourceWithRawResponse(self._data_exports.destinations)
 
     @cached_property
@@ -728,6 +815,19 @@ class DataExportsResourceWithRawResponse:
 
     @cached_property
     def schedules(self) -> SchedulesResourceWithRawResponse:
+        """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+        You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+        **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+        **Export Destinations** When creating an Export Schedule:
+        * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+        * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+        * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return SchedulesResourceWithRawResponse(self._data_exports.schedules)
 
 
@@ -741,6 +841,17 @@ class AsyncDataExportsResourceWithRawResponse:
 
     @cached_property
     def destinations(self) -> AsyncDestinationsResourceWithRawResponse:
+        """
+        Endpoints for creating, updating, retrieving, or deleting Data Export Destinations.
+
+        Before you can configure and run either [Export Schedules](https://www.m3ter.com/docs/api#tag/ExportSchedule) or [Ad-Hoc Exports](https://www.m3ter.com/docs/api#tag/ExportAdHoc), you can set up Export Destinations. Currently, two options for setting up Data Export Destinations are available:
+        * S3 buckets on your AWS account.
+        * Buckets in your Google Cloud Storage account.
+
+        **NOTE: Exporting without a Destination?** When a Data Export runs, the data is sent through to the specified Destination. However, the export file is also made available for you to download it locally. You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportDestination endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return AsyncDestinationsResourceWithRawResponse(self._data_exports.destinations)
 
     @cached_property
@@ -749,6 +860,19 @@ class AsyncDataExportsResourceWithRawResponse:
 
     @cached_property
     def schedules(self) -> AsyncSchedulesResourceWithRawResponse:
+        """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+        You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+        **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+        **Export Destinations** When creating an Export Schedule:
+        * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+        * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+        * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return AsyncSchedulesResourceWithRawResponse(self._data_exports.schedules)
 
 
@@ -762,6 +886,17 @@ class DataExportsResourceWithStreamingResponse:
 
     @cached_property
     def destinations(self) -> DestinationsResourceWithStreamingResponse:
+        """
+        Endpoints for creating, updating, retrieving, or deleting Data Export Destinations.
+
+        Before you can configure and run either [Export Schedules](https://www.m3ter.com/docs/api#tag/ExportSchedule) or [Ad-Hoc Exports](https://www.m3ter.com/docs/api#tag/ExportAdHoc), you can set up Export Destinations. Currently, two options for setting up Data Export Destinations are available:
+        * S3 buckets on your AWS account.
+        * Buckets in your Google Cloud Storage account.
+
+        **NOTE: Exporting without a Destination?** When a Data Export runs, the data is sent through to the specified Destination. However, the export file is also made available for you to download it locally. You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportDestination endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return DestinationsResourceWithStreamingResponse(self._data_exports.destinations)
 
     @cached_property
@@ -770,6 +905,19 @@ class DataExportsResourceWithStreamingResponse:
 
     @cached_property
     def schedules(self) -> SchedulesResourceWithStreamingResponse:
+        """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+        You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+        **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+        **Export Destinations** When creating an Export Schedule:
+        * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+        * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+        * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return SchedulesResourceWithStreamingResponse(self._data_exports.schedules)
 
 
@@ -783,6 +931,17 @@ class AsyncDataExportsResourceWithStreamingResponse:
 
     @cached_property
     def destinations(self) -> AsyncDestinationsResourceWithStreamingResponse:
+        """
+        Endpoints for creating, updating, retrieving, or deleting Data Export Destinations.
+
+        Before you can configure and run either [Export Schedules](https://www.m3ter.com/docs/api#tag/ExportSchedule) or [Ad-Hoc Exports](https://www.m3ter.com/docs/api#tag/ExportAdHoc), you can set up Export Destinations. Currently, two options for setting up Data Export Destinations are available:
+        * S3 buckets on your AWS account.
+        * Buckets in your Google Cloud Storage account.
+
+        **NOTE: Exporting without a Destination?** When a Data Export runs, the data is sent through to the specified Destination. However, the export file is also made available for you to download it locally. You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportDestination endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return AsyncDestinationsResourceWithStreamingResponse(self._data_exports.destinations)
 
     @cached_property
@@ -791,4 +950,17 @@ class AsyncDataExportsResourceWithStreamingResponse:
 
     @cached_property
     def schedules(self) -> AsyncSchedulesResourceWithStreamingResponse:
+        """Endpoints for creating, updating, retrieving, or deleting Data Export schedules.
+
+        You can set up an Export Schedule to export one of two types of data from your m3ter Organization - either *Usage data* or *Operational data* for entities.
+
+        **NOTE:** You cannot create a single Export Schedule for exporting *both types of data under a single Schedule*.
+
+        **Export Destinations** When creating an Export Schedule:
+        * You can define one or more Export Destinations - see the [ExportDestination](https://www.m3ter.com/docs/api#tag/ExportDestination) section of this API Reference. When the export runs, the data is sent through to the sepecified Destination. However, the export file is also made available for you to download it locally.
+        * You can set up and run Data Exports without defining a Destination. The data is not exported but the compiled export file is made available for downloading locally.
+        * For details on downloading an export file, see the [Get Data Export File Download URL](https://www.m3ter.com/docs/api#tag/ExportDestination/operation/GenerateDataExportFileDownloadUrl) endpoint in this API Reference.
+
+        **Preview Version!** The Data Export feature is currently available only in Preview release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Preview release definition. ExportSchedule endpoints will only be available if Data Export has been enabled for your Organization. For more details see [Data Export(Preview)](https://www.m3ter.com/docs/guides/data-exports) in our main User documentation. If you're interested in previewing the Data Export feature, please get in touch with m3ter Support or your m3ter contact.
+        """
         return AsyncSchedulesResourceWithStreamingResponse(self._data_exports.schedules)

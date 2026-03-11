@@ -32,6 +32,11 @@ __all__ = ["TransactionSchedulesResource", "AsyncTransactionSchedulesResource"]
 
 
 class TransactionSchedulesResource(SyncAPIResource):
+    """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+    **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+    """
+
     @cached_property
     def with_raw_response(self) -> TransactionSchedulesResourceWithRawResponse:
         """
@@ -582,6 +587,11 @@ class TransactionSchedulesResource(SyncAPIResource):
 
 
 class AsyncTransactionSchedulesResource(AsyncAPIResource):
+    """Endpoints for creating/updating/deleting BalanceTransactionSchedules.
+
+    **NOTE!** The BalanceTransactionSchedule feature is available in Beta release version. See [Feature Release Stages](https://www.m3ter.com/docs/guides/getting-started/feature-release-stages) for Beta release definition.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncTransactionSchedulesResourceWithRawResponse:
         """

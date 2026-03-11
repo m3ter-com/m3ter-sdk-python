@@ -32,6 +32,7 @@ class TestStatementJobs:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         statement_job = client.statements.statement_jobs.create(
             bill_id="x",
+            filters={"meter_ids": ["string"]},
             include_csv_format=True,
             version=0,
         )
@@ -184,6 +185,7 @@ class TestStatementJobs:
     def test_method_create_batch_with_all_params(self, client: M3ter) -> None:
         statement_job = client.statements.statement_jobs.create_batch(
             bill_ids=["string"],
+            filters={"meter_ids": ["string"]},
             include_csv_format=True,
             version=0,
         )
@@ -230,6 +232,7 @@ class TestAsyncStatementJobs:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         statement_job = await async_client.statements.statement_jobs.create(
             bill_id="x",
+            filters={"meter_ids": ["string"]},
             include_csv_format=True,
             version=0,
         )
@@ -382,6 +385,7 @@ class TestAsyncStatementJobs:
     async def test_method_create_batch_with_all_params(self, async_client: AsyncM3ter) -> None:
         statement_job = await async_client.statements.statement_jobs.create_batch(
             bill_ids=["string"],
+            filters={"meter_ids": ["string"]},
             include_csv_format=True,
             version=0,
         )

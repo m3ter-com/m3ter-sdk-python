@@ -24,8 +24,8 @@ class TestPlanTemplates:
     def test_method_create(self, client: M3ter) -> None:
         plan_template = client.plan_templates.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -35,21 +35,21 @@ class TestPlanTemplates:
     def test_method_create_with_all_params(self, client: M3ter) -> None:
         plan_template = client.plan_templates.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
             bill_frequency_interval=1,
-            code='S?oC"$]C] ]]]]]5]',
-            custom_fields={"foo": "string"},
+            code="string",
+            custom_fields={},
             minimum_spend=0,
             minimum_spend_bill_in_advance=True,
-            minimum_spend_description="minimumSpendDescription",
+            minimum_spend_description="string",
             ordinal=0,
             standing_charge_bill_in_advance=True,
-            standing_charge_description="standingChargeDescription",
+            standing_charge_description="string",
             standing_charge_interval=1,
-            standing_charge_offset=0,
+            standing_charge_offset=364,
             version=0,
         )
         assert_matches_type(PlanTemplateResponse, plan_template, path=["response"])
@@ -58,8 +58,8 @@ class TestPlanTemplates:
     def test_raw_response_create(self, client: M3ter) -> None:
         response = client.plan_templates.with_raw_response.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -73,8 +73,8 @@ class TestPlanTemplates:
     def test_streaming_response_create(self, client: M3ter) -> None:
         with client.plan_templates.with_streaming_response.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         ) as response:
@@ -129,8 +129,8 @@ class TestPlanTemplates:
         plan_template = client.plan_templates.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -141,21 +141,21 @@ class TestPlanTemplates:
         plan_template = client.plan_templates.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
             bill_frequency_interval=1,
-            code='S?oC"$]C] ]]]]]5]',
-            custom_fields={"foo": "string"},
+            code="string",
+            custom_fields={},
             minimum_spend=0,
             minimum_spend_bill_in_advance=True,
-            minimum_spend_description="minimumSpendDescription",
+            minimum_spend_description="string",
             ordinal=0,
             standing_charge_bill_in_advance=True,
-            standing_charge_description="standingChargeDescription",
+            standing_charge_description="string",
             standing_charge_interval=1,
-            standing_charge_offset=0,
+            standing_charge_offset=364,
             version=0,
         )
         assert_matches_type(PlanTemplateResponse, plan_template, path=["response"])
@@ -165,8 +165,8 @@ class TestPlanTemplates:
         response = client.plan_templates.with_raw_response.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -181,8 +181,8 @@ class TestPlanTemplates:
         with client.plan_templates.with_streaming_response.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         ) as response:
@@ -200,8 +200,8 @@ class TestPlanTemplates:
             client.plan_templates.with_raw_response.update(
                 id="",
                 bill_frequency="DAILY",
-                currency="xxx",
-                name="x",
+                currency="USD",
+                name="string",
                 product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 standing_charge=0,
             )
@@ -289,8 +289,8 @@ class TestAsyncPlanTemplates:
     async def test_method_create(self, async_client: AsyncM3ter) -> None:
         plan_template = await async_client.plan_templates.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -300,21 +300,21 @@ class TestAsyncPlanTemplates:
     async def test_method_create_with_all_params(self, async_client: AsyncM3ter) -> None:
         plan_template = await async_client.plan_templates.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
             bill_frequency_interval=1,
-            code='S?oC"$]C] ]]]]]5]',
-            custom_fields={"foo": "string"},
+            code="string",
+            custom_fields={},
             minimum_spend=0,
             minimum_spend_bill_in_advance=True,
-            minimum_spend_description="minimumSpendDescription",
+            minimum_spend_description="string",
             ordinal=0,
             standing_charge_bill_in_advance=True,
-            standing_charge_description="standingChargeDescription",
+            standing_charge_description="string",
             standing_charge_interval=1,
-            standing_charge_offset=0,
+            standing_charge_offset=364,
             version=0,
         )
         assert_matches_type(PlanTemplateResponse, plan_template, path=["response"])
@@ -323,8 +323,8 @@ class TestAsyncPlanTemplates:
     async def test_raw_response_create(self, async_client: AsyncM3ter) -> None:
         response = await async_client.plan_templates.with_raw_response.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -338,8 +338,8 @@ class TestAsyncPlanTemplates:
     async def test_streaming_response_create(self, async_client: AsyncM3ter) -> None:
         async with async_client.plan_templates.with_streaming_response.create(
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         ) as response:
@@ -394,8 +394,8 @@ class TestAsyncPlanTemplates:
         plan_template = await async_client.plan_templates.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -406,21 +406,21 @@ class TestAsyncPlanTemplates:
         plan_template = await async_client.plan_templates.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
             bill_frequency_interval=1,
-            code='S?oC"$]C] ]]]]]5]',
-            custom_fields={"foo": "string"},
+            code="string",
+            custom_fields={},
             minimum_spend=0,
             minimum_spend_bill_in_advance=True,
-            minimum_spend_description="minimumSpendDescription",
+            minimum_spend_description="string",
             ordinal=0,
             standing_charge_bill_in_advance=True,
-            standing_charge_description="standingChargeDescription",
+            standing_charge_description="string",
             standing_charge_interval=1,
-            standing_charge_offset=0,
+            standing_charge_offset=364,
             version=0,
         )
         assert_matches_type(PlanTemplateResponse, plan_template, path=["response"])
@@ -430,8 +430,8 @@ class TestAsyncPlanTemplates:
         response = await async_client.plan_templates.with_raw_response.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         )
@@ -446,8 +446,8 @@ class TestAsyncPlanTemplates:
         async with async_client.plan_templates.with_streaming_response.update(
             id="id",
             bill_frequency="DAILY",
-            currency="xxx",
-            name="x",
+            currency="USD",
+            name="string",
             product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             standing_charge=0,
         ) as response:
@@ -465,8 +465,8 @@ class TestAsyncPlanTemplates:
             await async_client.plan_templates.with_raw_response.update(
                 id="",
                 bill_frequency="DAILY",
-                currency="xxx",
-                name="x",
+                currency="USD",
+                name="string",
                 product_id="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 standing_charge=0,
             )

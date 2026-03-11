@@ -23,6 +23,13 @@ __all__ = ["DebitReasonsResource", "AsyncDebitReasonsResource"]
 
 
 class DebitReasonsResource(SyncAPIResource):
+    """Endpoints for DebitReason operations such as creation, update, list, and delete.
+
+
+
+    You can create DebitReasons for your Organization, and then use them when creating a debit line item on a bill, or applying a product debit to a bill. DebitReasons provide contextual information as to why a debit was applied.
+    """
+
     @cached_property
     def with_raw_response(self) -> DebitReasonsResourceWithRawResponse:
         """
@@ -333,6 +340,13 @@ class DebitReasonsResource(SyncAPIResource):
 
 
 class AsyncDebitReasonsResource(AsyncAPIResource):
+    """Endpoints for DebitReason operations such as creation, update, list, and delete.
+
+
+
+    You can create DebitReasons for your Organization, and then use them when creating a debit line item on a bill, or applying a product debit to a bill. DebitReasons provide contextual information as to why a debit was applied.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncDebitReasonsResourceWithRawResponse:
         """

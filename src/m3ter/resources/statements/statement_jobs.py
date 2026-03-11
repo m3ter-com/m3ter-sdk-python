@@ -28,6 +28,13 @@ __all__ = ["StatementJobsResource", "AsyncStatementJobsResource"]
 
 
 class StatementJobsResource(SyncAPIResource):
+    """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+    StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+    Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> StatementJobsResourceWithRawResponse:
         """
@@ -52,6 +59,7 @@ class StatementJobsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        filters: statement_job_create_params.Filters | Omit = omit,
         include_csv_format: bool | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -100,6 +108,8 @@ class StatementJobsResource(SyncAPIResource):
         Args:
           bill_id: The unique identifier (UUID) of the bill associated with the StatementJob.
 
+          filters
+
           include_csv_format: A Boolean value indicating whether the generated statement includes a CSV
               format.
 
@@ -133,6 +143,7 @@ class StatementJobsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "bill_id": bill_id,
+                    "filters": filters,
                     "include_csv_format": include_csv_format,
                     "version": version,
                 },
@@ -332,6 +343,7 @@ class StatementJobsResource(SyncAPIResource):
         *,
         org_id: str | None = None,
         bill_ids: SequenceNotStr[str],
+        filters: statement_job_create_batch_params.Filters | Omit = omit,
         include_csv_format: bool | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -381,6 +393,8 @@ class StatementJobsResource(SyncAPIResource):
           bill_ids: The list of unique identifiers (UUIDs) of the bills associated with the
               StatementJob.
 
+          filters
+
           include_csv_format: A Boolean value indicating whether the generated statement includes a CSV
               format.
 
@@ -414,6 +428,7 @@ class StatementJobsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "bill_ids": bill_ids,
+                    "filters": filters,
                     "include_csv_format": include_csv_format,
                     "version": version,
                 },
@@ -427,6 +442,13 @@ class StatementJobsResource(SyncAPIResource):
 
 
 class AsyncStatementJobsResource(AsyncAPIResource):
+    """Endpoints for creating, retrieving, listing, and cancelling statement jobs.
+
+    StatementJobs are tasks to asynchronously calculate and generate a bill statement.
+
+    Bill statements are informative backing sheets to invoices. They provide a breakdown of the usage charges that appear on the bill, helping your end customers better understand those charges, and gain a clearer picture of their usage over the billing period.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncStatementJobsResourceWithRawResponse:
         """
@@ -451,6 +473,7 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_id: str,
+        filters: statement_job_create_params.Filters | Omit = omit,
         include_csv_format: bool | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -499,6 +522,8 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         Args:
           bill_id: The unique identifier (UUID) of the bill associated with the StatementJob.
 
+          filters
+
           include_csv_format: A Boolean value indicating whether the generated statement includes a CSV
               format.
 
@@ -532,6 +557,7 @@ class AsyncStatementJobsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "bill_id": bill_id,
+                    "filters": filters,
                     "include_csv_format": include_csv_format,
                     "version": version,
                 },
@@ -731,6 +757,7 @@ class AsyncStatementJobsResource(AsyncAPIResource):
         *,
         org_id: str | None = None,
         bill_ids: SequenceNotStr[str],
+        filters: statement_job_create_batch_params.Filters | Omit = omit,
         include_csv_format: bool | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -780,6 +807,8 @@ class AsyncStatementJobsResource(AsyncAPIResource):
           bill_ids: The list of unique identifiers (UUIDs) of the bills associated with the
               StatementJob.
 
+          filters
+
           include_csv_format: A Boolean value indicating whether the generated statement includes a CSV
               format.
 
@@ -813,6 +842,7 @@ class AsyncStatementJobsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "bill_ids": bill_ids,
+                    "filters": filters,
                     "include_csv_format": include_csv_format,
                     "version": version,
                 },

@@ -28,6 +28,13 @@ __all__ = ["PricingsResource", "AsyncPricingsResource"]
 
 
 class PricingsResource(SyncAPIResource):
+    """Endpoints for listing, creating, updating, retrieving, or deleting Pricing.
+
+    Create the Pricing for a Plan/PlanTemplate with usage data Aggregations, and define a usage-based pricing structure for charging end customer Accounts put on the Plan.
+
+    See [Reviewing Pricing Options for Plans and Plan Templates](https://www.m3ter.com/docs/guides/pricing-plans/reviewing-pricing-options-and-pricing-plans) for more information.
+    """
+
     @cached_property
     def with_raw_response(self) -> PricingsResourceWithRawResponse:
         """
@@ -611,6 +618,13 @@ class PricingsResource(SyncAPIResource):
 
 
 class AsyncPricingsResource(AsyncAPIResource):
+    """Endpoints for listing, creating, updating, retrieving, or deleting Pricing.
+
+    Create the Pricing for a Plan/PlanTemplate with usage data Aggregations, and define a usage-based pricing structure for charging end customer Accounts put on the Plan.
+
+    See [Reviewing Pricing Options for Plans and Plan Templates](https://www.m3ter.com/docs/guides/pricing-plans/reviewing-pricing-options-and-pricing-plans) for more information.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncPricingsResourceWithRawResponse:
         """

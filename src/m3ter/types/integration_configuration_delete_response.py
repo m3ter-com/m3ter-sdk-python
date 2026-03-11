@@ -12,6 +12,8 @@ __all__ = ["IntegrationConfigurationDeleteResponse"]
 
 
 class IntegrationConfigurationDeleteResponse(BaseModel):
+    """Response containing a IntegrationConfigResponse entity."""
+
     id: str
     """The UUID of the entity."""
 
