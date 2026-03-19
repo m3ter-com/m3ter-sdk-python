@@ -8,7 +8,7 @@ import httpx
 
 from ..types import event_list_params, event_get_fields_params
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -137,7 +137,7 @@ class EventsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/events/{id}",
+            path_template("/organizations/{org_id}/events/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -226,7 +226,7 @@ class EventsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/events",
+            path_template("/organizations/{org_id}/events", org_id=org_id),
             page=SyncCursor[EventResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -309,7 +309,7 @@ class EventsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get(
-            f"/organizations/{org_id}/events/fields",
+            path_template("/organizations/{org_id}/events/fields", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -351,7 +351,7 @@ class EventsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get(
-            f"/organizations/{org_id}/events/types",
+            path_template("/organizations/{org_id}/events/types", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -470,7 +470,7 @@ class AsyncEventsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/events/{id}",
+            path_template("/organizations/{org_id}/events/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -559,7 +559,7 @@ class AsyncEventsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/events",
+            path_template("/organizations/{org_id}/events", org_id=org_id),
             page=AsyncCursor[EventResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -642,7 +642,7 @@ class AsyncEventsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._get(
-            f"/organizations/{org_id}/events/fields",
+            path_template("/organizations/{org_id}/events/fields", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -686,7 +686,7 @@ class AsyncEventsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._get(
-            f"/organizations/{org_id}/events/types",
+            path_template("/organizations/{org_id}/events/types", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

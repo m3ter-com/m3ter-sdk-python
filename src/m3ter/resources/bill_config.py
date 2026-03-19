@@ -9,7 +9,7 @@ import httpx
 
 from ..types import bill_config_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -82,7 +82,7 @@ class BillConfigResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get(
-            f"/organizations/{org_id}/billconfig",
+            path_template("/organizations/{org_id}/billconfig", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -135,7 +135,7 @@ class BillConfigResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._put(
-            f"/organizations/{org_id}/billconfig",
+            path_template("/organizations/{org_id}/billconfig", org_id=org_id),
             body=maybe_transform(
                 {
                     "bill_lock_date": bill_lock_date,
@@ -208,7 +208,7 @@ class AsyncBillConfigResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._get(
-            f"/organizations/{org_id}/billconfig",
+            path_template("/organizations/{org_id}/billconfig", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -261,7 +261,7 @@ class AsyncBillConfigResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._put(
-            f"/organizations/{org_id}/billconfig",
+            path_template("/organizations/{org_id}/billconfig", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "bill_lock_date": bill_lock_date,

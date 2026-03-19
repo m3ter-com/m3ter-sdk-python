@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -88,7 +88,9 @@ class LineItemsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/bills/{bill_id}/lineitems/{id}",
+            path_template(
+                "/organizations/{org_id}/bills/{bill_id}/lineitems/{id}", org_id=org_id, bill_id=bill_id, id=id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -145,7 +147,7 @@ class LineItemsResource(SyncAPIResource):
         if not bill_id:
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/bills/{bill_id}/lineitems",
+            path_template("/organizations/{org_id}/bills/{bill_id}/lineitems", org_id=org_id, bill_id=bill_id),
             page=SyncCursor[LineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -231,7 +233,9 @@ class AsyncLineItemsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/bills/{bill_id}/lineitems/{id}",
+            path_template(
+                "/organizations/{org_id}/bills/{bill_id}/lineitems/{id}", org_id=org_id, bill_id=bill_id, id=id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -290,7 +294,7 @@ class AsyncLineItemsResource(AsyncAPIResource):
         if not bill_id:
             raise ValueError(f"Expected a non-empty value for `bill_id` but received {bill_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/bills/{bill_id}/lineitems",
+            path_template("/organizations/{org_id}/bills/{bill_id}/lineitems", org_id=org_id, bill_id=bill_id),
             page=AsyncCursor[LineItemResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

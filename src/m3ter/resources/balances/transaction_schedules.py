@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -154,7 +154,11 @@ class TransactionSchedulesResource(SyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._post(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -213,7 +217,12 @@ class TransactionSchedulesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+                org_id=org_id,
+                balance_id=balance_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -321,7 +330,12 @@ class TransactionSchedulesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+                org_id=org_id,
+                balance_id=balance_id,
+                id=id,
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -384,7 +398,11 @@ class TransactionSchedulesResource(SyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             page=SyncCursor[ScheduleResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -437,7 +455,12 @@ class TransactionSchedulesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+                org_id=org_id,
+                balance_id=balance_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -550,7 +573,11 @@ class TransactionSchedulesResource(SyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._post(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/preview",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/preview",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -709,7 +736,11 @@ class AsyncTransactionSchedulesResource(AsyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -768,7 +799,12 @@ class AsyncTransactionSchedulesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+                org_id=org_id,
+                balance_id=balance_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -876,7 +912,12 @@ class AsyncTransactionSchedulesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+                org_id=org_id,
+                balance_id=balance_id,
+                id=id,
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -939,7 +980,11 @@ class AsyncTransactionSchedulesResource(AsyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             page=AsyncCursor[ScheduleResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -992,7 +1037,12 @@ class AsyncTransactionSchedulesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/{id}",
+                org_id=org_id,
+                balance_id=balance_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1105,7 +1155,11 @@ class AsyncTransactionSchedulesResource(AsyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/preview",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/balancetransactionschedules/preview",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
