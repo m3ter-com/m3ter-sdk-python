@@ -18,7 +18,7 @@ from .jobs import (
 )
 from ...types import data_export_create_adhoc_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import required_args, maybe_transform, async_maybe_transform
+from ..._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from .schedules import (
     SchedulesResource,
@@ -396,7 +396,7 @@ class DataExportsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/dataexports/adhoc",
+            path_template("/organizations/{org_id}/dataexports/adhoc", org_id=org_id),
             body=maybe_transform(
                 {
                     "operational_data_types": operational_data_types,
@@ -764,7 +764,7 @@ class AsyncDataExportsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/dataexports/adhoc",
+            path_template("/organizations/{org_id}/dataexports/adhoc", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "operational_data_types": operational_data_types,

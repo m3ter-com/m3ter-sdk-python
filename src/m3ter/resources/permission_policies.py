@@ -19,7 +19,7 @@ from ..types import (
     permission_policy_remove_from_service_user_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -142,7 +142,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies",
+            path_template("/organizations/{org_id}/permissionpolicies", org_id=org_id),
             body=maybe_transform(
                 {
                     "name": name,
@@ -188,7 +188,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/permissionpolicies/{id}",
+            path_template("/organizations/{org_id}/permissionpolicies/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -268,7 +268,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/permissionpolicies/{id}",
+            path_template("/organizations/{org_id}/permissionpolicies/{id}", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "name": name,
@@ -317,7 +317,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/permissionpolicies",
+            path_template("/organizations/{org_id}/permissionpolicies", org_id=org_id),
             page=SyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -366,7 +366,7 @@ class PermissionPoliciesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/permissionpolicies/{id}",
+            path_template("/organizations/{org_id}/permissionpolicies/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -420,7 +420,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtoserviceuser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtoserviceuser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -478,7 +482,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtosupportusers",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtosupportusers",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {"version": version},
                 permission_policy_add_to_support_user_params.PermissionPolicyAddToSupportUserParams,
@@ -536,7 +544,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtouser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtouser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -597,7 +609,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtousergroup",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtousergroup",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -658,7 +674,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromserviceuser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromserviceuser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -705,7 +725,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromsupportusers",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromsupportusers",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -759,7 +783,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromuser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromuser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -820,7 +848,11 @@ class PermissionPoliciesResource(SyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromusergroup",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromusergroup",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -933,7 +965,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies",
+            path_template("/organizations/{org_id}/permissionpolicies", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "name": name,
@@ -979,7 +1011,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/permissionpolicies/{id}",
+            path_template("/organizations/{org_id}/permissionpolicies/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1059,7 +1091,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/permissionpolicies/{id}",
+            path_template("/organizations/{org_id}/permissionpolicies/{id}", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "name": name,
@@ -1108,7 +1140,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/permissionpolicies",
+            path_template("/organizations/{org_id}/permissionpolicies", org_id=org_id),
             page=AsyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1157,7 +1189,7 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/permissionpolicies/{id}",
+            path_template("/organizations/{org_id}/permissionpolicies/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1211,7 +1243,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtoserviceuser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtoserviceuser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -1269,7 +1305,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtosupportusers",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtosupportusers",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {"version": version},
                 permission_policy_add_to_support_user_params.PermissionPolicyAddToSupportUserParams,
@@ -1327,7 +1367,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtouser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtouser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -1388,7 +1432,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtousergroup",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/addtousergroup",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -1449,7 +1497,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromserviceuser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromserviceuser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -1496,7 +1548,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromsupportusers",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromsupportusers",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1550,7 +1606,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromuser",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromuser",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "principal_id": principal_id,
@@ -1611,7 +1671,11 @@ class AsyncPermissionPoliciesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `permission_policy_id` but received {permission_policy_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromusergroup",
+            path_template(
+                "/organizations/{org_id}/permissionpolicies/{permission_policy_id}/removefromusergroup",
+                org_id=org_id,
+                permission_policy_id=permission_policy_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "principal_id": principal_id,

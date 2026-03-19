@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -156,7 +156,9 @@ class TransactionsResource(SyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._post(
-            f"/organizations/{org_id}/balances/{balance_id}/transactions",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/transactions", org_id=org_id, balance_id=balance_id
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -223,7 +225,9 @@ class TransactionsResource(SyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/balances/{balance_id}/transactions",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/transactions", org_id=org_id, balance_id=balance_id
+            ),
             page=SyncCursor[TransactionResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -297,7 +301,11 @@ class TransactionsResource(SyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get(
-            f"/organizations/{org_id}/balances/{balance_id}/transactions/summary",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/transactions/summary",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -434,7 +442,9 @@ class AsyncTransactionsResource(AsyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/balances/{balance_id}/transactions",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/transactions", org_id=org_id, balance_id=balance_id
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -501,7 +511,9 @@ class AsyncTransactionsResource(AsyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/balances/{balance_id}/transactions",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/transactions", org_id=org_id, balance_id=balance_id
+            ),
             page=AsyncCursor[TransactionResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -575,7 +587,11 @@ class AsyncTransactionsResource(AsyncAPIResource):
         if not balance_id:
             raise ValueError(f"Expected a non-empty value for `balance_id` but received {balance_id!r}")
         return await self._get(
-            f"/organizations/{org_id}/balances/{balance_id}/transactions/summary",
+            path_template(
+                "/organizations/{org_id}/balances/{balance_id}/transactions/summary",
+                org_id=org_id,
+                balance_id=balance_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

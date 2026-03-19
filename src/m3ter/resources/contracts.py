@@ -15,7 +15,7 @@ from ..types import (
     contract_end_date_billing_entities_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -172,7 +172,7 @@ class ContractsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/contracts",
+            path_template("/organizations/{org_id}/contracts", org_id=org_id),
             body=maybe_transform(
                 {
                     "account_id": account_id,
@@ -229,7 +229,7 @@ class ContractsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/contracts/{id}",
+            path_template("/organizations/{org_id}/contracts/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -353,7 +353,7 @@ class ContractsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/contracts/{id}",
+            path_template("/organizations/{org_id}/contracts/{id}", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "account_id": account_id,
@@ -423,7 +423,7 @@ class ContractsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/contracts",
+            path_template("/organizations/{org_id}/contracts", org_id=org_id),
             page=SyncCursor[ContractResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -481,7 +481,7 @@ class ContractsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/contracts/{id}",
+            path_template("/organizations/{org_id}/contracts/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -546,7 +546,7 @@ class ContractsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/contracts/{id}/enddatebillingentities",
+            path_template("/organizations/{org_id}/contracts/{id}/enddatebillingentities", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "billing_entities": billing_entities,
@@ -702,7 +702,7 @@ class AsyncContractsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/contracts",
+            path_template("/organizations/{org_id}/contracts", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
@@ -759,7 +759,7 @@ class AsyncContractsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/contracts/{id}",
+            path_template("/organizations/{org_id}/contracts/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -883,7 +883,7 @@ class AsyncContractsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/contracts/{id}",
+            path_template("/organizations/{org_id}/contracts/{id}", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
@@ -953,7 +953,7 @@ class AsyncContractsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/contracts",
+            path_template("/organizations/{org_id}/contracts", org_id=org_id),
             page=AsyncCursor[ContractResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1011,7 +1011,7 @@ class AsyncContractsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/contracts/{id}",
+            path_template("/organizations/{org_id}/contracts/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1076,7 +1076,7 @@ class AsyncContractsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/contracts/{id}/enddatebillingentities",
+            path_template("/organizations/{org_id}/contracts/{id}/enddatebillingentities", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "billing_entities": billing_entities,

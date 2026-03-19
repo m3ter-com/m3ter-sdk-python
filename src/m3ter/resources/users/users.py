@@ -9,7 +9,7 @@ import httpx
 
 from ...types import user_list_params, user_update_params, user_get_permissions_params, user_get_user_groups_params
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -110,7 +110,7 @@ class UsersResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/users/{id}",
+            path_template("/organizations/{org_id}/users/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -174,7 +174,7 @@ class UsersResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/users/{id}",
+            path_template("/organizations/{org_id}/users/{id}", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "dt_end_access": dt_end_access,
@@ -231,7 +231,7 @@ class UsersResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/users",
+            path_template("/organizations/{org_id}/users", org_id=org_id),
             page=SyncCursor[UserResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -291,7 +291,7 @@ class UsersResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/users/{id}/permissions",
+            path_template("/organizations/{org_id}/users/{id}/permissions", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -370,7 +370,7 @@ class UsersResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/users/{id}/usergroups",
+            path_template("/organizations/{org_id}/users/{id}/usergroups", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -415,7 +415,7 @@ class UsersResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get(
-            f"/organizations/{org_id}/users/me",
+            path_template("/organizations/{org_id}/users/me", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -454,7 +454,7 @@ class UsersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/organizations/{org_id}/users/{id}/password/resend",
+            path_template("/organizations/{org_id}/users/{id}/password/resend", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -535,7 +535,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/users/{id}",
+            path_template("/organizations/{org_id}/users/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -599,7 +599,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/users/{id}",
+            path_template("/organizations/{org_id}/users/{id}", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "dt_end_access": dt_end_access,
@@ -656,7 +656,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/users",
+            path_template("/organizations/{org_id}/users", org_id=org_id),
             page=AsyncCursor[UserResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -716,7 +716,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/users/{id}/permissions",
+            path_template("/organizations/{org_id}/users/{id}/permissions", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -795,7 +795,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/users/{id}/usergroups",
+            path_template("/organizations/{org_id}/users/{id}/usergroups", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -840,7 +840,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._get(
-            f"/organizations/{org_id}/users/me",
+            path_template("/organizations/{org_id}/users/me", org_id=org_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -879,7 +879,7 @@ class AsyncUsersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/organizations/{org_id}/users/{id}/password/resend",
+            path_template("/organizations/{org_id}/users/{id}/password/resend", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

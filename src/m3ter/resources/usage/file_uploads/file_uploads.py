@@ -15,7 +15,7 @@ from .jobs import (
     AsyncJobsResourceWithStreamingResponse,
 )
 from ...._types import Body, Query, Headers, NotGiven, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -149,7 +149,7 @@ class FileUploadsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/fileuploads/measurements/generateUploadUrl",
+            path_template("/organizations/{org_id}/fileuploads/measurements/generateUploadUrl", org_id=org_id),
             body=maybe_transform(
                 {
                     "content_length": content_length,
@@ -283,7 +283,7 @@ class AsyncFileUploadsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/fileuploads/measurements/generateUploadUrl",
+            path_template("/organizations/{org_id}/fileuploads/measurements/generateUploadUrl", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "content_length": content_length,
