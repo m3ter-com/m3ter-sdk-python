@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -157,7 +157,12 @@ class LookupTableRevisionDataResource(SyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return self._get(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -222,7 +227,12 @@ class LookupTableRevisionDataResource(SyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=maybe_transform(
                 {
                     "items": items,
@@ -279,7 +289,12 @@ class LookupTableRevisionDataResource(SyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return self._delete(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -332,7 +347,12 @@ class LookupTableRevisionDataResource(SyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/archived",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/archived",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=maybe_transform(
                 {"content_type": content_type},
                 lookup_table_revision_data_archieve_params.LookupTableRevisionDataArchieveParams,
@@ -391,7 +411,12 @@ class LookupTableRevisionDataResource(SyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/copy",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/copy",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=maybe_transform(
                 {"revision_id": revision_id}, lookup_table_revision_data_copy_params.LookupTableRevisionDataCopyParams
             ),
@@ -453,7 +478,13 @@ class LookupTableRevisionDataResource(SyncAPIResource):
         if not lookup_key:
             raise ValueError(f"Expected a non-empty value for `lookup_key` but received {lookup_key!r}")
         return self._delete(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+                lookup_key=lookup_key,
+            ),
             body=maybe_transform(
                 {"version": version},
                 lookup_table_revision_data_delete_key_params.LookupTableRevisionDataDeleteKeyParams,
@@ -530,7 +561,12 @@ class LookupTableRevisionDataResource(SyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/generateuploadurl",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/generateuploadurl",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=maybe_transform(
                 {
                     "content_length": content_length,
@@ -595,7 +631,13 @@ class LookupTableRevisionDataResource(SyncAPIResource):
         if not lookup_key:
             raise ValueError(f"Expected a non-empty value for `lookup_key` but received {lookup_key!r}")
         return self._get(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+                lookup_key=lookup_key,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -661,7 +703,13 @@ class LookupTableRevisionDataResource(SyncAPIResource):
         if not lookup_key:
             raise ValueError(f"Expected a non-empty value for `lookup_key` but received {lookup_key!r}")
         return self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+                lookup_key=lookup_key,
+            ),
             body=maybe_transform(
                 {
                     "item": item,
@@ -784,7 +832,12 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return await self._get(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -849,7 +902,12 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return await self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "items": items,
@@ -906,7 +964,12 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return await self._delete(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -959,7 +1022,12 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/archived",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/archived",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=await async_maybe_transform(
                 {"content_type": content_type},
                 lookup_table_revision_data_archieve_params.LookupTableRevisionDataArchieveParams,
@@ -1018,7 +1086,12 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/copy",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/copy",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=await async_maybe_transform(
                 {"revision_id": revision_id}, lookup_table_revision_data_copy_params.LookupTableRevisionDataCopyParams
             ),
@@ -1080,7 +1153,13 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
         if not lookup_key:
             raise ValueError(f"Expected a non-empty value for `lookup_key` but received {lookup_key!r}")
         return await self._delete(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+                lookup_key=lookup_key,
+            ),
             body=await async_maybe_transform(
                 {"version": version},
                 lookup_table_revision_data_delete_key_params.LookupTableRevisionDataDeleteKeyParams,
@@ -1157,7 +1236,12 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
                 f"Expected a non-empty value for `lookup_table_revision_id` but received {lookup_table_revision_id!r}"
             )
         return await self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/generateuploadurl",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/generateuploadurl",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "content_length": content_length,
@@ -1222,7 +1306,13 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
         if not lookup_key:
             raise ValueError(f"Expected a non-empty value for `lookup_key` but received {lookup_key!r}")
         return await self._get(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+                lookup_key=lookup_key,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1288,7 +1378,13 @@ class AsyncLookupTableRevisionDataResource(AsyncAPIResource):
         if not lookup_key:
             raise ValueError(f"Expected a non-empty value for `lookup_key` but received {lookup_key!r}")
         return await self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{lookup_table_revision_id}/data/{lookup_key}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                lookup_table_revision_id=lookup_table_revision_id,
+                lookup_key=lookup_key,
+            ),
             body=await async_maybe_transform(
                 {
                     "item": item,

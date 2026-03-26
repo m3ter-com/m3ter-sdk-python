@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -120,7 +121,7 @@ class StatementsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/organizations/{org_id}/bills/{id}/statement/csv",
+            path_template("/organizations/{org_id}/bills/{id}/statement/csv", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -166,7 +167,7 @@ class StatementsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/bills/{id}/statement/csv",
+            path_template("/organizations/{org_id}/bills/{id}/statement/csv", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -211,7 +212,7 @@ class StatementsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/bills/{id}/statement/json",
+            path_template("/organizations/{org_id}/bills/{id}/statement/json", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -304,7 +305,7 @@ class AsyncStatementsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/organizations/{org_id}/bills/{id}/statement/csv",
+            path_template("/organizations/{org_id}/bills/{id}/statement/csv", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -350,7 +351,7 @@ class AsyncStatementsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/bills/{id}/statement/csv",
+            path_template("/organizations/{org_id}/bills/{id}/statement/csv", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -395,7 +396,7 @@ class AsyncStatementsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/bills/{id}/statement/json",
+            path_template("/organizations/{org_id}/bills/{id}/statement/json", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

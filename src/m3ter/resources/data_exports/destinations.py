@@ -8,7 +8,7 @@ from typing_extensions import Literal, overload
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import required_args, maybe_transform, async_maybe_transform
+from ..._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -280,7 +280,7 @@ class DestinationsResource(SyncAPIResource):
         return cast(
             DestinationCreateResponse,
             self._post(
-                f"/organizations/{org_id}/dataexports/destinations",
+                path_template("/organizations/{org_id}/dataexports/destinations", org_id=org_id),
                 body=maybe_transform(
                     {
                         "bucket_name": bucket_name,
@@ -338,7 +338,7 @@ class DestinationsResource(SyncAPIResource):
         return cast(
             DestinationRetrieveResponse,
             self._get(
-                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                path_template("/organizations/{org_id}/dataexports/destinations/{id}", org_id=org_id, id=id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
@@ -570,7 +570,7 @@ class DestinationsResource(SyncAPIResource):
         return cast(
             DestinationUpdateResponse,
             self._put(
-                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                path_template("/organizations/{org_id}/dataexports/destinations/{id}", org_id=org_id, id=id),
                 body=maybe_transform(
                     {
                         "bucket_name": bucket_name,
@@ -634,7 +634,7 @@ class DestinationsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/dataexports/destinations",
+            path_template("/organizations/{org_id}/dataexports/destinations", org_id=org_id),
             page=SyncCursor[DataExportDestinationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -690,7 +690,7 @@ class DestinationsResource(SyncAPIResource):
         return cast(
             DestinationDeleteResponse,
             self._delete(
-                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                path_template("/organizations/{org_id}/dataexports/destinations/{id}", org_id=org_id, id=id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
@@ -952,7 +952,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         return cast(
             DestinationCreateResponse,
             await self._post(
-                f"/organizations/{org_id}/dataexports/destinations",
+                path_template("/organizations/{org_id}/dataexports/destinations", org_id=org_id),
                 body=await async_maybe_transform(
                     {
                         "bucket_name": bucket_name,
@@ -1010,7 +1010,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         return cast(
             DestinationRetrieveResponse,
             await self._get(
-                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                path_template("/organizations/{org_id}/dataexports/destinations/{id}", org_id=org_id, id=id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
@@ -1242,7 +1242,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         return cast(
             DestinationUpdateResponse,
             await self._put(
-                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                path_template("/organizations/{org_id}/dataexports/destinations/{id}", org_id=org_id, id=id),
                 body=await async_maybe_transform(
                     {
                         "bucket_name": bucket_name,
@@ -1306,7 +1306,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/dataexports/destinations",
+            path_template("/organizations/{org_id}/dataexports/destinations", org_id=org_id),
             page=AsyncCursor[DataExportDestinationResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1362,7 +1362,7 @@ class AsyncDestinationsResource(AsyncAPIResource):
         return cast(
             DestinationDeleteResponse,
             await self._delete(
-                f"/organizations/{org_id}/dataexports/destinations/{id}",
+                path_template("/organizations/{org_id}/dataexports/destinations/{id}", org_id=org_id, id=id),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),

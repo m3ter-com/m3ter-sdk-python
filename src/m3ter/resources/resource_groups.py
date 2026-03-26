@@ -16,7 +16,7 @@ from ..types import (
     resource_group_list_permissions_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -125,7 +125,7 @@ class ResourceGroupsResource(SyncAPIResource):
         if not type:
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return self._post(
-            f"/organizations/{org_id}/resourcegroups/{type}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}", org_id=org_id, type=type),
             body=maybe_transform(
                 {
                     "name": name,
@@ -173,7 +173,7 @@ class ResourceGroupsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/resourcegroups/{type}/{id}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}/{id}", org_id=org_id, type=type, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -220,7 +220,7 @@ class ResourceGroupsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/resourcegroups/{type}/{id}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}/{id}", org_id=org_id, type=type, id=id),
             body=maybe_transform(
                 {
                     "name": name,
@@ -271,7 +271,7 @@ class ResourceGroupsResource(SyncAPIResource):
         if not type:
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/resourcegroups/{type}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}", org_id=org_id, type=type),
             page=SyncCursor[ResourceGroupResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -323,7 +323,7 @@ class ResourceGroupsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/resourcegroups/{type}/{id}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}/{id}", org_id=org_id, type=type, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -387,7 +387,12 @@ class ResourceGroupsResource(SyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._post(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/addresource",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/addresource",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             body=maybe_transform(
                 {
                     "target_id": target_id,
@@ -442,7 +447,12 @@ class ResourceGroupsResource(SyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/contents",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/contents",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             page=SyncCursor[ResourceGroupListContentsResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -501,7 +511,12 @@ class ResourceGroupsResource(SyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             page=SyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -576,7 +591,12 @@ class ResourceGroupsResource(SyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._post(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/removeresource",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/removeresource",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             body=maybe_transform(
                 {
                     "target_id": target_id,
@@ -683,7 +703,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not type:
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return await self._post(
-            f"/organizations/{org_id}/resourcegroups/{type}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}", org_id=org_id, type=type),
             body=await async_maybe_transform(
                 {
                     "name": name,
@@ -731,7 +751,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/resourcegroups/{type}/{id}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}/{id}", org_id=org_id, type=type, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -778,7 +798,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/resourcegroups/{type}/{id}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}/{id}", org_id=org_id, type=type, id=id),
             body=await async_maybe_transform(
                 {
                     "name": name,
@@ -829,7 +849,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not type:
             raise ValueError(f"Expected a non-empty value for `type` but received {type!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/resourcegroups/{type}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}", org_id=org_id, type=type),
             page=AsyncCursor[ResourceGroupResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -881,7 +901,7 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/resourcegroups/{type}/{id}",
+            path_template("/organizations/{org_id}/resourcegroups/{type}/{id}", org_id=org_id, type=type, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -945,7 +965,12 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/addresource",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/addresource",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "target_id": target_id,
@@ -1000,7 +1025,12 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/contents",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/contents",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             page=AsyncCursor[ResourceGroupListContentsResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1059,7 +1089,12 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/permissions",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             page=AsyncCursor[PermissionPolicyResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1134,7 +1169,12 @@ class AsyncResourceGroupsResource(AsyncAPIResource):
         if not resource_group_id:
             raise ValueError(f"Expected a non-empty value for `resource_group_id` but received {resource_group_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/removeresource",
+            path_template(
+                "/organizations/{org_id}/resourcegroups/{type}/{resource_group_id}/removeresource",
+                org_id=org_id,
+                type=type,
+                resource_group_id=resource_group_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "target_id": target_id,
