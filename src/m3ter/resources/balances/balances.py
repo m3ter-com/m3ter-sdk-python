@@ -10,7 +10,7 @@ import httpx
 
 from ...types import balance_list_params, balance_create_params, balance_update_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -312,7 +312,7 @@ class BalancesResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/balances",
+            path_template("/organizations/{org_id}/balances", org_id=org_id),
             body=maybe_transform(
                 {
                     "account_id": account_id,
@@ -377,7 +377,7 @@ class BalancesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/balances/{id}",
+            path_template("/organizations/{org_id}/balances/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -554,7 +554,7 @@ class BalancesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/balances/{id}",
+            path_template("/organizations/{org_id}/balances/{id}", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "account_id": account_id,
@@ -650,7 +650,7 @@ class BalancesResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/balances",
+            path_template("/organizations/{org_id}/balances", org_id=org_id),
             page=SyncCursor[Balance],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -707,7 +707,7 @@ class BalancesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/balances/{id}",
+            path_template("/organizations/{org_id}/balances/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -977,7 +977,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/balances",
+            path_template("/organizations/{org_id}/balances", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
@@ -1042,7 +1042,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/balances/{id}",
+            path_template("/organizations/{org_id}/balances/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1219,7 +1219,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/balances/{id}",
+            path_template("/organizations/{org_id}/balances/{id}", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
@@ -1315,7 +1315,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/balances",
+            path_template("/organizations/{org_id}/balances", org_id=org_id),
             page=AsyncCursor[Balance],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1372,7 +1372,7 @@ class AsyncBalancesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/balances/{id}",
+            path_template("/organizations/{org_id}/balances/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

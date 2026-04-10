@@ -12,7 +12,7 @@ from ..types import (
     external_mapping_list_by_external_entity_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -119,7 +119,7 @@ class ExternalMappingsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/externalmappings",
+            path_template("/organizations/{org_id}/externalmappings", org_id=org_id),
             body=maybe_transform(
                 {
                     "external_id": external_id,
@@ -172,7 +172,7 @@ class ExternalMappingsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/externalmappings/{id}",
+            path_template("/organizations/{org_id}/externalmappings/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -245,7 +245,7 @@ class ExternalMappingsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/externalmappings/{id}",
+            path_template("/organizations/{org_id}/externalmappings/{id}", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "external_id": external_id,
@@ -317,7 +317,7 @@ class ExternalMappingsResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/externalmappings",
+            path_template("/organizations/{org_id}/externalmappings", org_id=org_id),
             page=SyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -369,7 +369,7 @@ class ExternalMappingsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/externalmappings/{id}",
+            path_template("/organizations/{org_id}/externalmappings/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -425,7 +425,13 @@ class ExternalMappingsResource(SyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/externalmappings/externalid/{system}/{external_table}/{external_id}",
+            path_template(
+                "/organizations/{org_id}/externalmappings/externalid/{system}/{external_table}/{external_id}",
+                org_id=org_id,
+                system=system,
+                external_table=external_table,
+                external_id=external_id,
+            ),
             page=SyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -487,7 +493,12 @@ class ExternalMappingsResource(SyncAPIResource):
         if not m3ter_id:
             raise ValueError(f"Expected a non-empty value for `m3ter_id` but received {m3ter_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/externalmappings/external/{entity}/{m3ter_id}",
+            path_template(
+                "/organizations/{org_id}/externalmappings/external/{entity}/{m3ter_id}",
+                org_id=org_id,
+                entity=entity,
+                m3ter_id=m3ter_id,
+            ),
             page=SyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -597,7 +608,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/externalmappings",
+            path_template("/organizations/{org_id}/externalmappings", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "external_id": external_id,
@@ -650,7 +661,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/externalmappings/{id}",
+            path_template("/organizations/{org_id}/externalmappings/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -723,7 +734,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/externalmappings/{id}",
+            path_template("/organizations/{org_id}/externalmappings/{id}", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "external_id": external_id,
@@ -795,7 +806,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/externalmappings",
+            path_template("/organizations/{org_id}/externalmappings", org_id=org_id),
             page=AsyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -847,7 +858,7 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/externalmappings/{id}",
+            path_template("/organizations/{org_id}/externalmappings/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -903,7 +914,13 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not external_id:
             raise ValueError(f"Expected a non-empty value for `external_id` but received {external_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/externalmappings/externalid/{system}/{external_table}/{external_id}",
+            path_template(
+                "/organizations/{org_id}/externalmappings/externalid/{system}/{external_table}/{external_id}",
+                org_id=org_id,
+                system=system,
+                external_table=external_table,
+                external_id=external_id,
+            ),
             page=AsyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -965,7 +982,12 @@ class AsyncExternalMappingsResource(AsyncAPIResource):
         if not m3ter_id:
             raise ValueError(f"Expected a non-empty value for `m3ter_id` but received {m3ter_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/externalmappings/external/{entity}/{m3ter_id}",
+            path_template(
+                "/organizations/{org_id}/externalmappings/external/{entity}/{m3ter_id}",
+                org_id=org_id,
+                entity=entity,
+                m3ter_id=m3ter_id,
+            ),
             page=AsyncCursor[ExternalMappingResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

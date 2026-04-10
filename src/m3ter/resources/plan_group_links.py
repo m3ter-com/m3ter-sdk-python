@@ -6,7 +6,7 @@ import httpx
 
 from ..types import plan_group_link_list_params, plan_group_link_create_params, plan_group_link_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -93,7 +93,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
-            f"/organizations/{org_id}/plangrouplinks",
+            path_template("/organizations/{org_id}/plangrouplinks", org_id=org_id),
             body=maybe_transform(
                 {
                     "plan_group_id": plan_group_id,
@@ -139,7 +139,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/plangrouplinks/{id}",
+            path_template("/organizations/{org_id}/plangrouplinks/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -194,7 +194,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/plangrouplinks/{id}",
+            path_template("/organizations/{org_id}/plangrouplinks/{id}", org_id=org_id, id=id),
             body=maybe_transform(
                 {
                     "plan_group_id": plan_group_id,
@@ -252,7 +252,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/plangrouplinks",
+            path_template("/organizations/{org_id}/plangrouplinks", org_id=org_id),
             page=SyncCursor[PlanGroupLinkResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -304,7 +304,7 @@ class PlanGroupLinksResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/plangrouplinks/{id}",
+            path_template("/organizations/{org_id}/plangrouplinks/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -383,7 +383,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/plangrouplinks",
+            path_template("/organizations/{org_id}/plangrouplinks", org_id=org_id),
             body=await async_maybe_transform(
                 {
                     "plan_group_id": plan_group_id,
@@ -429,7 +429,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/plangrouplinks/{id}",
+            path_template("/organizations/{org_id}/plangrouplinks/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -484,7 +484,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/plangrouplinks/{id}",
+            path_template("/organizations/{org_id}/plangrouplinks/{id}", org_id=org_id, id=id),
             body=await async_maybe_transform(
                 {
                     "plan_group_id": plan_group_id,
@@ -542,7 +542,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         if not org_id:
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/plangrouplinks",
+            path_template("/organizations/{org_id}/plangrouplinks", org_id=org_id),
             page=AsyncCursor[PlanGroupLinkResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -594,7 +594,7 @@ class AsyncPlanGroupLinksResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/plangrouplinks/{id}",
+            path_template("/organizations/{org_id}/plangrouplinks/{id}", org_id=org_id, id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

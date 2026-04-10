@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.10.0 (2026-04-10)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([ddb3dff](https://github.com/m3ter-com/m3ter-sdk-python/commit/ddb3dff5c235c37568bba4b60ed4aca2e151ef87))
+
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([f85e36f](https://github.com/m3ter-com/m3ter-sdk-python/commit/f85e36f7795459a3a68c9c4292c5cf34803e0579))
+* **deps:** bump minimum typing-extensions version ([5000eee](https://github.com/m3ter-com/m3ter-sdk-python/commit/5000eeeb740fbac2609fbfb424c8d5e690d96d87))
+* ensure file data are only sent as 1 parameter ([cf8599d](https://github.com/m3ter-com/m3ter-sdk-python/commit/cf8599d3ec806f5e322a4e7ac199412e2be11330))
+* **pydantic:** do not pass `by_alias` unless set ([6dcd3ee](https://github.com/m3ter-com/m3ter-sdk-python/commit/6dcd3ee4e5052842713d927530f22070e830c053))
+* sanitize endpoint path params ([37e2424](https://github.com/m3ter-com/m3ter-sdk-python/commit/37e2424ccb13ac37b24ace643fae68d4095f5306))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([9b96b87](https://github.com/m3ter-com/m3ter-sdk-python/commit/9b96b875438854f862342883b70453e35388ef93))
+* **internal:** tweak CI branches ([d699206](https://github.com/m3ter-com/m3ter-sdk-python/commit/d699206081e82968595d69f31807a8820eda9591))
+* **internal:** update gitignore ([c3acca0](https://github.com/m3ter-com/m3ter-sdk-python/commit/c3acca07df3dc708bb592a473ede42a9496dc2f1))
+* **tests:** bump steady to v0.19.4 ([b03a06d](https://github.com/m3ter-com/m3ter-sdk-python/commit/b03a06d9210e29eb3bca871c2bbb2bb9f2726ef1))
+* **tests:** bump steady to v0.19.5 ([cb4e5be](https://github.com/m3ter-com/m3ter-sdk-python/commit/cb4e5beac257674a38036d3f1ab9e8c5daca4627))
+* **tests:** bump steady to v0.19.6 ([dc3aef9](https://github.com/m3ter-com/m3ter-sdk-python/commit/dc3aef9e58036a926527b0133aff55422e77ddf2))
+* **tests:** bump steady to v0.19.7 ([b78f9ab](https://github.com/m3ter-com/m3ter-sdk-python/commit/b78f9abf6503f56b0754261e2da78044381e0345))
+* **tests:** bump steady to v0.20.1 ([6762755](https://github.com/m3ter-com/m3ter-sdk-python/commit/67627558a1a3dc57d69731f56dcd569bcfdc64bf))
+* **tests:** bump steady to v0.20.2 ([9022658](https://github.com/m3ter-com/m3ter-sdk-python/commit/902265873d7255a1cdc335b641066c6cc94055a1))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([80dd736](https://github.com/m3ter-com/m3ter-sdk-python/commit/80dd7369ca874cd52a37843b16f1b3de80b5a0b3))
+
 ## 0.9.0 (2026-03-07)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/m3ter-com/m3ter-sdk-python/compare/v0.8.0...v0.9.0)

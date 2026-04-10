@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -145,7 +145,11 @@ class LookupTableRevisionsResource(SyncAPIResource):
         if not lookup_table_id:
             raise ValueError(f"Expected a non-empty value for `lookup_table_id` but received {lookup_table_id!r}")
         return self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+            ),
             body=maybe_transform(
                 {
                     "fields": fields,
@@ -197,7 +201,12 @@ class LookupTableRevisionsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -280,7 +289,12 @@ class LookupTableRevisionsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             body=maybe_transform(
                 {
                     "fields": fields,
@@ -338,7 +352,11 @@ class LookupTableRevisionsResource(SyncAPIResource):
         if not lookup_table_id:
             raise ValueError(f"Expected a non-empty value for `lookup_table_id` but received {lookup_table_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+            ),
             page=SyncCursor[LookupTableRevisionResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -391,7 +409,12 @@ class LookupTableRevisionsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -438,7 +461,12 @@ class LookupTableRevisionsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}/status",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}/status",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             body=maybe_transform(
                 {
                     "status": status,
@@ -567,7 +595,11 @@ class AsyncLookupTableRevisionsResource(AsyncAPIResource):
         if not lookup_table_id:
             raise ValueError(f"Expected a non-empty value for `lookup_table_id` but received {lookup_table_id!r}")
         return await self._post(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "fields": fields,
@@ -619,7 +651,12 @@ class AsyncLookupTableRevisionsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -702,7 +739,12 @@ class AsyncLookupTableRevisionsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             body=await async_maybe_transform(
                 {
                     "fields": fields,
@@ -760,7 +802,11 @@ class AsyncLookupTableRevisionsResource(AsyncAPIResource):
         if not lookup_table_id:
             raise ValueError(f"Expected a non-empty value for `lookup_table_id` but received {lookup_table_id!r}")
         return self._get_api_list(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+            ),
             page=AsyncCursor[LookupTableRevisionResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -813,7 +859,12 @@ class AsyncLookupTableRevisionsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -860,7 +911,12 @@ class AsyncLookupTableRevisionsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}/status",
+            path_template(
+                "/organizations/{org_id}/lookuptables/{lookup_table_id}/revisions/{id}/status",
+                org_id=org_id,
+                lookup_table_id=lookup_table_id,
+                id=id,
+            ),
             body=await async_maybe_transform(
                 {
                     "status": status,
